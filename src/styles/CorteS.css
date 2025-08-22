@@ -1,0 +1,632 @@
+/* Base styles with responsiveness built-in */
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--corpo-texto);
+    box-sizing: border-box;
+}
+
+:root {
+    --body-back: #ffffff;
+    --corpo-texto: #000000; 
+    --header-color: #000000; 
+    --back-header: #fff;
+    --shadow: #f8f4f4;
+    --label: #000000;
+    --footer: #ffffff;
+}
+
+.dark:root{
+    --body-back: #0e0e0e;
+    --header-color: #ffffff; 
+    --back-header: #000000;
+    --corpo-texto: #ffffff; 
+    --footer: #000000;
+    --shadow: #161616;
+    --label: #f3c11e;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Dark mode toggle */
+.check{
+    opacity: 0;
+    position: absolute;
+}
+
+.label{
+    margin-top: -158px;
+    margin-bottom: 120px;
+    margin-left: auto;
+    margin-right: 5%;
+    background-color: var(--label);
+    border-radius: 29px;
+    border: 0.1px solid #000000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60px;
+    height: 29px;
+    transform: scale(1.1);
+    z-index: 100;
+}
+
+.bolinha > img {
+    position: absolute;
+    right: 0;
+} 
+
+#sol{
+    margin-left: 10px;
+}
+
+#lua{
+    margin-left: 27.2px;
+    margin-top: 1px;
+    width: 26.9px;
+    height: 26.9px;
+}
+
+.imagem {
+    width: 27.6px;
+    height: 27.6px;
+    position: absolute;
+    top: 0;
+    left: -9px;
+}
+
+.check:checked ~ .bolinha {
+    transform: translateX(3px);
+    margin-top: -30px; 
+}
+
+/* General layout */
+body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--body-back);
+}
+
+.container {
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+/* Header section */
+header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+header iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+}
+
+header img {
+    width: 100%;
+    height: auto;
+}
+
+/* Main title section */
+#h1-melhorescortes {
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: 110px;
+    margin-top: 71px;
+    text-align: center;
+}
+
+.p1 {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 71px;
+}
+
+/* Article sections */
+.section-artigos {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.div-artigo {
+    flex-direction: column;
+    margin-left: 70px;
+    margin-top: 40px;
+}
+
+#div-artigo2 {
+    flex-direction: column;
+    margin-right: 70px;
+    margin-top: 40px;
+}
+
+.h1-tituloartigo {
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 42px;
+    letter-spacing: 0.05em;
+}
+
+.p2 {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    letter-spacing: 0.05em;
+    margin-top: 20px;
+    text-align: justify;
+    width: 100%;
+    max-width: 600px;
+}
+
+.button1 {
+    background: #722F53;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 100;
+    font-size: 22px;
+    width: 200px;
+    height: 53px;
+    cursor: pointer;
+    margin-top: 33px;
+}
+
+.button1:hover {
+    background-color: rgba(255, 255, 255, 1.0);
+    background: radial-gradient(
+        50% 50% at 51% 37%,
+        rgba(135, 19, 141, 1) 0%,
+        rgba(216, 89, 157, 0.18) 100%
+    );
+    box-shadow: 0px 5px 10.7px 0px rgba(158, 22, 93, 0.85);
+}
+
+.button1:active {
+    border: 1px solid #4D0626;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #51152D 0%, #BA59D8 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
+}
+
+/* Most visited section */
+#section-maisvisitados {
+    margin-top: 70px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+#h1-maisvisitados {
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+#p3 {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#div-maisvisitados {
+    margin-top: 62px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 40px;
+    width: 100%;
+    max-width: 1610px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#div-maisvisitados img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+#img1 {
+    grid-row: span 2 / span 2;
+}
+
+#img4 {
+    grid-column: span 2 / span 2;
+    grid-column-start: 2;
+}
+
+/* Suggestion section */
+#section-sugestaocortes {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #5E332C;
+    margin-top: 70px;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+#div-titulos {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1800px;
+    justify-content: center;
+}
+
+#h1-cabelos {
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+    color: #FFFFFF;
+    margin-right: 70px;
+}
+
+#p4 {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    margin-top: 19px;
+}
+
+#div-botaoseta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+#div-botaoseta button {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.seta-nav {
+    margin: 0 10px;
+}
+
+#seta-margin {
+    margin-left: 16px;
+}
+
+#button2 {
+    border: none;
+    color: white;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 29px;
+    width: 261px;
+    height: 70px;
+    background: #F2A518;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#button2:hover {
+    background-color: rgba(255, 255, 255, 1.0);
+    background: radial-gradient(
+        65% 65% at 51% 37%,
+        rgba(242, 165, 24, 1) 0%,   
+        rgba(255, 239, 204, 1) 100%
+    );
+    box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
+}
+
+#button2:active {
+    border: 1px solid #4D0626;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
+}
+
+#div-imagens {
+    display: flex;
+    margin-top: 50px;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#div-imagens a {
+    display: block;
+}
+
+#div-imagens img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Complete list section */
+#section-listacompleta {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+#h1-listacompleta {
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: 96px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#div-lista {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+#div-lista a {
+    font-family: 'The Next Font', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    text-decoration: none;
+    color: var(--corpo-texto);
+}
+
+#button3 {
+    margin-top: 50px;
+    margin-bottom: 70px;
+    width: 600px;
+    max-width: 90%;
+    height: 83px;
+    background: #5E332C;
+    border-radius: 45px;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 34px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
+aside
+{
+    margin-bottom: 200px;
+}
+/* Footer */
+footer {
+    display: flex;
+    width: 100%;
+}
+
+footer iframe {
+    width: 100%;
+    height: 400px;
+}
+
+/* Helper classes */
+.desktop-only {
+    display: inline;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 1600px) {
+    #div-maisvisitados {
+        width: 90%;
+    }
+    
+    #h1-cabelos {
+        font-size: 40px;
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #h1-melhorescortes {
+        font-size: 80px;
+        margin-top: 50px;
+    }
+
+    .p1 {
+        font-size: 35px;
+        margin-bottom: 50px;
+    }
+    
+    .section-artigos {
+        flex-direction: column;
+    }
+    
+    .div-artigo, #div-artigo2 {
+        margin: 30px 0;
+        text-align: center;
+    }
+    
+    .p2 {
+        text-align: center;
+        margin: 20px auto;
+    }
+    
+    #div-titulos {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #h1-cabelos {
+        margin-right: 0;
+        margin-bottom: 30px;
+        font-size: 35px;
+    }
+    
+    #div-maisvisitados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #img1 {
+        grid-row: span 1;
+    }
+    
+    #img4 {
+        grid-column: span 1;
+        grid-column-start: auto;
+    }
+    
+    .desktop-only {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #h1-melhorescortes {
+        font-size: 60px;
+        margin-top: 40px;
+    }
+    
+    .p1 {
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
+    
+    .h1-tituloartigo {
+        font-size: 30px;
+    }
+    
+    .p2 {
+        font-size: 18px;
+    }
+    
+    #h1-maisvisitados {
+        font-size: 35px;
+    }
+    
+    #div-lista {
+        gap: 20px;
+    }
+    
+    #div-lista a {
+        font-size: 24px;
+    }
+    
+    #button3 {
+        width: 80%;
+        font-size: 28px;
+        height: 70px;
+    }
+    
+    #h1-listacompleta {
+        font-size: 60px;
+    }
+    
+    .label {
+        width: 50px;
+        margin-top: -100px;
+    }
+    
+    footer iframe {
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    #h1-melhorescortes {
+        font-size: 40px;
+        margin-top: 30px;
+    }
+    
+    .p1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .h1-tituloartigo {
+        font-size: 24px;
+    }
+    
+    .p2 {
+        font-size: 16px;
+    }
+    
+    .button1 {
+        width: 180px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    #h1-maisvisitados {
+        font-size: 30px;
+    }
+    
+    #p3 {
+        font-size: 16px;
+    }
+    
+    #div-maisvisitados {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    #h1-cabelos {
+        font-size: 28px;
+    }
+    
+    #p4 {
+        font-size: 16px;
+    }
+    
+    #button2 {
+        width: 200px;
+        height: 50px;
+        font-size: 22px;
+    }
+    
+    #h1-listacompleta {
+        font-size: 40px;
+    }
+    
+    #div-lista a {
+        font-size: 18px;
+    }
+    
+    #button3 {
+        font-size: 22px;
+        height: 60px;
+    }
+    
+    footer iframe {
+        height: 300px;
+    }
+    
+    .label {
+        margin-top: -80px;
+        margin-bottom: 50px;
+    }
+}

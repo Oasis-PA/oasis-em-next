@@ -1,0 +1,698 @@
+:root {
+    --body-back: #ffffff;
+    --corpo-texto: #000000; 
+    --header-color: #000000; 
+    --back-header: #fff;
+    --shadow: #f8f4f4;
+    --label: #000000;
+    --footer: #ffffff;
+    --preço: #5F0B38;
+    --barra: #DBDBDB;
+    --email: #D9D9D9;
+    --place: #202020;
+}
+
+.dark:root{
+    --body-back: #0e0e0e;
+    --header-color: #ffffff; 
+    --back-header: #000000;
+    --corpo-texto: #ffffff; 
+    --footer: #000000;
+    --shadow: #161616;
+    --label: #f3c11e;
+    --preço: #940852;
+    --barra: #242323;
+    --email: #2b2b2b;
+    --place: #b8b8b8;
+}
+
+/* Reset e estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    font-family: "Louis George Cafe", Arial, sans-serif;
+    background-color: var(--body-back);
+    color: var(--corpo-texto);
+    overflow-x: hidden;
+}
+
+main {
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 20px;
+}
+
+/* Botão de tema */
+.tema-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.check {
+    opacity: 0;
+    position: absolute;
+}
+
+.label {
+    background-color: var(--label);
+    border-radius: 29px;
+    border: 0.1px solid #000000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60px;
+    height: 29px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.bolinha > img {
+    position: absolute;
+    right: 0;
+} 
+
+#sol {
+    margin-left: 10px;
+}
+
+#lua {
+    margin-left: 27.2px;
+    margin-top: 1px;
+    width: 26.9px;
+    height: 26.9px;
+}
+
+.imagem {
+    width: 27.6px;
+    height: 27.6px;
+    position: absolute;
+    top: 0;
+    left: -9px;
+}
+
+.check:checked ~ .bolinha {
+    transform: translateX(3px);
+    margin-top: -30px; 
+}
+
+/* iframe */
+iframe {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Container principal do produto */
+#pagina1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Container de imagem do produto */
+.img-container {
+    position: relative;
+    width: 45%;
+    max-width: 738px;
+}
+
+#img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.vector {
+    background-color: transparent;
+    border: none;
+    position: absolute; 
+    top: 50%; 
+    left: 95%; 
+    transform: translate(-50%, -50%); 
+    width: 17px; 
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Informações do produto */
+.produto-info {
+    width: 45%;
+    max-width: 766px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px 0;
+}
+
+#estrela {
+    width: 222.79px;
+    max-width: 100%;
+    height: auto;
+}
+
+#nomeProduto {
+    font-family: "The Next Font", serif;
+    font-size: 2.5rem;
+    width: 100%;
+    margin: 15px 0;
+}
+
+#menorValor {
+    font-family: "Louis George Cafe", sans-serif;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#preço {
+    font-family: "The Next Font", serif;
+    color: var(--preço);
+    margin-bottom: 20px;
+}
+
+.detalhes {
+    cursor: pointer;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+.composiçao {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+.composiçao:hover {
+    border: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 400px;
+  height: 350px;
+  background-color: rgba(0,0,0,0.7);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  z-index: 10;
+  font-size: 19px;
+  line-height: 1.4;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.composiçao:hover .tooltip-text {
+    border: 3px solid rgba(0, 0, 0, 0.3);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.qualidades {
+     padding: 10px;
+}
+
+.qualidades:hover {
+    border: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+.maisDetalhes {
+     padding: 10px;
+}
+
+.maisDetalhes:hover {
+    border: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+#vaAoSite {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.VaParaCompra {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.botaoAmarelo {
+    cursor: pointer;
+    width: 135px;
+    height: 48.75px;
+    background-color: #F2A518;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.botaoAmarelo:hover {
+    background: radial-gradient(
+        65% 65% at 51% 37%,
+        rgba(242, 165, 24, 1) 0%,   
+        rgba(255, 239, 204, 1) 100%
+    );
+    box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
+}
+
+/* Linha divisória */
+#linha {
+    width: 90%;
+    max-width: 1659px;
+    height: 1px;
+    background-color: #F2A518;
+    margin: 30px auto;
+}
+
+/* Produtos semelhantes */
+.produtos-similares-section {
+    width: 100%;
+    padding: 20px 0;
+}
+
+#produtoSemelhantes {
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: 2.2rem;
+    margin: 30px 0;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.produtos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    position: relative;
+}
+
+.retanguloExterno {
+    width: 300px;
+    height: auto;
+    border: 2.47px solid #5F0B38;
+    background-color: var(--body-back);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.retanguloInterno {
+    margin: 20px auto;
+    width: 90%;
+    height: 261px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.retanguloInterno img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#ForçaeVigor {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1.1rem;
+    margin: 10px 20px;
+}
+
+#descriçaoProduto {
+    font-family: "The Next Font", serif;
+    font-size: 1.1rem;
+    margin: 10px 20px;
+    height: 80px;
+}
+
+#botaoRoxo {
+    cursor: pointer;
+    margin: 15px auto;
+    display: block;
+    width: 80%;
+    max-width: 218px;
+    height: 49px;
+    background-color: #722F53;
+    border: none;
+    transition: transform 0.4s ease;
+}
+
+#botaoRoxo:hover {
+    
+    background: radial-gradient(
+        rgba(186, 8, 100, 0.9) 0%,
+        rgba(200, 5, 103, 0.08) 100%
+    );
+    box-shadow: 0px 3px 5px 0px rgba(86, 20, 148, 0.3);
+    
+}
+
+#VejaMais {
+    font-family: "The Next Font", serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    transition: transform 0.4s ease;
+}
+#VejaMais:hover {
+    transform: translateX(40px);
+}
+
+#seta {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+#seta.left {
+    right: auto;
+    left: 0;
+    transform: translateY(-50%) scaleX(-1);
+}
+
+.mais-opcoes-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+#botaoAmarelo2 {
+    cursor: pointer;
+    width: 270px;
+    height: 70px;
+    background-color: #F2A518;
+    border: none;
+}
+
+#botaoAmarelo2:hover {
+    background: radial-gradient(
+        65% 65% at 51% 37%,
+        rgba(242, 165, 24, 1) 0%,   
+        rgba(255, 239, 204, 1) 100%
+    );
+    box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
+}
+
+#maisOpções {
+    font-size: 1.3rem;
+    font-family: "The Next Font", serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+/* Newsletter */
+.newsletter-section {
+    width: 100%;
+    margin: 40px 0;
+}
+
+#barra {
+    width: 100%;
+    padding: 40px 20px;
+    background-color: var(--barra);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#recebaMais {
+    font-family: "The Next Font", serif;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 649px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#caixaEmail {
+    display: flex;
+    width: 100%;
+    max-width: 771px;
+    height: 60px;
+    justify-content: center;
+    border: 1px solid #5F0B38;
+    overflow: hidden;
+}
+
+.caixa-texto {
+    padding: 10px;
+    width: 70%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: var(--email);
+}
+
+.botao {
+    background-color: #5F0B38;
+    color: white;
+    width: 30%;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: #722F53;
+}
+
+.container ::placeholder {
+    font-size: 1rem;
+    color: var(--place);
+}
+
+/* Footer */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #343434;
+    padding: 40px 20px;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+}
+
+#img-footer {
+    width: 20%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#logo-footer {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#logos-apps {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#logos-apps img {
+    height: 30px;
+    width: auto;
+}
+
+.grupos-footer {
+    margin-bottom: 30px;
+    width: 22%;
+    min-width: 150px;
+}
+
+.grupos-footer > h2 {
+    background: linear-gradient(to bottom, #F2A518, #ECC46F);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.grupos-footer > p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    font-family: "Next Font", sans-serif;
+}
+
+#grupo-4 > h1 {
+    background: linear-gradient(to right, #F2A518, #ECC46F);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-family: "Next Font", sans-serif;
+}
+
+#grupo-4 > p {
+    color: rgb(255, 255, 255);
+    font-size: 0.9rem;
+    font-family: "Louis George Cafe", sans-serif;
+    margin-bottom: 10px;
+}
+
+#grupo-4 > h6 {
+    font-size: 0.9rem;
+    font-family: "Next Font", sans-serif;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+#grupo-4 > button {
+    width: 139.90px;
+    height: 32.25px;
+    background-color: #722F53;
+    color: rgb(250, 250, 250);
+    border-radius: 17.76px;
+    border: none;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-family: "Next Font", sans-serif;
+    cursor: pointer;
+}
+
+#logo-2 {
+    width: 10%;
+    min-width: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+#logo-2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+@font-face {
+    font-family: "Next Font";
+    src: url(Fontes/TheNextFont.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    #pagina1 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .img-container, .produto-info {
+        width: 90%;
+        max-width: 738px;
+    }
+    
+    #vaAoSite {
+        align-self: center;
+        margin-top: 30px;
+    }
+    
+    .footer-content {
+        width: 100%;
+    }
+    
+    #img-footer {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #nomeProduto {
+        font-size: 2rem;
+    }
+    
+    #detalhes {
+        font-size: 1.2rem;
+        gap: 20px;
+    }
+    
+    .retanguloExterno {
+        width: 45%;
+        min-width: 280px;
+    }
+    
+    #seta {
+        display: none;
+    }
+    
+    .footer-content {
+        justify-content: flex-start;
+    }
+    
+    .grupos-footer {
+        width: 45%;
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 576px) {
+    
+    #detalhes {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .retanguloExterno {
+        width: 90%;
+    }
+    
+    #caixaEmail {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .caixa-texto {
+        width: 100%;
+        height: 50px;
+    }
+    
+    .botao {
+        width: 100%;
+        height: 50px;
+    }
+    
+    .grupos-footer {
+        width: 100%;
+    }
+}

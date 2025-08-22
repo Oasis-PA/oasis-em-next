@@ -1,0 +1,118 @@
+footer {
+    display: flex;
+    width: 100%;
+}
+
+footer iframe {
+    width: 100%;
+    height: 400px;
+}
+.sec1
+{
+    background-image: url(../src/Imagens/Avatar/banner.png);
+    width: 1920px;
+    height: 750px;
+    flex-shrink: 0;
+}
+.sec1-texto
+{
+    margin-left: 48%;
+    margin-top: 188px;
+}
+.sec1-texto > h1
+{
+    color: #FFF;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "The Next Font";
+    font-size: 96px;
+    font-weight: 400;
+    line-height: 119.792%; 
+    width: 90%;
+}
+.sec1-texto > p
+{
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: 29px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120.69% ; 
+    letter-spacing: -0.174px;
+    width: 50%;
+    margin-top: -9.3%;
+    margin-left: 34.5%;
+}
+.sec2
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13%;
+    background: linear-gradient(180deg, #BFA2DB 0%, #FFF 73.12%);
+    width: 100%;
+    flex-shrink: 0;
+
+    img{
+        margin-top: 6%;
+    }  
+}
+.sec2-texto
+{
+    margin-left: 7%; 
+}
+.sec2-texto > h1
+{
+    font-family: "The Next Font";
+    font-size: 80px;
+    font-weight: 400;
+    letter-spacing: -0.16px;
+
+    display: flex;
+    height: 146px;
+    flex-direction: column;
+    justify-content: center;
+}
+.sec2-texto > p
+{
+    font-family: "Louis George Cafe";
+    font-size: 36px;
+    font-weight: 400;
+    width: 70%;
+    line-height: 97.232%; 
+    letter-spacing: -0.108px;
+    margin-top: -2%;
+}
+.sec2-texto > a
+{
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 28.571px;
+    font-weight: 400;
+
+    display: flex;
+    width: 264.286px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 14.286px;
+    flex-shrink: 0;
+
+    border-radius: 38.571px;
+    background: #722F53;
+
+    margin-top: 10%;
+
+   
+}
+.sec2-texto > a:hover
+{
+background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #87138D 0%, rgba(216, 89, 157, 0.18) 100%);
+box-shadow: 0 5px 10.7px 0 rgba(158, 22, 93, 0.85);
+}
+.sec2-texto > a:active 
+{
+    border: 1px solid #4D0626;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #51152D 0%, #BA59D8 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
+}

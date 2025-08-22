@@ -1,0 +1,625 @@
+body {
+    width: 100vw;
+}
+
+main {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.primeiro {
+    margin-top: 5vw;
+    width: 85vw;
+    height: 65vw;
+}
+
+.banner-principal {
+    background-image: url('/src/Imagens/tendencias/img-principal2.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 43.5vw;
+    width: auto;
+    z-index: 1;
+}
+
+#tit-1 {
+    position: relative;
+    color: #FFF;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: var(--TTULO-1, 6vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    top: 6vw;
+    left: 5vw;
+}
+
+#text-1 {
+    position: relative;
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-1, 1.5vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    top: 7vw;
+    left: 5.2vw;
+    width: 60vw;
+}
+
+
+
+.banner-sec {
+    z-index: 2;
+    position: relative;
+    bottom: 14vw;
+    background-image: url('/src/Imagens/tendencias/img-2.png');
+    background-repeat: no-repeat;
+    background-size: 35.9vw 30vw;
+    width: 36vw;
+    height: 30vw;
+}
+
+#data-1 {
+    width: 8vw;
+    position: relative;
+    color: #000;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1.3vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    top: 5vw;
+    left: 1.7vw;
+
+}
+
+#tit-2 {
+    position: relative;
+    color: #ffffff;
+    font-family: "The Next Font";
+    font-size: var(--TTULO-2, 2.5vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    z-index: 2;
+    top: 15.5vw;
+    left: 1.5vw;
+    width: 29vw;
+}
+
+.butoes {
+    position: relative;
+    display: flex;
+    z-index: 3;
+    top: 15vw;
+    gap: 1rem;
+    left: 1.7vw;
+    width: 24vw;
+}
+
+.banner-sec button {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 20vh;
+    padding: 0.01vw 1vw;
+    white-space: nowrap;
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#salvar {
+    position: relative;
+    top: -7vw;
+    left: 29vw;
+    width: 1.8vw;
+}
+
+
+
+
+
+
+.meio {
+    position: relative;
+    justify-self: center;
+    top: -29vw; 
+    width: 20vw; 
+    left: 4vw;
+}
+
+.meio p {
+    color: #000;
+    text-align: center;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 3vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: auto;
+    margin-bottom: 2vw;
+}
+
+.meio button {
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.6vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 0.3s ease;
+    display: flex;
+    margin: 0 auto;
+    height: 3vw;
+    padding: 1.5vw 3vw;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    flex-shrink: 0;
+    border-radius: 0.3vh;
+    background: #F2A518;
+    border-color: transparent;
+}
+
+.meio button:hover {
+    border-radius: 2px;
+    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
+    box-shadow: 0 5px 10.7px 0 #945414;
+}
+
+.meio button:active {
+    border-radius: 2px;
+    border: 1px solid #ECC46F;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
+}
+
+
+
+
+
+
+
+
+.banner-terc {
+    background-image: url('/src/Imagens/tendencias/img-3.png');
+    background-repeat: no-repeat;
+    position: relative;
+    float: right;
+    bottom: 45vw;
+    width: 25vw;
+    height: 17vw;
+    background-size: 25vw 16vw;
+}
+
+.butoes-2 {
+    position: relative;
+    display: flex;
+    z-index: 3;
+    top: 3.5vw;
+    gap: 1vw;
+    left: 1vw;
+    width: 18vw;
+}
+
+.banner-terc button {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 20vh;
+    padding: 0.01vw 1vw;
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+}
+
+#tit-3 {
+    color: #ffffff;
+    position: relative;
+    font-family: "The Next Font";
+    font-size: var(--TTULO-2, 2vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    z-index: 2;
+    top: 4vw;
+    left: 1vw;
+    width: 23vw;
+}
+
+#data-2 {
+    position: relative;
+    color: #000000;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    top: 1.3vw;
+    left: 1vw;
+    width: 5vw;
+}
+
+#salvar-2 {
+    position: relative;
+    top: -8.2vw;
+    right: -22vw;
+    width: 1.2vw;
+}
+
+
+
+
+
+
+
+
+.segundo {
+   background-image: url('/src/Imagens/tendencias/Group\ 465.png');
+   background-size: 100% auto;
+   background-repeat: no-repeat;
+   width: 85vw;
+   height: 56vw;
+   position: relative;
+   top: 3vw;
+}
+
+#tit-4 {
+    color: #FFF;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: var(--TTULO-2, 3vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 30vw;
+    position: relative;
+    left: 3vw;
+    top: 3vw;
+}
+
+#text-2 {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: 1.2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 28vw;
+    text-align: justify;
+    position: relative;
+    top: 5vw;
+    left: 3vw;
+}
+
+.produtss {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 49vw;
+    height: 15vw;
+    top: 17vw;
+    gap: 1vw;
+    left: 1.56vw;
+}
+
+.produt1 {
+    width: 17vw;
+    height: 22vw;
+    background-repeat: no-repeat;
+    background-image: url('/src/Imagens/tendencias/produ-1.png');
+    background-size: 14vw;
+    z-index: 1;
+    position: relative;
+}
+
+.produt2 {
+    width: 17vw;
+    height: 22vw;
+    background-repeat: no-repeat;
+    background-image: url('/src/Imagens/tendencias/produ-2.png');
+    background-size: 14vw;
+    z-index: 1;
+    position: relative;
+}
+
+.produt3 {
+    width: 17vw;
+    height: 22vw;
+    background-repeat: no-repeat;
+    background-image: url('/src/Imagens/tendencias/produ-3.png');
+    background-size: 14vw;
+    z-index: 1;
+    position: relative;
+}
+
+.produt1 p, .produt3 p {
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    bottom: 2.4vw;
+    width: 14vw;
+}
+
+.produt2 p {
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    bottom: 3.2vw;
+    width: 14vw;
+}
+
+#but-2 {
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.1vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 0.3s ease;
+    display: flex;
+    margin: 0 auto;
+    height: 2vw;
+    padding: 1vw 2vw;
+    justify-content: center;
+    align-items: center;
+    gap: 1.04vw;
+    flex-shrink: 0;
+    border-radius: 0.16vw;
+    background: #F2A518;
+    border-color: transparent;
+    position: relative;
+    top: 15.3vw;
+    right: 1vw;
+}
+
+#but-4 {
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.1vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 0.3s ease;
+    display: flex;
+    margin: 0 auto;
+    height: 2vw;
+    padding: 1vw 2vw;
+    justify-content: center;
+    align-items: center;
+    gap: 1.04vw;
+    flex-shrink: 0;
+    border-radius: 0.16vw;
+    background: #F2A518;
+    border-color: transparent;
+    position: relative;
+    top: 13.9vw;
+    right: 1vw;
+}
+
+#but-2:hover, #but-4:hover {
+    border-radius: 0.1vw;
+    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
+    box-shadow: 0 0.26vw 0.56vw 0 #945414;
+}
+
+#but-2:active, #but-4:active {
+    border-radius: 0.1vw;
+    border: 0.05vw solid #ECC46F;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
+}
+
+#but-3 {
+    position: relative;
+    left: 10.3vw;
+    bottom: 3vw;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+#but-5 {
+    position: relative;
+    left: 10.3vw;
+    bottom: 4.2vw;
+    width: 1.04vw;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+
+
+
+#img-direita {
+    position: relative;
+    top: -28vw;
+    left: 37.5vw;
+    width: 17vw;
+}
+
+#tit-5 {
+    color: #000000;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: var(--TTULO-2, 3vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 20vw;
+    position: relative;
+    left: 56vw;
+    top: -44vw;
+}
+
+#text-3 {
+    color: #000000;
+    font-family: "Louis George Cafe";
+    font-size: 1vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 25vw;
+    text-align: justify;
+    position: relative;
+    top: -43vw;
+    left: 56vw;
+}
+
+#divi {
+    background-color: #FFF;
+    width: 25vw;
+    padding: 0.36vw;
+    border-radius: 1.04vw;
+    position: relative;
+    bottom: 41vw;
+    left: 56.5vw;
+    display: flex;
+    justify-content: center;
+}
+
+#divi p {
+    color: #000;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 20vw;
+}
+
+#img-produt-1 {
+    position: relative;
+    bottom: 38vw;
+    left: 57vw;
+    width: 25vw;
+}
+
+#but-6 {
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 0.3s ease;
+    display: flex;
+    padding: 0.42vw 1.56vw;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.16vw;
+    background: #5E332C;
+    border-color: transparent;
+    position: relative;
+    top: -43vw;
+    left: 64.5vw;
+    width: 10vw;
+}
+
+#but-6:hover {
+    border-radius: 0.1vw;
+    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #704a04 0%, #e09146 100%);
+    box-shadow: 0 0.26vw 0.56vw 0 #945414;
+}
+
+#but-6:active {
+    border-radius: 0.1vw;
+    border: 0.05vw solid #ECC46F;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #c07109 0%, #da9c4b 100%);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
+}
+
+
+
+
+.terceiro {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 34vw;
+    top: 5vw;
+}
+
+.esq {
+    background-image: url('/src/Imagens/tendencias/princip-3.png');
+    width: 49%;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 2vw;
+}
+
+
+.esq p {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: var(--TTULO-1, 6vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 40vw;
+
+}
+
+.dir {
+    position: relative;
+    width: 48%;
+
+}
+
+#uno {
+    display: flex;
+}
+
+#linha {
+    background-color: #000;
+}
+
+#tit-6 {
+    color: #000;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: var(--TTULO-2, 4vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#uno p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    left: 2vw;
+    display: flex;
+    align-items: center;
+}

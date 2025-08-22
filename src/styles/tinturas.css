@@ -1,0 +1,86 @@
+html, body{
+    height: 100%;
+
+}
+
+.retangulo {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+    width: 100vw;
+    height: 140vh;
+    background-color: #464646;
+    justify-content: end;
+}
+
+#imgcapa{
+
+    height: auto;    
+    max-height: 100vh;   
+    object-fit: cover;  
+    
+}
+
+@media (max-width: 1500px) {
+    #imgcapa {
+        width: 100%;    
+        height: 100vh;   
+    }
+}
+
+
+@media (max-width: 480px) {
+    #imgcapa {
+        width: 100%;    
+        height: 100vh;   
+    }
+}
+
+.seuvisual{
+    height: 10vh;
+    width: 60vw;
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+    color: rgb(255, 255, 255);
+    font-size: 3vw;
+    font-family: "the next font";
+}
+
+#doisframe {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;  
+    gap: 5vw;         
+}
+
+#linha1 {
+    margin-bottom: 5vh; 
+}
+
+#linha2 {
+    margin-top: 5vh;
+}
+
+
+@media (max-width: 768px) {
+    #doisframe {
+        justify-content: center; 
+        gap: 5vw;                
+    }
+
+    #linha1, #linha2 {
+        margin: 3vh 0;           
+    }
+}
+
+@media (max-width: 480px) {
+    #doisframe {
+        flex-direction: column; 
+        align-items: center;
+        gap: 4vh; 
+    }
+
+    #linha1, #linha2 {
+        margin: 2vh 0;
+    }
+}

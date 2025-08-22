@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../src/fontes/fontes.css">
+    <link rel="shortcut icon" href="../src/Imagens/logo-oasis-icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/tela de cadastro.css">
+</head>
+<body>
+   
+    <main id="main-margin-login">
+        <section>
+            <h1>Olá, seja bem vindo(a)!</h1>
+            <p>Insira suas informações de registro ou <br class="hide-on-mobile"> <strong>crie</strong> sua conta</p>
+
+            <form>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" required class="padding-form">
+                
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" autocomplete="off" class="padding-form">
+        
+                <section id="section-checkbox-login">
+                    <label for="checkbox-login">
+                        <input type="checkbox" id="checkbox-login" name="checkboxl">
+                        <span id="span-lembredemim-login">Lembre de mim</span>
+                    </label>
+                    <a href="#">Esqueceu a senha?</a>
+                </section>
+                
+                <a href="../index.html"><input class="botaocontinue" type="button" value="LOGIN"></a> 
+            </form>
+                
+            <section class="div-linha-ou">
+                <div class="lin"></div>
+                <p class="div-ou">ou</p>
+                <div class="lin"></div>
+            </section>
+            
+            <section class="botaogoogle">
+                <button> 
+                    <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/google-color.png" alt="logogoogle" width="30px"> 
+                    <span class="span-button-continue-google">CONTINUE COM O GOOGLE</span>
+                </button>
+            </section>
+            
+            <a href="tela-de-cadastro.html"><button id="botaonaoconta">NÃO TEM UMA CONTA? CLIQUE AQUI PARA CRIAR.</button></a>
+        </section>
+    </main>
+
+    <figure id="figure-padding-login">
+        <img src="../src/Imagens/tela-de-cadastro/imagem-tela-login-amarelo.png" alt="imagem-tela-login-amarelo">
+    </figure>
+    
+</body>
+</html>

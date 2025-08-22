@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+ 
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: rgb(38, 26, 54);
+    font-family: 'Poppins', sans-serif;
+    color: rgb(189, 181, 181);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    text-align: center;
+  }
+
+  main {
+    max-width: 450px;
+    min-height: 80vh;
+    padding: 30px;
+    background: rgba(189, 181, 181, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(189, 181, 181, 0.2);
+    position: relative;
+  }
+
+ 
+  #Engrenagem {
+    width: 150px;
+    height: 150px;
+    animation: spin 12s linear infinite;
+    margin-bottom: 20px;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+ 
+  #Oasis {
+    width: 180px;
+    height: auto;
+    animation: floatUpDown 5s ease-in-out infinite;
+    margin-top: 25px;
+  }
+
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  
+  #texto-1 {
+    font-size: 1.8rem;
+    font-weight: 800px;
+    margin-bottom: 40px;
+    color: rgb(189, 181, 181);
+    animation: fadeMoveIn 1.5s ease forwards;
+  }
+
+  #texto-2 {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgb(189, 181, 181);
+    margin-bottom: 100px;
+    margin-left: 3%;
+    animation: fadeMoveIn 2.5s ease forwards;
+  }
+
+  #texto-3 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-top: 30px;
+    color: rgb(189, 181, 181);
+    letter-spacing: 1.3px;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  
+  @keyframes fadeMoveIn {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+ 
+  @keyframes pulse {
+    0%, 100% {
+      color: rgb(189, 181, 181);
+      text-shadow: 0 0 5px rgb(189, 181, 181);
+    }
+    50% {
+      color: #c5c0c0;
+      text-shadow: 0 0 12px #c5c0c0;
+    }
+  }
+
+ 
+  main > img[alt=""] {
+    max-width: 140px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 1px 2px rgba(189, 181, 181, 0.3));
+    animation: fadeMoveIn 3.5s ease forwards;
+  }
+
+  
+  @media (max-width: 480px) {
+    main {
+      max-width: 90vw;
+      padding: 20px;
+    }
+    #Engrenagem {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 16px;
+    }
+    #Oasis {
+      width: 140px;
+      margin-top: 20px;
+    }
+    #texto-1 {
+      font-size: 1.5rem;
+    }
+    #texto-2 {
+      font-size: 0.9rem;
+    }
+    #texto-3 {
+      font-size: 1.1rem;
+    }
+  }

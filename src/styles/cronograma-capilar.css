@@ -1,0 +1,397 @@
+html, body{
+    height: 100%;
+
+}
+#mulher{
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    background: url(../src/Imagens/Cronograma-capilar/Mulher-cronograma.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding-top: 12vh;
+    background-position: top;
+    background-size: contain ;
+}
+@media (max-width: 600px) {
+    #mulher {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    background: url(../src/Imagens/Cronograma-capilar/Mulher-cronograma.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    background-position: top;
+    background-size: contain ;
+    }
+}
+@media (max-width: 1000px) {
+    #mulher {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    background: url(../src/Imagens/Cronograma-capilar/Mulher-cronograma.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    padding-top: 2vh;
+    flex-direction: column;
+    background-position: top;
+    background-size: contain ;
+    }
+}
+.cornograma{
+margin-left: 5vw;
+color: #FFF;
+font-family: "PLAYFUL RUNWAY";
+font-size: 14vw;
+font-style: normal;
+font-weight: 400;
+line-height: 102.185%; 
+}
+.cornograma2{
+margin-left: 5vw;
+margin-top: 4vh;
+color: #000;
+font-family: "THE NEXT FONT";
+font-size: 3vw;
+font-style: normal;
+font-weight: 900;
+line-height: 102.185%; 
+}
+.ola{
+margin-top: 10vh;
+text-align: center;
+color: #000;
+text-align: center;
+font-family: "PLAYFUL RUNWAY";
+font-size: 4vw;
+font-style: normal;
+font-weight: 400;
+line-height: 102.185%;
+margin-bottom: 4vh;
+}
+
+.firula{
+    position: relative;
+    width: 85vw;
+    height: 50vh;
+    display: flex;
+    flex-flow: column;
+}
+
+#ajuda{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    width: 85vw;
+    height: 25vh;
+    background-color: #5E332C;
+    padding: 2.5vw;
+}
+
+.precisa{
+    color: white;
+    font-family: "THE NEXT FONT";
+    font-size: 2vw;
+    font-weight: 900;
+    margin-bottom: 1.35vh;
+}
+
+.nossa{
+    color: white;
+    font-family: "Louis George Cafe";
+    font-weight: 400;
+    font-size: 1.5vw;
+
+}
+
+.amarelo{
+
+    margin-top: -30vh;
+    z-index: 1;
+    bottom: 0;
+    width: 17vw;
+    height: 45vh;
+
+}
+
+.folhas{
+
+    width: 60vw;
+    height: 6.5vh;
+    align-self: flex-end;
+    margin: 4vw;
+
+}
+
+#firula1{
+    display: flex;
+    flex-flow: row;
+}
+
+#lugar{
+    display: flex;
+    flex-flow: row;
+    
+
+
+}
+
+.quadrado{
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4vw;
+    width: 15vw;
+    height: 50vh;
+    background-color: rgb(247, 243, 243);
+    box-shadow: 0px 45px 45px rgba(123, 26, 148, 0.25);
+}
+.imagem{
+    width: 13vw;
+    height: 25vh;
+
+}
+.legenda-quadrado{
+    margin-top: 2vh;
+    font-size: 3vh;
+    font-family: "THE NEXT FONT";
+}
+.legenda-quadrado2{
+    margin-top: 2.1vh;
+    font-size: 2vh;
+    font-family: "LOUIS GEORGE CAFE";
+    text-align: justify;
+}
+.aqui{
+    font-family: "LOUIS GEORGE CAFE";
+    font-size: 3vw;
+    text-align: center;
+}
+.monte{
+    margin-top: 6vh;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    flex: 1 0 auto;
+    box-sizing: border-box;
+    width: 100vw;
+    background-color: #5F0B38;
+    
+}
+.conheca{
+    height: 4vw;
+    width: 13.5vw;
+    margin-top: -10vw;
+    margin-right: 13vw;
+}
+.veja{
+margin-top: 10vh;
+text-align: center;
+color: #000;
+text-align: center;
+font-family: "PLAYFUL RUNWAY";
+font-size: 6vw;
+font-style: normal;
+font-weight: 400;
+line-height: 102.185%;
+margin-bottom: 4vh;
+}
+.pratica{
+margin-right: 23vw;
+margin-top: 10vh;
+}
+.praticidade{
+margin-top: 10vh;
+text-align: start;
+color: #000;
+font-family: "PLAYFUL RUNWAY";
+font-size: 5vw;
+font-style: normal;
+font-weight: 400;
+line-height: 102.185%;
+
+}
+.autocuidado{
+    color: #000000;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 5.7vw;
+    font-weight: 1000;
+    margin-left: 4.7vw;
+    margin-top: -6.3vw;
+}
+.se{
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-top: 3vh;
+    text-align: justify;
+    color: #000;
+    font-family: "LOUIS GEORGE CAFE";
+    font-size: 2.5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 102.185%;
+    
+}
+
+/* ================================== */
+/* CARROSSEL DE IMAGENS               */
+/* ================================== */
+
+/* --- Variáveis para fácil manutenção --- */
+:root {
+  --carousel-gap: 10px;
+  --item-min-width: 320px;
+  --item-height: 250px;
+  --border-radius: 10px;
+  --scrollbar-height: 8px;
+  --scrollbar-thumb-color: #888;
+  --scrollbar-thumb-hover-color: #555;
+  --butao-height: 2vw;
+  --butao-width: 9vw;
+}
+
+/* === CONTAINER PRINCIPAL DO CARROSSEL === */
+.passando {
+  /* Layout e espaçamento */
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--carousel-gap);
+  margin-top: 6vh;
+  padding: var(--carousel-gap);
+  width: 100%;
+  min-height: calc(var(--item-height) + 2 * var(--carousel-gap));
+  position: relative;
+  z-index: 10;
+
+  /* Comportamento de rolagem (scroll) */
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding: var(--carousel-gap);
+
+  /* Interação do usuário */
+  cursor: grab;
+  user-select: none;
+}
+
+/* Estado de "arrastar" (clique e segure) */
+.passando:active {
+  cursor: grabbing;
+}
+
+/* Desativa o snap durante o arraste via JS */
+.passando.is-dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+/* Customização da barra de rolagem horizontal */
+.passando::-webkit-scrollbar {
+  height: var(--scrollbar-height);
+}
+
+.passando::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: calc(var(--scrollbar-height) / 2);
+}
+
+.passando::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
+
+/* === CADA ITEM DO CARROSSEL === */
+.fotos {
+  /* Layout e tamanho */
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--item-min-width);
+  position: relative;
+  /* Comportamento de alinhamento ao parar */
+  scroll-snap-align: center;
+}
+
+/* --- IMAGENS DENTRO DOS ITENS --- */
+.img2 {
+  display: block;
+  height: var(--item-height);
+  width: auto;
+  max-width: none;
+  border-radius: var(--border-radius);
+
+  /* Interação do usuário */
+  user-select: none;
+  pointer-events: none; /* Permite arrastar o contêiner, não a imagem */
+}
+
+/* === BOTÃO DE AÇÃO DENTRO DO ITEM === */
+.butao {
+  height: var(--butao-height);
+  width: var(--butao-width);
+  position: absolute;
+left: 50%;
+transform: translateX(-50%);
+  bottom: 15%;
+  z-index: 1;
+}
+.texto-foto {
+
+  position: absolute;
+  top: 7%;
+  left: 20%;
+  transform: translateX(-20%);
+  color: #ffffff;
+  font-family: "THE NEXT FONT";
+  font-size: 2.5vw;
+  text-align: start;
+  
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --item-min-width: 280px;
+    --item-height: 220px;
+    --butao-height: 2.5vw;
+    --butao-width: 12vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --item-min-width: 250px;
+    --item-height: 200px;
+    --carousel-gap: 8px;
+    --butao-height: 3vw;
+    --butao-width: 15vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --item-min-width: 80%;
+    --item-height: 150px;
+    --butao-height: 4vh;
+    --butao-width: 20vw;
+  }
+
+  .passando {
+    min-height: calc(var(--item-height) + 2 * var(--carousel-gap));
+  }
+  
+  /* Oculta a barra de rolagem em telas pequenas para uma melhor experiência de toque */
+  .passando::-webkit-scrollbar {
+    display: none;
+  }
+}
