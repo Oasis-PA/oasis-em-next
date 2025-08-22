@@ -51,7 +51,7 @@ export default function OasisHomepage() {
                 <Link href="/tela-login" target="_blank" className="page1UserLinks">
                   <Image 
                     className="page1UserImg" 
-                    src="/images/Imagens/tela-principal/page1/perfil.svg" 
+                    src="/images/perfil.svg" 
                     alt="Usuário" 
                     width={24} 
                     height={24}
