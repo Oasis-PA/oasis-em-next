@@ -166,7 +166,9 @@ background-clip: text;
     width: 100%;
     max-width: 1920px;
     height: 100%;
-    background: url(../src/Imagens/tela-principal/page1/page1-imagem1.svg);
+    /* CORRIGIDO: Remover ou atualizar este caminho */
+background: url("/images/tela-principal/page1/page1-imagem1.svg");
+
     background-size: 1920px;
     background-repeat: no-repeat;
     gap: 20px;
@@ -832,7 +834,8 @@ height: 36px;
     width: 100%;
     max-width: 1920px;
     height: 1174px;
-    background: url(pagina-principal/imagens/page9/page9-background.png);
+    /* CORRIGIDO: Atualizar este caminho se necessário */
+    background: url(/images/page9/page9-background.png);
 }
 
 #page9>figure {
