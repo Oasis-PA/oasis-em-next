@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Oasis
 
-## Getting Started
+Este é um projeto desenvolvido com [Next.js](https://nextjs.org), inicializado com [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tecnologias
+
+- [Next.js 14](https://nextjs.org)
+- [React](https://react.dev)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Prisma](https://www.prisma.io/) – ORM para banco de dados
+- [PostCSS](https://postcss.org/) – processamento de estilos
+- [ESLint](https://eslint.org/) – padronização de código
+
+---
+
+## 📂 Estrutura de Pastas
+
+```
+src/
+ ├── app/          # Páginas e rotas do Next.js (App Router)
+ ├── components/   # Componentes reutilizáveis
+ ├── script/       # Scripts utilitários
+ ├── styles/       # Estilos globais e módulos CSS
+prisma/
+ └── schema.prisma # Configuração do banco de dados Prisma
+public/
+ ├── assets/       # Arquivos estáticos (imagens, ícones, etc.)
+ └── *.svg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ▶️ Executando o Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Primeiro, instale as dependências:
 
-## Learn More
+```comand prompt
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Depois, rode o servidor de desenvolvimento:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```comand prompt
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resultado.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Desenvolvimento
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- As páginas ficam dentro de `src/app/`
+- Componentes reutilizáveis ficam em `src/components/`
+- O Prisma é configurado em `prisma/schema.prisma`
+- Arquivos públicos ficam em `public/`
+
+---
+
+## 📌 Rotas do Projeto
+
+Aqui estão as principais rotas (atualize conforme for criando novas páginas):
+
+- `/` → Página inicial
+- `/about` → Página sobre
+- `/api/...` → Rotas de API no Next.js
+- (adicione outras rotas conforme necessário)
+
+---
+
+## 📚 Documentação Extra
+
+- [Documentação do Next.js](https://nextjs.org/docs)
+- [Tutorial Interativo de Next.js](https://nextjs.org/learn)
+- [Prisma Docs](https://www.prisma.io/docs)
+
+---
+
+## ☁️ Deploy
+
+O deploy recomendado é na [Vercel](https://vercel.com), criadores do Next.js.  
+Para mais detalhes, veja: [Deploying Next.js](https://nextjs.org/docs/app/building-your-application/deploying).
