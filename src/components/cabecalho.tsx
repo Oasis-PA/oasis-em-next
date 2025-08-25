@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import "@/styles/cabecalho.css"; 
-
+import "@/styles/globals.css";
 export default function Cabecalho() {
   return (
     <header>
@@ -11,6 +11,7 @@ export default function Cabecalho() {
           <div id="page1-logo-container">
             <a target="_blank" href="../../index.html" rel="noreferrer">
               <Image
+              
                 src="/images/logo-oasis-total.png"
                 alt="logo-oasis"
                 width={150}
@@ -231,9 +232,10 @@ export default function Cabecalho() {
               <tr>
                 <th>
                   <Image
+                   className='hover-image'
                     src="/images/tela-principal/page1/hoverColoracao.png"
                     alt="COLORAÇÃO"
-                    width={200}
+                    width={800}
                     height={100}
                   />
                 </th>
@@ -246,7 +248,7 @@ export default function Cabecalho() {
             <thead>
               <tr>
                 <th>
-                  <a target="_blank" href="../../skincare/index.html" className="page1-header-bottom-itens" rel="noreferrer">
+                  <a target="_blank" href="/" className="page1-header-bottom-itens" rel="noreferrer">
                     Skincare
                   </a>
                 </th>
@@ -256,10 +258,11 @@ export default function Cabecalho() {
               <tr>
                 <th>
                   <Image
+                   className='hover-image'
                     src="/images/tela-principal/page1/hoverSkinCare.png"
                     alt="SkinCare"
-                    width={200}
-                    height={100}
+                    width={800}
+                    height={50}
                   />
                 </th>
               </tr>
@@ -294,9 +297,10 @@ export default function Cabecalho() {
               <tr>
                 <th>
                   <Image
-                    src = "/images/tela-principal/page1/hoverRecomendacoes.png"
+                    className='hover-image'
+                    src="/images/tela-principal/page1/hoverRecomendacoes.png"
                     alt="Recomendações"
-                    width={200}
+                    width={800}
                     height={100}
                   />
                 </th>
