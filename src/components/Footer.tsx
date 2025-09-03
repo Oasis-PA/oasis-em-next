@@ -1,42 +1,48 @@
-
 import React from 'react';
+import Link from 'next/link';
 import "@/styles/rodape.css"; 
 import "@/styles/globals.css";
+
 export default function Footer() {
   return (
     <footer>
       <div id="img-footer">
-        <a target="_blank" rel="noopener noreferrer" href="../../index.html">
+        <Link 
+          href="/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
           <img
             id="logo-footer"
-            src="imagens rodape/logo-footer.png"
+            src="/images/rodape/logo-footer.png"
             alt="logo"
           />
-        </a>
+        </Link>
 
         <div id="logos-apps">
-          <img src="imagens rodape/insta.png" alt="instagram" />
-          <img src="imagens rodape/x.png" alt="x" />
-          <img src="imagens rodape/facebook-icone.png" alt="facebook" />
-          <img src="imagens rodape/pinterest-icone.png" alt="pinterest" />
+          <img src="/images/rodape/insta.png" alt="instagram" />
+          <img src="/images/rodape/x.png" alt="x" />
+          <img src="/images/rodape/facebook-icone.png" alt="facebook" />
+          <img src="/images/rodape/pinterest-icone.png" alt="pinterest" />
         </div>
       </div>
 
       <div id="invi-2"></div>
 
-      <div className="grupos-footer" id="grupo-1">
-        <h2>Mapa do Site</h2>
-        <p>Quem somos?</p>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="../../Parcerias/Empresas/index.html"
-        >
-          <p>Parcerias</p>
-        </a>
-        <p>Contato</p>
-        <p>Segurança</p>
-      </div>
+     <div className="grupos-footer" id="grupo-1">
+  <h2>Mapa do Site</h2>
+  <p>Quem somos?</p>
+  <Link 
+    href="/Parcerias/Empresas" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="footer-link"
+  >
+    Parcerias
+  </Link>
+  <p>Contato</p>
+  <p>Segurança</p>
+</div>
 
       <div className="grupos-footer" id="grupo-2">
         <h2>Usuário</h2>
@@ -70,10 +76,8 @@ export default function Footer() {
       </div>
 
       <div id="logo-2">
-        <img src="imagens rodape/logo2.png" alt="logo 2" />
+        <img src="/images/rodape/logo2.png" alt="logo 2" />
       </div>
     </footer>
   );
-};
-
-
+}

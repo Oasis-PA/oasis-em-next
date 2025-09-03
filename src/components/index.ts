@@ -1,5 +1,5 @@
 
 // components/index.ts
-export { default as Cabecalho } from './cabecalho';
-export { default as Footer } from './rodape';
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';
 //export { default as Botao } from './Botao';
