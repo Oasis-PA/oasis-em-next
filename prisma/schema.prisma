@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+model Genero {
+  id_genero Int      @id @default(autoincrement())
+  nome      String   @unique
+  sigla     String   @unique
+  usuarios  Usuario[]
+}
+
+model TipoCabelo {
+  id_tipo_cabelo Int      @id @default(autoincrement())
+  nome           String   @unique
+  descricao      String?
+  usuarios       Usuario[]
+}
+
+model Usuario {
+  id_usuario      Int       @id @default(autoincrement())
+  nome            String
+  email           String    @unique
+  telefone        String?
+  senha           String
+  data_nascimento DateTime?
+  data_cadastro   DateTime  @default(now())
+  id_genero       Int
+  genero          Genero    @relation(fields: [id_genero], references: [id_genero])
+  id_tipo_cabelo  Int?
+  tipo_cabelo     TipoCabelo? @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
+  avaliacoes      Avaliacao[]
+  favoritos       Favorito[]
+}
+
+model Categoria {
+  id_categoria Int      @id @default(autoincrement())
+  nome         String   @unique
+  descricao    String?
+  produtos     Produto[]
+}
+
+model Produto {
+  id_produto   Int        @id @default(autoincrement())
+  nome         String
+  descricao    String?
+  marca        String
+  preco        Float
+  data_cadastro DateTime  @default(now())
+  id_categoria Int
+  categoria    Categoria  @relation(fields: [id_categoria], references: [id_categoria])
+  avaliacoes   Avaliacao[]
+  favoritos    Favorito[]
+  tags        ProdutoTag[]
+}
+
+model Avaliacao {
+  id_avaliacao Int      @id @default(autoincrement())
+  nota         Int
+  comentario   String?
+  data_avaliacao DateTime @default(now())
+  id_usuario   Int
+  id_produto   Int
+  usuario      Usuario  @relation(fields: [id_usuario], references: [id_usuario])
+  produto      Produto  @relation(fields: [id_produto], references: [id_produto])
+}
+
+model Favorito {
+  id_favorito Int      @id @default(autoincrement())
+  data_favoritado DateTime @default(now())
+  id_usuario  Int
+  id_produto  Int
+  usuario     Usuario  @relation(fields: [id_usuario], references: [id_usuario])
+  produto     Produto  @relation(fields: [id_produto], references: [id_produto])
+}
+
+model Tag {
+  id_tag Int      @id @default(autoincrement())
+  nome   String   @unique
+  produtos ProdutoTag[]
+}
+
+model ProdutoTag {
+  id_produto Int
+  id_tag     Int
+  produto    Produto @relation(fields: [id_produto], references: [id_produto])
+  tag        Tag     @relation(fields: [id_tag], references: [id_tag])
+
+  @@id([id_produto, id_tag])
+}
