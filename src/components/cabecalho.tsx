@@ -9,7 +9,7 @@ export default function Cabecalho() {
         {/* HEADER TOP */}
         <div id="page1-header-top">
           <div id="page1-logo-container">
-            <a target="_blank" href="../../index.html" rel="noreferrer">
+            <a href="/" rel="noreferrer">
               <Image
               
                 src="/images/logo-oasis-total.png"

@@ -1,5 +1,8 @@
 {
   "name": "oasis",
+  "author": {
+    "name": "stefano"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,8 +16,8 @@
     "@supabase/supabase-js": "^2.57.0",
     "next": "15.5.0",
     "oasis": "file:",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
