@@ -142,7 +142,7 @@ select {
 
 #senha {
     flex: 1;
-    background-image: url('imagens-config/olho-senha.svg');
+    background-image: url('../../public/images/olho-senha.svg');
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 20px;
