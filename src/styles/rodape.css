@@ -129,9 +129,3 @@ footer>#grupo-4>button{
     transform: translate(-100px, -2px);
 }
 
-@font-face{
-    font-family:  "Next Font", times, serif ;
-    src: url(Fontes/TheNextFont.ttf);
-    font-weight: normal;
-    font-style: normal;
-}

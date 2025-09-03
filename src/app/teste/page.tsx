@@ -1,8 +1,11 @@
 
-import {Cabecalho} from '../../components';
+import {Cabecalho, Footer} from '../../components';
 
 export default function TestePage() {
   return (
-     <Cabecalho />
+     <>
+       <Cabecalho />
+       <Footer />
+     </>
   );
 }
