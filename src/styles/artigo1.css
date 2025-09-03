@@ -85,7 +85,7 @@ header{
     width: 100%;
     height: 560px;
     flex-shrink: 0;
-    background: url(../src/Imagens/fundoartigo1.png.png);
+    background: url(../../public/images/fundoartigo1.png.png);
     background-size:  cover;
     background-repeat: no-repeat;
     position: relative;
