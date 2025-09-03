@@ -1,11 +1,14 @@
 // src/app/artigo1/page.tsx
 import Link from "next/link";
+import { Cabecalho } from "@/components";
 import Image from "next/image";
 import "../../styles/artigo1.css";
+import { JSX } from "react/jsx-dev-runtime";
 
-export default function Artigo1() {
+export default function Artigo1(): JSX.Element {
   return (
     <main>
+      <Cabecalho className="artigo1-header" />
       <article>
         <h1>
           Sérum Facial: dermatologista fala o que é, como usar e para que serve
@@ -68,15 +71,18 @@ export default function Artigo1() {
         </p>
 
         <h3>Passo a passo para aplicar o sérum facial</h3>
-        <p>O sérum facial tem uma aplicação muito simples. Para aplicar:</p>
+        <p>O sérum facial tem uma aplicação muito simples. Justamente por ter uma cosmética com boa espalhabilidade, não é necessário muito produto para que ele faça efeito. Isso é algo positivo, pois significa que um frasco do produto tende a durar muito tempo!
+            Para aplicar o sérum corretamente na sua rotina de skincare, siga o passo a passo a seguir!
+            </p>
+           <ul>
+            <li>   Faça a limpeza com um sabonete específico para o rosto; </li>
+            <li> Hidrate a pele com um creme ou gel hidratante</li>
+            <li>Passe algumas gotas do sérum no rosto e espalhe suavemente com as mãos;</li>
+            <li>Espere alguns minutos para que os ativos sejam absorvidos;</li>
+            <li>Finalize com um protetor solar se a rotina estiver sendo realizada de dia.</li>
+       
+           </ul>
 
-        <ul>
-          <li>Faça a limpeza com um sabonete específico para o rosto;</li>
-          <li>Hidrate a pele com um creme ou gel hidratante;</li>
-          <li>Passe algumas gotas do sérum no rosto e espalhe suavemente;</li>
-          <li>Espere alguns minutos para que os ativos sejam absorvidos;</li>
-          <li>Finalize com protetor solar se for durante o dia.</li>
-        </ul>
       </article>
     </main>
   );
