@@ -1,3 +1,4 @@
+
 // components/index.ts
 export { default as Cabecalho } from './cabecalho';
 //export { default as Rodape } from './rodape';
