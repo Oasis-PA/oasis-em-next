@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import "../../styles/tela de cadastro.css";
-import "/assets/fontes.css";
 import Link from "next/link";
 
 export default function TelaCadastro() {

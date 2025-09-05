@@ -246,8 +246,10 @@ a {
 }
 
 .figure-padding-cadastro img {
+    width: 100%;      /* Adicionado */
     max-width: 100%;
     height: auto;
+    max-height: 1049px; /* Opcional, se quiser limitar a altura */
 }
 
 #main-margin-cadastro {
