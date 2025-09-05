@@ -1,10 +1,45 @@
-// src/app/TelaCadastro/page.tsx
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import "../../styles/tela de cadastro.css";
-import Link from "next/link";
 
 export default function TelaCadastro() {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [erro, setErro] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErro("");
+
+    try {
+      // Chamada para API que verifica se email já existe
+      const res = await fetch("/api/usuarios/check-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErro(data.message || "Erro ao verificar email.");
+        return;
+      }
+
+      // Salva temporariamente para a tela de senha
+      sessionStorage.setItem("cadastroTemp", JSON.stringify({ nome, email }));
+
+      // Redireciona para a segunda tela
+      router.push("/Cadastro2");
+    } catch (err) {
+      setErro("Erro de conexão com servidor.");
+    }
+  };
+
   return (
     <div className="tela-cadastro-container">
       <figure className="figure-padding-cadastro">
@@ -25,7 +60,7 @@ export default function TelaCadastro() {
             <strong>faça</strong> o registro
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <label htmlFor="snome">Seu nome</label>
             <input
               type="text"
@@ -33,6 +68,9 @@ export default function TelaCadastro() {
               name="snome"
               autoComplete="name"
               className="padding-form"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
             />
 
             <label htmlFor="mail">E-mail</label>
@@ -42,15 +80,16 @@ export default function TelaCadastro() {
               name="email"
               autoComplete="email"
               className="padding-form"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
 
-            <a href="tela-de-cadastro-2.html">
-              <input
-                className="botaocontinue"
-                type="button"
-                value="CONTINUE"
-              />
-            </a>
+            {erro && <p style={{ color: "red" }}>{erro}</p>}
+
+            <button type="submit" className="botaocontinue">
+              CONTINUE
+            </button>
           </form>
 
           <section className="div-linha-ou">
@@ -60,7 +99,7 @@ export default function TelaCadastro() {
           </section>
 
           <section className="botaogoogle">
-            <button>
+            <button type="button">
               <Image
                 src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/google-color.png"
                 alt="logogoogle"
@@ -74,7 +113,7 @@ export default function TelaCadastro() {
           </section>
 
           <a href="tela-login.html">
-            <button id="botaojaconta">
+            <button id="botaojaconta" type="button">
               JÁ TEM UMA CONTA? CLIQUE AQUI PARA REGISTRAR.
             </button>
           </a>

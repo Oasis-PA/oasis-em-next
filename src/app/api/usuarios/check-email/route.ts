@@ -1,0 +1,41 @@
+import { NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { email } = body;
+
+    if (!email) {
+      return NextResponse.json(
+        { message: "Email é obrigatório." },
+        { status: 400 }
+      );
+    }
+
+    // Procura usuário pelo email
+    const usuario = await prisma.usuario.findUnique({
+      where: { email },
+    });
+
+    if (usuario) {
+      return NextResponse.json(
+        { message: "Já existe um usuário com este email." },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Email disponível." },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Erro ao verificar email:", error);
+    return NextResponse.json(
+      { message: "Erro no servidor." },
+      { status: 500 }
+    );
+  }
+}

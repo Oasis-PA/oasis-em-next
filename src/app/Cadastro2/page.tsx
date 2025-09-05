@@ -1,20 +1,75 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import "../../styles/tela de cadastro.css";
 
-const Cadastro2: React.FC = () => {
+export default function TelaCadastroSenha() {
+  const [senha, setSenha] = useState("");
+  const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [erro, setErro] = useState("");
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const router = useRouter();
+
+  // Recupera nome e email da tela 1
+  useEffect(() => {
+    const dados = sessionStorage.getItem("cadastroTemp");
+    if (dados) {
+      const { nome, email } = JSON.parse(dados);
+      setNome(nome);
+      setEmail(email);
+    } else {
+      // Se não houver dados, redireciona de volta para a tela 1
+      router.push("/Cadastro1");
+    }
+  }, [router]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErro("");
+
+    if (senha !== confirmaSenha) {
+      setErro("As senhas não conferem!");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/usuarios/cadastro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome, email, senha }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErro(data.message || "Erro ao criar conta.");
+        return;
+      }
+
+      // limpa os dados temporários
+      sessionStorage.removeItem("cadastroTemp");
+
+      // redireciona para login (ou home)
+      router.push("/tela-login");
+    } catch (err) {
+      setErro("Erro de conexão com servidor.");
+    }
+  };
+
   return (
-    <div>
-     <figure className="figure-padding-cadastro">
-            <Image
-              src="/images/tela-de-cadastro/imagem-tela-login-roxo.png"
-              alt="imagem-tela-login-roxo"
-              width={8250}
-              height={1049}
-              style={{ objectFit: "contain" }}
-            />
-          </figure>
+    <div className="tela-cadastro-container">
+      <figure className="figure-padding-cadastro">
+        <Image
+          src="/images/tela-de-cadastro/imagem-tela-login-roxo.png"
+          alt="imagem-tela-login-roxo"
+          width={850}
+          height={1049}
+          style={{ objectFit: "contain" }}
+        />
+      </figure>
 
       <main id="main-margin-cadastro2">
         <section>
@@ -25,7 +80,7 @@ const Cadastro2: React.FC = () => {
             caracteres.
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <label htmlFor="senha">Senha</label>
             <input
               type="password"
@@ -33,6 +88,9 @@ const Cadastro2: React.FC = () => {
               name="senha"
               autoComplete="off"
               className="padding-form"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
             />
 
             <label htmlFor="csenha">Confirme sua senha</label>
@@ -42,15 +100,16 @@ const Cadastro2: React.FC = () => {
               name="csenha"
               autoComplete="off"
               className="padding-form"
+              value={confirmaSenha}
+              onChange={(e) => setConfirmaSenha(e.target.value)}
+              required
             />
 
-            <Link href="../index.html">
-              <input
-                className="botaocontinue"
-                type="button"
-                value="CRIE SUA CONTA"
-              />
-            </Link>
+            {erro && <p style={{ color: "red" }}>{erro}</p>}
+
+            <button type="submit" className="botaocontinue">
+              CRIE SUA CONTA
+            </button>
 
             <section id="section-checkbox-cadastro">
               <input type="checkbox" id="checkbox-cadastro" name="checkboxt" />
@@ -63,6 +122,4 @@ const Cadastro2: React.FC = () => {
       </main>
     </div>
   );
-};
-
-export default Cadastro2;
+}
