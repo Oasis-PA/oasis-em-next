@@ -1,16 +1,11 @@
-'use client'
+
 
 import { Header, Footer} from "@/components";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function OasisHomepage() {
-  const [activeTable, setActiveTable] = useState('cortes');
-
-  const handleTableHover = (tableName: string) => {
-    setActiveTable(tableName);
-  };
 
   return (
     <div id="bodyPaginaPrincipal" className="min-h-screen">
