@@ -1,82 +1,79 @@
 import React from 'react';
 import Link from 'next/link';
-import "@/styles/rodape.css"; 
-import "@/styles/globals.css";
+import styles from '@/styles/footer.module.css';
 
 export default function Footer() {
   return (
-    <footer>
-      <div id="img-footer">
-        <Link 
-          href="/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          <img
-            id="logo-footer"
-            src="/images/rodape/logo-footer.png"
-            alt="logo"
-          />
-        </Link>
+    <footer className={styles.footer}>
+      <div className={styles.grid}>
+        {/* Coluna: Logo + Redes */}
+        <div className={styles.brandCol}>
+          <Link href="/">
+            <img
+              className={styles.logoFooter}
+              src="/images/rodape/logo-footer.png"
+              alt="Logo da marca"
+            />
+          </Link>
 
-        <div id="logos-apps">
-          <img src="/images/rodape/insta.png" alt="instagram" />
-          <img src="/images/rodape/x.png" alt="x" />
-          <img src="/images/rodape/facebook-icone.png" alt="facebook" />
-          <img src="/images/rodape/pinterest-icone.png" alt="pinterest" />
+          <div className={styles.apps}>
+            <img className={styles.appIcon} src="/images/rodape/insta.png" alt="Instagram" />
+            <img className={styles.appIcon} src="/images/rodape/x.png" alt="X" />
+            <img className={styles.appIcon} src="/images/rodape/facebook-icone.png" alt="Facebook" />
+            <img className={styles.appIcon} src="/images/rodape/pinterest-icone.png" alt="Pinterest" />
+          </div>
         </div>
-      </div>
 
-      <div id="invi-2"></div>
+        {/* Espaçador para layout desktop */}
+        <div className={styles.spacer} />
 
-     <div className="grupos-footer" id="grupo-1">
-  <h2>Mapa do Site</h2>
-  <p>Quem somos?</p>
-  <Link 
-    href="/Parcerias/Empresas" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="footer-link"
-  >
-    Parcerias
-  </Link>
-  <p>Contato</p>
-  <p>Segurança</p>
-</div>
+        {/* Grupo 1 */}
+        <div className={styles.group}>
+          <h2 className={styles.groupTitle}>Mapa do Site</h2>
+          <p className={styles.item}>Quem somos?</p>
+          <p className={styles.item}>Parcerias</p>
+          <p className={styles.item}>Contato</p>
+          <p className={styles.item}>Segurança</p>
+        </div>
 
-      <div className="grupos-footer" id="grupo-2">
-        <h2>Usuário</h2>
-        <p>Painel</p>
-        <p>Minha conta</p>
-        <p>Meu avatar</p>
-        <p>Meus favoritos</p>
-        <p>Minhas avaliações sobre</p>
-        <p>Produtos</p>
-        <p>Cadastre-se</p>
-      </div>
+        {/* Grupo 2 */}
+        <div className={styles.group}>
+          <h2 className={styles.groupTitle}>Usuário</h2>
+          <p className={styles.item}>Painel</p>
+          <p className={styles.item}>Minha conta</p>
+          <p className={styles.item}>Meu avatar</p>
+          <p className={styles.item}>Meus favoritos</p>
+          <p className={styles.item}>Minhas avaliações sobre</p>
+          <p className={styles.item}>Produtos</p>
+          <p className={styles.item}>Cadastre-se</p>
+        </div>
 
-      <div className="grupos-footer" id="grupo-3">
-        <h2>Precisa de Suporte?</h2>
-        <p>Central de Ajuda</p>
-        <p>Política de Privacidade</p>
-        <p>Termos de Uso</p>
-        <p>Modo Escuro</p>
-        <p>Segurança</p>
-      </div>
+        {/* Grupo 3 */}
+        <div className={styles.group}>
+          <h2 className={styles.groupTitle}>Precisa de Suporte?</h2>
+          <p className={styles.item}>Central de Ajuda</p>
+          <p className={styles.item}>Política de Privacidade</p>
+          <p className={styles.item}>Termos de Uso</p>
+          <p className={styles.item}>Modo Escuro</p>
+          <p className={styles.item}>Segurança</p>
+        </div>
 
-      <div className="grupos-footer" id="grupo-4">
-        <h1>Interação com o cliente</h1>
-        <p>Para maiores dúvidas ou esclarecimentos, entre em contato.</p>
-        <h6>
-          Estamos disponíveis de segunda à sexta, das 9h às 17h, exceto feriados.
-        </h6>
-        <button>
-          <b>ATENDIMENTO</b>
-        </button>
-      </div>
+        {/* Grupo 4 (CTA) */}
+        <div className={styles.group}>
+          <h1 className={styles.ctaTitle}>Interação com o cliente</h1>
+          <p className={styles.ctaText}>Para maiores dúvidas ou esclarecimentos, entre em contato.</p>
+          <p className={styles.ctaSub}>
+            Estamos disponíveis de segunda à sexta, das 9h às 17h, exceto feriados.
+          </p>
+          <button className={styles.ctaBtn}>
+            <b>ATENDIMENTO</b>
+          </button>
+        </div>
 
-      <div id="logo-2">
-        <img src="/images/rodape/logo2.png" alt="logo 2" />
+        {/* Logo secundário */}
+        <div className={styles.logo2Wrap}>
+          <img className={styles.logo2} src="/images/rodape/logo2.png" alt="Logo secundário" />
+        </div>
       </div>
     </footer>
   );
