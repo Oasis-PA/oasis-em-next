@@ -1,16 +1,18 @@
 
-// src/app/artigo1/page.tsx
-import Link from "next/link";
+import { Header, Footer} from "@/components";
+
 import Image from "next/image";
-import "../../styles/artigo1.css";
-import { JSX } from "react/jsx-dev-runtime";
+import Link from "next/link";
 
 
-export default function Artigo1(): JSX.Element {
+
+export default function Artigo1(){
   return (
-    <main>
-     
-
-    </main>
+    <>  
+    < Header/>
+    <p>jukiaz puta</p>
+    < Footer/>
+    </>
+   
   );
 }

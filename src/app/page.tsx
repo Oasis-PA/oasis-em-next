@@ -1,22 +1,17 @@
-'use client'
+
 
 import { Header, Footer} from "@/components";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function OasisHomepage() {
-  const [activeTable, setActiveTable] = useState('cortes');
-
-  const handleTableHover = (tableName: string) => {
-    setActiveTable(tableName);
-  };
 
   return (
     <div id="bodyPaginaPrincipal" className="min-h-screen">
       {/* Page 1 */}
       <div id="page1" className="relative">
-         <Header />
+         <Header/>
 
         <main id="page1Main" className="text-center py-20">
           <p>Tratamentos inovadores</p>
@@ -501,10 +496,10 @@ export default function OasisHomepage() {
         </figure>
       </div>
 
-      {/* Page 10 - Footer */}
-      <div id="page10" className="bg-gray-800 text-white py-10">
+    
+      
        <Footer />
-      </div>
+     
     </div>
   );
 }
