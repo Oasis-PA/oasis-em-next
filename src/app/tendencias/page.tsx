@@ -10,7 +10,7 @@ export default function tendencias() {
   return (
     <>
     
-    
+    <Header/>
 
     <main>
       <section className="primeiro">
@@ -58,6 +58,7 @@ export default function tendencias() {
           </div>
 
           <p id="tit-3">Os dilemas do século XXI: Qual creme comprar?</p>
+
           <Image 
           id="salvar-2" 
           src="/images/tendencias/Salvar.png"
@@ -68,6 +69,145 @@ export default function tendencias() {
 
         </div>
       </section>
+    
+
+    <section className="segundo">
+      <p id="tit-4">Coleção inverno - Cachos dos sonhos</p>
+
+      <p id="text-2">
+        Neste inverno, abrace seus cachos como nunca antes. A coleção Cachos dos Sonhos foi criada especialmente para cuidar, nutrir e proteger seus fios nos dias frios, quando o ressecamento e o frizz tentam roubar a cena.
+      </p>
+
+      <div className="produtss">
+
+        <div className="produt1">
+          <p>Spray Umidificador</p>
+          <button id="but-2">Conheça</button>
+          <button id="but-3">
+
+            <Image 
+            src="/images/tendencias/Favorito.png"
+             alt="Favorito" 
+             width={24} 
+             height={24} 
+             />
+
+          </button>
+        </div>
+
+        <div className="produt2">
+          <p>Máscara Nutri-Reparadora</p>
+          <button id="but-4">Conheça</button>
+          <button id="but-5">
+            <Image 
+            src="/images/tendencias/Favorito.png"
+            alt="Favorito"
+            width={24} 
+            height={24} 
+            />
+
+          </button>
+        </div>
+
+        <div className="produt3">
+          <p>Protetor Térmico</p>
+          <button id="but-2">Conheça</button>
+          <button id="but-3">
+            <Image 
+            src="/images/tendencias/Favorito.png" 
+            alt="Favorito" 
+            width={24}
+            height={24} />
+          </button>
+        </div>
+
+      </div>
+
+      <Image 
+      id="img-direita" 
+      src="/images/tendencias/img-4.png" 
+      alt="Imagem lateral" 
+      width={400}
+       height={300} 
+       />
+
+      <p id="tit-5">Melhores tipos de finalização</p>
+
+      <p id="text-3">
+        A finalização é a etapa-chave para realçar a beleza natural dos cachos. A fitagem tradicional é ideal para quem busca definição intensa e controle do frizz. Já a fitagem rápida oferece praticidade e um visual mais leve e volumoso. Para cachos duradouros, a combinação de creme e gel é imbatível. Escolha a técnica que melhor se adapta à sua rotina e ao resultado que deseja!
+      </p>
+
+      <div id="divi">
+        <p>Linha Produtos Tropicais - Hidratação Intensa</p>
+      </div>
+
+      <Image 
+      id="img-produt-1" 
+      src="/images/tendencias/produ-4.png" 
+      alt="Produto tropical" 
+      width={300}
+       height={300} 
+       />
+
+      <button id="but-6">Veja Mais</button>
+    </section>
+
+     <section className="terceiro">
+
+      <div className="esq">
+        <p>O que usar no inverno</p>
+      </div>
+
+      <div className="dir">
+
+        <p id="tit-6">Esteja sempre no estilo</p>
+
+        <div id="uno">
+          <Image
+            src="/images/tendencias/Frame.png"
+            alt="Couro repaginado"
+            width={100}
+            height={100}
+          />
+          <p>Couro repaginado</p>
+        </div>
+
+        <div id="uno">
+          <Image
+            src="/images/tendencias/Frame (1).png"
+            alt="Cachos com volume"
+            width={100}
+            height={100}
+          />
+          <p>Cachos com volume</p>
+        </div>
+
+        <div id="uno">
+          <Image
+            src="/images/tendencias/Frame (2).png"
+            alt="Acessórios com textura"
+            width={100}
+            height={100}
+          />
+          <p>Acessórios com textura</p>
+        </div>
+
+        <div id="uno">
+          <Image
+            src="/images/tendencias/Frame (3).png"
+            alt="Sobreposições"
+            width={100}
+            height={100}
+          />
+          <p>Sobreposições</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    
+
     </main>
 
     </>
