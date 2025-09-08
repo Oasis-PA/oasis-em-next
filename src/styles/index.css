@@ -838,7 +838,7 @@ height: 36px;
     max-width: 1920px;
     height: 1174px;
     /* CORRIGIDO: Atualizar este caminho se necessário */
-    background: url('/images/tela-principal/page9/page9-background.png');
+    background: url('/images/page9-background.png');
 }
 
 #page9>figure {
