@@ -73,10 +73,10 @@ export default function TelaCadastro() {
               required
             />
 
-            <label htmlFor="mail">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input
               type="email"
-              id="mail"
+              id="email"
               name="email"
               autoComplete="email"
               className="padding-form"

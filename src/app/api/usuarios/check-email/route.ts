@@ -5,8 +5,7 @@ const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { email } = body;
+    const { email } = await req.json();
 
     if (!email) {
       return NextResponse.json(
@@ -15,7 +14,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Procura usuário pelo email
     const usuario = await prisma.usuario.findUnique({
       where: { email },
     });
@@ -27,15 +25,9 @@ export async function POST(req: Request) {
       );
     }
 
-    return NextResponse.json(
-      { message: "Email disponível." },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: "Email disponível." }, { status: 200 });
   } catch (error) {
-    console.error("Erro ao verificar email:", error);
-    return NextResponse.json(
-      { message: "Erro no servidor." },
-      { status: 500 }
-    );
+    console.error("Erro em check-email:", error);
+    return NextResponse.json({ message: "Erro no servidor." }, { status: 500 });
   }
 }
