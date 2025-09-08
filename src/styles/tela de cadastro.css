@@ -1,3 +1,21 @@
+@font-face {
+    font-family: "The Next Font";
+    src: url('../../public/assets/fontes/TheNextFont.ttf') format('truetype') ;
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: "Louis George Cafe";
+    src: url('../../public/assets/fontes/Louis\ George\ Cafe.ttf') format('truetype');
+    font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: "PLAYFUL RUNWAY";
+    src: url('../../public/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
+    font-weight: normal;
+  font-style: normal;
+}
 * {
     margin: 0;
     padding: 0;
@@ -31,21 +49,21 @@ main {
 }
 
 h1 {
-    font-family: TheNextFont;
+    font-family: "The Next Font";
     font-weight: 400;
     font-size: 3rem;
     margin-bottom: 20px;
 }
 
 p {
-    font-family: LouisGeorgeCafe;
+    font-family: "Louis George Cafe";
     font-weight: 400;
     font-size: 1.2rem;
     margin-bottom: 30px;
 }
 
 label {
-    font-family: LouisGeorgeCafe;
+    font-family: "Louis George Cafe";
     font-weight: 600;
     font-size: 1rem;
 }
@@ -69,7 +87,7 @@ form input {
 a {
     text-decoration: none;
     font-weight: bold;
-    font-family: LouisGeorgeCafe;
+    font-family: "Louis George Cafe";
     color: #7D4AB3;
     font-weight: 700;
     font-size: 1rem;
@@ -83,7 +101,7 @@ a {
     border: none;
     margin: 30px 0px 0px 0px;
     cursor: pointer;
-    font-family: TheNextFont;
+    font-family: "The Next Font";
     font-weight: 400;
     font-size: 1.2rem;
 }
@@ -105,7 +123,7 @@ a {
     justify-content: flex-start;
     padding: 0 12px;
     cursor: pointer;
-    font-family: TheNextFont;
+    font-family: "The Next Font";
     font-weight: 200;
     font-size: 1rem;
 }
@@ -122,10 +140,10 @@ a {
     background-color: #722F53;
     border-radius: 50px;
     color: white;
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0px 0px -40px;
     cursor: pointer;
     border: none;
-    font-family: TheNextFont;
+    font-family: "The Next Font";
     font-weight: 400;
     font-size: 1rem;
 }
@@ -140,7 +158,7 @@ a {
     margin: 20px 0px 0px 0px;
     cursor: pointer;
     border: none;
-    font-family: TheNextFont;
+    font-family: "The Next Font";
     font-weight: 400;
     font-size: 1rem;
 }
@@ -165,7 +183,7 @@ a {
 }
 
 #section-checkbox-cadastro span {
-    font-family: LouisGeorgeCafe; 
+    font-family: "Louis George Cafe"; 
     font-weight: 400; 
     font-size: 1rem;
 }
@@ -190,7 +208,7 @@ a {
 }
 
 #span-lembredemim-login {
-    font-family: LouisGeorgeCafe; 
+    font-family: "Louis George Cafe"; 
     font-weight: 700; 
     font-size: 1rem;
     white-space: nowrap;
@@ -215,7 +233,7 @@ a {
     color: #7D4AB3; 
     font-weight: 700; 
     font-size: 1rem; 
-    font-family: LouisGeorgeCafe;
+    font-family: "Louis George Cafe";
     margin: 0;
 }
 
