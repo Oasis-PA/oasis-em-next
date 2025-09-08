@@ -1,16 +1,17 @@
-'use clients'
+'use client';
 
 import { Header, Footer} from "@/components";
-
 import Image from "next/image";
-import Link from "next/link";
+import "@/styles/tendencias.css"
 
-export default function Oasistendencias() {
+
+export default function tendencias() {
 
   return (
     <>
+    
+    
 
-    <Header/>
     <main>
       <section className="primeiro">
         <div className="banner-principal">
@@ -30,7 +31,14 @@ export default function Oasistendencias() {
             <button>Produtos</button>
           </div>
           <p id="tit-2">Os dilemas do século XXI: Qual creme comprar?</p>
-          <Image id="salvar" src='images/tendencias/Salvar.png' alt="" />
+          <Image 
+          id="salvar" 
+          src="/images/tendencias/Salvar.png"
+          alt="imagem1"
+          width={30}
+          height={30}
+           />
+
         </div>
 
         <div className="meio">
@@ -50,7 +58,14 @@ export default function Oasistendencias() {
           </div>
 
           <p id="tit-3">Os dilemas do século XXI: Qual creme comprar?</p>
-          <Image id="salvar-2" src='/images/tendencias/Salvar.png' alt="" />
+          <Image 
+          id="salvar-2" 
+          src="/images/tendencias/Salvar.png"
+          alt="imagem2" 
+          width={30}
+          height={30}
+           />
+
         </div>
       </section>
     </main>
