@@ -395,3 +395,40 @@ transform: translateX(-50%);
     display: none;
   }
 }
+
+.apostas{
+  display: flex;
+  flex-direction: column;
+}
+.ousadas{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.descubra{
+  background-color: #722F53;
+  width: 8vw;
+  height: 2vw;
+  border-radius: 20px;
+  color: white;
+  border: none;
+  font-family: "THE NEXT FONT";
+}
+.texto-aposte{
+  font-family: "THE NEXT FONT";
+  font-size: 3.5vw;
+  margin-bottom: 1.4vw;
+}
+.texto-cansada{
+  font-family: "LOUIS GEORGE CAFE";
+  font-size: 2vw;
+
+}
+#ousadas1{
+  
+}
+#cansada1{
+ margin: 5vw;
+ margin-right: 10vw;
+ margin-bottom: ;
+}
