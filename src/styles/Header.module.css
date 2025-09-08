@@ -1,169 +1,96 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html, body {
-    width: 100%;
+/* src/styles/Header.module.css */
 
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-
-}   
-:root {
-    --body-back: #ffffff;
-    --corpo-texto: #000000; 
-    --header-color: #000000; 
-    --back-header: #fff;
-    --shadow: #f8f4f4;
-    --label: #000000;
-    --footer: #ffffff;
-    
-    
-}
-.dark:root{
-    --body-back: #0e0e0e;
-    --header-color: #ffffff; 
-    --back-header: #000000;
-    --corpo-texto: #ffffff ; 
-    --footer: #000000;
-    --shadow: #161616;
-    --label: #f3c11e;
-
-}
-body, html
-{
-    width: 100%;
-   height: 100%;
-   max-height: 200px;
-   background-color: var(--body-back);
-}
-header{
+.header {
     background-color: var(--back-header);
     color: var(--header-color);
     width: 100%;
     height: 200px;
 }
-header>aside{
+
+.headerAside {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-header>aside>#container-logo>img{
+
+.containerLogo img {
     width: 170px;
 }
-header>aside>#container-usuario>img{
+
+.containerUsuario img {
     width: 40px;
     margin: 14px;
 }
-#invi{
+
+.invi {
     width: 30%;
 }
-header > nav{
-    display: flex ;
+
+.headerNav {
+    display: flex;
     align-items: center;
     justify-content: space-around;
 }
-header>nav>a{
+
+.headerNav a {
     text-decoration: none;
     color: var(--header-color);
-   font-family: 'TheNextFont', sans-serif;    
+    font-family: 'TheNextFont', sans-serif;    
     font-weight: bold;
 }
 
-.botoes
-{
-   border: none;
+.botoes {
+    border: none;
     display: flex;
     align-items: center;
- 
     flex-flow: column nowrap;
     width: 246.667px;
     height: 65.333px;
     padding: 10.667px 52px;
     border-radius: 36px;
-background: #722F53;
+    background: #722F53;
 }
-.botoes:hover{
 
-        display: flex;    
-        align-items: center;;
-        position: relative;
-        background-color: rgba(255, 255, 255, 1.0);
-        border-radius: 27px;
-        background: radial-gradient(
-            50% 50% at 51% 37%,
-            rgba(135, 19, 141, 1) 0%,
-            rgba(216, 89, 157, 0.18) 100%
-        );
-        box-shadow: 0px 5px 10.7px 0px rgba(158, 22, 93, 0.85);
+.botoes:hover {
+    display: flex;    
+    align-items: center;
+    position: relative;
+    background-color: rgba(255, 255, 255, 1.0);
+    border-radius: 27px;
+    background: radial-gradient(
+        50% 50% at 51% 37%,
+        rgba(135, 19, 141, 1) 0%,
+        rgba(216, 89, 157, 0.18) 100%
+    );
+    box-shadow: 0px 5px 10.7px 0px rgba(158, 22, 93, 0.85);
 }
-.botoes:active
-{
+
+.botoes:active {
     display: flex;
-align-items: center;
-border-radius: 27px;
-border: 1px solid #4D0626;
-background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #51152D 0%, #BA59D8 100%);
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
+    align-items: center;
+    border-radius: 27px;
+    border: 1px solid #4D0626;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #51152D 0%, #BA59D8 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
 }
-.textoAmarelo:hover
-{
+
+.textoAmarelo:hover {
     color: #F2A518;
     transition: all 0.5s ease;
-
 }
-.textoAmarelo:active
-{
-  
+
+.textoAmarelo:active {
     color: #C17802;
 }
-.textoRoxo:hover
-{
+
+.textoRoxo:hover {
     transition: all 0.5s ease;
     color: #AA35B0;
     cursor: pointer;
 }
-#bodyPaginaPrincipal
-{
-        height: 8600px;
-}
-html, body {
-    width: 100%;
 
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-
-}
-
-#page1 {
-    width: 100%;
-    height: 1080px;
-    display: flex;
-    flex-direction: column;
-    align-items: center
-}
-
-#page1Header {
-
-    width: 1920px;
-    height: 100%;
-    max-height: 200px;
-    background-color: white;
-
-}
-
-#page1>header>section {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-}
-
-#page1-header-top {
-
+/* Estilos específicos da Page1 Header */
+.page1HeaderTop {
     width: 100%;
     height: 140px;
     display: flex;
@@ -172,77 +99,51 @@ html, body {
     justify-content: space-around;
 }
 
-#page1-logo-container {
+.page1LogoContainer {
     width: 225.293px;
     height: 153.644px;
     flex-shrink: 0;
 }
 
-#margin-header-top-itens {
+.marginHeaderTopItens {
     width: 33%;
 }
 
-#page1-user {
+.page1User {
     width: 363px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-#page1-user > img, #page1-user > a > img {
+
+.page1User img {
     width: 54px;
     height: 54px;
 }
 
-#page1-header-bottom {
-
+.page1HeaderBottom {
     width: 100%;
     height: 66px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-around;
-
 }
 
-a, table > thead > tr > th > a{
-    color: #040101;
-    text-align: center;
+.page1HeaderBottomItens:hover {
+    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     font-family: "The Next Font";
-    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    text-decoration: none;
-}
-.page1-header-bottom-itens:hover {
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-font-family: "The Next Font";
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-background: linear-gradient(90deg, #AA35B0 0%, #47164A 100%);
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent; 
- transition: all 0.5s ease; 
-}
-table{
-    z-index: 1;
+    background: linear-gradient(90deg, #AA35B0 0%, #47164A 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    transition: all 0.5s ease; 
 }
 
-table#tableCortes > tbody{
-  display: none;
-    position: absolute;
-    width: 992px;
-height: 352px;
-background-color: white;
-}
-table#tableCortes > thead:hover + tbody, table#tableCortes > tbody:hover {
-    display: flex;
-    flex-flow: column nowrap;
-}
-.tr-cabecalho {
+.trCabecalho {
     margin-top: 30px;
     display: flex;
     flex-flow: row nowrap;
@@ -250,75 +151,53 @@ table#tableCortes > thead:hover + tbody, table#tableCortes > tbody:hover {
     width: 100%;
     height: 100%;
 }
-tbody > tr.tr-cabecalho > th{
+
+.trCabecalho th {
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-start;
-    
 }
-tbody > tr.tr-cabecalho > th > h1{
-  color: #040101;
-text-align: center;
-font-family: "The Next Font";
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+
+.trCabecalho th h1 {
+    color: #040101;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
-.linhaRoxa2{
-  align-self: flex-start;
-  margin-bottom: 10px;
-  width: 48px;
-height: 4px;
-background: linear-gradient(0deg, #AA35B0 0%, #AA35B0 100%), #AA35B0;
+
+.linhaRoxa2 {
+    align-self: flex-start;
+    margin-bottom: 10px;
+    width: 48px;
+    height: 4px;
+    background: linear-gradient(0deg, #AA35B0 0%, #AA35B0 100%), #AA35B0;
 }
-tbody > tr.tr-cabecalho > th > #tr-cabecalho-formato-itens {
+
+.trCabecalhoFormatoItens {
     display: flex;
     flex-flow: row nowrap;
     align-items: start;
     justify-content: space-around;
     gap: 10px;
+}
 
+.trCabecalhoFormatoItens p {
+    color: #000;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: 16px;
+    font-style: normal;
+    line-height: 30px;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
 }
-tbody > tr.tr-cabecalho > th > #tr-cabecalho-formato-itens > p
-{
-  color: #000;
-text-align: center;
-font-family: "Louis George Cafe";
-font-size: 16px;
-font-style: normal;
-line-height: 30px; /* 187.5% */
-letter-spacing: 0.8px;
-text-transform: capitalize;
-}
-tbody > tr.tr-cabecalho > th > div#tr-cabecalho-tipo-de-banners-itens{
-   display: flex;
-   flex-flow: column nowrap;
-   justify-content: space-around;
-   height: 100%;
-}
-table.tableItensNone > tbody{
-    display: none;
-      position: absolute;
-      width: 992px;
-  height: 352px;
-  background-color: white;
-  }
-table#tableRecomendacoes > tbody
-{
-    left: 50%;
-    right: 50%;
-}
-  table.tableItensNone > thead:hover + tbody, table.tableItensNone > tbody:hover {
+
+.trCabecalhoTipoDeBannersItens {
     display: flex;
     flex-flow: column nowrap;
-}
-table.tableItensNone > tbody > tr, table.tableItensNone > tbody > th{ 
-  width: 100%;
-  height: 100%;
-}
-.hover-image
-{
-
-
+    justify-content: space-around;
+    height: 100%;
 }
