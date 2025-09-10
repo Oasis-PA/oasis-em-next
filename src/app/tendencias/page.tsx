@@ -205,8 +205,9 @@ export default function tendencias() {
 
     </section>
 
-
     </main>
+
+    <Footer/>
 
     </>
 
