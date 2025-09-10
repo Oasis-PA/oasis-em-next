@@ -3,6 +3,7 @@
 import {Footer} from "@/components";
 import Image from "next/image";
 import "@/styles/tendencias.css"
+import { Images } from "lucide-react";
 
 
 export default function tendencias() {
@@ -10,7 +11,6 @@ export default function tendencias() {
   return (
     <>
   
-
     <main>
       <section className="primeiro">
         <div className="banner-principal">
@@ -173,7 +173,7 @@ export default function tendencias() {
 
         <div id="uno">
           <Image
-            src="/images/tendencias/Frame (1).png"
+            src="/images/tendencias/frame-1.png"
             alt="Cachos com volume"
             width={100}
             height={100}
@@ -182,18 +182,18 @@ export default function tendencias() {
         </div>
 
         <div id="uno">
-          <Image
-            src="/images/tendencias/Frame (2).png"
-            alt="Acessórios com textura"
-            width={100}
-            height={100}
-          />
+        <Image
+          src="/images/tendencias/frame-2.png"
+          alt="Acessórios com textura"
+          width={100}
+          height={100}
+        />
           <p>Acessórios com textura</p>
         </div>
 
         <div id="uno">
           <Image
-            src="/images/tendencias/Frame (3).png"
+            src="/images/tendencias/frame-3.png"
             alt="Sobreposições"
             width={100}
             height={100}
