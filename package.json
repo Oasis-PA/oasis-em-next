@@ -11,6 +11,7 @@
     "test:coverage": "jest --coverage",
     "test:db:reset": "dotenv -e .env.test -- npx prisma migrate reset --force",
     "test:db:push": "dotenv -e .env.test -- npx prisma db push",
+    "test:db": "dotenv -e .env.test -- node --loader ts-node/esm prisma/test-connection.ts",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",

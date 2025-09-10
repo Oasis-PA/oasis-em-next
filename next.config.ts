@@ -1,12 +1,16 @@
-module.exports = {
-  testEnvironment: 'node',
-  preset: 'ts-jest',
-  setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
-  testMatch: ['**/__tests__/**/*.test.ts', '**/*.test.ts'],
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    'lib/**/*.{ts,tsx}',
-    '!src/**/*.d.ts',
-    '!lib/**/*.d.ts',
-  ],
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'registry.npmmirror.com',
+        port: '',
+        pathname: '/@lobehub/icons-static-png/latest/files/light/**',
+      },
+    ],
+  },
 };
+
+export default nextConfig;
