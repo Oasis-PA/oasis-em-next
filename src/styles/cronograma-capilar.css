@@ -407,8 +407,8 @@ transform: translateX(-50%);
 }
 .descubra{
   background-color: #722F53;
-  width: 8vw;
-  height: 2vw;
+  width: 9vw;
+  height: 2.3vw;
   border-radius: 20px;
   color: white;
   border: none;
@@ -430,5 +430,57 @@ transform: translateX(-50%);
 #cansada1{
  margin: 5vw;
  margin-right: 10vw;
- margin-bottom: ;
+ 
 }
+#cansada2{
+  margin: 3.5vw;
+  margin-left: 10vw;
+  
+ }
+ #cansada3{
+  margin: 3.5vw;
+  margin-right: 10vw;
+  
+ }
+ #no_cronograma{
+  background-color: #FAF5FF;
+  width: 100vw;
+  height: 90vh;
+ }
+ #progresso{
+  background-color: white;
+  width: 35vw;
+  height: 25vh;
+  
+ }
+ #barra_de_progresso{
+  width: 33vw;
+  height: 3vh;
+  border-radius: 40px;
+  background: linear-gradient(90deg, #5F0B38 0%, #FFEEF7 67.7%);
+ }
+
+#oleos_e_dicas{
+  display: flex;
+  flex-direction: row;
+  
+  gap: 3vw;
+  margin-top: 5vh;
+ }
+
+ #oleos{
+  background-image: url(../../public/images/Cronograma-capilar/oleos.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 16vw;
+  height: 45vh;
+  border-radius: 7%;
+ }
+
+ #dicas{
+  width: 16vw;
+  height: 45vh;
+  border-radius: 7%;
+  background-color: white;
+ }
+ 
