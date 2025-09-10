@@ -1,60 +1,60 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import "@/styles/cabecalho.css"; 
+import styles from "@/styles/Header.module.css"; 
 import "@/styles/globals.css";
 
 export default function Header() {
   return (
-    <header>
+    <header className={styles.header}>
       <section>
-        {/* HEADER TOP */}
-        <div id="page1-header-top">
-          <div id="page1-logo-container">
+        {/* TOPO DO HEADER */}
+        <div className={styles.page1HeaderTop}>
+          <div className={styles.page1LogoContainer}>
             <Link href="/">
               <Image
                 src="/images/logo-oasis-total.png"
                 alt="logo-oasis"
-                width={150}
-                height={50}
+                width={225}
+                height={154}
                 priority
               />
             </Link>
           </div>
-          <div id="margin-header-top-itens"></div>
-          <div id="page1-user">
+          <div className={styles.marginHeaderTopItens}></div>
+          <div className={styles.page1User}>
             <Link href="/pesquisa">
-              <Image src="/images/lupa.png" alt="Pesquisa" width={30} height={30} />
+              <Image src="/images/lupa.png" alt="Pesquisa" width={54} height={54} />
             </Link>
             <Link href="/favoritos">
               <Image
                 src="/images/salvo.png"
                 alt="Favoritos"
-                width={30}
-                height={30}
+                width={54}
+                height={54}
               />
             </Link>
             <Link href="/login">
               <Image
                 src="/images/perfil.png"
                 alt="Usuario"
-                width={30}
-                height={30}
+                width={54}
+                height={54}
               />
             </Link>
           </div>
         </div>
 
-        {/* NAV */}
-        <nav id="page1-header-bottom">
-          {/* TABLE CORTES */}
-          <table id="tableCortes">
+        {/* NAVEGAÇÃO */}
+        <nav className={styles.page1HeaderBottom}>
+          {/* TABELA CORTES */}
+          <table className={styles.tableCortes}>
             <thead>
               <tr>
                 <th>
                   <Link
                     href="/cortes"
-                    className="page1-header-bottom-itens"
+                    className={styles.page1HeaderBottomItens}
                   >
                     CORTES
                   </Link>
@@ -62,15 +62,15 @@ export default function Header() {
               </tr>
             </thead>
             <tbody>
-              <tr className="tr-cabecalho">
+              <tr className={styles.trCabecalho}>
                 {/* Tamanho */}
                 <th>
-                  <h1 className="textoAmarelo">Tamanho</h1>
-                  <div className="linhaRoxa2"></div>
-                  <div id="tr-cabecalho-tamanho-itens">
-                    {['Super curto', 'Curto', 'Médio', 'Longo', 'Super Longo'].map((t, i) => (
-                      <p key={i} className="textoRoxo">
-                        {t}
+                  <h1 className={styles.textoAmarelo}>Tamanho</h1>
+                  <div className={styles.linhaRoxa2}></div>
+                  <div className={styles.trCabecalhoTamanhoItens}>
+                    {['Super curto', 'Curto', 'Médio', 'Longo', 'Super Longo'].map((tamanho, index) => (
+                      <p key={index} className={styles.textoRoxo}>
+                        {tamanho}
                       </p>
                     ))}
                   </div>
@@ -78,20 +78,20 @@ export default function Header() {
 
                 {/* Formato */}
                 <th>
-                  <h1 className="textoAmarelo">Formato</h1>
-                  <div className="linhaRoxa2"></div>
-                  <div id="tr-cabecalho-formato-itens">
-                    <div id="tr-cabecalho-formato-item1">
-                      {['2A', '2B', '2C', '3A', '3B', '3C'].map((item, i) => (
-                        <p key={i} className="textoRoxo">
-                          {item}
+                  <h1 className={styles.textoAmarelo}>Formato</h1>
+                  <div className={styles.linhaRoxa2}></div>
+                  <div className={styles.trCabecalhoFormatoItens}>
+                    <div className={styles.trCabecalhoFormatoItem1}>
+                      {['2A', '2B', '2C', '3A', '3B', '3C'].map((formato, index) => (
+                        <p key={index} className={styles.textoRoxo}>
+                          {formato}
                         </p>
                       ))}
                     </div>
-                    <div id="tr-cabecalho-formato-item2">
-                      {['4A', '4B', '4C'].map((item, i) => (
-                        <p key={i} className="textoRoxo">
-                          {item}
+                    <div className={styles.trCabecalhoFormatoItem2}>
+                      {['4A', '4B', '4C'].map((formato, index) => (
+                        <p key={index} className={styles.textoRoxo}>
+                          {formato}
                         </p>
                       ))}
                     </div>
@@ -100,13 +100,13 @@ export default function Header() {
 
                 {/* Tipo de rosto */}
                 <th>
-                  <h1 className="textoAmarelo">Tipo de rosto</h1>
-                  <div className="linhaRoxa2"></div>
-                  <div id="tr-cabecalho-tipo-de-rosto-itens">
+                  <h1 className={styles.textoAmarelo}>Tipo de rosto</h1>
+                  <div className={styles.linhaRoxa2}></div>
+                  <div className={styles.trCabecalhoTipoDeRostoItens}>
                     {['Rosto Oval', 'Rosto Redondo', 'Rosto Coração', 'Rosto Quadrado', 'Rosto Diamante'].map(
-                      (item, i) => (
-                        <p key={i} className="textoRoxo">
-                          {item}
+                      (tipoRosto, index) => (
+                        <p key={index} className={styles.textoRoxo}>
+                          {tipoRosto}
                         </p>
                       )
                     )}
@@ -115,7 +115,7 @@ export default function Header() {
 
                 {/* Banners */}
                 <th>
-                  <div id="tr-cabecalho-tipo-de-banners-itens">
+                  <div className={styles.trCabecalhoTipoDeBannersItens}>
                     <Image
                       src="/images/tela-principal/page1/cortes-banner1.png"
                       alt="a profissão de 2024: Trancista"
@@ -134,27 +134,27 @@ export default function Header() {
             </tbody>
           </table>
 
-          {/* TABLE PENTEADOS */}
-          <table id="tablePenteados" className="tableItensNone">
+          {/* TABELA PENTEADOS */}
+          <table className={styles.tablePenteados}>
             <thead>
               <tr>
                 <th>
-                  <Link href="/penteados" className="page1-header-bottom-itens">
+                  <Link href="/penteados" className={styles.page1HeaderBottomItens}>
                     PENTEADOS
                   </Link>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="tr-cabecalho">
+              <tr className={styles.trCabecalho}>
                 {/* Tamanho */}
                 <th>
-                  <h1 className="textoAmarelo">Tamanho</h1>
-                  <div className="linhaRoxa2"></div>
-                  <div id="tr-cabecalho-tamanho-itens">
-                    {['Super curto', 'Curto', 'Médio', 'Longo', 'Super Longo'].map((t, i) => (
-                      <p key={i} className="textoRoxo">
-                        {t}
+                  <h1 className={styles.textoAmarelo}>Tamanho</h1>
+                  <div className={styles.linhaRoxa2}></div>
+                  <div className={styles.trCabecalhoTamanhoItens}>
+                    {['Super curto', 'Curto', 'Médio', 'Longo', 'Super Longo'].map((tamanho, index) => (
+                      <p key={index} className={styles.textoRoxo}>
+                        {tamanho}
                       </p>
                     ))}
                   </div>
@@ -162,29 +162,29 @@ export default function Header() {
 
                 {/* Penteados */}
                 <th>
-                  <h1 className="textoAmarelo">Penteados</h1>
-                  <div className="linhaRoxa2"></div>
-                  <div id="tr-cabecalho-formato-itens">
-                    <div id="tr-cabecalho-formato-item1">
+                  <h1 className={styles.textoAmarelo}>Penteados</h1>
+                  <div className={styles.linhaRoxa2}></div>
+                  <div className={styles.trCabecalhoFormatoItens}>
+                    <div className={styles.trCabecalhoFormatoItem1}>
                       {['Trança', 'Coque', 'Com Elástico', 'Tradicionais', 'Para Festas!', 'Com Faixa'].map(
-                        (p, i) => (
-                          <p key={i} className="textoRoxo">
-                            {p}
+                        (penteado, index) => (
+                          <p key={index} className={styles.textoRoxo}>
+                            {penteado}
                           </p>
                         )
                       )}
                     </div>
-                    <div id="tr-cabecalho-formato-item2">
+                    <div className={styles.trCabecalhoFormatoItem2}>
                       {[
                         'Com laço',
                         'Para O Trabalho',
                         'Para quem está em transição',
-                        'twist',
-                        'com presilha',
-                        'baby hair',
-                      ].map((p, i) => (
-                        <p key={i} className="textoRoxo">
-                          {p}
+                        'Twist',
+                        'Com presilha',
+                        'Baby hair',
+                      ].map((penteado, index) => (
+                        <p key={index} className={styles.textoRoxo}>
+                          {penteado}
                         </p>
                       ))}
                     </div>
@@ -193,20 +193,20 @@ export default function Header() {
 
                 {/* Formato novamente */}
                 <th>
-                  <h1 className="textoAmarelo">Formato</h1>
-                  <div className="linhaRoxa2"></div>
-                  <div id="tr-cabecalho-formato-itens">
-                    <div id="tr-cabecalho-formato-item1">
-                      {['2A', '2B', '2C', '3A', '3B', '3C'].map((item, i) => (
-                        <p key={i} className="textoRoxo">
-                          {item}
+                  <h1 className={styles.textoAmarelo}>Formato</h1>
+                  <div className={styles.linhaRoxa2}></div>
+                  <div className={styles.trCabecalhoFormatoItens}>
+                    <div className={styles.trCabecalhoFormatoItem1}>
+                      {['2A', '2B', '2C', '3A', '3B', '3C'].map((formato, index) => (
+                        <p key={index} className={styles.textoRoxo}>
+                          {formato}
                         </p>
                       ))}
                     </div>
-                    <div id="tr-cabecalho-formato-item2">
-                      {['4A', '4B', '4C'].map((item, i) => (
-                        <p key={i} className="textoRoxo">
-                          {item}
+                    <div className={styles.trCabecalhoFormatoItem2}>
+                      {['4A', '4B', '4C'].map((formato, index) => (
+                        <p key={index} className={styles.textoRoxo}>
+                          {formato}
                         </p>
                       ))}
                     </div>
@@ -216,12 +216,12 @@ export default function Header() {
             </tbody>
           </table>
 
-          {/* TABLE COLORAÇÃO */}
-          <table id="tablecoloracao" className="tableItensNone">
+          {/* TABELA COLORAÇÃO */}
+          <table className={styles.tableColoracao}>
             <thead>
               <tr>
                 <th>
-                  <Link href="/coloracao" className="page1-header-bottom-itens">
+                  <Link href="/coloracao" className={styles.page1HeaderBottomItens}>
                     COLORAÇÃO
                   </Link>
                 </th>
@@ -231,7 +231,7 @@ export default function Header() {
               <tr>
                 <th>
                   <Image
-                    className='hover-image'
+                    className={styles.hoverImage}
                     src="/images/tela-principal/page1/hoverColoracao.png"
                     alt="COLORAÇÃO"
                     width={800}
@@ -242,12 +242,12 @@ export default function Header() {
             </tbody>
           </table>
 
-          {/* TABLE SKINCARE */}
-          <table id="tableSkinCare" className="tableItensNone">
+          {/* TABELA SKINCARE */}
+          <table className={styles.tableSkincare}>
             <thead>
               <tr>
                 <th>
-                  <Link href="/skincare" className="page1-header-bottom-itens">
+                  <Link href="/skincare" className={styles.page1HeaderBottomItens}>
                     Skincare
                   </Link>
                 </th>
@@ -257,7 +257,7 @@ export default function Header() {
               <tr>
                 <th>
                   <Image
-                    className='hover-image'
+                    className={styles.hoverImage}
                     src="/images/tela-principal/page1/hoverSkinCare.png"
                     alt="SkinCare"
                     width={800}
@@ -268,12 +268,12 @@ export default function Header() {
             </tbody>
           </table>
 
-          {/* TABLE CRONOGRAMA CAPILAR */}
-          <table id="tableCronogramaCapilar" className="tableItensNone">
+          {/* TABELA CRONOGRAMA CAPILAR */}
+          <table className={styles.tableCronogramaCapilar}>
             <thead>
               <tr>
                 <th>
-                  <Link href="/cronograma-capilar" className="textoAmarelo">
+                  <Link href="/cronograma-capilar" className={styles.textoAmarelo}>
                     CRONOGRAMA CAPILAR
                   </Link>
                 </th>
@@ -281,12 +281,12 @@ export default function Header() {
             </thead>
           </table>
 
-          {/* TABLE RECOMENDAÇÕES */}
-          <table id="tableRecomendacoes" className="tableItensNone">
+          {/* TABELA RECOMENDAÇÕES */}
+          <table className={styles.tableRecomendacoes}>
             <thead>
               <tr>
                 <th>
-                  <Link href="/recomendacoes" className="page1-header-bottom-itens">
+                  <Link href="/recomendacoes" className={styles.page1HeaderBottomItens}>
                     RECOMENDAÇÕES
                   </Link>
                 </th>
@@ -296,7 +296,7 @@ export default function Header() {
               <tr>
                 <th>
                   <Image
-                    className='hover-image'
+                    className={styles.hoverImage}
                     src="/images/tela-principal/page1/hoverRecomendacoes.png"
                     alt="Recomendações"
                     width={800}

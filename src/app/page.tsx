@@ -11,7 +11,7 @@ export default function OasisHomepage() {
     <div id="bodyPaginaPrincipal" className="min-h-screen">
       {/* Page 1 */}
       <div id="page1" className="relative">
-         <Header/>
+          < Header/>
 
         <main id="page1Main" className="text-center py-20">
           <p>Tratamentos inovadores</p>
@@ -254,7 +254,7 @@ export default function OasisHomepage() {
             </div>
           </nav>
           
-          <article className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
+          <article >
             <figure className="text-center">
               <div className="page3-cortes">
                 <h1>CORTE PIXIE</h1>
