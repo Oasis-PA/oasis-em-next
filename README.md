@@ -82,3 +82,60 @@ Aqui estão as principais rotas (atualize conforme for criando novas páginas):
 
 O deploy recomendado é na [Vercel](https://vercel.com), criadores do Next.js.  
 Para mais detalhes, veja: [Deploying Next.js](https://nextjs.org/docs/app/building-your-application/deploying).
+
+
+// Comandos para criar a estrutura específica para suas APIs:
+
+# 1. Criar pastas para seus testes
+mkdir -p tests/api
+mkdir -p tests/integration
+
+# 2. Criar arquivos de teste específicos
+touch tests/api/usuarios-cadastro.test.ts
+touch tests/api/usuarios-check-email.test.ts
+touch tests/integration/usuario-flow.test.ts
+
+# 3. Instalar dependências se ainda não fez
+npm install --save-dev jest @types/jest ts-jest @jest/globals @testing-library/jest-dom node-mocks-http dotenv-cli
+
+# 4. Estrutura final dos seus testes:
+tests/
+├── setup.ts                           # ✅ Já existe
+├── api/                              # 🆕 Nova pasta
+│   ├── usuarios-cadastro.test.ts      # Testa POST /api/usuarios/cadastro
+│   └── usuarios-check-email.test.ts   # Testa POST /api/usuarios/check-email
+└── integration/                      # 🆕 Nova pasta
+    └── usuario-flow.test.ts          # Testa fluxo completo
+
+# 5. Comandos para executar:
+
+# Todos os testes
+npm run test
+
+# Apenas testes de API
+npm run test:api
+
+# Apenas testes de integração
+npm run test:integration
+
+# Teste específico
+npm run test:specific usuarios-cadastro.test.ts
+
+# Em modo watch
+npm run test:watch
+
+# Com coverage
+npm run test:coverage
+
+
+# 1. Instalar dependências (se ainda não instalou)
+npm install --save-dev jest @types/jest ts-jest @jest/globals @testing-library/jest-dom node-mocks-http dotenv-cli
+
+# 2. Executar os testes
+npm run test
+
+# 3. Se der erro de banco, execute uma migration primeiro:
+npx prisma migrate dev
+
+# 4. Tentar novamente
+npm run test
