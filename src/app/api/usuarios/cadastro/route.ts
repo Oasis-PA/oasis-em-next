@@ -1,13 +1,12 @@
+// app/api/usuarios/cadastro/route.ts
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { nome, email, senha } = body;
+    const { nome, email, senha } = await req.json();
 
     if (!nome || !email || !senha) {
       return NextResponse.json(
@@ -16,11 +15,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // Verifica se já existe usuário com esse email
-    const usuarioExistente = await prisma.usuario.findUnique({
-      where: { email },
-    });
-
+    // Verifica se o email já existe
+    const usuarioExistente = await prisma.usuario.findUnique({ where: { email } });
     if (usuarioExistente) {
       return NextResponse.json(
         { message: "Já existe um usuário com este email." },
@@ -28,28 +24,19 @@ export async function POST(req: Request) {
       );
     }
 
-    // Criptografa a senha
-    const senhaHash = await bcrypt.hash(senha, 10);
-
     // Cria o usuário no banco
-    const novoUsuario = await prisma.usuario.create({
-      data: {
-        nome,
-        email,
-        senha: senhaHash,
-        id_genero: 1, // ⚠️ ajustar depois para capturar da tela
-      },
-    });
+  const novoUsuario = await prisma.usuario.create({
+  data: {
+    nome,
+    email,
+    senha,
+    id_genero: 1, // default temporário
+  },
+});
 
-    return NextResponse.json(
-      { message: "Usuário criado com sucesso!", usuario: novoUsuario },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "Conta criada com sucesso!", usuario: novoUsuario });
   } catch (error) {
     console.error("Erro ao criar usuário:", error);
-    return NextResponse.json(
-      { message: "Erro no servidor." },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Erro no servidor." }, { status: 500 });
   }
 }
