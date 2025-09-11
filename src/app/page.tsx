@@ -3,33 +3,10 @@ import {Footer} from "@/components";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from 'react';
+
 
 
 export default function OasisHomepage() {
-
-   useEffect(() => {
-    
-    const scripts = [
-      '/scripts/page1-js.js',
-      '/scripts/page2-js.js',
-      '/scripts/page3-js.js'
-    ];
-
-    // Criar elementos <script> e adicionar ao body
-    const scriptElements: HTMLScriptElement[] = scripts.map(src => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-      document.body.appendChild(script);
-      return script;
-    });
-
-    // Limpeza
-    return () => {
-      scriptElements.forEach(script => document.body.removeChild(script));
-    };
-  }, []);
 
   return (
     <div id="bodyPaginaPrincipal" className="min-h-screen">

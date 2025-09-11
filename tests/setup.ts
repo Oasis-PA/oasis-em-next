@@ -1,5 +1,18 @@
-// Este arquivo é executado antes de cada teste
-import '@testing-library/jest-dom';
+// Importa funções do Jest explicitamente
+import { jest } from '@jest/globals';
 
-// Aqui você pode adicionar configurações globais de teste
-// Exemplo: mock de fetch, configuração de timers, etc.
+console.log('🧪 Iniciando suite de testes...');
+
+// Mock de console.error para não poluir logs
+beforeAll(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+});
+
+afterAll(() => {
+  jest.restoreAllMocks();
+  console.log('✅ Finalizando suite de testes...');
+});
+
+beforeEach(() => {
+  // Outros mocks se precisar
+});
