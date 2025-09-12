@@ -7,6 +7,9 @@ import { useRouter } from "next/navigation";
 =======
 import Link from "next/link"
 import { signIn } from "next-auth/react";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -116,6 +119,10 @@ export default function TelaCadastro() {
     </span>
   </button>
 </section>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 
           <a href="tela-login.html">
