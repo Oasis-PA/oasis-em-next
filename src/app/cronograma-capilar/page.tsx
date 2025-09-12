@@ -128,6 +128,7 @@ const CronogramaCapilar: React.FC = () => {
               </p>
             <button className="descubra">DESCUBRA</button>
           </div>
+        
           <img src="/images/Cronograma-capilar/incrivel.png" alt="Mulher incrível para casamento" />
         </section>
         <section className="ousadas">
@@ -147,7 +148,7 @@ const CronogramaCapilar: React.FC = () => {
       <section id="no_cronograma">
         <div id="esquerda">
                 
-                
+
                 <div id="progresso">
                   <p>Progresso no Cronograma</p>
                   <div>
@@ -227,11 +228,7 @@ const CronogramaCapilar: React.FC = () => {
         <img className="cor" src="/images/Cronograma-capilar/Retangulo_roxo.png" alt="Forma roxa" />
         <img className="cor" src="/images/Cronograma-capilar/Retangulo_verde.png" alt="Forma verde" />
       </section>
-
-      {/* O componente <Script> do Next.js carrega o script da pasta /public.
-        A estratégia 'afterInteractive' garante que o script só seja executado 
-        depois que a página estiver visível e interativa, melhorando a performance.
-      */}
+     
       <Script 
         src="/cronograma-capilar.js" 
         strategy="afterInteractive" 
