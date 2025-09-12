@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Link from "next/link"
+
 
 export default function TelaCadastro() {
   const [nome, setNome] = useState("");
@@ -112,12 +112,11 @@ export default function TelaCadastro() {
             </button>
           </section>
 
-        
-            <Link href="/Login">
+          <a href="tela-login.html">
             <button id="botaojaconta" type="button">
               JÁ TEM UMA CONTA? CLIQUE AQUI PARA REGISTRAR.
-            </button></Link>
-        
+            </button>
+          </a>
         </section>
       </main>
     </div>
