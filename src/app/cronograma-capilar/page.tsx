@@ -41,52 +41,7 @@ export default function CronogramaCapilarPage() {
       {/* ======================================================================= */}
       {/* CABEÇALHO COMPLETO COM MEGA MENU                                        */}
       {/* ======================================================================= */}
-      <header className="relative w-full px-4 py-2 shadow-md bg-white z-50" onMouseLeave={() => setActiveMenu(null)}>
-        <section className="flex justify-between items-center">
-          <div id="logo-container">
-            <Link href="/">
-              <Image src="/images/logo-oasis-total.png" alt="logo-oasis" width={150} height={50} />
-            </Link>
-          </div>
-          <div id="user-icons" className="flex items-center gap-4">
-            <Link href="/pesquisa"><Image src="/images/lupa.svg" alt="Pesquisa" width={24} height={24} /></Link>
-            <Link href="/favoritos"><Image src="/images/coracao.svg" alt="Favoritos" width={24} height={24} /></Link>
-            <Link href="/login" target="_blank"><Image src="/images/perfil.svg" alt="Usuário" width={24} height={24} /></Link>
-          </div>
-        </section>
-        <nav className="flex justify-center items-center gap-8 mt-4">
-          <div onMouseEnter={() => setActiveMenu('cortes')}><Link href="/corteS" className="font-bold tracking-wider">CORTES</Link></div>
-          <div onMouseEnter={() => setActiveMenu('penteados')}><Link href="/pagina-em-manutencao" className="font-bold tracking-wider">PENTEADOS</Link></div>
-          <div onMouseEnter={() => setActiveMenu('coloracao')}><Link href="/pagina-em-manutencao" className="font-bold tracking-wider">COLORAÇÃO</Link></div>
-          <div onMouseEnter={() => setActiveMenu('skincare')}><Link href="/skincare" className="font-bold tracking-wider">SKINCARE</Link></div>
-          <div><Link href="/cronograma-capilar" className="font-bold tracking-wider text-[#FFC700]">CRONOGRAMA CAPILAR</Link></div>
-          <div onMouseEnter={() => setActiveMenu('recomendacoes')}><Link href="/pagina-em-manutencao" className="font-bold tracking-wider">RECOMENDAÇÕES</Link></div>
-        </nav>
-
-        {/* --- Mega Menu de Cortes --- */}
-        <div onMouseLeave={() => setActiveMenu(null)} className={`absolute top-full left-0 w-full bg-white shadow-lg p-8 ${activeMenu === 'cortes' ? 'block' : 'hidden'}`}>
-          <div className="grid grid-cols-4 gap-8">
-            <div>
-              <h1 className="text-[#FFC700] font-bold">Tamanho</h1><div className="w-full h-[2px] bg-[#5F0B38] my-2"></div>
-              <div className="flex flex-col gap-1 text-[#5F0B38]"><p>Super curto</p><p>Curto</p><p>Médio</p><p>Longo</p><p>Super Longo</p></div>
-            </div>
-            <div>
-              <h1 className="text-[#FFC700] font-bold">Formato</h1><div className="w-full h-[2px] bg-[#5F0B38] my-2"></div>
-              <div className="grid grid-cols-2 gap-4 text-[#5F0B38]"><div className="flex flex-col gap-1"><p>2A</p><p>2B</p><p>2C</p><p>3A</p><p>3B</p><p>3C</p></div><div className="flex flex-col gap-1"><p>4A</p><p>4B</p><p>4C</p></div></div>
-            </div>
-            <div>
-              <h1 className="text-[#FFC700] font-bold">Tipo de rosto</h1><div className="w-full h-[2px] bg-[#5F0B38] my-2"></div>
-              <div className="flex flex-col gap-1 text-[#5F0B38]"><p>Rosto Oval</p><p>Rosto Redondo</p><p>Rosto Coração</p><p>Rosto Quadrado</p><p>Rosto Diamante</p></div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <Image src="/images/tela-principal/page1/cortes-banner1.png" alt="a profissão de 2024: Transista" width={300} height={150} objectFit="cover" />
-              <Image src="/images/tela-principal/page1/cortes-banner2.png" alt="Verão 2024 tendencias" width={300} height={150} objectFit="cover" />
-            </div>
-          </div>
-        </div>
-        {/* Adicione outros mega menus aqui, seguindo o padrão acima */}
-      </header>
-
+    
       <main>
         {/* ======================================================================= */}
         {/* SEÇÃO HERO                                                              */}
