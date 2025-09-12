@@ -27,7 +27,7 @@
 .sec1-texto
 {
     margin-left: 48%;
-    margin-top: 188px;
+    transform: translatey(82%);
 }
 .sec1-texto > h1
 {
@@ -38,6 +38,7 @@
     font-weight: 400;
     line-height: 119.792%; 
     width: 90%;
+
 }
 .sec1-texto > p
 {
