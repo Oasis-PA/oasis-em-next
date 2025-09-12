@@ -485,6 +485,47 @@ transform: translateX(-50%);
   border-radius: 7%;
   background-color: white;
  }
+ #dicas_topo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  
+
+ }
+ #dicas_titulo{
+  font-family: "THE NEXT FONT";
+  font-size: 2.2vw;
+  text-align: flex-start;
+  margin-top: 0.5vh;
+  margin-bottom: 0.2vh;
+  margin-left: 1vw;
+ }
+ #dicas_subtitulo{
+  font-family: "LOUIS GEORGE CAFE";
+  font-size: 1vw;
+  margin-right: 1vw;
+  
+ }
+ .dicas_topicos{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ }
+.sub0{
+  width: 3vw;
+  height: 3vw;
+  
+}
+.sub1{
+
+}
+.sub2{
+
+}
+
+
+
 #direita{
   display: flex;
   flex-direction: row;

@@ -2,7 +2,23 @@
     margin: 0px;
     padding: 0px;
 }
-
+@font-face {
+  font-family: 'PLAYFUL RUNWAY';
+  src: url('/path/to/your/font/PlayfulRunway.woff2') format('woff2');
+  /* Add other font faces like 'THE NEXT FONT' and 'Louis George Cafe' */
+}
+@font-face {
+  font-family: 'PLAYFUL RUNWAY';
+  src: url('/fonts/PlayfulRunway.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'THE NEXT FONT';
+  src: url('/fonts/TheNextFont.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Louis George Cafe';
+  src: url('/fonts/LouisGeorgeCafe.woff2') format('woff2');
+}
 .botoes
 {
    border: none;
