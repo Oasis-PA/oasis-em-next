@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import "../../styles/tela de cadastro.css";
+
 
 export default function TelaCadastro() {
   const [nome, setNome] = useState("");
