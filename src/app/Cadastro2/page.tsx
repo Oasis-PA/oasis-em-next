@@ -59,10 +59,12 @@ export default function TelaCadastroSenha() {
         return;
       }
 
+      // limpa os dados temporários
       sessionStorage.removeItem("cadastroTemp");
 
-      // redireciona para login 
+      // redireciona para login (ou home)
       location.href = "/";
+     // router.push("/");
     } catch (err) {
       setErro("Erro de conexão com servidor.");
     }

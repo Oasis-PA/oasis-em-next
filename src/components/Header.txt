@@ -34,7 +34,7 @@ export default function Header() {
                 height={54}
               />
             </Link>
-            <Link href="/Cadastro1">
+            <Link href="/login">
               <Image
                 src="/images/perfil.png"
                 alt="Usuario"
