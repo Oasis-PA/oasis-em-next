@@ -10,6 +10,8 @@ export default function tendencias() {
 
   return (
     <>
+      
+  
   
     <main>
       <section className="primeiro">
