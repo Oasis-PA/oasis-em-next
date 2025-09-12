@@ -1,7 +1,6 @@
+// app/api/usuarios/login/route.ts
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: Request) {
   try {
@@ -26,8 +25,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Se a senha estiver salva com hash (bcrypt)
-
+    // Verificação simples de senha (você deve implementar bcrypt)
     const senhaCorreta = senha === usuario.senha;
 
     if (!senhaCorreta) {
