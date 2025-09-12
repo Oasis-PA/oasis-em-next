@@ -6,7 +6,7 @@ html, body{
     width: 100vw;
     height: 100vh;
     flex-shrink: 0;
-    background: url(/Images/Cronograma-capilar/Mulher-cronograma.png);
+    background: url(/Imagens/Cronograma-capilar/Mulher-cronograma.png);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;

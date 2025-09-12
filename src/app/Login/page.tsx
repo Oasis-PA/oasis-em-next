@@ -35,7 +35,7 @@ export default function Login() {
 
   return (
     <main id="main-margin-login">
-      <section>
+      <section id="gambiarra">
         <h1>Olá, seja bem vindo(a)!</h1>
         <p>
           Insira suas informações de registro ou{" "}
@@ -112,14 +112,13 @@ export default function Login() {
         </Link>
       </section>
 
-      <figure className="figure-padding-login">
-        <img
-          src="/images/tela-de-cadastro/imagem-tela-login-amarelo.png"
-          alt="imagem-tela-login-amarelo"
-          width={50}
-          height={1049}
-        />
-      </figure>
+     <figure id="figure-padding-login">
+    <img
+        src="/images/tela-de-cadastro/imagem-tela-login-amarelo.png"
+        alt="imagem-tela-login-amarelo"
+            
+    />
+</figure>
     </main>
   );
 }
