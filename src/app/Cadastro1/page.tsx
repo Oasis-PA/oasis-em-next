@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link"
+import { signIn } from "next-auth/react";
+
 
 export default function TelaCadastro() {
   const [nome, setNome] = useState("");
@@ -98,19 +100,20 @@ export default function TelaCadastro() {
             <div className="lin"></div>
           </section>
 
-          <section className="botaogoogle">
-            <button type="button">
-              <Image
-                src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/google-color.png"
-                alt="logogoogle"
-                width={30}
-                height={30}
-              />
-              <span className="span-button-continue-google">
-                CONTINUE COM O GOOGLE
-              </span>
-            </button>
-          </section>
+  <section className="botaogoogle">
+  <button type="button" onClick={() => signIn("google")}>
+    <Image
+      src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/google-color.png"
+      alt="logogoogle"
+      width={30}
+      height={30}
+    />
+    <span className="span-button-continue-google">
+      CONTINUE COM O GOOGLE
+    </span>
+  </button>
+</section>
+
 
         
             <Link href="/Login">

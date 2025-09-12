@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import "@/styles/globals.css";
-import "@/styles/cronograma-capilar.css";
+//import "@/styles/cronograma-capilar.css";
 
 
 export const metadata: Metadata = {
