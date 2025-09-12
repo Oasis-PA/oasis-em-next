@@ -105,7 +105,7 @@ export default function Login() {
           </button>
         </section>
 
-        <Link href="/tela-de-cadastro">
+        <Link href="/Cadastro1">
           <button id="botaonaoconta">
             NÃO TEM UMA CONTA? CLIQUE AQUI PARA CRIAR.
           </button>
