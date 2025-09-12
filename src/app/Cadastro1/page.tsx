@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 import Link from "next/link"
@@ -11,6 +12,8 @@ import { signIn } from "next-auth/react";
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of eea52f9 (.;)
 
 
 export default function TelaCadastro() {
@@ -106,6 +109,7 @@ export default function TelaCadastro() {
             <div className="lin"></div>
           </section>
 
+<<<<<<< HEAD
   <section className="botaogoogle">
   <button type="button" onClick={() => signIn("google")}>
     <Image
@@ -124,6 +128,21 @@ export default function TelaCadastro() {
 
 >>>>>>> Stashed changes
 
+=======
+          <section className="botaogoogle">
+            <button type="button">
+              <Image
+                src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/google-color.png"
+                alt="logogoogle"
+                width={30}
+                height={30}
+              />
+              <span className="span-button-continue-google">
+                CONTINUE COM O GOOGLE
+              </span>
+            </button>
+          </section>
+>>>>>>> parent of eea52f9 (.;)
 
           <a href="tela-login.html">
             <button id="botaojaconta" type="button">

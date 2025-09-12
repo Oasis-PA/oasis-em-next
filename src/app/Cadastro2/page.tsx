@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 
 export default function TelaCadastroSenha() {
@@ -63,10 +63,12 @@ export default function TelaCadastroSenha() {
       sessionStorage.removeItem("cadastroTemp");
 
       // redireciona para login (ou home)
-      router.push("../page.tsx");
+      location.href = "/";
+     // router.push("/");
     } catch (err) {
       setErro("Erro de conexão com servidor.");
     }
+
   };
 
   return (
