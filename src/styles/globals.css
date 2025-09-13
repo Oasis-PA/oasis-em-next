@@ -17,14 +17,14 @@
 }
 
 
-
+/*
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Variáveis do Next.js/Tailwind para modo escuro */
+ Variáveis do Next.js/Tailwind para modo escuro 
     --background: #0a0a0a;
     --foreground: #ededed;
     
-    /* Suas variáveis para modo escuro */
+    /* Suas variáveis para modo escuro
     --body-back: #0e0e0e;
     --header-color: #ffffff; 
     --back-header: #000000;
@@ -35,7 +35,7 @@
   }
 }
 
-/* Classe para forçar modo escuro */
+/* Classe para forçar modo escuro 
 .dark:root {
   --body-back: #0e0e0e;
   --header-color: #ffffff; 
@@ -45,115 +45,11 @@
   --shadow: #161616;
   --label: #f3c11e;
 }
-
+*/
 /* Reset CSS Global */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+ 
 }
 
-/* Estilos base do body */
-body {
-  background: var(--body-back);
-  color: var(--corpo-texto);
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-
-html {
-  width: 100%;
-  height: 100%;
-}
-
-/* IDs específicos da sua aplicação */
-#bodyPaginaPrincipal {
-  height: 8600px;
-}
-
-#page1 {
-  width: 100%;
-  height: 1080px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#page1Header {
-  width: 1920px;
-  height: 100%;
-  max-height: 200px;
-  background-color: white;
-}
-
-/* Estilos globais de links */
-a {
-  color: #040101;
-  text-align: center;
-  font-family: "The Next Font", Arial, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-decoration: none;
-}
-
-/* Estilos específicos para links em tabelas */
-table > thead > tr > th > a {
-  color: #040101;
-  text-align: center;
-  font-family: "The Next Font", Arial, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-decoration: none;
-}
-
-/* Estilos globais de tabelas */
-table {
-  z-index: 1;
-}
-
-table#tableCortes > tbody {
-  display: none;
-  position: absolute;
-  width: 992px;
-  height: 352px;
-  background-color: white;
-}
-
-table#tableCortes > thead:hover + tbody, 
-table#tableCortes > tbody:hover {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-table.tableItensNone > tbody {
-  display: none;
-  position: absolute;
-  width: 992px;
-  height: 352px;
-  background-color: white;
-}
-
-table#tableRecomendacoes > tbody {
-  left: 50%;
-  right: 50%;
-}
-
-table.tableItensNone > thead:hover + tbody, 
-table.tableItensNone > tbody:hover {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-table.tableItensNone > tbody > tr, 
-table.tableItensNone > tbody > th { 
-  width: 100%;
-  height: 100%;
-}

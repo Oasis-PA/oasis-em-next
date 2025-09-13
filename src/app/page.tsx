@@ -1,5 +1,5 @@
 "use client";
-import {Footer} from "@/components";
+import {Header, Footer} from "@/components";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export default function OasisHomepage() {
     <div id="bodyPaginaPrincipal" className="min-h-screen">
       {/* Page 1 */}
       <div id="page1" className="relative">
-         
+        <Header />
 
         <main id="page1Main" className="text-center py-20">
           <p>Tratamentos inovadores</p>
