@@ -15,13 +15,13 @@ export default function Header() {
           </div>
 
           <div className={styles.interagivel}>
-            <Link href="#">
+            <Link href="/pesquisa">
               <Image src="/images/lupa.png" alt="Buscar" width={50} height={50} />
             </Link>
-            <Link href="#">
+            <Link href="favoritos">
               <Image src="/images/salvo.png" alt="Salvos" width={50} height={50} />
             </Link>
-            <Link href="#">
+            <Link href="Cadastro1">
               <Image src="/images/perfil.png" alt="Perfil" width={50} height={50} />
             </Link>
           </div>

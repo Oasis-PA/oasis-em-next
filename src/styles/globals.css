@@ -1,6 +1,32 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
+ /* Fontes */
+@font-face {
+    font-family: "The Next Font";
+    src: url('/assets/fontes/TheNextFont.ttf') format('truetype') ;
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: "Louis George Cafe";
+    src: url('/assets/fontes/Louis George Cafe.ttf') format('truetype');
+    font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: "Louis George Cafe";
+    src: url('/assets/fontes/Louis George Cafe Bold.ttf') format('truetype');
+    font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+    font-family: "PLAYFUL RUNWAY";
+    src: url('/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
+    font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   /* Variáveis do Next.js/Tailwind */
   --background: #ffffff;

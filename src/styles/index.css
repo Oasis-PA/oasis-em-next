@@ -184,8 +184,8 @@ background-clip: text;
     height: 100%;
     /* CORRIGIDO: Remover ou atualizar este caminho */
 background: url("/images/tela-principal/page1/page1-imagem1.svg");
-
-    background-size: 1920px;
+   background-size: auto;
+ 
     background-repeat: no-repeat;
     gap: 20px;
     transition: background-image 0.5s ease-in-out;
