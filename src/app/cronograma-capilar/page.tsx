@@ -4,11 +4,9 @@
 
 import React from 'react';
 import Script from 'next/script'; // Componente otimizado do Next.js para carregar scripts
-import "@/styles/cronograma-capilar.css";
-// Importando a folha de estilos
-import '../../styles/cronograma-capilar.css'; 
-import '../../styles/globals.css';
-import '../../../public/assets/fontes/fontes.css';
+
+import '@/styles/cronograma-capilar.css'; 
+
 const CronogramaCapilar: React.FC = () => {
   return (
     <>
