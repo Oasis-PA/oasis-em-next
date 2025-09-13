@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import "@/styles/central-de-ajuda.css";
 
-export default function Centraldeajuda() {
+export default function CentralDeAjuda() {
   return (
     <main>
       <h1>Olá, Mundo!</h1>
