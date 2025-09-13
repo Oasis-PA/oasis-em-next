@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import "@/styles/tela-de-cadastro.css"; 
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");

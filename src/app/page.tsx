@@ -4,7 +4,7 @@ import {Footer} from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 
-
+import "@/styles/index.css";
 
 export default function OasisHomepage() {
 

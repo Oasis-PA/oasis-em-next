@@ -4,7 +4,7 @@
 
 import React from 'react';
 import Script from 'next/script'; // Componente otimizado do Next.js para carregar scripts
-
+import "@/styles/cronograma-capilar.css";
 // Importando a folha de estilos
 import '../../styles/cronograma-capilar.css'; 
 import '../../styles/globals.css';
