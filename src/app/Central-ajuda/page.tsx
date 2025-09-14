@@ -22,7 +22,50 @@ export default function CentralDeAjuda() {
     </section>
 
     <section id="s2">
-      <div id="d1">SOBRE O SITE</div>
+      <div id="d1">
+        <p>SOBRE O SITE</p>
+      </div>
+
+      <div id="d2">
+        <p>Nosso site foi desenvolvido para auxiliar pessoas de todas as idades e de todos os 
+          gêneros a valorizarem sua beleza, principalmente os afro-brasileiros. Oferecemos 
+          notícias para auxiliar a criação de uma rotina de pele sustentável, para cuidar 
+          adequadamente do seu cabelo e muito mais! Recomendamos também produtos para fazer com 
+          que você chegue em sua melhor versão, garantindo uma experiência completa e satisfatória 
+          para todos os usuários.</p>
+      </div>
+
+      <div id="d3">
+        <h3>TERMOS DE USO</h3>
+        <p className="p2">• É importante que você conheça nossas regras e condições. Acesse a página 
+          "Termos de Uso" para entender suas responsabilidades e direitos ao utilizar nossa plataforma.</p>
+      </div>
+
+      <div id="d4">
+        <h3>POLÍTICA DE PRIVACIDADE</h3>
+        <p className="p2">• A segurança dos seus dados é nossa prioridade. Em nossa "Política de 
+          Privacidade", explicamos como suas informações são coletadas, armazenadas e protegidas.</p>
+      </div>
+    </section>
+
+    <section id="s3">
+      <div className="d5">
+        <p>PERGUNTAS FREQUENTES</p>
+      </div>
+
+      <div id="d6">
+        <h3>COMO CRIAR UMA CONTA?</h3>
+        <p className="p2">• Para se cadastrar, clique no botão no topo de página, preencha os campos 
+          obrigatórios e confirme seu e-mail. Em poucos passos, sua conta estará pronta para uso!</p>
+      </div>
+
+      <div id="d7">
+        <h3>PROBLEMAS COM LOGIN?</h3>
+        <p className="p2">• Caso não consiga acessar sua conta, verifique se o e-mail e a senha 
+          estão corretos. Se necessário, utilize a opção "Esqueci minha senha" para redefini-la 
+          rapidamente.</p>
+      </div>
+
     </section>
     </>
   );
