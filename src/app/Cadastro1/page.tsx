@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Adicione useEffect aqui
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link"
@@ -12,12 +12,18 @@ export default function TelaCadastro() {
   const [erro, setErro] = useState("");
   const router = useRouter();
 
+ useEffect(() => {
+  return () => {
+    // SISTEMA DE RECARGA: Marca que está voltando do cadastro
+    sessionStorage.setItem('voltandoDoCadastro', 'true');
+  };
+}, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErro("");
 
     try {
-      // Chamada para API que verifica se email já existe
       const res = await fetch("/api/usuarios/check-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -31,10 +37,7 @@ export default function TelaCadastro() {
         return;
       }
 
-      // Salva temporariamente para a tela de senha
       sessionStorage.setItem("cadastroTemp", JSON.stringify({ nome, email }));
-
-      // Redireciona para a segunda tela
       router.push("/Cadastro2");
     } catch (err) {
       setErro("Erro de conexão com servidor.");
@@ -43,6 +46,7 @@ export default function TelaCadastro() {
 
   return (
     <div className="tela-cadastro-container">
+      {/* Resto do seu código permanece igual */}
       <figure className="figure-padding-cadastro">
         <Image
           src="/images/tela-de-cadastro/imagem-tela-login-roxo.png"
@@ -99,13 +103,11 @@ export default function TelaCadastro() {
             <div className="lin"></div>
           </section>
 
-
-        
-            <Link href="/Login">
+          <Link href="/Login">
             <button id="botaojaconta" type="button">
               JÁ TEM UMA CONTA? CLIQUE AQUI PARA REGISTRAR.
-            </button></Link>
-        
+            </button>
+          </Link>
         </section>
       </main>
     </div>

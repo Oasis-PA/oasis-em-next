@@ -1,5 +1,5 @@
 "use client";
-import { Header, Footer } from "@/components";
+import {Header, Footer} from "@/components";
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,28 +8,18 @@ import "@/styles/index.css";
 
 export default function OasisHomepage() {
   
-  useEffect(() => {
-    // Detecta quando o usuário volta para a página usando o botão voltar
-    const handlePageShow = (event: PageTransitionEvent) => {
-      if (event.persisted) {
-        // A página foi carregada do cache (botão voltar)
-        window.location.reload();
-      }
-    };
+  /* ===== INÍCIO: Sistema de recarga ao voltar do cadastro ===== */
+useEffect(() => {
+  // Verifica se o usuário está voltando da página de cadastro
+  const voltandoDoCadastro = sessionStorage.getItem('voltandoDoCadastro');
+ 
+  if (voltandoDoCadastro === 'true') {
+    sessionStorage.removeItem('voltandoDoCadastro'); // Remove para evitar loop infinito
+    window.location.reload(); // Recarrega a página apenas uma vez
+  }
+}, []);
+/* ===== FIM: Sistema de recarga ao voltar do cadastro ===== */
 
-    // Detecta mudanças no histórico (botão voltar)
-    const handlePopState = () => {
-      window.location.reload();
-    };
-
-    window.addEventListener('pageshow', handlePageShow);
-    window.addEventListener('popstate', handlePopState);
-    
-    return () => {
-      window.removeEventListener('pageshow', handlePageShow);
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, []);
 
   return (
     <div id="bodyPaginaPrincipal" className="min-h-screen">
