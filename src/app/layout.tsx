@@ -18,7 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="app-body"  suppressHydrationWarning={true}>// Suprime avisos causados por extensões do navegador
+      <body className="app-body"  suppressHydrationWarning={true}>
+       
         {children}
       </body>
     </html>

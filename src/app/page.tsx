@@ -1,12 +1,35 @@
 "use client";
-import {Header, Footer} from "@/components";
-
+import { Header, Footer } from "@/components";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import "@/styles/index.css";
 
 export default function OasisHomepage() {
+  
+  useEffect(() => {
+    // Detecta quando o usuário volta para a página usando o botão voltar
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        // A página foi carregada do cache (botão voltar)
+        window.location.reload();
+      }
+    };
+
+    // Detecta mudanças no histórico (botão voltar)
+    const handlePopState = () => {
+      window.location.reload();
+    };
+
+    window.addEventListener('pageshow', handlePageShow);
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   return (
     <div id="bodyPaginaPrincipal" className="min-h-screen">
