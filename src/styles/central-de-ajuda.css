@@ -59,6 +59,7 @@ main {
     background: #FFF;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     flex-direction: column;
+    margin-bottom: 18vw;
 }
 
 #d1 {
@@ -132,8 +133,6 @@ h3 {
 }
 
 #s3 {
-    margin-top: 6vw;
-    margin-bottom: 7vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,4 +186,16 @@ h3 {
     width: 55.8854vw;
     height: 10vw;
     margin-bottom: 5vw;
+}
+
+#fundo-marrom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #5E332C;
+    width: 100vw;  
+    height: 34vw;
+    padding: 3vw;  
+    margin-top: 6vw;     
+    margin-bottom: 7vw;
 }

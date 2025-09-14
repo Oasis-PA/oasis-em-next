@@ -48,40 +48,37 @@ export default function CentralDeAjuda() {
       </div>
     </section>
 
-    <section id="s3">
-      <div className="d5">
-        <p>PERGUNTAS FREQUENTES</p>
-      </div>
-
-      <div id="d6">
-        <h3>COMO CRIAR UMA CONTA?</h3>
-        <p className="p2">• Para se cadastrar, clique no botão no topo de página, preencha os campos 
-          obrigatórios e confirme seu e-mail. Em poucos passos, sua conta estará pronta para uso!</p>
-      </div>
-
-      <div id="d7">
-        <h3>PROBLEMAS COM LOGIN?</h3>
-        <p className="p2">• Caso não consiga acessar sua conta, verifique se o e-mail e a senha 
-          estão corretos. Se necessário, utilize a opção "Esqueci minha senha" para redefini-la 
-          rapidamente.</p>
-      </div>
-
-      <div className="d5">
-        <p>FALE CONOSCO</p>
-      </div>
-
-      <div id="d8">
-        <h3>CONTATO</h3>
-        <p className="p2">• Se precisar de ajuda adicional, envie uma mensagem através de nossa 
-          página de contato ou pelo e-mail "oasis.beleza.autoestima@gmail.com”. Nossa equipe 
-          responderá o mais breve possível!</p>
-      </div>
-
-      <div id="d9">
-        <h3>DEIXE SEU FEEDBACK</h3>
-        <p className="p2">• Sua opinião é essencial para melhorarmos nossos serviços. Compartilhe 
-          sugestões, elogios ou críticas conosco. Agradecemos sua participação!</p>
-      </div>
+    <section id="fundo-marrom">
+      <section id="s3">
+        <div className="d5">
+          <p>PERGUNTAS FREQUENTES</p>
+        </div>
+        <div id="d6">
+          <h3>COMO CRIAR UMA CONTA?</h3>
+          <p className="p2">• Para se cadastrar, clique no botão no topo de página, preencha os campos
+            obrigatórios e confirme seu e-mail. Em poucos passos, sua conta estará pronta para uso!</p>
+        </div>
+        <div id="d7">
+          <h3>PROBLEMAS COM LOGIN?</h3>
+          <p className="p2">• Caso não consiga acessar sua conta, verifique se o e-mail e a senha
+            estão corretos. Se necessário, utilize a opção "Esqueci minha senha" para redefini-la
+            rapidamente.</p>
+        </div>
+        <div className="d5">
+          <p>FALE CONOSCO</p>
+        </div>
+        <div id="d8">
+          <h3>CONTATO</h3>
+          <p className="p2">• Se precisar de ajuda adicional, envie uma mensagem através de nossa
+            página de contato ou pelo e-mail "oasis.beleza.autoestima@gmail.com”. Nossa equipe
+            responderá o mais breve possível!</p>
+        </div>
+        <div id="d9">
+          <h3>DEIXE SEU FEEDBACK</h3>
+          <p className="p2">• Sua opinião é essencial para melhorarmos nossos serviços. Compartilhe
+            sugestões, elogios ou críticas conosco. Agradecemos sua participação!</p>
+        </div>
+      </section>
     </section>
     
     </>
