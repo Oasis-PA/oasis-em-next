@@ -66,7 +66,24 @@ export default function CentralDeAjuda() {
           rapidamente.</p>
       </div>
 
+      <div className="d5">
+        <p>FALE CONOSCO</p>
+      </div>
+
+      <div id="d8">
+        <h3>CONTATO</h3>
+        <p className="p2">• Se precisar de ajuda adicional, envie uma mensagem através de nossa 
+          página de contato ou pelo e-mail "oasis.beleza.autoestima@gmail.com”. Nossa equipe 
+          responderá o mais breve possível!</p>
+      </div>
+
+      <div id="d9">
+        <h3>DEIXE SEU FEEDBACK</h3>
+        <p className="p2">• Sua opinião é essencial para melhorarmos nossos serviços. Compartilhe 
+          sugestões, elogios ou críticas conosco. Agradecemos sua participação!</p>
+      </div>
     </section>
+    
     </>
   );
 }

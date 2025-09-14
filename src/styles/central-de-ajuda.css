@@ -133,11 +133,12 @@ h3 {
 
 #s3 {
     margin-top: 6vw;
+    margin-bottom: 7vw;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 64.69166666666666vw;
-    height: 70.41666666666667vw;
+    height: 71vw;
     background: #FFF;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     flex-direction: column;
@@ -175,3 +176,15 @@ h3 {
     margin-bottom: 2.983333333333333vw;
 }
 
+#d8 {
+    margin-top: 2.708333333333333vw;
+    width: 57vw;
+    height: 10vw;
+}
+
+#d9 {
+    margin-top: 5vw;
+    width: 55.8854vw;
+    height: 10vw;
+    margin-bottom: 5vw;
+}
