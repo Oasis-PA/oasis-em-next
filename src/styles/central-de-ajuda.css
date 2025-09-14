@@ -7,7 +7,7 @@
 body {
     display: flex;
     width: 100vw;
-    height: 100vw;
+    height: auto;
     background-color: var(--body-back);
     align-items: center;
     flex-direction: column;
@@ -22,7 +22,7 @@ html, body {
 main {
     display: flex;
     width: 100vw;
-    height: 100vw;
+    height: auto;
     justify-content: center;
     align-items: center;
 }
