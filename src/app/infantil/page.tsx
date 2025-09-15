@@ -68,8 +68,16 @@ export default function infantil() {
             <h1>Produtos recomendados</h1>
             <div id="linha"></div>
         </div>
-    </section>
 
+        <div id="produtos1">
+            <div className="prod1">
+                <img src="" alt=""/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+        </div>
+    </section>
     </>
   );
 }

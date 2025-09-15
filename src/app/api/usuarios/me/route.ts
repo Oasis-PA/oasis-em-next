@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { prisma } from "@/lib/prisma";
+import { User } from "lucide-react";
 
 export async function GET(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
@@ -17,7 +18,6 @@ export async function GET(req: NextRequest) {
     select: {
       id_usuario: true,
       nome: true,
-      id_genero: true,
       sobre: true,
       email: true,
     },
@@ -32,8 +32,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ error: "Token inválido ou expirado" }, { status: 401 });
 }
 
-
-    return NextResponse.json({ user });
+  return NextResponse.json({ User });
   } catch {
     return NextResponse.json({ error: "Token inválido" }, { status: 401 });
   }
