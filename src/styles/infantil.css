@@ -236,11 +236,43 @@ main {
 
 #linha {
     width: 41.5625vw;
-    height: 2vw;
-    color: rgb(21, 35, 231);
+    height: 0.1vw;
+    background-color: black;
+    margin-left: 5.7604vw;
 }
 
 #linhatexto1 {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+#produtos1 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6.7708vw;
+}
+
+.prod1 {
+    display: flex;
+    flex-direction: column;
+    width: 18.072916666666668vw;
+    height: 28.272447916666668vw;
+    border: 0.12864583333333334vw solid #5F0B38;
+}
+
+.prod1 > img {
+
+}
+
+.prod1 > h5 {
+
+}
+
+.prod1 > h4 {
+
+}
+
+.prod1 > button {
+
 }
