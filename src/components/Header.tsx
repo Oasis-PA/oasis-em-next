@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '@/styles/header.css'
+import styles from '@/styles/Header.module.css'
 
 
 export default function Header() {
