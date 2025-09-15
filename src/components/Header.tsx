@@ -5,7 +5,8 @@ import styles from '@/styles/Header.module.css'
 
 
 export default function Header() {
-      <div className={styles.tudinho}>
+  return(
+       <div className={styles.tudinho}>
         <section className={styles.emCiminha}>
           <div >
             <Link href="/">
@@ -36,6 +37,8 @@ export default function Header() {
         </section>
       </div>
     
+  )
+   
 };
 
 
