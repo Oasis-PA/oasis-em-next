@@ -6,6 +6,7 @@ import styles from '@/styles/Header.module.css'
 
 export default function Header() {
   return(
+   <header className={styles.header}>
        <div className={styles.tudinho}>
         <section className={styles.emCiminha}>
           <div >
@@ -36,7 +37,7 @@ export default function Header() {
           <p className={styles.headerTit1}>Recomendações</p>
         </section>
       </div>
-    
+     </header>
   )
    
 };
