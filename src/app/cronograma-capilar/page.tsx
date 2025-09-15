@@ -148,11 +148,13 @@ const CronogramaCapilar: React.FC = () => {
                 
 
                 <div id="progresso">
-                  <p>Progresso no Cronograma</p>
-                  <div>
-                    <p>Semanal</p> <img src="/images/Cronograma-capilar/Setinha.png" alt="Seta" />
+                  <div id="prog">
+                    <p id='progresso_cronograma'>Progresso no Cronograma</p>
+                    <div id='semanal_seta'>
+                      <p id='semanal'>Semanal</p> <img className='setinha' src="/images/Cronograma-capilar/Setinha.png" alt="Seta" />
+                    </div>
                   </div>
-                  <p>54%</p>
+                  <p id='percentagem'>54%</p>
                   <div id="barra_de_progresso">
                   </div>
                 </div>
