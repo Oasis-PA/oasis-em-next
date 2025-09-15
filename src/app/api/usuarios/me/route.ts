@@ -9,16 +9,29 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
   }
 
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: string };
-    const user = await prisma.usuario.findUnique({
-      where: { id_usuario: decoded.id },
-      select: { id_usuario: true, nome: true, pronomes: true, sobre: true, email: true },
-    });
+ try {
+  const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
 
-    if (!user) {
-      return NextResponse.json({ error: "Usuário não encontrado" }, { status: 404 });
-    }
+  const user = await prisma.usuario.findUnique({
+    where: { id_usuario: decoded.id }, // id_usuario é Int
+    select: {
+      id_usuario: true,
+      nome: true,
+      id_genero: true,
+      sobre: true,
+      email: true,
+    },
+  });
+
+  if (!user) {
+    return NextResponse.json({ error: "Usuário não encontrado" }, { status: 404 });
+  }
+
+  return NextResponse.json(user);
+} catch (err) {
+  return NextResponse.json({ error: "Token inválido ou expirado" }, { status: 401 });
+}
+
 
     return NextResponse.json({ user });
   } catch {
