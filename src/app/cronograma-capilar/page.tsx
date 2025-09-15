@@ -62,7 +62,7 @@ const CronogramaCapilar: React.FC = () => {
       </div>
 
       <div className="pratica">
-        <p className="praticidade">Onde a praticidade encontra <br />
+        <p className="praticidade">Onde a praticidade encontra o<br />
           <span className="autocuidado">AUTOCUIDADO</span>
         </p>
       </div>
@@ -93,7 +93,7 @@ const CronogramaCapilar: React.FC = () => {
         <div className="fotos">
           <img className="img2" src="/images/Cronograma-capilar/cuidado em poucos passos.png" alt="Cuidado em poucos passos" />
           <a href=""><img className="butao" src="/images/Cronograma-capilar/conheca.png" alt="Conheça" /></a>
-          <p className="texto-foto" >CUIDADO EM POUCOS PASSOS</p>
+          <p className="texto-foto" id='texto-foto'>CUIDADO EM POUCOS PASSOS</p>
         </div>
         <div className="fotos">
           <img className="img2" src="/images/Cronograma-capilar/agenda dos seus fios.png" alt="Agenda dos seus fios" />
