@@ -5,9 +5,8 @@ import styles from '@/styles/Header.module.css'
 
 
 export default function Header() {
-  return(
-   <header className={styles.header}>
-       <div className={styles.tudinho}>
+      return(<header className={styles.header}>
+      <div className={styles.tudinho}>
         <section className={styles.emCiminha}>
           <div >
             <Link href="/">
@@ -37,9 +36,8 @@ export default function Header() {
           <p className={styles.headerTit1}>Recomendações</p>
         </section>
       </div>
-     </header>
-  )
-   
+      </header>)
+    
 };
 
 
