@@ -5,8 +5,8 @@ import styles from '@/styles/header.css'
 
 
 export default function Header() {
-      <div className={styles.tudinho}>
-        <section className={styles.emCiminha}>
+      <div>
+        <section>
           <div >
             <Link href="/">
            <Image className={styles.logo} src="/images/logo.png" alt="Salvos" width={400} height={400} />
