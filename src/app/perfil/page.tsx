@@ -38,18 +38,7 @@ export default function ConfiguracoesPage() {
           </div>
         </div>
 
-        <div className="campos-texto req" id="caixa-pronomes">
-          <p>Pronomes</p>
-          <label htmlFor="pronomes">
-            <select id="pronomes" name="pronomes">
-              <option value="" disabled selected>
-                Adicione seus pronomes
-              </option>
-              <option value="ela">Ela/Dela</option>
-              <option value="ele">Ele/Dele</option>
-            </select>
-          </label>
-        </div>
+    
 
         <div className="campos-texto req" id="caixa-sobre">
           <p>Sobre</p>
