@@ -31,6 +31,8 @@ model Usuario {
   data_cadastro   DateTime    @default(now())
   id_genero       Int
   id_tipo_cabelo  Int?
+  sobrenome       String?
+  sobre           String?
   avaliacoes      Avaliacao[]
   favoritos       Favorito[]
   genero          Genero      @relation(fields: [id_genero], references: [id_genero])
