@@ -2,7 +2,7 @@
 
 import {Footer} from "@/components";
 import Image from "next/image";
-import "@/styles/tendencias.css"
+import "@/styles/tendencias.css";
 
 
 
