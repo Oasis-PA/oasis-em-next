@@ -1,10 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["registry.npmmirror.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'registry.npmmirror.com',
+        port: '',
+        pathname: '/@lobehub/icons-static-png/latest/files/light/**',
+      },
+    ],
   },
-  /* config options here */
 };
 
 export default nextConfig;
