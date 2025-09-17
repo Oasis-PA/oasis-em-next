@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
       select: {
         id_usuario: true,
         nome: true,
-        sobre: true,
+        sobrenome: true,
         email: true,
       },
     });
