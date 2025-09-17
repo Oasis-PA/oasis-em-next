@@ -1,0 +1,51 @@
+// Espera o conteúdo da página carregar para garantir que o elemento exista
+document.addEventListener('DOMContentLoaded', () => {
+
+  const passando = document.querySelector('.passando');
+
+  // Verifica se o elemento do carrossel foi encontrado na página
+  if (passando) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Evento: O botão do mouse é pressionado no carrossel
+    passando.addEventListener('mousedown', (e) => {
+      isDown = true;
+      // Adiciona uma classe para indicar que o arraste começou
+      // O CSS usa essa classe para desativar o 'scroll-snap' e deixar o arraste suave
+      passando.classList.add('is-dragging');
+      // Posição inicial do mouse
+      startX = e.pageX - passando.offsetLeft;
+      // Posição inicial do scroll
+      scrollLeft = passando.scrollLeft;
+    });
+
+    // Evento: O mouse sai da área do carrossel
+    passando.addEventListener('mouseleave', () => {
+      isDown = false;
+      passando.classList.remove('is-dragging');
+    });
+
+    // Evento: O botão do mouse é solto em qualquer lugar da página
+    document.addEventListener('mouseup', () => {
+      isDown = false;
+      passando.classList.remove('is-dragging');
+    });
+
+    // Evento: O mouse se move sobre o carrossel
+    passando.addEventListener('mousemove', (e) => {
+      // Só executa se o botão do mouse estiver pressionado
+      if (!isDown) return;
+      
+      // Previne o comportamento padrão do navegador (como selecionar texto)
+      e.preventDefault();
+      
+      const x = e.pageX - passando.offsetLeft;
+      // Calcula a distância do arraste e multiplica para dar mais velocidade
+      const walk = (x - startX) * 2.5; 
+      // Atualiza a posição do scroll
+      passando.scrollLeft = scrollLeft - walk;
+    });
+  }
+});
