@@ -45,25 +45,27 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Alinha o texto verticalmente */
-  padding: 0 5vw; /* Espaçamento lateral */
+  padding: 0 7vw; /* Espaçamento lateral */
 }
 
 .cornograma {
+
   color: #FFF;
-  font-family: var(--font-primary);
+  font-family: "PLAYFUL RUNWAY";
+  font-weight: 400;
   /* MELHORIA: Tipografia fluida com clamp() */
-  font-size: clamp(4.5rem, 14vw, 12rem);
+  font-size: clamp(5.5rem, 17vw, 15rem);
   line-height: 1.1;
 }
 
 .cornograma2 {
   color: #000;
-  font-family: var(--font-secondary);
-  font-weight: 900;
   /* MELHORIA: Tipografia fluida com clamp() */
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   line-height: 1.1;
   margin-top: 2vh;
+  font-family: "THE NEXT FONT";
+  font-weight: 700;
 }
 
 /* ================================== */

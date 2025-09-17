@@ -27,29 +27,7 @@ const ArtigoAcidificacao: React.FC = () => {
 
   return (
     <>
-      <header>
-        <aside>
-          <div id="container-logo">
-            <Link href="/">
-              <img src="/images/logo.png" alt="logo" />
-            </Link>
-          </div>
-          <div id="invi"></div>
-          <div id="container-usuario">
-            <Link href="/pesquisa"><img src="/images/lupa.png" alt="lupa" /></Link> 
-            <Link href="/favoritos"><img src="/images/salvo.png" alt="salvo" /></Link>
-            <Link href="/login"><img src="/images/perfil.png" alt="perfil" /></Link>
-          </div>
-        </aside>
-        <nav>
-            <Link className="texto-roxo" href="/cortes">CORTES</Link>
-            <Link className="texto-roxo" href="#">PENTEADOS</Link>
-            <Link className="texto-roxo" href="#">COLORAÇÃO</Link>
-            <Link className="texto-roxo" href="/skincare">SKINCARE</Link>
-            <Link className="texto-amarelo" href="#">CRONOGRAMA CAPILAR</Link>
-            <Link className="texto-roxo" href="#">RECOMENDAÇÕES</Link>
-        </nav>
-      </header>
+      
       
       {/* Dark Mode Toggle - Estrutura recriada do CSS */}
       <div className="label">
@@ -102,54 +80,7 @@ const ArtigoAcidificacao: React.FC = () => {
         </article>
       </main>
 
-      <footer>
-        <div id="img-footer"> 
-          <img id="logo-footer" src="/images/logo-footer copy.png" alt="logo do rodapé" />
-          <div id="logos-apps">
-            <img src="/images/insta copy.png" alt="instagram" />
-            <img src="/images/x copy.png" alt="x" />
-            <img src="/images/facebook-icone copy.png" alt="facebook" />
-            <img src="/images/pinterest-icone copy.png" alt="pinterest" />
-          </div>
-        </div>
-        <div id="invi-2"></div>
-        <div className="grupos-footer" id="grupo-1" >
-            <h2>Mapa do Site</h2>
-            <p>Quem somos?</p>
-            <p>Parcerias</p>
-            <p>Contato</p>
-            <p>Segurança</p>
-        </div>
-        <div className="grupos-footer" id="grupo-2">
-           <h2>Usuário</h2>
-            <p>Painel</p>
-            <p>Minha conta</p>
-            <p>Meu avatar</p>
-            <p>Meus favoritos</p>
-            <p>Minhas avaliações sobre</p>
-            <p>Produtos</p>
-            <p>Cadastre-se</p>
-        </div>
-        <div className="grupos-footer" id="grupo-3">
-            <h2>Precisa de Suporte?</h2>
-            <p>Central de Ajuda</p>
-            <p>Política de Privacidade</p>
-            <p>Termos de Uso</p>
-            <p>Modo Escuro</p>
-            <p>Segurança</p>
-        </div>
-        <div className="grupos-footer" id="grupo-4">
-          <h1>Interação com o cliente</h1>
-          <p>Para maiores dúvidas ou esclarecimentos, entre em contato.</p>
-          <h6>Estamos disponíveis de segunda à sexta, das 9h às 17h, exceto feriados.</h6>
-          <button> 
-             <b>ATENDIMENTO</b>
-          </button>
-        </div> 
-        <div id="logo-2">
-            <img src="/images/logo2 copy.png" alt="logo homem" />
-        </div>
-      </footer>
+      
     </>
   );
 };
