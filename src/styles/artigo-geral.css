@@ -394,7 +394,7 @@ margin-top: 18px;
 }
 .seção
 {
-    background-image: url(../Imagens/imagem-s2.png);
+    background-image: url(/artigo-geral/imagem-s2.png);
     width: 1612px;
     height: 557px;
     flex-shrink: 0;
