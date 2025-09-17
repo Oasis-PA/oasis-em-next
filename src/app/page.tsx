@@ -1,31 +1,17 @@
-"use client";
-import {Header, Footer} from "@/components";
-import { useEffect } from "react";
+
+
+import { Header, Footer} from "@/components";
+
 import Image from "next/image";
 import Link from "next/link";
 
-import "@/styles/index.css";
-
 export default function OasisHomepage() {
-  
-  /* ===== INÍCIO: Sistema de recarga ao voltar do cadastro ===== */
-useEffect(() => {
-  // Verifica se o usuário está voltando da página de cadastro
-  const voltandoDoCadastro = sessionStorage.getItem('voltandoDoCadastro');
- 
-  if (voltandoDoCadastro === 'true') {
-    sessionStorage.removeItem('voltandoDoCadastro'); // Remove para evitar loop infinito
-    window.location.reload(); // Recarrega a página apenas uma vez
-  }
-}, []);
-/* ===== FIM: Sistema de recarga ao voltar do cadastro ===== */
-
 
   return (
     <div id="bodyPaginaPrincipal" className="min-h-screen">
       {/* Page 1 */}
       <div id="page1" className="relative">
-        < Header/>
+         <Header/>
 
         <main id="page1Main" className="text-center py-20">
           <p>Tratamentos inovadores</p>
@@ -268,7 +254,7 @@ useEffect(() => {
             </div>
           </nav>
           
-          <article >
+          <article className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
             <figure className="text-center">
               <div className="page3-cortes">
                 <h1>CORTE PIXIE</h1>

@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { redirect, useRouter } from "next/navigation";
-import "@/styles/tela-de-cadastro.css";
+import { useRouter } from "next/navigation";
+import "../../styles/tela de cadastro.css";
 
 export default function TelaCadastroSenha() {
   const [senha, setSenha] = useState("");
@@ -13,12 +13,9 @@ export default function TelaCadastroSenha() {
   const [email, setEmail] = useState("");
   const router = useRouter();
 
-
   // Recupera nome e email da tela 1
   useEffect(() => {
     const dados = sessionStorage.getItem("cadastroTemp");
-    console.log("Lido do sessionStorage:", dados); // debug
-
     if (dados) {
       const { nome, email } = JSON.parse(dados);
       setNome(nome);
@@ -35,13 +32,6 @@ export default function TelaCadastroSenha() {
 
     if (senha !== confirmaSenha) {
       setErro("As senhas não conferem!");
-      return;
-    }
-
-    // valida se aceitou os termos
-    const checkbox = document.getElementById("checkbox-cadastro") as HTMLInputElement;
-    if (!checkbox?.checked) {
-      setErro("Você precisa aceitar os termos para continuar!");
       return;
     }
 
@@ -63,12 +53,10 @@ export default function TelaCadastroSenha() {
       sessionStorage.removeItem("cadastroTemp");
 
       // redireciona para login (ou home)
-      location.href = "/";
-     // router.push("/");
+      router.push("/tela-login");
     } catch (err) {
       setErro("Erro de conexão com servidor.");
     }
-
   };
 
   return (
@@ -125,7 +113,9 @@ export default function TelaCadastroSenha() {
 
             <section id="section-checkbox-cadastro">
               <input type="checkbox" id="checkbox-cadastro" name="checkboxt" />
-              <span>aceito os termos de condição para criação da conta</span>
+              <span>
+                aceito os termos de condição para criação da conta
+              </span>
             </section>
           </form>
         </section>
