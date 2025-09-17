@@ -6,6 +6,10 @@ import Image from "next/image";
 
 import "@/styles/tela-de-cadastro.css"; 
 
+import { LogIn, LogInIcon, LogOutIcon } from "lucide-react";
+import { signIn, signOut, useSession } from "next-auth/react";
+
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -34,6 +38,16 @@ export default function Login() {
       setMensagem("Erro no servidor.");
     }
   }
+
+   const handleLoginClick = async () => {
+      await signIn("google");
+    };
+  
+    const handleLogoutClick = async () => {
+      await signOut();
+    };
+  
+     const { status, data } = useSession();
 
   return (
     <main id="main-margin-login">
@@ -94,16 +108,12 @@ export default function Login() {
         </section>
 
         <section className="botaogoogle">
+           {status === "authenticated" && data?.user && (
+            
+           )  }
           <button type="button">
-            <Image
-              src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/google-color.png"
-              alt="logogoogle"
-              width={30}
-              height={30}
-            />
-            <span className="span-button-continue-google">
-              CONTINUE COM O GOOGLE
-            </span>
+        <LogInIcon onClick={handleLoginClick}/>
+        CONTINUE COM GOOGLE
           </button>
         </section>
 
