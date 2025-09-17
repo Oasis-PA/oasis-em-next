@@ -32,7 +32,10 @@ export async function POST(req: NextRequest) {
 
     // 🔑 Geração do token JWT
     const token = jwt.sign(
-      { id: user.id_usuario, email: user.email },
+      { id: user.id_usuario, 
+        email: user.email, 
+        hasProfile: !!user.nome, // true se já tem nome salvo no perfil
+      },
       process.env.JWT_SECRET!, // precisa definir no .env
       { expiresIn: "7d" }
     );

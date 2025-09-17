@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/styles/Header.module.css'
+import { jwtDecode } from "jwt-decode";
 
 
-export default function Header() {
+interface TokenPayload {
+  id: number;         // id do usuário
+  hasProfile: boolean; // se já tem perfil preenchido ou não
+  exp: number;         // timestamp de expiração do token (vem do JWT)
+}
+
+
+export default function Header() {  
+     const [profileHref, setProfileHref] = useState("/Cadastro1");
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decoded = jwtDecode<TokenPayload>(token);
+
+        // se já tem perfil, vai para editar
+        if (decoded.hasProfile) {
+          setProfileHref("/editar-perfil");
+        } else {
+          setProfileHref("/Cadastro1");
+        }
+      }
+    } catch (err) {
+      console.error("Erro ao ler token:", err);
+      setProfileHref("/login");
+    }
+  }, []);
+
       return(<header className={styles.header}>
       <div className={styles.tudinho}>
         <section className={styles.emCiminha}>
@@ -21,7 +50,7 @@ export default function Header() {
             <Link href="favoritos">
               <Image src="/images/salvo.png" alt="Salvos" width={50} height={50} />
             </Link>
-            <Link href="Cadastro1">
+            <Link href={profileHref}>
               <Image src="/images/perfil.png" alt="Perfil" width={50} height={50} />
             </Link>
           </div>
