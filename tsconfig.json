@@ -23,6 +23,6 @@
       "@/*": ["*"]
     }
   },
-  "include": ["jext-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "teste-prisma.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "teste-prisma.js"],
   "exclude": ["node_modules"]
 }

@@ -1,81 +1,26 @@
-/* src/app/globals.css */
 @import "tailwindcss";
 
- /* Fontes */
-@font-face {
-    font-family: "The Next Font";
-    src: url('/assets/fontes/TheNextFont.ttf') format('truetype') ;
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "Louis George Cafe";
-    src: url('/assets/fontes/Louis George Cafe.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "Louis George Cafe";
-    src: url('/assets/fontes/Louis George Cafe Bold.ttf') format('truetype');
-    font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-    font-family: "PLAYFUL RUNWAY";
-    src: url('/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
-
 :root {
-  /* Variáveis do Next.js/Tailwind */
   --background: #ffffff;
   --foreground: #171717;
-  
-  /* Suas variáveis personalizadas */
-  --body-back: #ffffff;
-  --corpo-texto: #000000; 
-  --header-color: #000000; 
-  --back-header: #fff;
-  --shadow: #f8f4f4;
-  --label: #000000;
-  --footer: #ffffff;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
 
-/*
 @media (prefers-color-scheme: dark) {
   :root {
- Variáveis do Next.js/Tailwind para modo escuro 
     --background: #0a0a0a;
     --foreground: #ededed;
-    
-    /* Suas variáveis para modo escuro
-    --body-back: #0e0e0e;
-    --header-color: #ffffff; 
-    --back-header: #000000;
-    --corpo-texto: #ffffff;
-    --footer: #000000;
-    --shadow: #161616;
-    --label: #f3c11e;
   }
 }
 
-/* Classe para forçar modo escuro 
-.dark:root {
-  --body-back: #0e0e0e;
-  --header-color: #ffffff; 
-  --back-header: #000000;
-  --corpo-texto: #ffffff;
-  --footer: #000000;
-  --shadow: #161616;
-  --label: #f3c11e;
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
-*/
-/* Reset CSS Global */
-* {
-  margin: 0px;
-  padding: 0px;
- 
-}
-
