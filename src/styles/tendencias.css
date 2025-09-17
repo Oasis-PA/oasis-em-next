@@ -1,10 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     width: 100vw;
 }
 
 main {
-    margin-left: 5vw;
-    margin-right: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .primeiro {
@@ -14,7 +22,7 @@ main {
 }
 
 .banner-principal {
-    background-image: url('/src/Imagens/tendencias/img-principal2.png');
+    background-image: url('../../public/images/tendencias/img-principal2.png');
     background-size: 100% auto;
     background-repeat: no-repeat;
     height: 43.5vw;
@@ -53,7 +61,7 @@ main {
     z-index: 2;
     position: relative;
     bottom: 14vw;
-    background-image: url('/src/Imagens/tendencias/img-2.png');
+    background-image: url('../../public/images/tendencias/img-2.png');
     background-repeat: no-repeat;
     background-size: 35.9vw 30vw;
     width: 36vw;
@@ -94,7 +102,7 @@ main {
     display: flex;
     z-index: 3;
     top: 15vw;
-    gap: 1rem;
+    gap: 1vw;
     left: 1.7vw;
     width: 24vw;
 }
@@ -106,11 +114,14 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    border-radius: 20vh;
-    padding: 0.01vw 1vw;
+    border-radius: 20vw;
+    padding: 0.02vw 1vw;
     white-space: nowrap;
     border-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.5);
+    border-width: 0.1vw;
+    border-style: solid;
+    background-color: rgba(192, 192, 192, 0.288);
+    box-shadow: 0vw 0.2vw 0.5vw #00000044;
 }
 
 #salvar {
@@ -168,7 +179,7 @@ main {
 }
 
 .meio button:hover {
-    border-radius: 2px;
+    border-radius: 0.5vw;
     background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
     box-shadow: 0 5px 10.7px 0 #945414;
 }
@@ -182,13 +193,8 @@ main {
 
 
 
-
-
-
-
-
 .banner-terc {
-    background-image: url('/src/Imagens/tendencias/img-3.png');
+    background-image: url('/images/tendencias/img-3.png');
     background-repeat: no-repeat;
     position: relative;
     float: right;
@@ -215,11 +221,14 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    border-radius: 20vh;
-    padding: 0.01vw 1vw;
-    border-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20vw;
+    padding: 0.02vw 1vw;
     white-space: nowrap;
+    border-color: #ffffff;
+    border-width: 0.1vw;
+    border-style: solid;
+    background-color: rgba(192, 192, 192, 0.288);
+    box-shadow: 0vw 0.2vw 0.5vw #00000044;
 }
 
 #tit-3 {
@@ -264,7 +273,7 @@ main {
 
 
 .segundo {
-   background-image: url('/src/Imagens/tendencias/Group\ 465.png');
+   background-image: url('/images/tendencias/group465.png');
    background-size: 100% auto;
    background-repeat: no-repeat;
    width: 85vw;
@@ -316,7 +325,7 @@ main {
     width: 17vw;
     height: 22vw;
     background-repeat: no-repeat;
-    background-image: url('/src/Imagens/tendencias/produ-1.png');
+    background-image: url('/images/tendencias/produ-1.png');
     background-size: 14vw;
     z-index: 1;
     position: relative;
@@ -326,7 +335,7 @@ main {
     width: 17vw;
     height: 22vw;
     background-repeat: no-repeat;
-    background-image: url('/src/Imagens/tendencias/produ-2.png');
+    background-image: url('/images/tendencias/produ-2.png');
     background-size: 14vw;
     z-index: 1;
     position: relative;
@@ -336,7 +345,7 @@ main {
     width: 17vw;
     height: 22vw;
     background-repeat: no-repeat;
-    background-image: url('/src/Imagens/tendencias/produ-3.png');
+    background-image: url('/images/tendencias/produ-3.png');
     background-size: 14vw;
     z-index: 1;
     position: relative;
@@ -555,21 +564,19 @@ main {
 
 
 .terceiro {
-    position: relative;
     display: flex;
     justify-content: space-between;
-    width: 100vw;
-    height: 34vw;
-    top: 5vw;
+    padding-top: 8vw;
+    width: 100%;
+    height: auto;
 }
 
 .esq {
-    background-image: url('/src/Imagens/tendencias/princip-3.png');
+    background-image: url('/images/tendencias/princip-3.png');
     width: 49%;
     height: auto;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -589,17 +596,10 @@ main {
 }
 
 .dir {
-    position: relative;
     width: 48%;
-
-}
-
-#uno {
     display: flex;
-}
-
-#linha {
-    background-color: #000;
+    flex-direction: column;
+    gap: 1.6vw;
 }
 
 #tit-6 {
@@ -611,10 +611,17 @@ main {
     line-height: normal;
 }
 
+#uno {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1.6vw;
+    border-bottom: 1px solid black;
+}
+
 #uno p {
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: 2vw;
+    font-size: 2.4vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -622,4 +629,234 @@ main {
     left: 2vw;
     display: flex;
     align-items: center;
+}
+
+#uno img {
+    width: 4vw;
+    height: 4vw;
+}
+
+#linha {
+    background-color: #727272;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+
+.quarto{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    margin-top: 7vw;
+}
+
+#outro-titulo {
+    color: #000;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 5.73vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+}
+
+.imagenszinas {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 3vw;
+}
+
+.esqui{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sec-1{
+    display: flex;
+    gap: 2vw;
+}
+
+.sec-2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.deitada{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.diri{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5vw;
+    margin-left: 2vw;
+}
+.diri-baixo{
+    display: flex;
+    justify-content: space-between;
+}
+.sec-1 div, .deitada div, .diri-baixo div, .diri-topo div, .empé {
+    background-size: cover;
+    background-position: center;
+}
+
+.img-2 {
+    width: 35.625dvw;
+    height: 12.55dvw;
+    background-image: url('/images/tendencias/imagem-2.png');
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.elementos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.cima {
+    display: flex;
+    justify-content: space-between;
+    margin: 4% 4% 0% 4%;
+}
+
+.centro {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+.butaos {
+    display: flex;
+    gap: 1vw;
+    margin-bottom: 2%;
+}
+
+.butaos button {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 20vw;
+    padding: 0.02vw 1vw;
+    white-space: nowrap;
+    border-color: #ffffff;
+    border-width: 0.1vw;
+    border-style: solid;
+    background-color: rgba(192, 192, 192, 0.288);
+    box-shadow: 0vw 0.2vw 0.5vw #00000044;
+}
+
+#tit-7 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2vw; 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 90%;
+}
+
+#tit-8 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 1.6vw; 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 90%;
+}
+
+#data-3 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#salvar-3 {
+    width: 1.26vw;
+    height: 1.69vw;
+}
+
+
+
+.img-3 {
+    width: 16.15dvw;
+    height: 12.55dvw;
+    background-image: url('/images/tendencias/imagem-3.png');
+}
+
+.empé {
+    width: 25.57dvw;
+    height: 31.20dvw;
+    background-image: url('/images/tendencias/imagem-1.png');
+}
+
+.img-4 {
+    width: 25.57dvw;
+    height: 14.32dvw;
+    background-image: url('/images/tendencias/imagem-4.png');
+}
+
+.img-5 {
+    width: 25.57dvw;
+    height: 14.32dvw;
+    background-image: url('/images/tendencias/imagem-5.png');
+}
+
+.img-6 {
+    width: 28.91dvw;
+    height: 34.69dvw;
+    background-image: url('/images/tendencias/imagem-6.png');
+}
+
+.img-7 {
+    width: 16.09dvw;
+    height: 10.19dvw;
+    background-image: url('/images/tendencias/imagem-7.png');
+}
+
+.img-8 {
+    width: 11.56dvw;
+    height: 10.19dvw;
+    background-image: url('/images/tendencias/imagem-8.png');
+}
+
+
+
+footer {
+    margin-top: 7vw;
+    background-color: #343434;
+    width: 100%;
+    height: 17vw;
+}
+
+footer p {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 2vw;
 }

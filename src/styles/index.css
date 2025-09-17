@@ -2,7 +2,23 @@
     margin: 0px;
     padding: 0px;
 }
-
+@font-face {
+  font-family: 'PLAYFUL RUNWAY';
+  src: url('/path/to/your/font/PlayfulRunway.woff2') format('woff2');
+  /* Add other font faces like 'THE NEXT FONT' and 'Louis George Cafe' */
+}
+@font-face {
+  font-family: 'PLAYFUL RUNWAY';
+  src: url('/fonts/PlayfulRunway.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'THE NEXT FONT';
+  src: url('/fonts/TheNextFont.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Louis George Cafe';
+  src: url('/fonts/LouisGeorgeCafe.woff2') format('woff2');
+}
 .botoes
 {
    border: none;
@@ -168,8 +184,8 @@ background-clip: text;
     height: 100%;
     /* CORRIGIDO: Remover ou atualizar este caminho */
 background: url("/images/tela-principal/page1/page1-imagem1.svg");
-
-    background-size: 1920px;
+   background-size: auto;
+ 
     background-repeat: no-repeat;
     gap: 20px;
     transition: background-image 0.5s ease-in-out;
@@ -838,7 +854,7 @@ height: 36px;
     max-width: 1920px;
     height: 1174px;
     /* CORRIGIDO: Atualizar este caminho se necessário */
-    background: url('/images/page9-background.png');
+    background: url('/images/tela-principal/page9/page9-background.png');
 }
 
 #page9>figure {
