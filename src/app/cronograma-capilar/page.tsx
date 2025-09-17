@@ -20,7 +20,7 @@ const CronogramaCapilar: React.FC = () => {
       <section className="firula">
         <div id="ajuda">
           <div className="texto">
-            <p className="precisa">Precisa de ajuda com o seu cabelo?</p>
+            <p className="precisa">Precisa de ajuda com o <br />seu cabelo?</p>
             <p className="nossa">Nossa página de Cronograma Capilar te ajuda a identificar o que seu cabelo precisa — hidratação, nutrição ou reconstrução — e montar uma rotina de cuidados simples, eficaz e personalizada. Assim, você escolhe os produtos certos, organiza sua semana e conquista fios mais saudáveis, fortes e bonitos.</p>
           </div>
         </div>

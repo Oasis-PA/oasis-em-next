@@ -78,7 +78,12 @@ html, body {
 }
 
 .ola {
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(4.8rem, 5.8vw, 5.8rem);
+  color: #000;
+  font-family: "PLAYFUL RUNWAY";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 102.185%; /* 112.404px */
 }
 
 .veja {
@@ -119,7 +124,8 @@ html, body {
   background-color: #5E332C;
   padding: 2.5rem; /* Unidade mais consistente */
   z-index: 2;
-  width: 100%;
+  width: 90vw;
+  align-self: center;
 }
 
 .precisa {
@@ -133,7 +139,7 @@ html, body {
 .nossa {
   color: white;
   font-family: var(--font-text);
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   line-height: 1.5;
 }
 
@@ -143,11 +149,27 @@ html, body {
 }
 
 .amarelo {
-  margin-top: -30vh;
+
+  margin-top: -50vh;
   z-index: 1;
-  bottom: 0;
-  width: 17vw;
-  height: 45vh;
+  width: 30vw;
+  height: 75vh;
+  margin-left: -10vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .amarelo, .folhas {
+    width: 20vw;
+    height: 58vh;
+    margin-top: -50vh;
+    margin-left: -5vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .amarelo, .folhas {
+    display: none;
+  }
 }
 
 .folhas {
@@ -403,30 +425,66 @@ html, body {
   flex-wrap: wrap; /* RESPONSIVO */
 }
 
-#esquerda, #direita {
+#esquerda {
   display: flex;
   flex-direction: column;
   gap: 3.5vh;
 }
-
+#direita{
+  display: flex;
+  flex-direction: row;
+  gap: 4.5vh;
+  align-items: center;
+}
 #progresso {
   background-color: white;
   width: 35vw;
+  height: 25vh;
+  border-radius: 6%;
+  padding: 1vw;
   min-width: 300px;
-  max-width: 500px;
   border-radius: 15px;
   padding: 1.5rem;
+
+}
+@media screen and (max-width: 1024px) {
+  #progresso {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    padding: 1rem;
+  }
 }
 
+@media screen and (max-width: 768px) {
+  #progresso {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #progresso {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    padding: 0.7rem;
+  }
+}
 #percentagem {
   font-family: var(--font-primary);
   font-size: clamp(3rem, 5vw, 4rem);
 }
 #prog { display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
 #semanal_seta { display: flex; flex-direction: row; }
+.setinha{
+  cursor: pointer;
+}
 #semanal { font-family: var(--font-secondary); font-size: clamp(1rem, 1.2vw, 1.4rem); }
 #progresso_cronograma { font-family: var(--font-primary); font-size: clamp(1.5rem, 2.1vw, 2rem); }
-#barra_de_progresso { width: 100%; height: 25px; border-radius: 40px; background: linear-gradient(90deg, #5F0B38 54%, #FFEEF7 54%); }
+#barra_de_progresso { width: 100%; height: 25px; border-radius: 40px; background: linear-gradient(90deg, #5F0B38 0%, #FFEEF7 67.7%); }
 
 #oleos_e_dicas { display: flex; flex-direction: row; gap: 3vw; flex-wrap: wrap; }
 #oleos, #dicas { width: 16vw; min-width: 250px; height: 400px; border-radius: 15px; }
@@ -452,40 +510,117 @@ html, body {
 .sub2 { font-family: "The Next Font"; font-size: 1.1rem; }
 
 #hidratante_e_logo { display: flex; flex-direction: column; gap: 4.5vh; }
+@media screen and (max-width: 768px) {
+  #hidratante_e_logo {
+    flex-direction: row;
+    gap: 2vw;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #hidratante_e_logo {
+    flex-direction: row;
+    gap: 2vh;
+    align-items: stretch;
+    width: 100%;
+  }
+}
 #hidratante { display: flex; flex-direction: column; justify-content: center; padding: 1rem; border-radius: 15px; width: 14vw; min-width: 250px; height: auto; background-color: white; }
 .hidratante { width: 100%; height: 200px; object-fit: contain; }
 #logo { display: flex; justify-content: center; border-radius: 15px; width: 14vw; min-width: 250px; background-color: #5E332C; }
+
 .homem_garfo { width: 100%; height: auto; object-fit: cover; border-radius: 15px; }
 #shampoos {
   background: url(../../public/images/Cronograma-capilar/barra.png) no-repeat center center;
   background-size: cover;
   width: 20vw;
   min-width: 280px;
-  height: 600px;
+  height: 675px;
   border-radius: 15px;
   color: #000000;
   font-family: 'The Next Font';
   font-size: clamp(1.8rem, 2.5vw, 2.5rem);
   padding: 1rem;
 }
+@media screen and (max-width: 1024px) {
+  #shampoos {
+    width: 100%;
+    min-width: unset;
+    height: 500px;
+    
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #shampoos {
+    width: 100%;
+    min-width: unset;
+    height: 400px;
+    
+    
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #shampoos {
+    width: 100%;
+    min-width: unset;
+    height: 320px;
+    
+    
+  }
+}
 .Salon_Line { margin-top: 1rem; display: flex; flex-direction: row; justify-content: space-between; }
 .favorito { width: 24px; height: 24px; cursor: pointer; }
 .sub3 { font-family: "The Next Font"; font-size: 1.1rem; }
 
 #cores {
-  margin-top: -15vh;
+  
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0 2vw;
-  position: relative;
-  z-index: -1;
+  background-color: #FAF5FF;
+  z-index: 1;
 }
-.cor { /* Renomeado de #cor para .cor para ser reutilizável */
+.cor { 
   width: 14vw;
-  height: 4vh;
+  height: 10vh;
+}
+@media screen and (max-width: 1024px) {
+  #cores {
+    flex-direction: column;
+    align-items: center;
+    padding: 1vw 0;
+  }
+  .cor {
+    width: 40vw;
+    height: 7vh;
+    margin-bottom: 1vh;
+  }
 }
 
+@media screen and (max-width: 768px) {
+  #cores {
+    flex-direction: column;
+    align-items: center;
+    padding: 1vw 0;
+  }
+  .cor {
+    width: 60vw;
+    height: 6vh;
+    margin-bottom: 1vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #cores {
+    display: none;
+  }
+}
 
 /* ================================== */
 /* MEDIA QUERIES PARA RESPONSIVIDADE  */
@@ -591,6 +726,7 @@ html, body {
 
   #cores {
     display: none; /* Esconde as barras coloridas que não se adaptam bem */
+    z-index: 1;
   }
 }
 
