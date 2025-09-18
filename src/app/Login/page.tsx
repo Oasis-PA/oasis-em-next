@@ -108,13 +108,10 @@ export default function Login() {
         </section>
 
         <section className="botaogoogle">
-           {status === "authenticated" && data?.user && (
-            
-           )  }
-          <button type="button">
-        <LogInIcon onClick={handleLoginClick}/>
-        CONTINUE COM GOOGLE
-          </button>
+        <button type="button" onClick={handleLoginClick}>
+          <LogInIcon />
+          CONTINUE COM GOOGLE
+        </button>
         </section>
 
         <Link href="/Cadastro1">
