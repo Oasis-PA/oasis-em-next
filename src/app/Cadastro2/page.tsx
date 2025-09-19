@@ -86,11 +86,11 @@ export default function TelaCadastroSenha() {
       <main id="main-margin-cadastro2">
         <section>
           <h1>Agora, crie sua senha!</h1>
-          <p>
-            sua senha deve ser <strong>forte</strong>, contendo números,{" "}
-            <br className="hide-on-mobile" /> letras maiúsculas e minúsculas e
-            caracteres.
-          </p>
+         <p>
+  Recomenda-se que sua senha seja <strong>forte</strong>, combinando números, 
+  <br className="hide-on-mobile" /> letras maiúsculas e minúsculas, e caracteres especiais, para garantir maior segurança.
+</p>
+
 
           <form onSubmit={handleSubmit}>
             <label htmlFor="senha">Senha</label>
