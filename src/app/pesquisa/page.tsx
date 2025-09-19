@@ -1,0 +1,141 @@
+import React from 'react';
+import Link from 'next/link';
+
+// Importando a folha de estilos. Ajuste o caminho se necessário.
+import '@/styles/pesquisa.css';
+import image from 'next/image';
+// Componente reutilizável para o ícone de "salvar"
+const SaveIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
+    <path d="M14 0H1.75C1.28587 0 0.840752 0.184374 0.512563 0.512563C0.184374 0.840752 0 1.28587 0 1.75V21C7.76971e-05 21.1562 0.0419427 21.3094 0.121251 21.444C0.200559 21.5785 0.31442 21.6893 0.451018 21.765C0.587617 21.8406 0.741976 21.8784 0.898076 21.8743C1.05418 21.8701 1.20633 21.8243 1.33875 21.7416L7.875 17.6564L14.4123 21.7416C14.5447 21.824 14.6968 21.8696 14.8527 21.8736C15.0087 21.8776 15.1628 21.8398 15.2992 21.7642C15.4357 21.6885 15.5494 21.5778 15.6287 21.4434C15.7079 21.3091 15.7498 21.156 15.75 21V1.75C15.75 1.28587 15.5656 0.840752 15.2374 0.512563C14.9092 0.184374 14.4641 0 14 0ZM14 19.4217L8.33766 15.8834C8.19859 15.7965 8.0379 15.7504 7.87391 15.7504C7.70991 15.7504 7.54922 15.7965 7.41016 15.8834L1.75 19.4217V1.75H14V19.4217Z" fill="black"/>
+  </svg>
+);
+
+const PesquisaPage: React.FC = () => {
+  return (
+    <main> 
+      <section className="Primeira-parte"> 
+        <label htmlFor="search">
+          <svg id="lupa" xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+            <path d="M31.9877 30.2632L24.3599 22.6369C26.5707 19.9826 27.6732 16.5782 27.4379 13.1317C27.2026 9.68534 25.6477 6.46232 23.0966 4.13316C20.5455 1.804 17.1946 0.548028 13.7411 0.626516C10.2875 0.705003 6.99721 2.11191 4.55456 4.55456C2.11191 6.99721 0.705003 10.2875 0.626516 13.7411C0.548028 17.1946 1.804 20.5455 4.13316 23.0966C6.46232 25.6477 9.68534 27.2026 13.1317 27.4379C16.5782 27.6732 19.9826 26.5707 22.6369 24.3599L30.2632 31.9877C30.3764 32.101 30.5109 32.1908 30.6588 32.2521C30.8068 32.3134 30.9653 32.3449 31.1255 32.3449C31.2856 32.3449 31.4442 32.3134 31.5921 32.2521C31.7401 32.1908 31.8745 32.101 31.9877 31.9877C32.101 31.8745 32.1908 31.7401 32.2521 31.5921C32.3134 31.4442 32.3449 31.2856 32.3449 31.1255C32.3449 30.9653 32.3134 30.8068 32.2521 30.6588C32.1908 30.5109 32.101 30.3764 31.9877 30.2632ZM3.09422 14.063C3.09422 11.8936 3.73753 9.77286 4.94279 7.96906C6.14805 6.16526 7.86113 4.75937 9.86541 3.92917C11.8697 3.09897 14.0751 2.88175 16.2029 3.30498C18.3306 3.72821 20.285 4.77288 21.819 6.30689C23.3531 7.8409 24.3977 9.79534 24.821 11.9231C25.2442 14.0508 25.027 16.2563 24.1968 18.2605C23.3666 20.2648 21.9607 21.9779 20.1569 23.1832C18.3531 24.3884 16.2324 25.0317 14.063 25.0317C11.1549 25.0285 8.3668 23.8718 6.31045 21.8155C4.25411 19.7591 3.09745 16.9711 3.09422 14.063Z" fill="#696969"/>
+          </svg>
+          <input type="text" placeholder="Pesquisar..." />
+          <svg id="x" xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+            <path d="M26.5315 16.2815L22.3114 20.5L26.5315 24.7185C26.6505 24.8376 26.745 24.9789 26.8094 25.1344C26.8738 25.2899 26.907 25.4566 26.907 25.625C26.907 25.7934 26.8738 25.9601 26.8094 26.1156C26.745 26.2711 26.6505 26.4124 26.5315 26.5315C26.4125 26.6505 26.2711 26.745 26.1156 26.8094C25.9601 26.8738 25.7934 26.907 25.625 26.907C25.4567 26.907 25.29 26.8738 25.1344 26.8094C24.9789 26.745 24.8376 26.6505 24.7185 26.5315L20.5 22.3114L16.2815 26.5315C16.1625 26.6505 16.0211 26.745 15.8656 26.8094C15.7101 26.8738 15.5434 26.907 15.375 26.907C15.2067 26.907 15.04 26.8738 14.8844 26.8094C14.7289 26.745 14.5876 26.6505 14.4685 26.5315C14.3495 26.4124 14.2551 26.2711 14.1906 26.1156C14.1262 25.9601 14.093 25.7934 14.093 25.625C14.093 25.4566 14.1262 25.2899 14.1906 25.1344C14.2551 24.9789 14.3495 24.8376 14.4685 24.7185L18.6886 20.5L14.4685 16.2815C14.2281 16.0411 14.093 15.715 14.093 15.375C14.093 15.035 14.2281 14.7089 14.4685 14.4685C14.7089 14.2281 15.035 14.093 15.375 14.093C15.715 14.093 16.0411 14.2281 16.2815 14.4685L20.5 18.6886L24.7185 14.4685C24.8376 14.3495 24.9789 14.255 25.1344 14.1906C25.29 14.1262 25.4567 14.093 25.625 14.093C25.7934 14.093 25.9601 14.1262 26.1156 14.1906C26.2711 14.255 26.4125 14.3495 26.5315 14.4685C26.6505 14.5876 26.745 14.7289 26.8094 14.8844C26.8738 15.0399 26.907 15.2067 26.907 15.375C26.907 15.5433 26.8738 15.7101 26.8094 15.8656C26.745 16.0211 26.6505 16.1624 26.5315 16.2815ZM37.1563 20.5C37.1563 23.7943 36.1794 27.0146 34.3492 29.7537C32.519 32.4928 29.9176 34.6277 26.8741 35.8884C23.8305 37.149 20.4815 37.4789 17.2505 36.8362C14.0195 36.1935 11.0517 34.6072 8.72226 32.2777C6.39284 29.9483 4.80649 26.9805 4.1638 23.7495C3.52112 20.5185 3.85097 17.1695 5.11164 14.1259C6.37231 11.0824 8.50718 8.48105 11.2463 6.65083C13.9854 4.82062 17.2057 3.84375 20.5 3.84375C24.9161 3.84841 29.15 5.60476 32.2726 8.7274C35.3952 11.85 37.1516 16.0839 37.1563 20.5ZM34.5938 20.5C34.5938 17.7125 33.7672 14.9876 32.2185 12.6699C30.6699 10.3522 28.4687 8.5458 25.8935 7.47907C23.3182 6.41235 20.4844 6.13325 17.7505 6.67706C15.0165 7.22087 12.5053 8.56317 10.5342 10.5342C8.56318 12.5053 7.22088 15.0165 6.67706 17.7504C6.13325 20.4844 6.41236 23.3181 7.47908 25.8934C8.5458 28.4687 10.3522 30.6699 12.6699 32.2185C14.9876 33.7672 17.7125 34.5938 20.5 34.5938C24.2366 34.5895 27.8189 33.1033 30.4611 30.4611C33.1033 27.8189 34.5895 24.2366 34.5938 20.5Z" fill="#797979"/>
+          </svg>
+        </label>
+        <div className="caixa-de-filtros">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M19.25 11C19.25 11.1823 19.1776 11.3572 19.0486 11.4861C18.9197 11.6151 18.7448 11.6875 18.5625 11.6875H11.6875V18.5625C11.6875 18.7448 11.6151 18.9197 11.4861 19.0486C11.3572 19.1776 11.1823 19.25 11 19.25C10.8177 19.25 10.6428 19.1776 10.5139 19.0486C10.3849 18.9197 10.3125 18.7448 10.3125 18.5625V11.6875H3.4375C3.25516 11.6875 3.0803 11.6151 2.95136 11.4861C2.82243 11.3572 2.75 11.1823 2.75 11C2.75 10.8177 2.82243 10.6428 2.95136 10.5139C3.0803 10.3849 3.25516 10.3125 3.4375 10.3125H10.3125V3.4375C10.3125 3.25516 10.3849 3.0803 10.5139 2.95136C10.6428 2.82243 10.8177 2.75 11 2.75C11.1823 2.75 11.3572 2.82243 11.4861 2.95136C11.6151 3.0803 11.6875 3.25516 11.6875 3.4375V10.3125H18.5625C18.7448 10.3125 18.9197 10.3849 19.0486 10.5139C19.1776 10.6428 19.25 10.8177 19.25 11Z" fill="#424141"/>
+          </svg>
+          <p>Adicionar Filtro</p>
+        </div>
+      </section>
+
+      <nav>
+        <div className="cartegorias" id="primeiro"> 
+          <Link href="#">Artigos</Link>
+          <p>37</p>
+        </div>
+        <div className="cartegorias"> 
+          <Link href="#">Produtos</Link>
+          <p>63</p>
+        </div>
+        <div className="cartegorias"> 
+          <Link href="#">Salvos</Link>
+          <p>8</p>
+        </div>
+      </nav>
+      
+      <img src="/images/pesquisa/Line 67.png" alt="" />
+        
+      <section className="Artigos">
+        <div className="teste">
+          <div className="grupo-2">
+            <img src="/images/pesquisa/img.png" alt="" />
+            <p className="data">13 jan 2025</p>
+            <SaveIcon />
+            <h4>Coleção verão Farm 2025</h4>
+            <p className="descrição">“Pra quem adora o novo mas não abre mão do original, chegou a coleção de Verão oficial da Farm Rio 2025...</p>
+            <div className="Cartegorias-ladodireito">
+              <p>Moda</p>
+              <p>Marcas</p>
+            </div>
+          </div>
+          <div className="grupo-2">
+            <img src="/images/pesquisa/creme.png" alt="" />
+            <p className="data">13 jan 2025</p>
+            <SaveIcon />
+            <h4>Coleção verão Farm 2025</h4>
+            <p className="descrição">“Pra quem adora o novo mas não abre mão do original, chegou a coleção de Verão oficial da Farm Rio 2025...</p>
+            <div className="Cartegorias-ladodireito">
+              <p>Moda</p>
+              <p>Marcas</p>
+            </div>
+          </div>
+          <div className="grupo-2">
+            <img src="/images/pesquisa/oleo.png" alt="" />
+            <p className="data">13 jan 2025</p>
+            <SaveIcon />
+            <h4>Coleção verão Farm 2025</h4>
+            <p className="descrição">“Pra quem adora o novo mas não abre mão do original, chegou a coleção de Verão oficial da Farm Rio 2025...</p>
+            <div className="Cartegorias-ladodireito">
+              <p>Moda</p>
+              <p>Marcas</p>
+            </div>
+          </div>
+          <div className="grupo-2">
+            <img src="/images/pesquisa/kit.png" alt="" />
+            <p className="data">13 jan 2025</p>
+            <SaveIcon />
+            <h4>Coleção verão Farm 2025</h4>
+            <p className="descrição">“Pra quem adora o novo mas não abre mão do original, chegou a coleção de Verão oficial da Farm Rio 2025...</p>
+            <div className="Cartegorias-ladodireito">
+              <p>Moda</p>
+              <p>Marcas</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grupo-1">
+          <p>19 jun 2024</p>
+          <SaveIcon />
+          <h4>OS DILEMAS DO SÉCULO XXI: QUAL CREME COMPRAR?</h4>
+          <div className="Cartegorias">
+            <p id="c1">Cabelo</p> 
+            <p id="c2">Cremes e óleos</p>
+            <p id="c3">Produtos</p>
+          </div>
+          <img src="/images/pesquisa/homi.png" alt="Quais cremes comprar?" />
+        </div>
+
+        <div className="teste2"> 
+          <div className="grupo-2">
+            <img src="/images/pesquisa/limpeza.png" alt="Limpeza Facial" />
+            <p className="data">13 jan 2025</p>
+            <SaveIcon />
+            <h4>Coleção verão Farm 2025</h4>
+            <p className="descrição">“Pra quem adora o novo mas não abre mão do original, chegou a coleção de Verão oficial da Farm Rio 2025...</p>
+            <div className="Cartegorias-ladodireito">
+              <p>Moda</p>
+              <p>Marcas</p>
+            </div>
+          </div>
+          <div className="grupo-2">
+            <img src="/images/pesquisa/colecao.png" alt="Coleção Farm" />
+            <p className="data">13 jan 2025</p>
+            <SaveIcon />
+            <h4>Coleção verão Farm 2025</h4>
+            <p className="descrição">“Pra quem adora o novo mas não abre mão do original, chegou a coleção de Verão oficial da Farm Rio 2025...</p>
+            <div className="Cartegorias-ladodireito">
+              <p>Moda</p>
+              <p>Marcas</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default PesquisaPage;
