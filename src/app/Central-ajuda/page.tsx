@@ -11,7 +11,7 @@ export default function CentralDeAjuda() {
   return (
     <>
 
-    <main>
+   <main>
       <h1>header aq qnd resolverem fazer um né</h1>
     </main>
 
@@ -48,8 +48,7 @@ export default function CentralDeAjuda() {
       </div>
     </section>
 
-    <section id="fundo-marrom">
-      <section id="s3">
+    <section id="s3">
         <div className="d5">
           <p>PERGUNTAS FREQUENTES</p>
         </div>
@@ -58,6 +57,9 @@ export default function CentralDeAjuda() {
           <p className="p2">• Para se cadastrar, clique no botão no topo de página, preencha os campos
             obrigatórios e confirme seu e-mail. Em poucos passos, sua conta estará pronta para uso!</p>
         </div>
+
+        <section id="fundo-marrom"></section>
+
         <div id="d7">
           <h3>PROBLEMAS COM LOGIN?</h3>
           <p className="p2">• Caso não consiga acessar sua conta, verifique se o e-mail e a senha
@@ -78,9 +80,7 @@ export default function CentralDeAjuda() {
           <p className="p2">• Sua opinião é essencial para melhorarmos nossos serviços. Compartilhe
             sugestões, elogios ou críticas conosco. Agradecemos sua participação!</p>
         </div>
-      </section>
-    </section>
-  
+      </section> 
     </>
   );
 }
