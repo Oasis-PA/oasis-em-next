@@ -224,12 +224,7 @@ const CronogramaCapilar: React.FC = () => {
         </div>
       </section>
 
-      <section id="cores">
-        <img className="cor" src="/images/Cronograma-capilar/Retangulo_amarelo.png" alt="Forma amarela" />
-        <img className="cor" src="/images/Cronograma-capilar/Retangulo_sem_borda.png" alt="Forma rosa" />
-        <img className="cor" src="/images/Cronograma-capilar/Retangulo_roxo.png" alt="Forma roxa" />
-        <img className="cor" src="/images/Cronograma-capilar/Retangulo_verde.png" alt="Forma verde" />
-      </section>
+      
      
       <Script 
         src="/cronograma-capilar.js" 
