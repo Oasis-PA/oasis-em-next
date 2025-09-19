@@ -606,7 +606,7 @@ footer {
 
 @font-face {
     font-family: "Next Font";
-    src: url(Fontes/TheNextFont.ttf);
+    src: url(/public/assets/fontes/TheNextFont.ttf);
     font-weight: normal;
     font-style: normal;
 }
