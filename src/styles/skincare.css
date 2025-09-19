@@ -103,7 +103,7 @@ header iframe {
 header {
     width: 100%;
 
-    background-image: url('../src/Imagens/skincare.png');
+    background-image: url('/images/skincare.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
