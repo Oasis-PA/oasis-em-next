@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #5E332C;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+main {
+    background-color: white;
+    border-radius: 2vw;
+    box-sizing: border-box;
+    width: 96vw;
+    height: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2vw;
+}
+
+
+
+
+
+
+
+.esquerda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5E332C;
+    width: 50%;
+    height: 95%;
+    border-radius: 2vw 0 0 2vw;
+    margin-left: 1.5vw;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    height: 95%;
+}
+
+.seta {
+    display: flex;
+    align-items: center;
+    width: 22vw;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.seta img {
+    width: 2.3rem;
+    height: 2rem;
+}
+
+.seta p {
+    color: #AAA;
+    font-family: "Louis George Cafe";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: text-decoration 1s ease, color 0.3s ease;
+}
+
+.seta p:hover {
+    color: #e6e6e6;
+    text-decoration: underline;
+    text-underline-offset: 5%;
+    text-decoration-color: #F2A518;
+    text-decoration-thickness: 0.1rem;
+}
+
+.esquerda h1 {
+    color: #F2A518;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 12rem;
+}
+
+.esquerda h2 {
+    color: #ffffff;
+    font-family: "The Next Font";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 30rem;
+}
+
+.esquerda h3 {
+    color: #F2A518;
+    font-family: "Louis George Cafe";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 11rem;
+}
+
+#logo {
+    width: 7rem;
+    height: 4rem;
+}
+
+
+
+
+
+
+.direita {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 95%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.direita img {
+    margin-top: 2rem;
+    width: 35rem;
+}
+
+.respostas {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    width: 75%;
+    height: 40%;
+    margin-bottom: 2vw;
+}
+
+.direita label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-1, 1rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 0.15rem solid #F2A518;
+    border-radius: 0.8rem;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 1.3rem;
+    height: 1.3rem;
+    border: 0.4rem solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
+    outline: 0.15rem solid #F2A518;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+input[type="radio"]:checked {
+    background-color: #F2A518;
+    border: 4px solid white;
+}
+
+.botoes {
+    display: flex;
+    gap: 2rem;
+}
+
+#number_one {
+    display: flex;
+    width: 8rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #F2A518;
+    font-family: "The Next Font";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 0.15rem solid #F2A518;
+    border-radius: 0.8rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#number_two {
+    display: flex;
+    width: 8rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #ffffff;
+    font-family: "The Next Font";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 0.15rem solid #F2A518;
+    border-radius: 0.8rem;
+    background-color: #F2A518;
+    cursor: pointer;
+}

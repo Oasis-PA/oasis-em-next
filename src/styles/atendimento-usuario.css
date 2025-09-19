@@ -321,7 +321,7 @@ aside{
 }
 
 aside>figure{
-  background: url(../imagens/Imagem-pagina-parceria.png);
+  background: url(/images/Imagem-pagina-parceria.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

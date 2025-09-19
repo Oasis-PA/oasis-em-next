@@ -658,10 +658,3 @@ footer>#grupo-4>button{
     margin-right: 4px;
     transform: translate(-100px, -2px);
 }
-
-@font-face{
-    font-family:  "Next Font", times, serif ;
-    src: url(Fontes/TheNextFont.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
