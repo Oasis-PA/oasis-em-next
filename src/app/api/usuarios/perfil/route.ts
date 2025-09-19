@@ -19,6 +19,7 @@ export async function GET(req: NextRequest) {
         nome: true,
         sobrenome: true,
         email: true,
+        sobre: true,
       },
     });
 

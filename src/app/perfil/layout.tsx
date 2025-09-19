@@ -4,13 +4,8 @@ import React, { useState } from "react";
 
 import "../../styles/editar-perfil.css";
 
-interface LayoutProps {
- children: React.ReactNode;
-  onSave?: () => void;   // salvar
-  onReset?: () => void;  // redefinir
-}
 
-export default function Layout({ children, onSave, onReset }: LayoutProps) {
+export default function Layout({ children }: React.PropsWithChildren<{}>) {
   const [menuOpen, setMenuOpen] = useState(false);
 
    return (
@@ -39,10 +34,7 @@ export default function Layout({ children, onSave, onReset }: LayoutProps) {
       <div className="layout-content">{children}</div>
 
       {/* Footer fixo */}
-      <footer>
-        <button type="button" onClick={onReset}>Redefinir</button>
-        <button type="button" onClick={onSave}>Salvar</button>
-      </footer>
+    
     </div>
   );
 }
