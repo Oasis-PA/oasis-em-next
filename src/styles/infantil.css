@@ -6,7 +6,7 @@
 
 body {
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: auto;
     background-color: var(--body-back);
     align-items: center;
@@ -14,14 +14,13 @@ body {
     justify-content: center;
 }
 
-html, body {
-    width: 100vw;
+html {
     overflow-x: hidden;
 }
 
 main {
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: auto;
     justify-content: center;
     align-items: center;
@@ -29,7 +28,7 @@ main {
 
 #d1 {
     background-image: url('../../public/images/infantil/banner.png');
-    width: 100vw;
+    width: 100%;
     height: 50vw;
     background-size: cover;
     background-repeat: no-repeat;
@@ -38,18 +37,18 @@ main {
 #d1 > h1 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: 5.208333333333334vw;
+    font-size: 6.25rem;
     font-weight: 400;
-    width: 74vw;
-    margin-top: 6.983333333333334vw;
-    margin-left: 7.341666666666668vw;
+    width: 80%;
+    margin-top: 6.983333333333334rem;
+    margin-left: 7.341666666666668rem;
     line-height: 1.0;
 }
 
 #span1 {
     color: #DEFF8F;
     font-family: "The Next Font";
-    font-size: 5.208333333333334vw;
+    font-size: 6.25rem;
     font-weight: 400;
     line-height: 1.0;
 }
@@ -57,7 +56,7 @@ main {
 #span2 {
     color: #E79EEB;
     font-family: "The Next Font";
-    font-size: 5.208333333333334vw;
+    font-size: 6.25rem;
     font-weight: 400;
     line-height: 1.0;
 }
@@ -65,7 +64,7 @@ main {
 #span3 {
     color: #ECC46F;
     font-family: "The Next Font";
-    font-size: 5.208333333333334vw;
+    font-size: 6.25rem;
     font-weight: 400;
     line-height: 1.0;
 }
@@ -74,36 +73,37 @@ main {
     color: #FFF;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: 2.34375vw;
+    font-size: 2.34375rem;
     font-weight: 400;
-    line-height: 2.083333333333333vw;
-    width: 62.708333333333336vw;
-    margin-left: 7.341666666666668vw;
-    margin-top: 1vw;
+    line-height: 2.083333333333333rem;
+    width: 62.708333333333336rem;
+    margin-left: 7.341666666666668rem;
+    margin-top: 1rem;
 }
 
 #s1 {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     height: auto;
     margin-top: 6.6vw;
 }
 
 #s1 > h1 {
     font-family: "PLAYFUL RUNWAY";
-    font-size: 5.208333333333334vw;
+    font-size: 6.25rem;
     font-weight: 400;
-    margin-left: 7.808333333333333vw;
+    margin-left: 7.808333333333333rem;
 }
 
 #s1 > p {
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: 1.822916666666667vw;
+    font-size: 2.1875rem;
     font-weight: 400;
-    width: 42.34375vw;
-    margin-left: 7.808333333333333vw;
+    max-width: 50.8125rem;
+    width: 100%;
+    margin-left: 7.808333333333333rem;
 }
 
 #d2 {
@@ -124,99 +124,106 @@ main {
     justify-content: center;
     flex-direction: column;
 }
+
 .hpreto {
-    width: 20.572916666666668vw;
+    width: 24.6875rem;
     text-align: justify;
     font-family: "The Next Font";
-    font-size: 1.822916666666667vw;
+    font-size: 2.1875rem;
     font-weight: 400;
-    line-height: 2.083333333333333vw;
-    margin-left: 2.608333333333333vw;
-    margin-top: 2.608333333333333vw;
+    line-height: 2.5rem;
+    margin-left: 3.12rem;
+    margin-top: 3.12rem;
 }
 
 .ppreto {
-    width: 20vw;
+    width: 25.0625rem;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: 1.041666666666667vw;
+    font-size: 1.25rem;
     font-weight: 400;
-    margin-left: 2.608333333333333vw;
-    margin-top: 0.3vw;
+    margin-left: 3.12rem;
+    margin-top: 0.3rem;
 }
 
 .hbranco {
     color: #FFF;
-    width: 20.572916666666668vw;
+    width: 24.6875rem;
     text-align: justify;
     font-family: "The Next Font";
-    font-size: 1.822916666666667vw;
+    font-size: 2.1875rem;
     font-weight: 400;
-    line-height: 2.083333333333333vw;
-    margin-left: 2.608333333333333vw;
-    margin-top: 2.608333333333333vw;
+    line-height: 2.5rem;
+    margin-left: 3.12rem;
+    margin-top: 3.12rem;
 }
 
 .pbranco {
     color: #FFF;
-    width: 20vw;
+    width: 25.0625rem;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: 1.041666666666667vw;
+    font-size: 1.25rem;
     font-weight: 400;
-    margin-left: 2.608333333333333vw;
-    margin-top: 0.3vw;
+    margin-left: 3.12rem;
+    margin-top: 0.3rem;
 }
 
 #artigo1 {
     background-image: url('../../public/images/infantil/artigo1.png');
-    width: 40vw;
-    height: 23.489583333333336vw;
+    max-width: 48rem;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 #artigo2 {
     background-image: url('../../public/images/infantil/artigo2.png');
-    width: 40vw;
-    height: 23.489583333333336vw;
+    max-width: 48rem;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-left: 4.166666666666667vw;
+    margin-left: 3.12rem;
 }
 
 #artigo3 {
     background-image: url('../../public/images/infantil/artigo3.png');
-    width: 40vw;
-    height: 23.489583333333336vw;
+    max-width: 48rem;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 #artigo4 {
     background-image: url('../../public/images/infantil/artigo4.png');
-    width: 40vw;
-    height: 23.489583333333336vw;
+    max-width: 48rem;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-left: 4.166666666666667vw;
+    margin-left: 3.12rem;
 }
 
 #artigo5 {
     background-image: url('../../public/images/infantil/artigo5.png');
-    width: 40vw;
-    height: 23.489583333333336vw;
+    max-width: 48rem;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 #artigo6 {
     background-image: url('../../public/images/infantil/artigo6.png');
-    width: 40vw;
-    height: 23.489583333333336vw;
+    max-width: 48rem;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-left: 4.166666666666667vw;
+    margin-left: 3.12rem;
 }
 
 #s2 {
