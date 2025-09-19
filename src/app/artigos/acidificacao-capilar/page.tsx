@@ -27,24 +27,6 @@ const ArtigoAcidificacao: React.FC = () => {
 
   return (
     <>
-      
-      
-      {/* Dark Mode Toggle - Estrutura recriada do CSS */}
-      <div className="label">
-        <input 
-            type="checkbox" 
-            className="check" 
-            id="check-toggle" 
-            onChange={toggleDarkMode}
-            checked={isDarkMode}
-        />
-        <label htmlFor="check-toggle" className="bolinha">
-            <img id='sol' src='/images/sol.png' alt='Modo claro' />
-            <img id='lua' src='/images/lua.png' alt='Modo escuro' />
-        </label>
-      </div>
-
-
       <main>
         <article>
           <h1>Como fazer acidificação no cabelo? Confira dicas</h1>
