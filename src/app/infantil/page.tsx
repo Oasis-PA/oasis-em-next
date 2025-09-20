@@ -71,11 +71,30 @@ export default function infantil() {
 
         <div id="produtos1">
             <div className="prod1">
-                <img src="" alt=""/>
+                <img src="/images/infantil/produto.png" alt="produto1"/>
                 <h5>Força e vigor</h5>
                 <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
                 <button>Veja mais</button>
             </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div id="produto1">
+                <h2>shampoo sem sulfato</h2>
+            </div>
+            
         </div>
     </section>
     </>
