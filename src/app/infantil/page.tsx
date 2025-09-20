@@ -91,11 +91,12 @@ export default function infantil() {
                 <button>Veja mais</button>
             </div>
 
-            <div id="produto1">
-                <h2>shampoo sem sulfato</h2>
-            </div>
-            
+            <div id="produto1"><h2>SHAMPOOS SEM SULFATO</h2></div>
         </div>
+    </section>
+
+    <section id="s3">
+
     </section>
     </>
   );
