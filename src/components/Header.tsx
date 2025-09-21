@@ -31,11 +31,11 @@ export default function Header() {
 
         <section className={styles.emBaixinho}>
           <p className={styles.headerTit1}>Cortes</p>
-          <p className={styles.headerTit1}>Penteados</p>
-          <p className={styles.headerTit1}>Coloração</p>
+          <p className={styles.headerTit1}>Hair Care</p>
+          <p className={styles.headerTit1}>Tinturas</p>
           <p className={styles.headerTit1}>Skincare</p>
           <p className={styles.headerTit2}>Cronograma Capilar</p>
-          <p className={styles.headerTit1}>Recomendações</p>
+          <p className={styles.headerTit1}>Infantil</p>
         </section>
       </div>
       </header>)

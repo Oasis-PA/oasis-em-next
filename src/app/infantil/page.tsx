@@ -66,10 +66,10 @@ export default function infantil() {
     <section id="s2">
         <div id="linhatexto1">
             <h1>Produtos recomendados</h1>
-            <div id="linha"></div>
+            <div className="linha"></div>
         </div>
 
-        <div id="produtos1">
+        <div className="produtos">
             <div className="prod1">
                 <img src="/images/infantil/produto.png" alt="produto1"/>
                 <h5>Força e vigor</h5>
@@ -91,6 +91,58 @@ export default function infantil() {
                 <button>Veja mais</button>
             </div>
         </div>
+
+        <div className="produtos">
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+        </div>
+
+        <div className="produtos">
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+        </div>
+
+        <div id="linhatexto2">
+            <div className="linha"></div>
+            <h1>Dicas rápidas para você</h1>
+        </div>
+
     </section>
 
     <section id="s3">

@@ -273,27 +273,30 @@ main {
     align-self: center;
 }
 
-#linha {
+.linha {
     width: 100%;
     max-width: 43.5625vw;
     height: 0.1vw;
     background-color: black;
-    padding-left: clamp(1rem, 7vw, 8rem);
+    margin-left: clamp(1rem, 6vw, 8rem);
 }
 
-#linhatexto1 {
+#linhatexto1, #linhatexto2 {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#produtos1 {
+#linhatexto2 {
+    margin-top: clamp(1rem, 6.77vw, 8.77rem);
+}
+
+.produtos {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: clamp(1rem, 6.77vw, 8.77rem);
     gap: clamp(1rem, 3.25vw, 3.25rem);
-    position: relative;
     padding-left: clamp(1rem, 9vw, 9rem);
 }
 
