@@ -90,8 +90,6 @@ export default function infantil() {
                 <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
                 <button>Veja mais</button>
             </div>
-
-            <div id="produto1"><h2>SHAMPOOS SEM SULFATO</h2></div>
         </div>
     </section>
 
