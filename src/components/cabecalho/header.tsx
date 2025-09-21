@@ -27,10 +27,10 @@ export default function Header() {
             <a id="redirecionavel">Cortes</a>
           </Link>
           <Link href="/" passHref legacyBehavior>
-            <a id="redirecionavel">Penteados</a>
+            <a id="redirecionavel">Hair Care</a>
           </Link>
           <Link href="/tinturas" passHref legacyBehavior>
-            <a id="redirecionavel">Coloração</a>
+            <a id="redirecionavel">Tinturas</a>
           </Link>
           <Link href="/skincare" passHref legacyBehavior>
             <a id="redirecionavel">Skincare</a>
@@ -38,8 +38,8 @@ export default function Header() {
           <Link href="/cronograma-capilar" passHref legacyBehavior>
             <a id="redirecionavel2">Cronograma Capilar</a>
           </Link>
-          <Link href="/artigos" passHref legacyBehavior>
-            <a id="redirecionavel">Artigos</a>
+          <Link href="/infantil" passHref legacyBehavior>
+            <a id="redirecionavel">Infantil</a>
           </Link>
         </div>
       </section>
