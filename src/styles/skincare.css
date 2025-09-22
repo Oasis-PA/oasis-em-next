@@ -18,13 +18,53 @@ html {
     overflow-x: hidden;
 }
 
-
 main {
     display: flex;
     width: 100%;
     height: auto;
     justify-content: center;
     align-items: center;
+}
+
+header {
+    background-image: url('../../public/images/skincare/header-bg.png');
+    max-width: 100vw;
+    width: 100%;
+    min-height: 63.8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+header > h1 {
+    color: white;
+    font-family: "The Next Font";
+    font-size: clamp(4rem, 8vw + 2rem, 15.3125rem);
+    line-height: 0.5;
+    margin-left: clamp(2rem, 10vw, 14rem);
+}
+
+header > h2 {
+    color: white;
+    font-family: "The Next Font";
+    font-size: clamp(4rem, 8vw + 2rem, 15.3125rem);
+    line-height: normal;
+    opacity: 50%;
+    margin-bottom: clamp(1rem, 5vw, 3rem);
+    margin-left: clamp(2rem, 10vw, 14rem);
+}
+
+#s1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    background-color: black;
+    min-height: 27.5vw;
 }
 
 
