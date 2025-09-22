@@ -25,7 +25,7 @@ export default function TelaCadastroSenha() {
       setEmail(email);
     } else {
       // Se não houver dados, redireciona de volta para a tela 1
-      router.push("/Cadastro1");
+      router.push("/cadastro");
     }
   }, [router]);
 
