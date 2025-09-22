@@ -1,22 +1,12 @@
-import React from "react";
-import Head from "next/head";
 import "@/styles/gerenciamento-conta.css";
-import "@/src/fontes/fontes.css";
 
-const GerenciamentoConta: React.FC = () => {
+export default function GerenciamentoConta() {
   return (
     <>
-      <Head>
-        <title>Oasis - Gerenciamento de Conta</title>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
       <div className="config-body">
         <aside>
           <a className="barra-lateral" href="/editar-perfil">Editar Perfil</a>
           <a className="barra-lateral active" href="#">Gerenciamento de Conta</a>
-                                        
         </aside>
 
         <main>
@@ -141,6 +131,4 @@ const GerenciamentoConta: React.FC = () => {
       </div>
     </>
   );
-};
-
-export default GerenciamentoConta;
+}
