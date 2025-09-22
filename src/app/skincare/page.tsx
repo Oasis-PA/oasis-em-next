@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // Como a página possui inputs, é uma boa prática marcá-la como um Client Component.
 "use client";
 
@@ -131,3 +132,25 @@ const SkincarePage: React.FC = () => {
 };
 
 export default SkincarePage;
+=======
+"use client";
+
+import {Header, Footer} from "@/components";
+
+import Image from "next/image";
+import Link from "next/link";
+
+import "@/styles/skincare.css";
+
+export default function skincare() {
+  return (
+    <>
+    
+    
+    <main>
+
+    </main>
+    </>
+  );
+}
+>>>>>>> Stashed changes
