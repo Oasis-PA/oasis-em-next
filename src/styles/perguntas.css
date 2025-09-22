@@ -27,11 +27,17 @@ main {
     overflow: hidden;
 }
 
+.pergunta-header {
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem; /* 10px -> 0.625rem */
+}
 
-
-
-
-
+.pergunta-titulo {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3125rem; /* 5px -> 0.3125rem */
+}
 
 .esquerda {
     display: flex;
@@ -87,13 +93,12 @@ main {
 
 .esquerda h1 {
     color: #F2A518;
-    text-align: center;
     font-family: "The Next Font";
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 12rem;
+    width: 20rem;
 }
 
 .esquerda h2 {
@@ -151,24 +156,25 @@ main {
 .direita img {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 25rem;
+    width: 100%;
+    max-width: 35rem;
     height: auto;
-    max-width: 100%;
 }
 
 .respostas {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 1vw;
-    width: 82%;
+    gap: 2vw;
     margin-bottom: 2vw;
     flex-shrink: 1; 
     flex-grow: 0; 
 }
 
 .direita label {
-    width: 100%;
+    width: 45rem;
+    min-width: 45rem;
+    max-width: 45rem;
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -181,6 +187,9 @@ main {
     line-height: normal;
     border: 0.15rem solid #F2A518;
     border-radius: 0.8rem;
+    background: #fff;
+    box-sizing: border-box;
+    word-break: break-word;
 }
 
 input[type="radio"] {
@@ -196,14 +205,13 @@ input[type="radio"] {
 
 input[type="radio"]:checked {
     background-color: #F2A518;
-    border: 4px solid white;
+    border: 0.25rem solid white;
 }
 
 .botoes {
     display: flex;
     gap: 2rem;
     margin-top: auto;
-    flex-shrink: 0;
 }
 
 #number_one {
@@ -238,7 +246,7 @@ input[type="radio"]:checked {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    border: 0.15rem solid #F2A518;
+    border: none;
     border-radius: 0.8rem;
     background-color: #F2A518;
     cursor: pointer;
