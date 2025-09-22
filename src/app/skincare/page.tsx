@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Como a página possui inputs, é uma boa prática marcá-la como um Client Component.
 "use client";
 
@@ -133,6 +134,8 @@ const SkincarePage: React.FC = () => {
 
 export default SkincarePage;
 =======
+=======
+>>>>>>> Stashed changes
 "use client";
 
 import {Header, Footer} from "@/components";
@@ -152,5 +155,9 @@ export default function skincare() {
     </main>
     </>
   );
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
