@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-//import '@/styles/avatar.css';
+import '@/styles/avatar.css';
 import { Footer} from '@/components';   
 
 const AvatarPage = () => {
