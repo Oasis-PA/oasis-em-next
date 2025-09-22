@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import "../../styles/gerenciamento-conta.css";
-import "../../src/fontes/fontes.css";
+import "@/styles/gerenciamento-conta.css";
+import "@/src/fontes/fontes.css";
 
 const GerenciamentoConta: React.FC = () => {
   return (
