@@ -264,7 +264,6 @@ header img {
     grid-column-start: 2;
 }
 
-/* Suggestion section */
 #section-sugestaocortes {
     display: flex;
     flex-direction: column;
@@ -290,20 +289,14 @@ header img {
     font-size: 45px;
     color: #FFFFFF;
     margin-right: 70px;
+    display: flex;
+    justify-content: flex-start;
+    margin-right: auto;
 }
 
-#p4 {
-    font-family: 'Louis George Cafe', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    color: #FFFFFF;
-    opacity: 0.8;
-    margin-top: 19px;
-}
 
 #div-botaoseta {
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-top: 60px;
     width: 100%;
@@ -334,6 +327,7 @@ header img {
     background: #F2A518;
     border-radius: 3px;
     cursor: pointer;
+    
 }
 
 #button2:hover {
