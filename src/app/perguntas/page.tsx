@@ -301,7 +301,7 @@ const PerguntaPage = () => {
 						</div>
 					</div>
 
-					<img id="logo" src="/images/logo.png" alt="" />
+					<img id="logo" src="/images/logobranca.png" alt="" />
 				</div>
 			</section>
 
@@ -311,7 +311,10 @@ const PerguntaPage = () => {
 
 					<div className="respostas">
 						{currentQuestionData.options.map((option: QuizOption) => (
-							<label key={option.value}>
+							<label
+								key={option.value}
+								className={selectedOption === option.value ? "selected" : ""}
+							>
 								<input
 									type="radio"
 									name="opcao"
@@ -319,7 +322,7 @@ const PerguntaPage = () => {
 									checked={selectedOption === option.value}
 									onChange={handleOptionChange}
 								/>
-								{option.text}
+								<span>{option.text}</span>
 							</label>
 						))}
 					</div>
