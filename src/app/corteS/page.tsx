@@ -73,10 +73,6 @@ const CortesPage: React.FC = () => {
       <section id="section-sugestaocortes">
         <div id="div-titulos">
           <h1 id="h1-cabelos">CABELOS VOLUMOSOS, CURTOS OU<br className="desktop-only" />COM DREAD - SEJA SUA MELHOR VERSÃO EM 2025</h1>
-          <p id="p4">
-            <strong>Bla bla bla bla bla</strong><br /><br />
-            Bla bla bla bla bla lorem ipsum alguma <br className="desktop-only" /> coisa mto grande pra encher o saco
-          </p>
         </div>
         <div id="div-imagens">
           <Link href="#"><img src="/images/corteS/sugestao-corte (1).png" alt="sugestaocorte1" /></Link>
@@ -86,8 +82,6 @@ const CortesPage: React.FC = () => {
         </div>
         <div id="div-botaoseta">
           <button id="button2">VEJA MAIS</button>
-          <Link href="#" className="seta-nav"><img src="/images/seta-esquerda.png" alt="seta-esquerda" /></Link>
-          <Link href="#" id="seta-margin" className="seta-nav"><img src="/images/seta-direita.png" alt="seta-direita" /></Link>
         </div>
       </section>
     </>
