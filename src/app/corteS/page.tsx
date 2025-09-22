@@ -63,10 +63,18 @@ const CortesPage: React.FC = () => {
         <h1 id="h1-maisvisitados">Mais visitados</h1>
         <p id="p3">Veja o que mais bombou essa semana quando se trata de cortes de cabelo.</p>
         <div id="div-maisvisitados">
-          <Link href="#" id="img1"><img src="/images/corteS/corte1.png" alt="imagem-corte1" /></Link>
-          <Link href="#" id="img2" ><img src="/images/corteS/corte2.png" alt="imagem-corte2" /></Link>
-          <Link href="#" id="img3" ><img src="/images/corteS/corte3.png" alt="imagem-corte3" /></Link>
-          <Link href="#" id="img4"><img src="/images/corteS/corte4.png" alt="imagem-corte4" /></Link>
+          <div className="esquerda">
+            <Link href="#" id="img1"><img src="/images/corteS/corte1.png" alt="imagem-corte1" /></Link>
+          </div>
+          <div className="direita">
+            <div className="topo">
+              <Link href="#" id="img2" ><img src="/images/corteS/corte2.png" alt="imagem-corte2" /></Link>
+              <Link href="#" id="img3" ><img src="/images/corteS/corte3.png" alt="imagem-corte3" /></Link>
+            </div>
+            <div className="base">
+              <Link href="#" id="img4"><img src="/images/corteS/corte4.png" alt="imagem-corte4" /></Link>
+            </div>
+          </div>
         </div>
       </section>
 
