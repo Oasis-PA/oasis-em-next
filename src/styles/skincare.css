@@ -18,26 +18,6 @@ html {
     overflow-x: hidden;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-header iframe {
-    width: 100%;
-    height: 200px;
-    border: none;
-}
-
-header {
-    width: 100%;
-
-    background-image: url('/images/skincare.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
 =======
 >>>>>>> Stashed changes
 =======
