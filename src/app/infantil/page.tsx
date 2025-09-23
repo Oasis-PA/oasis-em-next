@@ -146,7 +146,7 @@ export default function infantil() {
     </section>
 
     <section id="s3">
-        <div id="dicas">
+        <div className="dicas">
             <div id="dica1">
                 <h2>Evite produtos com fragrâncias fortes</h2>
                 <p>Produtos com cheiro muito intenso podem irritar a pele delicada da criança. 
@@ -158,16 +158,18 @@ export default function infantil() {
                 <p>Ao desembaraçar, escolha pentes de dentes largos ou dedos. Isso ajuda a 
                 proteger os fios frágeis e evita dor.</p>
             </div>
+        </div>
 
+        <div className="dicas">
             <div id="dica3">
                 <h2>Sempre aplique protetor solar nas crianças</h2>
-                <p>Mesmo em dias nublados, a pele precisa de proteção. Escolha fórmulas 
+                <p>Mesmo em dias nublados, a pele precisa de proteção. Escolha fórmulas
                 infantis suaves e reaplique conforme necessário.</p>
             </div>
 
             <div id="dica4">
                 <h2>Hidrate a pele após o banho</h2>
-                <p>Logo após o banho, aplique hidratante infantil para manter a pele macia, 
+                <p>Logo após o banho, aplique hidratante infantil para manter a pele macia,
                 protegida e saudável.</p>
             </div>
         </div>
