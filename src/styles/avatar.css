@@ -20,8 +20,10 @@
 .sec1
 {
     background-image: url(../../public/images/Avatar/banner.png);
-    width: 1920px;
-    height: 750px;
+    width: 100vw;
+    height: 35vw;
+    background-repeat: no-repeat;
+    background-size: cover;
     flex-shrink: 0;
 }
 .sec1-texto
