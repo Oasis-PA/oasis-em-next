@@ -22,21 +22,22 @@ model TipoCabelo {
 }
 
 model Usuario {
-  id_usuario      Int         @id @default(autoincrement())
+  id_usuario      Int             @id @default(autoincrement())
   nome            String
-  email           String      @unique
+  email           String          @unique
   telefone        String?
   senha           String
   data_nascimento DateTime?
-  data_cadastro   DateTime    @default(now())
+  data_cadastro   DateTime        @default(now())
   id_genero       Int
   id_tipo_cabelo  Int?
   sobrenome       String?
   sobre           String?
   avaliacoes      Avaliacao[]
   favoritos       Favorito[]
-  genero          Genero      @relation(fields: [id_genero], references: [id_genero])
-  tipo_cabelo     TipoCabelo? @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
+  passwordResets  PasswordReset[]
+  genero          Genero          @relation(fields: [id_genero], references: [id_genero])
+  tipo_cabelo     TipoCabelo?     @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
 }
 
 model Categoria {
@@ -93,4 +94,22 @@ model ProdutoTag {
   tag        Tag     @relation(fields: [id_tag], references: [id_tag])
 
   @@id([id_produto, id_tag])
+}
+
+model PasswordReset {
+  id          Int      @id @default(autoincrement())
+  token       String   @unique
+  usuario     Usuario  @relation(fields: [id_usuario], references: [id_usuario])
+  id_usuario  Int
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+model Artigo {
+  id           Int      @id @default(autoincrement())
+  titulo       String
+  slug         String   @unique        
+  conteudo     String  
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
 }
