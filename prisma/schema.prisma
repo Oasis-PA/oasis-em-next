@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_DATABASE_URL")
+ 
 }
 
 model Genero {
@@ -60,6 +60,8 @@ model Produto {
   favoritos     Favorito[]
   categoria     Categoria    @relation(fields: [id_categoria], references: [id_categoria])
   tags          ProdutoTag[]
+  url_imagem String
+  url_loja String
 }
 
 model Avaliacao {
