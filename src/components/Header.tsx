@@ -38,8 +38,6 @@ export default function Header() {
           <p className={styles.headerTit1}>Infantil</p>
         </section>
       </div>
-      </header>)
-    
-};
-
-
+      </header>
+      )
+}; 
