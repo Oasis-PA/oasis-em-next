@@ -270,28 +270,14 @@ justify-content: space-between;
 display: flex;
 }
 
-#img1 {
-    
-}
-#img2 {
-    
-}
-#img3 {
 
-}
-#img4 {
-    
-}
 @media (max-width: 900px) {
     #div-maisvisitados {
         flex-direction: column;
         gap: 24px;
         max-width: 100%;
     }
-    .esquerda{
-        
     
-    }
     .topo{
         gap: 24px;
         margin-bottom: 20px;
