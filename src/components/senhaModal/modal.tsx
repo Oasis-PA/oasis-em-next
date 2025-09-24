@@ -1,34 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function senhaModal({ isOpen, onClose }: ModalProps) {
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL_TEST!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_TEST!
+);
+
+export default function SenhaModal({ isOpen, onClose }: ModalProps) {
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setMensagem("");
+    setLoading(true);
 
-    try {
-      const res = await fetch("/api/auth/forgot-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email);
 
-      const data = await res.json();
-      setMensagem(data.message);
-    } catch (err) {
-      setMensagem("Erro ao enviar e-mail.");
+    if (error) {
+      setMensagem("Erro ao enviar e-mail: " + error.message);
+    } else {
+      setMensagem("E-mail enviado! Verifique sua caixa de entrada.");
     }
+
+    setLoading(false);
   }
 
-  // Não renderiza nada se não estiver aberto
   if (!isOpen) return null;
 
   return (
@@ -55,9 +60,10 @@ export default function senhaModal({ isOpen, onClose }: ModalProps) {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:opacity-50"
+            disabled={loading}
           >
-            Enviar link de recuperação
+            {loading ? "Enviando..." : "Enviar link de recuperação"}
           </button>
         </form>
 
