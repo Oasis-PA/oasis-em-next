@@ -104,3 +104,12 @@ model PasswordReset {
   expiresAt   DateTime
   createdAt   DateTime @default(now())
 }
+
+model Artigo {
+  id           Int      @id @default(autoincrement())
+  titulo       String
+  slug         String   @unique        
+  conteudo     String  
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
