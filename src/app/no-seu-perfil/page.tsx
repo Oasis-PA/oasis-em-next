@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import "@/styles/questionario1.css";
+import "@/styles/questionario3.css";
 
 const QuestionarioPage: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -20,31 +20,31 @@ const QuestionarioPage: React.FC = () => {
             
             <Link id="voltando" href="/"><img src="/images/seta esquerda.png" alt="Seta para a esquerda" width={16} height={16} />Página Inicial</Link>
           </div>
-          <Image id="img-principal" src="/images/questionario/img-2.png" alt="Imagem Principal" width={300} height={300} />
+          <Image id="img-principal" src="/images/questionario/img-4.png" alt="Imagem Principal" width={300} height={300} />
         </section>
         <section className="direita">
           <div className="conteudo">
-            <div id="quiz">Quiz</div>
-            <h1>Questionário</h1>
-            <p>Nesse tipo de cronograma, o primeiro passo é responder a uma série de perguntas sobre sua rotina, objetivos, tempo disponível e preferências. A partir dessas respostas, o sistema utiliza algoritmos para montar automaticamente um plano personalizado, ajustado às suas necessidades. Depois, você revisa o cronograma sugerido e pode fazer ajustes finos antes de começar a seguir.</p>
+            <div id="quiz">Personalizável</div>
+            <h1>Com base no seu perfil</h1>
+            <p>Esse modelo usa informações básicas obtidas com a análise de seu perfil após o login. Não é necessário responder perguntas, mas ainda assim você recebe um plano mais direcionado, pensado para perfis semelhantes ao seu.</p>
             <div className="leia">
               <h4>Leia mais</h4>
               <Image src="/images/seta direita.png" alt="Seta para a esquerda" width={16} height={16} />
             </div>
             <div className="abaixo">
               <Link href="/perguntas">
-                <button>Faça Agora</button>
+                <button>Descubra seu cronograma</button>
               </Link>
               <div className="beneficios">
                 <h3>Benefícios</h3>
                 <div className="textinhos">
                   <div className="em-cima">
-                    <p>Personalização Rápida</p>
-                    <p>Adaptação automática ao perfil</p>
+                    <p>Escolha de tratamentos fácil</p>
+                    <p>Personalização simplificada</p>
                   </div>
                   <div className="em-baixo">
-                    <p>Economia de Tempo</p>
-                    <p>Ideal para quem não sabe onde começar</p>
+                    <p>Rápido e eficaz</p>
+                    <p>Ideal para necessidades específicas</p>
                   </div>
                 </div>
               </div>
