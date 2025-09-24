@@ -7,7 +7,17 @@ import '@/styles/CorteS.css';
 const CortesPage: React.FC = () => {
   return (
     <>
+    <section className='voce_procura'>
+          <img src="/images/corteS/temos.png" alt="" />
+          <div className="texto-procura">
+            <h1 className='temos'>Temos o que voce procura</h1>
+            <p className='mudar_visual'>Deseja mudar o visual mas não sabe o que fazer? Te apresentamos as melhores inspirações a seguir</p>
+          </div>
+    </section>
+        
       <main className="container">
+        
+        
         <h1 id="h1-melhorescortes">Melhores Cortes</h1>
         <p className="p1">
           Para aqueles que desejam mudar a aparência e só<br className="desktop-only" /> precisam de uma inspiração.
