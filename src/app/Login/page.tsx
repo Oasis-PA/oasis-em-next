@@ -11,8 +11,14 @@ import { LogIn, LogInIcon, LogOutIcon } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Modal from "@/components/senhaModal/modal";  
+import { createClient } from "@supabase/supabase-js";
+import SenhaModal from "@/components/senhaModal/modal";
 
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL_TEST!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_TEST!
+);
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,6 +29,18 @@ export default function Login() {
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
+
+      const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password: senha,
+    });
+
+    if (error) {
+      setMensagem(error.message);
+    } else {
+      window.location.href = "/";
+    }
+  
 
     try {
       const res = await fetch("/api/usuarios/login", {
@@ -170,6 +188,7 @@ export default function Login() {
             
     />
 </figure>
+    <SenhaModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </main>
   );
 }
