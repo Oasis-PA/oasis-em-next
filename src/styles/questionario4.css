@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    background: linear-gradient(90deg, #5F0B38 32%, transparent 30%);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 2rem;
+}
+
+.esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 40%;
+    height: 90%;
+    gap: 2rem;
+}
+
+.voltar {
+    align-self: flex-start;
+    align-items: center;
+    height: fit-content;
+    transform: translateX(-8%);
+}
+
+#voltando {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.voltar img {
+    width: .7rem;
+    height: 1rem;
+}
+
+.voltar a {
+    color: #f3f3f3;
+    font-family: "Louis George Cafe";
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: fit-content;
+    transition: text-decoration 1s linear, color 0.3s ease;
+}
+
+.voltar a:hover {
+    color: hsl(0, 0%, 100%);
+    text-decoration: underline;
+    text-underline-offset: 5%;
+    text-decoration-color: #5E332C;
+    text-decoration-thickness: 0.1rem;
+}
+
+#img-principal {
+    width: 45rem;
+    height: auto;
+}
+
+.direita {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    max-width: 42rem;
+    min-width: 0;
+    align-items: center;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    max-width: 100%;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+#quiz {
+    display: flex;
+    justify-content: center;
+    background-color: #5E332C;
+    width: fit-content;
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+}
+
+.conteudo h1 {
+    color: #000;
+    font-family: "The Next Font";
+    font-size: clamp(2rem, 7vw, 6rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    max-width: 100%;
+}
+
+.conteudo p {
+    margin-top: 1rem;
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.1;
+    width: 95%;
+    max-width: 40rem;
+}
+
+.leia {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: fit-content;
+    margin-top: 1rem;
+}
+
+.leia h4 {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: fit-content;
+}
+
+.leia img {
+    width: .6rem;
+    height: 1rem;
+}
+
+.abaixo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.conteudo button {
+    background: #5F0B38;
+    display: flex;
+    width: 100%;
+    padding: 1.3rem 8rem;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    border-radius: 3rem;
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.conteudo button:hover {
+    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #5F0B38 0%, #B85CA6 100%);
+    box-shadow: 0 0.5em 1em 0 #3C1436;
+}
+
+.conteudo button:active {
+    border: 0.1em solid #B85CA6;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #5F0B38 0%, #B85CA6 100%);
+    box-shadow: 0 0.4em 0.4em 0 rgba(0, 0, 0, 0.48);
+}
+
+.beneficios {
+    width: 38rem;
+    height: 70%;
+    border: .2rem solid #000;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.beneficios h3 {
+    color: #000;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.beneficios p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: fit-content;
+}
+
+.textinhos {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.em-cima, .em-baixo {
+    display: flex;
+    gap: 5rem;
+    height: fit-content;
+    justify-content: space-between;
+}

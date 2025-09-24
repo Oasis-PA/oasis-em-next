@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -14,7 +13,7 @@ export default function CadastrarProdutoPage() {
     preco: '',
     id_categoria: '',
     url_imagem: '',
-    link_loja: '', 
+    url_loja: '',
   });
   const [loading, setLoading] = useState(false);
   const [mensagem, setMensagem] = useState('');
@@ -35,7 +34,7 @@ export default function CadastrarProdutoPage() {
     setErro('');
 
     // Validação dos campos obrigatórios
-    if (!formData.nome || !formData.marca || !formData.preco || !formData.id_categoria || !formData.url_imagem || !formData.link_loja) {
+    if (!formData.nome || !formData.marca || !formData.preco || !formData.id_categoria || !formData.url_imagem || !formData.url_loja) {
       setErro('Por favor, preencha todos os campos obrigatórios.');
       setLoading(false);
       return;
@@ -64,7 +63,7 @@ export default function CadastrarProdutoPage() {
           preco: '',
           id_categoria: '',
           url_imagem: '',
-          link_loja: '',
+          url_loja: '',
         });
       }
     } catch (err) {
@@ -106,8 +105,8 @@ export default function CadastrarProdutoPage() {
           </div>
           
           <div className="form-group">
-            <label htmlFor="link_loja">Link da Loja:</label>
-            <input type="url" id="link_loja" name="link_loja" value={formData.link_loja} onChange={handleChange} required />
+            <label htmlFor="url_loja">URL da Loja:</label>
+            <input type="url" id="url_loja" name="url_loja" value={formData.url_loja} onChange={handleChange} required />
           </div>
           
           <div className="form-group">
