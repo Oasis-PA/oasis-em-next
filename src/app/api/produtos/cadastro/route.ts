@@ -5,9 +5,9 @@ import { prisma } from '@/lib/prisma';
 export async function POST(req: Request) {
   try {
     
-    const { nome, descricao, marca, preco, id_categoria, url_imagem, link_loja } = await req.json();
+    const { nome, descricao, marca, preco, id_categoria, url_imagem, url_loja } = await req.json();
 
-    if (!nome || !marca || !preco || !id_categoria || !url_imagem || !link_loja) {
+    if (!nome || !marca || !preco || !id_categoria || !url_imagem || !url_loja) {
       return NextResponse.json(
         { message: 'Campos obrigatórios faltando.' },
         { status: 400 }
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
         preco: parseFloat(preco),
         id_categoria: parseInt(id_categoria, 10),
         url_imagem, 
-        link_loja, 
+        url_loja, 
       },
     });
 

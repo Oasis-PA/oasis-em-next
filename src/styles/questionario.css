@@ -33,6 +33,7 @@ main {
     gap: 0.5rem;
     height: fit-content;
     cursor: pointer;
+    transform: translateX(-8%);
 }
 
 .voltar img {
@@ -47,11 +48,11 @@ main {
     color: #f3f3f3;
     font-family: "Louis George Cafe";
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    width: 6rem;
+    width: fit-content;
     transition: text-decoration 1s linear, color 0.3s ease;
 }
 
@@ -103,7 +104,7 @@ main {
 .conteudo h1 {
     color: #000;
     font-family: "The Next Font";
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 7vw, 6rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -116,11 +117,11 @@ main {
     margin-top: 1rem;
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 3vw, 2rem);
     font-style: normal;
     font-weight: 500;
-    line-height: 1.5;
-    width: 80%;
+    line-height: 1.1;
+    width: 90%;
     max-width: 40rem;
 }
 
@@ -163,8 +164,8 @@ main {
 .conteudo button {
     background: #F2A518;
     display: flex;
-    width: min(23rem, 100%);
-    padding: 0.8rem 3rem;
+    width: min(27rem, 100%);
+    padding: 0.9rem 3rem;
     justify-content: center;
     align-items: center;
     border-style: none;
@@ -172,10 +173,22 @@ main {
     color: #FFF;
     text-align: center;
     font-family: "The Next Font";
-    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-size: clamp(1rem, 3vw, 1.5rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.conteudo button:hover {
+    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
+    box-shadow: 0 5px 10.7px 0 #945414;
+}
+
+.conteudo button:active {
+    border: 1px solid #ECC46F;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
 }
 
 .beneficios {
@@ -201,7 +214,7 @@ main {
 .beneficios p {
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -216,7 +229,7 @@ main {
 
 .em-cima, .em-baixo {
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
     height: fit-content;
     align-items: center;
     justify-content: center;
