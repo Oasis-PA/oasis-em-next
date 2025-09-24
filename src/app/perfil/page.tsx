@@ -9,6 +9,7 @@ interface User {
   nome: string;
   sobrenome?: string;
   sobre?: string;
+  url_foto?: string;
 }
 
 interface LayoutProps {
