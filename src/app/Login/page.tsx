@@ -10,6 +10,8 @@ import { Separator } from "@/components/ui/separator";
 import { LogIn, LogInIcon, LogOutIcon } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Modal from "@/components/senhaModal/modal";  
+
 
 
 export default function Login() {
@@ -17,6 +19,7 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [lembrar, setLembrar] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -84,16 +87,14 @@ export default function Login() {
           />
 
           <section id="section-checkbox-login">
-            <label htmlFor="checkbox-login">
-              <input
-                type="checkbox"
-                id="checkbox-login"
-                checked={lembrar}
-                onChange={(e) => setLembrar(e.target.checked)}
-              />
-              <span id="span-lembredemim-login">Lembre de mim</span>
-            </label>
-            <Link href="#">Esqueceu a senha?</Link>
+           
+            <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+            className="text-blue-600 hover:underline"
+          >
+            Esqueceu a senha?
+          </button>
           </section>
 
           <button type="submit" className="botaocontinue">
