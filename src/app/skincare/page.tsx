@@ -63,11 +63,35 @@ export default function skincare() {
               para inovar e arrasar no visual! Aposte também em 
               produtos que não danifiquem sua pele e preservem sua
               beleza natural.</p>
-              <button></button>
+              <button>CONHEÇA</button>
             </div>
         </div>
 
+        <div id="artigo2">
+            <div id="cont-artigo">
+              <h1>Vai se casar? esteja incrível para seu amor!</h1>
+              <p>Está de casamento marcado mas ainda não tem certeza sobre
+              como deve se arrumar? Invista em você! Clique abaixo e 
+              descubra o kit de casamento perfeito, com looks, maquiagens
+              e penteados usados por famosos e feitos para você!
+              </p>
+              <button>CONHEÇA</button>
+            </div>
+            <img src="images/skincare/artigo2.png" alt="" />
+        </div>
 
+        <div className="artigos">
+            <img src="images/skincare/artigo3.png" alt="" />
+            <div className="cont-artigo">
+              <h1>autocuidado masculino</h1>
+              <p>Se importar com a própria beleza e querer se cuidar não
+                é mais algo irreal. Para quem dá aquele toque a mais na
+                aparência, recebe autoestima e felicidade renovadas! Leia 
+                agora por onde começar a ter uma rotina capilar e de 
+                skincare e dê uma repaginada total no visual!</p>
+              <button>CONHEÇA</button>
+            </div>
+        </div>
       </section>
     </main>
     </>
