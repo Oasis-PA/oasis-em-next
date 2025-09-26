@@ -10,7 +10,6 @@ import { Separator } from "@/components/ui/separator";
 import { LogIn, LogInIcon, LogOutIcon } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Modal from "@/components/senhaModal/modal";  
 import { createClient } from "@supabase/supabase-js";
 import SenhaModal from "@/components/senhaModal/modal";
 
@@ -157,7 +156,7 @@ export default function Login() {
               className="w-full justify-start gap-2"
             >
               <LogInIcon size={16} />
-              Fazer Login
+              CONTINUE COM O GOOGLE
             </Button>
           )}
 
