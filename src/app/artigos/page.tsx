@@ -1,35 +1,6 @@
-// Componente precisa ser "client" para usar estado (useState) e efeitos (useEffect) para o dark mode.
-"use client";
 
-import React, { useState, useEffect } from 'react';
-
-// Importando a folha de estilos. Ajuste o caminho se necessário.
 import '@/styles/artigo-geral.css';
-
-const ArtigosPage: React.FC = () => {
-  // Estado para controlar o tema (dark ou light)
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Efeito para adicionar ou remover a classe 'dark' do body quando o estado muda
-  useEffect(() => {
-    document.body.classList.add('artigo-geral-page'); // Adiciona uma classe específica para a página
-    if (isDarkMode) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-    // Função de limpeza para remover a classe específica ao sair da página
-    return () => {
-        document.body.classList.remove('artigo-geral-page');
-        document.body.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  // Função para alternar o estado do tema
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode);
-  };
-
+export default function artigosMain (){
   // Componente para o ícone de salvar (SVG) para reutilização
   const SaveIcon = ({ fill }: { fill?: string }) => (
     <svg xmlns="http://www.w.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
@@ -39,21 +10,7 @@ const ArtigosPage: React.FC = () => {
 
   return (
     <>
-      <label htmlFor="tema" className="label">
-        <input 
-            type="checkbox" 
-            name="tema" 
-            id="tema" 
-            className="check" 
-            onChange={toggleDarkMode} 
-            checked={isDarkMode} 
-        />
-        <div className="bolinha">
-            <img id="sol" className="imagem" src="/images/sol.png" alt="Sol" />
-            <img id="lua" className="imagem" src="/images/lua.png" alt="Lua" />
-        </div>
-      </label>
-
+     
       <h5>Por dentro das notícias</h5>
       <p>Veja aqui os melhores artigos sobre cuidados, beleza e dicas. Salve os seus favoritos e leia sempre que quiser!</p>
     
@@ -321,4 +278,3 @@ const ArtigosPage: React.FC = () => {
   );
 };
 
-export default ArtigosPage;
