@@ -1,30 +1,6 @@
-// Para a funcionalidade de dark mode (useState, useEffect), o componente precisa ser um Client Component.
-"use client";
-
-import React, { useState, useEffect } from 'react';
-import Script from 'next/script';
-import Link from 'next/link'; // Usando o Link do Next.js para navegação
-
-// Importando a folha de estilos. Ajuste o caminho se necessário.
 import '@/styles/artigo2.css'; 
 
-const ArtigoAcidificacao: React.FC = () => {
-  // Estado para controlar o tema (dark ou light)
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Efeito para adicionar ou remover a classe 'dark' do body
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode);
-  };
-
+export default function acidificacaoCapilar () {
   return (
     <>
       <main>
@@ -67,4 +43,3 @@ const ArtigoAcidificacao: React.FC = () => {
   );
 };
 
-export default ArtigoAcidificacao;

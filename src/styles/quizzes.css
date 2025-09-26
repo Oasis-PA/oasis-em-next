@@ -11,16 +11,170 @@ body {
 }
 
 main {
-    background: url('/public/images/quizzes/back-princip.png') right center/40% 100% no-repeat, #5B7352;
+    display: flex;
+    background: url('/public/images/quizzes/back-princip.png') right top/50% auto no-repeat, #5B7352;
     background-repeat: no-repeat;
-    background-position: right center, right center;
-    background-size: 40% 100%, 100% 100%;
-    align-items: center;
+    background-position: right top, right top;
+    background-size: 50% auto, 100% 100%;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    align-items: center;
 }
 
 .content {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    width: 75%;
+    height: 100%;
+    position: relative;
+    left: 7%;
 }
+
+.acima {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    align-self: flex-start;
+    margin-bottom: 5rem;
+}
+
+.acima img {
+    width: .8rem;
+    height: auto;
+}
+
+.acima a {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: 1.30744rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    transition: text-decoration .5s linear, color 0.3s ease;
+}
+
+.acima a:hover {
+    text-decoration: underline;
+    text-decoration-color: #F2A518;
+}
+
+.abaixo {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 3rem);
+    width: fit-content;
+    max-width: 100vw;
+}
+
+.titulos {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulos h1 {
+    color: #000;
+    font-family: "The Next Font";
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.titulos h2 {
+    color: #000;
+        font-family: "Louis George Cafe";
+        font-size: clamp(1.2rem, 2.5vw, 2rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+}
+
+.tit-principal {
+    color: #000;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: clamp(2rem, 8vw, 5rem);
+}
+
+.tipos {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 6vw, 6rem);
+    margin-top: clamp(2rem, 5vw, 5rem);
+}
+
+.tipos h3 {
+    color: #000;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 90%;
+    margin-top: clamp(1rem, 2vw, 2rem);
+}
+
+.tipos p {
+    color: #FFF;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 98%;
+}
+
+.sobe, .desce {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+#quadrado {
+    height: 7.5rem; 
+    width: 26.5rem;
+    overflow: hidden;
+    transition: height 0.3s, overflow 0.3s, z-index 0s;
+    z-index: 1;
+    isolation: isolate;
+    border-radius: 1.875rem;
+    background: #5E332C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+#quadrado:hover {
+  height: 26.5rem;
+  overflow: visible;
+  z-index: 10;
+}
+
+#quadrado img {
+    margin-top: 2rem;
+    width: 86%;
+}
+
+.a, .b, .c, .d {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+}
+
+
+
+
