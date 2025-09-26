@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link'; // Importando o componente Link do Next.js para navegação
 
-// Importando todas as folhas de estilo necessárias para a página.
-// Verifique se os caminhos correspondem à estrutura do seu projeto.
+
 
 import '@/styles/avatar.css';
 // A importação de fontes geralmente é feita em um layout global, mas mantive aqui para seguir a estrutura original.
