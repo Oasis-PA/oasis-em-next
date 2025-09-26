@@ -9,45 +9,10 @@ import Image from 'next/image'; // Usando Image para otimização de imagens
 import '@/styles/parcerias-empresas.css';
 
 const ParceriasEmpresasPage: React.FC = () => {
-    // Estado para controlar o tema (dark ou light)
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    // Efeito para adicionar ou remover a classe 'dark' do body
-    useEffect(() => {
-        if (isDarkMode) {
-            document.body.classList.add('dark');
-        } else {
-            document.body.classList.remove('dark');
-        }
-        // Função de limpeza para remover a classe quando o componente for desmontado
-        return () => {
-            document.body.classList.remove('dark');
-        };
-    }, [isDarkMode]);
-
-    const toggleDarkMode = () => {
-        setIsDarkMode(prevMode => !prevMode);
-    };
-
+   
     return (
         <>
-            <header>
-                <label htmlFor="tema" className="label">
-                    <input 
-                        type="checkbox" 
-                        name="tema" 
-                        id="tema" 
-                        className="check" 
-                        onChange={toggleDarkMode}
-                        checked={isDarkMode}
-                    />
-                    <div className="bolinha">
-                        <img id="sol" className="imagem" src="/images/sol.png" alt="Sol" />
-                        <img id="lua" className="imagem" src="/images/lua.png" alt="Lua" />
-                    </div>
-                </label>
-            </header>
-
+          
             <main>
                 <article id="container">
                     <form action="" method="get">
