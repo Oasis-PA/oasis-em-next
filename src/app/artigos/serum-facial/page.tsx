@@ -1,32 +1,7 @@
 // Para a funcionalidade de dark mode (useState, useEffect), o componente precisa ser um Client Component.
-"use client";
-
-import React, { useState, useEffect } from 'react';
-
-// Importando a folha de estilos. Ajuste o caminho se for necessário.
 import "@/styles/artigo1.css";
-
 export default function Artigo1() {
-  // Estado para controlar o tema (dark ou light)
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Efeito para adicionar ou remover a classe 'dark' do body
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-    // Função de limpeza para remover a classe quando o componente for desmontado
-    return () => {
-      document.body.classList.remove('dark');
-    };
-  }, [isDarkMode]);
-
-  // A função para alternar o tema pode ser adicionada a um botão se necessário
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode);
-  };
 
   return (
     <>
