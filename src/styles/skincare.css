@@ -198,3 +198,193 @@ header > h2 {
     margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
+#s4 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-top: clamp(1rem, 6.6vw, 12rem);
+}
+
+#s4 > div > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2rem, 6vw, 4.6875rem);
+    font-weight: 400;
+    padding-left: clamp(1rem, 7vw, 8rem);
+    align-self: center;
+}
+
+.linha {
+    width: 100%;
+    max-width: 43.5625vw;
+    height: 0.1vw;
+    background-color: black;
+    margin-left: clamp(1rem, 6vw, 8rem);
+}
+
+#linhatexto1, #linhatexto2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#linhatexto2 {
+    margin-top: clamp(1rem, 6.77vw, 8.77rem);
+}
+
+.produtos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: clamp(1rem, 6.77vw, 8.77rem);
+    gap: clamp(1rem, 3.25vw, 3.25rem);
+}
+
+.prod1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 18.072916666666668vw;
+    height: auto;
+    border: 0.12864583333333334vw solid #5F0B38;
+    background: #FFF;
+}
+
+.prod1 > img {
+    padding: 7%;
+    width: 100%;
+    height: auto;
+}
+
+.prod1 > h5 {
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.8rem, 1.5vw, 1.25rem);
+    margin-left: clamp(0.5rem, 2vw, 1.40rem);
+    color: #666;
+}
+
+.prod1 > h4 {
+    font-family: "The Next Font";
+    font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+    margin-left: clamp(0.5rem, 2vw, 1.40rem);
+}
+
+.prod1 > button {
+    align-self: center;
+    margin-top: clamp(1rem, 3vw, 2.69rem);
+    margin-bottom: clamp(1rem, 3vw, 2.69rem);
+    width: 90%;
+    max-width: 13.625rem;
+    height: clamp(2.5rem, 4vw, 3.06181rem);
+    background-color: #ECC46F;
+    border: none;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+    cursor: pointer;
+}
+
+#prod1-bg, #prod2-bg, #prod3-bg {
+    display: flex;
+    width: 100%;
+    max-width: 28.5vw;
+    height: 36.4vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+}
+#prod1-bg > h1, #prod2-bg > h1, #prod3-bg > h1 {
+    color: #FFF;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "The Next Font";
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: normal;
+    margin-top: clamp(3.5rem, 5vw + 3rem, 8rem);
+    margin-left: clamp(3.5rem, 5vw + 3rem, 8rem);
+}
+
+#prod1-bg {background-image: url(../../public/images/skincare/prod1-bg.png);}
+#prod2-bg {background-image: url(../../public/images/skincare/prod2-bg.png);}
+#prod3-bg {background-image: url(../../public/images/skincare/prod3-bg.png);}
+
+#s5 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(2rem, 8vw, 8rem);
+    background-color: black;
+}
+
+#dicas {
+    display: flex;
+    flex-direction: row;
+    padding: clamp(2rem, 15vw, 9rem);
+    gap: clamp(0.75rem, 2.5vw, 1.25rem);
+}
+
+#card1, #card2, #card3, #card4, #card5 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    width: 14.2vw;
+    height: 29.79vw;
+}
+
+#card1 {background-image: url(../../public/images/skincare/card1.png);}
+#card2 {background-image: url(../../public/images/skincare/card2.png);} 
+#card3 {background-image: url(../../public/images/skincare/card3.png);}
+#card4 {background-image: url(../../public/images/skincare/card4.png);}
+#card5 {background-image: url(../../public/images/skincare/card5.png);}
+
+#card1:hover, #card2:hover, #card3:hover, #card4:hover, #card5:hover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    height: 29.79vw;
+    width: 22.85vw;
+}
+
+#card1:hover {background-image: url(../../public/images/skincare/dica1-bg.png);}
+#card2:hover {background-image: url(../../public/images/skincare/dica2-bg.png);} 
+#card3:hover {background-image: url(../../public/images/skincare/dica3-bg.png);}
+#card4:hover {background-image: url(../../public/images/skincare/dica4-bg.png);}
+#card5:hover {background-image: url(../../public/images/skincare/dica5-bg.png);}
+
+.conteudo {
+    padding: 2.75rem;
+    opacity: 0;     
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1.2rem, 4vw, 2rem);
+}
+
+.conteudo > p {
+    color: #FFF;
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+    margin-top: clamp(1rem, 5vw, 2.56rem);
+    line-height: normal;
+    max-height: 23rem;
+}
+
+#card1:hover .conteudo, #card2:hover .conteudo, #card3:hover .conteudo, #card4:hover .conteudo, #card5:hover .conteudo {
+    opacity: 1;
+}
+
+

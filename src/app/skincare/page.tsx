@@ -93,6 +93,131 @@ export default function skincare() {
             </div>
         </div>
       </section>
+
+      <section id="s4">
+        <div id="linhatexto1">
+            <h1>Produtos recomendados</h1>
+            <div className="linha"></div>
+        </div>
+
+        <div className="produtos">
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div id="prod1-bg"><h1>mais amados</h1></div>
+        </div>
+
+        <div className="produtos">
+            <div id="prod2-bg"><h1>opção acessível</h1></div>
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+        </div>
+
+        <div className="produtos">
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div className="prod1">
+                <img src="/images/infantil/produto.png" alt="produto1"/>
+                <h5>Força e vigor</h5>
+                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
+                <button>Veja mais</button>
+            </div>
+
+            <div id="prod3-bg"><h1>natural/<br></br>vegano</h1></div>
+        </div>
+
+        <div id="linhatexto2">
+            <div className="linha"></div>
+            <h1>Dicas rápidas para você</h1>
+        </div>
+    </section>
+
+    <section id="s5">
+        <div id="dicas">
+          <div id="card1">
+            <div className="conteudo">
+                <h1>PROTETOR SOLAR É ESSENCIAL</h1>
+                <p>A pele precisa de proteção diária contra manchas e envelhecimento precoce.</p>
+            </div>
+          </div>
+
+          <div id="card2">
+            <div className="conteudo">
+                <h1>Hidrate logo após o banho</h1>
+                <p>Isso ajuda a reter a umidade e manter a pele macia.</p>
+            </div>
+          </div>
+
+          <div id="card3">
+            <div className="conteudo">
+                <h1>Evite sabonetes muito agressivos</h1>
+                <p>Prefira fórmulas suaves que não ressequem a pele.</p>
+            </div>
+          </div>
+
+          <div id="card4">
+            <div className="conteudo">
+                <h1>Inclua antioxidantes na rotina</h1>
+                <p>Vitamina C, por exemplo, ajuda a uniformizar o tom da pele.</p>
+            </div>
+          </div>
+
+          <div id="card5">
+            <div className="conteudo">
+                <h1>Esfolie com moderação</h1>
+                <p>Uma vez por semana já ajuda a renovar sem agredir.</p>
+            </div>
+          </div>
+        </div>
+    </section>
     </main>
     </>
   );
