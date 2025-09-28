@@ -1,12 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "@/styles/questionario2.css";
 
-const QuestionarioPage: React.FC = () => {
+const ManualPage: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  useEffect(() => {
+    return () => {
+      setSelectedOption(null);
+    };
+  }, []);
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
@@ -18,7 +24,9 @@ const QuestionarioPage: React.FC = () => {
         <section className="esquerda">
           <div className="voltar">
             
-            <Link id="voltando" href="/"><img src="/images/seta esquerda.png" alt="Seta para a esquerda" width={16} height={16} />Página Inicial</Link>
+            <Link id="voltando" href="/">
+              <img src="/images/seta esquerda.png" alt="Seta para a esquerda" width={16} height={16} />Página Inicial
+            </Link>
           </div>
           <Image id="img-principal" src="/images/questionario/img-1.png" alt="Imagem Principal" width={300} height={300} />
         </section>
@@ -56,4 +64,4 @@ const QuestionarioPage: React.FC = () => {
   );
 };
 
-export default QuestionarioPage;
+export default ManualPage;
