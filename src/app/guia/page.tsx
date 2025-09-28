@@ -182,7 +182,6 @@ export default function guia() {
                     e como adaptar as novidades ao seu estilo pessoal.</p>
                 </div>
             </div>
-
         </section>
     </main>
     </>
