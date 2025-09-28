@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import '@/styles/avatar.css';
+import '@/styles/perfil.css';
 import { Footer} from '@/components';   
 
 const AvatarPage = () => {
@@ -25,7 +25,7 @@ const AvatarPage = () => {
 
           <div className="sec2-imagem">
             <img
-              src="/images/Avatar/scorza.png" 
+              src="/images/perfil/scorza.png" 
               alt="Avatar"
               width={400}
               height={400}

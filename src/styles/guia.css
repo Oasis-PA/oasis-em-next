@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--corpo-texto);
+}
+
+body {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    background-image: url('../../public/images/guia/header-bg.png');
+    max-width: 100vw;
+    width: 100%;
+    min-height: 30.35vw;
+    display: flex;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: clamp(1.5rem, 12vw, 7rem);
+}
+
+header > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(2.5rem, 12vw, 6.25rem);
+}
+
+header > p {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.2rem, 4vw, 2rem);
+}
+
+#s1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    margin-top: clamp(1.5rem, 6vw, 3rem);
+}
+
+#guia {
+    display: flex;
+    flex-direction: row;
+    gap: clamp(1.5rem, 7vw, 3.5rem);
+    margin-left: clamp(1rem, 15vw, 9.70rem);
+}
+
+#guia > div:hover {
+       transform: scale(1.03);
+}
+
+#guia > div > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(1.4rem, 4.5vw, 2.25rem);
+}
+
+#guia > div {
+    display: flex;
+    flex-direction: row;
+    gap: clamp(0.75rem, 2.5vw, 1.25rem);
+    cursor: pointer;
+     transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#guia > div:hover {
+    transform: translateX(5px); 
+    opacity: 0.8; 
+}
+
+#guia > div > img {
+    min-height: 1.875vw;
+    min-width: 2.5vw;
+}
+
+#linha {
+    width: 86%;
+    background-color: black;
+    height: 2px;
+    align-self: center;
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+}
+
+#s2 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(2rem, 10vw, 5.5rem);
+    gap: clamp(1.5rem, 6vw, 3rem);
+    flex-wrap: wrap;
+}
+
+.pag {
+    display: flex;
+    flex-direction: row;
+    max-width: 41.6vw;
+    min-height: 14vw;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pag:hover {
+    transform: scale(1.03);
+}
+
+.pag > img {
+    width: 21.5625rem;
+    height: 14.0625rem;
+}
+
+.pag-1, .pag-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 10vw;
+    width: auto;
+    padding: clamp(0.8rem, 3vw, 1.3rem);
+}
+
+.pag-1 {background-color: #FBF3E2;}
+.pag-2 {background-color: #E5DBF0;}
+
+.pag-1 > h1, .pag-2 > h1 {
+    font-family: "The Next Font";
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+    line-height: normal;
+}
+
+.pag-1 > p, .pag-2 > p {
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    text-align: justify;
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+    line-height: normal;
+}
