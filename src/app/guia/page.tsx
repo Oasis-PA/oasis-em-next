@@ -1,6 +1,7 @@
 "use client";
 
 import {Header, Footer} from "@/components";
+import { useState, useEffect } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +9,28 @@ import Link from "next/link";
 import "@/styles/guia.css";
 
 export default function guia() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Função para filtrar as páginas
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    
+    const pages = document.querySelectorAll('.pag');
+    pages.forEach(page => {
+      const title = page.querySelector('h1').textContent.toLowerCase();
+      const description = page.querySelector('p').textContent.toLowerCase();
+      const searchLower = term.toLowerCase();
+      
+      if (title.includes(searchLower) || description.includes(searchLower)) {
+        page.style.display = 'flex';
+        page.style.opacity = '1';
+        page.style.transform = 'scale(1)';
+      } else {
+        page.style.display = term === '' ? 'flex' : 'none';
+      }
+    });
+  };
+
   return (
     <>
     <header>
@@ -32,6 +55,23 @@ export default function guia() {
                 </div>
             </div>
             <div id="linha"></div>
+            
+            {/* Barra de Pesquisa */}
+            <div id="search-container">
+                <input 
+                    type="text" 
+                    id="search-input"
+                    placeholder="Pesquisar"
+                    value={searchTerm}
+                    onChange={(e) => handleSearch(e.target.value)}
+                />
+                <div id="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+            </div>
         </section>
 
         <section id="s2">   
@@ -98,7 +138,6 @@ export default function guia() {
                 </div>
             </div>
 
-
             <div className="pag">
                 <img src="images/guia/pag8-perfil.png" alt=""/>
                 <div className="pag-1">
@@ -135,13 +174,12 @@ export default function guia() {
                 </div>
             </div>
 
-
             <div className="pag">
-                <img src="images/guia/pag12-tendências.png" alt=""/>
+                <img src="images/guia/pag12-tendencias.png" alt=""/>
                 <div className="pag-1">
                     <h1>TENDÊNCIAS</h1>
-                    <p>Crie seu perfil de beleza! Salve as informações do seu cabelo e pele para receber 
-                    recomendações de produtos e dicas personalizadas, feitas especialmente para as suas necessidades.</p>
+                    <p>Fique por dentro das últimas tendências em beleza e cuidados capilares. Descubra o que está em alta 
+                    e como adaptar as novidades ao seu estilo pessoal.</p>
                 </div>
             </div>
 
