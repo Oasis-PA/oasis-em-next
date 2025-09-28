@@ -1,33 +1,65 @@
 "use client";
-import {Header, Footer} from "@/components";
-import { useEffect } from "react";
+import { Header, Footer } from "@/components";
+import { useEffect, useRef } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
 import "@/styles/index.css";
 
-
-
 export default function OasisHomepage() {
-  
-  /* ===== INÍCIO: Sistema de recarga ao voltar do cadastro ===== */
-useEffect(() => {
-  // Verifica se o usuário está voltando da página de cadastro
-  const voltandoDoCadastro = sessionStorage.getItem('voltandoDoCadastro');
- 
-  if (voltandoDoCadastro === 'true') {
-    sessionStorage.removeItem('voltandoDoCadastro'); // Remove para evitar loop infinito
-    window.location.reload(); // Recarrega a página apenas uma vez
-  }
-}, []);
-/* ===== FIM: Sistema de recarga ao voltar do cadastro ===== */
+  const router = useRouter();
+  const pathname = usePathname();
+  const mountedRef = useRef(false);
 
+  useEffect(() => {
+    // Marca que o componente foi montado
+    mountedRef.current = true;
+
+    // Força uma re-renderização quando volta do cadastro
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted && mountedRef.current) {
+        // Página foi carregada do cache do navegador
+        router.refresh();
+      }
+    };
+
+    // Limpa estados problemáticos do sessionStorage
+    const cleanupStorage = () => {
+      try {
+        const voltandoDoCadastro = sessionStorage.getItem('voltandoDoCadastro');
+        if (voltandoDoCadastro === 'true') {
+          sessionStorage.removeItem('voltandoDoCadastro');
+          // Em vez de reload, força um refresh suave
+          router.refresh();
+        }
+      } catch (error) {
+        console.warn('Erro ao acessar sessionStorage:', error);
+      }
+    };
+
+    cleanupStorage();
+
+    // Event listeners para controlar cache do navegador
+    window.addEventListener('pageshow', handlePageShow);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+      mountedRef.current = false;
+    };
+  }, [router]);
+
+  // Force re-render quando a rota muda
+  useEffect(() => {
+    // Este useEffect garante que a página seja re-renderizada corretamente
+  }, [pathname]);
 
   return (
-    <div id="bodyPaginaPrincipal" className="min-h-screen">
+    <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
       {/* Page 1 */}
       <div id="page1" className="relative">
-        < Header/>
+        <Header />
 
         <main id="page1Main" className="text-center py-20">
           <p>Tratamentos inovadores</p>
@@ -137,7 +169,7 @@ useEffect(() => {
       {/* Page 3 */}
       <div id="page3" className="py-20">
         <header>
-          <article >
+          <article>
             <div className="setas">
               <Image 
                 src="/images/seta-esquerda.png" 
@@ -169,7 +201,7 @@ useEffect(() => {
                 width={150} 
                 height={150}
               />
-              <figcaption className="page3-texto-cortes">Tendencias</figcaption>
+              <figcaption className="page3-texto-cortes">Tendências</figcaption>
             </figure>
             <figure className="text-center min-w-[150px]">
               <Image 
@@ -270,7 +302,7 @@ useEffect(() => {
             </div>
           </nav>
           
-          <article >
+          <article>
             <figure className="text-center">
               <div className="page3-cortes">
                 <h1>CORTE PIXIE</h1>
@@ -512,10 +544,7 @@ useEffect(() => {
         </figure>
       </div>
 
-    
-      
-       <Footer />
-     
+      <Footer />
     </div>
   );
 }

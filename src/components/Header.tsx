@@ -23,7 +23,7 @@ export default function Header() {
             <Link href="favoritos">
               <Image src="/images/salvo.png" alt="Salvos" width={50} height={50} />
             </Link>
-            <Link href="/Cadastro1">
+            <Link href="/cadastro">
               <Image src="/images/perfil.png" alt="Perfil" width={50} height={50} />
             </Link>
           </div>
