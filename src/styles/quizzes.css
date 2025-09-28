@@ -12,7 +12,7 @@ body {
 
 main {
     display: flex;
-    background: url('/public/images/quizzes/back-princip.png') right top/50% auto no-repeat, #5B7352;
+    background: url('/images/quizzes/back-princip.png') right top/50% auto no-repeat, #5B7352;
     background-repeat: no-repeat;
     background-position: right top, right top;
     background-size: 50% auto, 100% 100%;
@@ -29,6 +29,7 @@ main {
     height: 100%;
     position: relative;
     left: 7%;
+    margin-top: 3rem;
 }
 
 .acima {
@@ -132,7 +133,7 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 98%;
+    width: 100%;
 }
 
 .sobe, .desce {
@@ -155,6 +156,7 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    padding: 1.6rem;
 }
 
 #quadrado:hover {
@@ -164,8 +166,7 @@ main {
 }
 
 #quadrado img {
-    margin-top: 2rem;
-    width: 86%;
+    width: 100%;
 }
 
 .a, .b, .c, .d {
