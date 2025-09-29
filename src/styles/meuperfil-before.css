@@ -1,28 +1,21 @@
-/* ================================== */
-/* SEÇÃO 1: BANNER PRINCIPAL          */
-/* ================================== */
-
 .sec1 {
-    background-image: url(/images/Avatar/banner.png);
+    background-image: url(/images/meuperfil-before/banner.png);
     width: 100vw;
     height: 35vw;
-    min-height: 300px; /* MELHORIA: Altura mínima para telas estreitas */
+    min-height: 300px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; /* MELHORIA: Centraliza a imagem de fundo */
-    
-    /* MELHORIA: Usando Flexbox para um alinhamento robusto */
+    background-position: center;
     display: flex;
     align-items: center;
-    justify-content: right; /* Centraliza o conteúdo horizontalmente */
+    justify-content: right; 
     padding: 2rem;
 }
 
 .sec1-texto {
-    /* REMOVIDO: margin-left e transform, que não são responsivos */
-    text-align: left; /* Alinha o texto dentro do container */
+    text-align: left; 
     width: 100%;
-    max-width: 1320px; /* Limita a largura do texto em telas grandes */
+    max-width: 1320px; 
     margin-right: -3vw;
     margin-top: -10.5%;
 }
@@ -31,8 +24,7 @@
     color: #FFF;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: "The Next Font", sans-serif;
-    /* MELHORIA: Tipografia fluida com clamp() */
-    font-size: clamp(3.7rem, 9.2vw, 7.3rem); /* min, ideal, max */
+    font-size: clamp(3.7rem, 9.2vw, 7.3rem); 
     font-weight: 400;
     line-height: 1.2;
     width: 100%;
@@ -41,47 +33,39 @@
 .sec1-texto > p {
     color: #FFF;
     font-family: "Louis George Cafe", sans-serif;
-    /* MELHORIA: Tipografia fluida */
     font-size: clamp(1.5rem, 3vw, 2.2rem);
     font-weight: 400;
     line-height: 1.3;
     letter-spacing: -0.174px;
     width: 50%;
-    margin-top: -8.5%; /* Espaçamento mais consistente */
-    margin-left: 31.5%; /* Mantém o alinhamento com o design original */
+    margin-top: -8.5%; 
+    margin-left: 31.5%; 
 }
-
-/* ================================== */
-/* SEÇÃO 2: CRIE SEU PERFIL           */
-/* ================================== */
 
 .sec2 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; /* Centraliza o conteúdo */
-    gap: 5%; /* Espaçamento flexível */
+    justify-content: space-between; 
+    gap: 5%; 
     background: linear-gradient(180deg, #BFA2DB 0%, #FFF 73.12%);
     width: 100%;
-    padding: 4rem 10rem; /* Espaçamento interno */
+    padding: 4rem 10rem; 
 }
 
-/* CORREÇÃO: Regra de imagem aninhada movida para um seletor válido */
 .sec2-imagem img {
     margin-top: 6%;
-    max-width: 450px; /* Limita o tamanho da imagem */
+    max-width: 450px; 
     width: 100%;
 }  
 
 .sec2-texto {
-    /* REMOVIDO: margin-left fixo */
     max-width: 600px;
 }
 
 .sec2-texto > h1 {
     color: #000000;
     font-family: "The Next Font", sans-serif;
-    /* MELHORIA: Tipografia fluida */
     font-size: clamp(2.2rem, 7vw, 5rem);
     font-weight: 400;
     letter-spacing: -0.16px;
@@ -91,10 +75,9 @@
 .sec2-texto > p {
     color: #000000;
     font-family: "Louis George Cafe", sans-serif;
-    /* MELHORIA: Tipografia fluida */
     font-size: clamp(1.2rem, 3vw, 2.25rem);
     font-weight: 400;
-    width: 100%; /* Ajustado para ser mais flexível */
+    width: 100%;
     line-height: 1.2;
     letter-spacing: -0.108px;
     margin-top: 1rem;
@@ -106,8 +89,8 @@
     font-family: "The Next Font", sans-serif;
     font-size: clamp(1.2rem, 2vw, 1.8rem);
     font-weight: 400;
-    text-decoration: none; /* Adicionado para remover sublinhado padrão */
-    display: inline-flex; /* MELHORIA: Mais apropriado para alinhamento */
+    text-decoration: none; 
+    display: inline-flex; 
     width: 264px;
     max-width: 100%;
     height: 70px;
@@ -117,13 +100,13 @@
     border-radius: 38.571px;
     background: #722F53;
     margin-top: 2rem;
-    transition: all 0.3s ease; /* MELHORIA: Transição suave */
+    transition: all 0.3s ease; 
 }
 
 .sec2-texto > a:hover {
     background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #87138D 0%, rgba(216, 89, 157, 0.18) 100%);
     box-shadow: 0 5px 10.7px 0 rgba(158, 22, 93, 0.85);
-    transform: scale(1.05); /* Efeito sutil de crescimento */
+    transform: scale(1.05); 
 }
 
 .sec2-texto > a:active {
@@ -132,12 +115,6 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
     transform: scale(1);
 }
-
-/* ================================== */
-/* RESPONSIVIDADE COM MEDIA QUERIES   */
-/* ================================== */
-
-/* Para tablets e telas menores */
 @media (max-width: 900px) {
     .sec1-texto {
         justify-content: center;
@@ -147,13 +124,12 @@
 
     .sec1-texto > p {
     width: 100%;
-    margin-top: 0%; /* Espaçamento mais consistente */
-    margin-left: 0%; /* Mantém o alinhamento com o design original */
+    margin-top: 0%; 
+    margin-left: 0%; 
     }
 
     .sec2 {
-        /* MELHORIA: Empilha os elementos verticalmente */
-        flex-direction: column-reverse; /* Imagem aparecerá primeiro */
+        flex-direction: column-reverse; 
         text-align: center;
         gap: 2rem;
     }
@@ -167,12 +143,10 @@
 /* Para celulares */
 @media (max-width: 600px) {
     .sec1 {
-        height: 50vh; /* Ajusta a altura para celulares */
+        height: 50vh;
     }
     
     .sec2-texto > p {
         width: 100%;
     }
 }
-
-/* CORREÇÃO: Removida uma chave '}' extra que estava aqui */
