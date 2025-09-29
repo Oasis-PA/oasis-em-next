@@ -1,29 +1,8 @@
-/* Base styles with responsiveness built-in */
 * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
     box-sizing: border-box;
-}
-
-:root {
-    --body-back: #ffffff;
-    --corpo-texto: #000000; 
-    --header-color: #000000; 
-    --back-header: #fff;
-    --shadow: #f8f4f4;
-    --label: #000000;
-    --footer: #ffffff;
-}
-
-.dark:root{
-    --body-back: #0e0e0e;
-    --header-color: #ffffff; 
-    --back-header: #000000;
-    --corpo-texto: #ffffff; 
-    --footer: #000000;
-    --shadow: #161616;
-    --label: #f3c11e;
 }
 
 html, body {
@@ -36,21 +15,14 @@ img {
     height: auto;
 }
 
-/* Dark mode toggle */
-.check{
-    opacity: 0;
-    position: absolute;
-}
-
 .voce_procura{
     background-color: #768791;
     width: 100vw;
     height: auto;
     display: flex;
-    flex-flow: row nowrap;
 }
 
-.texto-procura{
+.texto-procura {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,28 +32,27 @@ img {
     font-family: 'The Next Font', sans-serif;
     font-weight: 400;
     font-size: 25px;
-    width: 50%;
+    max-width: 78.6875rem;
     padding-bottom: 20px;
     line-height: 1.1;
 }
 
-.temos{
-color: #FFF;
-text-align: start;
-max-width: 1200px;
-font-family: 'The Next Font';
-font-size: clamp(4.5rem, 11.5vw, 9.750rem);
-font-style: normal;
-font-weight: 400;
-
+.temos {
+    color: #FFF;
+    max-width: 78.6875rem;
+    font-family: 'The Next Font';
+    font-size: clamp(3rem, 15vw, 8rem);
+    font-style: normal;
+    font-weight: 400;
 }
 
-.mudar_visual{
-color: #FFF;
-font-family: 'Louis George Cafe';
-font-size: clamp(2rem, 3.9vw, 3.3rem);
-font-style: normal;
-font-weight: 400;
+.mudar_visual {
+    color: #FFF;
+    font-family: 'Louis George Cafe';
+    font-size: clamp(1.5rem, 5.5vw, 2.8125rem);
+    font-style: normal;
+    font-weight: 400;
+    max-width: 78.6875rem;
 }
 
 @media (max-width: 900px) {
@@ -100,54 +71,6 @@ font-weight: 400;
     }
 }
 
-.label{
-    margin-top: -158px;
-    margin-bottom: 120px;
-    margin-left: auto;
-    margin-right: 5%;
-    background-color: var(--label);
-    border-radius: 29px;
-    border: 0.1px solid #000000;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 60px;
-    height: 29px;
-    transform: scale(1.1);
-    z-index: 100;
-}
-
-.bolinha > img {
-    position: absolute;
-    right: 0;
-} 
-
-#sol{
-    margin-left: 10px;
-}
-
-#lua{
-    margin-left: 27.2px;
-    margin-top: 1px;
-    width: 26.9px;
-    height: 26.9px;
-}
-
-.imagem {
-    width: 27.6px;
-    height: 27.6px;
-    position: absolute;
-    top: 0;
-    left: -9px;
-}
-
-.check:checked ~ .bolinha {
-    transform: translateX(3px);
-    margin-top: -30px; 
-}
-
-/* General layout */
 body {
     display: flex;
     width: 100%;
@@ -165,7 +88,6 @@ body {
     margin: 0 auto;
 }
 
-/* Header section */
 header {
     display: flex;
     flex-direction: column;
@@ -183,7 +105,6 @@ header img {
     height: auto;
 }
 
-/* Main title section */
 #h1-melhorescortes {
     font-family: 'PLAYFUL RUNWAY', sans-serif;
     font-weight: 400;
@@ -311,23 +232,26 @@ header img {
     height: auto;
     object-fit: cover;
 }
+
 .esquerda{
-display: flex;
-}
-.direita{
-display: flex;
-justify-content: space-between;
-flex-direction: column;
-}
-.topo{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-}
-.base{
-display: flex;
+    display: flex;
 }
 
+.direita{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.topo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.base{
+    display: flex;
+}
 
 @media (max-width: 900px) {
     #div-maisvisitados {
@@ -525,7 +449,6 @@ footer iframe {
     display: inline;
 }
 
-/* Media queries for responsive design */
 @media (max-width: 1600px) {
     #div-maisvisitados {
         width: 90%;
@@ -564,10 +487,15 @@ footer iframe {
     .section-artigos {
         flex-direction: column;
     }
+
+     .section-artigos img {
+        order: 1;
+    }
     
     .div-artigo, #div-artigo2 {
         margin: 30px 0;
         text-align: center;
+        order: 2;
     }
     
     .p2 {
@@ -603,6 +531,7 @@ footer iframe {
         display: none;
     }
 }
+
 
 @media (max-width: 768px) {
     #section-sugestaocortes {

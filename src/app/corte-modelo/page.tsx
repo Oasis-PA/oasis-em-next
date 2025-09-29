@@ -4,8 +4,7 @@ import {Footer} from "@/components";
 import Image from "next/image";
 import "@/styles/corte-modelo.css";
 
-export default function tendencias() {
-
+export default function cortemodelo() {
   return (
     <>
  <main>

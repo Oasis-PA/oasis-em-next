@@ -1,14 +1,13 @@
 import React from 'react';
-import Link from 'next/link'; // Usando o componente Link para navegação otimizada
+import Link from 'next/link'; 
 
-// Importando a folha de estilos. Ajuste o caminho se necessário.
-import '@/styles/CorteS.css';
+import '@/styles/cortes-geral.css';
 
-const CortesPage: React.FC = () => {
+export default function cortegeral() {
   return (
     <>
     <section className='voce_procura'>
-          <img src="/images/corteS/temos.png" alt="" />
+          <img src="/images/cortes-geral/temos.png" alt="" />
           <div className="texto-procura">
             <h1 className='temos'>Temos o que voce procura</h1>
             <p className='mudar_visual'>Deseja mudar o visual mas não sabe o que fazer? Te apresentamos as melhores inspirações a seguir</p>
@@ -24,7 +23,7 @@ const CortesPage: React.FC = () => {
         </p>
         
         <section className="section-artigos">   
-          <img src="/images/corteS/imagem-artigo1.png" alt="imagem-artigo1" />
+          <img src="/images/cortes-geral/imagem-artigo1.png" alt="imagem-artigo1" />
           <div className="div-artigo">
             <h1 className="h1-tituloartigo">APOSTE EM MAQUIAGENS <br className="desktop-only" />OUSADAS!</h1>
             <p className="p2">
@@ -50,11 +49,11 @@ const CortesPage: React.FC = () => {
             </p>
             <button className="button1">DESCUBRA</button>
           </div>
-          <img src="/images/corteS/imagem-artigo2.png" alt="imagem-artigo2" />
+          <img src="/images/cortes-geral/imagem-artigo2.png" alt="imagem-artigo2" />
         </section>
 
         <section className="section-artigos">
-          <img src="/images/corteS/imagem-artigo3.png" alt="imagem-artigo3" />
+          <img src="/images/cortes-geral/imagem-artigo3.png" alt="imagem-artigo3" />
           <div className="div-artigo">
             <h1 className="h1-tituloartigo">APOSTE EM MAQUIAGENS <br className="desktop-only" />OUSADAS!</h1>
             <p className="p2">
@@ -78,11 +77,11 @@ const CortesPage: React.FC = () => {
           </div>
           <div className="direita">
             <div className="topo">
-              <Link href="#" id="img2" ><img src="/images/corteS/corte2.png" alt="imagem-corte2" /></Link>
-              <Link href="#" id="img3" ><img src="/images/corteS/corte3.png" alt="imagem-corte3" /></Link>
+              <Link href="#" id="img2" ><img src="/images/cortes-geral/corte2.png" alt="imagem-corte2" /></Link>
+              <Link href="#" id="img3" ><img src="/images/cortes-geral/corte3.png" alt="imagem-corte3" /></Link>
             </div>
             <div className="base">
-              <Link href="#" id="img4"><img src="/images/corteS/corte4.png" alt="imagem-corte4" /></Link>
+              <Link href="#" id="img4"><img src="/images/cortes-geral/corte4.png" alt="imagem-corte4" /></Link>
             </div>
           </div>
         </div>
@@ -93,10 +92,10 @@ const CortesPage: React.FC = () => {
           <h1 id="h1-cabelos">CABELOS VOLUMOSOS, CURTOS OU<br className="desktop-only" />COM DREAD - SEJA SUA MELHOR VERSÃO EM 2025</h1>
         </div>
         <div id="div-imagens">
-          <Link href="#"><img src="/images/corteS/sugestao-corte (1).png" alt="sugestaocorte1" /></Link>
-          <Link href="#"><img src="/images/corteS/sugestao-corte (2).png" alt="sugestaocorte2" /></Link>
-          <Link href="#"><img src="/images/corteS/sugestao-corte (3).png" alt="sugestaocorte3" /></Link>
-          <Link href="#"><img src="/images/corteS/sugestao-corte (4).png" alt="sugestaocorte4" /></Link>
+          <Link href="#"><img src="/images/cortes-geral/sugestao-corte (1).png" alt="sugestaocorte1" /></Link>
+          <Link href="#"><img src="/images/cortes-geral/sugestao-corte (2).png" alt="sugestaocorte2" /></Link>
+          <Link href="#"><img src="/images/cortes-geral/sugestao-corte (3).png" alt="sugestaocorte3" /></Link>
+          <Link href="#"><img src="/images/cortes-geral/sugestao-corte (4).png" alt="sugestaocorte4" /></Link>
         </div>
         <div id="div-botaoseta">
           <button id="button2">VEJA MAIS</button>
@@ -105,5 +104,3 @@ const CortesPage: React.FC = () => {
     </>
   );
 };
-
-export default CortesPage;
