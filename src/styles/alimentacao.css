@@ -19,7 +19,7 @@ footer iframe {
 }
 #banner
 {
-    background-image: url(../src/Imagens/Alimentação/banner.png);
+    background-image: url('../../public/images/alimentacao/banner.png');
     width: 1915px;
     margin-left: -20px;
     height: 780px;
