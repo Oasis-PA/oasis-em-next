@@ -2,42 +2,16 @@
 
 import {Footer} from "@/components";
 import Image from "next/image";
-import "@/styles/cortE.css";
-
-
+import "@/styles/corte-modelo.css";
 
 export default function tendencias() {
 
   return (
     <>
-
-
  <main>
         <section className="principal">
-          <div className="esquerda">
-            <div className="botooes">
-              <button id="but">Moda</button>
-              <button id="but">Moda</button>
-              <button id="but">Moda</button>
-              <button id="but">Moda</button>
-            </div>
-            <Image
-              id="img-principal"
-              src="/images/cortE/img-principal.png"
-              alt="Imagem mulher com cabelo curto"
-              width={400}
-              height={500}
-            />
-          </div>
-
+            <img id="img-principal" src="/images/corte-modelo/img-principal.png" alt="Imagem mulher com cabelo curto"/>
           <div className="direita">
-            <Image
-              src="/images/cortE/Estrelinha.png"
-              alt="Estrelinhas"
-              width={100}
-              height={30}
-            />
-
             <div className="parte-superior">
               <p id="tit1">Pixie</p>
               <p id="corpo-texto1">
@@ -48,9 +22,10 @@ export default function tendencias() {
               </p>
               <p id="corpo-tit">Quando surgiu?</p>
               <p id="corpo-texto1">
-                O corte Pixie Cut surgiu em meados dos anos 50 com
-                Elizabeth Taylor e Audrey Hepburn, mas ganhou força em
-                1966 com a modelo Twiggy...
+               O corte Pixie Cut surgiu em meados dos anos 50, com a indústria cinematográfica sendo 
+               impressionada pela ousadia das divas Elizabeth Taylor e Audrey Hepburn. Porém, a tendência 
+               só explodiu mesmo em 1966 com a modelo britânica Twiggy, que não só fez o corte se tornar um 
+               sucesso, como também foi responsável por bombar o delineado gráfico nas makes da época.
               </p>
             </div>
 
@@ -58,25 +33,26 @@ export default function tendencias() {
               <div className="quadradinhos">
                 <p id="corpo-tit1">Como fazer</p>
                 <p id="corpo-texto2">
-                  Para fazer o Pixie Cut você precisa de duas coisas:
-                  referências de cortes e um profissional
-                  especializado...
+                Para fazer o Pixie Cut você precisa de duas coisas: referências de cortes e um profissional 
+                especializado, já que tentar reproduzi-lo sozinha em casa pode acabar trazendo um resultado 
+                totalmente oposto do que você imaginou. 
                 </p>
               </div>
 
               <div className="quadradinhos">
                 <p id="corpo-tit1">Com qual rosto combina?</p>
                 <p id="corpo-texto2">
-                  Rostos ovais são os mais versáteis. Para rostos
-                  redondos, franjas laterais ajudam a alongar a face...
+                  Rostos ovais, considerados os mais versáteis, podem usar o pixie de várias maneiras. Para rostos redondos, 
+                  a franja lateral assimétrica ou alongada pode ajudar a alongar a face. Rostos quadrados podem se beneficiar
+                  de cortes com camadas e franjas mais curtas ou diagonais.
                 </p>
               </div>
 
               <div className="quadradinhos">
                 <p id="corpo-tit1">Como arrumar</p>
                 <p id="corpo-texto2">
-                  Pode-se usar gel e spray fixador para efeito
-                  espetado, ou escova e secador para modelar...
+                 Para arrumar um corte pixie, pode-se utilizar produtos como gel e spray fixador para criar um efeito espetado, 
+                 ou usar a escova e o secador para modelar e dar volume, dependendo do efeito desejado. 
                 </p>
               </div>
             </div>
@@ -84,107 +60,45 @@ export default function tendencias() {
         </section>
 
         <section className="secundario">
-          <p id="tit-3">Você também pode gostar</p>
+          <h1 id="tit-3">Você também pode gostar</h1>
           <div className="recs">
             <div className="rec">
-              <Image
-                id="img-rec"
-                src="/images/cortE/img-corte-1.png"
-                alt="Corte 1"
-                width={250}
-                height={250}
-              />
-              <Image
-                id="estre-rec"
-                src="/images/cortE/Estrelinha.png"
-                alt="Estrelinhas"
-                width={80}
-                height={20}
-              />
+              <img src="/images/corte-modelo/img-corte-1.png" alt="Corte 1"/>
               <p id="tit-4">Corte XXXX</p>
-              <button>Moda</button>
-              <button>Moda</button>
               <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos
-                como gel e spray fixador...
+                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
+                spray fixador para criar um efeito espetado...
               </p>
             </div>
 
             <div className="rec">
-              <Image
-                src="/images/cortE/img-corte-2.png"
-                alt="Corte 2"
-                width={250}
-                height={250}
-              />
-              <Image
-                id="estre-rec"
-                src="/images/cortE/Estrelinha.png"
-                alt="Estrelinhas"
-                width={80}
-                height={20}
-              />
+              <img src="/images/corte-modelo/img-corte-2.png" alt="Corte 1"/>
               <p id="tit-4">Corte XXXX</p>
-              <button>Moda</button>
-              <button>Moda</button>
               <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos
-                como gel e spray fixador...
+                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
+                spray fixador para criar um efeito espetado...
               </p>
             </div>
 
             <div className="rec">
-              <Image
-                id="img-rec"
-                src="/images/cortE/img-corte-3.png"
-                alt="Corte 3"
-                width={250}
-                height={250}
-              />
-              <Image
-                id="estre-rec"
-                src="/images/cortE/Estrelinha.png"
-                alt="Estrelinhas"
-                width={80}
-                height={20}
-              />
+              <img src="/images/corte-modelo/img-corte-3.png" alt="Corte 1"/>
               <p id="tit-4">Corte XXXX</p>
-              <button>Moda</button>
-              <button>Moda</button>
               <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos
-                como gel e spray fixador...
+                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
+                spray fixador para criar um efeito espetado...
               </p>
             </div>
 
             <div className="rec">
-              <Image
-                id="img-rec"
-                src="/images/cortE/img-corte-4.png"
-                alt="Corte 4"
-                width={250}
-                height={250}
-              />
-              <Image
-                id="estre-rec"
-                src="/images/cortE/Estrelinha.png"
-                alt="Estrelinhas"
-                width={80}
-                height={20}
-              />
+              <img src="/images/corte-modelo/img-corte-4.png" alt="Corte 1"/>
               <p id="tit-4">Corte XXXX</p>
-              <button>Moda</button>
-              <button>Moda</button>
               <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos
-                como gel e spray fixador...
+                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
+                spray fixador para criar um efeito espetado...
               </p>
             </div>
           </div>
         </section>
       </main>
-
-    <Footer/>
-
       </>
 )}

@@ -7,19 +7,21 @@ body, html {
     flex-direction: column;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 .principal {
-    width: 70%;
+    width: 100%;
     margin-top: 10vh;
     margin-left: 8vh;
     display: flex;
     align-items: flex-start;
 }
 
-.esquerda {
-    margin-right: 5vh;
-}
 
-.esquerda img {
+.principal img {
+    margin-right: 5vh;
     height: 90vh;
     width: auto;
 }
@@ -28,21 +30,6 @@ body, html {
     margin-bottom: 3vh;
 }
 
-#but {
-    padding: 0.01vh 2.9vh;
-    border-width: 0.22vh;
-    border-color: black;
-    border-radius: 2vh;
-    background-color: transparent;
-    margin-right: 2vh;
-    color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 2.2vh;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
-}
 
 .direita {
     margin-top: 1vh;
@@ -55,7 +42,7 @@ body, html {
 #tit1 {
     color: #000;
     font-family: "The Next Font";
-    font-size: 5vh;
+    font-size: 2.8125rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -66,17 +53,18 @@ body, html {
 #corpo-texto1 {
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: 2.3vh;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-align: justify;
+    max-width: 53.125rem;
 }
 
 #corpo-tit {
     color: #420E45;
     font-family: "PLAYFUL RUNWAY";
-    font-size: 2.7vh;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -89,7 +77,7 @@ body, html {
 #corpo-tit1 {
     color: #420E45;
     font-family: "PLAYFUL RUNWAY";
-    font-size: 3vh;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -103,7 +91,7 @@ body, html {
 #corpo-texto2 {
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: 2.32vh;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -120,14 +108,14 @@ body, html {
 .quadradinhos {
     display: flex;
     flex-direction: column;
-    width: 27vh;
+    width: 13.4375vw;
+    height: auto;
+    min-width: 16.125rem;
     padding: 2.7vh;
     border-radius: 1vh;
     background: #FFF;
     box-shadow: 0 4px 22.9px 0 rgba(0, 0, 0, 0.25);
     border-radius: 2vh;
-    max-width: 27vh;
-    max-height: 44vh;
 }
 
 .quadradinhos p {
@@ -145,11 +133,16 @@ body, html {
     align-items: center;
 }
 
+.rec img {
+    max-width: 18.5vw;
+    height: 26vw;
+}
+
 #tit-3 {
     color: #000;
     text-align: center;
     font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 4.6vh);
+    font-size: 2.8125rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -162,11 +155,6 @@ body, html {
     margin: 0;
 }
 
-#estre-rec {
-    width: 14vh;
-    margin-top: 1.8vh;
-}
-
 #tit-4 {
     color: #000;
     font-family: "The Next Font";
@@ -174,36 +162,19 @@ body, html {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top: 1vh;
-    margin-bottom: 2vh;
-}
-
-.rec button {
-    padding: 0.01vh 1.9vh;
-    border-width: 0.22vh;
-    border-color: black;
-    border-radius: 2vh;
-    background-color: transparent;
-    margin-right: 1.2vh;
-    color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 1.8vh;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
-    margin-bottom: 2vh;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 #text-rec {
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: 1.7vh;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-align: justify;
-    overflow-wrap: break-word;
+    max-width: 21.8rem;
 }
 
 
