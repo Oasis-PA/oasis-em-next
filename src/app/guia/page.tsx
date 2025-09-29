@@ -11,7 +11,6 @@ import "@/styles/guia.css";
 export default function guia() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Função para filtrar as páginas
   const handleSearch = (term) => {
     setSearchTerm(term);
     

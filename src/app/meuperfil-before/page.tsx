@@ -3,9 +3,6 @@ import Link from 'next/link';
 
 import '@/styles/meuperfil-before.css';
 
-
-
-
 const MeuAvatarPage: React.FC = () => {
   return (
     <>
