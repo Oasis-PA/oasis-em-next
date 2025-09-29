@@ -6,7 +6,7 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 main {
@@ -19,7 +19,7 @@ main {
 .de-ladinho {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
 }
@@ -28,6 +28,25 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
+}
+
+.outro-ladinho {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.abaixo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 3rem;
+}
+
+.esquerda {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
 }
 
@@ -50,4 +69,580 @@ main {
 .botoes img {
     width: 3rem;
     height: auto;
+}
+
+.titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.titulos h1 {
+    color: #5E332C;
+    font-family: "The Next Font";
+    font-size: var(--TTULO-2, 2.8125rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.titulos p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-1, 1.25rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.info-texto {
+    width: 23.625rem;
+    height: 37.3125rem;
+    border-radius: 1.875rem;
+    background: #FFF;
+    box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.content p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+} 
+
+.detalhes {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.4rem;
+}
+
+#texto {
+    color: #5E332C;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#explicacao {
+    color: rgba(94, 51, 44, 0.67);
+    text-align: right;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.elementos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.texto-e-img {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.calendar h1 {
+    color: #5E332C;
+    font-family: "The Next Font";
+    font-size: var(--TTULO-2, 2.8125rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.quadradinho {
+    width: 23.625rem;
+    height: 11.375rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.quadradinho h1 {
+    color: #F2A518;
+    text-align: center;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 2.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.quadradinho p {
+    color: #000;
+    text-align: center;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.direita {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: fit-content;
+}
+
+.direita h1 {
+    color: #000;
+    text-align: center;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: var(--TTULO-2, 2.8125rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 126%;
+    width: fit-content;
+}
+
+.cronograma {
+    width: 68.5625rem;
+    height: 26.0625rem;
+    flex-shrink: 0;
+    border-radius: 1.875rem;
+    background: #FFF;
+    box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.dias-da-semana {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.3rem;
+}
+
+.conteudo {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;}
+
+.dias-da-semana h1 {
+    color: #000;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: var(--CORPO-DE-TEXTO-1, 1.25rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.diquinhas {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dicas {
+    width: 32.9375rem;
+    height: 26.0625rem;
+    flex-shrink: 0;
+    border-radius: 1.875rem;
+    background: #FFF;
+    box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.dicas p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.direita h2 {
+    color: #5E332C;
+    font-family: "The Next Font";
+    font-size: 2.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.produtos {
+    display: flex;
+     justify-content: space-between;
+}
+
+.produtinho {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 20.6875rem;
+    height: 28.0625rem;
+    flex-shrink: 0;
+    border-radius: 1.875rem;
+    background: #FFF;
+    box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    align-items: center;
+}
+
+.produtinho p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.produtinho button {
+    display: flex;
+    width: 9.50425rem;
+    height: 2.51731rem;
+    padding: 0.411rem 2.00363rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.51375rem;
+    flex-shrink: 0;
+    border-style: none;
+    border-radius: 0.10275rem;
+    background: #F2A518;
+
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.0275rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: background 0.3s, box-shadow 0.3s, border-radius 0.3s;
+}
+
+.produtinho button:hover {
+    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
+    box-shadow: 0 5px 10.7px 0 #945414;
+}
+
+.produtinho button:active {
+    border: 1px solid #ECC46F;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
+}
+
+.articles {
+    display: flex;
+    justify-content: space-between;
+}
+
+.articles p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.articles h1 {
+    color: #000;
+    font-family: "The Next Font";
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+}
+
+.butoes {
+    display: flex;
+    gap: 1rem;
+}
+
+.butoes button {
+    padding: .1rem 1.2rem .1rem 1.2rem;
+    border: #000 .1rem solid;
+    border-radius: 1rem;
+    background-color: transparent;
+
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.artigo, .artigo1 {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 27.25rem;
+    height: 14rem;
+    flex-shrink: 0;
+    padding: 1.2rem;
+    display: flex;
+}
+
+.artigo img, .artigo1 img {
+    width: 1.305rem;
+    height: 1.8125rem;
+    flex-shrink: 0;
+}
+
+.artigo {
+    background-image: url('/public/images/resposta/art-1.png');
+}
+
+.artigo1 {
+    background-image: url('/public/images/resposta/art-2.png');
+}
+
+#conteudinho {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.aaaa {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+
+
+
+
+
+#calendario-dinamico {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#calendario-dinamico h2 {
+    color: #5E332C;
+    text-align: center;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: var(--TTULO-2, 2.8125rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 25rem;
+}
+
+.tabela-calendario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabela-calendario tr {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-style: normal;
+    line-height: 250%;
+    letter-spacing: .1rem;
+    display: flex;
+    gap: 1.7rem;
+}
+
+.tabela-calendario tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tabela-calendario thead {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tabela-calendario th, .tabela-calendario td {
+  width: 2.2rem;
+  height: 2.6rem;
+  text-align: center;
+  font-size: 1rem;
+  position: relative;
+  vertical-align: middle;
+}
+
+.tabela-calendario td > .bolinha {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.tabela-calendario td > div {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#calendario-mes-ano {
+    color: #5E332C;
+    text-align: center;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: var(--TTULO-2, 2.8125rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.legenda-calendario {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 250%; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.bolinha {
+  display: block;
+  margin: 0 auto 2px auto;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+}
+
+.bolinha.hidratacao {
+  background: #6B8E4E;
+}
+
+.bolinha.nutricao {
+  background: #F2C94C;
+}
+
+.bolinha.reconstrucao {
+  background: #7B5B4B;
+}
+
+.tabela-calendario {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-family: inherit;
+}
+
+.tabela-calendario th, .tabela-calendario td {
+  width: 2.2rem;
+  height: 2.6rem;
+  text-align: center;
+  font-size: 1rem;
+  position: relative;
+  vertical-align: middle;
+}
+
+.tabela-calendario td > .bolinha {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  width: 1.7em;
+  height: 1.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.tabela-calendario td > div {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legenda-calendario {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.legenda-calendario .bolinha {
+  margin: 0 0.3rem 0 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  display: inline-block;
+}
+
+.calendario-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.calendario-seta {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #5E332C;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.calendario-seta:hover {
+  color: #F2A518;
 }
