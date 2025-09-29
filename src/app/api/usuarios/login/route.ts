@@ -1,6 +1,7 @@
 // app/api/usuarios/login/route.ts
 import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
@@ -14,34 +15,53 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const user = await prisma.usuario.findUnique({ where: { email } });
+    // Busca usuário com todas as informações necessárias
+    const user = await prisma.usuario.findUnique({ 
+      where: { email },
+      include: {
+        genero: true,
+        tipo_cabelo: true,
+      }
+    });
+
     if (!user) {
       return NextResponse.json(
-        { message: "Usuário não encontrado." },
-        { status: 404 }
-      );
-    }
-
-    // ⚠️ Comparação simples de senha (ideal: usar bcrypt)
-    if (user.senha !== senha) {
-      return NextResponse.json(
-        { message: "Senha incorreta." },
+        { message: "Email ou senha incorretos." },
         { status: 401 }
       );
     }
 
-    // 🔑 Geração do token JWT
+    // Verifica senha com bcrypt
+    const senhaValida = await bcrypt.compare(senha, user.senha);
+    
+    if (!senhaValida) {
+      return NextResponse.json(
+        { message: "Email ou senha incorretos." },
+        { status: 401 }
+      );
+    }
+
+    // Gera token JWT
     const token = jwt.sign(
-      { id: user.id_usuario, 
+      { 
+        id: user.id_usuario, 
         email: user.email, 
-        hasProfile: !!user.nome, // true se já tem nome salvo no perfil
+        hasProfile: !!user.nome,
       },
-      process.env.JWT_SECRET!, // precisa definir no .env
+      process.env.JWT_SECRET!,
       { expiresIn: "7d" }
     );
 
-    // 🔒 Grava o token em cookie seguro
-    const res = NextResponse.json({ message: "Login realizado com sucesso" });
+    // Remove senha do objeto de retorno
+    const { senha: _, ...usuarioSemSenha } = user;
+
+    // Retorna com cookie e dados do usuário
+    const res = NextResponse.json({ 
+      message: "Login realizado com sucesso",
+      success: true,
+      usuario: usuarioSemSenha
+    });
+
     res.cookies.set("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

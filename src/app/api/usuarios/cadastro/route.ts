@@ -1,5 +1,6 @@
 // app/api/usuarios/cadastro/route.ts
 import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req: Request) {
@@ -25,19 +26,26 @@ export async function POST(req: Request) {
       );
     }
 
+    // Hash da senha com bcrypt
+    const senhaHash = await bcrypt.hash(senha, 10);
+
     // Cria o usuário no banco
     const novoUsuario = await prisma.usuario.create({
       data: {
         nome,
         email,
-        senha,
+        senha: senhaHash, // Salva a senha hasheada
         id_genero: 1, // default temporário
       },
     });
 
     return NextResponse.json({ 
       message: "Conta criada com sucesso!", 
-      usuario: novoUsuario 
+      usuario: { 
+        id: novoUsuario.id_usuario, 
+        nome: novoUsuario.nome, 
+        email: novoUsuario.email 
+      }
     });
   } catch (error) {
     console.error("Erro ao criar usuário:", error);

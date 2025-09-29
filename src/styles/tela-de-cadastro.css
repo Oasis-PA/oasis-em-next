@@ -51,8 +51,8 @@ main {
 h1 {
     font-family: "The Next Font";
     font-weight: 400;
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 3.75rem;
+    line-height: normal;
 }
 
 p {
@@ -70,7 +70,7 @@ label {
 
 form {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 form input {
@@ -104,6 +104,7 @@ a {
     font-family: "The Next Font";
     font-weight: 400;
     font-size: 1.2rem;
+    border-radius: 10px;
 }
 
 .lin {
@@ -140,7 +141,7 @@ a {
     background-color: #722F53;
     border-radius: 50px;
     color: white;
-    margin: 20px 0px 0px -40px;
+    margin-top: 20px;
     cursor: pointer;
     border: none;
     font-family: "The Next Font";
@@ -164,11 +165,10 @@ a {
 }
 
 #main-margin-login {
-       flex-flow: row;
+    flex-flow: row;
     margin-left: 15dvw;
     width: auto;
-    display: flex
-;
+    display: flex;
 }
 
 #section-checkbox-login {
@@ -229,6 +229,7 @@ a {
     width: 100%;
     max-width: 500px;
     padding: 30px 0px 0px 0px;
+    align-self: center;
 }
 
 .div-ou {
@@ -285,10 +286,22 @@ margin-left: -4.5%;
     padding: 20px;
 }
 
+#main-margin-cadastro > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #main-margin-cadastro2 {
     margin-left: 15dvw;
     width: 50%;
     padding: 20px;
+}
+
+#main-margin-cadastro2 > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hide-on-mobile {

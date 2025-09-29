@@ -19,11 +19,14 @@ footer iframe {
 }
 #banner
 {
-    background-image: url(../src/Imagens/Alimentação/banner.png);
-    width: 1915px;
+    background-image: url('../../public/images/alimentacao/banner.png');
+    background-repeat: no-repeat;
+    width: 100vw;
+    margin-top: -20px;
     margin-left: -20px;
-    height: 780px;
+    height: 40vw;
     flex-shrink: 0;
+    
 }
 #banner > h1
 {
@@ -59,9 +62,7 @@ margin-left: 149px;
     width: 1897px;
     height: 903px;
     flex-shrink: 0;
-    img{
-        margin-top: 63px;
-    }
+
 }
 #sec2 > h1
 {
