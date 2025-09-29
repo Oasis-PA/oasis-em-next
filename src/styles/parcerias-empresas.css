@@ -1,84 +1,39 @@
-*
-{
+/* ================================== */
+/* CONFIGURAÇÕES GLOBAIS E TEMAS      */
+/* ================================== */
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   color: var(--corpo-texto);
 }
+
 :root {
   --body-back: #ffffff;
   --corpo-texto: #000000; 
-  --header-color: #000000; 
   --back-header: #fff;
-  --shadow: #f8f4f4;
-  --label: #000000;
-  --footer: #ffffff;
   --border-form: #000000;
   --border-linhas: rgba(0, 0, 0, 0.5);
-  --eusou2: #FFF8E9;
+  --eusou: #ffffff;
+  --eusou2: #FAF5FF;
 }
-.dark:root{
+
+.dark:root {
   --body-back: #0e0e0e;
-  --header-color: #ffffff; 
+  --corpo-texto: #ffffff; 
   --back-header: #000000;
-  --corpo-texto: #ffffff ; 
-  --footer: #000000;
-  --shadow: #161616;
-  --label: #f3c11e;
   --border-form: #fff;
   --border-linhas: rgba(255, 255, 255, 0.5);
-  --eusou2: #1d1d1d;
+  --eusou: #000000;
+  --eusou2: #181818;
 }
 
-/* Estilos para o toggle de tema */
-.check{
-  opacity: 0;
-  position: absolute;
-}
-.label{
-  margin-top: 10px;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: 5%;
-  background-color: var(--label);
-  border-radius: 29px;
-  border: 0.1px solid #000000;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 60px;
-  height: 29px;
-  transform: scale(1.1);
-}
-.bolinha > img {
-  position: absolute;
-  right: 0;
-} 
-#sol{
-  margin-left: 10px;
-  margin-top: -1px;
-}
-#lua{
-  margin-left: 27.2px;
-  margin-top: 1px;
-  width: 26.9px;
-  height: 26.9px;
-}
-.imagem {
-  width: 27.6px;
-  height: 27.6px;
-  position: absolute;
-  top: 0;
-  left: -9px;
-}
-.check:checked ~ .bolinha {
-  transform: translateX(3px);
-  margin-top: -30px; 
-}
+/* ================================== */
+/* LAYOUT PRINCIPAL                   */
+/* ================================== */
 
-/* Estilos gerais do corpo e layout principal */
-body{
+body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -86,34 +41,48 @@ body{
   overflow-x: hidden;
 }
 
-header {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 0;
-}
-
-main{
+main {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1rem;
 }
 
-/* Estilo do formulário e seus componentes */
+/* Em telas menores, o layout vira uma coluna única */
+@media screen and (max-width: 1200px) {
+  main {
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+  }
+}
+
+/* ================================== */
+/* FORMULÁRIO DE CONTATO              */
+/* ================================== */
+
 #container {
-  flex: 1;
+  flex: 1 1 600px;
   display: flex;
   justify-content: center;
   min-width: 320px;
   max-width: 800px;
-  margin: 0 auto;
+  padding: 1rem;
 }
 
-form{
-  margin: 0 auto;
+/* Formulário aparece depois da imagem em telas menores */
+@media screen and (max-width: 1200px) {
+  #container {
+    order: 2;
+    margin: 30px auto;
+    width: 95%;
+  }
+}
+
+form {
   padding: 30px 20px;
   width: 100%;
   max-width: 764px;
@@ -124,77 +93,73 @@ form{
   align-items: center;
 }
 
-.titulo{
-  margin-top: 27px;
-  text-align: center;
-  font-family: "The Next Font";
-  font-size: 45px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+@media screen and (max-width: 768px) {
+  form {
+    padding: 20px 15px;
+    border-radius: 30px;
+  }
 }
 
-.subtitulo{
-  margin-top: 15px;
+.titulo {
+  margin-top: 27px;
   text-align: center;
-  font-family: "Louis George Cafe";
-  font-size: 20px;
-  font-style: normal;
+  font-family: "The Next Font", sans-serif;
+  /* MELHORIA: Tipografia Fluida */
+  font-size: clamp(28px, 5vw, 45px);
   font-weight: 400;
-  line-height: normal;
-  margin-bottom: 50px;
+}
+
+.subtitulo {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(18px, 2.5vw, 20px);
+  font-weight: 400;
   padding: 0 15px;
 }
 
-#caixas-texto{
+/* Inputs e Textarea */
+#caixas-texto {
   width: 100%;
   max-width: 656px;
+  margin-bottom: 20px; /* Reduzido para consistência */
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Espaçamento entre os inputs */
 }
 
-#caixas-texto>input{
+#caixas-texto input, #telefone {
   border: none;
   border-bottom: 2px solid var(--border-linhas);
   height: 60px;
-  width: 100%;
-  font-family: "Louis George Cafe";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   background-color: var(--body-back);
-  margin-bottom: 5px;
-}
-
-#telefone{
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  border-bottom: 2px solid var(--border-linhas);
-  height: 60px;
   width: 100%;
-  font-family: "Louis George Cafe";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 5px;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(16px, 2vw, 18px); /* Ajustado */
+  padding: 0 5px;
 }
 
-#telefone>img{
+#telefone {
+  display: flex;
+  align-items: center;
+}
+
+#telefone > img {
   width: 25px;
   height: 25px;
   margin: 0 10px;
 }
 
 #telefone > input {
-  height: 23px;
+  height: 100%;
   border: none;
-  background-color: var(--body-back);
+  background-color: transparent;
   flex: 1;
+  font-size: inherit;
 }
 
 #telefone > input:focus {
-  border: none;
   outline: none;
 }
 
@@ -203,22 +168,27 @@ form{
   max-width: 656px;
 }
 
-#contato>textarea{
-  margin-top: 25px;
-  margin-bottom: 25px;
+#motivo {
+  margin-bottom: 45px;
   width: 100%;
-  height: 109px;
-  flex-shrink: 0;
+  height: 183px;
   border-radius: 20px;
-  border: 2px solid #5D5D5D;
+  border: 1px solid var(--border-linhas);
   background: var(--body-back);
+  font-family: "Louis George Cafe", sans-serif;
   font-size: 16px;
-  padding: 10px;
-  resize: none;
+  padding: 15px;
+  resize: vertical;
 }
 
-/* Estilos para os cartões de opção */
-.cliente{
+@media screen and (max-width: 768px) {
+  #motivo {
+    height: 150px;
+  }
+}
+
+/* Cards de opção (usuário/empresa) */
+.cliente {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -227,258 +197,177 @@ form{
   width: 100%;
 }
 
-.eusou, .eusou2{
+@media screen and (max-width: 768px) {
+  .cliente {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.eusou, .eusou2 {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-evenly;
+  padding: 1rem;
   width: 308px;
   height: 237px;
-  flex-shrink: 0;
   cursor: pointer;
   text-decoration: none;
-  background-color: var(--body-back);
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.eusoua {
-  text-align: center;
+.eusou:hover, .eusou2:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.eusoub {
-  text-align: left;
+.dark .eusou:hover, .dark .eusou2:hover {
+  box-shadow: 0 10px 20px rgba(255,255,255,0.1);
 }
 
 .eusoua, .eusoub {
   width: 90%;
-  font-family: "Louis George Cafe";
+  font-family: "Louis George Cafe", sans-serif;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  line-height: 1.4;
 }
+.eusoua { text-align: center; }
+.eusoub { text-align: left; }
      
-.eusou2{
-  border-radius: 20px;
-  border: 2px solid #474747;
-  background: var(--body-back);
-}
-
-.eusou{
-  border-radius: 20px;
+.eusou {
   border: 2px solid #5F0B38;
-  background: var(--eusou2);
+  background: var(--eusou2); /* Cor de fundo da opção selecionada */
 }
 
-/* Botão Conheça */
-.conheça{
+.eusou2 {
+  border: 2px solid #474747;
+  background: var(--eusou); /* Cor de fundo da opção não selecionada */
+}
+
+@media screen and (max-width: 480px) {
+  .eusou, .eusou2 {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Botão de Envio */
+.conheça {
   display: flex;
   width: 294px;
   height: 49px;
   padding: 8px 39px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
   border-radius: 27px;
-  background: #F2A518;
+  background: #722F53;
   color: #FFF;
   text-align: center;
-  font-family: "The Next Font";
+  font-family: "The Next Font", sans-serif;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  margin-top: 15px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.conheça:hover {
-  background: #e09917;
+.conheça:hover { background: #612647; }
+
+@media screen and (max-width: 480px) {
+  .conheça {
+    width: 80%;
+    max-width: 280px;
+  }
 }
 
-/* Aside e imagem principal */
-aside{
-  flex: 1;
+/* ================================== */
+/* ASIDE (IMAGEM LATERAL)             */
+/* ================================== */
+
+aside {
+  flex: 1 1 900px;
   min-width: 300px;
   display: flex;
   justify-content: flex-end;
 }
 
-aside>figure{
-  background: url(/images/Imagem-pagina-empresas.png);
-  background-repeat: no-repeat;
+/* Imagem aparece primeiro em telas menores */
+@media screen and (max-width: 1200px) {
+  aside {
+    width: 100%;
+    order: 1; 
+  }
+}
+
+aside > figure {
+  background: url(/images/imagem-pagina-empresas.png) no-repeat center center;
   background-size: cover;
-  background-position: center;
   width: 100%;
   min-height: 650px;
-  max-width: 1100px;
   height: 100vh;
   border-radius: 30px 0 0 30px;
   display: flex;
   flex-flow: column;
+  padding: 22px 24px;
 }
 
-#data{
+@media screen and (max-width: 1200px) {
+  aside > figure {
+    border-radius: 0;
+    max-width: 100%;
+    min-height: 500px;
+    justify-content: flex-end;
+    padding-bottom: 50px;
+  }
+}
+
+#data {
   color: #FFF;
-  text-align: start;
-  font-family: "Louis George Cafe";
+  font-family: "Louis George Cafe", sans-serif;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-left: 24px;
-  margin-top: 22px;
 }
 
-#favorito{
-  fill: #FFF;
-  width: 42.481px;
-  height: 59px;
-  flex-shrink: 0;
-  margin-top: 40px;
-  margin-left: 43px;
-}
-
-#artigo{
-  margin-top: 50vh;
-  margin-left: 24px;
+#artigo {
+  margin-top: auto;
   color: #FFF;
-  font-family: "The Next Font";
-  font-size: 80px;
-  font-style: normal;
-  font-weight: 400;
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(36px, 8vw, 80px);
   line-height: 1.1;
 }
 
-.morcas{
+.morcas {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-left: 24px;
   margin-top: 20px;
 }
 
-.moda{
+.moda {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  text-align: center;
-  width: 176.728px;
-  height: 45.818px;
-  flex-shrink: 0;
-  border-radius: 65.455px;
-  border: 2.182px solid #FFF;
+  padding: 0 20px;
+  height: 45px;
+  border-radius: 65px;
+  border: 2px solid #FFF;
   background: rgba(255, 255, 255, 0.00);
   color: #FFF;
-  font-family: "Louis George Cafe";
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-/* Media queries para responsividade */
-@media screen and (max-width: 1200px) {
-  main {
-    flex-direction: column;
-  }
-  
-  aside {
-    width: 100%;
-    order: 1;
-  }
-  
-  #container {
-    order: 2;
-    margin-top: 30px;
-  }
-  
-  aside>figure {
-    border-radius: 0;
-    width: 100%;
-    max-width: 100%;
-    min-height: 500px;
-  }
-  
-  #artigo {
-    font-size: 60px;
-    margin-top: 25vh;
-  }
-  
-  .label {
-    margin-right: 5%;
-  }
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(18px, 4vw, 36px);
 }
 
 @media screen and (max-width: 768px) {
-  .titulo {
-    font-size: 35px;
-  }
-  
-  .subtitulo {
-    font-size: 18px;
-  }
-  
-  form {
-    padding: 20px 15px;
-    border-radius: 30px;
-  }
-  
-  #caixas-texto>input,
-  #telefone,
-  #contato>textarea {
-    font-size: 16px;
-  }
-  
-  .eu {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #artigo {
-    font-size: 45px;
-  }
-  
   .moda {
     font-size: 24px;
-    width: 130px;
     height: 35px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .titulo {
-    font-size: 28px;
-  }
-  
-  form {
-    border-radius: 20px;
-  }
-  
-  .eusou, .eusou2 {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .conheça {
-    width: 80%;
-    max-width: 280px;
-  }
-  
-  #artigo {
-    font-size: 36px;
-    margin-top: 20vh;
-  }
-  
   .moda {
     font-size: 18px;
-    width: 100px;
     height: 30px;
-  }
-  
-  .label {
-    margin-right: 10px;
-    width: 50px;
   }
 }

@@ -7,6 +7,92 @@ import Link from "next/link";
 
 import "@/styles/produtos.css";
 
+
+
+const ChevronDownIcon = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="chevron-icon"
+        width="20"
+        height="20"
+    >
+        <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+);
+
+
+interface FilterProps {
+    label: string;
+    value: string;
+}
+
+const FilterDropdown: React.FC<FilterProps> = ({ label, value }) => {
+    return (
+        <div className="filter-dropdown-container">
+            <div className="filter-label">{label}</div>
+            <div className="filter-content">
+                <span className="filter-value">{value}</span>
+                <div className="filter-icon-circle">
+                    <ChevronDownIcon />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+const FiltrosBarra: React.FC = () => {
+    return (
+        <div className="filtros-barra-fundo">
+            <div className="filtros-barra-wrapper">
+                <FilterDropdown label="CATEGORIA" value="TODAS" />
+                <FilterDropdown label="TIPO" value="TODOS" />
+                <FilterDropdown label="TIPO DE PELE" value="TODOS" />
+                <FilterDropdown label="TIPO DE CABELO" value="TODOS" />
+                <FilterDropdown label="PREÇO" value="TODOS" />
+            </div>
+        </div>
+    );
+};
+
+
+const ProdutoCard: React.FC = () => {
+    return (
+        <div className="produto-card">
+            <div className="card-inner-wrapper">
+               <Image src="/images/produtos/Rectangle-194.png" width={150} height={150} 
+                alt="L'Oréal Professionnel Óleo 10 em 1" className="produto-card-image" />
+                <div className="card-text">
+                    <p className="card-tag">Força e vigor</p>
+                    <h2 className="card-title">L'ORÉAL PROFESSIONNEL ÓLEO 10 EM 1 ABSOLUT</h2>
+                </div>
+                <button className="card-button">VER MAIS</button>
+            </div>
+        </div>
+    );
+};
+
+
+const ProdutosGrid: React.FC = () => {
+  
+    const cartoes = Array.from({ length: 8 }, (_, index) => <ProdutoCard key={index} />);
+
+    return (
+        <section id="produtos-grid-section">
+            <div className="produtos-grid-wrapper">
+                {cartoes}
+            </div>
+        </section>
+    );
+};
+
+
 export default function produtos() {
   return (
     <>
@@ -52,6 +138,13 @@ export default function produtos() {
           <img src="images/produtos/pele (4).png" alt="" />
         </div>
       </section>
+
+ 
+
+            <FiltrosBarra />
+      
+       <ProdutosGrid />
+
     </>
   );
 }
