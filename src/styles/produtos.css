@@ -115,8 +115,8 @@ figure > img {
 .filtros-barra-fundo {
     padding: 30px 0; 
     width: 100%;
-    margin-top: 7vh; 
-    margin-bottom: 3rem; 
+    margin-top: 10vh; 
+    margin-bottom: 1rem; 
 }
 
 
@@ -124,23 +124,23 @@ figure > img {
     display: flex;
     justify-content: center; 
     gap: 7vw; 
-    max-width: 1400px; 
+    
     margin: 0 auto; 
     padding: 0 20px;
     flex-wrap: wrap; 
 }
 
-/* Container Principal de Cada Dropdown (o "pill" branco) */
+
 .filter-dropdown-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Estilo do container branco */
+    
     background-color: white;
-    border-radius: 30px; /* Bordas bem arredondadas */
-    padding: 8px 15px 8px 20px; /* Ajuste para o conteúdo interno */
-    min-width: 150px; /* Largura mínima para o filtro */
-    /* Sombra suave como na imagem */
+    border-radius: 30px; 
+    padding: 8px 15px 8px 20px; 
+    min-width: 170px;
+    min-height: 0px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); 
     cursor: pointer;
     transition: transform 0.2s;
@@ -204,9 +204,9 @@ figure > img {
     display: grid;
    
     grid-template-columns: repeat(4, 1fr); 
-    gap: 20px;
+    gap: 40px;
     
-    max-width: 1200px; 
+    max-width: clamp(320px, 90vw, 1500px); 
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -300,4 +300,39 @@ figure > img {
         /* 1 coluna em celulares */
         grid-template-columns: 1fr;
     }
+}
+
+.load-more-container {
+    width: 100%;
+    margin-top: 2vh;
+    padding: 50px 0; 
+    display: flex;
+    justify-content: center; 
+}
+
+.load-more-button {
+  
+    background-color: #f7f3fa; 
+    color: #495057; 
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    
+    border: 1px solid #dcdcdc; 
+    border-radius: 40px; 
+    padding: 15px 40px;
+    cursor: pointer;
+   
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.load-more-button:hover {
+    
+    background-color: #c292be;
+    border-color: #a0a0a0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
 }

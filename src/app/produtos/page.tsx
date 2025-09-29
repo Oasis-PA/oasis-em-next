@@ -92,6 +92,15 @@ const ProdutosGrid: React.FC = () => {
     );
 };
 
+const LoadMoreButton: React.FC = () => {
+    return (
+        <div className="load-more-container">
+            <button className="load-more-button">
+                CARREGAR MAIS PRODUTOS
+            </button>
+        </div>
+    );
+};
 
 export default function produtos() {
   return (
@@ -145,6 +154,11 @@ export default function produtos() {
       
        <ProdutosGrid />
 
+        <LoadMoreButton />
+  
+
     </>
+
+    
   );
 }
