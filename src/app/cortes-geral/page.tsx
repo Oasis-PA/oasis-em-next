@@ -73,7 +73,7 @@ export default function cortegeral() {
         <p id="p3">Veja o que mais bombou essa semana quando se trata de cortes de cabelo.</p>
         <div id="div-maisvisitados">
           <div className="esquerda">
-            <Link href="#" id="img1"><img src="/images/corteS/corte1.png" alt="imagem-corte1" /></Link>
+            <Link href="#" id="img1"><img src="/images/cortes-geral/corte1.png" alt="imagem-corte1" /></Link>
           </div>
           <div className="direita">
             <div className="topo">
