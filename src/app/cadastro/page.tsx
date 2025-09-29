@@ -39,7 +39,7 @@ export default function TelaCadastro() {
       }
 
       sessionStorage.setItem("cadastroTemp", JSON.stringify({ nome, email }));
-      router.push("/cadastro2");
+      router.push("/Cadastro2");
     } catch (err) {
       setErro("Erro de conexão com servidor.");
     }
