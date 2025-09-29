@@ -20,7 +20,7 @@ footer iframe {
 #banner
 {
     background-image: url('../../public/images/alimentacao/banner.png');
-    width: 1915px;
+    width: 100vw;
     margin-left: -20px;
     height: 780px;
     flex-shrink: 0;
