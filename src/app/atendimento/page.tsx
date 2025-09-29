@@ -50,10 +50,13 @@ const AtendimentoUsuarioPage: React.FC = () => {
         <aside>
           <figure>
             <p id="data">13 jan 2025</p>
-            <p id="artigo">Algum artigo escrito aqui</p>
-            <div className="morcas">
-              <p className="moda">Moda</p>
-              <p className="moda">Marcas</p>
+            <img id='favorito' src="/images/atendimento-usuario/favorito.svg" alt="" />
+            <div className="mocastigo">
+              <p id="artigo">Algum artigo escrito aqui</p>
+              <div className="morcas">
+                <p className="moda">Moda</p>
+                <p className="moda">Marcas</p>
+              </div>
             </div>
           </figure>
         </aside>
