@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+}
+
+.de-ladinho {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.em-ciminha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+#logo {
+    width: 7.5rem;
+    height: auto;
+}
+
+#user {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.botoes img {
+    width: 3rem;
+    height: auto;
+}
