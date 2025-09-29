@@ -41,6 +41,7 @@ img {
     opacity: 0;
     position: absolute;
 }
+
 .voce_procura{
     background-color: #768791;
     width: 100vw;
@@ -48,6 +49,7 @@ img {
     display: flex;
     flex-flow: row nowrap;
 }
+
 .texto-procura{
     display: flex;
     flex-direction: column;
@@ -62,6 +64,7 @@ img {
     padding-bottom: 20px;
     line-height: 1.1;
 }
+
 .temos{
 color: #FFF;
 text-align: start;
@@ -72,15 +75,15 @@ font-style: normal;
 font-weight: 400;
 
 }
-.mudar_visual{
-    color: #FFF;
 
+.mudar_visual{
+color: #FFF;
 font-family: 'Louis George Cafe';
 font-size: clamp(2rem, 3.9vw, 3.3rem);
 font-style: normal;
 font-weight: 400;
-
 }
+
 @media (max-width: 900px) {
     .voce_procura {
         flex-direction: column;
@@ -96,6 +99,7 @@ font-weight: 400;
         text-align: center;
     }
 }
+
 .label{
     margin-top: -158px;
     margin-bottom: 120px;
