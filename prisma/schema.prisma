@@ -5,7 +5,6 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
- 
 }
 
 model Genero {
@@ -59,9 +58,8 @@ model Produto {
   avaliacoes    Avaliacao[]
   favoritos     Favorito[]
   categoria     Categoria    @relation(fields: [id_categoria], references: [id_categoria])
-  tags          ProdutoTag[]
-  url_imagem String
-  url_loja String
+  url_imagem    String
+  url_loja      String
 }
 
 model Avaliacao {
@@ -85,18 +83,8 @@ model Favorito {
 }
 
 model Tag {
-  id_tag   Int          @id @default(autoincrement())
-  nome     String       @unique
-  produtos ProdutoTag[]
-}
-
-model ProdutoTag {
-  id_produto Int
-  id_tag     Int
-  produto    Produto @relation(fields: [id_produto], references: [id_produto])
-  tag        Tag     @relation(fields: [id_tag], references: [id_tag])
-
-  @@id([id_produto, id_tag])
+  id_tag   Int    @id @default(autoincrement())
+  nome     String @unique
 }
 
 model PasswordReset {
@@ -111,8 +99,8 @@ model PasswordReset {
 model Artigo {
   id           Int      @id @default(autoincrement())
   titulo       String
-  slug         String   @unique        
-  conteudo     String  
+  slug         String   @unique
+  conteudo     String
   criadoEm     DateTime @default(now())
   atualizadoEm DateTime @updatedAt
 }
