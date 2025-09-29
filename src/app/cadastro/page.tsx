@@ -60,7 +60,7 @@ export default function TelaCadastro() {
 
       <main id="main-margin-cadastro">
         <section>
-          <h1>Olá, seja bem vindo(a)!</h1>
+          <h1>Olá, seja bem <br></br>vindo(a)!</h1>
           <p>
             Insira suas informações pessoais ou <br className="hide-on-mobile" />{" "}
             <strong>faça</strong> o registro
@@ -104,7 +104,7 @@ export default function TelaCadastro() {
             <div className="lin"></div>
           </section>
 
-          <Link href="/Login">
+          <Link href="/login">
             <button id="botaojaconta" type="button">
               JÁ TEM UMA CONTA? CLIQUE AQUI PARA REGISTRAR.
             </button>
