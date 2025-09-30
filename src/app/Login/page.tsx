@@ -3,73 +3,51 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-import "@/styles/tela-de-cadastro.css"; 
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { LogIn, LogInIcon, LogOutIcon } from "lucide-react";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { createClient } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
+import "@/styles/tela-de-cadastro.css";
 import SenhaModal from "@/components/senhaModal/modal";
-
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL_TEST!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_TEST!
-);
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
-  const [lembrar, setLembrar] = useState(false);
+  const [carregando, setCarregando] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const router = useRouter();
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-
-      const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password: senha,
-    });
-
-    if (error) {
-      setMensagem(error.message);
-    } else {
-      window.location.href = "/";
-    }
-  
+    setMensagem("");
+    setCarregando(true);
 
     try {
       const res = await fetch("/api/usuarios/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha, lembrar }),
+        body: JSON.stringify({ email, senha }),
       });
 
       const data = await res.json();
-      setMensagem(data.message);
 
-      if (res.ok) {
-
-        window.location.href = "/";
+      if (!res.ok) {
+        setMensagem(data.message || "Erro ao fazer login");
+        setCarregando(false);
+        return;
       }
+
+      // Salva dados do usuário no sessionStorage
+      if (data.usuario) {
+        sessionStorage.setItem("usuario", JSON.stringify(data.usuario));
+      }
+
+      // Redireciona para dashboard
+      router.push("/dashboard");
     } catch (err) {
       console.error("Erro ao logar:", err);
-      setMensagem("Erro no servidor.");
+      setMensagem("Erro de conexão com servidor.");
+      setCarregando(false);
     }
   }
-
-   const handleLoginClick = async () => {
-      await signIn("google");
-    };
-  
-    const handleLogoutClick = async () => {
-      await signOut();
-    };
-  
-     const { status, data } = useSession();
 
   return (
     <main id="main-margin-login">
@@ -99,27 +77,34 @@ export default function Login() {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             required
-            autoComplete="off"
+            autoComplete="current-password"
             className="padding-form"
           />
 
           <section id="section-checkbox-login">
-           
             <button
-            type="button"
-            onClick={() => setModalOpen(true)}
-            className="text-blue-600 hover:underline"
-          >
-            Esqueceu a senha?
-          </button>
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="text-blue-600 hover:underline"
+            >
+              Esqueceu a senha?
+            </button>
           </section>
 
-          <button type="submit" className="botaocontinue">
-            LOGIN
+          <button 
+            type="submit" 
+            className="botaocontinue"
+            disabled={carregando}
+          >
+            {carregando ? "ENTRANDO..." : "LOGIN"}
           </button>
         </form>
 
-        {mensagem && <p style={{ color: "red" }}>{mensagem}</p>}
+        {mensagem && (
+          <p style={{ color: "red", marginTop: "10px", textAlign: "center" }}>
+            {mensagem}
+          </p>
+        )}
 
         <section className="div-linha-ou">
           <div className="lin"></div>
@@ -127,67 +112,24 @@ export default function Login() {
           <div className="lin"></div>
         </section>
 
-        <section className="botaogoogle">
-
-            {status === "authenticated" && data?.user && (
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2 py-4">
-              <Avatar>
-                <AvatarFallback>
-                  {data.user.name?.[0].toUpperCase()}
-                </AvatarFallback>
-
-                {data.user.image && <AvatarImage src={data.user.image} />}
-              </Avatar>
-
-              <div className="flex flex-col">
-                <p className="font-medium">{data.user.name}</p>
-              </div>
-            </div>
-
-            <Separator />
-          </div>
-        )}
-
-        <div className="mt-4 flex flex-col gap-2">
-          {status === "unauthenticated" && (
-            <Button
-              onClick={handleLoginClick}
-              className="w-full justify-start gap-2"
-            >
-              <LogInIcon size={16} />
-              CONTINUE COM O GOOGLE
-            </Button>
-          )}
-
-          {status === "authenticated" && (
-            <Button
-              onClick={handleLogoutClick}
-              className="w-full justify-start gap-2"
-            >
-              <LogOutIcon size={16} />
-              Fazer Logout
-            </Button>
-            )}
-            </div>
-
-        </section>
-
-        <Link href="/Cadastro1">
+        <Link href="/cadastro">
           <button id="botaonaoconta">
             NÃO TEM UMA CONTA? CLIQUE AQUI PARA CRIAR.
           </button>
         </Link>
       </section>
 
-     <figure id="figure-padding-login">
-    <img
-        src="/images/tela-de-cadastro/imagem-tela-login-amarelo.png"
-        alt="imagem-tela-login-amarelo"
-            
-    />
-</figure>
-    <SenhaModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <figure id="figure-padding-login">
+        <Image
+          src="/images/tela-de-cadastro/imagem-tela-login-amarelo.png"
+          alt="imagem-tela-login-amarelo"
+          width={850}
+          height={1049}
+          style={{ objectFit: "contain" }}
+        />
+      </figure>
+
+      <SenhaModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </main>
   );
 }
