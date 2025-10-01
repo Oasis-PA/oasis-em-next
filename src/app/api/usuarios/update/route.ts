@@ -1,32 +1,41 @@
-import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+// DENTRO DE: src/app/api/usuarios/update/route.ts
+
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import jwt from "jsonwebtoken";
 
-export async function PATCH(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
-  if (!token) {
-    return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
-  }
-
+export async function PUT(req: Request) {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
-    const body = await req.json();
+    const token = req.headers.get("cookie")?.split("token=")[1]?.split(";")[0];
+    if (!token) {
+      return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+    }
+    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!);
+    if (!decoded || typeof decoded !== "object" || !decoded.id) {
+       return NextResponse.json({ error: "Token inválido" }, { status: 401 });
+    }
 
-    // só envia pro prisma os campos que realmente existem
-    const dataToUpdate: any = {};
-    if (body.nome !== undefined) dataToUpdate.nome = body.nome;
-    if (body.sobrenome !== undefined) dataToUpdate.sobrenome = body.sobrenome;
-    if (body.sobre !== undefined) dataToUpdate.sobre = body.sobre;
-    if (body.telefone !== undefined) dataToUpdate.telefone = body.telefone;
+    const { nome, sobrenome, sobre } = await req.json();
 
-    const updatedUser = await prisma.usuario.update({
+    const usuarioAtualizado = await prisma.usuario.update({
       where: { id_usuario: decoded.id },
-      data: dataToUpdate,
+      data: {
+        ...(nome && { nome }),
+        ...(sobrenome && { sobrenome }),
+        ...(sobre && { sobre }),
+      },
+      select: {
+        id_usuario: true,
+        nome: true,
+        sobrenome: true,
+        email: true,
+        sobre: true,
+      },
     });
 
-    return NextResponse.json(updatedUser);
-  } catch (err) {
-    console.error("Erro no PATCH /api/usuarios/update:", err);
-    return NextResponse.json({ error: "Erro ao atualizar" }, { status: 500 });
+    return NextResponse.json(usuarioAtualizado);
+  } catch (error) {
+     // ... (Lógica de erro)
   }
 }

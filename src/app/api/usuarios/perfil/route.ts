@@ -1,70 +1,63 @@
-// src/app/api/me/route.ts
-import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+// Caminho do arquivo: src/app/api/usuarios/perfil/route.ts
+
+import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
+import jwt from "jsonwebtoken";
 
-export async function GET(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
-  if (!token) {
-    return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
-
-    const user = await prisma.usuario.findUnique({
-      where: { id_usuario: decoded.id },
-      select: {
-        id_usuario: true,
-        nome: true,
-        sobrenome: true,
-        email: true,
-        sobre: true,
-      },
-    });
-
-    if (!user) {
-      return NextResponse.json({ error: "Usuário não encontrado" }, { status: 404 });
-    }
-
-    return NextResponse.json(user);
-  } catch (err) {
-    return NextResponse.json({ error: "Token inválido ou expirado" }, { status: 401 });
-  }
+// Tipagem para o payload decodificado do token
+interface TokenPayload {
+  id: number;
+  // ... outras propriedades que você possa ter no token
 }
 
-export async function PUT(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
-  if (!token) {
-    return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
-  }
-
+export async function GET(req: NextRequest) {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
-    const body = await req.json();
+    // 1. Obter o token do cookie da requisição
+    const token = req.cookies.get("token")?.value;
 
-    const { nome, sobrenome, sobre } = body;
+    if (!token) {
+      // Retorna erro se o token não for encontrado
+      return NextResponse.json({ error: "Não autorizado: Token não fornecido." }, { status: 401 });
+    }
 
-    const updatedUser = await prisma.usuario.update({
-      where: { id_usuario: decoded.id },
-      data: {
-        nome,
-        // só atualiza se foi enviado
-        ...(sobrenome !== undefined && { sobrenome }),
-        ...(sobre !== undefined && { sobre }),
+    // 2. Verificar a validade do token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as TokenPayload;
+    if (!decoded || !decoded.id) {
+      // Retorna erro se o token for inválido ou não contiver o ID
+      return NextResponse.json({ error: "Não autorizado: Token inválido." }, { status: 401 });
+    }
+
+    // 3. Buscar o usuário no banco de dados usando o ID do token
+    const usuario = await prisma.usuario.findUnique({
+      where: { 
+        id_usuario: decoded.id 
       },
+      // Seleciona apenas os campos que você quer retornar para o frontend
       select: {
         id_usuario: true,
         nome: true,
         sobrenome: true,
-        sobre: true,
         email: true,
+        sobre: true,
       },
     });
 
-    return NextResponse.json(updatedUser);
-  } catch (err) {
-    console.error("Erro no PUT /api/me:", err);
-    return NextResponse.json({ error: "Erro ao atualizar perfil" }, { status: 500 });
+    if (!usuario) {
+      // Retorna erro se o usuário associado ao token não for encontrado no banco
+      return NextResponse.json({ error: "Usuário não encontrado." }, { status: 404 });
+    }
+
+    // 4. Retornar os dados do usuário com sucesso
+    return NextResponse.json(usuario);
+
+  } catch (error) {
+    // Trata erros específicos de JWT (token expirado, malformado)
+    if (error instanceof jwt.JsonWebTokenError) {
+      return NextResponse.json({ error: `Não autorizado: ${error.message}` }, { status: 401 });
+    }
+
+    // Trata outros erros inesperados do servidor
+    console.error("Erro ao buscar perfil do usuário:", error);
+    return NextResponse.json({ error: "Erro interno no servidor." }, { status: 500 });
   }
 }

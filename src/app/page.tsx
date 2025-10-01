@@ -1,12 +1,18 @@
-"use client";
+// Removendo "use client" para tornar este um Server Component por padrão
 import { Header, Footer } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import "@/styles/index.css";
+import { cookies } from 'next/headers'; // Importa a função para ler cookies
 
-export default function OasisHomepage() {
+// PASSO 1: Adicione "async" na declaração da função
+export default async function OasisHomepage() {
+  // PASSO 2: Use "await" para esperar os cookies
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token')?.value;
+
   return (
-    <div id="bodyPaginaPrincipal" className="min-h-screen">
+    <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
       {/* Page 1 */}
       <div id="page1" className="relative">
         <Header />
@@ -324,35 +330,36 @@ export default function OasisHomepage() {
           </article>
         </footer>
       </div>
-
-      {/* Page 4 */}
-      <div id="page4" className="py-20">
-        <header className="text-center mb-10">
-          <h1 className="text-3xl font-bold">Baseados no seu Perfil</h1>
-          <p className="mt-4">Uma lista de recomendações personalizadas baseadas no seu avatar. Veja produtos que se foram feitos especialmente para você!</p>
-        </header>
-        <main className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
-          {[...Array(4)].map((_, index) => (
-            <figure key={index} className="text-center">
-              <Image 
-                src="/images/tela-principal/page4/produto1.png" 
-                alt="produto" 
-                width={200} 
-                height={200}
-              />
-              <figcaption>
-                <p>Texto Ilustrativo</p>
-                <button className="botoes bg-yellow-500 px-4 py-2 rounded mt-2">
-                  <Link href="/pagina-em-manutencao">
-                    <p>ir para compra</p>
-                  </Link>
-                </button>
-              </figcaption>
-            </figure>
-          ))}
-        </main>
-      </div>
-
+  {/* AQUI ESTÁ A MUDANÇA: Renderização Condicional */}
+      {token && (
+        <div id="page4" className="py-20">
+          <header className="text-center mb-10">
+            <h1 className="text-3xl font-bold">Baseados no seu Perfil</h1>
+            <p className="mt-4">Uma lista de recomendações personalizadas baseadas no seu avatar. Veja produtos que se foram feitos especialmente para você!</p>
+          </header>
+          {/* Idealmente, aqui você faria uma busca por produtos recomendados em vez de usar dados estáticos */}
+          <main className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
+            {[...Array(4)].map((_, index) => (
+              <figure key={index} className="text-center">
+                <Image 
+                  src="/images/tela-principal/page4/produto1.png" 
+                  alt="produto" 
+                  width={200} 
+                  height={200}
+                />
+                <figcaption>
+                  <p>Texto Ilustrativo</p>
+                  <button className="botoes bg-yellow-500 px-4 py-2 rounded mt-2">
+                    <Link href="/pagina-em-manutencao">
+                      <p>ir para compra</p>
+                    </Link>
+                  </button>
+                </figcaption>
+              </figure>
+            ))}
+          </main>
+        </div>
+      )}
       {/* Page 5 */}
       <div id="page5" className="flex items-center py-20 px-6">
         <figure className="flex-1">
@@ -405,7 +412,7 @@ export default function OasisHomepage() {
           <h1 className="text-3xl font-bold mb-4">autocuidado masculino</h1>
           <p className="mb-6">Se importar com a própria beleza e querer se cuidar não é mais algo irreal. Para quem dá aquele toque a mais na aparência, recebe autoestima e felicidade renovadas! Leia agora por onde começar a ter uma rotina capilar e de skincare e dê uma repaginada total no visual</p>
           <button className="botoes bg-yellow-500 px-6 py-3 rounded">
-            <Link href="/skincare">Descubra</Link>
+            <Link href="/skincare" target="_blank">Descubra</Link>
           </button>
         </article>
       </div>
