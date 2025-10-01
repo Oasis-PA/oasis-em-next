@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import "@/styles/tela-de-cadastro.css";
 import SenhaModal from "@/components/senhaModal/modal";
 
@@ -14,6 +14,14 @@ export default function Login() {
   const [carregando, setCarregando] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Mostra mensagem de sucesso se veio do cadastro
+    if (searchParams.get('cadastro') === 'sucesso') {
+      setMensagem("Conta criada com sucesso! Faça login para continuar.");
+    }
+  }, [searchParams]);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -35,13 +43,11 @@ export default function Login() {
         return;
       }
 
-      // Salva dados do usuário no sessionStorage
-      if (data.usuario) {
-        sessionStorage.setItem("usuario", JSON.stringify(data.usuario));
-      }
-
+      // O cookie já foi definido pelo servidor
       // Redireciona para dashboard
-      router.push("/dashboard");
+      const redirect = searchParams.get('redirect') || '/dashboard';
+      router.push(redirect);
+      router.refresh(); // Força atualização do middleware
     } catch (err) {
       console.error("Erro ao logar:", err);
       setMensagem("Erro de conexão com servidor.");
@@ -68,6 +74,7 @@ export default function Login() {
             required
             autoComplete="email"
             className="padding-form"
+            disabled={carregando}
           />
 
           <label htmlFor="senha">Senha</label>
@@ -79,6 +86,7 @@ export default function Login() {
             required
             autoComplete="current-password"
             className="padding-form"
+            disabled={carregando}
           />
 
           <section id="section-checkbox-login">
@@ -86,6 +94,7 @@ export default function Login() {
               type="button"
               onClick={() => setModalOpen(true)}
               className="text-blue-600 hover:underline"
+              disabled={carregando}
             >
               Esqueceu a senha?
             </button>
@@ -101,7 +110,11 @@ export default function Login() {
         </form>
 
         {mensagem && (
-          <p style={{ color: "red", marginTop: "10px", textAlign: "center" }}>
+          <p style={{ 
+            color: mensagem.includes("sucesso") ? "green" : "red", 
+            marginTop: "10px", 
+            textAlign: "center" 
+          }}>
             {mensagem}
           </p>
         )}
@@ -113,7 +126,7 @@ export default function Login() {
         </section>
 
         <Link href="/cadastro">
-          <button id="botaonaoconta">
+          <button id="botaonaoconta" disabled={carregando}>
             NÃO TEM UMA CONTA? CLIQUE AQUI PARA CRIAR.
           </button>
         </Link>
