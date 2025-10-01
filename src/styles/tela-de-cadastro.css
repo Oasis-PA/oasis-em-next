@@ -151,22 +151,22 @@ a {
 
 #botaonaoconta {
     width: 100%;
-    max-width: 500px;
     height: 60px;
     background-color: #F2A518;
     border-radius: 50px;
     color: white;
-    margin: 20px 0px 0px 0px;
+    margin-top: 20px;
     cursor: pointer;
     border: none;
     font-family: "The Next Font";
     font-weight: 400;
     font-size: 1rem;
+    align-self: center;
 }
 
 #main-margin-login {
     flex-flow: row;
-    margin-left: 15dvw;
+    margin-left: 13rem;
     width: auto;
     display: flex;
 }
@@ -255,10 +255,14 @@ a {
     justify-content: flex-end; /* Alinha à direita */
     align-items: center;
 }
+
 #gambiarra{
-margin-top: 7%;
-margin-left: -4.5%;
-}
+    margin-top: 7%;
+    margin-left: -4.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
 
 #figure-padding-login img {
 
@@ -459,3 +463,195 @@ margin-left: -4.5%;
     }
 }
 
+/* ============================================
+   MEDIA QUERIES APENAS PARA LOGIN
+   ============================================ */
+
+@media (max-width: 1200px) {
+    #main-margin-login {
+        margin-left: 8rem;
+    }
+    
+    #gambiarra {
+        margin-left: -2%;
+    }
+    
+    #figure-padding-login img {
+        height: 900px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    #main-margin-login {
+        margin-left: 5rem;
+    }
+    
+    #figure-padding-login img {
+        height: 800px !important;
+    }
+    
+    #gambiarra h1 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 900px) {
+    #main-margin-login {
+        flex-direction: column;
+        margin-left: 0;
+        width: 100%;
+        max-width: none;
+        padding: 30px 20px;
+        align-items: center;
+    }
+    
+    #gambiarra {
+        margin-top: 40px;
+        margin-left: 0;
+        width: 100%;
+        max-width: 600px;
+        order: 2;
+    }
+    
+    #gambiarra h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    #gambiarra p {
+        text-align: center;
+    }
+    
+    #figure-padding-login {
+        order: 1;
+        width: 100%;
+        max-width: 650px;
+        margin-right: 0;
+        margin-bottom: 0;
+        justify-content: center;
+    }
+    
+    #figure-padding-login img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 650px;
+        object-fit: contain;
+    }
+    
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #main-margin-login {
+        width: 100%;
+        padding: 20px 15px;
+    }
+    
+    #gambiarra {
+        width: 100%;
+        margin-top: 35px;
+    }
+    
+    #gambiarra h1 {
+        font-size: 2rem;
+    }
+    
+    #gambiarra p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    #gambiarra form input {
+        height: 50px;
+        font-size: 0.95rem;
+    }
+    
+    #gambiarra .botaocontinue {
+        height: 50px;
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    
+    #section-checkbox-login {
+        margin: 15px 0;
+    }
+    
+    #section-checkbox-login button {
+        font-size: 0.9rem;
+    }
+    
+    #botaonaoconta {
+        height: 55px;
+        font-size: 0.9rem;
+    }
+    
+    #figure-padding-login {
+        max-width: 550px;
+    }
+    
+    #figure-padding-login img {
+        max-height: 550px;
+    }
+    
+    .div-linha-ou {
+        padding: 25px 0;
+    }
+}
+
+@media (max-width: 400px) {
+    #main-margin-login {
+        padding: 15px 10px;
+    }
+    
+    #gambiarra {
+        margin-top: 30px;
+    }
+    
+    #gambiarra h1 {
+        font-size: 1.6rem;
+    }
+    
+    #gambiarra p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    #gambiarra form input {
+        height: 45px;
+        font-size: 0.9rem;
+    }
+    
+    #gambiarra .botaocontinue {
+        height: 45px;
+        font-size: 0.95rem;
+        margin-top: 15px;
+    }
+    
+    #section-checkbox-login button {
+        font-size: 0.85rem;
+    }
+    
+    #botaonaoconta {
+        height: 50px;
+        font-size: 0.85rem;
+    }
+    
+    #figure-padding-login {
+        max-width: 420px;
+    }
+    
+    #figure-padding-login img {
+        max-height: 420px;
+    }
+    
+    .div-linha-ou {
+        padding: 20px 0;
+    }
+    
+    .div-ou {
+        padding: 0 10px;
+        font-size: 0.9rem;
+    }
+}
