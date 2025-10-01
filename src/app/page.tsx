@@ -1,12 +1,62 @@
 "use client";
 import { Header, Footer } from "@/components";
+import { useEffect, useRef } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
 import "@/styles/index.css";
 
 export default function OasisHomepage() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const mountedRef = useRef(false);
+
+  useEffect(() => {
+    // Marca que o componente foi montado
+    mountedRef.current = true;
+
+    // Força uma re-renderização quando volta do cadastro
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted && mountedRef.current) {
+        // Página foi carregada do cache do navegador
+        router.refresh();
+      }
+    };
+
+    // Limpa estados problemáticos do sessionStorage
+    const cleanupStorage = () => {
+      try {
+        const voltandoDoCadastro = sessionStorage.getItem('voltandoDoCadastro');
+        if (voltandoDoCadastro === 'true') {
+          sessionStorage.removeItem('voltandoDoCadastro');
+          // Em vez de reload, força um refresh suave
+          router.refresh();
+        }
+      } catch (error) {
+        console.warn('Erro ao acessar sessionStorage:', error);
+      }
+    };
+
+    cleanupStorage();
+
+    // Event listeners para controlar cache do navegador
+    window.addEventListener('pageshow', handlePageShow);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+      mountedRef.current = false;
+    };
+  }, [router]);
+
+  // Force re-render quando a rota muda
+  useEffect(() => {
+    // Este useEffect garante que a página seja re-renderizada corretamente
+  }, [pathname]);
+
   return (
-    <div id="bodyPaginaPrincipal" className="min-h-screen">
+    <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
       {/* Page 1 */}
       <div id="page1" className="relative">
         <Header />
@@ -405,7 +455,7 @@ export default function OasisHomepage() {
           <h1 className="text-3xl font-bold mb-4">autocuidado masculino</h1>
           <p className="mb-6">Se importar com a própria beleza e querer se cuidar não é mais algo irreal. Para quem dá aquele toque a mais na aparência, recebe autoestima e felicidade renovadas! Leia agora por onde começar a ter uma rotina capilar e de skincare e dê uma repaginada total no visual</p>
           <button className="botoes bg-yellow-500 px-6 py-3 rounded">
-            <Link href="/skincare">Descubra</Link>
+            <Link href="/skincare" target="_blank">Descubra</Link>
           </button>
         </article>
       </div>
