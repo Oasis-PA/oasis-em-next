@@ -1,7 +1,10 @@
 // Removendo "use client" para tornar este um Server Component por padrão
 import { Header, Footer } from "@/components";
+import { useEffect, useRef } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
 import "@/styles/index.css";
 import { cookies } from 'next/headers'; // Importa a função para ler cookies
 
@@ -12,6 +15,7 @@ export default async function OasisHomepage() {
   const token = cookieStore.get('token')?.value;
 
   return (
+    <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
     <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
       {/* Page 1 */}
       <div id="page1" className="relative">
@@ -412,6 +416,7 @@ export default async function OasisHomepage() {
           <h1 className="text-3xl font-bold mb-4">autocuidado masculino</h1>
           <p className="mb-6">Se importar com a própria beleza e querer se cuidar não é mais algo irreal. Para quem dá aquele toque a mais na aparência, recebe autoestima e felicidade renovadas! Leia agora por onde começar a ter uma rotina capilar e de skincare e dê uma repaginada total no visual</p>
           <button className="botoes bg-yellow-500 px-6 py-3 rounded">
+            <Link href="/skincare" target="_blank">Descubra</Link>
             <Link href="/skincare" target="_blank">Descubra</Link>
           </button>
         </article>

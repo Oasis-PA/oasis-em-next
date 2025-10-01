@@ -4,8 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-// O caminho do seu CSS Module. Ajuste se necessário.
-import styles from '@/styles/Header.module.css'; 
+import styles from '@/styles/header.module.css';
 
 interface UserData {
   nome: string;
