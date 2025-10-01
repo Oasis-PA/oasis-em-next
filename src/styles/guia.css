@@ -83,7 +83,7 @@ header > p {
 }
 
 #guia > div:hover {
-    transform: scale(1.05); 
+    transform: translateX(5px); 
     opacity: 0.8; 
 }
 
