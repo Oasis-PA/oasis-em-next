@@ -60,7 +60,7 @@ export default function ConfiguracoesPage({ onSave, onReset }: LayoutProps) {
   const handleSave = async () => {
   try {
     const res = await fetch("/api/usuarios/update", {
-      method: "PATCH",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });

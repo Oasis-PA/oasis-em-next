@@ -16,13 +16,40 @@ const nomesMeses = [
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ];
 
-const cronogramaSemanal = [
-  {0: 'Hidratação: Máscara hidratante para repor água e maciez.', 3: 'Nutrição: Máscara com óleos/manteigas para brilho.', 6: 'Reconstrução: Máscara com queratina/aminoácidos para força.'},
-  {0: 'Hidratação: Reforço de hidratação para manter leveza.', 3: 'Hidratação: Manutenção da maciez.', 6: 'Nutrição: Nutrição para fios mais sedosos.'},
-  {0: 'Hidratação: Hidratação para revitalizar.', 3: 'Reconstrução: Reposição de proteínas.', 6: 'Hidratação: Hidratação para manter saúde.'},
-  {0: 'Nutrição: Nutrição profunda.', 3: 'Hidratação: Hidratação para equilíbrio.', 6: 'Hidratação: Hidratação para finalizar o mês.'},
-  {0: 'Hidratação: Reinício do ciclo.', 3: 'Nutrição: Nutrição extra.', 6: 'Reconstrução: Reforço de força.'},
-];
+// Função para gerar cronograma semanal espaçado, sempre com pelo menos 2 tratamentos por semana
+function gerarCronogramaSemanalEspacado() {
+    const opcoes3 = [
+        [0, 3, 6], [1, 4, 6], [2, 4, 6], [0, 2, 5], [1, 3, 6],
+    ];
+    const opcoes2 = [
+        [0, 4], [1, 5], [2, 6], [3, 6], [0, 3],
+    ];
+    const tipos = [
+        'Hidratação: Máscara hidratante profunda.',
+        'Nutrição: Máscara nutritiva com óleos.',
+        'Reconstrução: Máscara reconstrutora.'
+    ];
+    const semanas: Array<Record<number, string>> = [];
+    for (let i = 0; i < 6; i++) {
+        let semana: Record<number, string> = {};
+        // Alterna entre 3 e 2 tratamentos, mas nunca deixa semana sem pelo menos 2
+        if (i % 2 === 0) {
+            const dias = opcoes3[i % opcoes3.length];
+            dias.forEach((dia, idx) => {
+                semana[dia] = tipos[(i + idx) % tipos.length];
+            });
+        } else {
+            const dias = opcoes2[i % opcoes2.length];
+            dias.forEach((dia, idx) => {
+                semana[dia] = tipos[(i + idx) % tipos.length];
+            });
+        }
+        semanas.push(semana);
+    }
+    return semanas;
+}
+
+const cronogramaSemanal: Array<Record<number, string>> = gerarCronogramaSemanalEspacado();
 
 function getNumeroSemanasDoMes(mes: number, ano: number) {
   const primeiroDia = new Date(ano, mes, 1).getDay();
@@ -34,7 +61,7 @@ function getTratamentoPorData(dia: number, mes: number, ano: number) {
   const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
   const semana = Math.floor((dia + primeiroDiaSemana - 1) / 7);
   const diaSemana = new Date(ano, mes, dia).getDay();
-  if (diaSemana === 0 || diaSemana === 3 || diaSemana === 6) {
+  if (diaSemana === 1 || diaSemana === 3 || diaSemana === 5) {
     const texto = cronogramaSemanal[semana % cronogramaSemanal.length][diaSemana];
     if (!texto) return null;
     return (Object.keys(nomesEventos) as Array<keyof typeof nomesEventos>).find(k => texto.toLowerCase().includes(nomesEventos[k].toLowerCase()));
@@ -95,7 +122,7 @@ const diasSemana = [
 ];
 
 const Respostas: React.FC = () => {
-  const [mesAtual, setMesAtual] = useState(6); // Julho (0-index)
+  const [mesAtual, setMesAtual] = useState(6);
   const [anoAtual, setAnoAtual] = useState(2025);
   const [semanaAtual, setSemanaAtual] = useState(0);
 
@@ -174,7 +201,7 @@ const Respostas: React.FC = () => {
     const semanaIndex = semanaAtual % cronogramaSemanal.length;
     return diasSemana.map(({id, nome, dia}) => {
       let tipo = '';
-      if (dia === 0 || dia === 3 || dia === 6) {
+      if (dia === 1 || dia === 3 || dia === 5) {
         const texto = cronogramaSemanal[semanaIndex][dia];
         if (texto) {
           if (texto.toLowerCase().includes('hidratação')) tipo = 'Hidratação';
@@ -197,48 +224,54 @@ const Respostas: React.FC = () => {
     <main>
       <section className="de-ladinho">
         <div className="em-ciminha">
-          <img id="logo" src="/images/logo-reduzida.png" alt="" />
+          <Link href="/">
+            <img id="logo" src="/images/logo-reduzida.png" alt="Logo" style={{ cursor: 'pointer' }} />
+          </Link>
           <img id="user" src="/images/resposta/user.png" alt="" />
         </div>
         <div className="botoes">
-          <img src="/images/lupa.png" alt="" />
-          <img src="/images/coracao.svg" alt="" />
+          <Link href="/guia">
+            <img src="/images/lupa.png" alt="Ir para Guia" style={{ cursor: 'pointer' }} />
+          </Link>
+          <Link href="/favoritos">
+            <img src="/images/coracao.svg" alt="Ir para Favoritos" style={{ cursor: 'pointer' }} />
+          </Link>
           <img src="/images/tres-barras.svg" alt="" />
         </div>
         <div></div>
       </section>
       <section className="outro-ladinho">
         <div className="titulos">
-          <h1>Cabelo Levemente Danificado</h1>
-          <p>27/60 pontos</p>
+          <h1>Cabelo Muito Danificado</h1>
+          <p>42/60 pontos</p>
         </div>
         <div className="abaixo">
           <section className="esquerda">
             <div className="info-texto">
               <img src="/images/resposta/img-cabelo.png" alt="" />
               <div className="content">
-                <p>Cabelos com sinais leves de ressecamento, frizz moderado, pequena quebra, uso moderado de química/chapinha, porosidade alta leve, couro cabeludo com oleosidade leve.</p>
+                <p>Cabelos muito ressecados, com muita quebra e frizz, quimicamente tratados frequentemente, porosidade muito alta, fios opacos, ásperos e elásticos, couro cabeludo sensível.</p>
                 <section className="detalhes">
                   <div className="elementos">
                     <div className="texto-e-img">
                       <img src="/images/resposta/calendario.png" alt="" />
                       <p id="texto">Tratamento</p>
                     </div>
-                    <p id="explicacao">Médio</p>
+                    <p id="explicacao">Emergencial</p>
                   </div>
                   <div className="elementos">
                     <div className="texto-e-img">
                       <img src="/images/resposta/relogio.png" alt="" />
                       <p id="texto">Duração</p>
                     </div>
-                    <p id="explicacao">6 Meses</p>
+                    <p id="explicacao">3 Meses</p>
                   </div>
                   <div className="elementos">
                     <div className="texto-e-img">
                       <img src="/images/resposta/secador.png" alt="" />
                       <p id="texto">Danos</p>
                     </div>
-                    <p id="explicacao">Leve</p>
+                    <p id="explicacao">Crítico</p>
                   </div>
                 </section>
               </div>
@@ -251,8 +284,8 @@ const Respostas: React.FC = () => {
                   <p>Lavagens</p>
                 </div>
                 <div id="text">
-                  <h1>02</h1>
-                  <p>Outros produtos</p>
+                  <h1>03</h1>
+                  <p>Tratamentos profundos</p>
                 </div>
               </div>
             </div>
@@ -260,7 +293,7 @@ const Respostas: React.FC = () => {
               <h1>Mensal</h1>
               <div className="quadradinho">
                 <div id="text">
-                  <h1>01</h1>
+                  <h1>02</h1>
                   <p>Reconstrução</p>
                 </div>
                 <div id="text">
@@ -268,7 +301,7 @@ const Respostas: React.FC = () => {
                   <p>Umectações</p>
                 </div>
                 <div id="text">
-                  <h1>01</h1>
+                  <h1>04</h1>
                   <p>Acidificações</p>
                 </div>
               </div>
@@ -300,22 +333,22 @@ const Respostas: React.FC = () => {
             <section className="diquinhas">
               <div className="dicas">
                 <h1>Dicas</h1>
-                <p><strong>Antes de Aplicar:</strong> Lave com shampoo anti-resíduos 1x/semana, use água morna e retire o excesso de água antes da máscara.<br />
-                  <strong>Durante:</strong> Aplique do comprimento às pontas, deixe agir 20-30min, use touca térmica e massageie.<br />
-                  <strong>Finalização:</strong> Enxágue com água fria, use leave-in, evite água quente e durma com cabelo seco ou touca de cetim.<br />
-                  <strong>Sinais de Atenção:</strong> Cabelo elástico: aumente reconstrução. Cabelo duro: aumente hidratação. Cabelo pesado: reduza óleos.</p>
+                <p><b>Antes de Aplicar:</b> Lave com shampoo detox suave 1x por semana, use água morna e retire o excesso de água antes da máscara.<br />
+                  <b>Durante:</b> Aplique do comprimento às pontas, deixe agir 40-60min, use touca térmica e massageie profundamente.<br />
+                  <b>Finalização:</b> Enxágue com água fria, use leave-in reparador potente, evite água quente e durma com touca de cetim.<br />
+                  <b>Sinais de Atenção:</b> Cabelo elástico: priorize reconstrução. Cabelo duro: aumente hidratação. Reduza ao máximo ferramentas térmicas. Considere tratamentos profissionais (botox capilar, cauterização).</p>
               </div>
               <div className="dicas">
                 <h1>Alimentação</h1>
-                <p><strong>Proteínas:</strong> ovos, carnes, leguminosas.<br />
-                  <strong>Vitaminas B:</strong> ovos, nozes, vegetais verdes.<br />
-                  <strong>Ferro:</strong> carnes, feijão, vegetais escuros.<br />
-                  <strong>Ômega 3:</strong> peixes, sementes.<br />
-                  <strong>Zinco:</strong> frutos do mar, sementes.<br />
-                  <strong>Vitamina A:</strong> cenoura, manga.<br />
-                  <strong>Vitamina C:</strong> laranja, brócolis.<br />
-                  <strong>Vitamina E:</strong> castanhas, azeite.<br />
-                  <strong>Dica:</strong> Inclua proteína em todas as refeições, varie frutas e legumes, beba 2L de água/dia. Evite dietas restritivas e ultraprocessados.</p>
+                <p><b>Proteínas:</b> ovos, carnes, leguminosas.<br />
+                  <b>Vitaminas B:</b> ovos, nozes, vegetais verdes.<br />
+                  <b>Ferro:</b> carnes, feijão, vegetais escuros.<br />
+                  <b>Ômega 3:</b> peixes, sementes.<br />
+                  <b>Zinco:</b> frutos do mar, sementes.<br />
+                  <b>Vitamina A:</b> cenoura, manga.<br />
+                  <b>Vitamina C:</b> laranja, brócolis.<br />
+                  <b>Vitamina E:</b> castanhas, azeite.<br />
+                  <b>Dica:</b> Inclua proteína em todas as refeições, varie frutas e legumes, beba 2L de água/dia. Evite dietas restritivas e ultraprocessados.</p>
               </div>
             </section>
             <h2>Produtos recomendados</h2>
@@ -323,19 +356,19 @@ const Respostas: React.FC = () => {
               <div className="produtinho">
                 <h1>Hidratação</h1>
                 <img src="/images/resposta/prod-1.png" alt="" />
-                <p>Máscara 2 em 1 MITZIE, tratamento intenso para cabelos ressecados e sem brilho-</p>
+                <p>Cadiveu Professional Máscara de Hidratação Profunda - ação hidratante potente com ativos restauradores.</p>
                 <button>Conheça</button>
               </div>
               <div className="produtinho">
                 <h1>Nutrição</h1>
                 <img src="/images/resposta/prod-2.png" alt="" />
-                <p>Óleo de Argan, hidratação perfeita, nutrição profunda para cabelos secos e danificados.</p>
+                <p>Salon Line #todecacho Nutrição Intensa - rica em manteigas e óleos para reparação extrema.</p>
                 <button>Conheça</button>
               </div>
               <div className="produtinho">
                 <h1>Reconstrução</h1>
                 <img src="/images/resposta/prod-3.png" alt="" />
-                <p>Máscara de Reconstrução, força e proteção para cabelos fragilizados e quebradiços.</p>
+                <p>Kérastase Résistance Masque Force Architecte - reconstrução profunda e fortalecimento intenso.</p>
                 <button>Conheça</button>
               </div>
             </section>

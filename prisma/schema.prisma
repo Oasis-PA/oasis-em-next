@@ -55,9 +55,11 @@ model Produto {
   preco         Float
   data_cadastro DateTime     @default(now())
   id_categoria  Int
+  id_tag        Int?         // Chave estrangeira para Tag
   avaliacoes    Avaliacao[]
   favoritos     Favorito[]
   categoria     Categoria    @relation(fields: [id_categoria], references: [id_categoria])
+  tag           Tag?         @relation(fields: [id_tag], references: [id_tag])
   url_imagem    String
   url_loja      String
 }
@@ -83,8 +85,9 @@ model Favorito {
 }
 
 model Tag {
-  id_tag   Int    @id @default(autoincrement())
-  nome     String @unique
+  id_tag   Int       @id @default(autoincrement())
+  nome     String    @unique
+  produtos Produto[] // Relacionamento inverso
 }
 
 model PasswordReset {
