@@ -1,5 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import ReactMarkdown from "react-markdown";
+import '@/styles/artigo-geral.css';
+
 
 interface ArtigoProps {
   params: { slug: string };
