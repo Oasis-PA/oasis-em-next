@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import '@/styles/artigo1.css'; 
 
 export default async function ArtigosListPage() {
   const artigo = await prisma.artigo.findMany({
@@ -26,4 +27,4 @@ export default async function ArtigosListPage() {
   </main>
 );
 
-}
+};

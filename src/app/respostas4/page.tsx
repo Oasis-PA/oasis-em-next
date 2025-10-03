@@ -16,43 +16,35 @@ const nomesMeses = [
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ];
 
-// Função para gerar cronograma semanal espaçado
 function gerarCronogramaSemanalEspacado() {
-    // Dias da semana: 0 (domingo) a 6 (sábado)
-    // Opções de espaçamento máximo para 3 tratamentos
     const opcoes3 = [
-        [0, 3, 6], // domingo, quarta, sábado
-        [1, 4, 6], // segunda, quinta, sábado
-        [2, 4, 6], // terça, quinta, sábado
-        [0, 2, 5], // domingo, terça, sexta
-        [1, 3, 6], // segunda, quarta, sábado
+        [0, 3, 6],
+        [1, 4, 6],
+        [2, 4, 6],
+        [0, 2, 5],
+        [1, 3, 6],
     ];
-    // Opções para 2 tratamentos bem espaçados
     const opcoes2 = [
-        [0, 4], // domingo, quinta
-        [1, 5], // segunda, sexta
-        [2, 6], // terça, sábado
-        [3, 6], // quarta, sábado
-        [0, 3], // domingo, quarta
+        [0, 4],
+        [1, 5],
+        [2, 6],
+        [3, 6],
+        [0, 3],
     ];
-    // Tipos de tratamento
     const tipos = [
         'Hidratação: Máscara hidratante profunda.',
         'Nutrição: Máscara nutritiva com óleos.',
         'Reconstrução: Máscara reconstrutora.'
     ];
-    // Gera 6 semanas alternando entre 2 e 3 tratamentos
     const semanas: Array<Record<number, string>> = [];
     for (let i = 0; i < 6; i++) {
         let semana: Record<number, string> = {};
         if (i % 2 === 0) {
-            // 3 tratamentos
             const dias = opcoes3[i % opcoes3.length];
             dias.forEach((dia, idx) => {
                 semana[dia] = tipos[(i + idx) % tipos.length];
             });
         } else {
-            // 2 tratamentos
             const dias = opcoes2[i % opcoes2.length];
             dias.forEach((dia, idx) => {
                 semana[dia] = tipos[(i + idx) % tipos.length];
@@ -63,7 +55,6 @@ function gerarCronogramaSemanalEspacado() {
     return semanas;
 }
 
-// Cronograma com tratamentos sempre separados por pelo menos dois dias
 const cronogramaSemanal: Array<Record<number, string>> = gerarCronogramaSemanalEspacado();
 
 function getNumeroSemanasDoMes(mes: number, ano: number) {
