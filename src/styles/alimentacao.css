@@ -1,8 +1,9 @@
-*{
-    margin: 0%;
-    padding: 0%;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
+
 footer {
     display: flex;
     width: 100%;
@@ -10,489 +11,561 @@ footer {
 
 footer iframe {
     width: 100%;
-    height: 400px;
+    height: 20.83vw;
 }
-:root
-{
+
+:root {
     --sec2-back: #EFE1C7; 
     --sec2-h1: #3A1F1B; 
 }
-#banner
-{
-    background-image: url('../../public/images/alimentacao/banner.png');
+
+#banner {
+    background-image: url('/images/alimentacao/banner.png');
+    background-size: cover;
     background-repeat: no-repeat;
-    width: 100vw;
-    margin-top: -20px;
-    margin-left: -20px;
-    height: 40vw;
+    background-position: center;
+    width: 100vw; 
+    height: 39vw;
     flex-shrink: 0;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-#banner > h1
-{
+
+.texto-banner {
+    display: flex;
+    width: 45vw; 
+    flex-direction: column;
+    margin-left: 8vw;
+    gap: 3vw;
+}
+
+#banner h1 {
     color: var(--Branco, #EFE1C7);
     font-family: "The Next Font";
-    font-size: 105px;
-    line-height: 110%;
+    font-size: 5.47vw;
+    line-height: normal;
     font-weight: 400;
-
-    display: flex;
-    width: 1400px;
-    height: 290px;
-    transform: translatey(125px); 
-    margin-left: 149px;
-
-    flex-shrink: 0;
+    width: 56vw;
+    margin: 0; 
 }
-#banner > p
-{
+
+#banner p {
     color: #FFF;
-font-family: "Louis George Cafe";
-font-size: 40px;
-font-style: normal;
-font-weight: 700;
-transform: translatey(80px); 
-margin-left: 149px;
-
-
+    width: 45vw;
+    font-family: "Louis George Cafe";
+    font-size: 2.08vw;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0; 
 }
-#sec2
-{
+
+.sec2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--sec2-back);
-    width: 1897px;
-    height: 903px;
+    width: 100%;
+    height: 48vw;
     flex-shrink: 0;
-
+    gap: 2vw;
 }
-#sec2 > h1
-{
+
+.esquerda {
+    background-image: url('/images/alimentacao/imgsect2.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 50%; 
+    height: 39vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.direita {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    height: 48vw;
+}
+
+.direita h1 {
     color: var(--sec2-h1);
     text-align: center;
     font-family: "PLAYFUL RUNWAY";
-    margin-left: 46%;
-    margin-top: -40%;
-    font-size: 64px;
+    font-size: 3.33vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    width: 35vw;
+    margin-top: 4vw;
 }
-.resp
-{
-    width: 875px;
-    height: 253px;
+
+.direita h2 {
+    color: #3A1F1B;
+    font-family: "The Next Font";
+    font-size: 1.67vw;
+    font-weight: 400;
+    width: 20vw;
+}
+
+.resp {
+    width: 47vw;
+    height: 13vw;
     flex-shrink: 0;
-    margin-left: 50%;
-    margin-top: 47px;
-
-    border-radius: 57px;
+    border-radius: 3vw;
     background: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    p{
-
+.resp p {
     color: #321B17;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: 36px;
+    font-size: 1.88vw;
     font-weight: 400;
-    width: 792px;
-
-    margin-left: 41px;
-    transform: translatey(43px);
-
+    width: 41vw;
 }
+
+.cx {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    width: 53vw;
 }
-#sec2 > h2
-{
-    color: #3A1F1B;
-    text-align: justify;
-    font-family: "The Next Font";
-    font-size: 32px;
-    font-weight: 400;
 
-    margin-left: 63%;
-    margin-top: 75px;
+.cx img {
+    width: 3vw;
 }
-.cx
-{
-    width: 195px;
-    height: 194px;
-    flex-shrink: 0;
 
-    border-radius: 150px 150px 0px 0px;
-    border: 3px solid var(--Marrom, #5E332C);
-
-    text-align: center;
+.cx p {
     font-family: "Louis George Cafe";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    font-size: 1.2vw;
+    font-weight: 500;
+    text-align: center;
+    width: 8vw;
 }
-.cx > img 
-{
-    transform: translatey(-48%);
-}
-.cx > p
-{
-    margin-top: -8%;
-}
-#cx1
-{
-    margin-left: 50%;
-    margin-top: 3.1%;
 
-    border: 3px solid var(--Marrom, #5E332C);
+#cx1, #cx2, #cx3, #cx4 {
+    display: flex;
+    flex-direction: column;
+    width: 10.5vw;
+    height: 10vw;
+    border: 0.2vw solid var(--Marrom, #5E332C);
+    border-radius: 6vw 6vw 0 0;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+#cx1 {
     background: var(--Laranja, #F2A518);
-
 }
-#cx2
-{
-    margin-left: 62%;
-    margin-top: -10.3%;
 
-    border: 3px solid var(--Marrom, #5E332C);
+#cx2 {
     background: rgba(91, 115, 82, 0.60);
-
 }
-#cx3
-{
-    margin-left: 74%;
-    margin-top: -10.3%;
 
-    border: 3px solid var(--Marrom, #5E332C);
+#cx3 {
     background: var(--Lils, #FAF5FF);
 }
-#cx4
-{
-    margin-left: 86%;
-    margin-top: -10.3%;
 
-    border: 3px solid var(--Marrom, #5E332C);
+#cx4 {
     background: var(--Amarelo, #ECC46F);
-
 }
-#sec3 > h1
-{
-    display: flex;
-    width: 995px;
-    height: 73px;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 464px;
-    margin-top: 89px;
-    margin-bottom: 79px;
 
-    text-align: justify;
+.sec3 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.indoali {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5vw 0;
+}
+
+.indoali > h1 {
+    text-align: center;
+    width: 52vw;
     font-family: "PLAYFUL RUNWAY";
-    font-size: 80px;
+    font-size: 4.17vw;
     font-weight: 400;
     line-height: normal;
 }
-.faixa 
-{
-    width: 1897px;
-    height: 381px;
-    position: relative;
 
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.amarelo 
-{
-    background-color: #ECC46F; 
-}
-.laranja
-{
-    background-color: var(--Laranja, #F2A518);
-}
-.marrom 
-{
-    background-color: #5E332C;
-}
-#sobreposto
-{
-    position: absolute;
-    margin-top: -61.5%;
-    margin-left: 120px;
-}
-.fil1
-{
-    margin-top: 1.3%;
+.back {
     display: flex;
-    gap: 2%;
-}
-.ovo
-{
-   width: 522px;
-    height: 693px;
-    flex-shrink: 0;
-}
-.espi_cenou
-{
-    display: flex;
-    gap: 6%;
     flex-direction: column;
-
-    width: 522px;
+    background: linear-gradient(
+        to bottom,
+        #ECC46F 0%,
+        #ECC46F 33%,
+        #F2A518 33%,
+        #F2A518 66%,
+        #5E332C 66%,
+        #5E332C 100%
+    );
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0 5vw;
+    gap: 2vw;
 }
-#espinafre
-{
-    height: 319px;
 
-}
-#cenoura
-{
-    height: 334px;
-
-}
-.sal_mor
-{
+.fil1 {
     display: flex;
-    gap: 1.2%;
-    margin-top: 2%;
-    
+    align-items: center;
+    gap: 2vw;
 }
-#sec4 > h1
-{
+
+.fil2 {
     display: flex;
-    width: 673px;
-    height: 151px;
+    align-items: center;
+    gap: 2vw;
+    justify-content: space-between;
+}
+
+.ovo {
+    width: 27.19vw;
+    height: 36.09vw; 
+    background-size: cover;
+    background-position: center;
+    background-image: url('/images/alimentacao/ovo.png');
+}
+
+.espi_cenou {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    height: 100%;
+}
+
+.espinafre {
+    width: 27.19vw;
+    height: 16.61vw;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/images/alimentacao/espinafre.png');
+}
+
+.cenoura {
+    width: 27.19vw;
+    height: 16.61vw;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/images/alimentacao/cenoura.png');
+}
+
+.abacate {
+    width: 27.19vw;
+    height: 36.09vw; 
+    background-size: cover;
+    background-position: center;
+    background-image: url('/images/alimentacao/abacate.png');
+}
+
+.salmao {
+    width: 41.98vw;
+    height: 20.63vw; 
+    background-size: cover;
+    background-position: center;
+    background-image: url('/images/alimentacao/salmão.png');
+}
+
+.morango {
+    width: 41.98vw; 
+    height: 20.63vw;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/images/alimentacao/morango.png');
+}
+
+.elementos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%; 
+    padding: 0 2% 3% 2%; 
+}
+
+.elementos h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 1.88vw;
+    font-weight: 400;
+    text-shadow: 0vw 0.1vw 0.3vw rgba(0, 0, 0, 0.7);
+}
+
+.elementos p {
+    width: 90%;
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: 1.5vw;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 1.3;
+    text-shadow: 0vw 0.1vw 0.3vw rgba(0, 0, 0, 0.7);
+}
+
+
+
+.sec4 {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 62vw;
+}
+
+.direitah {
+    width: 50%;
+    background-image: url('/images/alimentacao/sec4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.esquerdah {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 4vw;
+    margin-left: 8vw;
+}
+
+.esquerdah h1 {
+    color: #000;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 4.5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 31vw;
+    margin-top: 3vw;
+}
+
+.esquerdeh > li {
+  font-family: "Louis George Cafe";
+  font-size: 1.46vw;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  height: 3.7vw;
+  border-radius: 0 1.56vw 1.56vw 0;
+  background: #EBEBEA;
+  margin-bottom: 1.88vw;
+  padding-left: 1.56vw;
+  width: 36vw; 
+}
+
+.esquerdeh > li:nth-child(even) {
+  background: #EFE1C7;
+}
+
+.esquerdeh > li p {
+  font-family: "PLAYFUL RUNWAY";
+  font-size: 1.67vw;
+  font-weight: 400;
+  margin: 0 1.82vw 0 0;
+  min-width: 1.5vw;
+  text-align: center;
+}
+
+.esquerdeh > li .linha {
+  width: 0.03vw;
+  height: 2.71vw;
+  background-color: #000000;
+  margin-right: 0.68vw;
+}
+
+#ol1 { 
+    width: 40vw; 
+}
+
+#ol2 { 
+    width: 38.5vw; 
+}
+
+#ol3 { 
+    width: 37vw; 
+}
+
+#ol4 { 
+    width: 35.5vw; 
+}
+
+#ol5 { 
+    width: 34vw; 
+}
+
+#ol6 { 
+    width: 32.3vw; 
+}
+
+#ol7 { 
+    width: 30.7vw; 
+}
+
+#ol8 { 
+    width: 29.2vw; 
+}
+
+
+
+
+.repartição {
+    display: flex;
+    align-items: center;
+    margin: 8vw 0vw 5vw;
+    width: 87.5vw;
+    height: 0.1vw;
+    background: #000;
+}
+
+
+
+
+
+.sec5 {
+    width: 100vw;
+    height: 65vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4vw;
+}
+
+.secao1 {
+    display: flex;
+    gap: 2vw;
+}
+
+.secao2 {
+    display: flex;
+    gap: 2vw;
+}
+
+.partedebaixo {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.text {
+    width: 83%;
+}
+
+.sec5 h2 {
+    display: flex;
+    width: auto;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-
+    text-align: justify;
     font-family: "PLAYFUL RUNWAY";
-    font-size: 80px;
+    font-size: 4.17vw;
     font-weight: 400;
-    margin-top: 97px;
-    margin-left: 7%;
 }
-#sec4 > img
-{
+
+.sec5 h3 {
     display: flex;
-    margin-left: auto;
-    margin-top: -13%;
-}
-#sec4 > li
-{
-list-style: none;
-
-font-family: "Louis George Cafe";
-font-size: 28px;
-font-weight: 400;
-
-margin-top: -26%;
-margin-left: 7%;
-
-display: flex;
-width: 666px;
-height: 71px;
-flex-direction: column;
-justify-content: center;
-gap: 36px;
-
- ol
- {
-    width: 700px;
-    height: 70px;
+    width: 30vw;
+    height: 3.65vw;
+    flex-direction: column;
+    justify-content: center;
     flex-shrink: 0;
-    border-radius: 0px 30px 30px 0px;
-    background: #EBEBEA;
-
-    display: flex;
-    align-items: center;
- }
-
- p
- {
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 32px;
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-size: 1.67vw;
     font-weight: 400;
-
-    margin-left: 30px;
-    margin-right: 35px;
-
- }
-
- .linha
- {
-    width: 0.5px;
-    height: 52.086px;
-    background-color: #000000; 
-    margin-right: 13px;
- }
-
- #ol1
- {
-    width: 770px;
-
- }
- #ol2
- {
-    background: #EFE1C7;
-    width: 740px;
-
- }
- #ol3
- {
-    width: 710px;
-    
-
- }
- #ol4
- {
-    background: #EFE1C7;
-    width: 680px;
-
- }
- #ol5
- {
-    width: 650px;
-
- }
- #ol6
- {
-    background: #EFE1C7;
-    width: 620px;
- }
- #ol7
- {
-    width: 590px;
-
- }
- #ol8
- {
-    background: #EFE1C7;
-    width: 560px;
- }
-}
-.repartição
-{
-    width: 1680px;
-    height: 2px;
-    background: #000;
-    margin-top: 30%;
-    margin-left: 5%;
-}
-#sec5
-{
-    margin-top: 30%;
-
-h2
-{
-    display: flex;
-width: 945px;
-height: 73px;
-flex-direction: column;
-justify-content: center;
-flex-shrink: 0;
-
-text-align: justify;
-font-family: "PLAYFUL RUNWAY";
-font-size: 80px;
-font-weight: 400;
 }
 
-h3
-{
-    display: flex;
-width: 548px;
-height: 70px;
-flex-direction: column;
-justify-content: center;
-flex-shrink: 0;
-
-text-align: justify;
-font-family: "Louis George Cafe";
-font-size: 32px;
-font-weight: 400;
-}
-}
-.linhas
-{
+.linhas {
     display: flex;
     margin-top: 12%;
     gap: 10%;
-    margin-left: 12px;
-}
-.conteudo{
-    margin-left: 5%;
-}
-.grade-cards {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-  padding: 32px;
+    margin-left: 0.63vw;
 }
 
 .card {
-  width: 373px;
-height: 390px;
-flex-shrink: 0;
-
-border-radius: 20px;
-background: #EBEBEA;
-
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    background-color: #EBEBEA;
+    width: 20vw;
+    height: 21vw;
+    border-radius: 2vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
-
-.card h1 {
-    text-align: justify;
-    font-family: "The Next Font";
-    font-size: 22px;
-    font-weight: 400;
+.ftcard {
+    width: 80%;
     display: flex;
-    width: 321px;
-    height: 51px;
+    justify-content: center;
+    align-items: center;
 }
-#card-1 > h1{
-    margin-top: -64%;
 
-    }
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 90%;
+    gap: 4%;
+}
 
+.conteudo button {
+    display: flex;
+    width: 9vw;
+    height: 2.19vw;
+    padding: 0.66vw 1.75vw;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45vw;
+    border: none; 
+    border-radius: 1.21vw;
+    background: #722F53;
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 0.9vw;
+    font-weight: 300;
+    transition: all 0.3s ease;
+}
 
-.card p {
+.conteudo h1 {
+    color: #000;
+    width: 100%;
+    font-family: "The Next Font";
+    font-size: 1.3vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.conteudo p {
     color: #000;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: 18px;
+    font-size: 1vw;
+    font-style: normal;
     font-weight: 400;
-}
-
-.botao 
-{
- display: flex;
-width: 159px;
-height: 42.114px;
-padding: 6.876px 33.519px;
-justify-content: center;
-align-items: center;
-gap: 8.595px;
-flex-shrink: 0;
-
-border-radius: 23.205px;
-background: #722F53;
-
-color: #FFF;
-text-align: center;
-font-family: "The Next Font";
-font-size: 17.189px;
-font-weight: 400;
-text-decoration: none;
-}
-.card .ftcard
-{
-    width: 341px;
-    height: 121px;
-    flex-shrink: 0;
-    margin: 16px;
+    line-height: normal;
 }
