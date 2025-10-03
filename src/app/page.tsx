@@ -1,4 +1,5 @@
 // Removendo "use client" para tornar este um Server Component por padrão
+"use client";
 import { Header, Footer } from "@/components";
 import { useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -6,17 +7,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 import "@/styles/index.css";
-import { cookies } from 'next/headers'; // Importa a função para ler cookies
+ // Importa a função para ler cookies
 
 // PASSO 1: Adicione "async" na declaração da função
 export default async function OasisHomepage() {
   // PASSO 2: Use "await" para esperar os cookies
-  const cookieStore = await cookies();
-  const token = cookieStore.get('token')?.value;
 
+  
   return (
-    <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
-    <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
+    <div id="bodyPaginaPrincipal" className="min-h-screen">
+   
+   
       {/* Page 1 */}
       <div id="page1" className="relative">
         <Header />
@@ -335,7 +336,7 @@ export default async function OasisHomepage() {
         </footer>
       </div>
   {/* AQUI ESTÁ A MUDANÇA: Renderização Condicional */}
-      {token && (
+   (
         <div id="page4" className="py-20">
           <header className="text-center mb-10">
             <h1 className="text-3xl font-bold">Baseados no seu Perfil</h1>
@@ -363,7 +364,7 @@ export default async function OasisHomepage() {
             ))}
           </main>
         </div>
-      )}
+      )
       {/* Page 5 */}
       <div id="page5" className="flex items-center py-20 px-6">
         <figure className="flex-1">
@@ -509,4 +510,5 @@ export default async function OasisHomepage() {
       <Footer />
     </div>
   );
+
 }

@@ -328,7 +328,7 @@ main {
 
 .dicas {
     width: 32.9375rem;
-    height: 26.0625rem;
+    height: auto;
     flex-shrink: 0;
     border-radius: 1.875rem;
     background: #FFF;
