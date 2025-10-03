@@ -1,4 +1,4 @@
- "use client";
+"use client";
 import React, { useState, useEffect } from "react";
 import "@/styles/perguntas.css";
 
@@ -10,39 +10,41 @@ const quizData = [
 		image: "/images/perguntas/Img principal.png",
 		options: [
 			{
-				value: "1",
+				value: 4,
 				text: "Extremamente ressecados, embaraçam facilmente e sem brilho.",
 			},
-			{ value: "2", text: "Ressecados e ásperos ao toque." },
-			{ value: "3", text: "Macios e com brilho natural." },
-			{ value: "4", text: "Um pouco ressecados nas pontas." },
+			{ value: 3, text: "Ressecados e ásperos ao toque." },
+			{ value: 2, text: "Um pouco ressecados nas pontas." },
+			{ value: 1, text: "Macios e com brilho natural." },
 		],
 	},
 	{
 		id: 2,
-		question: "Você percebe frizz excessivo ou falta de definição nos cachos/ondulações?",
+		question:
+			"Você percebe frizz excessivo ou falta de definição nos cachos/ondulações?",
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Pouco frizz, definição boa." },
-			{ value: "b", text: "Frizz médio, definição irregular." },
-			{ value: "c", text: "Muito frizz e sem definição." },
+			{ value: 1, text: "Pouco frizz, definição boa." },
+			{ value: 2, text: "Frizz médio, definição irregular." },
+			{ value: 3, text: "Muito frizz e sem definição." },
 			{
-				value: "d",
+				value: 4,
 				text: "Frizz acentuado e pouca definição, mesmo após finalizar.",
 			},
 		],
 	},
 	{
 		id: 3,
-		question: "Os fios estão elásticos, com quebra fácil ou aspecto 'emborrachado'?",
+		question:
+			"Os fios estão elásticos, com quebra fácil ou aspecto 'emborrachado'?",
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Não, estão fortes e resistentes." },
-			{ value: "b", text: "Um pouco elásticos, com leve quebra." },
-			{ value: "c", text: "Sim, quebram com facilidade ao pentear ou lavar." },
-			{ value: "d", text: "Elásticos e com quebra notável ao esticar o fio." },
+			{ value: 1, text: "Não, estão fortes e resistentes." },
+			{ value: 2, text: "Um pouco elásticos, com leve quebra." },
+			{ value: 3, text: "Sim, quebram com facilidade ao pentear ou lavar." },
+			{ value: 4, text: "Elásticos e com quebra notável ao esticar o fio." },
 		],
 	},
 	{
@@ -51,11 +53,11 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Brilhante, principalmente após lavar." },
-			{ value: "b", text: "Opaco às vezes, dependendo do produto." },
-			{ value: "c", text: "Sempre opaco, sem brilho nenhum." },
+			{ value: 1, text: "Brilhante, principalmente após lavar." },
+			{ value: 2, text: "Opaco às vezes, dependendo do produto." },
+			{ value: 3, text: "Sempre opaco, sem brilho nenhum." },
 			{
-				value: "d",
+				value: 4,
 				text: "Quase sempre opaco, com brilho mínimo apenas sob luz direta.",
 			},
 		],
@@ -66,11 +68,11 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Macio na maior parte do tempo." },
-			{ value: "b", text: "Um pouco áspero nas pontas." },
-			{ value: "c", text: "Muito áspero, especialmente seco." },
+			{ value: 1, text: "Macio na maior parte do tempo." },
+			{ value: 2, text: "Um pouco áspero nas pontas." },
+			{ value: 3, text: "Muito áspero, especialmente seco." },
 			{
-				value: "d",
+				value: 4,
 				text: "Áspero em grande parte do comprimento, não apenas nas pontas.",
 			},
 		],
@@ -81,15 +83,15 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Quase nunca." },
-			{ value: "b", text: "Às vezes, 1–2 vezes por mês." },
+			{ value: 1, text: "Quase nunca." },
+			{ value: 2, text: "Às vezes, 1–2 vezes por mês." },
 			{
-				value: "c",
-				text: "Sim, uso com frequência ou tenho química ativa (alisamento, tintura etc).",
+				value: 3,
+				text: "Uso semanalmente fontes de calor ou tenho química antiga/desbotada.",
 			},
 			{
-				value: "d",
-				text: "Uso semanalmente fontes de calor ou tenho química antiga/desbotada.",
+				value: 4,
+				text: "Sim, uso com frequência ou tenho química ativa (alisamento, tintura etc).",
 			},
 		],
 	},
@@ -99,10 +101,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Saudável, sem sintomas." },
-			{ value: "b", text: "Pouco oleoso ou com leve descamação." },
-			{ value: "c", text: "Muito oleoso, coçando ou com caspa frequente." },
-			{ value: "d", text: "Oleosidade constante na raiz e descamação visível." },
+			{ value: 1, text: "Saudável, sem sintomas." },
+			{ value: 2, text: "Pouco oleoso ou com leve descamação." },
+			{ value: 3, text: "Muito oleoso, coçando ou com caspa frequente." },
+			{ value: 4, text: "Oleosidade constante na raiz e descamação visível." },
 		],
 	},
 	{
@@ -111,10 +113,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "De 2 a 3 vezes por semana." },
-			{ value: "b", text: "1 vez por semana." },
-			{ value: "c", text: "A cada 10 dias ou mais." },
-			{ value: "d", text: "Lavo com pouca frequência, apenas quando sinto o cabelo muito sujo." },
+			{ value: 1, text: "De 2 a 3 vezes por semana." },
+			{ value: 2, text: "1 vez por semana." },
+			{ value: 3, text: "A cada 10 dias ou mais." },
+			{ value: 4, text: "Lavo com pouca frequência, apenas quando sinto o cabelo muito sujo." },
 		],
 	},
 	{
@@ -123,10 +125,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Uso apenas co-wash ou low poo." },
-			{ value: "b", text: "Alterno entre shampoo suave e tradicional." },
-			{ value: "c", text: "Sempre uso shampoo com sulfato." },
-			{ value: "d", text: "Uso majoritariamente shampoo com sulfato, raramente um suave." },
+			{ value: 1, text: "Uso apenas co-wash ou low poo." },
+			{ value: 2, text: "Alterno entre shampoo suave e tradicional." },
+			{ value: 3, text: "Uso majoritariamente shampoo com sulfato, raramente um suave." },
+			{ value: 4, text: "Sempre uso shampoo com sulfato." },
 		],
 	},
 	{
@@ -135,10 +137,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Hidratação." },
-			{ value: "b", text: "Nutrição." },
-			{ value: "c", text: "Reconstrução." },
-			{ value: "d", text: "Não tenho o costume de usar máscaras de tratamento." },
+			{ value: 1, text: "Hidratação." },
+			{ value: 2, text: "Nutrição." },
+			{ value: 3, text: "Reconstrução." },
+			{ value: 4, text: "Não tenho o costume de usar máscaras de tratamento." },
 		],
 	},
 	{
@@ -147,10 +149,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Sim, meus fios têm porosidade baixa/média." },
-			{ value: "b", text: "Sim, meus fios têm porosidade alta." },
-			{ value: "c", text: "Nunca fiz." },
-			{ value: "d", text: "Já fiz, mas não entendi o resultado ou não sei como tratar." },
+			{ value: 1, text: "Sim, meus fios têm porosidade baixa/média." },
+			{ value: 2, text: "Sim, meus fios têm porosidade alta." },
+			{ value: 3, text: "Nunca fiz." },
+			{ value: 4, text: "Já fiz, mas não entendi o resultado ou não sei como tratar." },
 		],
 	},
 	{
@@ -159,10 +161,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Com creme de pentear ou leave-in leve." },
-			{ value: "b", text: "Com óleo vegetal e gel para definição." },
-			{ value: "c", text: "Deixo secar naturalmente, sem produto." },
-			{ value: "d", text: "Finalizo apenas com produtos inadequados (ex: condicionador sem enxágue)." },
+			{ value: 1, text: "Com creme de pentear ou leave-in leve." },
+			{ value: 2, text: "Com óleo vegetal e gel para definição." },
+			{ value: 3, text: "Deixo secar naturalmente, sem produto." },
+			{ value: 4, text: "Finalizo apenas com produtos inadequados (ex: condicionador sem enxágue)." },
 		],
 	},
 	{
@@ -171,10 +173,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Sempre." },
-			{ value: "b", text: "Às vezes." },
-			{ value: "c", text: "Nunca." },
-			{ value: "d", text: "Raramente, só quando lembro." },
+			{ value: 1, text: "Sempre." },
+			{ value: 2, text: "Às vezes." },
+			{ value: 3, text: "Raramente, só quando lembro." },
+			{ value: 4, text: "Nunca." },
 		],
 	},
 	{
@@ -183,10 +185,10 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Não, os fios são bem uniformes." },
-			{ value: "b", text: "Algumas mechas mais secas ou abertas." },
-			{ value: "c", text: "Muitas mechas desiguais ou danificadas." },
-			{ value: "d", text: "A parte de cima do cabelo é visivelmente mais danificada que a de baixo." },
+			{ value: 1, text: "Não, os fios são bem uniformes." },
+			{ value: 2, text: "Algumas mechas mais secas ou abertas." },
+			{ value: 3, text: "Muitas mechas desiguais ou danificadas." },
+			{ value: 4, text: "A parte de cima do cabelo é visivelmente mais danificada que a de baixo." },
 		],
 	},
 	{
@@ -195,50 +197,33 @@ const quizData = [
 		subtitle: "Selecione uma resposta",
 		image: "/images/perguntas/Img principal.png",
 		options: [
-			{ value: "a", text: "Sim, a cada 2 ou 3 meses." },
-			{ value: "b", text: "A cada 6 meses ou mais." },
-			{ value: "c", text: "Quase nunca corto." },
-			{ value: "d", text: "Só corto o cabelo uma vez por ano." },
+			{ value: 1, text: "Sim, a cada 2 ou 3 meses." },
+			{ value: 2, text: "A cada 6 meses ou mais." },
+			{ value: 3, text: "Quase nunca corto." },
+			{ value: 4, text: "Só corto o cabelo uma vez por ano." },
 		],
 	},
 ];
 
-interface QuizOption {
-	value: string;
-	text: string;
-}
-
-interface QuizQuestion {
-	id: number;
-	question: string;
-	subtitle: string;
-	image: string;
-	options: QuizOption[];
-}
-
 const PerguntaPage = () => {
-	const [quizManager] = useState(() => new QuizManager());
-	const [currentQuestion, setCurrentQuestion] = useState(1);
-	const [selectedOption, setSelectedOption] = useState<string | null>(null);
-	const [currentQuestionData, setCurrentQuestionData] = useState<QuizQuestion | null>(null);
+	const [currentQuestion, setCurrentQuestion] = useState<number>(1);
+	const [selectedOption, setSelectedOption] = useState<number | null>(null);
+	const [answers, setAnswers] = useState<Record<number, number>>({});
 
 	useEffect(() => {
-		quizManager.loadFromLocalStorage();
-		quizManager.currentQuestion = currentQuestion;
-		const questionData = (quizData as QuizQuestion[]).find((q) => q.id === currentQuestion) || null;
-		setCurrentQuestionData(questionData);
-		const savedAnswer = quizManager.getAnswer(currentQuestion);
-		if (savedAnswer) {
-			setSelectedOption(savedAnswer);
-		} else {
-			setSelectedOption(null);
-		}
-	}, [currentQuestion, quizManager]);
+		const savedAnswer = answers[currentQuestion];
+		setSelectedOption(savedAnswer || null);
+	}, [currentQuestion, answers]);
+
+	const currentQuestionData = quizData.find((q) => q.id === currentQuestion);
 
 	const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const value = event.target.value;
+		const value = parseInt(event.target.value);
 		setSelectedOption(value);
-		quizManager.saveAnswer(currentQuestion, value);
+		setAnswers((prev) => ({
+			...prev,
+			[currentQuestion]: value,
+		}));
 	};
 
 	const handleNext = () => {
@@ -253,24 +238,35 @@ const PerguntaPage = () => {
 		}
 	};
 
-	const handleSubmitQuiz = async () => {
-		if (quizManager.isComplete()) {
-			const result = await quizManager.submitToDatabase();
-			if (result.success) {
-				alert("Quiz enviado com sucesso!");
-				quizManager.clearData();
-				setCurrentQuestion(1);
-			} else {
-				alert("Erro ao enviar quiz. Tente novamente.");
-			}
+	const calculateTotalScore = () => {
+		return Object.values(answers).reduce((sum, val) => (sum as number) + (val as number), 0);
+	};
+
+	const getRedirectPage = (score: number) => {
+		if (score <= 15) {
+			return "/respostas1";
+		} else if (score <= 30) {
+			return "/respostas2";
+		} else if (score <= 45) {
+			return "/respostas3";
 		} else {
-			alert("Por favor, complete todas as perguntas antes de enviar.");
+			return "/respostas4";
 		}
 	};
 
-	const showAllAnswers = () => {
-		console.log("Todas as respostas:", quizManager.getAllAnswers());
-		console.log("Dados para envio:", quizManager.prepareDataForSubmission());
+	const handleSubmitQuiz = () => {
+		const totalAnswered = Object.keys(answers).length;
+		if (totalAnswered < quizData.length) {
+			alert(
+				`Por favor, responda todas as perguntas. Você respondeu ${totalAnswered} de ${quizData.length}.`
+			);
+			return;
+		}
+		const totalScore = calculateTotalScore();
+		const redirectPage = getRedirectPage(Number(totalScore));
+		console.log("Pontuação total:", totalScore);
+		console.log("Redirecionando para:", redirectPage);
+		window.location.href = redirectPage;
 	};
 
 	if (!currentQuestionData) {
@@ -310,7 +306,7 @@ const PerguntaPage = () => {
 					<img src={currentQuestionData.image} alt="" />
 
 					<div className="respostas">
-						{currentQuestionData.options.map((option: QuizOption) => (
+						{currentQuestionData.options.map((option) => (
 							<label
 								key={option.value}
 								className={selectedOption === option.value ? "selected" : ""}
@@ -354,101 +350,3 @@ const PerguntaPage = () => {
 };
 
 export default PerguntaPage;
-
-export class QuizManager {
-	answers: Record<number, string>;
-	currentQuestion: number;
-	totalQuestions: number;
-
-	constructor() {
-		this.answers = {};
-		this.currentQuestion = 1;
-		this.totalQuestions = quizData.length;
-	}
-
-	saveAnswer(questionId: number, answer: string) {
-		this.answers[questionId] = answer;
-		this.saveToLocalStorage();
-	}
-
-	getAnswer(questionId: number) {
-		return this.answers[questionId] || null;
-	}
-
-	getAllAnswers() {
-		return this.answers;
-	}
-
-	saveToLocalStorage() {
-		localStorage.setItem("quizAnswers", JSON.stringify(this.answers));
-		localStorage.setItem("currentQuestion", this.currentQuestion.toString());
-	}
-
-	loadFromLocalStorage() {
-		const savedAnswers = localStorage.getItem("quizAnswers");
-		const savedCurrentQuestion = localStorage.getItem("currentQuestion");
-
-		if (savedAnswers) {
-			this.answers = JSON.parse(savedAnswers);
-		}
-
-		if (savedCurrentQuestion) {
-			this.currentQuestion = parseInt(savedCurrentQuestion);
-		}
-	}
-
-	clearData() {
-		this.answers = {};
-		this.currentQuestion = 1;
-		localStorage.removeItem("quizAnswers");
-		localStorage.removeItem("currentQuestion");
-	}
-
-	isComplete() {
-		return Object.keys(this.answers).length === this.totalQuestions;
-	}
-
-	prepareDataForSubmission() {
-		const submissionData = {
-			timestamp: new Date().toISOString(),
-			userId: this.generateUserId(),
-			answers: this.answers,
-			totalQuestions: this.totalQuestions,
-			isComplete: this.isComplete(),
-		};
-
-		return submissionData;
-	}
-
-	generateUserId() {
-		return "user_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
-	}
-
-	async submitToDatabase() {
-		const data = this.prepareDataForSubmission();
-
-		try {
-			const response = await fetch("/api/quiz-results", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(data),
-			});
-
-			if (response.ok) {
-				console.log("Dados enviados com sucesso!");
-				return { success: true, data: await response.json() };
-			} else {
-				throw new Error("Erro no envio");
-			}
-		} catch (error: any) {
-			console.error("Erro ao enviar dados:", error);
-			return { success: false, error: error.message };
-		}
-	}
-
-	exportAsJSON() {
-		return JSON.stringify(this.prepareDataForSubmission(), null, 2);
-	}
-}
