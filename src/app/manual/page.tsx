@@ -40,7 +40,7 @@ const ManualPage: React.FC = () => {
               <Image src="/images/seta direita.png" alt="Seta para a esquerda" width={16} height={16} />
             </div>
             <div className="abaixo">
-              <Link href="/perguntas">
+              <Link href="/">
                 <button>Faça Agora</button>
               </Link>
               <div className="beneficios">

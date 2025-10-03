@@ -6,39 +6,53 @@ import Image from "next/image";
 import "@/styles/respostas.css";
 
 const nomesEventos = {
-  hidratacao: 'Hidratação',
-  nutricao: 'Nutrição',
-  reconstrucao: 'Reconstrução',
+    hidratacao: 'Hidratação',
+    nutricao: 'Nutrição',
+    reconstrucao: 'Reconstrução',
 };
 
 const nomesMeses = [
-  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ];
 
-// Função para gerar cronograma semanal espaçado, sempre com pelo menos 2 tratamentos por semana
+// Função para gerar cronograma semanal espaçado
 function gerarCronogramaSemanalEspacado() {
+    // Dias da semana: 0 (domingo) a 6 (sábado)
+    // Opções de espaçamento máximo para 3 tratamentos
     const opcoes3 = [
-        [0, 3, 6], [1, 4, 6], [2, 4, 6], [0, 2, 5], [1, 3, 6],
+        [0, 3, 6], // domingo, quarta, sábado
+        [1, 4, 6], // segunda, quinta, sábado
+        [2, 4, 6], // terça, quinta, sábado
+        [0, 2, 5], // domingo, terça, sexta
+        [1, 3, 6], // segunda, quarta, sábado
     ];
+    // Opções para 2 tratamentos bem espaçados
     const opcoes2 = [
-        [0, 4], [1, 5], [2, 6], [3, 6], [0, 3],
+        [0, 4], // domingo, quinta
+        [1, 5], // segunda, sexta
+        [2, 6], // terça, sábado
+        [3, 6], // quarta, sábado
+        [0, 3], // domingo, quarta
     ];
+    // Tipos de tratamento
     const tipos = [
         'Hidratação: Máscara hidratante profunda.',
         'Nutrição: Máscara nutritiva com óleos.',
         'Reconstrução: Máscara reconstrutora.'
     ];
+    // Gera 6 semanas alternando entre 2 e 3 tratamentos
     const semanas: Array<Record<number, string>> = [];
     for (let i = 0; i < 6; i++) {
         let semana: Record<number, string> = {};
-        // Alterna entre 3 e 2 tratamentos, mas nunca deixa semana sem pelo menos 2
         if (i % 2 === 0) {
+            // 3 tratamentos
             const dias = opcoes3[i % opcoes3.length];
             dias.forEach((dia, idx) => {
                 semana[dia] = tipos[(i + idx) % tipos.length];
             });
         } else {
+            // 2 tratamentos
             const dias = opcoes2[i % opcoes2.length];
             dias.forEach((dia, idx) => {
                 semana[dia] = tipos[(i + idx) % tipos.length];
@@ -49,176 +63,174 @@ function gerarCronogramaSemanalEspacado() {
     return semanas;
 }
 
+// Cronograma com tratamentos sempre separados por pelo menos dois dias
 const cronogramaSemanal: Array<Record<number, string>> = gerarCronogramaSemanalEspacado();
 
 function getNumeroSemanasDoMes(mes: number, ano: number) {
-  const primeiroDia = new Date(ano, mes, 1).getDay();
-  const diasNoMes = new Date(ano, mes + 1, 0).getDate();
-  return Math.ceil((diasNoMes + primeiroDia) / 7);
+    const primeiroDia = new Date(ano, mes, 1).getDay();
+    const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+    return Math.ceil((diasNoMes + primeiroDia) / 7);
 }
 
 function getTratamentoPorData(dia: number, mes: number, ano: number) {
-  const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
-  const semana = Math.floor((dia + primeiroDiaSemana - 1) / 7);
-  const diaSemana = new Date(ano, mes, dia).getDay();
-  if (diaSemana === 0 || diaSemana === 3 || diaSemana === 6) {
-    const texto = cronogramaSemanal[semana % cronogramaSemanal.length][diaSemana];
+    const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+    const semana = Math.floor((dia + primeiroDiaSemana - 1) / 7);
+    const diaSemana = new Date(ano, mes, dia).getDay();
+    const semanaObj = cronogramaSemanal[semana % cronogramaSemanal.length];
+    const texto = semanaObj ? semanaObj[diaSemana] : undefined;
     if (!texto) return null;
     return (Object.keys(nomesEventos) as Array<keyof typeof nomesEventos>).find(k => texto.toLowerCase().includes(nomesEventos[k].toLowerCase()));
-  }
-  return null;
 }
 
 function gerarCalendario(mes: number, ano: number) {
-  const diasSemana = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
-  const diasNoMes = new Date(ano, mes + 1, 0).getDate();
-  const primeiroDia = new Date(ano, mes, 1).getDay();
-  const linhas: React.JSX.Element[] = [];
-  let dia = 1;
-  for (let i = 0; i < 6; i++) {
-    const colunas: React.JSX.Element[] = [];
-    for (let j = 0; j < 7; j++) {
-      if ((i === 0 && j < primeiroDia) || dia > diasNoMes) {
-        colunas.push(<td key={j}></td>);
-      } else {
-        const tratamento = getTratamentoPorData(dia, mes, ano);
-        let bolinha = null;
-        if (tratamento) {
-          bolinha = <span className={`bolinha ${tratamento}`} title={nomesEventos[tratamento as keyof typeof nomesEventos]}></span>;
+    const diasSemana = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+    const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+    const primeiroDia = new Date(ano, mes, 1).getDay();
+    const linhas: React.JSX.Element[] = [];
+    let dia = 1;
+    for (let i = 0; i < 6; i++) {
+        const colunas: React.JSX.Element[] = [];
+        for (let j = 0; j < 7; j++) {
+            if ((i === 0 && j < primeiroDia) || dia > diasNoMes) {
+                colunas.push(<td key={j}></td>);
+            } else {
+                const tratamento = getTratamentoPorData(dia, mes, ano);
+                let bolinha = null;
+                if (tratamento) {
+                    bolinha = <span className={`bolinha ${tratamento}`} title={nomesEventos[tratamento as keyof typeof nomesEventos]}></span>;
+                }
+                colunas.push(
+                    <td key={j}>{bolinha}<div>{dia}</div></td>);
+                dia++;
+            }
         }
-        colunas.push(
-          <td key={j}>{bolinha}<div>{dia}</div></td>        );
-        dia++;
-      }
+        linhas.push(<tr key={i}>{colunas}</tr>);
+        if (dia > diasNoMes) break;
     }
-    linhas.push(<tr key={i}>{colunas}</tr>);
-    if (dia > diasNoMes) break;
-  }
-  return (
-    <>
-      <table className="tabela-calendario">
-        <thead>
-          <tr>{diasSemana.map((d, i) => <th key={i}>{d}</th>)}</tr>
-        </thead>
-        <tbody>{linhas}</tbody>
-      </table>
-      <div className="legenda-calendario">
-        <span><span className="bolinha hidratacao"></span> Hidratação</span>
-        <span><span className="bolinha nutricao"></span> Nutrição</span>
-        <span><span className="bolinha reconstrucao"></span> Reconstrução</span>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <table className="tabela-calendario">
+                <thead>
+                    <tr>{diasSemana.map((d, i) => <th key={i}>{d}</th>)}</tr>
+                </thead>
+                <tbody>{linhas}</tbody>
+            </table>
+            <div className="legenda-calendario">
+                <span><span className="bolinha hidratacao"></span> Hidratação</span>
+                <span><span className="bolinha nutricao"></span> Nutrição</span>
+                <span><span className="bolinha reconstrucao"></span> Reconstrução</span>
+            </div>
+        </>
+    );
 }
 
 const diasSemana = [
-  {id: 'domingo', nome: 'Domingo', dia: 0},
-  {id: 'segunda', nome: 'Segunda', dia: 1},
-  {id: 'terca', nome: 'Terça', dia: 2},
-  {id: 'quarta', nome: 'Quarta', dia: 3},
-  {id: 'quinta', nome: 'Quinta', dia: 4},
-  {id: 'sexta', nome: 'Sexta', dia: 5},
-  {id: 'sabado', nome: 'Sábado', dia: 6},
+    { id: 'domingo', nome: 'Domingo', dia: 0 },
+    { id: 'segunda', nome: 'Segunda', dia: 1 },
+    { id: 'terca', nome: 'Terça', dia: 2 },
+    { id: 'quarta', nome: 'Quarta', dia: 3 },
+    { id: 'quinta', nome: 'Quinta', dia: 4 },
+    { id: 'sexta', nome: 'Sexta', dia: 5 },
+    { id: 'sabado', nome: 'Sábado', dia: 6 },
 ];
 
 const Respostas: React.FC = () => {
-  const [mesAtual, setMesAtual] = useState(6); // Julho (0-index)
-  const [anoAtual, setAnoAtual] = useState(2025);
-  const [semanaAtual, setSemanaAtual] = useState(0);
+    const [mesAtual, setMesAtual] = useState(6);
+    const [anoAtual, setAnoAtual] = useState(2025);
+    const [semanaAtual, setSemanaAtual] = useState(0);
 
-  useEffect(() => {
-    setSemanaAtual(0);
-  }, [mesAtual, anoAtual]);
+    useEffect(() => {
+        setSemanaAtual(0);
+    }, [mesAtual, anoAtual]);
 
-  function handleSemanaAnterior() {
-    if (semanaAtual === 0) {
-      let novoMes = mesAtual - 1;
-      let novoAno = anoAtual;
-      if (novoMes < 0) {
-        novoMes = 11;
-        novoAno--;
-      }
-      setMesAtual(novoMes);
-      setAnoAtual(novoAno);
-      setSemanaAtual(0);
-    } else {
-      setSemanaAtual(semanaAtual - 1);
-    }
-  }
-
-  function handleSemanaProxima() {
-    const numSemanas = getNumeroSemanasDoMes(mesAtual, anoAtual);
-    if (semanaAtual === numSemanas - 1) {
-      let novoMes = mesAtual + 1;
-      let novoAno = anoAtual;
-      if (novoMes > 11) {
-        novoMes = 0;
-        novoAno++;
-      }
-      setMesAtual(novoMes);
-      setAnoAtual(novoAno);
-      setSemanaAtual(0);
-    } else {
-      setSemanaAtual(semanaAtual + 1);
-    }
-  }
-
-  function handleMesAnterior() {
-    let novoMes = mesAtual - 1;
-    let novoAno = anoAtual;
-    if (novoMes < 0) {
-      novoMes = 11;
-      novoAno--;
-    }
-    setMesAtual(novoMes);
-    setAnoAtual(novoAno);
-    setSemanaAtual(0);
-  }
-
-  function handleMesProximo() {
-    let novoMes = mesAtual + 1;
-    let novoAno = anoAtual;
-    if (novoMes > 11) {
-      novoMes = 0;
-      novoAno++;
-    }
-    setMesAtual(novoMes);
-    setAnoAtual(novoAno);
-    setSemanaAtual(0);
-  }
-
-  function getSemanaLabel() {
-    const primeiroDiaMes = new Date(anoAtual, mesAtual, 1).getDay();
-    const inicioSemana = semanaAtual * 7 + 1 - primeiroDiaMes;
-    let semanaReal = 1;
-    if (inicioSemana > 0) {
-      semanaReal = Math.ceil((inicioSemana + primeiroDiaMes) / 7);
-    }
-    return `semana ${semanaReal} - ${nomesMeses[mesAtual]} ${anoAtual}`;
-  }
-
-  function getCronogramaSemana() {
-    const semanaIndex = semanaAtual % cronogramaSemanal.length;
-    return diasSemana.map(({id, nome, dia}) => {
-      let tipo = '';
-      if (dia === 0 || dia === 3 || dia === 6) {
-        const texto = cronogramaSemanal[semanaIndex][dia];
-        if (texto) {
-          if (texto.toLowerCase().includes('hidratação')) tipo = 'Hidratação';
-          else if (texto.toLowerCase().includes('nutrição')) tipo = 'Nutrição';
-          else if (texto.toLowerCase().includes('reconstrução')) tipo = 'Reconstrução';
+    function handleSemanaAnterior() {
+        if (semanaAtual === 0) {
+            let novoMes = mesAtual - 1;
+            let novoAno = anoAtual;
+            if (novoMes < 0) {
+                novoMes = 11;
+                novoAno--;
+            }
+            setMesAtual(novoMes);
+            setAnoAtual(novoAno);
+            setSemanaAtual(0);
+        } else {
+            setSemanaAtual(semanaAtual - 1);
         }
-      } else {
-        tipo = 'Pausa: Descanso ou cuidados leves.';
-      }
-      return (
-        <div id={id} key={id}>
-          <h1>{nome}</h1>
-          <p>{tipo}</p>
-        </div>
-      );
-    });
-  }
+    }
+
+    function handleSemanaProxima() {
+        const numSemanas = getNumeroSemanasDoMes(mesAtual, anoAtual);
+        if (semanaAtual === numSemanas - 1) {
+            let novoMes = mesAtual + 1;
+            let novoAno = anoAtual;
+            if (novoMes > 11) {
+                novoMes = 0;
+                novoAno++;
+            }
+            setMesAtual(novoMes);
+            setAnoAtual(novoAno);
+            setSemanaAtual(0);
+        } else {
+            setSemanaAtual(semanaAtual + 1);
+        }
+    }
+
+    function handleMesAnterior() {
+        let novoMes = mesAtual - 1;
+        let novoAno = anoAtual;
+        if (novoMes < 0) {
+            novoMes = 11;
+            novoAno--;
+        }
+        setMesAtual(novoMes);
+        setAnoAtual(novoAno);
+        setSemanaAtual(0);
+    }
+
+    function handleMesProximo() {
+        let novoMes = mesAtual + 1;
+        let novoAno = anoAtual;
+        if (novoMes > 11) {
+            novoMes = 0;
+            novoAno++;
+        }
+        setMesAtual(novoMes);
+        setAnoAtual(novoAno);
+        setSemanaAtual(0);
+    }
+
+    function getSemanaLabel() {
+        const primeiroDiaMes = new Date(anoAtual, mesAtual, 1).getDay();
+        const inicioSemana = semanaAtual * 7 + 1 - primeiroDiaMes;
+        let semanaReal = 1;
+        if (inicioSemana > 0) {
+            semanaReal = Math.ceil((inicioSemana + primeiroDiaMes) / 7);
+        }
+        return `semana ${semanaReal} - ${nomesMeses[mesAtual]} ${anoAtual}`;
+    }
+
+    function getCronogramaSemana() {
+        const semanaIndex = semanaAtual % cronogramaSemanal.length;
+        return diasSemana.map(({ id, nome, dia }) => {
+            let tipo = '';
+            const semanaObj = cronogramaSemanal[semanaIndex];
+            const texto = semanaObj ? semanaObj[dia] : undefined;
+            if (texto) {
+                if (texto.toLowerCase().includes('hidratação')) tipo = 'Hidratação';
+                else if (texto.toLowerCase().includes('nutrição')) tipo = 'Nutrição';
+                else if (texto.toLowerCase().includes('reconstrução')) tipo = 'Reconstrução';
+            } else {
+                tipo = 'Pausa: Descanso ou cuidados leves.';
+            }
+            return (
+                <div id={id} key={id}>
+                    <h1>{nome}</h1>
+                    <p>{tipo}</p>
+                </div>
+            );
+        });
+    }
 
   return (
     <main>
@@ -243,12 +255,12 @@ const Respostas: React.FC = () => {
       <section className="outro-ladinho">
         <div className="titulos">
           <h1>Cabelo Levemente Danificado</h1>
-          <p>27/60 pontos</p>
+          <p>30/60 pontos</p>
         </div>
         <div className="abaixo">
           <section className="esquerda">
             <div className="info-texto">
-              <img src="/images/resposta/img-cabelo.png" alt="" />
+              <img src="/images/resposta/img-cabelo2.png" alt="" />
               <div className="content">
                 <p>Cabelos com sinais leves de ressecamento, frizz moderado, pequena quebra, uso moderado de química/chapinha, porosidade alta leve, couro cabeludo com oleosidade leve.</p>
                 <section className="detalhes">
