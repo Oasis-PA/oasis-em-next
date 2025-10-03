@@ -510,5 +510,4 @@ export default async function OasisHomepage() {
       <Footer />
     </div>
   );
-
 }
