@@ -85,7 +85,7 @@ const AlimentacaoPage: React.FC = () => {
       </section>
 
       <div className="reparticao"></div>
-
+<img id='linha' src="/images/alimentacao/linha.svg" alt="" />
       <section className="sec5">
         <div className="text">
           <h2>Artigos fundamentais</h2>
