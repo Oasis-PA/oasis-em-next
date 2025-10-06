@@ -20,6 +20,8 @@ export default function CadastrarProdutoPage() {
     url_imagem: '',
     url_loja: '',
     id_tag: '', // Agora é ID ao invés de texto
+     id_tipo_cabelo: '',
+  id_tipo_pele: '',
   });
   const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(false);
@@ -89,6 +91,8 @@ export default function CadastrarProdutoPage() {
           url_imagem: '',
           url_loja: '',
           id_tag: '',
+          id_tipo_cabelo: '',
+  id_tipo_pele: '',
         });
       }
     } catch (err) {
@@ -129,6 +133,29 @@ export default function CadastrarProdutoPage() {
           </div>
 
           <div className="form-group">
+  <label htmlFor="id_tipo_cabelo">ID Tipo de Cabelo:</label>
+  <input 
+    type="number" 
+    id="id_tipo_cabelo" 
+    name="id_tipo_cabelo" 
+    value={formData.id_tipo_cabelo} 
+    onChange={handleChange} 
+    // Removi 'required' porque o campo é opcional no Prisma (Int?)
+  />
+</div>
+<div className="form-group">
+  <label htmlFor="id_tipo_pele">ID Tipo de Pele:</label>
+  <input 
+    type="number" 
+    id="id_tipo_pele" 
+    name="id_tipo_pele" 
+    value={formData.id_tipo_pele} 
+    onChange={handleChange} 
+    // Removi 'required' porque o campo é opcional no Prisma (Int?)
+  />
+</div>
+
+          <div className="form-group">
             <label htmlFor="id_tag">Tag Principal:</label>
             <select 
               id="id_tag" 
@@ -137,7 +164,7 @@ export default function CadastrarProdutoPage() {
               onChange={handleChange}
               disabled={loadingTags}
             >
-              <option value="">Selecione uma tag (opcional)</option>
+              <option value="">Selecione uma tag</option>
               {tags.map(tag => (
                 <option key={tag.id_tag} value={tag.id_tag}>
                   {tag.nome}
@@ -148,17 +175,21 @@ export default function CadastrarProdutoPage() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="preco">Preço:</label>
-            <input 
-              type="number" 
-              id="preco" 
-              name="preco" 
-              value={formData.preco} 
-              onChange={handleChange} 
-              step="0.01"
-              required 
-            />
-          </div>
+  <label htmlFor="preco">Preço:</label>
+  {/* 🚩 NOVIDADE: Adiciona uma classe wrapper para o CSS */}
+  <div className="input-with-currency">
+    <span className="currency-symbol">R$</span>
+    <input
+      type="number" 
+      id="preco" 
+      name="preco" 
+      value={formData.preco} 
+      onChange={handleChange} 
+      step="0.01"
+      required 
+    />
+  </div>
+</div>
 
           <div className="form-group">
             <label htmlFor="id_categoria">ID da Categoria:</label>
