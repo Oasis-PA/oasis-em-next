@@ -89,3 +89,34 @@
   margin-top: 20px;
   font-weight: 600;
 }
+
+/* ------------------------------------------- */
+/* ESTILOS PARA CAMPO DE PREÇO COM SÍMBOLO */
+/* ------------------------------------------- */
+
+/* Wrapper que permite posicionar o símbolo */
+.input-with-currency {
+  position: relative;
+  display: flex; /* Garante que o span e o input fiquem na mesma linha */
+  align-items: center;
+}
+
+/* Estilo do R$ */
+.currency-symbol {
+  position: absolute;
+  left: 12px; /* Espaçamento da esquerda */
+  font-weight: 600;
+  color: #6c757d; /* Cor cinza sutil */
+  font-size: 16px;
+  /* Z-index para garantir que o símbolo fique acima do input */
+  z-index: 10; 
+}
+
+/* Ajusta o padding do input para dar espaço ao R$ */
+.input-with-currency input[type="number"] {
+  /* 🚩 Altera o padding da esquerda para dar espaço ao "R$" (cerca de 35px) */
+  padding-left: 35px; 
+  /* Z-index menor para ficar abaixo do símbolo */
+  position: relative;
+  z-index: 5; 
+}
