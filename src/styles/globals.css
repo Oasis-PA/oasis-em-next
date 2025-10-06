@@ -1,81 +1,62 @@
-/* src/app/globals.css */
-@import "tailwindcss";
-
- /* Fontes */
-@font-face {
-    font-family: "The Next Font";
-    src: url('/assets/fontes/TheNextFont.ttf') format('truetype') ;
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "Louis George Cafe";
-    src: url('/assets/fontes/Louis George Cafe.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "Louis George Cafe";
-    src: url('/assets/fontes/Louis George Cafe Bold.ttf') format('truetype');
-    font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-    font-family: "PLAYFUL RUNWAY";
-    src: url('/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
-
-:root {
-  /* Variáveis do Next.js/Tailwind */
-  --background: #ffffff;
-  --foreground: #171717;
-  
-  /* Suas variáveis personalizadas */
-  --body-back: #ffffff;
-  --corpo-texto: #000000; 
-  --header-color: #000000; 
-  --back-header: #fff;
-  --shadow: #f8f4f4;
-  --label: #000000;
-  --footer: #ffffff;
-}
-
-
-/*
-@media (prefers-color-scheme: dark) {
-  :root {
- Variáveis do Next.js/Tailwind para modo escuro 
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    
-    /* Suas variáveis para modo escuro
-    --body-back: #0e0e0e;
-    --header-color: #ffffff; 
-    --back-header: #000000;
-    --corpo-texto: #ffffff;
-    --footer: #000000;
-    --shadow: #161616;
-    --label: #f3c11e;
-  }
-}
-
-/* Classe para forçar modo escuro 
-.dark:root {
-  --body-back: #0e0e0e;
-  --header-color: #ffffff; 
-  --back-header: #000000;
-  --corpo-texto: #ffffff;
-  --footer: #000000;
-  --shadow: #161616;
-  --label: #f3c11e;
-}
-*/
-/* Reset CSS Global */
+/* Adicione/Mova isto para src/styles/globals.css */
 * {
-  margin: 0px;
-  padding: 0px;
- 
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'PLAYFUL RUNWAY';
+  src: url('/fonts/PlayfulRunway.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'THE NEXT FONT';
+  src: url('/fonts/TheNextFont.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Louis George Cafe';
+  src: url('/fonts/LouisGeorgeCafe.woff2') format('woff2');
+}
+
+html, body {
+    width: 100%;
+}
+
+a {
+    color: #040101;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.botoes {
+   border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 246.667px;
+    height: 65.333px;
+    padding: 10.667px 52px;
+    border-radius: 36px;
+    background: #722F53;
+    color: #FFF;
+    text-decoration: none;
+}
+.botoes > a, .botoes > p {
+    color: #FFF;
+    font-size: 26.67px;
+    font-family: 'The Next Font';
+}
+.botoes:hover{
+    background: radial-gradient(50% 50% at 51% 37%, rgba(135, 19, 141, 1) 0%, rgba(216, 89, 157, 0.18) 100%);
+    box-shadow: 0px 5px 10.7px 0px rgba(158, 22, 93, 0.85);
+}
+.botoes:active {
+    border: 1px solid #4D0626;
+    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #51152D 0%, #BA59D8 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
+}
