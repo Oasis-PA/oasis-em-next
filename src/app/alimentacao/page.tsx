@@ -66,7 +66,7 @@ const AlimentacaoPage: React.FC = () => {
           </div>
         </div>
       </section>
-
+      <img src="images/" alt="" />
       <section className="sec4">
         <div className="esquerdah">
           <h1>Dicas praticas de alimentacao</h1>
@@ -85,7 +85,7 @@ const AlimentacaoPage: React.FC = () => {
       </section>
 
       <div className="reparticao"></div>
-
+<img id='linha' src="/images/alimentacao/linha.svg" alt="" />
       <section className="sec5">
         <div className="text">
           <h2>Artigos fundamentais</h2>
@@ -98,7 +98,7 @@ const AlimentacaoPage: React.FC = () => {
                 <img className="ftcard" src="/images/Alimentacao/azul.png" alt="Imagem suplemento cabelo" />
                 <h1>Suplementos para cabelo: funcionam mesmo?</h1>
                 <p>Saiba quando os suplementos para cabelo sao eficazes, quais usar e como garantir resultados seguros.</p>
-               {/*} <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button> */}
+                <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
               </div>
             </article>
             <article className="card"><img src="/images/Alimentacao/sec5-salada1.png" alt="Imagem tigela saudavel" /></article>
@@ -106,27 +106,27 @@ const AlimentacaoPage: React.FC = () => {
               <div className="conteudo">
                 <h1>Alimentos que sabotam a saude capilar</h1>
                 <p>Nem so o que voce come ajuda o cabelo — alguns alimentos podem prejudicar seus fios! Excesso de acucar, ultraprocessados e alimentos muito salgados podem enfraquecer os cabelos e aumentar a queda. Saiba quais alimentos evitar para manter os cabelos sempre bonitos e saudaveis.</p>
-                {/* <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button> */}
+                 <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
               </div>
             </article>
-            <article className="card"><img src="/images/Alimentação/salada2-sec5.png" alt="Prato com salada saudavel" /></article>
+            <article className="card"><img src="/images/alimentacao/salada2-sec5.png" alt="Prato com salada saudavel" /></article>
           </div>
           <div className="secao2">
-            <article className="card"><img src="/images/Alimentação/sec5-olho.png" alt="Prato com salada saudavel" /></article>
+            <article className="card"><img src="/images/alimentacao/sec5-olho.png" alt="Prato com salada saudavel" /></article>
             <article className="card">
               <div className="conteudo">
                 <h1>Receitas funcionais para cuidar dos cabelos de dentro para fora</h1>
                 <p>Cuidar dos cabelos pode ser saboroso e pratico! Que tal apostar em receitas nutritivas que fortalecem os fios e ainda sao deliciosas? Neste artigo, voce encontra ideias de preparacoes simples e funcionais para incluir no seu dia a dia e dar aquele boost na saude capilar.</p>
-                {/* <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button> */}
+               <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button> 
               </div>
             </article>
-            <article className="card"><img src="/images/Alimentação/sec2-mulher.png" alt="Prato com salada saudavel" /></article>
+            <article className="card"><img src="/images/alimentacao/sec2-mulher.png" alt="Prato com salada saudavel" /></article>
             <article className="card">
                 <div className="conteudo">
-                <img className="ftcard" src="/images/Alimentação/roxo.png" alt="Imagem suplemento cabelo" />
+                <img className="ftcard" src="/images/alimentacao/roxo.png" alt="Imagem suplemento cabelo" />
                 <h1>Mitos e verdades sobre alimentacao e crescimento capilar</h1>
                 <p>Saiba quando os suplementos para cabelo sao eficazes, quais usar e como garantir resultados seguros.</p>
-                {/* <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button> */}
+                <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
                 </div>
             </article>
           </div>

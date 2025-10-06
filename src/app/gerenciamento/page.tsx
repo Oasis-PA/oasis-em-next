@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import "@/styles/gerenciamento-conta.css";
+import Layout from "./layout";
 
 export default function GerenciamentoConta() {
   const [email, setEmail] = useState("");
@@ -15,7 +15,14 @@ export default function GerenciamentoConta() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [confirmacaoTexto, setConfirmacaoTexto] = useState("");
-
+  const [mensagem, setMensagem] = useState("");
+  const [user, setUser] = useState({
+    nome: "",
+    sobrenome: "",
+    sobre: "",
+  });
+  
+  const [initialUser, setInitialUser] = useState({ ...user });
   useEffect(() => {
     fetch("/api/usuarios/perfil")
       .then(res => res.ok ? res.json() : null)
@@ -90,70 +97,70 @@ export default function GerenciamentoConta() {
     }
   };
 
+  const handleReset = () => {
+    setUser({ ...initialUser });
+    setMensagem(""); // limpa a mensagem
+  };
+
   return (
-    <>
-      <div className="config-body">
-        <aside>
-          <a className="barra-lateral" href="/editar-perfil">Editar Perfil</a>
-          <a className="barra-lateral active" href="#">Gerenciamento de Conta</a>
-        </aside>
+    <Layout>
+      <main>
+        <section>
+          <form onSubmit={handleSave}>
+            <h1>GERENCIE SUA CONTA</h1>
+            <p id="faca-alteracoes">Faça alterações nas suas informações pessoais ou no tipo de conta.</p>
 
-        <main>
-          <section>
-            <form onSubmit={handleSave}>
-              <h1>GERENCIE SUA CONTA</h1>
-              <p id="faca-alteracoes">Faça alterações nas suas informações pessoais ou no tipo de conta.</p>
+            <h2 className="section-title">Sua Conta</h2>
 
-              <h2 className="section-title">Sua Conta</h2>
+            <div className="form-group">
+              <label htmlFor="E-mail-privado">Email - Privado *</label>
+              <input type="email" id="E-mail-privado" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            </div>
 
-              <div className="form-group">
-                <label htmlFor="E-mail-privado">Email - Privado *</label>
-                <input type="email" id="E-mail-privado" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <div className="form-group password-group">
+              <label htmlFor="senha">Senha</label>
+              <div className="password-container">
+                <input type="password" id="senha" value="************" disabled />
+                <a href="#" className="alterar-link" onClick={(e) => { e.preventDefault(); setShowPasswordModal(true); }}>Alterar</a>
               </div>
+            </div>
 
-              <div className="form-group password-group">
-                <label htmlFor="senha">Senha</label>
-                <div className="password-container">
-                  <input type="password" id="senha" value="************" disabled />
-                  <a href="#" className="alterar-link" onClick={(e) => { e.preventDefault(); setShowPasswordModal(true); }}>Alterar</a>
-                </div>
-              </div>
+            <h2 className="section-title" id="info-pessoais">Informações Pessoais</h2>
 
-              <h2 className="section-title" id="info-pessoais">Informações Pessoais</h2>
+            <div className="form-group">
+              <label htmlFor="telefone">Telefone</label>
+              <input type="tel" id="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="(00) 00000-0000" />
+            </div>
 
-              <div className="form-group">
-                <label htmlFor="telefone">Telefone</label>
-                <input type="tel" id="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="(00) 00000-0000" />
-              </div>
+            <div className="form-group">
+              <label htmlFor="data-nascimento">Data de nascimento</label>
+              <input type="date" id="data-nascimento" value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} />
+            </div>
 
-              <div className="form-group">
-                <label htmlFor="data-nascimento">Data de nascimento</label>
-                <input type="date" id="data-nascimento" value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} />
-              </div>
+            <div className="form-group">
+              <label htmlFor="genero">Gênero *</label>
+              <select id="genero" value={genero ?? ""} onChange={(e) => setGenero(Number(e.target.value))} required>
+                <option value="">Selecione um gênero...</option>
+                {generos.map((g) => (
+                  <option key={g.id_genero} value={g.id_genero}>{g.nome}</option>
+                ))}
+              </select>
+            </div>
 
-              <div className="form-group">
-                <label htmlFor="genero">Gênero *</label>
-                <select id="genero" value={genero ?? ""} onChange={(e) => setGenero(Number(e.target.value))} required>
-                  <option value="">Selecione um gênero...</option>
-                  {generos.map((g) => (
-                    <option key={g.id_genero} value={g.id_genero}>{g.nome}</option>
-                  ))}
-                </select>
-              </div>
+            <h2 className="section-title" id="exclusao">Exclusão</h2>
+            <div id="exclua">
+              <p>Exclua permanentemente seus dados e tudo que estiver associado à sua conta</p>
+              <a href="#" className="excluir-link" onClick={(e) => { e.preventDefault(); setShowDeleteModal(true); }}>Excluir sua conta</a>
+            </div>
 
-              <h2 className="section-title" id="exclusao">Exclusão</h2>
-              <div id="exclua">
-                <p>Exclua permanentemente seus dados e tudo que estiver associado à sua conta</p>
-                <a href="#" className="excluir-link" onClick={(e) => { e.preventDefault(); setShowDeleteModal(true); }}>Excluir sua conta</a>
-              </div>
-
-              <div className="form-actions">
-                <button type="submit" className="btn-salvar">Salvar</button>
-              </div>
-            </form>
-          </section>
-        </main>
-      </div>
+            
+          </form>
+        </section>
+          <footer>
+        <button type="button" onClick={handleReset}>Redefinir</button>
+        <button id="salvs" type="button" onClick={handleSave}>Salvar</button>
+      </footer>
+      </main>
 
       {showPasswordModal && (
         <div className="modal">
@@ -206,6 +213,7 @@ export default function GerenciamentoConta() {
           </div>
         </div>
       )}
-    </>
+      
+    </Layout>
   );
 }
