@@ -1,0 +1,97 @@
+/* --- Estilos Gerais da Página --- */
+.mainContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+@font-face {
+  font-family: 'PLAYFUL RUNWAY';
+  src: url('/assets/fontes/PlayfulRunway.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'THE NEXT FONT';
+  src: url('/assets/fontes/TheNextFont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Louis George Cafe';
+  src: url('/assets/fontes/LouisGeorgeCafe.woff2') format('woff2');
+}
+/* --- Page 1 --- */
+.page1 { width: 100%; height: 1080px; display: flex; flex-direction: column; align-items: center; position: relative; }
+.page1Main { display: flex; flex-flow: column nowrap; align-items: center; justify-content: flex-end; width: 100%; max-width: 1920px; height: 100%; background: url("/images/tela-principal/page1/page1-imagem1.svg") center/cover no-repeat; gap: 20px; transition: background-image 0.5s ease-in-out; padding-bottom: 120px; }
+.page1Main p { font-size: 64px; font-family: 'Louis George Cafe'; color: #fff; text-shadow: 0px 0px 8.8px rgba(13, 0, 87, 0.99); }
+.page1Main h1 { font-size: 146.67px; font-family: 'The Next Font'; color: #fff; text-shadow: 0px 4px 22.13px rgba(57, 16, 192, 0.89); }
+.page1Circulos { gap: 10px; display: flex; cursor: pointer; }
+
+/* --- Page 2 --- */
+.page2 { display: flex; flex-direction: column; align-items: center; background-color: black; width: 100%; max-width: 1920px; padding: 80px 0; }
+.page2_title { text-align: center; color: white; width: 716px; margin-bottom: 40px; }
+.slidesContainer { overflow-x: auto; width: 1100px; display: flex; gap: 26.33px; scrollbar-width: none; cursor: grab; }
+.slidesContainer::-webkit-scrollbar { display: none; }
+.slidesContainer_dragging { cursor: grabbing; }
+.slide { flex: 0 0 255px; height: 569px; background-color: white; border-radius: 20px; overflow: hidden; }
+.slide img { width: 100%; height: 77%; object-fit: cover; }
+.slide figcaption { height: 23%; display: flex; align-items: center; justify-content: center; padding: 0 12px; text-align: center; color: #000; font-family: "Louis George Cafe"; font-size: 21px; font-weight: 700; }
+
+/* --- Page 3 --- */
+.page3 { display: flex; flex-flow: column nowrap; align-items: center; width: 100%; height: 1310px; background: white; }
+.page3Header { display: flex; flex-flow: column nowrap; align-items: center; margin-top: 30px; }
+.page3Header_article { display: flex; flex-flow: row nowrap; align-items: center; justify-content: center; gap: 62px; }
+.headerImg { width: 191px; height: 190px; }
+.page3TextoCortes { font-family: "The Next Font"; font-size: 20px; margin-top: 30px; }
+.setas { width: 17px; height: 31px; }
+.page3Circulos { margin: 10px; }
+.page3Main_article { margin-top: 65px; display: flex; flex-flow: column nowrap; align-items: center; }
+.page3Main_article h1 { font-family: "PLAYFUL RUNWAY"; font-size: 42.667px; }
+.page3Main_article p { width: 584px; text-align: center; font-family: "Louis George Cafe"; font-size: 26.667px; }
+.page3FooterNav { margin-top: 100px; display: flex; flex-flow: row nowrap; align-items: center; justify-content: space-around; width: 1574px; border-bottom: 1.093px solid #7C7C7C; }
+.cortesEmAltaText { width: 286px; height: 60px; color: rgba(0, 0, 0, 0.85); text-align: center; font-family: "The Next Font"; font-size: 17.489px; }
+.page3FooterArticle { margin-top: 30px; display: flex; flex-flow: row nowrap; align-items: center; justify-content: space-around; width: 1574px; }
+.page3Cortes { border-radius: 2.186px; background: #5F0B38; width: 286.77px; height: 367.267px; display: flex; flex-flow: column nowrap; align-items: center; }
+.cortesImagens { width: 266.706px; height: 289.66px; }
+.page3Cortes h1 { margin-top: 12px; color: #FFF; text-align: center; font-family: "The Next Font"; font-size: 34.978px; }
+
+/* --- Page 4 --- */
+.page4 { display: flex; flex-flow: column nowrap; align-items: center; width: 100%; height: 832px; background: white; }
+.page4Header { margin-top: 30px; display: flex; flex-flow: column nowrap; align-items: center; gap: 15px; }
+.page4Header h1 { font-family: "PLAYFUL RUNWAY"; font-size: 42.667px; }
+.page4Header p { text-align: center; font-family: "Louis George Cafe"; font-size: 26.667px; width: 857px; }
+.page4Main { display: flex; flex-flow: row nowrap; align-items: center; gap: 35px; }
+.page4Main_figure { display: flex; flex-flow: column nowrap; align-items: center; border: 3.009px solid #939191; background: #FFF; width: 332.424px; height: 480px; }
+.page4Main_figure img { margin-top: 20px; width: 284px; height: 293.333px; }
+.page4Main_figure figcaption { display: flex; flex-flow: column nowrap; align-items: center; }
+.page4Main_figure figcaption p { margin-top: 50px; }
+.page4Main_figure figcaption button { display: flex; align-items: center; justify-content: center; width: 232px; height: 36px; }
+
+/* --- Page 5 --- */
+.page5 { gap: 60px; display: flex; flex-flow: row nowrap; align-items: center; justify-content: center; width: 100%; height: 735px; background: white; }
+.page5_figure img { margin-left: 15px; width: 721.333px; height: 608px; }
+.page5_article h1 { font-family: "The Next Font"; font-size: 42.667px; line-height: 40px; letter-spacing: 2.133px; width: 732px; }
+.page5_article p { width: 590px; height: 187px; font-family: "Louis George Cafe"; font-size: 21.333px; line-height: 26.667px; letter-spacing: 1.067px; }
+
+/* --- Page 6 --- */
+.page6 { width: 100%; max-width: 1920px; height: 793px; background: #ECC46F; gap: 60px; display: flex; flex-flow: row-reverse nowrap; align-items: center; justify-content: center; }
+.page6_figure img { margin-left: 15px; width: 721.333px; height: 608px; }
+.page6_article h1 { font-family: "The Next Font"; font-size: 42.667px; line-height: 40px; letter-spacing: 2.133px; width: 732px; }
+.page6_article p { width: 590px; height: 187px; font-family: "Louis George Cafe"; font-size: 21.333px; line-height: 26.667px; letter-spacing: 1.067px; }
+
+/* --- Page 7 --- */
+.page7 { width: 100%; height: 750px; background: white; gap: 60px; display: flex; flex-flow: row nowrap; align-items: center; justify-content: center; }
+.page7_figure img { margin-left: 15px; width: 721.333px; height: 608px; }
+.page7_article h1 { font-family: "The Next Font"; font-size: 42.667px; line-height: 40px; letter-spacing: 2.133px; width: 732px; }
+.page7_article p { width: 590px; height: 187px; font-family: "Louis George Cafe"; font-size: 21.333px; line-height: 26.667px; letter-spacing: 1.067px; }
+
+/* --- Page 8 --- */
+.page8 { display: flex; flex-flow: column nowrap; align-items: center; width: 100%; height: 750px; background: white; }
+.page8Header { width: 1519px; height: 63px; background: #000; }
+.page8Header h1 { color: #FFF; font-family: "The Next Font"; font-size: 40px; }
+.page8Main { gap: 16px; display: flex; flex-flow: row nowrap; align-items: center; }
+
+/* --- Page 9 --- */
+.page9 { gap: 100px; display: flex; flex-flow: row nowrap; align-items: center; justify-content: center; width: 100%; max-width: 1920px; height: 1174px; background: url('/images/tela-principal/page9/page9-background.png'); }
+.page9_figure img { width: 486px; height: 744.64px; }
+
