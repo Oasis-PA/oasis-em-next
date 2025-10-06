@@ -148,7 +148,7 @@ export default function ConfiguracoesPage({ onSave, onReset }: LayoutProps) {
 
       <footer>
         <button type="button" onClick={handleReset}>Redefinir</button>
-        <button type="button" onClick={handleSave}>Salvar</button>
+        <button id="salvs" type="button" onClick={handleSave}>Salvar</button>
       </footer>
 
       {mensagem && <p>{mensagem}</p>}

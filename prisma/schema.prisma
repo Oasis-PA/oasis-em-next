@@ -19,6 +19,7 @@ model TipoCabelo {
   nome           String    @unique
   descricao      String?
   usuarios       Usuario[]
+  produtos       Produto[]
 }
 
 model Usuario {
@@ -62,6 +63,12 @@ model Produto {
   tag           Tag?         @relation(fields: [id_tag], references: [id_tag])
   url_imagem    String
   url_loja      String
+  
+  id_tipo_cabelo  Int? // O `?` torna este campo opcional, não quebrando dados existentes
+  id_tipo_pele    Int? // O `?` torna este campo opcional
+
+  tipo_cabelo     TipoCabelo? @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
+  tipo_pele       TipoPele?   @relation(fields: [id_tipo_pele], references: [id_tipo_pele])
 }
 
 model Avaliacao {
@@ -106,4 +113,11 @@ model Artigo {
   conteudo     String
   criadoEm     DateTime @default(now())
   atualizadoEm DateTime @updatedAt
+}
+
+model TipoPele {
+  id_tipo_pele Int       @id @default(autoincrement())
+  nome         String    @unique
+  descricao    String?
+  produtos     Produto[] // Relação de volta para a tabela Produto
 }
