@@ -1,17 +1,16 @@
+/* ================================== */
+/* CONFIGURAÇÕES GLOBAIS E TEMAS      */
+/* ================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-footer {
-    display: flex;
-    width: 100%;
-}
-
-footer iframe {
-    width: 100%;
-    height: 20.83vw;
+body {
+    background-color: var(--body-back);
+    overflow-x: hidden;
 }
 
 :root {
@@ -19,506 +18,382 @@ footer iframe {
     --sec2-h1: #3A1F1B; 
 }
 
+/* ================================== */
+/* SEÇÃO BANNER                       */
+/* ================================== */
+
 #banner {
     background-image: url('/images/alimentacao/banner.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 100vw; 
-    height: 39vw;
-    flex-shrink: 0;
+    width: 100%; 
+    height: 40vw; /* Altura relativa */
+    min-height: 300px; /* Altura mínima para telas pequenas */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0 8vw; /* Espaçamento lateral */
 }
 
 .texto-banner {
     display: flex;
-    width: 45vw; 
     flex-direction: column;
-    margin-left: 8vw;
-    gap: 3vw;
+    gap: 1rem;
+    max-width: 900px;
 }
 
 #banner h1 {
-    color: var(--Branco, #EFE1C7);
-    font-family: "The Next Font";
-    font-size: 5.47vw;
-    line-height: normal;
+    color: #EFE1C7;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5.5rem); /* Tipografia Fluida */
     font-weight: 400;
-    width: 56vw;
-    margin: 0; 
 }
 
 #banner p {
     color: #FFF;
-    width: 45vw;
-    font-family: "Louis George Cafe";
-    font-size: 2.08vw;
-    font-style: normal;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 2rem); /* Tipografia Fluida */
     font-weight: 700;
-    margin: 0; 
 }
+
+/* ================================== */
+/* SEÇÃO 2 (POR QUE COMER BEM)        */
+/* ================================== */
 
 .sec2 {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
     background-color: var(--sec2-back);
     width: 100%;
-    height: 48vw;
-    flex-shrink: 0;
-    gap: 2vw;
+    padding: 2rem 0;
+    gap: 2rem;
 }
 
 .esquerda {
     background-image: url('/images/alimentacao/imgsect2.png');
-    background-size: 100% auto;
+    background-size: contain; /* Contain se ajusta melhor */
     background-repeat: no-repeat;
-    width: 50%; 
-    height: 39vw;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    background-position: center;
+    flex: 1 1 500px; /* Flexbox para responsividade */
+    min-height: 400px;
 }
 
 .direita {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 48vw;
+    flex: 1 1 500px;
+    gap: 2rem;
+    padding: 2rem;
 }
 
 .direita h1 {
     color: var(--sec2-h1);
     text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 3.33vw;
-    font-style: normal;
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.3rem);
     font-weight: 400;
-    line-height: normal;
-    width: 35vw;
-    margin-top: 4vw;
 }
 
 .direita h2 {
     color: #3A1F1B;
-    font-family: "The Next Font";
-    font-size: 1.67vw;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
     font-weight: 400;
-    width: 20vw;
 }
 
 .resp {
-    width: 47vw;
-    height: 13vw;
-    flex-shrink: 0;
-    border-radius: 3vw;
+    width: 100%;
+    max-width: 700px;
+    padding: 1.5rem;
+    border-radius: 30px;
     background: #FFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .resp p {
     color: #321B17;
     text-align: justify;
-    font-family: "Louis George Cafe";
-    font-size: 1.88vw;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     font-weight: 400;
-    width: 41vw;
 }
 
 .cx {
     display: flex;
     justify-content: center;
-    gap: 2vw;
-    width: 53vw;
-}
-
-.cx img {
-    width: 3vw;
-}
-
-.cx p {
-    font-family: "Louis George Cafe";
-    font-size: 1.2vw;
-    font-weight: 500;
-    text-align: center;
-    width: 8vw;
+    flex-wrap: wrap; /* Permite quebrar linha */
+    gap: 1.5rem;
+    width: 100%;
 }
 
 #cx1, #cx2, #cx3, #cx4 {
     display: flex;
     flex-direction: column;
-    width: 10.5vw;
-    height: 10vw;
-    border: 0.2vw solid var(--Marrom, #5E332C);
-    border-radius: 6vw 6vw 0 0;
+    width: 150px;
+    height: 150px;
+    border: 3px solid var(--Marrom, #5E332C);
+    border-radius: 50px 50px 0 0;
     justify-content: center;
     align-items: center;
-    gap: 1vw;
+    gap: 0.5rem;
+    padding: 1rem;
 }
 
-#cx1 {
-    background: var(--Laranja, #F2A518);
+.cx img {
+    width: 40px;
+    height: auto;
 }
 
-#cx2 {
-    background: rgba(91, 115, 82, 0.60);
+.cx p {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
 }
 
-#cx3 {
-    background: var(--Lils, #FAF5FF);
-}
+#cx1 { background: var(--Laranja, #F2A518); }
+#cx2 { background: rgba(91, 115, 82, 0.60); }
+#cx3 { background: var(--Lils, #FAF5FF); }
+#cx4 { background: var(--Amarelo, #ECC46F); }
 
-#cx4 {
-    background: var(--Amarelo, #ECC46F);
-}
+/* ================================== */
+/* SEÇÃO 3 (IMAGENS DE ALIMENTOS)     */
+/* ================================== */
 
 .sec3 {
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .indoali {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5vw 0;
+    padding: 4rem 1rem;
 }
 
 .indoali > h1 {
     text-align: center;
-    width: 52vw;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 4.17vw;
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
     font-weight: 400;
-    line-height: normal;
 }
 
 .back {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(
-        to bottom,
-        #ECC46F 0%,
-        #ECC46F 33%,
-        #F2A518 33%,
-        #F2A518 66%,
-        #5E332C 66%,
-        #5E332C 100%
-    );
+    background: linear-gradient(to bottom, #ECC46F 0%, #ECC46F 33%, #F2A518 33%, #F2A518 66%, #5E332C 66%, #5E332C 100%);
+    width: 100%;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.fil1, .fil2 {
+    display: flex;
+    flex-wrap: wrap; /* Responsivo */
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    padding: 0 5vw;
-    gap: 2vw;
+    gap: 1rem;
 }
 
-.fil1 {
-    display: flex;
-    align-items: center;
-    gap: 2vw;
-}
-
-.fil2 {
-    display: flex;
-    align-items: center;
-    gap: 2vw;
-    justify-content: space-between;
-}
-
-.ovo {
-    width: 27.19vw;
-    height: 36.09vw; 
+.ovo, .espi_cenou, .espinafre, .cenoura, .abacate, .salmao, .morango {
     background-size: cover;
     background-position: center;
+    border-radius: 15px; /* Adiciona bordas arredondadas */
+    overflow: hidden; /* Garante que o conteúdo não vaze */
+}
+
+.ovo, .abacate { width: 27vw; min-width: 280px; aspect-ratio: 3 / 4; }
+.espi_cenou { display: flex; flex-direction: column; gap: 6rem; width: 27vw; min-width: 280px; }
+.espinafre, .cenoura { width: 100%; aspect-ratio: 16 / 9; }
+.salmao, .morango { width: 42vw; min-width: 280px; aspect-ratio: 16 / 8; }
+@media (max-width: 700px) {
+    .espi_cenou {
+        gap: 2rem;
+    }
+}
+.ovo{
     background-image: url('/images/alimentacao/ovo.png');
 }
-
-.espi_cenou {
-    display: flex;
-    flex-direction: column;
-    gap: 2vw;
-    height: 100%;
-}
-
-.espinafre {
-    width: 27.19vw;
-    height: 16.61vw;
-    background-size: cover;
-    background-position: center;
+.espinafre{
     background-image: url('/images/alimentacao/espinafre.png');
 }
-
-.cenoura {
-    width: 27.19vw;
-    height: 16.61vw;
-    background-size: cover;
-    background-position: center;
+.cenoura{
     background-image: url('/images/alimentacao/cenoura.png');
 }
-
-.abacate {
-    width: 27.19vw;
-    height: 36.09vw; 
-    background-size: cover;
-    background-position: center;
+.abacate{
     background-image: url('/images/alimentacao/abacate.png');
 }
-
-.salmao {
-    width: 41.98vw;
-    height: 20.63vw; 
-    background-size: cover;
-    background-position: center;
+.salmao{
     background-image: url('/images/alimentacao/salmão.png');
 }
-
-.morango {
-    width: 41.98vw; 
-    height: 20.63vw;
-    background-size: cover;
-    background-position: center;
+.morango{
     background-image: url('/images/alimentacao/morango.png');
 }
 
 .elementos {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 100%; 
-    padding: 0 2% 3% 2%; 
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 50%); /* Legibilidade do texto */
 }
 
 .elementos h1 {
     color: #FFF;
-    font-family: "The Next Font";
-    font-size: 1.88vw;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
     font-weight: 400;
-    text-shadow: 0vw 0.1vw 0.3vw rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .elementos p {
-    width: 90%;
     color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: 1.5vw;
-    font-style: normal;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     font-weight: 200;
-    line-height: 1.3;
-    text-shadow: 0vw 0.1vw 0.3vw rgba(0, 0, 0, 0.7);
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-
+/* ================================== */
+/* SEÇÃO 4 (DICAS PRÁTICAS)           */
+/* ================================== */
 
 .sec4 {
     display: flex;
-    justify-content: space-between;
-    width: 100vw;
-    height: 62vw;
+    flex-wrap: wrap; /* Responsivo */
+    width: 100%;
 }
 
 .direitah {
-    width: 50%;
+    flex: 1 1 500px;
+    min-height: 500px;
     background-image: url('/images/alimentacao/sec4.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 .esquerdah {
-    width: 45%;
+    flex: 1 1 500px;
     display: flex;
     flex-direction: column;
-    align-self: center;
-    gap: 4vw;
-    margin-left: 8vw;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 4rem;
 }
 
 .esquerdah h1 {
-    color: #000;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 4.5vw;
-    font-style: normal;
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 400;
-    line-height: normal;
-    width: 31vw;
-    margin-top: 3vw;
+}
+
+.esquerdeh {
+    list-style: none; /* Remove marcadores padrão */
 }
 
 .esquerdeh > li {
-  font-family: "Louis George Cafe";
-  font-size: 1.46vw;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   font-weight: 400;
   display: flex;
   align-items: center;
-  height: 3.7vw;
-  border-radius: 0 1.56vw 1.56vw 0;
+  padding: 1rem;
+  border-radius: 0 25px 25px 0;
   background: #EBEBEA;
-  margin-bottom: 1.88vw;
-  padding-left: 1.56vw;
-  width: 36vw; 
+  margin-bottom: 1rem;
+  /* CORREÇÃO: Remove larguras individuais e frágeis */
+  max-width: 90%;
 }
 
-.esquerdeh > li:nth-child(even) {
-  background: #EFE1C7;
-}
+.esquerdeh > li:nth-child(even) { background: #EFE1C7; }
 
 .esquerdeh > li p {
-  font-family: "PLAYFUL RUNWAY";
-  font-size: 1.67vw;
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 400;
-  margin: 0 1.82vw 0 0;
-  min-width: 1.5vw;
-  text-align: center;
+  margin-right: 1rem;
 }
 
 .esquerdeh > li .linha {
-  width: 0.03vw;
-  height: 2.71vw;
+  width: 2px;
+  height: 2.5rem;
   background-color: #000000;
-  margin-right: 0.68vw;
+  margin-right: 1rem;
 }
-
-#ol1 { 
-    width: 40vw; 
-}
-
-#ol2 { 
-    width: 38.5vw; 
-}
-
-#ol3 { 
-    width: 37vw; 
-}
-
-#ol4 { 
-    width: 35.5vw; 
-}
-
-#ol5 { 
-    width: 34vw; 
-}
-
-#ol6 { 
-    width: 32.3vw; 
-}
-
-#ol7 { 
-    width: 30.7vw; 
-}
-
-#ol8 { 
-    width: 29.2vw; 
-}
-
-
-
 
 .repartição {
-    display: flex;
-    align-items: center;
-    margin: 8vw 0vw 5vw;
-    width: 87.5vw;
-    height: 0.1vw;
+    margin: 4rem auto;
+    width: 90%;
+    height: 2px;
     background: #000;
 }
 
-
-
-
+/* ================================== */
+/* SEÇÃO 5 (ARTIGOS)                  */
+/* ================================== */
 
 .sec5 {
-    width: 100vw;
-    height: 65vw;
+    width: 100%;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4vw;
+    gap: 3rem;
 }
 
-.secao1 {
-    display: flex;
-    gap: 2vw;
+.text {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
 }
 
-.secao2 {
-    display: flex;
-    gap: 2vw;
+.sec5 h2 {
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.sec5 h3 {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.7rem);
+    font-weight: 400;
 }
 
 .partedebaixo {
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 1.5rem;
+    width: 100%;
 }
 
-.text {
-    width: 83%;
-}
-
-.sec5 h2 {
+.secao1, .secao2 {
     display: flex;
-    width: auto;
-    flex-direction: column;
+    gap: 1.5rem;
     justify-content: center;
-    flex-shrink: 0;
-    text-align: justify;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 4.17vw;
-    font-weight: 400;
-}
-
-.sec5 h3 {
-    display: flex;
-    width: 30vw;
-    height: 3.65vw;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    text-align: justify;
-    font-family: "Louis George Cafe";
-    font-size: 1.67vw;
-    font-weight: 400;
-}
-
-.linhas {
-    display: flex;
-    margin-top: 12%;
-    gap: 10%;
-    margin-left: 0.63vw;
+    flex-wrap: wrap; /* Responsivo */
 }
 
 .card {
     background-color: #EBEBEA;
-    width: 20vw;
-    height: 21vw;
-    border-radius: 2vw;
+    width: 100%;
+    max-width: 300px; /* Largura máxima para os cards */
+    border-radius: 30px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .card img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.ftcard {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 180px; /* Altura fixa para imagens */
+    object-fit: cover;
 }
 
 .conteudo {
@@ -526,46 +401,37 @@ footer iframe {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
-    height: 90%;
-    gap: 4%;
+    padding: 1.5rem;
+    gap: 1rem;
+    flex-grow: 1; /* Permite que o conteúdo cresça */
 }
 
 .conteudo button {
-    display: flex;
-    width: 9vw;
-    height: 2.19vw;
-    padding: 0.66vw 1.75vw;
-    justify-content: center;
-    align-items: center;
-    gap: 0.45vw;
+    width: 150px;
+    height: 40px;
     border: none; 
-    border-radius: 1.21vw;
+    border-radius: 20px;
     background: #722F53;
     color: #FFF;
     text-align: center;
-    font-family: "The Next Font";
-    font-size: 0.9vw;
+    font-family: "The Next Font", sans-serif;
+    font-size: 1rem;
     font-weight: 300;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .conteudo h1 {
-    color: #000;
-    width: 100%;
-    font-family: "The Next Font";
-    font-size: 1.3vw;
-    font-style: normal;
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.3rem;
     font-weight: 400;
-    line-height: normal;
+    text-align: center;
 }
 
 .conteudo p {
-    color: #000;
     text-align: justify;
-    font-family: "Louis George Cafe";
-    font-size: 1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1rem;
+    flex-grow: 1; /* Permite que o parágrafo ocupe o espaço */
 }
+
