@@ -1,8 +1,8 @@
 // Removendo "use client" para tornar este um Server Component por padrão
-"use client";
+
 import { Header, Footer } from "@/components";
-import { useEffect, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
+
+
 import Image from "next/image";
 import Link from "next/link";
 
