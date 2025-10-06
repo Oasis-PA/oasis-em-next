@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    line-height: normal;
 }
 
 body {
@@ -29,31 +30,37 @@ body {
     background-position: center;
     width: 100%; 
     height: 40vw; /* Altura relativa */
-    min-height: 300px; /* Altura mínima para telas pequenas */
+    min-height: 400px; /* Altura mínima para telas pequenas */
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 8vw; /* Espaçamento lateral */
 }
-
+@media (max-width: 700px) {
+    #banner {
+        height: 85vw;
+        
+    }
+}
 .texto-banner {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 900px;
+    gap: 0.4rem;
+    max-width: 1200px;
+    line-height: normal;
 }
 
 #banner h1 {
     color: #EFE1C7;
     font-family: "The Next Font", sans-serif;
-    font-size: clamp(2.5rem, 6vw, 5.5rem); /* Tipografia Fluida */
+    font-size: clamp(3.5rem, 7vw, 6.5rem); /* Tipografia Fluida */
     font-weight: 400;
 }
 
 #banner p {
     color: #FFF;
     font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(1rem, 2.5vw, 2rem); /* Tipografia Fluida */
+    font-size: clamp(1.4rem, 3vw, 2.4rem); /* Tipografia Fluida */
     font-weight: 700;
 }
 
@@ -68,6 +75,7 @@ body {
     width: 100%;
     padding: 2rem 0;
     gap: 2rem;
+    min-height: 800px;
 }
 
 .esquerda {
@@ -76,10 +84,23 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     flex: 1 1 500px; /* Flexbox para responsividade */
-    min-height: 400px;
+    min-height: 500px;
+    margin-left: -10%;
+}
+
+@media (max-width: 1200px) {
+    .esquerda {
+        margin-left: 0;
+    }
+}
+@media (max-width: 700px) {
+    .esquerda {
+        margin-left: 0;
+    }
 }
 
 .direita {
+    line-height: normal;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,6 +112,7 @@ body {
 
 .direita h1 {
     color: var(--sec2-h1);
+    max-width: 600px;
     text-align: center;
     font-family: "PLAYFUL RUNWAY", sans-serif;
     font-size: clamp(2rem, 4vw, 3.3rem);
@@ -126,6 +148,7 @@ body {
     flex-wrap: wrap; /* Permite quebrar linha */
     gap: 1.5rem;
     width: 100%;
+    margin-top: 10%;
 }
 
 #cx1, #cx2, #cx3, #cx4 {
@@ -139,6 +162,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     padding: 1rem;
+    
 }
 
 .cx img {
@@ -175,7 +199,7 @@ body {
 
 .indoali > h1 {
     text-align: center;
-    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4.2rem);
     font-weight: 400;
 }
@@ -308,7 +332,7 @@ body {
   background: #EBEBEA;
   margin-bottom: 1rem;
   /* CORREÇÃO: Remove larguras individuais e frágeis */
-  max-width: 90%;
+  max-width: 95%;
 }
 
 .esquerdeh > li:nth-child(even) { background: #EFE1C7; }
@@ -327,6 +351,72 @@ body {
   margin-right: 1rem;
 }
 
+
+
+#ol1 { 
+    width: 40vw; 
+}
+
+#ol2 { 
+    width: 38.5vw; 
+}
+
+#ol3 { 
+    width: 37vw; 
+  margin-right: 1rem;
+}
+
+#ol4 { 
+    width: 35.5vw; 
+}
+
+#ol5 { 
+    width: 34vw; 
+}
+
+#ol6 { 
+    width: 32.3vw; 
+}
+
+#ol7 { 
+    width: 30.7vw; 
+}
+
+#ol8 { 
+    width: 29.2vw; 
+}
+@media (max-width: 900px) {
+    #ol1, #ol2, #ol3, #ol4, #ol5, #ol6, #ol7, #ol8 {
+        width: 100%;
+        min-width: 0;
+        
+    }
+    #ol1{
+        max-width: 100%;
+    }
+    #ol2{
+        max-width: 95%;
+    }
+    #ol3{
+        max-width: 90%;
+    }
+    #ol4{
+        max-width: 85%;
+    }
+    #ol5{
+        max-width: 80%;
+    }
+    #ol6{
+        max-width: 75%;
+    }
+    #ol7{
+        max-width: 70%;
+    }
+    #ol8{
+        max-width: 65%;
+    }
+
+}
 .repartição {
     margin: 4rem auto;
     width: 90%;
@@ -343,21 +433,31 @@ body {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
     gap: 3rem;
 }
 
 .text {
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
+    width: 83%;
+    max-width: 800px;
+    margin-left: 5vw;
 }
+.text h3{
+    max-width: 500px;
+}
+@media (max-width: 900px) {
+    .text {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
 
+    }
+}
 .sec5 h2 {
     font-family: "PLAYFUL RUNWAY", sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-size: clamp(2.8rem, 5.5vw, 4.7rem);
     font-weight: 400;
-    margin-bottom: 1rem;
+    
 }
 
 .sec5 h3 {
@@ -383,7 +483,8 @@ body {
 .card {
     background-color: #EBEBEA;
     width: 100%;
-    max-width: 300px; /* Largura máxima para os cards */
+    max-width: 400px; /* Largura máxima para os cards */
+    max-height: 500px; /* Altura máxima para os cards */
     border-radius: 30px;
     overflow: hidden;
     display: flex;
@@ -392,15 +493,17 @@ body {
 
 .card img {
     width: 100%;
-    height: 180px; /* Altura fixa para imagens */
+    height: 100%; /* Altura fixa para imagens */
     object-fit: cover;
 }
 
 .conteudo {
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 1.5rem;
     gap: 1rem;
     flex-grow: 1; /* Permite que o conteúdo cresça */
@@ -423,15 +526,26 @@ body {
 
 .conteudo h1 {
     font-family: "The Next Font", sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 400;
-    text-align: center;
+    text-align: justify;
 }
 
 .conteudo p {
     text-align: justify;
     font-family: "Louis George Cafe", sans-serif;
-    font-size: 1rem;
+    font-size: 1.3rem;
     flex-grow: 1; /* Permite que o parágrafo ocupe o espaço */
 }
 
+.ftcard {
+    border-radius: 6%;
+}
+
+#linha {
+    display: block;
+    margin: 4rem auto;
+    width: 90%;
+    height: 2px;
+    background: #000;
+}
