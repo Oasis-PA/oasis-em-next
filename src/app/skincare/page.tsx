@@ -218,6 +218,7 @@ export default function skincare() {
           </div>
         </div>
     </section>
+    <section id="imagem-perfume"></section>
     </main>
     </>
   );
