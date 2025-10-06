@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://postgres:capenga@db.yyvjzgxyxgalnnwcjfqh.supabase.co:5432/postgres"
 }
 
 model Genero {
@@ -18,8 +18,8 @@ model TipoCabelo {
   id_tipo_cabelo Int       @id @default(autoincrement())
   nome           String    @unique
   descricao      String?
-  usuarios       Usuario[]
   produtos       Produto[]
+  usuarios       Usuario[]
 }
 
 model Usuario {
@@ -34,6 +34,7 @@ model Usuario {
   id_tipo_cabelo  Int?
   sobrenome       String?
   sobre           String?
+  url_foto        String?         @db.VarChar
   avaliacoes      Avaliacao[]
   favoritos       Favorito[]
   passwordResets  PasswordReset[]
@@ -49,26 +50,23 @@ model Categoria {
 }
 
 model Produto {
-  id_produto    Int          @id @default(autoincrement())
-  nome          String
-  descricao     String?
-  marca         String
-  preco         Float
-  data_cadastro DateTime     @default(now())
-  id_categoria  Int
-  id_tag        Int?         // Chave estrangeira para Tag
-  avaliacoes    Avaliacao[]
-  favoritos     Favorito[]
-  categoria     Categoria    @relation(fields: [id_categoria], references: [id_categoria])
-  tag           Tag?         @relation(fields: [id_tag], references: [id_tag])
-  url_imagem    String
-  url_loja      String
-  
-  id_tipo_cabelo  Int? // O `?` torna este campo opcional, não quebrando dados existentes
-  id_tipo_pele    Int? // O `?` torna este campo opcional
-
-  tipo_cabelo     TipoCabelo? @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
-  tipo_pele       TipoPele?   @relation(fields: [id_tipo_pele], references: [id_tipo_pele])
+  id_produto     Int         @id @default(autoincrement())
+  nome           String
+  marca          String
+  preco          Float
+  data_cadastro  DateTime    @default(now())
+  id_categoria   Int
+  descricao      String?
+  url_imagem     String?     @db.VarChar
+  url_loja       String?     @db.VarChar
+  id_tag         Int?
+  id_tipo_pele   Int?
+  id_tipo_cabelo Int?
+  avaliacoes     Avaliacao[]
+  favoritos      Favorito[]
+  categoria      Categoria   @relation(fields: [id_categoria], references: [id_categoria])
+  tag            Tag?        @relation(fields: [id_tag], references: [id_tag], onDelete: NoAction, onUpdate: NoAction)
+  tipo_cabelo    TipoCabelo? @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model Avaliacao {
@@ -94,30 +92,43 @@ model Favorito {
 model Tag {
   id_tag   Int       @id @default(autoincrement())
   nome     String    @unique
-  produtos Produto[] // Relacionamento inverso
+  produtos Produto[]
 }
 
 model PasswordReset {
-  id          Int      @id @default(autoincrement())
-  token       String   @unique
-  usuario     Usuario  @relation(fields: [id_usuario], references: [id_usuario])
-  id_usuario  Int
-  expiresAt   DateTime
-  createdAt   DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  id_usuario Int
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  usuario    Usuario  @relation(fields: [id_usuario], references: [id_usuario])
 }
 
 model Artigo {
   id           Int      @id @default(autoincrement())
-  titulo       String
-  slug         String   @unique
-  conteudo     String
+  titulo       String   @default("NOT NULL")
+  slug         String   @unique @default("NOT NULL")
+  conteudo     String   @default("NOT NULL")
   criadoEm     DateTime @default(now())
   atualizadoEm DateTime @updatedAt
 }
 
 model TipoPele {
-  id_tipo_pele Int       @id @default(autoincrement())
-  nome         String    @unique
-  descricao    String?
-  produtos     Produto[] // Relação de volta para a tabela Produto
+  id_tipo_pele Int      @id @default(autoincrement())
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+  nome         String?
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Empresas {
+  id                   Int      @id @default(autoincrement()) @db.SmallInt
+  nome_sobrenome       String
+  email_corporativo    String   @unique @default("")
+  telefone             Decimal  @db.Decimal
+  empresa_representada String   @db.VarChar
+  total_colaboradores  Int
+  cargo                String
+  motivo_contato       String
+  data_solicitacao     DateTime @db.Timestamptz(6)
+  status               String
 }

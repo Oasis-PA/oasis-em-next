@@ -41,7 +41,7 @@ export default function Login() {
       }
 
       // Redireciona para dashboard
-      router.push("/dashboard");
+      router.push("/");
     } catch (err) {
       console.error("Erro ao logar:", err);
       setMensagem("Erro de conexão com servidor.");
