@@ -1,7 +1,11 @@
 generator client {
   provider = "prisma-client-js"
 }
-
+generator zod {
+  provider      = "prisma-zod-generator"
+  output        = "../src/lib/zod-schemas" // Onde os esquemas serão guardados
+  relationModel = false // Simplifica os esquemas, ótimo para começar
+}
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
