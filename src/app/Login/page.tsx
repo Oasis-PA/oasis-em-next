@@ -1,16 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { z, ZodError } from "zod";
 import "@/styles/tela-de-cadastro.css";
 import SenhaModal from "@/components/senhaModal/modal";
+
+// Schema de validação para login
+const loginSchema = z.object({
+  email: z.string().email("Email inválido"),
+  senha: z.string().min(1, "Senha é obrigatória"),
+});
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [erros, setErros] = useState<Record<string, string>>({});
   const [carregando, setCarregando] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
@@ -18,19 +26,31 @@ export default function Login() {
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setMensagem("");
+    setErros({});
     setCarregando(true);
 
     try {
+      // Validação frontend com Zod
+      const dadosValidados = loginSchema.parse({ email, senha });
+
       const res = await fetch("/api/usuarios/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha }),
+        body: JSON.stringify(dadosValidados),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        setMensagem(data.message || "Erro ao fazer login");
+        if (data.errors) {
+          const novosErros: Record<string, string> = {};
+          data.errors.forEach((err: any) => {
+            novosErros[err.campo] = err.mensagem;
+          });
+          setErros(novosErros);
+        } else {
+          setMensagem(data.message || "Erro ao fazer login");
+        }
         setCarregando(false);
         return;
       }
@@ -40,11 +60,20 @@ export default function Login() {
         sessionStorage.setItem("usuario", JSON.stringify(data.usuario));
       }
 
-      // Redireciona para dashboard
+      // Redireciona para home
       router.push("/");
+      
     } catch (err) {
-      console.error("Erro ao logar:", err);
-      setMensagem("Erro de conexão com servidor.");
+      if (err instanceof ZodError) {
+        const novosErros: Record<string, string> = {};
+        err.errors.forEach((error) => {
+          const campo = error.path[0] as string;
+          novosErros[campo] = error.message;
+        });
+        setErros(novosErros);
+      } else {
+        setMensagem("Erro de conexão com servidor.");
+      }
       setCarregando(false);
     }
   }
@@ -64,22 +93,36 @@ export default function Login() {
             type="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (erros.email) {
+                const { email, ...rest } = erros;
+                setErros(rest);
+              }
+            }}
             required
             autoComplete="email"
             className="padding-form"
           />
+          {erros.email && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.email}</p>}
 
           <label htmlFor="senha">Senha</label>
           <input
             type="password"
             id="senha"
             value={senha}
-            onChange={(e) => setSenha(e.target.value)}
+            onChange={(e) => {
+              setSenha(e.target.value);
+              if (erros.senha) {
+                const { senha, ...rest } = erros;
+                setErros(rest);
+              }
+            }}
             required
             autoComplete="current-password"
             className="padding-form"
           />
+          {erros.senha && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.senha}</p>}
 
           <section id="section-checkbox-login">
             <button
@@ -91,6 +134,12 @@ export default function Login() {
             </button>
           </section>
 
+          {mensagem && (
+            <p style={{ color: "red", marginTop: "10px", textAlign: "center" }}>
+              {mensagem}
+            </p>
+          )}
+
           <button 
             type="submit" 
             className="botaocontinue"
@@ -100,12 +149,6 @@ export default function Login() {
           </button>
         </form>
 
-        {mensagem && (
-          <p style={{ color: "red", marginTop: "10px", textAlign: "center" }}>
-            {mensagem}
-          </p>
-        )}
-
         <section className="div-linha-ou">
           <div className="lin"></div>
           <p className="div-ou">ou</p>
@@ -113,7 +156,7 @@ export default function Login() {
         </section>
 
         <Link href="/cadastro">
-          <button id="botaonaoconta">
+          <button id="botaonaoconta" type="button">
             NÃO TEM UMA CONTA? CLIQUE AQUI PARA CRIAR.
           </button>
         </Link>

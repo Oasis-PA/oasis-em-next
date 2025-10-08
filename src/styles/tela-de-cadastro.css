@@ -1,21 +1,4 @@
-@font-face {
-    font-family: "The Next Font";
-    src: url('../../public/assets/fontes/TheNextFont.ttf') format('truetype') ;
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "Louis George Cafe";
-    src: url('../../public/assets/fontes/Louis\ George\ Cafe.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "PLAYFUL RUNWAY";
-    src: url('../../public/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
+
 * {
     margin: 0;
     padding: 0;

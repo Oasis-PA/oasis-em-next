@@ -545,7 +545,12 @@ button[type="button"]:not(.btn-excluir-confirmar):hover {
 /* ============================================
    FOOTER - Editar Perfil
    ============================================ */
-footer {
+.layout-container footer,
+.config-body footer {
+    position: fixed;
+    bottom: 0;
+    left: 7%;
+    right: 0;
     background-color: var(--footer);
     width: 100%;
     height: 95px;
@@ -554,10 +559,7 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    position: fixed;
-    bottom: 0;
-    left: 7%;
-    right: 0;
+  
     z-index: 100;
 }
 

@@ -6,24 +6,53 @@
     align-items: center;
 }
 
-@font-face {
-  font-family: 'PLAYFUL RUNWAY';
-  src: url('/assets/fontes/PlayfulRunway.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'THE NEXT FONT';
-  src: url('/assets/fontes/TheNextFont.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Louis George Cafe';
-  src: url('/assets/fontes/LouisGeorgeCafe.woff2') format('woff2');
-}
 /* --- Page 1 --- */
-.page1 { width: 100%; height: 1080px; display: flex; flex-direction: column; align-items: center; position: relative; }
-.page1Main { display: flex; flex-flow: column nowrap; align-items: center; justify-content: flex-end; width: 100%; max-width: 1920px; height: 100%; background: url("/images/tela-principal/page1/page1-imagem1.svg") center/cover no-repeat; gap: 20px; transition: background-image 0.5s ease-in-out; padding-bottom: 120px; }
-.page1Main p { font-size: 64px; font-family: 'Louis George Cafe'; color: #fff; text-shadow: 0px 0px 8.8px rgba(13, 0, 87, 0.99); }
+/* Adicione estas regras ao src/styles/page.module.css */
+
+/* CORREÇÃO: Definir z-index para evitar sobreposição */
+.page1 { 
+  width: 100%; 
+  height: 1080px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  position: relative;
+  z-index: 1; /* IMPORTANTE: Menor que o header/dropdown */
+}
+
+.page1Main { 
+  display: flex; 
+  flex-flow: column nowrap; 
+  align-items: center; 
+  justify-content: flex-end; 
+  width: 100%; 
+  max-width: 1920px; 
+  height: 100%; 
+  background: url("/images/tela-principal/page1/page1-imagem1.svg") center/cover no-repeat; 
+  gap: 20px; 
+  transition: background-image 0.5s ease-in-out; 
+  padding-bottom: 120px;
+  position: relative; /* IMPORTANTE */
+  z-index: 1; /* IMPORTANTE: Menor que o header/dropdown */
+}
+
+.page1Main p { 
+  font-size: 64px; 
+  font-family: 'Louis George Cafe'; 
+  color: #fff; 
+  text-shadow: 0px 0px 8.8px rgba(13, 0, 87, 0.99);
+  position: relative; /* IMPORTANTE */
+  z-index: 1; /* IMPORTANTE: Menor que o header/dropdown */
+}
+
+.page1Main h1 { 
+  font-size: 146.67px; 
+  font-family: 'The Next Font'; 
+  color: #fff; 
+  text-shadow: 0px 4px 22.13px rgba(57, 16, 192, 0.89);
+  position: relative; /* IMPORTANTE */
+  z-index: 1; /* IMPORTANTE: Menor que o header/dropdown */
+}
 .page1Main h1 { font-size: 146.67px; font-family: 'The Next Font'; color: #fff; text-shadow: 0px 4px 22.13px rgba(57, 16, 192, 0.89); }
 .page1Circulos { gap: 10px; display: flex; cursor: pointer; }
 

@@ -13,13 +13,12 @@ interface User {
 }
 
 interface LayoutProps {
- children: React.ReactNode;
+  children: React.ReactNode;
   onSave?: () => void;   // salvar
   onReset?: () => void;  // redefinir
 }
 
-
-export default function ConfiguracoesPage({ onSave, onReset }: LayoutProps) {
+export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
   const [user, setUser] = useState<User>({
     nome: "",
     sobrenome: "",
@@ -58,28 +57,28 @@ export default function ConfiguracoesPage({ onSave, onReset }: LayoutProps) {
   };
 
   const handleSave = async () => {
-  try {
-    const res = await fetch("/api/usuarios/update", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    });
+    try {
+      const res = await fetch("/api/usuarios/update", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
 
-    const data = await res.json();
-    if (res.ok) {
-      setMensagem("Perfil atualizado com sucesso!");
-      setInitialUser({ ...user });
-    } else {
-      setMensagem(data.error || "Erro ao atualizar.");
+      const data = await res.json();
+      if (res.ok) {
+        setMensagem("Perfil atualizado com sucesso!");
+        setInitialUser({ ...user });
+      } else {
+        setMensagem(data.error || "Erro ao atualizar.");
+      }
+    } catch (err) {
+      setMensagem("Erro no servidor.");
     }
-  } catch (err) {
-    setMensagem("Erro no servidor.");
-  }
-};
+  };
 
   const handleReset = () => {
     setUser({ ...initialUser });
-    setMensagem(""); // limpa a mensagem
+    setMensagem("");
   };
 
   if (loading) return <p>Carregando...</p>;
@@ -87,71 +86,75 @@ export default function ConfiguracoesPage({ onSave, onReset }: LayoutProps) {
   return (
     <Layout>
       <main>
-      <div className="informa">
-        <h4>EDITE SEU PERFIL</h4>
-        <p>
-        Mantenha seus dados pessoais privados. As informações que você
-        adiciona aqui ficam visíveis apenas para você.
-        </p>
-      </div>
+        <div className="informa">
+          <h4>EDITE SEU PERFIL</h4>
+          <p>
+            Mantenha seus dados pessoais privados. As informações que você
+            adiciona aqui ficam visíveis apenas para você.
+          </p>
+        </div>
 
-      <figure id="perf">
-        <Image
-        src="/logo-oasis-icon.ico"
-        alt="Foto de perfil"
-        width={50}
-        height={50}
-        />
-        <figcaption>
-        <p id="foto">Foto</p>
-        <p id="Alterar">Alterar</p>
-        </figcaption>
-      </figure>
-
-      <form id="form">
-        <div className="nome-sobre">
-        <div className="campos-texto" id="caixa-nome">
-          <p>Nome</p>
-          <input
-          type="text"
-          name="nome"
-          value={user.nome}
-          onChange={handleChange}
-          className="req"
+        <figure id="perf">
+          <Image
+            src="/logo-oasis-icon.ico"
+            alt="Foto de perfil"
+            width={50}
+            height={50}
           />
-          <span className="sp">Mínimo 3 caracteres</span>
-        </div>
+          <figcaption>
+            <p id="foto">Foto</p>
+            <p id="Alterar">Alterar</p>
+          </figcaption>
+        </figure>
 
-        <div className="campos-texto" id="caixa-sobrenome">
-          <p>Sobrenome</p>
-          <input
-          type="text"
-          name="sobrenome"
-          value={user.sobrenome}
-          onChange={handleChange}
-          className="req"
-          />
-          <span className="sp">Mínimo 3 caracteres</span>
-        </div>
-        </div>
+        <form id="form">
+          <div className="nome-sobre">
+            <div className="campos-texto" id="caixa-nome">
+              <p>Nome</p>
+              <input
+                type="text"
+                name="nome"
+                value={user.nome}
+                onChange={handleChange}
+                className="req"
+              />
+              <span className="sp">Mínimo 3 caracteres</span>
+            </div>
 
-        <div className="campos-texto req" id="caixa-sobre">
-        <p>Sobre</p>
-        <input
-          type="text"
-          name="sobre"
-          value={user.sobre}
-          onChange={handleChange}
-        />
-        </div>
-      </form>
+            <div className="campos-texto" id="caixa-sobrenome">
+              <p>Sobrenome</p>
+              <input
+                type="text"
+                name="sobrenome"
+                value={user.sobrenome}
+                onChange={handleChange}
+                className="req"
+              />
+              <span className="sp">Mínimo 3 caracteres</span>
+            </div>
+          </div>
 
-      <footer>
-        <button type="button" onClick={handleReset}>Redefinir</button>
-        <button id="salvs" type="button" onClick={handleSave}>Salvar</button>
-      </footer>
+          <div className="campos-texto req" id="caixa-sobre">
+            <p>Sobre</p>
+            <input
+              type="text"
+              name="sobre"
+              value={user.sobre}
+              onChange={handleChange}
+            />
+          </div>
+        </form>
 
-      {mensagem && <p>{mensagem}</p>}
+        <footer>
+          <button type="button" onClick={handleReset}>
+            Redefinir
+          </button>
+          <button id="salvs" type="button" onClick={handleSave}>
+            Salvar
+          </button>
+        </footer>
+
+        {mensagem && <p>{mensagem}</p>}
       </main>
     </Layout>
   );

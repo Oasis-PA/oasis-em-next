@@ -63,7 +63,7 @@ export default async function OasisHomepage() {
             <p>As melhores recomendações de cortes de cabelos para todos os gêneros e idades</p>
           </article>
         </main>
-        <footer>
+        <footer className="page3Footer">
           <nav className={styles.page3FooterNav}>
             <div><p className={styles.cortesEmAltaText}>FEMININO</p></div>
             <div><p className={styles.cortesEmAltaText}>MASCULINO</p></div>
@@ -142,7 +142,7 @@ export default async function OasisHomepage() {
       </div>
       
 
-      <Footer />
+      
     </div>
   );
 }

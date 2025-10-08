@@ -1,21 +1,22 @@
-/* Adicione/Mova isto para src/styles/globals.css */
+/* src/styles/globals.css */
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
+/* CORREÇÃO: Atualizar caminhos das fontes */
 @font-face {
   font-family: 'PLAYFUL RUNWAY';
-  src: url('/fonts/PlayfulRunway.woff2') format('woff2');
+  src: url('/assets/fontes/PlayfulRunway.woff2') format('woff2');
 }
 @font-face {
   font-family: 'THE NEXT FONT';
-  src: url('/fonts/TheNextFont.woff2') format('woff2');
+  src: url('/assets/fontes/TheNextFont.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Louis George Cafe';
-  src: url('/fonts/LouisGeorgeCafe.woff2') format('woff2');
+  src: url('/assets/fontes/LouisGeorgeCafe.woff2') format('woff2');
 }
 
 html, body {
