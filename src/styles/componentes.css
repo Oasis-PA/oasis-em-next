@@ -255,3 +255,47 @@ footer {
     width: 7rem;
     height: 7rem;
 }
+/* Em: src/styles/componentes.css */
+
+.user-menu-container {
+  position: relative; /* Essencial para que o popup se posicione em relação a este container */
+}
+
+.user-popup {
+  position: absolute;
+  top: 50px; /* Ajuste conforme a altura do seu header */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100; /* Garante que o popup fique por cima de outros elementos */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 180px; /* Largura do popup */
+}
+
+.user-popup p {
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+}
+
+.user-popup a,
+.user-popup button {
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.user-popup a:hover,
+.user-popup button:hover {
+  background-color: #f0f0f0;
+}
