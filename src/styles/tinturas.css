@@ -257,11 +257,11 @@ main > h5 {
     background-image: url('../../public/images/tinturas/s4-bg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     box-sizing: border-box;
     width: 100%;
     max-width: 100vw;
-    height: auto;
+    height: 69.41vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -284,14 +284,49 @@ main > h5 {
     display: flex;
     gap: clamp(1.5rem, 2.5vw, 2.5rem);
     flex-wrap: wrap;
+    padding-left: clamp(3rem, 8vw, 8rem);
+    padding-right: clamp(3rem, 8vw, 8rem);
 }
 
-#s4 > div > h1 {
+#s4 > div > div > h1 {
     font-family: "The Next Font";
     line-height: normal;
+    font-size: clamp(2rem, 3vw, 3rem);
+    max-width: 30rem;
+    margin-bottom: clamp(1.25rem, 2vw, 2rem);
+    margin-left: clamp(1.25rem, 2vw, 2rem);
 }
 
-#artigo5 {
-
+#s4 > div > button {
+    display: flex;
+    width: 15.9375rem;
+    height: 3.0625rem;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    background: #722F53;
+    border-radius: 27px;
+    color: #FFF;
+    font-family: "THE NEXT FONT";
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    margin-left: 7.9rem;
+    margin-right: 7.9rem;
+    cursor: pointer;
 }
 
+#artigo5, #artigo6, #artigo7, #artigo8, #artigo9  {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: end;
+    width: 27.1vw;
+    height: 18.5vw;
+}
+
+#artigo5 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
+#artigo6 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
+#artigo7 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
+#artigo8 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
+#artigo9 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}

@@ -121,7 +121,7 @@ export default function TelaCadastroSenha() {
         <section>
           <h1>Agora, crie sua <br />senha!</h1>
           <p>
-            Recomenda-se que sua senha seja <strong>forte</strong>, combinando números, 
+            sua senha deve ser <strong>forte</strong>, combinando números, 
             <br className="hide-on-mobile" /> letras maiúsculas e minúsculas e caracteres.
           </p>
 
