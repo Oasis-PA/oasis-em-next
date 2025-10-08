@@ -39,7 +39,6 @@ export default async function OasisHomepage() {
             <Image draggable={false} src="/images/tela-principal/page2/slide-img2.png" alt="" width={255} height={438} />
             <figcaption><Link href="/artigo1"><p>Sérum Facial: o que é, como usar e para que serve</p></Link></figcaption>
           </figure>
-          {/* ...outros slides... */}
         </section>
       </div>
 
