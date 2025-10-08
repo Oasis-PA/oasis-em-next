@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "@/styles/tela-de-produto.css";
-import "@/styles/index.css";
+
 
 export default function PaginaDeProduto() {
   // Estado para o tema (claro/escuro)
