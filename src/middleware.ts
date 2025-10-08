@@ -1,3 +1,4 @@
+// Em: middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -12,7 +13,8 @@ const protectedRoutes = [
 const authRoutes = ['/login', '/cadastro', '/cadastro2'];
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get('token')?.value;
+  // CORREÇÃO: Mudar de 'token' para 'auth-token'
+  const token = request.cookies.get('auth-token')?.value;
   const { pathname } = request.nextUrl;
 
   // Se o usuário está logado e tenta acessar uma página de login/cadastro,

@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { z, ZodError } from "zod";
 
-// Schema simples para login (não precisa do schema completo do Prisma)
+// Schema simples para login
 const loginSchema = z.object({
   email: z.string().email("Email inválido"),
   senha: z.string().min(1, "Senha é obrigatória"),
@@ -15,10 +15,8 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    // Validação com Zod
     const { email, senha } = loginSchema.parse(body);
 
-    // Busca usuário com todas as informações necessárias
     const user = await prisma.usuario.findUnique({ 
       where: { email },
       include: {
@@ -34,7 +32,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verifica senha com bcrypt
     const senhaValida = await bcrypt.compare(senha, user.senha);
     
     if (!senhaValida) {
@@ -44,7 +41,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Gera token JWT
     const token = jwt.sign(
       { 
         id: user.id_usuario, 
@@ -55,17 +51,16 @@ export async function POST(req: NextRequest) {
       { expiresIn: "7d" }
     );
 
-    // Remove senha do objeto de retorno
     const { senha: _, ...usuarioSemSenha } = user;
 
-    // Retorna com cookie e dados do usuário
     const res = NextResponse.json({ 
       message: "Login realizado com sucesso",
       success: true,
       usuario: usuarioSemSenha
     });
 
-    res.cookies.set("token", token, {
+    // CORREÇÃO AQUI: Mudar o nome do cookie para 'auth-token'
+    res.cookies.set("auth-token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       path: "/",
@@ -75,7 +70,6 @@ export async function POST(req: NextRequest) {
     return res;
     
   } catch (error: unknown) {
-    // Tratamento de erros de validação Zod
     if (error instanceof ZodError) {
       return NextResponse.json(
         { 

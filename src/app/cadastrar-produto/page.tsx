@@ -132,7 +132,27 @@ export default function CadastrarProdutoPage() {
             />
           </div>
 
+        
+
           <div className="form-group">
+            <label htmlFor="id_tag">Tag Principal:</label>
+            <select 
+              id="id_tag" 
+              name="id_tag" 
+              value={formData.id_tag} 
+              onChange={handleChange}
+              disabled={loadingTags}
+            >
+              <option value="">Selecione uma tag</option>
+              {tags.map(tag => (
+                <option key={tag.id_tag} value={tag.id_tag}>
+                  {tag.nome}
+                </option>
+              ))}
+            </select>
+            {loadingTags && <small>Carregando tags...</small>}
+          </div>
+  <div className="form-group">
   <label htmlFor="id_tipo_cabelo">ID Tipo de Cabelo:</label>
   <input 
     type="number" 
@@ -154,26 +174,6 @@ export default function CadastrarProdutoPage() {
     // Removi 'required' porque o campo é opcional no Prisma (Int?)
   />
 </div>
-
-          <div className="form-group">
-            <label htmlFor="id_tag">Tag Principal:</label>
-            <select 
-              id="id_tag" 
-              name="id_tag" 
-              value={formData.id_tag} 
-              onChange={handleChange}
-              disabled={loadingTags}
-            >
-              <option value="">Selecione uma tag</option>
-              {tags.map(tag => (
-                <option key={tag.id_tag} value={tag.id_tag}>
-                  {tag.nome}
-                </option>
-              ))}
-            </select>
-            {loadingTags && <small>Carregando tags...</small>}
-          </div>
-
           <div className="form-group">
   <label htmlFor="preco">Preço:</label>
   {/* 🚩 NOVIDADE: Adiciona uma classe wrapper para o CSS */}
