@@ -1,132 +1,102 @@
-"use client";
+// Em: src/components/Header.tsx
+"use client"; // 👈 1. Transformado em Componente de Cliente
 
-import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import styles from '@/styles/header.module.css';
+import '@/styles/componentes.css';
 
-interface UserData {
+// Interface para definir a estrutura dos dados do utilizador
+interface User {
   nome: string;
 }
 
-export default function Header() {  
-  const [usuarioLogado, setUsuarioLogado] = useState(false);
-  const [nomeUsuario, setNomeUsuario] = useState('');
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar o menu
-  const [loading, setLoading] = useState(true);
-  
-  const router = useRouter();
-  const menuRef = useRef<HTMLDivElement>(null); // Ref para detectar cliques fora do menu
+export default function Header() {
+  // 2. Estados para gerir os dados do utilizador e a visibilidade do popup
+  const [user, setUser] = useState<User | null>(null);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Estado de carregamento
 
-  // Efeito para verificar a autenticação inicial
+  // 3. Efeito para ir buscar os dados do utilizador no lado do cliente
   useEffect(() => {
-    const verificarAutenticacao = async () => {
+    async function fetchUserProfile() {
       try {
-        const res = await fetch('/api/usuarios/perfil');
-        if (res.ok) {
-          const userData: UserData = await res.json();
-          setUsuarioLogado(true);
-          setNomeUsuario(userData.nome);
+        // A API /api/usuarios/perfil irá ler o cookie no backend e retornar os dados
+        const response = await fetch('/api/usuarios/perfil');
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
         } else {
-          setUsuarioLogado(false);
+          setUser(null);
         }
       } catch (error) {
-        console.error('Erro ao verificar autenticação:', error);
-        setUsuarioLogado(false);
+        console.error("Falha ao buscar perfil do usuário:", error);
+        setUser(null);
       } finally {
-        setLoading(false);
+        setIsLoading(false); // Termina o carregamento
       }
-    };
-    verificarAutenticacao();
+    }
+
+    fetchUserProfile();
   }, []);
 
-  // Efeito para fechar o menu ao clicar fora
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsMenuOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
+  // 4. Função para fazer logout
   const handleLogout = async () => {
     await fetch('/api/usuarios/logout', { method: 'POST' });
-    setUsuarioLogado(false);
-    setNomeUsuario('');
-    setIsMenuOpen(false);
-    router.push('/'); // Redireciona para a home após o logout
-    router.refresh(); // Força a atualização dos componentes de servidor
+    setUser(null);
+    setPopupVisible(false);
+    window.location.href = '/login'; // Redireciona para o login após sair
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.tudinho}>
-        <section className={styles.emCiminha}>
-          <div>
-            <Link href="/">
-              <Image 
-                className={styles.logo} 
-                src="/images/logo.png" 
-                alt="Logo Oasis" 
-                width={400} 
-                height={400} 
-                priority // Otimiza o carregamento da logo
-              />
-            </Link>
-          </div>
-
-          <div className={styles.interagivel}>
-            <Link href="/pesquisa">
-              <Image src="/images/lupa.png" alt="Buscar" width={50} height={50} />
-            </Link>
-            <Link href="/favoritos">
-              <Image src="/images/salvo.png" alt="Salvos" width={50} height={50} />
-            </Link>
-
-            {/* Lógica condicional: Menu do Usuário ou Botão de Login */}
-            {loading ? (
-              <div style={{width: '50px', height: '50px'}}></div> // Placeholder
-            ) : usuarioLogado ? (
-              <div className={styles.userMenuContainer} ref={menuRef}>
-                <button 
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={styles.profileButton}
-                >
-                  <Image src="/images/perfil.png" alt="Meu Perfil" width={50} height={50} />
-                   <span className={styles.onlineIndicator} />
-                </button>
-                {isMenuOpen && (
-                  <div className={styles.dropdownMenu}>
-                    <div className={styles.dropdownHeader}>
-                      Olá, {nomeUsuario}!
-                    </div>
-                    <Link href="/perfil" className={styles.dropdownItem} onClick={() => setIsMenuOpen(false)}>
-                      Configurações do Perfil
-                    </Link>
-                     <Link href="/favoritos" className={styles.dropdownItem} onClick={() => setIsMenuOpen(false)}>
-                      Meus Favoritos
-                    </Link>
-                    <button onClick={handleLogout} className={`${styles.dropdownItem} ${styles.logoutButton}`}>
-                      Sair
-                    </button>
+    <header>
+      <section className="em_ciminha">
+        <Link href="/">
+          <div id="imagi" aria-label="Página inicial"></div>
+        </Link>
+        <div className="emoticus">
+          <Link href="/">
+            <div id="algo" aria-label="Buscar"></div>
+          </Link>
+          <Link href="/favoritos">
+            <div id="coracao" aria-label="Favoritos"></div>
+          </Link>
+          
+          <div className="user-menu-container"> {/* Container para posicionar o popup */}
+            {isLoading ? (
+              // Opcional: mostrar um placeholder enquanto carrega
+              <div id="user-placeholder"></div>
+            ) : user ? (
+              // 5. Utilizador LOGADO: mostra ícone que abre o popup
+              <>
+                <div id="user" aria-label="Perfil" onClick={() => setPopupVisible(!isPopupVisible)}></div>
+                {isPopupVisible && (
+                  <div className="user-popup">
+                    <p>Olá, {user.nome}!</p>
+                    <Link href="/perfil" onClick={() => setPopupVisible(false)}>Meu Perfil</Link>
+                    <button onClick={handleLogout}>Sair</button>
                   </div>
                 )}
-              </div>
+              </>
             ) : (
-              <Link href="/login" className={styles.profileButton}>
-                <Image src="/images/perfil.png" alt="Fazer Login" width={50} height={50} />
+              // 6. Utilizador DESLOGADO: link direto para o login
+              <Link href="/login">
+                <div id="user" aria-label="Login"></div>
               </Link>
             )}
           </div>
-        </section>
-
-        <section className={styles.emBaixinho}>
-          {/* Navegação Secundária */}
-        </section>
-      </div>
+        </div>
+      </section>
+      <section className="em_baixinho">
+        {/* ... links de navegação ... */}
+        <div className="coisas">
+          <Link href="/corteS" id="redirecionavel">Cortes</Link>
+          <Link href="/" id="redirecionavel">Hair Care</Link>
+          <Link href="/tinturas" id="redirecionavel">Tinturas</Link>
+          <Link href="/skincare" id="redirecionavel">Skincare</Link>
+          <Link href="/cronograma-capilar" id="redirecionavel2">Cronograma Capilar</Link>
+          <Link href="/infantil" id="redirecionavel">Infantil</Link>
+        </div>
+      </section>
     </header>
   );
 }
