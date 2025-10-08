@@ -287,6 +287,7 @@ html, body {
   width: clamp(120px, 13.5vw, 200px);
   margin-top: -10vw;
   margin-right: 13vw;
+  cursor: pointer;
 }
 
 /* SEÇÃO PRATICIDADE */
