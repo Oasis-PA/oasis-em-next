@@ -101,54 +101,62 @@ form {
 }
 
 .titulo {
-  margin-top: 27px;
-  text-align: center;
-  font-family: "The Next Font", sans-serif;
-  /* MELHORIA: Tipografia Fluida */
-  font-size: clamp(28px, 5vw, 45px);
-  font-weight: 400;
+   margin-top: 27px;
+    text-align: center;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 600;
 }
 
 .subtitulo {
-  margin-top: 20px;
-  margin-bottom: 25px;
-  text-align: center;
-  font-family: "Louis George Cafe", sans-serif;
-  font-size: clamp(18px, 2.5vw, 20px);
-  font-weight: 400;
-  padding: 0 15px;
+     margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(18px, 2.5vw, 18px);
+    font-weight: 400;
+    padding: 0 15px;
 }
 
-/* Inputs e Textarea */
+/* AJUSTE: Inputs e Textarea com padding interno */
 #caixas-texto {
   width: 100%;
   max-width: 656px;
-  margin-bottom: 20px; /* Reduzido para consistência */
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Espaçamento entre os inputs */
+  gap: 15px; /* Espaçamento consistente entre os inputs */
 }
 
-#caixas-texto input, #telefone {
+#caixas-texto input, 
+#telefone {
   border: none;
   border-bottom: 2px solid var(--border-linhas);
   height: 60px;
   background-color: var(--body-back);
   width: 100%;
   font-family: "Louis George Cafe", sans-serif;
-  font-size: clamp(16px, 2vw, 18px); /* Ajustado */
-  padding: 0 5px;
+  font-size: clamp(16px, 2vw, 18px);
+  padding: 10px 12px; /* Espaçamento interno para o texto não colar */
+}
+
+/* AJUSTE: Focus states para melhor UX */
+#caixas-texto input:focus {
+  outline: none;
+  border-bottom-color: #722F53;
 }
 
 #telefone {
   display: flex;
   align-items: center;
+  padding-left: 0;
 }
 
 #telefone > img {
   width: 25px;
   height: 25px;
-  margin: 0 10px;
+  margin: 0 10px 0 12px;
+  flex-shrink: 0;
 }
 
 #telefone > input {
@@ -157,6 +165,7 @@ form {
   background-color: transparent;
   flex: 1;
   font-size: inherit;
+  padding: 10px 12px 10px 0;
 }
 
 #telefone > input:focus {
@@ -166,24 +175,37 @@ form {
 #contato {
   width: 100%;
   max-width: 656px;
+  margin-bottom: 15px;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(20px, 3vw, 25px);
+  text-align: left;
 }
 
+/* AJUSTE: Textarea com padding adequado */
 #motivo {
   margin-bottom: 45px;
   width: 100%;
+  max-width: 656px;
   height: 183px;
   border-radius: 20px;
   border: 1px solid var(--border-linhas);
   background: var(--body-back);
   font-family: "Louis George Cafe", sans-serif;
   font-size: 16px;
-  padding: 15px;
+  padding: 20px; /* Padding aumentado para não colar nas bordas */
   resize: vertical;
+  line-height: 1.5;
+}
+
+#motivo:focus {
+  outline: none;
+  border-color: #722F53;
 }
 
 @media screen and (max-width: 768px) {
   #motivo {
     height: 150px;
+    padding: 15px;
   }
 }
 
@@ -233,17 +255,28 @@ form {
   font-size: 20px;
   line-height: 1.4;
 }
-.eusoua { text-align: center; }
-.eusoub { text-align: left; }
+.eusoua { 
+  text-align: center;
+  font-size: 20px;
+  font-family: "louis George Cafe", sans-serif;
+  margin-bottom: 3%;
+  font-weight: 600;
+}
+.eusoub 
+{
+  text-align: justify;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 17px;
+ }
      
 .eusou {
   border: 2px solid #5F0B38;
-  background: var(--eusou2); /* Cor de fundo da opção selecionada */
+  background: var(--eusou2);
 }
 
 .eusou2 {
   border: 2px solid #474747;
-  background: var(--eusou); /* Cor de fundo da opção não selecionada */
+  background: var(--eusou);
 }
 
 @media screen and (max-width: 480px) {
@@ -370,4 +403,9 @@ aside > figure {
     font-size: 18px;
     height: 30px;
   }
+}
+#conheça {
+    font-size: 18px;
+    font-family: "Louis George Cafe", sans-serif;
+    font-weight: 600;
 }
