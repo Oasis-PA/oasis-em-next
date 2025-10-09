@@ -43,6 +43,7 @@ main > div > h1 {
     font-size: clamp(2.5rem, 6vw, 6rem);
     line-height: normal;
     max-width: 52rem;
+    font-weight: 400;
 }
 
 
@@ -78,6 +79,7 @@ main > div > button {
 #s1 > h1 {
    font-family: "The Next Font";
    font-size: clamp(2.5rem, 5vw, 5rem);
+   font-weight: 400;
 }
 
 #informacoes {
@@ -133,17 +135,108 @@ main > div > button {
     display: flex;
     flex-direction: column;
     margin-top: clamp(3.5rem, 7vw, 7rem);
-    background-image: url('../../public/images/meuperfil-after/artigo1-bg.png');
+}
+
+#s2 > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 400;
+    max-width: 65rem;
+}
+
+#s2 > h4 {
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-weight: 400;
+    line-height: normal;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    max-width: 65rem;
+    margin-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+#artigo1, #artigo2 {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 26.5vw;
-    height: 18vw;
+    width: 91.9vw;
+    height: 43.8vw;
+    display: flex;
+    align-items: center;
+    margin-bottom: clamp(4.5rem, 11vw, 11rem);
 }
 
+#artigo1 {margin-left: calc(-1 * (100vw - 100%) / 2); background-image: url('../../public/images/meuperfil-after/artigo1-bg.png'); justify-content: end;}
+#artigo2 {margin-right: calc(-1 * (100vw - 100%) / 2); align-self: flex-end; background-image: url('../../public/images/meuperfil-after/artigo2-bg.png');}
+
+#artigo1 > div, #artigo2 > div {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+}
+
+#artigo1 > div {margin-right: clamp(2rem, 4vw, 4rem);}
+#artigo2 > div {margin-left: clamp(2rem, 4vw, 4rem);}
+
+#artigo1 > div > h1, #artigo2 > div > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2rem, 4vw, 4rem);
+    max-width: 29.5rem;
+    text-align: center;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.blocotexto {
+    background-color: #FFF;
+    width: 44.5625rem;
+    height: 13.4375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.25rem;
+    padding: clamp(1.125rem, 1.5vw, 1.5rem);
+}
+
+.blocotexto > p {
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    text-align: justify;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#cor1 {color: #7D4AB3;}
+#cor2 {color: #F2A518;}
+
+
+#artigo1 > div > h4, #artigo2 > div > h4 {
+    text-align: center;
+    font-family: "The Next Font";
+    font-weight: 400;
+    line-height: normal;
+    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    max-width: 27.3rem;
+}
+
+#artigo1 > div > button, #artigo2 > div > button {
+    width: 14.39413rem;
+    height: 3.8125rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-family: "The Next Font";
+    color: #FFF;
+    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    cursor: pointer;
+}
+
+#artigo1 > div > button {background: #F2A518;}
+#artigo2 > div > button {background: #722F53;}
 
 .monte {
-  margin-top: 6vh;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
@@ -163,3 +256,56 @@ main > div > button {
   margin-right: 13vw;
   cursor: pointer;
 }
+
+#s3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 40.8vw;
+    flex-direction: row;
+    background-color: #F2A518;
+    margin-top: clamp(3rem, 8vw, 8rem);
+}
+
+#s3 > div {
+    display: flex;
+    flex-direction: column;
+    max-width: 42rem;
+}
+
+#s3 > div > h1 {
+    font-family: "The Next Font";
+    font-weight: 400;
+    line-height: 2.5rem;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    max-width: 32rem;
+}
+
+#s3 > div > p {
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-weight: 400;
+    line-height: 1.6rem;
+    margin-top: clamp(1.125rem, 1.5vw, 1.5rem);
+    font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+    letter-spacing: 0.06669rem;
+}
+
+#s3 > div > button {
+    display: flex;
+    width: 12.72956rem;
+    height: 3.37163rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.85781rem;
+    background: #722F53;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    margin-top: clamp(2rem, 3vw, 3rem);
+} 

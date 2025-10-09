@@ -79,10 +79,10 @@ export default function meuperfilafter() {
                 <h1>Vamos montar sua rotina ideal?</h1>
                 <div className="blocotexto">
                     <p>agora que já temos todas as informações sobre seu cabelo, chegou a hora de dar o
-                    próximo passo: montar um cronograma capilar personalizado só pra <span id="cor1">você!</span></p>
+                    próximo passo: montar um cronograma capilar personalizado só pra <span id="cor1">você</span>!</p>
                 </div>
                 <h4>Clique abaixo e descubra a rotina ideal para cuidar dos seus fios com carinho e poder.</h4>
-                <button id="botao1">CONHEÇA</button>
+                <button>CONHEÇA</button>
             </div>
         </div>
 
@@ -107,7 +107,7 @@ export default function meuperfilafter() {
       </section>
 
       <section id="s3">
-        <img src="" alt="" />
+        <img src="/images/meuperfil-after/s3-artigo.png" alt="" />
         <div>
             <h1>Skincare para todos os tons</h1>
             <p>Nossa página de skincare foi criada pensando nas necessidades reais da pele negra. Aqui você encontra dicas, 
