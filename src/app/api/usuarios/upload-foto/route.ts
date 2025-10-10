@@ -11,16 +11,18 @@ const supabase = createClient(
 
 export async function POST(req: NextRequest) {
   try {
-    // 1. Extrai e valida o JWT token dos cookies
-    const token = req.cookies.get("auth-token")?.value;
-
-    if (!token) {
+    // 1. Extrai e valida o JWT token
+    const authHeader = req.headers.get("authorization");
+    
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "Token não fornecido" },
         { status: 401 }
       );
     }
 
+    const token = authHeader.substring(7); // Remove "Bearer "
+    
     let decoded: any;
     try {
       decoded = jwt.verify(token, process.env.JWT_SECRET!);
@@ -32,7 +34,7 @@ export async function POST(req: NextRequest) {
     }
 
     const userId = decoded.id_usuario || decoded.userId || decoded.id;
-
+    
     if (!userId) {
       return NextResponse.json(
         { error: "Token inválido" },

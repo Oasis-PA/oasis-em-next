@@ -13,12 +13,6 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/@lobehub/icons-static-png/latest/files/light/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'yyvjzgxyxgalnnwcjfqh.supabase.co',
-        port: '',
-        pathname: '/storage/v1/object/public/**',
-      },
     ],
   },
 };
