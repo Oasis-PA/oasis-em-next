@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'next/link'; // Usando Link para navegação otimizada no Next.js
-import Script from 'next/script'; // Usando Script para carregar JS de forma otimizada
-import image from 'next/image'; // Usando Image para otimização de imagens
-// Importando a folha de estilos. Ajuste o caminho se necessário.
+import Link from 'next/link'; 
+import Script from 'next/script'; 
+import image from 'next/image'; 
+
 import '@/styles/hair-care.css';
 
 const HairCarePage: React.FC = () => {
@@ -90,13 +90,13 @@ const HairCarePage: React.FC = () => {
       <section className="container">
         <article className="item">
           <img src="/images/hair-care/image.png" alt="Imagem 1" className="imagem" id="img1" />
-          <h1>PENTADO</h1>
+          <h1>SKINCARE</h1>
           <button className="botao-marrom" id="b1">conheça</button>
         </article>
         
         <article className="item">
           <img src="/images/hair-care/image (1).png" alt="Imagem 2" className="imagem" id="img2" />
-          <h1>PINTURA</h1>
+          <h1>TINTURAS</h1>
           <button className="botao-marrom" id="b2">conheça</button>
         </article>
 
@@ -110,7 +110,7 @@ const HairCarePage: React.FC = () => {
 
         <article className="item">
           <img src="/images/hair-care/image (3).png" alt="Imagem 4" className="imagem" id="img4" />
-          <h1>TRATAMENTOS</h1>
+          <h1>CRONOGRAMA CAPILAR</h1>
           <button className="botao-marrom" id="b4">conheça</button>
         </article>
       </section>

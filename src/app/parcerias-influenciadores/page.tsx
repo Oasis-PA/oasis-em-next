@@ -201,15 +201,6 @@ const ParceriasUsuariosPage: React.FC = () => {
         {/* Bloco Aside (mantido) */}
         <aside>
           <figure>
-            <p id="data">13 jan 2025</p>
-            <img id='favorito' src="/images/atendimento-usuario/favorito.svg" alt="" />
-            <div className="mocastigo">
-              <p id="artigo">Artigos e Dicas para Creator Economy</p>
-              <div className="morcas">
-                <p className="moda">Influência</p>
-                <p className="moda">Marketing</p>
-              </div>
-            </div>
           </figure>
         </aside>
       </main>

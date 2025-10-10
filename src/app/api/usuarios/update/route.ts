@@ -1,16 +1,16 @@
 // DENTRO DE: src/app/api/usuarios/update/route.ts
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import jwt from "jsonwebtoken";
 
-export async function PUT(req: NextRequest) {
+export async function PUT(req: Request) {
   try {
-    const token = req.cookies.get("auth-token")?.value;
+    const token = req.headers.get("cookie")?.split("token=")[1]?.split(";")[0];
     if (!token) {
       return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
     }
-
+    
     const decoded = jwt.verify(token, process.env.JWT_SECRET!);
     if (!decoded || typeof decoded !== "object" || !decoded.id) {
        return NextResponse.json({ error: "Token inválido" }, { status: 401 });
