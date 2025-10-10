@@ -8,7 +8,11 @@
       "Bash(git rm:*)",
       "Bash(git add:*)",
       "Bash(npx prisma generate:*)",
-      "Read(//c/Users/023.919373/Downloads/**)"
+      "Read(//c/Users/023.919373/Downloads/**)",
+      "WebFetch(domain:www.figma.com)",
+      "Bash(git revert:*)",
+      "Bash(git stash:*)",
+      "Bash(git commit -m \"Resolve conflict in settings.local.json\")"
     ],
     "deny": [],
     "ask": []
