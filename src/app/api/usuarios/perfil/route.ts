@@ -13,7 +13,7 @@ interface TokenPayload {
 export async function GET(req: NextRequest) {
   try {
     // 1. Obter o token do cookie da requisição
-    const token = req.cookies.get("auth-token")?.value;
+    const token = req.cookies.get("token")?.value;
 
     if (!token) {
       // Retorna erro se o token não for encontrado
@@ -29,8 +29,8 @@ export async function GET(req: NextRequest) {
 
     // 3. Buscar o usuário no banco de dados usando o ID do token
     const usuario = await prisma.usuario.findUnique({
-      where: {
-        id_usuario: decoded.id
+      where: { 
+        id_usuario: decoded.id 
       },
       // Seleciona apenas os campos que você quer retornar para o frontend
       select: {
@@ -39,7 +39,6 @@ export async function GET(req: NextRequest) {
         sobrenome: true,
         email: true,
         sobre: true,
-        url_foto: true,
       },
     });
 

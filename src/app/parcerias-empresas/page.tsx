@@ -189,12 +189,6 @@ const ParceriasEmpresasPage: React.FC = () => {
 
                 <aside>
                     <figure>
-                        <p id="data">13 jan 2025</p>
-                        <p id="artigo">Algum artigo escrito aqui</p>
-                        <section className="morcas">
-                            <p className="moda">Moda</p>
-                            <p className="moda">Marcas</p>
-                        </section>
                     </figure>
                 </aside>
             </main>

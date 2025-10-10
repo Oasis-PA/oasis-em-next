@@ -356,41 +356,6 @@ aside > figure {
   }
 }
 
-#data {
-  color: #FFF;
-  font-family: "Louis George Cafe", sans-serif;
-  font-size: 20px;
-}
-
-#artigo {
-  margin-top: auto;
-  color: #FFF;
-  font-family: "The Next Font", sans-serif;
-  font-size: clamp(36px, 8vw, 80px);
-  line-height: 1.1;
-}
-
-.morcas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.moda {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  height: 45px;
-  border-radius: 65px;
-  border: 2px solid #FFF;
-  background: rgba(255, 255, 255, 0.00);
-  color: #FFF;
-  font-family: "Louis George Cafe", sans-serif;
-  font-size: clamp(18px, 4vw, 36px);
-}
-
 @media screen and (max-width: 768px) {
   .moda {
     font-size: 24px;
