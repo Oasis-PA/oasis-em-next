@@ -8,15 +8,7 @@ interface ArtigoProps {
   params: { slug: string };
 }
 
-export async function generateStaticParams() {
-  const artigos: { slug: string }[] = await prisma.artigo.findMany({
-    select: { slug: true },
-  });
-
-  return artigos
-    .filter((a) => a.slug)
-    .map((a) => ({ slug: a.slug }));
-}
+export const dynamic = 'force-dynamic';
 
 export default async function ArtigoPage({ params }: ArtigoProps) {
   const artigo = await prisma.artigo.findUnique({
