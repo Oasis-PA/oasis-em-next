@@ -13,6 +13,9 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    max-width: 2300px;
+    align-self: center;
+    justify-self: center;
 }
 
 html {
@@ -44,6 +47,7 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     padding: clamp(1rem, 5vw, 3rem) clamp(2rem, 10vw, 14rem); /* Espaçamento responsivo */
+    max-width: 2200px;
 }
 
 header > h1, header > h2 {
@@ -53,11 +57,11 @@ header > h1, header > h2 {
 }
 
 header > h1 {
-    font-size: clamp(6rem, 10vw + 2rem, 15.3125rem);
+    font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
 }
 
 header > h2 {
-   font-size: clamp(6rem, 10vw + 2rem, 15.3125rem);
+   font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
     opacity: 50%;
 }
 
@@ -72,6 +76,7 @@ header > h2 {
     justify-content: center;
     align-items: center;
     padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 10vw, 10rem);
+    max-width: 2200px;
 }
 
 #s1 > h1 {
@@ -89,6 +94,7 @@ header > h2 {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    max-width: 2200px;
 }
 
 /* ================================== */
@@ -238,8 +244,8 @@ header > h2 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    
-    flex-wrap: wrap; /* RESPONSIVO */
+    justify-content: center;
+    max-width: 2800px;
 }
 #linhatexto2{
 margin-top: clamp(1.4rem, 7vw, 9.5rem);
@@ -338,6 +344,7 @@ margin-top: clamp(1.4rem, 7vw, 9.5rem);
     background-color: black;
     margin-top: clamp(2rem, 8vw, 8rem);
     padding: clamp(2rem, 5vw, 4rem);
+    max-width: 2000px;
 }
 
 #dicas {
@@ -355,14 +362,14 @@ margin-top: clamp(1.4rem, 7vw, 9.5rem);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    box-sizing: border-box;
+    
     
     /* Base flex para o efeito de expansão */
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: clamp(150px, 14.2vw, 220px); /* Largura base responsiva */
 
-    height: clamp(400px, 45vw, 800px);
+    height: clamp(370px, 36vw, 700px);
     overflow: hidden; /* Garante que o conteúdo não vaze */
     position: relative;
     cursor: pointer;
@@ -508,5 +515,6 @@ width: 40%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    max-height: 1200px;
     max-width: 2000px;
 }
