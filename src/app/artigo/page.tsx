@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import '@/styles/artigo1.css'; 
+import '@/styles/artigo1.css';
+
+export const dynamic = 'force-dynamic';
 
 export default async function ArtigosListPage() {
   const artigo = await prisma.artigo.findMany({
