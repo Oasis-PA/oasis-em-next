@@ -32,23 +32,28 @@ main
     background-color: #AA35B0;
 
 }
+/*  contêiner, imagem e legenda */
 
 .artigo-figura.imagem-mulher {
  
-  border: 5px solid #cf7ed3; /* Borda roxa */
+  border: 5px solid #29a1c5; 
     
-  box-shadow: 0 8px 20px rgba(170, 53, 176, 0.3); /* Sombra colorida */
-  /* Adicione outros estilos que quiser */
+  box-shadow: 0 8px 20px rgba(12, 50, 109, 0.3); 
 }
 
-/* Se quiser estilizar apenas a imagem dentro */
+/*  apenas a imagem dentro */
 .artigo-figura.imagem-mulher .artigo-imagem {
-  border-radius: 30%; /* Exemplo: imagem circular */
-  border: 5px solid #cf7ed3; /* Borda roxa */
+  border-radius: 30%; 
+  border: 5px solid #cf7ed3; 
     width: 40%;
-  box-shadow: 0 8px 20px rgba(170, 53, 176, 0.3); /* Sombra colorida */
+  box-shadow: 0 8px 20px rgba(170, 53, 176, 0.3); 
 }
-
+/*  legenda */
+.artigo-figura.imagem-mulher figcaption {
+  color: #AA35B0;
+  font-weight: bold;
+  font-size: 1rem;
+}
 
 main > article
 {
