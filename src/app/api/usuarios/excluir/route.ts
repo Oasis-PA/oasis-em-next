@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { prisma } from "@/lib/prisma";
 
 export async function DELETE(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
+  const token = req.cookies.get("auth-token")?.value;
   if (!token) return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
 
   try {
@@ -14,7 +14,7 @@ export async function DELETE(req: NextRequest) {
 
     // Limpar cookie
     const response = NextResponse.json({ message: "Conta excluída com sucesso!" });
-    response.cookies.set("token", "", { maxAge: -1 });
+    response.cookies.set("auth-token", "", { maxAge: -1 });
     return response;
   } catch (err) {
     console.error(err);

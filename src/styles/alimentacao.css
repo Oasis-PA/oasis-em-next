@@ -61,7 +61,7 @@ body {
     color: #FFF;
     font-family: "Louis George Cafe", sans-serif;
     font-size: clamp(1.4rem, 3vw, 2.4rem); /* Tipografia Fluida */
-    font-weight: 700;
+    font-weight: 400;
 }
 
 /* ================================== */
