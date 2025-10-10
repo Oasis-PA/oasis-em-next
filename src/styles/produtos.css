@@ -1,4 +1,4 @@
-* {
+main * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
@@ -112,6 +112,8 @@ figure > img {
 }
 
 
+/* --- ESTILOS DO FILTRO DE PRODUTOS --- */
+
 .filtros-barra-fundo {
     padding: 30px 0; 
     width: 100%;
@@ -132,6 +134,9 @@ figure > img {
 
 
 .filter-dropdown-container {
+    /* 🚩 NOVIDADE: Necessário para posicionar a lista suspensa (ul) */
+    position: relative; 
+    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -161,10 +166,17 @@ figure > img {
 
 
 .filter-content {
+    /* 🚩 MUDANÇA: Agora é um botão, garantindo que o clique funcione na área toda */
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
 }
 
 .filter-value {
@@ -172,6 +184,8 @@ figure > img {
     font-weight: 700;
     color: #343a40; 
     margin-right: 10px;
+    /* Para garantir que o texto não seja afetado pelo botão */
+    line-height: 1.5; 
 }
 
 
@@ -186,6 +200,13 @@ figure > img {
     color: #495057; 
     flex-shrink: 0; 
     margin-left: 10px;
+    transition: transform 0.2s;
+}
+
+/* 🚩 NOVIDADE: Rotação da seta quando o dropdown está ativo */
+.filter-dropdown-container.active .filter-icon-circle {
+    /* Rotaciona a seta para cima */
+    transform: rotate(180deg);
 }
 
 
@@ -193,37 +214,72 @@ figure > img {
     stroke-width: 2.5;
 }
 
+/* ----------------------------------------------------- */
+/* 🚩 NOVIDADE: Estilos da Lista Suspensa (Dropdown Options) */
+/* ----------------------------------------------------- */
+
+.dropdown-options-list {
+    /* 🚩 POSICIONAMENTO: Faz a lista aparecer sobre o conteúdo */
+    position: absolute;
+    top: 100%; /* Começa logo abaixo do filtro */
+    left: 0;
+    
+    width: 100%;
+    min-width: 200px;
+    z-index: 10;
+    
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 0;
+    
+    list-style: none;
+    margin: 5px 0 0 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid #f0f0f0;
+    
+    overflow: hidden; /* Garante que as bordas da lista fiquem arredondadas */
+}
+
+.dropdown-options-list li {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #343a40;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropdown-options-list li:hover {
+    background-color: #f0f0f0; 
+}
+
+.dropdown-options-list li.selected {
+    font-weight: 700;
+    background-color: #f7f3fa; /* Cor de fundo para a opção selecionada */
+    color: #5F0B38;
+}
+
+/* --- ESTILOS DO GRID DE PRODUTOS --- */
 
 #produtos-grid-section {
     width: 100%;
-  
     padding: 3rem 0; 
 }
 
 .produtos-grid-wrapper {
     display: grid;
-   
     grid-template-columns: repeat(4, 1fr); 
     gap: 40px;
-    
     max-width: clamp(320px, 90vw, 1500px); 
     margin: 0 auto;
     padding: 0 20px;
 }
 
-
 .produto-card {
-  
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    
-    border: 1px solid #f0f0f0; 
+    border: 2px solid #5F0B38; /* Borda da cor da marca */
     padding: 10px;
-    
-    
-    background-color: #ffffff; 
-    border: 2px solid #5F0B38;
 }
 
 .card-inner-wrapper {
@@ -250,12 +306,13 @@ figure > img {
 }
 
 .card-title {
-    font-family: 'The Next Font';
+     font-family: 'The Next Font', sans-serif;
     font-weight: 600;
-    color: #333;
+    font-size: 1.1rem;
     font-weight: bold; 
     line-height: 1.3;
-    margin-bottom: 3vh;
+    margin-top: 1.7vh;
+    margin-bottom: 2vh;
     height: 4em; 
     overflow: hidden;
 }
@@ -271,7 +328,7 @@ figure > img {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 80%;
+    
     margin-top: auto; 
 }
 
@@ -293,12 +350,22 @@ figure > img {
         /* 2 colunas em telas menores */
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .filtros-barra-wrapper {
+        /* Reduz o gap do filtro em telas menores */
+        gap: 4vw;
+    }
 }
 
 @media (max-width: 480px) {
     .produtos-grid-wrapper {
         /* 1 coluna em celulares */
         grid-template-columns: 1fr;
+    }
+    
+    .filter-dropdown-container {
+        /* Faz os filtros ocuparem mais espaço em telas muito pequenas */
+        min-width: 40vw;
     }
 }
 
@@ -311,26 +378,21 @@ figure > img {
 }
 
 .load-more-button {
-  
     background-color: #f7f3fa; 
     color: #495057; 
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    
-    
     border: 1px solid #dcdcdc; 
     border-radius: 40px; 
     padding: 15px 40px;
     cursor: pointer;
-   
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
 }
 
 .load-more-button:hover {
-    
     background-color: #c292be;
     border-color: #a0a0a0;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);

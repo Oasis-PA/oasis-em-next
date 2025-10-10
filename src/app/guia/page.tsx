@@ -11,15 +11,15 @@ import "@/styles/guia.css";
 export default function guia() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = (term) => {
+  const handleSearch = (term: string) => {
     setSearchTerm(term);
     
-    const pages = document.querySelectorAll('.pag');
+    const pages = document.querySelectorAll<HTMLElement>('.pag');
     pages.forEach(page => {
-      const title = page.querySelector('h1').textContent.toLowerCase();
-      const description = page.querySelector('p').textContent.toLowerCase();
+      const title = page.querySelector('h1')?.textContent?.toLowerCase() || '';
+      const description = page.querySelector('p')?.textContent?.toLowerCase() || '';
       const searchLower = term.toLowerCase();
-      
+
       if (title.includes(searchLower) || description.includes(searchLower)) {
         page.style.display = 'flex';
         page.style.opacity = '1';

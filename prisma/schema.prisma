@@ -5,13 +5,12 @@ generator client {
 generator zod {
   provider      = "prisma-zod-generator"
   output        = "../src/lib/zod-schemas"
-  relationModel = false
+  relationModel = "false"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Genero {

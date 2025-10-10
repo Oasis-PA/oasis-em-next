@@ -36,6 +36,7 @@ export async function PUT(req: Request) {
 
     return NextResponse.json(usuarioAtualizado);
   } catch (error) {
-     // ... (Lógica de erro)
+    console.error("Erro ao atualizar usuário:", error);
+    return NextResponse.json({ error: "Erro ao atualizar usuário" }, { status: 500 });
   }
 }

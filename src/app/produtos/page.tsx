@@ -1,26 +1,25 @@
-// file: app/produtos/page.tsx (ou o nome que você usou)
+// file: app/produtos/page.tsx
 
 "use client";
 
-import React, { useState, useEffect } from "react"; // Adicionamos 'useEffect' e 'useState'
+import React, { useState, useEffect, useCallback, useRef } from "react"; 
 import { Header, Footer } from "@/components";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"; // Mantemos o import caso haja necessidade futura
 
 import "@/styles/produtos.css";
 
 // -----------------------------------------------------
-// 🚩 NOVIDADE: Interface para tipar os dados que vêm do banco
-// O nome e os campos devem corresponder ao seu modelo Prisma
+// Interface e Componentes Fixos
 // -----------------------------------------------------
 interface ProdutoData {
     id_produto: number;
     nome: string;
-    // Assumindo que você terá um campo para a tag principal ou a marca
     tag_principal: string; 
     url_imagem: string;
-    // Adicione outros campos se necessário (ex: preco, link_loja)
+    id_tag: number; 
+    url_loja: string; // Incluído na API
 }
 
 const ChevronDownIcon = () => (
@@ -41,63 +40,179 @@ const ChevronDownIcon = () => (
 );
 
 
-interface FilterProps {
-    label: string;
-    value: string;
+interface FilterOption {
+    id: number | null;
+    nome: string;
 }
 
-const FilterDropdown: React.FC<FilterProps> = ({ label, value }) => {
+interface FilterProps {
+    label: string;
+    currentValue: string; 
+    options: FilterOption[];
+    onFilterChange: (id: number | null) => void;
+    currentId: number | null; 
+}
+
+// Dropdown customizado
+const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, onFilterChange, currentId }) => {
+    
+    const [isOpen, setIsOpen] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+
+    const handleOptionClick = (id: number | null) => {
+        onFilterChange(id); 
+        setIsOpen(false); 
+    };
+
     return (
-        <div className="filter-dropdown-container">
+        <div 
+            className={`filter-dropdown-container ${isOpen ? 'active' : ''}`} 
+            ref={containerRef}
+        >
             <div className="filter-label">{label}</div>
-            <div className="filter-content">
-                <span className="filter-value">{value}</span>
+            
+            <button 
+                className="filter-content"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen}
+            >
+                <span className="filter-value">{currentValue}</span>
                 <div className="filter-icon-circle">
                     <ChevronDownIcon />
                 </div>
-            </div>
+            </button>
+
+            {isOpen && (
+                <ul className="dropdown-options-list">
+                    {options.map(option => (
+                        <li 
+                            key={option.id === null ? 'null' : option.id} 
+                            onClick={() => handleOptionClick(option.id)}
+                            className={currentId === option.id ? 'selected' : ''}
+                        >
+                            {option.nome}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
 
 
-const FiltrosBarra: React.FC = () => {
+// -----------------------------------------------------
+// Tipo de dado para as tags
+// -----------------------------------------------------
+interface TagData {
+    id: number | null; 
+    nome: string;
+}
+
+interface FiltrosBarraProps {
+    currentTagId: number | null;
+    onTagChange: (id: number | null) => void;
+}
+
+const FiltrosBarra: React.FC<FiltrosBarraProps> = ({ currentTagId, onTagChange }) => {
+    // Mock das tags (baseado nos IDs que você tem: 1=condicionador, 2=shampoo, 3=mascara)
+    const tags: TagData[] = [
+        { id: null, nome: "TODAS" },
+        { id: 2, nome: "SHAMPOO" },
+        { id: 1, nome: "CONDICIONADOR" },
+        { id: 3, nome: "MÁSCARA CAPILAR" },
+    ];
+    
+    // Encontra o nome da tag selecionada (para exibir como currentValue)
+    const currentTagName = tags.find(t => t.id === currentTagId)?.nome || "TODAS";
+
     return (
         <div className="filtros-barra-fundo">
             <div className="filtros-barra-wrapper">
-                <FilterDropdown label="CATEGORIA" value="TODAS" />
-                <FilterDropdown label="TIPO" value="TODOS" />
-                <FilterDropdown label="TIPO DE PELE" value="TODOS" />
-                <FilterDropdown label="TIPO DE CABELO" value="TODOS" />
-                <FilterDropdown label="PREÇO" value="TODOS" />
+                <FilterDropdown 
+                    label="CATEGORIA" 
+                    currentValue={currentTagName} 
+                    currentId={currentTagId}
+                    options={tags}
+                    onFilterChange={onTagChange}
+                />
+                
+                {/* Outros Filtros (Usando a nova estrutura) */}
+                <FilterDropdown 
+                    label="TIPO" 
+                    currentValue="TODOS" 
+                    currentId={null} 
+                    options={[{id: null, nome: "TODOS"}, {id: 99, nome: "CAPILAR"}]} 
+                    onFilterChange={() => {}} 
+                />
+                <FilterDropdown 
+                    label="TIPO DE PELE" 
+                    currentValue="TODOS" 
+                    currentId={null} 
+                    options={[{id: null, nome: "TODOS"}]} 
+                    onFilterChange={() => {}}
+                />
+                <FilterDropdown 
+                    label="TIPO DE CABELO" 
+                    currentValue="TODOS" 
+                    currentId={null} 
+                    options={[{id: null, nome: "TODOS"}]} 
+                    onFilterChange={() => {}}
+                />
+                <FilterDropdown 
+                    label="PREÇO" 
+                    currentValue="TODOS" 
+                    currentId={null} 
+                    options={[{id: null, nome: "TODOS"}]} 
+                    onFilterChange={() => {}}
+                />
             </div>
         </div>
     );
 };
 
 
-// -----------------------------------------------------
-// 🚩 MUDANÇA: ProdutoCard agora recebe um objeto 'produto' via props
-// -----------------------------------------------------
 const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
+    
+    // Usa uma imagem de fallback ou URL vazia caso url_imagem seja null/vazio.
+    const imageSrc = produto.url_imagem || '/images/produtos/default-placeholder.png'; 
+    
     return (
         <div className="produto-card">
             <div className="card-inner-wrapper">
-                {/* 🚩 DADOS DINÂMICOS: src e alt vêm do objeto 'produto' */}
                 <Image 
-                    src={produto.url_imagem}
+                    src={imageSrc}
                     width={150} 
                     height={150} 
                     alt={produto.nome} 
                     className="produto-card-image" 
+                    unoptimized={true} 
+                    priority={true} 
                 />
                 <div className="card-text">
-                    {/* 🚩 DADOS DINÂMICOS */}
                     <p className="card-tag">{produto.tag_principal}</p>
                     <h2 className="card-title">{produto.nome.toUpperCase()}</h2>
                 </div>
-                {/* 🚩 LINK DINÂMICO: Leva para a página de detalhes usando o ID */}
-                <Link href={`/produto/${produto.id_produto}`} passHref>
+                {/* 🚩 CORREÇÃO FINAL: Usando Link do Next.js para redirecionamento externo */}
+                <Link 
+                    href={produto.url_loja} 
+                    passHref
+                    target="_blank" // Abre em nova aba
+                    rel="noopener noreferrer" 
+                >
+                    {/* O componente Link deve envolver a âncora (a), que deve envolver o botão */}
                     <button className="card-button">VER MAIS</button>
                 </Link>
             </div>
@@ -107,36 +222,43 @@ const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
 
 
 // -----------------------------------------------------
-// 🚩 MUDANÇA PRINCIPAL: ProdutosGrid agora busca dados e gerencia estado
+// ProdutosGrid: Busca dados com base no filtro
 // -----------------------------------------------------
-const ProdutosGrid: React.FC = () => {
+const ProdutosGrid: React.FC<{ tagId: number | null }> = ({ tagId }) => {
     const [produtos, setProdutos] = useState<ProdutoData[]>([]);
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState<string | null>(null);
 
-    // 🚩 NOVIDADE: useEffect para buscar dados da API ao carregar o componente
-    useEffect(() => {
-        async function fetchProdutos() {
-            try {
-                // 🚩 O endpoint da API que você precisa criar para listar produtos
-                const res = await fetch('/api/produtos'); 
-                
-                if (!res.ok) {
-                    setErro('Falha ao carregar produtos.');
-                    return;
-                }
-                
-                const data: ProdutoData[] = await res.json();
-                setProdutos(data);
+    const fetchProdutos = useCallback(async () => {
+        setLoading(true);
+        setErro(null);
 
-            } catch (e) {
-                setErro('Erro de conexão com o servidor.');
-            } finally {
-                setLoading(false);
+        try {
+            let url = '/api/produtos';
+            if (tagId !== null) {
+                url = `/api/produtos?id_tag=${tagId}`; 
             }
+            
+            const res = await fetch(url); 
+            
+            if (!res.ok) {
+                setErro('Falha ao carregar produtos.');
+                return;
+            }
+            
+            const data: ProdutoData[] = await res.json();
+            setProdutos(data);
+
+        } catch (e) {
+            setErro('Erro de conexão com o servidor.');
+        } finally {
+            setLoading(false);
         }
+    }, [tagId]); 
+
+    useEffect(() => {
         fetchProdutos();
-    }, []);
+    }, [fetchProdutos]); 
 
     if (loading) {
         return <div className="loading-message">Carregando produtos...</div>;
@@ -146,7 +268,6 @@ const ProdutosGrid: React.FC = () => {
         return <div className="error-message">{erro}</div>;
     }
     
-    // 🚩 Renderiza os cartões com base nos dados reais (ou vazios)
     const cartoes = produtos.map((produto) => (
         <ProdutoCard key={produto.id_produto} produto={produto} />
     ));
@@ -154,7 +275,7 @@ const ProdutosGrid: React.FC = () => {
     return (
         <section id="produtos-grid-section">
             <div className="produtos-grid-wrapper">
-                {cartoes.length > 0 ? cartoes : <p>Nenhum produto encontrado.</p>}
+                {cartoes.length > 0 ? cartoes : <p>Nenhum produto encontrado na categoria selecionada.</p>}
             </div>
         </section>
     );
@@ -170,7 +291,12 @@ const LoadMoreButton: React.FC = () => {
     );
 };
 
-export default function produtos() {
+// -----------------------------------------------------
+// Componente principal
+// -----------------------------------------------------
+export default function ProdutosPage() {
+    const [tagFiltroId, setTagFiltroId] = useState<number | null>(null);
+
     return (
         <>
             
@@ -180,7 +306,6 @@ export default function produtos() {
             </main>
 
             <section id="s1">
-                {/* ... (Marcas fixas) ... */}
                 <img src="images/produtos/marca (1).png" alt="SalonLine" />
                 <img src="images/produtos/marca (2).png" alt="Kolene" />
                 <img src="images/produtos/marca (3).png" alt="WidiCare" />
@@ -193,7 +318,6 @@ export default function produtos() {
             </figure>
 
             <section id="s2">
-                {/* ... (Tipos de cabelo e pele) ... */}
                 <div className="linha-texto">
                     <h1>TIPOS DE CABELO</h1>
                     <div id="linha"></div>
@@ -216,9 +340,9 @@ export default function produtos() {
                 </div>
             </section>
 
-            <FiltrosBarra />
+            <FiltrosBarra currentTagId={tagFiltroId} onTagChange={setTagFiltroId} />
             
-            <ProdutosGrid />
+            <ProdutosGrid tagId={tagFiltroId} />
 
             <LoadMoreButton />
             

@@ -8,15 +8,15 @@
 /* CORREÇÃO: Atualizar caminhos das fontes */
 @font-face {
   font-family: 'PLAYFUL RUNWAY';
-  src: url('/assets/fontes/PlayfulRunway.woff2') format('woff2');
+  src: url('/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'THE NEXT FONT';
-  src: url('/assets/fontes/TheNextFont.woff2') format('woff2');
+  src: url('/assets/fontes/TheNextFont.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Louis George Cafe';
-  src: url('/assets/fontes/LouisGeorgeCafe.woff2') format('woff2');
+  src: url('/assets/fontes/Louis George Cafe.ttf') format('truetype');
 }
 
 html, body {

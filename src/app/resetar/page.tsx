@@ -3,17 +3,17 @@
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL_TEST!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_TEST!
-);
-
 export default function resetar() {
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
 
   async function handleReset(e: React.FormEvent) {
     e.preventDefault();
+
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL_TEST || process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_TEST || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+    );
 
     const { error } = await supabase.auth.updateUser({ password: senha });
 
