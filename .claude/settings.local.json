@@ -8,8 +8,7 @@
       "Bash(git rm:*)",
       "Bash(git add:*)",
       "Bash(npx prisma generate:*)",
-      "Read(//c/Users/023.919373/Downloads/**)",
-      "WebFetch(domain:www.figma.com)"
+      "Read(//c/Users/023.919373/Downloads/**)"
     ],
     "deny": [],
     "ask": []
