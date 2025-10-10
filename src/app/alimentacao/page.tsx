@@ -14,18 +14,18 @@ const AlimentacaoPage: React.FC = () => {
       <section id="banner">
         <div className="texto-banner">
           <h1>NUTRIENTES <span style={{ color: '#ECC46F' }}>CERTOS</span>, <br />FIOS MAIS <span style={{ color: '#ECC46F' }}>FORTES!</span></h1>
-          <p>Descubra como sua alimentacao transforma <br />seu cabelo</p>
+          <p>Descubra como sua alimentação transforma <br />seu cabelo</p>
         </div>
       </section>
       
       <section className="sec2">
         <div className="esquerda"></div>
         <div className="direita">
-          <h1>Por que o que voce come impacta seus cabelos?</h1>
+          <h1>Por que o que você come impacta seus cabelos?</h1>
           <div className="resp"> 
-            <p>Cabelos bonitos e fortes nao dependem so de produtos. Nutrientes como biotina, ferro, omega-3 e vitaminas do complexo B sao essenciais para o crescimento e saude dos fios.</p>
+            <p>Cabelos bonitos e fortes não dependem só de produtos. Nutrientes como biotina, ferro, ômega-3 e vitaminas do complexo B são essenciais para o crescimento e saúde dos fios.</p>
           </div>
-          <h2>UMA BOA ALIMENTACAO:</h2>
+          <h2>UMA BOA ALIMENTAÇÃO:</h2>
           <div className="cx">
             <div id="cx1">
               <img src="/images/Alimentacao/svg-cx1.png" alt="Halteres" />
@@ -56,28 +56,28 @@ const AlimentacaoPage: React.FC = () => {
             <div className="ovo"><div className="elementos"><h1>OVO</h1><p>Rico em biotina, ajuda no crescimento dos fios e previne a quebra.</p></div></div>
             <div className="espi_cenou">
               <div className="espinafre"><div className="elementos"><h1>ESPINAFRE</h1><p>Carregado de ferro e vitamina C, fortalece os fios e combate a queda.</p></div></div>
-              <div className="cenoura"><div className="elementos"><h1>CENOURA</h1><p>Rica em vitamina A, mantem o couro cabeludo saudavel e os fios resistentes.</p></div></div>
+              <div className="cenoura"><div className="elementos"><h1>CENOURA</h1><p>Rica em vitamina A, mantém o couro cabeludo saudável e os fios resistentes.</p></div></div>
             </div>
-            <div className="abacate"><div className="elementos"><h1>ABACATE</h1><p>Fonte de gorduras saudaveis, contribui para o brilho e maciez dos cabelos.</p></div></div>
+            <div className="abacate"><div className="elementos"><h1>ABACATE</h1><p>Fonte de gorduras saudáveis, contribui para o brilho e maciez dos cabelos.</p></div></div>
           </div>
           <div className="fil2">
-            <div className="salmao"><div className="elementos"><h1>SALMAO</h1><p>Fonte de omega-3, promove hidratacao profunda e melhora a elasticidade capilar.</p></div></div>
-            <div className="morango"><div className="elementos"><h1>MORANGO</h1><p>Rico em vitamina C, estimula a producao de colageno, importante para a estrutura capilar.</p></div></div>
+            <div className="salmao"><div className="elementos"><h1>SALMÃO</h1><p>Fonte de ômega-3, promove hidratação profunda e melhora a elasticidade capilar.</p></div></div>
+            <div className="morango"><div className="elementos"><h1>MORANGO</h1><p>Rico em vitamina C, estimula a produção de colágeno, importante para a estrutura capilar.</p></div></div>
           </div>
         </div>
       </section>
       <img src="images/" alt="" />
       <section className="sec4">
         <div className="esquerdah">
-          <h1>Dicas praticas de alimentacao</h1>
+          <h1>Dicas práticas de alimentação</h1>
           <ol className="esquerdeh">
             <li id="ol1"><p>1</p><div className="linha"></div>Evite alimentos ultraprocessados e muito salgados</li>
-            <li id="ol2"><p>2</p><div className="linha"></div>Consuma vegetais verde-escuros com frequencia</li>
-            <li id="ol3"><p>3</p><div className="linha"></div>Inclua castanhas e sementes nas suas refeicoes</li>
-            <li id="ol4"><p>4</p><div className="linha"></div>Reduza o estresse com praticas saudaveis</li>
-            <li id="ol5"><p>5</p><div className="linha"></div>Beba ao menos 2L de agua por dia</li>
+            <li id="ol2"><p>2</p><div className="linha"></div>Consuma vegetais verde-escuros com frequência</li>
+            <li id="ol3"><p>3</p><div className="linha"></div>Inclua castanhas e sementes nas suas refeições</li>
+            <li id="ol4"><p>4</p><div className="linha"></div>Reduza o estresse com práticas saudáveis</li>
+            <li id="ol5"><p>5</p><div className="linha"></div>Beba ao menos 2L de água por dia</li>
             <li id="ol6"><p>6</p><div className="linha"></div>Varie frutas ricas em vitamina C</li>
-            <li id="ol7"><p>7</p><div className="linha"></div>Mantenha bons niveis de calcio</li>
+            <li id="ol7"><p>7</p><div className="linha"></div>Mantenha bons níveis de cálcio</li>
             <li id="ol8"><p>8</p><div className="linha"></div>Inclua alho e cebola na dieta</li>
           </ol>
         </div>
@@ -89,7 +89,7 @@ const AlimentacaoPage: React.FC = () => {
       <section className="sec5">
         <div className="text">
           <h2>Artigos fundamentais</h2>
-          <h3>Tudo o que voce precisa saber para ter cabelos mais fortes e saudaveis</h3>
+          <h3>Tudo o que você precisa saber para ter cabelos mais fortes e saudáveis</h3>
         </div>
         <section className="partedebaixo">
           <div className="secao1">
@@ -97,15 +97,15 @@ const AlimentacaoPage: React.FC = () => {
               <div className="conteudo">
                 <img className="ftcard" src="/images/Alimentacao/azul.png" alt="Imagem suplemento cabelo" />
                 <h1>Suplementos para cabelo: funcionam mesmo?</h1>
-                <p>Saiba quando os suplementos para cabelo sao eficazes, quais usar e como garantir resultados seguros.</p>
+                <p>Saiba quando os suplementos para cabelo são eficazes, quais usar e como garantir resultados seguros.</p>
                 <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
               </div>
             </article>
             <article className="card"><img src="/images/Alimentacao/sec5-salada1.png" alt="Imagem tigela saudavel" /></article>
             <article className="card">
               <div className="conteudo">
-                <h1>Alimentos que sabotam a saude capilar</h1>
-                <p>Nem so o que voce come ajuda o cabelo — alguns alimentos podem prejudicar seus fios! Excesso de acucar, ultraprocessados e alimentos muito salgados podem enfraquecer os cabelos e aumentar a queda. Saiba quais alimentos evitar para manter os cabelos sempre bonitos e saudaveis.</p>
+                <h1>Alimentos que sabotam a saúde capilar</h1>
+                <p>Nem so o que você come ajuda o cabelo — alguns alimentos podem prejudicar seus fios! Excesso de açucár, ultraprocessados e alimentos muito salgados podem enfraquecer os cabelos e aumentar a queda. Saiba quais alimentos evitar para manter os cabelos sempre bonitos e saudáveis.</p>
                  <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
               </div>
             </article>
@@ -116,7 +116,7 @@ const AlimentacaoPage: React.FC = () => {
             <article className="card">
               <div className="conteudo">
                 <h1>Receitas funcionais para cuidar dos cabelos de dentro para fora</h1>
-                <p>Cuidar dos cabelos pode ser saboroso e pratico! Que tal apostar em receitas nutritivas que fortalecem os fios e ainda sao deliciosas? Neste artigo, voce encontra ideias de preparacoes simples e funcionais para incluir no seu dia a dia e dar aquele boost na saude capilar.</p>
+                <p>Cuidar dos cabelos pode ser saboroso e prático! Que tal apostar em receitas nutritivas que fortalecem os fios e ainda são deliciosas? Neste artigo, você encontra ideias de preparações simples e funcionais para incluir no seu dia a dia e dar aquele boost na saúde capilar.</p>
                <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button> 
               </div>
             </article>
@@ -124,8 +124,8 @@ const AlimentacaoPage: React.FC = () => {
             <article className="card">
                 <div className="conteudo">
                 <img className="ftcard" src="/images/alimentacao/roxo.png" alt="Imagem suplemento cabelo" />
-                <h1>Mitos e verdades sobre alimentacao e crescimento capilar</h1>
-                <p>Saiba quando os suplementos para cabelo sao eficazes, quais usar e como garantir resultados seguros.</p>
+                <h1>Mitos e verdades sobre alimentação e crescimento capilar</h1>
+                <p>Saiba quando os suplementos para cabelo são eficazes, quais usar e como garantir resultados seguros.</p>
                 <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
                 </div>
             </article>
