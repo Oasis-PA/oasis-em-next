@@ -29,10 +29,27 @@ main
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-        background-color: #AA35B0;
+    background-color: #AA35B0;
 
-    
 }
+
+.artigo-figura.imagem-mulher {
+ 
+  border: 5px solid #cf7ed3; /* Borda roxa */
+    
+  box-shadow: 0 8px 20px rgba(170, 53, 176, 0.3); /* Sombra colorida */
+  /* Adicione outros estilos que quiser */
+}
+
+/* Se quiser estilizar apenas a imagem dentro */
+.artigo-figura.imagem-mulher .artigo-imagem {
+  border-radius: 30%; /* Exemplo: imagem circular */
+  border: 5px solid #cf7ed3; /* Borda roxa */
+    width: 40%;
+  box-shadow: 0 8px 20px rgba(170, 53, 176, 0.3); /* Sombra colorida */
+}
+
+
 main > article
 {
     padding-top: 100px;

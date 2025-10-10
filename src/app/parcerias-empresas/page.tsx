@@ -9,44 +9,44 @@ import Image from 'next/image'; // Usando Image para otimização de imagens
 import '@/styles/parcerias-empresas.css';
 
 const ParceriasEmpresasPage: React.FC = () => {
-   
+
     return (
         <>
-          
+
             <main>
                 <article id="container">
                     <form action="" method="get">
                         <h1 className="titulo">COMO PODEMOS AJUDAR?</h1>
                         <p className="subtitulo">Nossa equipe vai te responder com a maior disponibilidade.</p>
-                        
+
                         <section id="caixas-texto">
                             <input type="text" name="nome" id="nome" placeholder="Nome e Sobrenome..." />
                             <input type="email" name="email" id="email" placeholder="Email Corporativo..." />
                             <div id="telefone">
-                                <p>BR</p> 
+                                <p>BR</p>
                                 <img src="/images/parcerias-empresas/brasil.png" alt="Brasil" />
                                 <p>+55</p>
                                 <input type="tel" name="telefone" id="telefone-input" placeholder="00 00000-0000" />
                             </div>
-                            <input 
-                                type="text" 
-                                name="empresa-que-representa" 
+                            <input
+                                type="text"
+                                name="empresa-que-representa"
                                 id="empresa-que-representa"
-                                placeholder="Empresa que representa..." 
+                                placeholder="Empresa que representa..."
                             />
-                            <input 
-                                type="text" 
-                                name="total-colaboradores" 
+                            <input
+                                type="text"
+                                name="total-colaboradores"
                                 id="total-colaboradores"
-                                placeholder="Total de colaboradores..." 
+                                placeholder="Total de colaboradores..."
                             />
                             <input type="text" name="seu-cargo" id="seu-cargo" placeholder="Seu cargo..." />
                         </section>
-                        
+
                         <section id="contato">
                             <textarea name="motivo" id="motivo" placeholder=" Nos conte um pouco do que deseja"></textarea>
                         </section>
-                        
+
                         <section className="cliente">
                             <Link className="eusou2" href="/login">
                                 <img src="/images/parcerias-empresas/usuario.png" alt="Ícone de usuário" />
@@ -59,7 +59,7 @@ const ParceriasEmpresasPage: React.FC = () => {
                                 <p className="eusoub">Contato para parcerias, dúvidas sobre regulamentos, reportação de queixas.</p>
                             </Link>
                         </section>
-                        
+
                         <button type="button" className="conheça" id="conheça">CONHEÇA</button>
                     </form>
                 </article>
