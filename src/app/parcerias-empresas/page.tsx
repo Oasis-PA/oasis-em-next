@@ -1,66 +1,189 @@
-// Para a funcionalidade de dark mode (useState, useEffect), o componente precisa ser um Client Component.
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link'; // Usando Link para navegação otimizada no Next.js
-import Script from 'next/script'; // Usando Script para carregar JS de forma otimizada
-import Image from 'next/image'; // Usando Image para otimização de imagens
-// Importando a folha de estilos. Ajuste o caminho se necessário.
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Script from 'next/script';
 import '@/styles/parcerias-empresas.css';
 
 const ParceriasEmpresasPage: React.FC = () => {
-   
+    const [formData, setFormData] = useState({
+        nome: '',
+        email: '',
+        telefone: '',
+        empresaRepresentada: '',
+        totalColaboradores: '',
+        cargo: '',
+        motivo: ''
+    });
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState({ type: '', text: '' });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setMessage({ type: '', text: '' });
+
+        try {
+            const response = await fetch('/api/parcerias/empresas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setMessage({
+                    type: 'success',
+                    text: data.message
+                });
+                // Limpa o formulário
+                setFormData({
+                    nome: '',
+                    email: '',
+                    telefone: '',
+                    empresaRepresentada: '',
+                    totalColaboradores: '',
+                    cargo: '',
+                    motivo: ''
+                });
+            } else {
+                setMessage({
+                    type: 'error',
+                    text: data.error || 'Erro ao enviar solicitação'
+                });
+            }
+        } catch (error) {
+            console.error('Erro:', error);
+            setMessage({
+                type: 'error',
+                text: 'Erro ao enviar solicitação. Tente novamente.'
+            });
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <>
-          
             <main>
                 <article id="container">
-                    <form action="" method="get">
+                    <form onSubmit={handleSubmit}>
                         <h1 className="titulo">COMO PODEMOS AJUDAR?</h1>
                         <p className="subtitulo">Nossa equipe vai te responder com a maior disponibilidade.</p>
-                        
+
+                        {message.text && (
+                            <div className={`message ${message.type}`}>
+                                {message.text}
+                            </div>
+                        )}
+
                         <section id="caixas-texto">
-                            <input type="text" name="nome" id="nome" placeholder="Nome e Sobrenome..." />
-                            <input type="email" name="email" id="email" placeholder="Email Corporativo..." />
+                            <input
+                                type="text"
+                                name="nome"
+                                id="nome"
+                                placeholder="Nome e Sobrenome..."
+                                value={formData.nome}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Email Corporativo..."
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
                             <div id="telefone">
-                                <p>BR</p> 
+                                <p>BR</p>
                                 <img src="/images/parcerias-empresas/brasil.png" alt="Brasil" />
                                 <p>+55</p>
-                                <input type="tel" name="telefone" id="telefone-input" placeholder="00 00000-0000" />
+                                <input
+                                    type="tel"
+                                    name="telefone"
+                                    id="telefone-input"
+                                    placeholder="00 00000-0000"
+                                    value={formData.telefone}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
-                            <input 
-                                type="text" 
-                                name="empresa-que-representa" 
+                            <input
+                                type="text"
+                                name="empresaRepresentada"
                                 id="empresa-que-representa"
-                                placeholder="Empresa que representa..." 
+                                placeholder="Empresa que representa..."
+                                value={formData.empresaRepresentada}
+                                onChange={handleChange}
+                                required
                             />
-                            <input 
-                                type="text" 
-                                name="total-colaboradores" 
+                            <input
+                                type="number"
+                                name="totalColaboradores"
                                 id="total-colaboradores"
-                                placeholder="Total de colaboradores..." 
+                                placeholder="Total de colaboradores..."
+                                value={formData.totalColaboradores}
+                                onChange={handleChange}
+                                required
+                                min="1"
                             />
-                            <input type="text" name="seu-cargo" id="seu-cargo" placeholder="Seu cargo..." />
+                            <input
+                                type="text"
+                                name="cargo"
+                                id="seu-cargo"
+                                placeholder="Seu cargo..."
+                                value={formData.cargo}
+                                onChange={handleChange}
+                                required
+                            />
                         </section>
-                        
+
                         <section id="contato">
-                            <textarea name="motivo" id="motivo" placeholder=" Nos conte um pouco do que deseja"></textarea>
+                            <textarea
+                                name="motivo"
+                                id="motivo"
+                                placeholder=" Nos conte um pouco do que deseja"
+                                value={formData.motivo}
+                                onChange={handleChange}
+                                required
+                            />
                         </section>
-                        
+
                         <section className="cliente">
-                            <Link className="eusou2" href="/login">
+                            <Link className="eusou2" href="../parcerias-influenciadores">
                                 <img src="/images/parcerias-empresas/usuario.png" alt="Ícone de usuário" />
                                 <p className="eusoua">Eu sou um usuário</p>
                                 <p className="eusoub">Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
                             </Link>
-                            <Link className="eusou" href="/parcerias-empresas">
+                            <Link className="eusou" href="../parcerias-empresas">
                                 <img src="/images/parcerias-empresas/empresa.png" alt="Ícone de empresa" />
                                 <p className="eusoua">Eu sou uma empresa</p>
                                 <p className="eusoub">Contato para parcerias, dúvidas sobre regulamentos, reportação de queixas.</p>
                             </Link>
                         </section>
-                        
-                        <button type="button" className="conheça" id="conheça">CONHEÇA</button>
+
+                        <button
+                            type="submit"
+                            className="conheça"
+                            id="conheça"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'ENVIANDO...' : 'ENVIAR SOLICITAÇÃO'}
+                        </button>
                     </form>
                 </article>
 
@@ -70,7 +193,6 @@ const ParceriasEmpresasPage: React.FC = () => {
                 </aside>
             </main>
 
-            {/* Carrega o script da pasta /public de forma otimizada */}
             <Script src="/parcerias.js" strategy="afterInteractive" />
         </>
     );
