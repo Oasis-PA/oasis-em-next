@@ -7,23 +7,13 @@ const globalForPrisma = globalThis as unknown as {
 
 // Adiciona parâmetro para desabilitar prepared statements em desenvolvimento
 const getDatabaseUrl = () => {
-  const baseUrl = process.env.DATABASE_URL;
-
-  if (!baseUrl) {
-    console.warn('DATABASE_URL não está definida');
-    return undefined;
-  }
+  const baseUrl = process.env.DATABASE_URL || '';
 
   if (process.env.NODE_ENV === "development") {
-    try {
-      const url = new URL(baseUrl);
-      url.searchParams.set('pgbouncer', 'true');
-      url.searchParams.set('connect_timeout', '10');
-      return url.toString();
-    } catch (error) {
-      console.error('Erro ao processar DATABASE_URL:', error);
-      return baseUrl;
-    }
+    const url = new URL(baseUrl);
+    url.searchParams.set('pgbouncer', 'true');
+    url.searchParams.set('connect_timeout', '10');
+    return url.toString();
   }
 
   return baseUrl;

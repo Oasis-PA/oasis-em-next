@@ -27,19 +27,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "Email disponível." }, { status: 200 });
   } catch (error) {
     console.error("Erro em check-email:", error);
-
-    // Log detalhado do erro para debug
-    if (error instanceof Error) {
-      console.error("Mensagem:", error.message);
-      console.error("Stack:", error.stack);
-    }
-
-    return NextResponse.json(
-      {
-        message: "Erro no servidor.",
-        error: process.env.NODE_ENV === "development" ? String(error) : undefined
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Erro no servidor." }, { status: 500 });
   }
 }

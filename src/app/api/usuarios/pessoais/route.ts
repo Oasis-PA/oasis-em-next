@@ -12,20 +12,7 @@ export async function PATCH(req: NextRequest) {
     const dataToUpdate: any = {};
 
     if (body.telefone !== undefined) dataToUpdate.telefone = body.telefone;
-
-    // Validação de data de nascimento
-    if (body.data_nascimento !== undefined) {
-      if (body.data_nascimento && body.data_nascimento.trim() !== '') {
-        const date = new Date(body.data_nascimento);
-        if (!isNaN(date.getTime())) {
-          dataToUpdate.data_nascimento = date;
-        }
-      } else {
-        // Se string vazia, define como null para limpar o campo
-        dataToUpdate.data_nascimento = null;
-      }
-    }
-
+    if (body.data_nascimento !== undefined) dataToUpdate.data_nascimento = new Date(body.data_nascimento);
     if (body.genero !== undefined) {
       // Supondo que gênero seja ID de tabela Genero
       dataToUpdate.id_genero = parseInt(body.genero);
