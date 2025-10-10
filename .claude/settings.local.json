@@ -8,23 +8,8 @@
       "Bash(git rm:*)",
       "Bash(git add:*)",
       "Bash(npx prisma generate:*)",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       "Read(//c/Users/023.919373/Downloads/**)",
-      "WebFetch(domain:www.figma.com)",
-      "Bash(git revert:*)",
-      "Bash(git stash:*)",
-      "Bash(git commit -m \"Resolve conflict in settings.local.json\")"
-=======
-      "Read(//c/Users/023.919373/Downloads/**)"
->>>>>>> parent of 8a9772d (jukiaz vadia)
-=======
-      "Read(//c/Users/023.919373/Downloads/**)"
->>>>>>> parent of 8a9772d (jukiaz vadia)
-=======
-      "Read(//c/Users/023.919373/Downloads/**)"
->>>>>>> parent of 8a9772d (jukiaz vadia)
+      "WebFetch(domain:www.figma.com)"
     ],
     "deny": [],
     "ask": []
