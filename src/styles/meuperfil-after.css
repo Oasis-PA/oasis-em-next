@@ -142,6 +142,7 @@ main > div > button {
     font-size: clamp(2.5rem, 5vw, 5rem);
     font-weight: 400;
     max-width: 65rem;
+    margin-right: 32rem;
 }
 
 #s2 > h4 {
