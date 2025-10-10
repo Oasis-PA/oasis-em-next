@@ -12,14 +12,7 @@ export default function artigosMain (){
     <>
      
       <h5>Por dentro das notícias</h5>
-      <p>Veja aqui os melhores artigos sobre cuidados, beleza e dicas. Salve os seus favoritos e leia sempre que quiser!</p>
-    
-      <form action="/search" method="get">
-        <label htmlFor="search"> 
-          <input type="search" id="search" name="Procurar" placeholder="Dia de cabelo maluco, o que us..." />
-          <button type="submit">PROCURAR</button>
-        </label>
-      </form> 
+      <p>Veja aqui os melhores artigos sobre cuidados, beleza e dicas. Salve os seus favoritos e leia sempre que quiser!</p> 
 
       <main>
         <h5>RECENTES</h5>

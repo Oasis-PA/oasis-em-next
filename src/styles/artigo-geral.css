@@ -96,46 +96,9 @@ font-size: var(--Subttulo, 24px);
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+margin-bottom: 10rem;
 }
-input
-{
-width: 888px;
-height: 87px;
-flex-shrink: 0;
-border-radius: 20px;
-border: 1px solid #414141;
-background: #ffffff;
-margin-left: 520px;
-margin-top: 45px;
 
-font-family: "Louis George Cafe";
-font-size: var(--CORPO-DE-TEXTO-1, 20px);
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-padding: 30px;
-}
-label > button
-{
-width: 222px;
-height: 75px;
-flex-shrink: 0;
-border-radius: 20px;
-background: #F2A518;
-position: absolute;
-margin-left: -227px;
-margin-top: 51px;
-border: none;
-
-color: #FFF;
-text-align: center;
-font-family: "The Next Font";
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-
-}
 main
 {
     display: grid;
