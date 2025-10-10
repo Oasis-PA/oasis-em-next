@@ -48,7 +48,7 @@ export default async function OasisHomepage() {
         <Header />
         <div className={styles.page1Main}>
           <p>Tratamentos inovadores</p>
-          <h1>CUIDADOS SEM LIMITES</h1>
+          <h1>Cuidado sem limites</h1>
           <Link href="/pagina-em-manutencao" className="botoes">Conheça</Link>
           <div className={styles.page1Circulos}>
             <Image src="/images/circulo-marcado.png" alt="circulo marcado" width={20} height={20} />
