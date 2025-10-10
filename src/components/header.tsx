@@ -1,26 +1,29 @@
 // Em: src/components/Header.tsx
-"use client"; // 👈 1. Transformado em Componente de Cliente
+"use client";
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import '@/styles/componentes.css';
 
-// Interface para definir a estrutura dos dados do utilizador
 interface User {
   nome: string;
 }
 
-export default function Header() {
-  // 2. Estados para gerir os dados do utilizador e a visibilidade do popup
+// 👇 Nova interface para as props do Header
+interface HeaderProps {
+  backgroundImage?: string; // URL da imagem de fundo (opcional)
+  backgroundColor?: string; // Cor de fundo alternativa (opcional)
+}
+
+// 👇 Adicionar props ao componente
+export default function Header({ backgroundImage, backgroundColor = 'white' }: HeaderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Estado de carregamento
+  const [isLoading, setIsLoading] = useState(true);
 
-  // 3. Efeito para ir buscar os dados do utilizador no lado do cliente
   useEffect(() => {
     async function fetchUserProfile() {
       try {
-        // A API /api/usuarios/perfil irá ler o cookie no backend e retornar os dados
         const response = await fetch('/api/usuarios/perfil');
         if (response.ok) {
           const userData = await response.json();
@@ -32,23 +35,33 @@ export default function Header() {
         console.error("Falha ao buscar perfil do usuário:", error);
         setUser(null);
       } finally {
-        setIsLoading(false); // Termina o carregamento
+        setIsLoading(false);
       }
     }
 
     fetchUserProfile();
   }, []);
 
-  // 4. Função para fazer logout
   const handleLogout = async () => {
     await fetch('/api/usuarios/logout', { method: 'POST' });
     setUser(null);
     setPopupVisible(false);
-    window.location.href = '/login'; // Redireciona para o login após sair
+    window.location.href = '/login';
+  };
+
+  // 👇 Estilo dinâmico para o header
+  const headerStyle: React.CSSProperties = {
+    ...(backgroundImage && {
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }),
+    ...(!backgroundImage && { backgroundColor }),
   };
 
   return (
-    <header>
+    <header style={headerStyle}>
       <section className="em_ciminha">
         <Link href="/">
           <div id="imagi" aria-label="Página inicial"></div>
@@ -61,12 +74,10 @@ export default function Header() {
             <div id="coracao" aria-label="Favoritos"></div>
           </Link>
           
-          <div className="user-menu-container"> {/* Container para posicionar o popup */}
+          <div className="user-menu-container">
             {isLoading ? (
-              // Opcional: mostrar um placeholder enquanto carrega
               <div id="user-placeholder"></div>
             ) : user ? (
-              // 5. Utilizador LOGADO: mostra ícone que abre o popup
               <>
                 <div id="user" aria-label="Perfil" onClick={() => setPopupVisible(!isPopupVisible)}></div>
                 {isPopupVisible && (
@@ -78,7 +89,6 @@ export default function Header() {
                 )}
               </>
             ) : (
-              // 6. Utilizador DESLOGADO: link direto para o login
               <Link href="/login">
                 <div id="user" aria-label="Login"></div>
               </Link>
@@ -87,7 +97,6 @@ export default function Header() {
         </div>
       </section>
       <section className="em_baixinho">
-        {/* ... links de navegação ... */}
         <div className="coisas">
           <Link href="/corteS" id="redirecionavel">Cortes</Link>
           <Link href="/" id="redirecionavel">Hair Care</Link>
