@@ -122,11 +122,11 @@ export default function skincare() {
                 <button>Veja mais</button>
             </div>
 
-            <div id="prod1-bg"><h1>mais amados</h1></div>
+            <div className="imagem_produto" id="prod1-bg"><h1>mais amados</h1></div>
         </div>
 
         <div className="produtos" >
-            <div id="prod2-bg"><h1>opção acessível</h1></div>
+            <div className="imagem_produto" id="prod2-bg"><h1>opção acessível</h1></div>
             <div className="prod1">
                 <img src="/images/infantil/produto.png" alt="produto1"/>
                 <h5>Força e vigor</h5>
@@ -171,7 +171,7 @@ export default function skincare() {
                 <button>Veja mais</button>
             </div>
 
-            <div id="prod3-bg"><h1>natural/<br></br>vegano</h1></div>
+            <div className="imagem_produto" id="prod3-bg"><h1>natural/<br></br>vegano</h1></div>
         </div>
 
         <div id="linhatexto2">

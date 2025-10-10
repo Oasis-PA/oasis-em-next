@@ -53,11 +53,11 @@ header > h1, header > h2 {
 }
 
 header > h1 {
-    font-size: clamp(4rem, 8vw + 2rem, 15.3125rem);
+    font-size: clamp(6rem, 10vw + 2rem, 15.3125rem);
 }
 
 header > h2 {
-   font-size: clamp(4rem, 8vw + 2rem, 15.3125rem);
+   font-size: clamp(6rem, 10vw + 2rem, 15.3125rem);
     opacity: 50%;
 }
 
@@ -448,8 +448,37 @@ margin-top: clamp(1.4rem, 7vw, 9.5rem);
         align-items: center; /* Centraliza os cards empilhados */
         gap: 1.5rem;
     }
+#card1{
+    background-image: url(/images/skincare/dica1-bg.png);
+}
+#card2{
+    background-image: url(/images/skincare/dica2-bg.png);
+}
+#card3{
+    background-image: url(/images/skincare/dica3-bg.png);
+}
+#card4{
+    background-image: url(/images/skincare/dica4-bg.png);
+}
+#card5{
+    background-image: url(/images/skincare/dica5-bg.png);
+} 
 
-    .card-item {
+.imagem_produto{
+    order: 2;
+}
+
+#prod1-bg, #prod2-bg, #prod3-bg{
+width: 40%;
+}
+
+.prod1{
+width: 40%;
+}
+
+
+
+.card-item {
         flex-basis: auto; /* Reseta a base flex */
         width: 90%; /* Ocupa 90% da largura da tela */
         max-width: 400px; /* Limite de largura */
