@@ -13,17 +13,23 @@ const loginSchema = z.object({
 
 export async function POST(req: NextRequest) {
   try {
+    console.log("[LOGIN] Iniciando processo de login");
+
     const body = await req.json();
+    console.log("[LOGIN] Body recebido, email:", body.email);
 
     const { email, senha } = loginSchema.parse(body);
+    console.log("[LOGIN] Schema validado com sucesso");
 
-    const user = await prisma.usuario.findUnique({ 
+    console.log("[LOGIN] Buscando usuário no banco...");
+    const user = await prisma.usuario.findUnique({
       where: { email },
       include: {
         genero: true,
         tipo_cabelo: true,
       }
     });
+    console.log("[LOGIN] Usuário encontrado:", !!user);
 
     if (!user) {
       return NextResponse.json(
@@ -71,8 +77,9 @@ export async function POST(req: NextRequest) {
     
   } catch (error: unknown) {
     if (error instanceof ZodError) {
+      console.error("[LOGIN] Erro de validação:", error.errors);
       return NextResponse.json(
-        { 
+        {
           message: "Dados inválidos",
           errors: error.errors.map(err => ({
             campo: err.path.join('.'),
@@ -83,9 +90,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.error("Erro no login:", error);
+    console.error("[LOGIN] Erro crítico:", error);
+    console.error("[LOGIN] Stack:", error instanceof Error ? error.stack : 'N/A');
+    console.error("[LOGIN] DATABASE_URL definida?", !!process.env.DATABASE_URL);
+    console.error("[LOGIN] JWT_SECRET definido?", !!process.env.JWT_SECRET);
+
     return NextResponse.json(
-      { message: "Erro interno no servidor." },
+      {
+        message: "Erro interno no servidor.",
+        details: process.env.NODE_ENV === "development" ? String(error) : undefined
+      },
       { status: 500 }
     );
   }

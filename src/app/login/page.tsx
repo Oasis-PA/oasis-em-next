@@ -39,6 +39,15 @@ export default function Login() {
         body: JSON.stringify(dadosValidados),
       });
 
+      // Verifica se a resposta é JSON antes de fazer parse
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("Resposta não é JSON:", await res.text());
+        setMensagem("Erro no servidor. Tente novamente mais tarde.");
+        setCarregando(false);
+        return;
+      }
+
       const data = await res.json();
 
       if (!res.ok) {
