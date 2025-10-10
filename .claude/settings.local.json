@@ -12,9 +12,7 @@
       "WebFetch(domain:www.figma.com)",
       "Bash(git revert:*)",
       "Bash(git stash:*)",
-      "Bash(git commit -m \"Resolve conflict in settings.local.json\")",
-      "Bash(git pull --rebase)",
-      "Bash(git commit -m \"Update permissions in settings.local.json\")"
+      "Bash(git commit -m \"Resolve conflict in settings.local.json\")"
     ],
     "deny": [],
     "ask": []
