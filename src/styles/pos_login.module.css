@@ -1,0 +1,172 @@
+.main {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 2rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 10.125rem;
+    height: 10.47294rem;
+    flex-shrink: 0;
+}
+
+.usuario {
+    width: 6.25rem;
+    height: 6.25rem;
+    flex-shrink: 0;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.dos {
+    display: flex;
+    gap: 1rem;
+    background-color: #ECC46F;
+    padding: 2rem;
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-right: -2rem;
+}
+
+.dos h1 {
+    color: #000;
+    font-family: "The Next Font";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+}
+
+.dos h2 {
+    color: #000;
+font-family: "Louis George Cafe";
+font-size: var(--CORPO-DE-TEXTO-1, 1.25rem);
+font-style: normal;
+font-weight: 400;
+line-height: 1rem;
+}
+
+.tres {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-self: flex-start;
+    width: 90%;
+    margin-top: 2rem;
+}
+
+.tres a {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+    text-decoration: none;
+    transition: font-size 0.3s, color 0.3s;
+}
+
+.tres p {
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+}
+
+.tres a:hover {
+    font-size: 1.3rem;
+    color: #F2A518;
+}
+
+.textos1 {
+    display: flex;
+    flex-direction: column;
+    border-bottom: #000 .1rem solid;
+    height: 10rem;
+    gap: 2.5rem;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.textos2 {
+    display: flex;
+    flex-direction: column;
+    border-bottom: #000 .1rem solid;
+    height: 7rem;
+    gap: 2.5rem;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.textos3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.textos4 {
+    margin-top: 3rem;
+}
+
+.textos4 a {
+    color: #000;
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+    text-decoration: none;
+    transition: font-size 0.3s, color 0.3s;
+}
+
+.textos4 a:hover {
+    font-size: 1.5rem;
+    color: #F2A518;
+}
+
+.direita button {
+    display: flex;
+    align-items: center;
+    width: 3.2rem;
+    height: 1.8rem;
+    background-color: #ECC46F;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 0.25rem;
+}
+
+.direita button::before {
+    content: '';
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+.direita button.active {
+    background-color: #420E45;
+}
+
+.direita button.active::before {
+    transform: translateX(1.5rem);
+}
