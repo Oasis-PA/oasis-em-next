@@ -56,24 +56,55 @@ model Categoria {
 }
 
 model Produto {
-  id_produto     Int         @id @default(autoincrement())
+  id_produto     Int             @id @default(autoincrement())
   nome           String
   marca          String
-  preco          Float
-  data_cadastro  DateTime    @default(now())
+  preco          Float // Preço principal (sugerido/menor)
+  data_cadastro  DateTime        @default(now())
   id_categoria   Int
   descricao      String?
-  url_imagem     String?     @db.VarChar
-  url_loja       String?     @db.VarChar
+  url_imagem     String?         @db.VarChar // Campo único de volta
+  
   id_tag         Int?
   id_tipo_pele   Int?
   id_tipo_cabelo Int?
+
+  // RELAÇÕES MULTIPLAS:
   avaliacoes     Avaliacao[]
   favoritos      Favorito[]
-  categoria      Categoria   @relation(fields: [id_categoria], references: [id_categoria])
-  tag            Tag?        @relation(fields: [id_tag], references: [id_tag], onDelete: NoAction, onUpdate: NoAction)
-  tipo_cabelo    TipoCabelo? @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo], onDelete: NoAction, onUpdate: NoAction)
+  links_loja     LinkLoja[]         // Múltiplos links/preços de lojas
+  // IMAGEMPRODUTO removido
+
+  categoria      Categoria       @relation(fields: [id_categoria], references: [id_categoria])
+  tag            Tag?            @relation(fields: [id_tag], references: [id_tag], onDelete: NoAction, onUpdate: NoAction)
+  tipo_cabelo    TipoCabelo?     @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo], onDelete: NoAction, onUpdate: NoAction)
 }
+
+// ---------------------------------------------
+// NOVOS MODELOS PARA MULTIPLAS LOJAS
+// ---------------------------------------------
+
+model Loja {
+  id_loja      Int        @id @default(autoincrement())
+  nome         String     @unique
+  url_logo     String?    @db.VarChar
+  links_loja   LinkLoja[]
+}
+
+model LinkLoja {
+  id_link_loja Int      @id @default(autoincrement())
+  id_produto   Int
+  id_loja      Int
+  preco        Float
+  url_compra   String   @db.VarChar
+  
+  produto      Produto  @relation(fields: [id_produto], references: [id_produto])
+  loja         Loja     @relation(fields: [id_loja], references: [id_loja])
+}
+
+// ---------------------------------------------
+// MODELOS RESTANTES
+// ---------------------------------------------
 
 model Avaliacao {
   id_avaliacao   Int      @id @default(autoincrement())
