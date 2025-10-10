@@ -36,7 +36,7 @@ export default function GerenciamentoConta() {
       })
       .catch(err => console.error(err));
 
-    fetch("/api/generos")
+    fetch("/api/usuarios/generos")
       .then(res => res.ok ? res.json() : [])
       .then(lista => setGeneros(lista))
       .catch(err => console.error(err));

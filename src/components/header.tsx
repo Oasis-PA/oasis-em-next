@@ -3,10 +3,12 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import '@/styles/componentes.css';
 
 interface User {
   nome: string;
+  url_foto?: string;
 }
 
 // 👇 Nova interface para as props do Header
@@ -79,7 +81,30 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
               <div id="user-placeholder"></div>
             ) : user ? (
               <>
-                <div id="user" aria-label="Perfil" onClick={() => setPopupVisible(!isPopupVisible)}></div>
+                {user.url_foto ? (
+                  <div
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      cursor: 'pointer',
+                      border: '2px solid #fff'
+                    }}
+                    onClick={() => setPopupVisible(!isPopupVisible)}
+                    aria-label="Perfil"
+                  >
+                    <Image
+                      src={user.url_foto}
+                      alt="Foto de perfil"
+                      width={40}
+                      height={40}
+                      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                    />
+                  </div>
+                ) : (
+                  <div id="user" aria-label="Perfil" onClick={() => setPopupVisible(!isPopupVisible)}></div>
+                )}
                 {isPopupVisible && (
                   <div className="user-popup">
                     <p>Olá, {user.nome}!</p>

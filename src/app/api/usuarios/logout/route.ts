@@ -8,8 +8,8 @@ export async function POST() {
       success: true,
     });
 
-    // Apaga o cookie 'token' ao definir a sua data de expiração para o passado.
-    response.cookies.set('token', '', {
+    // Apaga o cookie 'auth-token' ao definir a sua data de expiração para o passado.
+    response.cookies.set('auth-token', '', {
       httpOnly: true,
       path: '/',
       maxAge: -1, // Diz ao navegador para expirar o cookie imediatamente
