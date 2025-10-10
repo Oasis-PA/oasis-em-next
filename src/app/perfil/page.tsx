@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Layout from "./layout";
+import Link from "next/link";
+import "../../styles/editar-perfil.css";
 
 interface User {
   id_usuario?: number;
@@ -27,6 +28,8 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
   const [initialUser, setInitialUser] = useState<User>({ ...user });
   const [mensagem, setMensagem] = useState("");
   const [loading, setLoading] = useState(true);
+  const [uploadingFoto, setUploadingFoto] = useState(false);
+  const [fotoPreview, setFotoPreview] = useState<string | null>(null);
 
   // Carrega os dados do usuário logado
   useEffect(() => {
@@ -38,12 +41,17 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
             nome: data.nome || "",
             sobrenome: data.sobrenome || "",
             sobre: data.sobre || "",
+            url_foto: data.url_foto || "",
           });
           setInitialUser({
             nome: data.nome || "",
             sobrenome: data.sobrenome || "",
             sobre: data.sobre || "",
+            url_foto: data.url_foto || "",
           });
+          if (data.url_foto) {
+            setFotoPreview(data.url_foto);
+          }
         }
       })
       .finally(() => setLoading(false));
@@ -79,13 +87,76 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
   const handleReset = () => {
     setUser({ ...initialUser });
     setMensagem("");
+    setFotoPreview(initialUser.url_foto || null);
+  };
+
+  const handleFotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validações no frontend
+    if (!file.type.startsWith("image/")) {
+      setMensagem("Por favor, selecione uma imagem válida.");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setMensagem("A imagem deve ter no máximo 5MB.");
+      return;
+    }
+
+    // Preview da imagem
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFotoPreview(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+
+    // Upload da imagem
+    setUploadingFoto(true);
+    setMensagem("");
+
+    try {
+      const formData = new FormData();
+      formData.append("foto", file);
+
+      const res = await fetch("/api/usuarios/upload-foto", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMensagem("Foto atualizada com sucesso!");
+        setUser((prev) => ({ ...prev, url_foto: data.url_foto }));
+        setInitialUser((prev) => ({ ...prev, url_foto: data.url_foto }));
+      } else {
+        setMensagem(data.error || "Erro ao atualizar foto.");
+        setFotoPreview(user.url_foto || null);
+      }
+    } catch (err) {
+      setMensagem("Erro ao fazer upload da foto.");
+      setFotoPreview(user.url_foto || null);
+    } finally {
+      setUploadingFoto(false);
+    }
   };
 
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <Layout>
-      <main>
+    <div className="layout-container">
+        <aside id="aside-lateral">
+          <div className="conte-navbar">
+            <Link href="/perfil" id="Editar-perfil">
+              Editar Perfil
+            </Link>
+            <Link href="/gerenciamento">Gerenciamento de Conta</Link>
+          </div>
+        </aside>
+        <div className="layout-content">
+          <main>
         <div className="informa">
           <h4>EDITE SEU PERFIL</h4>
           <p>
@@ -96,14 +167,27 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
 
         <figure id="perf">
           <Image
-            src="/logo-oasis-icon.ico"
+            src={fotoPreview || "/logo-oasis-icon.ico"}
             alt="Foto de perfil"
             width={50}
             height={50}
+            style={{ borderRadius: "50%", objectFit: "cover" }}
           />
           <figcaption>
             <p id="foto">Foto</p>
-            <p id="Alterar">Alterar</p>
+            <label htmlFor="foto-input" style={{ cursor: "pointer" }}>
+              <p id="Alterar">
+                {uploadingFoto ? "Enviando..." : "Alterar"}
+              </p>
+            </label>
+            <input
+              id="foto-input"
+              type="file"
+              accept="image/*"
+              onChange={handleFotoChange}
+              style={{ display: "none" }}
+              disabled={uploadingFoto}
+            />
           </figcaption>
         </figure>
 
@@ -155,7 +239,8 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
         </footer>
 
         {mensagem && <p>{mensagem}</p>}
-      </main>
-    </Layout>
+          </main>
+        </div>
+      </div>
   );
 }

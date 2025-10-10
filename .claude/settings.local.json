@@ -6,7 +6,9 @@
       "Bash(git config:*)",
       "Bash(git mv:*)",
       "Bash(git rm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npx prisma generate:*)",
+      "Read(//c/Users/023.919373/Downloads/**)"
     ],
     "deny": [],
     "ask": []
