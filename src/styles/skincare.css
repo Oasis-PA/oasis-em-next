@@ -177,14 +177,14 @@ header > h2 {
     font-size: clamp(1.8rem, 4vw, 3rem);
     margin-bottom: 1.2rem;
     line-height: 1.2;
-    max-width: 23ch;
+    max-width: 18ch;
 }
 
 .cont-artigo > p, #cont-artigo > p {
     font-family: "Louis George Cafe", sans-serif;
     font-size: clamp(1rem, 1.5vw, 1.3rem);
     letter-spacing: 0.06rem;
-    max-width: 60ch;
+    max-width: 43ch;
     text-align: justify;
     line-height: 1.6;
     margin-bottom: 1.5rem;
