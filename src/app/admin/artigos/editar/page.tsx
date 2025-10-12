@@ -1,0 +1,317 @@
+// src/app/admin/artigos/editar/[id]/page.tsx
+"use client";
+
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import '@/styles/admin-complete.css';
+
+export default function EditarArtigoPage() {
+  const router = useRouter();
+  const params = useParams();
+  const [formData, setFormData] = useState({
+    titulo: '',
+    slug: '',
+    conteudo: '',
+    resumo: '',
+    status: 'rascunho',
+    dataPublicacao: '',
+    horaPublicacao: '',
+    tags: ''
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
+
+  useEffect(() => {
+    fetchArtigo();
+  }, []);
+
+  const fetchArtigo = async () => {
+    try {
+      const response = await fetch(`/api/admin/artigos/${params.id}`);
+      if (response.ok) {
+        const data = await response.json();
+        
+        // Separa data e hora
+        let dataStr = '';
+        let horaStr = '';
+        if (data.dataPublicacao) {
+          const dt = new Date(data.dataPublicacao);
+          dataStr = dt.toISOString().split('T')[0];
+          horaStr = dt.toTimeString().slice(0, 5);
+        }
+
+        setFormData({
+          titulo: data.titulo,
+          slug: data.slug,
+          conteudo: data.conteudo,
+          resumo: data.resumo || '',
+          status: data.status,
+          dataPublicacao: dataStr,
+          horaPublicacao: horaStr,
+          tags: data.tags ? data.tags.join(', ') : ''
+        });
+      } else {
+        alert('Artigo não encontrado');
+        router.push('/admin/artigos');
+      }
+    } catch (error) {
+      console.error('Erro ao carregar artigo:', error);
+      alert('Erro ao carregar artigo');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSaving(true);
+
+    try {
+      let dataPublicacaoCompleta = null;
+      if (formData.status === 'agendado' && formData.dataPublicacao) {
+        const hora = formData.horaPublicacao || '12:00';
+        dataPublicacaoCompleta = `${formData.dataPublicacao}T${hora}:00`;
+      }
+
+      const tagsArray = formData.tags
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(tag => tag.length > 0);
+
+      const dataToSend = {
+        titulo: formData.titulo,
+        slug: formData.slug,
+        conteudo: formData.conteudo,
+        resumo: formData.resumo || null,
+        status: formData.status,
+        dataPublicacao: dataPublicacaoCompleta,
+        tags: tagsArray
+      };
+
+      const response = await fetch(`/api/admin/artigos/${params.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend),
+      });
+
+      if (response.ok) {
+        alert('Artigo atualizado com sucesso!');
+        router.push('/admin/artigos');
+      } else {
+        const data = await response.json();
+        alert(data.error || 'Erro ao atualizar artigo');
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('Erro ao atualizar artigo');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="admin-container">
+        <div className="loading">Carregando artigo...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="admin-container">
+      <header className="admin-header">
+        <h1>Editar Artigo</h1>
+        <button onClick={() => router.back()} className="btn-secondary">
+          ← Voltar
+        </button>
+      </header>
+
+      <form onSubmit={handleSubmit} className="artigo-form">
+        <div className="form-row">
+          <div className="form-group flex-2">
+            <label htmlFor="titulo">Título *</label>
+            <input
+              type="text"
+              id="titulo"
+              name="titulo"
+              value={formData.titulo}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group flex-1">
+            <label htmlFor="slug">Slug (URL) *</label>
+            <input
+              type="text"
+              id="slug"
+              name="slug"
+              value={formData.slug}
+              onChange={handleChange}
+              required
+            />
+            <small>URL: /artigo/{formData.slug}</small>
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div className="form-group flex-1">
+            <label htmlFor="status">Status *</label>
+            <select
+              id="status"
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+            >
+              <option value="rascunho">📝 Rascunho</option>
+              <option value="publicado">✓ Publicado</option>
+              <option value="agendado">🕐 Agendado</option>
+            </select>
+          </div>
+
+          {formData.status === 'agendado' && (
+            <>
+              <div className="form-group flex-1">
+                <label htmlFor="dataPublicacao">Data *</label>
+                <input
+                  type="date"
+                  id="dataPublicacao"
+                  name="dataPublicacao"
+                  value={formData.dataPublicacao}
+                  onChange={handleChange}
+                  required={formData.status === 'agendado'}
+                  min={new Date().toISOString().split('T')[0]}
+                />
+              </div>
+              <div className="form-group flex-1">
+                <label htmlFor="horaPublicacao">Hora</label>
+                <input
+                  type="time"
+                  id="horaPublicacao"
+                  name="horaPublicacao"
+                  value={formData.horaPublicacao}
+                  onChange={handleChange}
+                />
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="tags">Tags (separadas por vírgula)</label>
+          <input
+            type="text"
+            id="tags"
+            name="tags"
+            value={formData.tags}
+            onChange={handleChange}
+            placeholder="skincare, beleza, tutorial"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="resumo">Resumo/Descrição (SEO)</label>
+          <textarea
+            id="resumo"
+            name="resumo"
+            value={formData.resumo}
+            onChange={handleChange}
+            placeholder="Breve descrição do artigo"
+            rows={3}
+            maxLength={160}
+          />
+          <small className={formData.resumo.length > 160 ? 'text-danger' : ''}>
+            {formData.resumo.length}/160 caracteres
+          </small>
+        </div>
+
+        <div className="editor-wrapper">
+          <div className="editor-tabs">
+            <button
+              type="button"
+              className={!showPreview ? 'tab active' : 'tab'}
+              onClick={() => setShowPreview(false)}
+            >
+              ✏️ Editor
+            </button>
+            <button
+              type="button"
+              className={showPreview ? 'tab active' : 'tab'}
+              onClick={() => setShowPreview(true)}
+            >
+              👁️ Preview
+            </button>
+          </div>
+
+          <div className="editor-content">
+            {!showPreview ? (
+              <div className="editor-area">
+                <label htmlFor="conteudo">Conteúdo (Markdown) *</label>
+                <textarea
+                  id="conteudo"
+                  name="conteudo"
+                  value={formData.conteudo}
+                  onChange={handleChange}
+                  required
+                  rows={20}
+                />
+                <div className="markdown-hints">
+                  <strong>Dicas:</strong>
+                  <code># Título</code>
+                  <code>## Subtítulo</code>
+                  <code>**negrito**</code>
+                  <code>*itálico*</code>
+                  <code>![alt](/url)</code>
+                </div>
+              </div>
+            ) : (
+              <div className="preview-area">
+                <ReactMarkdown
+                  components={{
+                    p: ({ children, node }) => {
+                      const hasOnlyImage = node?.children?.length === 1 && 
+                                          node.children[0].type === 'element' && 
+                                          node.children[0].tagName === 'img';
+                      if (hasOnlyImage) return <>{children}</>;
+                      return <p>{children}</p>;
+                    },
+                    img: ({ src, alt }) => (
+                      <img src={src} alt={alt || ''} className="preview-img" />
+                    ),
+                  }}
+                >
+                  {formData.conteudo}
+                </ReactMarkdown>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="form-actions">
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="btn-secondary"
+            disabled={isSaving}
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            className="btn-primary"
+            disabled={isSaving}
+          >
+            {isSaving ? 'Salvando...' : '✓ Atualizar'}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
