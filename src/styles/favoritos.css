@@ -631,6 +631,15 @@ main {
     .card-marrom #img-marrom {
         width: 250px;
     }
+    
+    /* NOVO: Regra para quebrar "Mais Produtos" em 2 colunas */
+    #container-maisprodutos {
+        gap: 1rem;
+    }
+    .card-maisprodutos {
+        width: calc(50% - 0.5rem); /* 2 colunas, considerando o gap de 1rem */
+        max-width: none; /* Remove a restrição de largura máxima */
+    }
 }
 
 @media (max-width: 480px) {
