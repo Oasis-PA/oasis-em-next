@@ -2,15 +2,8 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
-import { z, ZodError } from "zod";
-
-// Schema manual simples - apenas campos obrigatórios
-const cadastroSchema = z.object({
-  nome: z.string().min(2, "Nome deve ter no mínimo 2 caracteres"),
-  email: z.string().email("Email inválido"),
-  senha: z.string().min(8, "Senha deve ter no mínimo 8 caracteres"),
-  id_genero: z.number().int().positive().optional().default(1),
-});
+import { ZodError } from "zod";
+import { cadastroSchema } from "@/lib/validations";
 
 export async function POST(req: Request) {
   try {

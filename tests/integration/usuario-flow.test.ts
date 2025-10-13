@@ -4,6 +4,7 @@ import { NextRequest } from 'next/server';
 import { POST as checkEmailPOST } from '@/app/api/usuarios/check-email/route';
 import { POST as cadastroPOST } from '@/app/api/usuarios/cadastro/route';
 import { PrismaClient } from '@prisma/client';
+import { jest } from '@jest/globals';
 
 jest.mock('@prisma/client');
 const mockPrismaFlow = {

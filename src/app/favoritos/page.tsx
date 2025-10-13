@@ -3,7 +3,7 @@
 import {Header, Footer} from "@/components";
 import Image from "next/image";
 import Link from "next/link";
-import React from 'react'; 
+import React from 'react';
 
 import "@/styles/favoritos.css";
 
@@ -14,13 +14,13 @@ const Favoritos: React.FC = () => {
         <figure id="imagens-artigos">
             <h1>Quais as tendências de 2025?</h1>
         </figure>
-        
+
         <section id="section-favoritos">
             <h1 id="h1-favoritos">Favoritos</h1>
             <p id="p1">Veja seus artigos favoritados e produtos salvos sempre que quiser! Para sua compra, faremos a seleção das lojas com os preços mais em conta para o seu bolso.</p>
             <h1 id="h1-artigos">ARTIGOS</h1>
             <section id="section-imagens-artigos">
-                <Link href="#">    
+                <Link href="#">
                     <div id="artigo1">
                         <h1>ARTIGO AQUI</h1>
                     </div>
@@ -74,9 +74,9 @@ const Favoritos: React.FC = () => {
             <h1>Ácido hialuronico</h1>
             <h4>DESCUBRA SOBRE O QUERIDINHO DA INTERNET</h4>
             <button id="button-conheca">CONHEÇA</button>
-        </div>  
+        </div>
     </section>
-    
+
     <section id="section-artigos">
         <div className="categ">
             <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
@@ -234,7 +234,7 @@ const Favoritos: React.FC = () => {
         <div id="artigo1-s2">
             <h1>COLOCAR ARTIGO AQUI</h1>
         </div>
-        
+
         <div id="artigo2-s2">
             <h1>COLOCAR ARTIGO AQUI</h1>
         </div>
@@ -245,13 +245,13 @@ const Favoritos: React.FC = () => {
         <div id="artigo4-s2">
             <h1>COLOCAR ARTIGO AQUI</h1>
         </div>
-        
+
         <div id="artigo5-s2">
             <h1>COLOCAR ARTIGO AQUI</h1>
         </div>
     </section>
 
-    <script src="/fav.js" defer></script>
+  
     </>
   );
 }

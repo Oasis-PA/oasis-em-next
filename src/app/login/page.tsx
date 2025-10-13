@@ -4,15 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
+import { loginSchema } from "@/lib/validations";
 import "@/styles/tela-de-cadastro.css";
 import SenhaModal from "@/components/senhaModal/modal";
-
-// Schema de validação para login
-const loginSchema = z.object({
-  email: z.string().email("Email inválido"),
-  senha: z.string().min(1, "Senha é obrigatória"),
-});
 
 export default function Login() {
   const [email, setEmail] = useState("");
