@@ -4,16 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
+import { cadastroEtapa1Schema } from "@/lib/validations";
 import "@/styles/tela-de-cadastro.css";
-
-// Schema de validação para o formulário
-const cadastroEtapa1Schema = z.object({
-  nome: z.string()
-    .min(2, "Nome deve ter no mínimo 2 caracteres")
-    .regex(/^[a-zA-ZÀ-ÿ\s]+$/, "Nome deve conter apenas letras"),
-  email: z.string().email("Email inválido"),
-});
 
 export default function TelaCadastro() {
   const [nome, setNome] = useState("");

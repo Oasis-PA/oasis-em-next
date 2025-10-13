@@ -1,99 +1,259 @@
-import React from 'react';
-import Link from 'next/link'; // Usando Link para navegação otimizada no Next.js
-import Script from 'next/script'; // Usando Script para carregar JS de forma otimizada
-import image from 'next/image'; // Usando Image para otimização de imagens
-// Importando a folha de estilos. Ajuste o caminho se necessário.
-import '@/styles/favoritos.css';
+"use client";
 
-const FavoritosPage: React.FC = () => {
+import {Header, Footer} from "@/components";
+import Image from "next/image";
+import Link from "next/link";
+import React from 'react';
+
+import "@/styles/favoritos.css";
+
+const Favoritos: React.FC = () => {
   return (
     <>
       <main>
         <figure id="imagens-artigos">
-          <img src="/images/favoritos/imagem-principal (1).png" alt="tendências 2025" />
+            <h1>Quais as tendências de 2025?</h1>
         </figure>
-        
+
         <section id="section-favoritos">
-          <h1 id="h1-favoritos">Favoritos</h1>
-          <p id="p1">Veja seus artigos favoritados e produtos salvos sempre que quiser! Para sua compra, faremos a seleção das lojas com os preços mais em conta para o seu bolso.</p>
-          <h1 id="h1-artigos">ARTIGOS</h1>
-          <section id="section-imagens-artigos">
-            <Link href="#"><img src="/images/favoritos/imagem-artigo (2).png" alt="imagem-artigo1" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo (1).png" alt="imagem-artigo2" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo (3).png" alt="imagem-artigo3" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo cinza.png" alt="imagem-artigo-cinza" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo cinza.png" alt="imagem-artigo-cinza" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo cinza.png" alt="imagem-artigo-cinza" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo cinza.png" alt="imagem-artigo-cinza" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo cinza.png" alt="imagem-artigo-cinza" /></Link>
-            <Link href="#"><img src="/images/favoritos/imagem-artigo cinza.png" alt="imagem-artigo-cinza" /></Link>
-          </section>
-          <p id="p2">Veja lista completa</p>
+            <h1 id="h1-favoritos">Favoritos</h1>
+            <p id="p1">Veja seus artigos favoritados e produtos salvos sempre que quiser! Para sua compra, faremos a seleção das lojas com os preços mais em conta para o seu bolso.</p>
+            <h1 id="h1-artigos">ARTIGOS</h1>
+            <section id="section-imagens-artigos">
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+                <Link href="#">
+                    <div id="artigo1">
+                        <h1>ARTIGO AQUI</h1>
+                    </div>
+                </Link>
+            </section>
         </section>
-      </main>
+    </main>
 
-      <section id="section-artigo">
+    <section id="section-artigo">
         <div>
-          <img src="/images/favoritos/imagem-artigo.png" alt="artigo-ácido-hialurônico" />
-          <Link href="#"><button id="button-conheca">CONHEÇA</button></Link>
+            <h1>Ácido hialuronico</h1>
+            <h4>DESCUBRA SOBRE O QUERIDINHO DA INTERNET</h4>
+            <button id="button-conheca">CONHEÇA</button>
         </div>
-      </section>
-      
-      <section id="section-artigos">
-        <Link href="#"><img src="/images/favoritos/imagem-moda.png" alt="artigo-moda" /></Link>
-        <Link href="#"><img src="/images/favoritos/imagem-marca.png" alt="artigo-marca" /></Link>
-        <Link href="#"><img src="/images/favoritos/imagem-autoestima.png" alt="artigo-autoestima" /></Link>
-        <Link href="#"><img src="/images/favoritos/imagem-tutoriais.png" alt="artigo-tutoriais" /></Link>
-        <Link href="#"><img src="/images/favoritos/imagem-infantil.png" alt="artigo-infantil" /></Link>
-        <Link href="#"><img src="/images/favoritos/imagem-novidades.png" alt="artigo-novidades" /></Link>
-      </section>
+    </section>
 
-      <section id="section-imagem-marrom">
-        <img src="/images/favoritos/imagem-marrom.png" alt="imagem-marrom" />
-        <button id="button-conheca1">CONHEÇA</button>
-        <img src="/images/favoritos/imagem-marrom.png" alt="imagem-marrom" />
-        <button id="button-conheca2">CONHEÇA</button>
-        <img src="/images/favoritos/imagem-marrom.png" alt="imagem-marrom" />
-        <button id="button-conheca3">CONHEÇA</button>
-      </section>
+    <section id="section-artigos">
+        <div className="categ">
+            <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
+            <h2>ALIMENTAÇÃO</h2>
+          </div>
 
-      <section>
+          <div className="categ">
+            <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
+            <h2>CRONOGRAMA</h2>
+          </div>
+
+          <div className="categ">
+            <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
+            <h2>HAIR-CARE</h2>
+          </div>
+
+          <div className="categ">
+            <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
+            <h2>PRODUTOS</h2>
+          </div>
+
+          <div className="categ">
+            <img src="/images/skincare/categ5.png" alt="INFANTIL" />
+            <h2>INFANTIL</h2>
+          </div>
+
+          <div className="categ">
+            <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
+            <h2>TENDÊNCIAS</h2>
+          </div>
+    </section>
+
+    <section id="section-imagem-marrom">
+        <div>
+            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+            <div>
+                <img src="/images/favoritos/fav.svg" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+                <button>CONHEÇA</button>
+            </div>
+        </div>
+
+        <div>
+            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+            <div>
+                <img src="/images/favoritos/fav.svg" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+                <button>CONHEÇA</button>
+            </div>
+        </div>
+
+        <div>
+            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+            <div>
+                <img src="/images/favoritos/fav.svg" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+                <button>CONHEÇA</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-salvos-recen">
         <h1 id="h1-salvos">Salvos Recentemente</h1>
         <div id="section-salvos">
-          <Link href="#"><img src="/images/seta esquerda.png" alt="seta" width="16px" height="30px" /></Link>
-          <img src="/images/favoritos/imagem-produto.png" alt="imagem-produto" />
-          <img src="/images/favoritos/imagem-produto.png" alt="imagem-produto" />
-          <img src="/images/favoritos/imagem-produto.png" alt="imagem-produto" />
-          <img src="/images/favoritos/imagem-produto.png" alt="imagem-produto" />
-          <Link href="#"><img src="/images/seta direita.png" alt="seta" width="16px" height="30px" /></Link>
+            <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
+            <div>
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+
+            <div>
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+
+            <div>
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+
+            <div>
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+
+            <div>
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+            <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
         </div>
         <p id="p3">Veja lista completa</p>
         <img src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
-      </section>
+    </section>
 
-      <section id="section-maisprodutos">
+    <section id="section-maisprodutos">
         <h1 id="h1-maisprodutos">MAIS PRODUTOS</h1>
         <div>
-          <Link href="#"><img src="/images/favoritos/imagem-maisprodutos.png" alt="maisprodutos" /></Link>
-          <Link href="#"><img src="/images/favoritos/imagem-maisprodutos.png" alt="maisprodutos" /></Link>
-          <Link href="#"><img src="/images/favoritos/imagem-maisprodutos.png" alt="maisprodutos" /></Link>
-          <Link href="#"><img src="/images/favoritos/imagem-maisprodutos.png" alt="maisprodutos" /></Link>
+           <div>
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
+
+           <div>
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
+
+           <div>
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
+
+           <div>
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
         </div>
-      </section>
+    </section>
 
-      <section id="section-farm">
-        <Link href="#"><img src="/images/favoritos/imagem-farm 1.png" alt="imagem-farm 1" /></Link>
-        <Link href="#"><img src="/images/favoritos/imagem-farm 2.png" alt="imagem-farm 2" /></Link>
-        <Link href="#" id="foto1"><img src="/images/favoritos/imagem-farm 3.png" alt="imagem-farm 3" /></Link>
-        <Link href="#" id="foto2"><img src="/images/favoritos/imagem-farm 4.png" alt="imagem-farm 4" /></Link>
-        <Link href="#" id="foto3"><img src="/images/favoritos/imagem-farm 5.png" alt="imagem-farm 5" id="foto-larga" /></Link>
-      </section>
+    <section id="section-artigos-s2">
+        <div id="artigo1-s2">
+            <h1>COLOCAR ARTIGO AQUI</h1>
+        </div>
 
-      {/* Carrega o script da pasta /public de forma otimizada, 
-          após a página se tornar interativa */}
-      <Script src="/fav.js" strategy="afterInteractive" />
+        <div id="artigo2-s2">
+            <h1>COLOCAR ARTIGO AQUI</h1>
+        </div>
+
+        <div id="artigo3-s2">
+            <h1>COLOCAR ARTIGO AQUI</h1>
+        </div>
+        <div id="artigo4-s2">
+            <h1>COLOCAR ARTIGO AQUI</h1>
+        </div>
+
+        <div id="artigo5-s2">
+            <h1>COLOCAR ARTIGO AQUI</h1>
+        </div>
+    </section>
+
+  
     </>
   );
-};
+}
 
-export default FavoritosPage;
+export default Favoritos;

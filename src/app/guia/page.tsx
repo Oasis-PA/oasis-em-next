@@ -42,15 +42,15 @@ export default function guia() {
             <div id="guia">
                 <div>
                     <h1>Páginas</h1>
-                    <img src="images/guia/seta-baixo.png" alt="seta" />
+                    <img src="images/guia/seta-baixo.svg" alt="seta" />
                 </div>
                 <div>
                     <h1>Produtos</h1>
-                    <img src="images/guia/seta-lado.png" alt="seta" />
+                    <img src="images/guia/seta-lado.svg" alt="seta" />
                 </div>
                 <div>
                     <h1>Artigos</h1>
-                    <img src="images/guia/seta-lado.png" alt="seta" />
+                    <img src="images/guia/seta-lado.svg" alt="seta" />
                 </div>
             </div>
             <div id="linha"></div>
