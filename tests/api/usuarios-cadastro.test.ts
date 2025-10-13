@@ -1,35 +1,33 @@
 // tests/api/usuarios-cadastro.test.ts
 import { NextRequest } from 'next/server';
 import { POST } from '@/app/api/usuarios/cadastro/route';
-import { PrismaClient, Usuario } from '@prisma/client';
 import { jest } from '@jest/globals';
 
-// Variáveis para controle do mock
-let mockFindUnique: any;
-let mockCreate: any;
+const mockFindUnique = jest.fn();
+const mockCreate = jest.fn();
 
-// Mock do PrismaClient
 jest.mock('@/lib/prisma', () => ({
   prisma: {
-    get usuario() {
-      return {
-        findUnique: (...args: any[]) => mockFindUnique(...args),
-        create: (...args: any[]) => mockCreate(...args),
-      };
+    usuario: {
+      findUnique: mockFindUnique,
+      create: mockCreate,
     },
   },
 }));
 
 describe('POST /api/usuarios/cadastro', () => {
   beforeEach(() => {
-    // Resetar mocks
-    mockFindUnique = async () => null;
-    mockCreate = async (args: any) => ({
+    mockFindUnique.mockReset();
+    mockCreate.mockReset();
+    // Mock padrão: email não existe
+    mockFindUnique.mockResolvedValue(null);
+    // Mock padrão: cria usuário
+    mockCreate.mockResolvedValue({
       id_usuario: 1,
-      nome: args.data.nome,
-      email: args.data.email,
-      senha: args.data.senha,
-      id_genero: args.data.id_genero ?? 1,
+      nome: 'João Silva',
+      email: 'joao@teste.com',
+      senha: 'hashedpassword',
+      id_genero: 1,
       telefone: null,
       data_nascimento: null,
       data_cadastro: new Date(),
@@ -61,7 +59,7 @@ describe('POST /api/usuarios/cadastro', () => {
   });
 
   it('deve retornar erro quando email já existe', async () => {
-    mockFindUnique = async () => ({
+    mockFindUnique.mockResolvedValueOnce({
       id_usuario: 1,
       nome: 'Usuário Existente',
       email: 'existente@email.com',

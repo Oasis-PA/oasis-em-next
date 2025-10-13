@@ -80,10 +80,10 @@ export const cadastroSchema = z.object({
   nome: nomeSchema,
   email: emailSchema,
   senha: senhaSchema,
-  id_genero: z.number().int().positive().optional().default(1),
-  telefone: telefoneSchema,
-  sobrenome: sobrenomeSchema,
-  data_nascimento: dataNascimentoSchema,
+  id_genero: z.number().int().positive().default(1),
+  telefone: telefoneSchema.optional(),
+  sobrenome: sobrenomeSchema.optional(),
+  data_nascimento: dataNascimentoSchema.optional(),
 });
 
 // Login

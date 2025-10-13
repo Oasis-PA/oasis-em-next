@@ -1,32 +1,61 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import '@/styles/artigo1.css';
+import '@/styles/artigo-geral.css';
 
 export const dynamic = 'force-dynamic';
 
 export default async function ArtigosListPage() {
-  const artigo = await prisma.artigo.findMany({
-    select: { id: true, titulo: true, slug: true },
+  const artigos = await prisma.artigo.findMany({
+    select: {
+      id: true,
+      titulo: true,
+      slug: true,
+      conteudo: true,
+      criadoEm: true,
+      dataPublicacao: true
+    },
     orderBy: { criadoEm: "desc" },
   });
 
- return (
-  <main style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
-    <h1>Todos os artigos</h1>
-    <ul style={{ listStyle: "none", padding: 0 }}>
-      {artigo
-        .filter((a) => a.slug && a.titulo)
-        .map((artigo) => (
-          <li key={artigo.id} style={{ marginBottom: "1rem" }}>
-            <Link href={`/artigo/${artigo.slug}`}>
-              <span style={{ textDecoration: "underline", color: "#48D5D2", cursor: "pointer" }}>
-                {artigo.titulo}
-              </span>
-            </Link>
-          </li>
-        ))}
-    </ul>
-  </main>
-);
+  return (
+    <main className="artigos-container">
+      <div className="artigos-header">
+        <h1 className="artigos-titulo">Nossos Artigos</h1>
+        <p className="artigos-subtitulo">Descubra dicas e conteúdos exclusivos sobre beleza e cuidados</p>
+      </div>
 
-};
+      <div className="artigos-grid">
+        {artigos
+          .filter((a) => a.slug && a.titulo)
+          .map((artigo) => {
+            const preview = artigo.conteudo
+              ? artigo.conteudo.substring(0, 150).replace(/[#*_]/g, '') + '...'
+              : 'Leia mais para descobrir...';
+
+            const dataFormatada = artigo.dataPublicacao
+              ? new Date(artigo.dataPublicacao).toLocaleDateString('pt-BR', {
+                  day: '2-digit',
+                  month: 'long',
+                  year: 'numeric'
+                })
+              : new Date(artigo.criadoEm).toLocaleDateString('pt-BR', {
+                  day: '2-digit',
+                  month: 'long',
+                  year: 'numeric'
+                });
+
+            return (
+              <Link href={`/artigo/${artigo.slug}`} key={artigo.id} className="artigo-card">
+                <div className="artigo-card-content">
+                  <span className="artigo-data">{dataFormatada}</span>
+                  <h2 className="artigo-card-titulo">{artigo.titulo}</h2>
+                  <p className="artigo-preview">{preview}</p>
+                  <span className="artigo-ler-mais">Ler artigo completo →</span>
+                </div>
+              </Link>
+            );
+          })}
+      </div>
+    </main>
+  );
+}

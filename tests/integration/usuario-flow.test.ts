@@ -1,24 +1,26 @@
-
 // tests/integration/usuario-flow.test.ts
 import { NextRequest } from 'next/server';
-import { POST as checkEmailPOST } from '@/app/api/usuarios/check-email/route';
-import { POST as cadastroPOST } from '@/app/api/usuarios/cadastro/route';
-import { PrismaClient } from '@prisma/client';
 import { jest } from '@jest/globals';
 
-jest.mock('@prisma/client');
-const mockPrismaFlow = {
-  usuario: {
-    findUnique: jest.fn(),
-    create: jest.fn(),
-  },
-};
+const mockFindUnique = jest.fn();
+const mockCreate = jest.fn();
 
-(PrismaClient as jest.Mock).mockImplementation(() => mockPrismaFlow);
+jest.mock('@/lib/prisma', () => ({
+  prisma: {
+    usuario: {
+      findUnique: mockFindUnique,
+      create: mockCreate,
+    },
+  },
+}));
+
+import { POST as checkEmailPOST } from '@/app/api/usuarios/check-email/route';
+import { POST as cadastroPOST } from '@/app/api/usuarios/cadastro/route';
 
 describe('Fluxo completo de cadastro de usuário', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    mockFindUnique.mockReset();
+    mockCreate.mockReset();
   });
 
   it('deve completar fluxo de cadastro com sucesso', async () => {
@@ -29,7 +31,7 @@ describe('Fluxo completo de cadastro de usuário', () => {
     };
 
     // Passo 1: Verificar se email está disponível
-    mockPrismaFlow.usuario.findUnique.mockResolvedValue(null);
+    mockFindUnique.mockResolvedValue(null);
 
     const checkEmailRequest = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
       method: 'POST',
@@ -50,7 +52,7 @@ describe('Fluxo completo de cadastro de usuário', () => {
       id_genero: 1,
       createdAt: new Date(),
     };
-    mockPrismaFlow.usuario.create.mockResolvedValue(novoUsuario);
+    mockCreate.mockResolvedValue(novoUsuario);
 
     const cadastroRequest = new NextRequest('http://localhost:3000/api/usuarios/cadastro', {
       method: 'POST',
@@ -66,7 +68,7 @@ describe('Fluxo completo de cadastro de usuário', () => {
     expect(cadastroData.usuario.email).toBe(userData.email);
 
     // Passo 3: Tentar verificar email novamente (agora deve existir)
-    mockPrismaFlow.usuario.findUnique.mockResolvedValue(novoUsuario);
+    mockFindUnique.mockResolvedValue(novoUsuario);
 
     const checkEmailRequest2 = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
       method: 'POST',
@@ -89,7 +91,7 @@ describe('Fluxo completo de cadastro de usuário', () => {
     };
 
     // Simula que email já existe
-    mockPrismaFlow.usuario.findUnique.mockResolvedValue({
+    mockFindUnique.mockResolvedValue({
       id: 1,
       email: userData.email,
       nome: 'Usuário Existente',

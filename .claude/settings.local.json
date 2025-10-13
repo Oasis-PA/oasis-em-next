@@ -13,7 +13,11 @@
       "Bash(git tag:*)",
       "Bash(npm test)",
       "Bash(npm run test:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(for file in findFirstEmpresas.schema.ts findFirstOrThrowEmpresas.schema.ts findManyEmpresas.schema.ts findFirstTipoPele.schema.ts findFirstOrThrowTipoPele.schema.ts findManyTipoPele.schema.ts findFirstOrThrowArtigo.schema.ts findManyArtigo.schema.ts)",
+      "Bash(do sed -i \"s/include: ,//g\" \"$file\")",
+      "Bash(done)",
+      "Bash(npm test:*)"
     ],
     "deny": [],
     "ask": []

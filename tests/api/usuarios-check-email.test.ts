@@ -1,26 +1,21 @@
 import { NextRequest } from 'next/server';
 import { POST } from '@/app/api/usuarios/check-email/route';
-import { PrismaClient, Usuario } from '@prisma/client';
 import { jest } from '@jest/globals';
 
-// Variável para controle do mock
-let mockFindUnique: any;
+const mockFindUnique = jest.fn();
 
-// Mock do PrismaClient
 jest.mock('@/lib/prisma', () => ({
   prisma: {
-    get usuario() {
-      return {
-        findUnique: (...args: any[]) => mockFindUnique(...args),
-      };
+    usuario: {
+      findUnique: mockFindUnique,
     },
   },
 }));
 
 describe('POST /api/usuarios/check-email', () => {
   beforeEach(() => {
-    // Resetar mock
-    mockFindUnique = async () => null;
+    mockFindUnique.mockReset();
+    mockFindUnique.mockResolvedValue(null);
   });
 
   it('deve retornar "Email disponível" quando email não existe', async () => {
@@ -38,7 +33,7 @@ describe('POST /api/usuarios/check-email', () => {
   });
 
   it('deve retornar erro quando email já existe', async () => {
-    mockFindUnique = async () => ({
+    mockFindUnique.mockResolvedValueOnce({
       id_usuario: 1,
       nome: 'João',
       email: 'existente@email.com',
@@ -99,9 +94,8 @@ describe('POST /api/usuarios/check-email', () => {
   });
 
   it('deve retornar erro 500 quando há erro no banco', async () => {
-    mockFindUnique = async () => {
-      throw new Error('Erro no banco');
-    };
+    // Forçar erro no mock
+    mockFindUnique.mockRejectedValueOnce(new Error('Erro no banco'));
 
     const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
       method: 'POST',
