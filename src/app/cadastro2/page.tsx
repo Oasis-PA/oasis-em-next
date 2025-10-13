@@ -3,22 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
+import { cadastroEtapa2Schema } from "@/lib/validations";
 import "@/styles/tela-de-cadastro.css";
-
-// Schema de validação para senha
-const senhaSchema = z.object({
-  senha: z.string()
-    .min(8, "Senha deve ter no mínimo 8 caracteres")
-    .regex(/[A-Z]/, "Senha deve conter ao menos uma letra maiúscula")
-    .regex(/[a-z]/, "Senha deve conter ao menos uma letra minúscula")
-    .regex(/[0-9]/, "Senha deve conter ao menos um número")
-    .regex(/[^A-Za-z0-9]/, "Senha deve conter ao menos um caractere especial"),
-  confirmaSenha: z.string(),
-}).refine((data) => data.senha === data.confirmaSenha, {
-  message: "As senhas não conferem",
-  path: ["confirmaSenha"],
-});
 
 export default function TelaCadastroSenha() {
   const [senha, setSenha] = useState("");
@@ -49,7 +36,7 @@ export default function TelaCadastroSenha() {
 
     try {
       // Validação com Zod
-      const dadosValidados = senhaSchema.parse({ senha, confirmaSenha });
+      const dadosValidados = cadastroEtapa2Schema.parse({ senha, confirmaSenha });
 
       // Valida checkbox de termos
       const checkbox = document.getElementById("checkbox-cadastro") as HTMLInputElement;

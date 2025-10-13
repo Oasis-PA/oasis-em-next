@@ -3,13 +3,8 @@ import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
-import { z, ZodError } from "zod";
-
-// Schema simples para login
-const loginSchema = z.object({
-  email: z.string().email("Email inválido"),
-  senha: z.string().min(1, "Senha é obrigatória"),
-});
+import { ZodError } from "zod";
+import { loginSchema } from "@/lib/validations";
 
 export async function POST(req: NextRequest) {
   try {

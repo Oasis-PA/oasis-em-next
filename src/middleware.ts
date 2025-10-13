@@ -21,17 +21,17 @@ export function middleware(request: NextRequest) {
   // ========== PROTEÇÃO DO ADMIN ==========
   if (pathname.startsWith('/admin')) {
     const adminToken = request.cookies.get('admin-auth-token')?.value;
-    
+
     // Se não tiver token e não estiver na página de login do admin
     if (!adminToken && pathname !== '/admin/login') {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
-    
+
     // Se tiver token mas estiver na página de login, redireciona para dashboard
     if (adminToken && pathname === '/admin/login') {
       return NextResponse.redirect(new URL('/admin/artigos', request.url));
     }
-    
+
     // Admin autenticado, permite o acesso
     return NextResponse.next();
   }

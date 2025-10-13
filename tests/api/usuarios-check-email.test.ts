@@ -3,25 +3,24 @@ import { POST } from '@/app/api/usuarios/check-email/route';
 import { PrismaClient, Usuario } from '@prisma/client';
 import { jest } from '@jest/globals';
 
-// Mock do Prisma
-const mockPrisma = {
-  usuario: {
-    // Async function simples, sem tipos genéricos
-    findUnique: async (args: { where: { email: string } }): Promise<Usuario | null> => null,
-  },
-};
+// Variável para controle do mock
+let mockFindUnique: any;
 
 // Mock do PrismaClient
-jest.mock('@prisma/client', () => ({
-  PrismaClient: class {
-    usuario = mockPrisma.usuario;
+jest.mock('@/lib/prisma', () => ({
+  prisma: {
+    get usuario() {
+      return {
+        findUnique: (...args: any[]) => mockFindUnique(...args),
+      };
+    },
   },
 }));
 
 describe('POST /api/usuarios/check-email', () => {
   beforeEach(() => {
-    // Limpa os mocks chamando manualmente
-    mockPrisma.usuario.findUnique = async (args: { where: { email: string } }) => null;
+    // Resetar mock
+    mockFindUnique = async () => null;
   });
 
   it('deve retornar "Email disponível" quando email não existe', async () => {
@@ -39,7 +38,7 @@ describe('POST /api/usuarios/check-email', () => {
   });
 
   it('deve retornar erro quando email já existe', async () => {
-    mockPrisma.usuario.findUnique = async () => ({
+    mockFindUnique = async () => ({
       id_usuario: 1,
       nome: 'João',
       email: 'existente@email.com',
@@ -49,6 +48,9 @@ describe('POST /api/usuarios/check-email', () => {
       data_cadastro: new Date(),
       id_genero: 1,
       id_tipo_cabelo: null,
+      sobrenome: null,
+      sobre: null,
+      url_foto: null,
     });
 
     const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
@@ -75,11 +77,29 @@ describe('POST /api/usuarios/check-email', () => {
     const data = await response.json();
 
     expect(response.status).toBe(400);
-    expect(data.message).toBe('Email é obrigatório.');
+    expect(data.message).toBe('Dados inválidos');
+    expect(data.errors).toBeDefined();
+    expect(data.errors.some((err: any) => err.campo === 'email')).toBe(true);
+  });
+
+  it('deve retornar erro de validação quando email é inválido', async () => {
+    const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
+      method: 'POST',
+      body: JSON.stringify({ email: 'emailinvalido' }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const response = await POST(request);
+    const data = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(data.message).toBe('Dados inválidos');
+    expect(data.errors).toBeDefined();
+    expect(data.errors.some((err: any) => err.campo === 'email' && err.mensagem.includes('inválido'))).toBe(true);
   });
 
   it('deve retornar erro 500 quando há erro no banco', async () => {
-    mockPrisma.usuario.findUnique = async () => {
+    mockFindUnique = async () => {
       throw new Error('Erro no banco');
     };
 
