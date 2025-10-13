@@ -4,7 +4,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
-import '@/styles/admin-complete.css';
 
 export default function EditarArtigoPage() {
   const router = useRouter();
