@@ -353,7 +353,7 @@ main {
 #section-salvos {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start; /* MODIFICADO: Alinha os itens à esquerda */
+    justify-content: center;
     align-items: center;
     gap: 2rem;
     margin-top: 55px;
@@ -425,7 +425,7 @@ main {
 }
 
 #img-dourada {
-    width: 100%;
+    width: 90%;
     height: auto;
     object-fit: cover;
 }
@@ -437,6 +437,7 @@ main {
     height: auto;
     background-color: black;
     padding: 5rem 0;
+    margin-top: clamp(3rem, 5.5vw, 5.5rem);
 }
 
 #h1-maisprodutos {
