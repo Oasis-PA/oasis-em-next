@@ -1,4 +1,4 @@
-// file: app/produtos/page.tsx
+// file: app/produtos/page.tsx - CÓDIGO COMPLETO ATUALIZADO
 
 "use client";
 
@@ -6,7 +6,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Header, Footer } from "@/components";
 
 import Image from "next/image";
-import Link from "next/link"; // Mantemos o import caso haja necessidade futura
+import Link from "next/link"; 
 
 import "@/styles/produtos.css";
 
@@ -17,9 +17,9 @@ interface ProdutoData {
     id_produto: number;
     nome: string;
     tag_principal: string; 
-    url_imagem: string;
+    url_imagem: string | null; 
     id_tag: number; 
-    url_loja: string; // Incluído na API
+    url_loja: string | null; 
 }
 
 const ChevronDownIcon = () => (
@@ -41,7 +41,7 @@ const ChevronDownIcon = () => (
 
 
 interface FilterOption {
-    id: number | null;
+    id: number | null; 
     nome: string;
 }
 
@@ -49,12 +49,13 @@ interface FilterProps {
     label: string;
     currentValue: string; 
     options: FilterOption[];
-    onFilterChange: (id: number | null) => void;
+    onFilterChange: (id: number | null) => void; 
     currentId: number | null; 
+    disabled?: boolean;
 }
 
 // Dropdown customizado
-const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, onFilterChange, currentId }) => {
+const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, onFilterChange, currentId, disabled = false }) => {
     
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -71,23 +72,36 @@ const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, o
         };
     }, []);
 
+ 
+    const getOptionKey = (id: number | null) => {
+        if (id === null) return 'null';
+        return String(id);
+    };
 
     const handleOptionClick = (id: number | null) => {
+        if(disabled) return;
         onFilterChange(id); 
         setIsOpen(false); 
     };
+    
+    const handleButtonClick = () => {
+        if (!disabled) {
+            setIsOpen(!isOpen);
+        }
+    }
 
     return (
         <div 
-            className={`filter-dropdown-container ${isOpen ? 'active' : ''}`} 
+            className={`filter-dropdown-container ${isOpen ? 'active' : ''} ${disabled ? 'disabled' : ''}`} 
             ref={containerRef}
         >
             <div className="filter-label">{label}</div>
             
             <button 
                 className="filter-content"
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleButtonClick}
                 aria-expanded={isOpen}
+                disabled={disabled}
             >
                 <span className="filter-value">{currentValue}</span>
                 <div className="filter-icon-circle">
@@ -95,11 +109,11 @@ const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, o
                 </div>
             </button>
 
-            {isOpen && (
+            {isOpen && options.length > 1 && (
                 <ul className="dropdown-options-list">
                     {options.map(option => (
                         <li 
-                            key={option.id === null ? 'null' : option.id} 
+                            key={getOptionKey(option.id)} 
                             onClick={() => handleOptionClick(option.id)}
                             className={currentId === option.id ? 'selected' : ''}
                         >
@@ -114,79 +128,144 @@ const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, o
 
 
 // -----------------------------------------------------
-// Tipo de dado para as tags
+// FiltrosBarra
 // -----------------------------------------------------
-interface TagData {
-    id: number | null; 
-    nome: string;
-}
 
 interface FiltrosBarraProps {
     currentTagId: number | null;
     onTagChange: (id: number | null) => void;
+    currentCategoriaId: number | null;
+    onCategoriaChange: (id: number | null) => void;
+    currentCabeloId: number | null;
+    onCabeloChange: (id: number | null) => void;
+    currentPeleId: number | null;
+    onPeleChange: (id: number | null) => void;
+    currentPrecoId: number | null;
+    onPrecoChange: (id: number | null) => void; 
 }
 
-const FiltrosBarra: React.FC<FiltrosBarraProps> = ({ currentTagId, onTagChange }) => {
-    // Mock das tags (baseado nos IDs que você tem: 1=condicionador, 2=shampoo, 3=mascara)
-    const tags: TagData[] = [
-        { id: null, nome: "TODAS" },
-        { id: 2, nome: "SHAMPOO" },
-        { id: 1, nome: "CONDICIONADOR" },
-        { id: 3, nome: "MÁSCARA CAPILAR" },
-    ];
-    
-    // Encontra o nome da tag selecionada (para exibir como currentValue)
-    const currentTagName = tags.find(t => t.id === currentTagId)?.nome || "TODAS";
+const FiltrosBarra: React.FC<FiltrosBarraProps> = ({ 
+    currentTagId, 
+    onTagChange,
+    currentCategoriaId,
+    onCategoriaChange,
+    currentCabeloId,
+    onCabeloChange,
+    currentPeleId,
+    onPeleChange,
+    currentPrecoId,
+    onPrecoChange,
+}) => {
+    const [tagOptions, setTagOptions] = useState<FilterOption[]>([{ id: null, nome: "TODAS" }]);
+    const [categoriaOptions, setCategoriaOptions] = useState<FilterOption[]>([{ id: null, nome: "TODAS" }]);
+    const [cabeloOptions, setCabeloOptions] = useState<FilterOption[]>([{ id: null, nome: "TODOS" }]);
+    const [peleOptions, setPeleOptions] = useState<FilterOption[]>([{ id: null, nome: "TODOS" }]);
+    const [loadingFilters, setLoadingFilters] = useState(true);
+
+    const precoOptions: FilterOption[] = [
+        { id: null, nome: "TODOS" },
+        { id: 1, nome: "ATÉ R$50" },
+        { id: 2, nome: "R$50 - R$100" },
+        { id: 3, nome: "ACIMA DE R$100" },
+    ]; 
+
+    const fetchOptions = useCallback(async (endpoint: string, setter: React.Dispatch<React.SetStateAction<FilterOption[]>>, allLabel: string, idKey: string) => {
+        try {
+            const res = await fetch(endpoint);
+            if (!res.ok) throw new Error(`Falha ao carregar ${endpoint}`);
+            
+            const data = await res.json();
+            
+            const formattedData = data.map((item: any) => ({
+                id: item[idKey], 
+                nome: item.nome.toUpperCase(),
+            }));
+            
+            setter([{ id: null, nome: allLabel }, ...formattedData]); 
+        } catch (e) {
+            console.error(e);
+            setter([{ id: null, nome: allLabel }]);
+        }
+    }, []);
+
+    useEffect(() => {
+        setLoadingFilters(true);
+        
+        Promise.all([
+            fetchOptions('/api/tags', setTagOptions, "TODAS", 'id_tag'), 
+            fetchOptions('/api/categorias', setCategoriaOptions, "TODAS", 'id_categoria'),
+            fetchOptions('/api/tipos-cabelo', setCabeloOptions, "TODOS", 'id_tipo_cabelo'), 
+            fetchOptions('/api/tipos-pele', setPeleOptions, "TODOS", 'id_tipo_pele'), 
+        ]).finally(() => {
+            setLoadingFilters(false);
+        });
+    }, [fetchOptions]);
+
+
+    const getFilterName = (options: FilterOption[], currentId: number | null) => {
+        return options.find(t => t.id === currentId)?.nome || options[0].nome;
+    }
 
     return (
         <div className="filtros-barra-fundo">
             <div className="filtros-barra-wrapper">
+                
                 <FilterDropdown 
-                    label="CATEGORIA" 
-                    currentValue={currentTagName} 
+                    label="TAG" 
+                    currentValue={getFilterName(tagOptions, currentTagId)} 
                     currentId={currentTagId}
-                    options={tags}
+                    options={tagOptions}
                     onFilterChange={onTagChange}
+                    disabled={loadingFilters}
                 />
                 
-                {/* Outros Filtros (Usando a nova estrutura) */}
                 <FilterDropdown 
-                    label="TIPO" 
-                    currentValue="TODOS" 
-                    currentId={null} 
-                    options={[{id: null, nome: "TODOS"}, {id: 99, nome: "CAPILAR"}]} 
-                    onFilterChange={() => {}} 
+                    label="CATEGORIA" 
+                    currentValue={getFilterName(categoriaOptions, currentCategoriaId)} 
+                    currentId={currentCategoriaId} 
+                    options={categoriaOptions} 
+                    onFilterChange={onCategoriaChange}
+                    disabled={loadingFilters}
                 />
+
                 <FilterDropdown 
                     label="TIPO DE PELE" 
-                    currentValue="TODOS" 
-                    currentId={null} 
-                    options={[{id: null, nome: "TODOS"}]} 
-                    onFilterChange={() => {}}
+                    currentValue={getFilterName(peleOptions, currentPeleId)} 
+                    currentId={currentPeleId} 
+                    options={peleOptions} 
+                    onFilterChange={onPeleChange}
+                    disabled={loadingFilters}
                 />
+                
                 <FilterDropdown 
                     label="TIPO DE CABELO" 
-                    currentValue="TODOS" 
-                    currentId={null} 
-                    options={[{id: null, nome: "TODOS"}]} 
-                    onFilterChange={() => {}}
+                    currentValue={getFilterName(cabeloOptions, currentCabeloId)} 
+                    currentId={currentCabeloId} 
+                    options={cabeloOptions} 
+                    onFilterChange={onCabeloChange}
+                    disabled={loadingFilters}
                 />
+                
                 <FilterDropdown 
                     label="PREÇO" 
-                    currentValue="TODOS" 
-                    currentId={null} 
-                    options={[{id: null, nome: "TODOS"}]} 
-                    onFilterChange={() => {}}
+                    currentValue={getFilterName(precoOptions, currentPrecoId)} 
+                    currentId={currentPrecoId} 
+                    options={precoOptions} 
+                    onFilterChange={onPrecoChange}
+                    disabled={loadingFilters}
                 />
             </div>
         </div>
     );
 };
 
+// -----------------------------------------------------
+// ProdutoCard
+// -----------------------------------------------------
 
 const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
-    
-    // Usa uma imagem de fallback ou URL vazia caso url_imagem seja null/vazio.
+    const linkHref = produto.url_loja || '#'; 
+    const isDisabled = !produto.url_loja;
     const imageSrc = produto.url_imagem || '/images/produtos/default-placeholder.png'; 
     
     return (
@@ -205,15 +284,17 @@ const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
                     <p className="card-tag">{produto.tag_principal}</p>
                     <h2 className="card-title">{produto.nome.toUpperCase()}</h2>
                 </div>
-                {/* 🚩 CORREÇÃO FINAL: Usando Link do Next.js para redirecionamento externo */}
+                
                 <Link 
-                    href={produto.url_loja} 
+                    href={linkHref} 
                     passHref
-                    target="_blank" // Abre em nova aba
+                    target={isDisabled ? '_self' : '_blank'} 
                     rel="noopener noreferrer" 
+                    style={{ pointerEvents: isDisabled ? 'none' : 'auto' }}
                 >
-                    {/* O componente Link deve envolver a âncora (a), que deve envolver o botão */}
-                    <button className="card-button">VER MAIS</button>
+                    <button className={`card-button ${isDisabled ? 'disabled' : ''}`}>
+                        {isDisabled ? 'LINK INDISPONÍVEL' : 'VER MAIS'}
+                    </button>
                 </Link>
             </div>
         </div>
@@ -222,23 +303,53 @@ const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
 
 
 // -----------------------------------------------------
-// ProdutosGrid: Busca dados com base no filtro
+// ProdutosGrid: ATUALIZADO COM PAGINAÇÃO
 // -----------------------------------------------------
-const ProdutosGrid: React.FC<{ tagId: number | null }> = ({ tagId }) => {
+
+interface ProdutosGridProps {
+    tagId: number | null;
+    categoriaId: number | null;
+    cabeloId: number | null;
+    peleId: number | null;
+    precoId: number | null;
+}
+
+const ProdutosGrid: React.FC<ProdutosGridProps> = ({ 
+    tagId, 
+    categoriaId, 
+    cabeloId, 
+    peleId, 
+    precoId 
+}) => {
     const [produtos, setProdutos] = useState<ProdutoData[]>([]);
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState<string | null>(null);
+    const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(false);
+    const [loadingMore, setLoadingMore] = useState(false);
 
-    const fetchProdutos = useCallback(async () => {
-        setLoading(true);
+    const fetchProdutos = useCallback(async (pageNum: number, append: boolean = false) => {
+        if (append) {
+            setLoadingMore(true);
+        } else {
+            setLoading(true);
+            setProdutos([]);
+        }
         setErro(null);
 
         try {
-            let url = '/api/produtos';
-            if (tagId !== null) {
-                url = `/api/produtos?id_tag=${tagId}`; 
-            }
+            const params = new URLSearchParams();
             
+            if (tagId !== null) params.append('id_tag', String(tagId)); 
+            if (categoriaId !== null) params.append('id_categoria', String(categoriaId)); 
+            if (cabeloId !== null) params.append('id_tipo_cabelo', String(cabeloId)); 
+            if (peleId !== null) params.append('id_tipo_pele', String(peleId)); 
+            if (precoId !== null) params.append('id_preco', String(precoId));
+            
+            params.append('page', String(pageNum));
+            params.append('limit', '12');
+            
+            const url = `/api/produtos?${params.toString()}`; 
             const res = await fetch(url); 
             
             if (!res.ok) {
@@ -246,19 +357,39 @@ const ProdutosGrid: React.FC<{ tagId: number | null }> = ({ tagId }) => {
                 return;
             }
             
-            const data: ProdutoData[] = await res.json();
-            setProdutos(data);
+            const data = await res.json();
+            
+            // ✅ Verifica se a resposta tem o formato novo (com paginação) ou antigo (array direto)
+            const produtosArray = Array.isArray(data) ? data : data.produtos || [];
+            const paginationData = data.pagination || { hasMore: false };
+            
+            if (append) {
+                setProdutos(prev => [...prev, ...produtosArray]);
+            } else {
+                setProdutos(produtosArray);
+            }
+            
+            setHasMore(paginationData.hasMore);
 
         } catch (e) {
             setErro('Erro de conexão com o servidor.');
         } finally {
             setLoading(false);
+            setLoadingMore(false);
         }
-    }, [tagId]); 
+    }, [tagId, categoriaId, cabeloId, peleId, precoId]);
 
+    // Resetar página quando filtros mudarem
     useEffect(() => {
-        fetchProdutos();
-    }, [fetchProdutos]); 
+        setPage(1);
+        fetchProdutos(1, false);
+    }, [tagId, categoriaId, cabeloId, peleId, precoId]);
+
+    const handleLoadMore = () => {
+        const nextPage = page + 1;
+        setPage(nextPage);
+        fetchProdutos(nextPage, true);
+    };
 
     if (loading) {
         return <div className="loading-message">Carregando produtos...</div>;
@@ -268,53 +399,64 @@ const ProdutosGrid: React.FC<{ tagId: number | null }> = ({ tagId }) => {
         return <div className="error-message">{erro}</div>;
     }
     
-    const cartoes = produtos.map((produto) => (
-        <ProdutoCard key={produto.id_produto} produto={produto} />
-    ));
-
     return (
-        <section id="produtos-grid-section">
-            <div className="produtos-grid-wrapper">
-                {cartoes.length > 0 ? cartoes : <p>Nenhum produto encontrado na categoria selecionada.</p>}
-            </div>
-        </section>
-    );
-};
-
-const LoadMoreButton: React.FC = () => {
-    return (
-        <div className="load-more-container">
-            <button className="load-more-button">
-                CARREGAR MAIS PRODUTOS
-            </button>
-        </div>
+        <>
+            <section id="produtos-grid-section">
+                <div className="produtos-grid-wrapper">
+                    {produtos.length > 0 ? (
+                        produtos.map((produto) => (
+                            <ProdutoCard key={produto.id_produto} produto={produto} />
+                        ))
+                    ) : (
+                        <p>Nenhum produto encontrado com os filtros selecionados.</p>
+                    )}
+                </div>
+            </section>
+            
+            {hasMore && (
+                <div className="load-more-container">
+                    <button 
+                        className="load-more-button"
+                        onClick={handleLoadMore}
+                        disabled={loadingMore}
+                    >
+                        {loadingMore ? 'CARREGANDO...' : 'CARREGAR MAIS PRODUTOS'}
+                    </button>
+                </div>
+            )}
+        </>
     );
 };
 
 // -----------------------------------------------------
-// Componente principal
+// Componente principal (ProdutosPage)
 // -----------------------------------------------------
 export default function ProdutosPage() {
     const [tagFiltroId, setTagFiltroId] = useState<number | null>(null);
+    const [categoriaFiltroId, setCategoriaFiltroId] = useState<number | null>(null);
+    const [cabeloFiltroId, setCabeloFiltroId] = useState<number | null>(null);
+    const [peleFiltroId, setPeleFiltroId] = useState<number | null>(null);
+    const [precoFiltroId, setPrecoFiltroId] = useState<number | null>(null);
+
 
     return (
         <>
-            
+            <Header />
             <main>
                 <h1>PRODUTOS RECOMENDADOS</h1>
                 <p>Encontre itens de cuidado para cabelo, pele <br></br> e muito mais.</p>
             </main>
 
             <section id="s1">
-                <img src="images/produtos/marca (1).png" alt="SalonLine" />
-                <img src="images/produtos/marca (2).png" alt="Kolene" />
-                <img src="images/produtos/marca (3).png" alt="WidiCare" />
-                <img src="images/produtos/marca (4).png" alt="Nivea" />
-                <img src="images/produtos/marca (5).png" alt="Principia" />
+                <Image src="/images/produtos/marca (1).png" alt="SalonLine" width={120} height={60} />
+                <Image src="/images/produtos/marca (2).png" alt="Kolene" width={120} height={60} />
+                <Image src="/images/produtos/marca (3).png" alt="WidiCare" width={120} height={60} />
+                <Image src="/images/produtos/marca (4).png" alt="Nivea" width={120} height={60} />
+                <Image src="/images/produtos/marca (5).png" alt="Principia" width={120} height={60} />
             </section>
 
             <figure>
-                <img src="images/produtos/quiz.png" alt="quiz-cronograma-capilar" />
+                <Image src="/images/produtos/quiz.png" alt="quiz-cronograma-capilar" width={400} height={120} />
             </figure>
 
             <section id="s2">
@@ -323,30 +465,45 @@ export default function ProdutosPage() {
                     <div id="linha"></div>
                 </div>
                 <div className="imagens-s2">
-                    <img src="images/produtos/cabelo (1).png" alt="Ondulados" />
-                    <img src="images/produtos/cabelo (2).png" alt="Cacheados" />
-                    <img src="images/produtos/cabelo (3).png" alt="Crespo" />
-                    <img src="images/produtos/cabelo (4).png" alt="C/Química" />
+                    <Image src="/images/produtos/cabelo (1).png" alt="Ondulados" width={100} height={100} />
+                    <Image src="/images/produtos/cabelo (2).png" alt="Cacheados" width={100} height={100} />
+                    <Image src="/images/produtos/cabelo (3).png" alt="Crespo" width={100} height={100} />
+                    <Image src="/images/produtos/cabelo (4).png" alt="C/Química" width={100} height={100} />
                 </div>
                 <div className="linha-texto">
                     <div id="linha2"></div>
                     <h1>TIPOS DE PELE</h1>
                 </div>
                 <div className="imagens-s2">
-                    <img src="images/produtos/pele (1).png" alt="" />
-                    <img src="images/produtos/pele (2).png" alt="" />
-                    <img src="images/produtos/pele (3).png" alt="" />
-                    <img src="images/produtos/pele (4).png" alt="" />
+                    <Image src="/images/produtos/pele (1).png" alt="" width={100} height={100} />
+                    <Image src="/images/produtos/pele (2).png" alt="" width={100} height={100} />
+                    <Image src="/images/produtos/pele (3).png" alt="" width={100} height={100} />
+                    <Image src="/images/produtos/pele (4).png" alt="" width={100} height={100} />
                 </div>
             </section>
+            
+            <FiltrosBarra 
+                currentTagId={tagFiltroId} 
+                onTagChange={setTagFiltroId}
+                currentCategoriaId={categoriaFiltroId}
+                onCategoriaChange={setCategoriaFiltroId}
+                currentCabeloId={cabeloFiltroId}
+                onCabeloChange={setCabeloFiltroId}
+                currentPeleId={peleFiltroId}
+                onPeleChange={setPeleFiltroId}
+                currentPrecoId={precoFiltroId}
+                onPrecoChange={setPrecoFiltroId}
+            />
+            
+            <ProdutosGrid 
+                tagId={tagFiltroId} 
+                categoriaId={categoriaFiltroId}
+                cabeloId={cabeloFiltroId}
+                peleId={peleFiltroId}
+                precoId={precoFiltroId}
+            />
 
-            <FiltrosBarra currentTagId={tagFiltroId} onTagChange={setTagFiltroId} />
-            
-            <ProdutosGrid tagId={tagFiltroId} />
-
-            <LoadMoreButton />
-            
-            
+            <Footer />
         </>
     );
 }
