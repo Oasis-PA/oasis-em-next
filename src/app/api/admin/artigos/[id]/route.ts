@@ -38,15 +38,7 @@ export async function PUT(
   try {
     const { id } = await params;
     const body = await request.json();
-    const {
-      titulo,
-      slug,
-      conteudo,
-      resumo,
-      status,
-      dataPublicacao,
-      tags
-    } = body;
+    const { titulo, slug, conteudo } = body;
 
     // Verifica se o artigo existe
     const artigoExiste = await prisma.artigo.findUnique({
@@ -74,12 +66,6 @@ export async function PUT(
       }
     }
 
-    // Se mudar para publicado sem data, define agora
-    let novaDataPublicacao = dataPublicacao ? new Date(dataPublicacao) : artigoExiste.dataPublicacao;
-    if (status === 'publicado' && !novaDataPublicacao) {
-      novaDataPublicacao = new Date();
-    }
-
     // Atualiza o artigo
     const artigoAtualizado = await prisma.artigo.update({
       where: { id: parseInt(id) },
@@ -87,10 +73,6 @@ export async function PUT(
         titulo,
         slug,
         conteudo,
-        resumo: resumo || null,
-        status: status || 'rascunho',
-        dataPublicacao: novaDataPublicacao,
-        tags: tags || [],
       }
     });
 

@@ -2,30 +2,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-// GET - Listar artigos (com filtro opcional por status)
-export async function GET(request: NextRequest) {
+// GET - Listar artigos
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url);
-    const status = searchParams.get('status');
-
-    const where: any = {};
-    if (status && status !== 'todos') {
-      where.status = status;
-    }
-
     const artigos = await prisma.artigo.findMany({
-      where,
-      select: {
-        id: true,
-        titulo: true,
-        slug: true,
-        status: true,
-        dataPublicacao: true,
-        tags: true,
-        createdAt: true,
-      },
       orderBy: {
-        createdAt: 'desc'
+        criadoEm: 'desc'
       }
     });
 
@@ -43,15 +25,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { 
-      titulo, 
-      slug, 
-      conteudo, 
-      resumo,
-      status,
-      dataPublicacao,
-      tags 
-    } = body;
+    const { titulo, slug, conteudo } = body;
 
     // Validações
     if (!titulo || !slug || !conteudo) {
@@ -73,24 +47,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Se agendado, valida data
-    if (status === 'agendado' && !dataPublicacao) {
-      return NextResponse.json(
-        { error: 'Data de publicação é obrigatória para artigos agendados' },
-        { status: 400 }
-      );
-    }
-
     // Cria o artigo
     const novoArtigo = await prisma.artigo.create({
       data: {
         titulo,
         slug,
         conteudo,
-        resumo: resumo || null,
-        status: status || 'rascunho',
-        dataPublicacao: dataPublicacao ? new Date(dataPublicacao) : null,
-        tags: tags || [],
       }
     });
 
