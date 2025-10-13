@@ -4,7 +4,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
-import '@/styles/admin-complete.css';
 
 export default function NovoArtigoPage() {
   const router = useRouter();
