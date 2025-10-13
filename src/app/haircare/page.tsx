@@ -10,8 +10,9 @@ const HairCarePage: React.FC = () => {
     <main>
       <section className="retangulo" id="barra">
         <article>
-          <img src="/images/hair-care/image 47.png" alt="" id="img47" />
           <h1 id="asM">AS MELHORES DICAS PARA O SEU CABELO</h1>
+          <img src="/images/hair-care/image 47.png" alt="" id="img47" />
+          
         </article>
         <aside className="grupo-retangulos">
           <div className="retangulo-item">cortes</div>
