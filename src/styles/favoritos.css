@@ -588,19 +588,22 @@ main {
 }
 
 @media (max-width: 900px) {
-    /* Torna o grid de mosaico uma única coluna em telas menores */
+    /* MODIFICADO: Torna o grid de mosaico em 2 colunas */
     #section-artigos-s2 {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto; /* Altura automática */
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: auto;
         height: auto;
     }
     .artigo-s2-item {
-        height: 350px; /* Altura fixa para cada item na coluna única */
+        height: 350px; 
     }
-    /* Reseta as posições específicas do grid */
-    #artigo1-s2, #artigo2-s2, #artigo3-s2, #artigo4-s2, #artigo5-s2 {
+    #artigo1-s2, #artigo2-s2, #artigo3-s2, #artigo4-s2 {
         grid-column: auto;
         grid-row: auto;
+    }
+    /* NOVO: Faz o quinto artigo ocupar a largura total */
+    #artigo5-s2 {
+        grid-column: 1 / -1;
     }
     .card-marrom #img-marrom {
         width: 250px;
@@ -630,6 +633,15 @@ main {
 
     .card-marrom #img-marrom {
         width: 250px;
+    }
+    
+    /* Regra para quebrar "Mais Produtos" em 2 colunas */
+    #container-maisprodutos {
+        gap: 1rem;
+    }
+    .card-maisprodutos {
+        width: calc(50% - 0.5rem); 
+        max-width: none; 
     }
 }
 
