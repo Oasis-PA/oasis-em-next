@@ -14,8 +14,6 @@
     "test:db": "dotenv -e .env.test -- node --loader ts-node/esm prisma/test-connection.ts",
     "test:api": "jest tests/api",
     "test:integration": "jest tests/integration",
-    "test:validations": "jest tests/validations",
-    "test:validations:manual": "tsx scripts/test-validations.ts",
     "test:specific": "jest --testNamePattern",
     "test:setup": "npm run test:db:reset && npm run test:db:push",
     "dev": "next dev --turbopack",
