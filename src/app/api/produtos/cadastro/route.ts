@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // Cria o produto primeiro
+    // Cria o produto com url_imagem e url_loja direto
     const novoProduto = await prisma.produto.create({
       data: {
         nome,
@@ -59,34 +59,13 @@ export async function POST(req: Request) {
         preco: parseFloat(preco),
         id_categoria: parseInt(id_categoria, 10),
         id_tag: id_tag ? parseInt(id_tag, 10) : null,
+        url_imagem: url_imagem || null,
+        url_loja: url_loja || null,
       },
       include: {
         tag: true,
       }
     });
-
-    // Se foi fornecida uma imagem, cria na tabela ImagemProduto
-    if (url_imagem) {
-      await prisma.imagemProduto.create({
-        data: {
-          id_produto: novoProduto.id_produto,
-          url_imagem: url_imagem,
-          ordem: 1,
-        }
-      });
-    }
-
-    // Se foi fornecido link de loja, cria na tabela LinkLoja
-    if (url_loja && id_loja) {
-      await prisma.linkLoja.create({
-        data: {
-          id_produto: novoProduto.id_produto,
-          id_loja: parseInt(id_loja, 10),
-          preco: parseFloat(preco),
-          url_compra: url_loja,
-        }
-      });
-    }
 
     return NextResponse.json({
       message: 'Produto cadastrado com sucesso!',
