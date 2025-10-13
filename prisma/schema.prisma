@@ -56,23 +56,23 @@ model Categoria {
 }
 
 model Produto {
-  id_produto     Int             @id @default(autoincrement())
-  nome           String
-  marca          String
-  preco          Float
-  data_cadastro  DateTime        @default(now())
-  id_categoria   Int
-  descricao      String?
-  id_tag         Int?
-  id_tipo_pele   Int?
-  id_tipo_cabelo Int?
-  avaliacoes     Avaliacao[]
-  favoritos      Favorito[]
-  ImagemProduto  ImagemProduto[]
-  LinkLoja       LinkLoja[]
-  categoria      Categoria       @relation(fields: [id_categoria], references: [id_categoria])
-  tag            Tag?            @relation(fields: [id_tag], references: [id_tag], onDelete: NoAction, onUpdate: NoAction)
-  tipo_cabelo    TipoCabelo?     @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo], onDelete: NoAction, onUpdate: NoAction)
+  id_produto     Int         @id @default(autoincrement())
+  nome           String
+  marca          String
+  preco          Float
+  data_cadastro  DateTime    @default(now())
+  id_categoria   Int
+  descricao      String?
+  url_imagem     String?     @db.VarChar
+  url_loja       String?     @db.VarChar
+  id_tag         Int?
+  id_tipo_pele   Int?
+  id_tipo_cabelo Int?
+  avaliacoes     Avaliacao[]
+  favoritos      Favorito[]
+  categoria      Categoria   @relation(fields: [id_categoria], references: [id_categoria])
+  tag            Tag?        @relation(fields: [id_tag], references: [id_tag], onDelete: NoAction, onUpdate: NoAction)
+  tipo_cabelo    TipoCabelo? @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model Avaliacao {
@@ -127,39 +127,15 @@ model TipoPele {
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model Empresas {
-  id                   Int      @id @default(autoincrement()) @db.SmallInt
-  nome_sobrenome       String
-  email_corporativo    String   @unique @default("")
-  telefone             Decimal  @db.Decimal
-  empresa_representada String   @db.VarChar
-  total_colaboradores  Int
-  cargo                String
-  motivo_contato       String
-  data_solicitacao     DateTime @db.Timestamptz(6)
-  status               String
+  id                   Int      @id @default(autoincrement()) @db.SmallInt
+  nome_sobrenome       String
+  email_corporativo    String   @unique @default("")
+  telefone             Decimal  @db.Decimal
+  empresa_representada String   @db.VarChar
+  total_colaboradores  Int
+  cargo                String
+  motivo_contato       String
+  data_solicitacao     DateTime @db.Timestamptz(6)
+  status               String
 }
-
-model ImagemProduto {
-  id_imagem_produto Int     @id @default(autoincrement())
-  id_produto        Int
-  url_imagem        String  @db.Text
-  ordem             Int?
-  Produto           Produto @relation(fields: [id_produto], references: [id_produto], onDelete: Cascade, onUpdate: NoAction, map: "fk_produto_imagem")
-}
-
-model LinkLoja {
-  id_link_loja Int     @id @default(autoincrement())
-  id_produto   Int
-  id_loja      Int
-  preco        Float   @db.Real
-  url_compra   String  @db.VarChar(255)
-  Loja         Loja    @relation(fields: [id_loja], references: [id_loja], onUpdate: NoAction, map: "fk_loja_link")
-  Produto      Produto @relation(fields: [id_produto], references: [id_produto], onDelete: Cascade, onUpdate: NoAction, map: "fk_produto_link")
-}
-
-model Loja {
-  id_loja  Int        @id @default(autoincrement())
-  nome     String     @unique @db.VarChar(255)
-  url_logo String?    @db.VarChar(255)
-  LinkLoja LinkLoja[]
-}
+ atualiza o rpisma ai
