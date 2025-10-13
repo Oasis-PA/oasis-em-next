@@ -32,13 +32,12 @@ main {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
-    padding: 1rem;
 }
 
 #imagens-artigos {
     width: 100%;
     max-width: 599px; /* Mantém a largura máxima do design original */
-    height: 60vh; /* Altura relativa para melhor adaptação */
+    height: 117vh; /* Altura relativa para melhor adaptação */
     min-height: 400px;
     margin-right: 0; /* Removido para centralizar em telas menores */
     background-image: url(../../public/images/favoritos/imagem-principal.png);
@@ -72,6 +71,7 @@ main {
     font-family: 'PLAYFUL RUNWAY';
     font-weight: 400;
     font-size: clamp(3.5rem, 10vw, 6.875rem); /* Fonte fluida */
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #p1 {
@@ -80,7 +80,7 @@ main {
     font-family: 'Louis George Cafe';
     font-weight: 400;
     font-size: clamp(1rem, 2.5vw, 1.25rem); /* Fonte fluida */
-    margin-top: 1rem;
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #h1-artigos {
@@ -88,6 +88,8 @@ main {
     font-weight: 400;
     font-size: clamp(2rem, 5vw, 2.8rem);
     margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #section-imagens-artigos {
@@ -575,7 +577,7 @@ main {
     #imagens-artigos {
         margin-right: 0;
         margin-bottom: 2rem;
-        height: 50vh;
+        height: 40vh;
     }
 }
 
