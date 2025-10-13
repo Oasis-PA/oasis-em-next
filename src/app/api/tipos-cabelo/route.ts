@@ -1,5 +1,5 @@
-// Rota: /api/tags
-// Tabela Supabase: public.Tag (para filtros de produto: condicionador, shampoo, etc.)
+// Rota: /api/tipos-cabelo
+// Tabela Supabase: public.TipoCabelo (Liso, Crespo, etc.)
 
 import { createClient } from '@supabase/supabase-js'; 
 import { NextResponse } from 'next/server';
@@ -11,13 +11,12 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function GET() {
     const { data, error } = await supabase
-        .from('Tag') 
-        .select('id_tag, nome'); // Colunas da sua tabela Tag
+        .from('TipoCabelo') 
+        .select('id_tipo_cabelo, nome'); // Colunas da sua tabela TipoCabelo
 
     if (error) {
-        console.error('Erro ao buscar Tags:', error);
+        console.error('Erro ao buscar Tipos de Cabelo:', error);
         return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
     }
-    // Retorna o formato esperado: [{ id_tag: 1, nome: 'condicionador' }, ...]
     return NextResponse.json(data);
 }
