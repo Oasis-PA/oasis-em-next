@@ -13,7 +13,6 @@ body {
     display: flex;
     width: 100%;
     height: auto;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
 }
@@ -29,7 +28,6 @@ main {
     width: 100%;
     max-width: 1800px; /* Limita a largura máxima para telas muito grandes */
     height: auto;
-    justify-content: center;
     align-items: flex-start; /* MODIFICADO: Alinha os itens ao topo para melhor alinhamento */
     flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
 }
@@ -569,9 +567,14 @@ main {
 
 /* ---- MEDIA QUERIES PARA AJUSTES FINOS ---- */
 @media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
+    
     main {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         padding: 0; /* MODIFICADO: Remove o padding para a imagem ocupar a tela toda */
     }
     #imagens-artigos {
@@ -589,6 +592,14 @@ main {
 
 @media (max-width: 900px) {
     /* MODIFICADO: Torna o grid de mosaico em 2 colunas */
+     body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
     #section-artigos-s2 {
         grid-template-columns: repeat(2, 1fr); 
         grid-template-rows: auto;
@@ -611,6 +622,14 @@ main {
 }
 
 @media (max-width: 768px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
     .card-marrom {
         flex-direction: column;
         text-align: center;
@@ -646,6 +665,14 @@ main {
 }
 
 @media (max-width: 480px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
     .card-marrom #img-marrom {
         width: 250px;
     }
@@ -655,7 +682,13 @@ main {
 }
 
 @media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
 
+    main {
+        justify-content: center;
+    }
     #section-imagens-artigos {
         flex-wrap: nowrap; 
         justify-content: flex-start;
@@ -668,5 +701,15 @@ main {
     
     #section-imagens-artigos > a > div {
         flex-shrink: 0; 
+    }
+}
+
+@media (max-width: 1650px) {
+         body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
     }
 }
