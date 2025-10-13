@@ -55,7 +55,8 @@
 
 .sec2-imagem img {
     margin-top: 6%;
-    max-width: 450px; 
+    max-width: 450px;
+    min-width: 200px;
     width: 100%;
 }  
 
@@ -117,6 +118,7 @@
 }
 @media (max-width: 900px) {
     .sec1-texto {
+        
         justify-content: center;
         text-align: center;
         padding: 0 1rem;
