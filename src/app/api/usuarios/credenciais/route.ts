@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 
 export async function PATCH(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
+  const token = req.cookies.get("auth-token")?.value;
   if (!token) return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
 
   try {

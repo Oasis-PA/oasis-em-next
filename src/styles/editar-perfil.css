@@ -10,8 +10,8 @@ main * {
 
 :root {
     --body-back: #ffffff;
-    --corpo-texto: #000000; 
-    --header-color: #000000; 
+    --corpo-texto: #000000;
+    --header-color: #000000;
     --shadow: #f8f4f4;
     --label: #000000;
     --footer: #ffffff;
@@ -26,7 +26,7 @@ main * {
 :root.dark {
     --body-back: #0e0e0e;
     --shadow: #161616;
-    --corpo-texto: #ffffff; 
+    --corpo-texto: #ffffff;
     --footer: #000000;
     --linha: rgba(94, 92, 92, 0.6);
 }
@@ -559,7 +559,7 @@ button[type="button"]:not(.btn-excluir-confirmar):hover {
     align-items: center;
     justify-content: center;
     gap: 20px;
-  
+
     z-index: 100;
 }
 

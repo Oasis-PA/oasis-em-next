@@ -6,7 +6,10 @@
       "Bash(git config:*)",
       "Bash(git mv:*)",
       "Bash(git rm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npx prisma migrate dev:*)",
+      "Bash(npx prisma:*)",
+      "Bash(dir /s /b srcappapi*.ts)"
     ],
     "deny": [],
     "ask": []

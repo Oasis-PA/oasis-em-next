@@ -13,7 +13,7 @@ interface TokenPayload {
 export async function GET(req: NextRequest) {
   try {
     // 1. Obter o token do cookie da requisição
-    const token = req.cookies.get("token")?.value;
+    const token = req.cookies.get("auth-token")?.value;
 
     if (!token) {
       // Retorna erro se o token não for encontrado

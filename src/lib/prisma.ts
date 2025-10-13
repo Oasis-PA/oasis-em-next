@@ -13,7 +13,13 @@ export const prisma =
         ? ["query", "error", "warn"]
         : ["error"],
     errorFormat: "pretty",
-    datasourceUrl: process.env.DATABASE_URL,
+    datasources: {
+      db: {
+        url: process.env.DATABASE_URL
+          ? `${process.env.DATABASE_URL}${process.env.DATABASE_URL.includes('?') ? '&' : '?'}pgbouncer=true&connect_timeout=15`
+          : undefined,
+      },
+    },
   });
 
 if (process.env.NODE_ENV !== "production") {
