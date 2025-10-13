@@ -2,115 +2,26 @@ main * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
-
+    box-sizing: border-box;
 }
 
 body {
     display: flex;
     width: 100%;
-    height: 100%;
-    background-color: var(--body-back);
+    height: auto;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
 
-html, body {
-    width: 100%;
+html {
     overflow-x: hidden;
-}
-
-:root {
-    --body-back: #ffffff;
-    --corpo-texto: #000000; 
-    --header-color: #000000; 
-    --back-header: #fff;
-    --shadow: #f8f4f4;
-    --label: #000000;
-    --footer: #ffffff;
-}
-.dark:root{
-    --body-back: #0e0e0e;
-    --header-color: #ffffff; 
-    --back-header: #000000;
-    --corpo-texto: #ffffff ; 
-    --footer: #000000;
-    --shadow: #161616;
-    --label: #f3c11e;
-}
-.check{
-    opacity: 0;
-    position: absolute;
-}
-.label{
-    margin-top: -158px;
-    margin-bottom: 120px;
-    margin-left: 92%;
-
-    background-color: var(--label);
-    border-radius: 29px;
-    border: 0.1px solid #000000;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-around;
-    width: 3%;
-    height: 29px;
-
-    transform: scale(1.1);
-}
-.bolinha > img {
-    
-    position: absolute;
-    right: 0;
-} 
-
-#sol{
-    margin-left: 10px;
-}
-
-#lua{
-    margin-left: 27.2px;
-    margin-top: 1px;
-    width: 26.9px;
-    height: 26.9px;
-}
-
-.imagem {
-    width: 27.6px;
-    height: 27.6px;
-    position: absolute;
-    top: 0;
-    left: -9px;
-}
-
-.check:checked ~ .bolinha {
-    transform: translateX(3px);
-    margin-top: -30px; 
-}
-
-iframe
-{
-    width:1920px;
-    height:200px;
-} 
-
-footer {
-    display: flex;
-}
-
-footer iframe {
-    width: 1920px;
-    height: 430px;
 }
 
 main {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: auto;
     justify-content: center;
     align-items: center;
 }
@@ -118,8 +29,23 @@ main {
 #imagens-artigos {
     width: 599px;
     height: 1189px;
-    float: left;
     margin-right: 46px;
+    background-image: url(../../public/images/favoritos/imagem-principal.png);
+    display: flex;
+    align-items: end;
+    padding: clamp(0.875rem, 1vw, 1rem);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#imagens-artigos h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 #section-favoritos {
@@ -152,26 +78,75 @@ main {
 #section-imagens-artigos {
     display: flex;
     flex-wrap: wrap;
-    width: 1250px;
+    width: 1350px;
 }
 
-#section-imagens-artigos img {
+#section-imagens-artigos div {
     width: 327px;
     height: 215px;
     margin: 44px 60px 0px 0px;
     object-fit: cover;
 }
 
-#p2 {
-    font-family: 'Louis George Cafe';
-    font-weight: 700;
-    font-size: 20px;
-    margin-left: 927px;
-    margin-top: 17px;
+#artigo1 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo2 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo3 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo4 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo5 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo6 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo7 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo8 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo9 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+
+#artigo1, #artigo2, #artigo3, #artigo4, #artigo5, #artigo6, #artigo7, #artigo8, #artigo9 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    padding: clamp(0.875rem, 1vw, 1rem);
+}
+
+#section-imagens-artigos div h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2.8125rem;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
 }
 
 #section-artigo {
     margin-top: 145px;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    min-height: 36.6vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../public/images/favoritos/imagem-artigo.png);
+    flex-direction: column;
+}
+
+#section-artigo div {
+    margin-top: 8rem;
+    margin-left: clamp(5rem, 11.5vw, 11.5rem);
+}
+
+#section-artigo h1 {
+    font-family: "The Next Font"; 
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 400;
+    margin: 0;
+}
+
+#section-artigo h4 {
+    font-family: "Louis George Cafe";
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
 }
 
 #button-conheca {
@@ -184,10 +159,8 @@ main {
     font-size: 20px;
     width: 185px;
     height: 49px;
-    position: absolute;
-    left: 160px;
-    top: 2035px;
     cursor: pointer;
+    margin-top: clamp(2rem, 3vw, 3rem);
 }
 
 #button-conheca:hover {
@@ -208,65 +181,109 @@ main {
 
 #section-artigos {
     display: flex;
-    margin-top: 145px;
-    gap: 53px;
+    flex-direction: row;
+    flex-wrap: wrap; /* RESPONSIVO: Permite quebrar linha */
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 3.3rem);
+    width: 100%;
+    padding: clamp(2rem, 8vw, 8rem) 1rem;
+}
+
+.categ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categ > img {
+    width: clamp(85px, 13vw, 220px); 
+    height: auto;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+}
+
+.categ > h2 {
+    font-family: 'The Next Font';
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+    white-space: nowrap;
+    font-weight: 400;
 }
 
 #section-imagem-marrom {
     display: flex;
-    margin-top: 100px;
-    gap: 100px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(2rem, 1rem + 4vw, 5.86rem);
+    width: 100%;
 }
 
-#button-conheca1 {
+#section-imagem-marrom div {
+    background: #5E332C;
+    width: 24.8vw;
+    height: auto;
+    border-radius: 1.875rem;
+    display: flex;
+    flex-direction: row;
+}
+
+#img-marrom {
+    width: 11.25vw;
+    height: 12.75vw;
+    padding: 1.5rem;
+}
+
+#section-imagem-marrom > div > div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+#section-imagem-marrom > div > div > img {
+    width: 1.75vw;
+    height: 1.75vw;
+    align-self: end;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#section-imagem-marrom > div > div > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 2.5rem;
+}
+
+#section-imagem-marrom > div > div > p {
+    color: #FFF;
+    font-family: "Louis George Cafe Light";
+    font-size: 1.25rem;
+    font-weight: 100;
+    line-height: normal;
+    margin: 0;
+    text-align: justify;
+    max-width: 12rem;
+}
+
+#section-imagem-marrom > div > div > button {
     border: none;
     color: white;
     font-family: 'The Next Font';
     font-weight: 400;
     font-size: 15px;
-    position: absolute;
     width: 142px;
     height: 37.61px;
-    left: 375px;
-    top: 3025px;
     background: #F2A518;
     border-radius: 2px;
     cursor: pointer;
+    margin-top: 1.75rem;
 }
 
-#button-conheca2 {
-    border: none;
-    color: white;
-    font-family: 'The Next Font';
-    font-weight: 400;
-    font-size: 15px;
-    position: absolute;
-    width: 142px;
-    height: 37.61px;
-    left: 955px;
-    top: 3025px;
-    background: #F2A518;
-    border-radius: 2px;
-    cursor: pointer;
-}
-
-#button-conheca3 {
-    border: none;
-    color: white;
-    font-family: 'The Next Font';
-    font-weight: 400;
-    font-size: 15px;
-    position: absolute;
-    width: 142px;
-    height: 37.61px;
-    left: 1535px;
-    top: 3025px;
-    background: #F2A518;
-    border-radius: 2px;
-    cursor: pointer;
-}
-
-#button-conheca1:hover, #button-conheca2:hover, #button-conheca3:hover {
+#section-imagem-marrom > div > div > button:hover {
     background-color: rgba(255, 255, 255, 1.0);
     background: radial-gradient(
         65% 65% at 51% 37%,
@@ -276,12 +293,19 @@ main {
     box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
 }
 
-#button-conheca1:active, #button-conheca2:active, #button-conheca3:active {
+#section-imagem-marrom > div > div > button:active {
         border: 1px solid #4D0626;
         background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
     }
-    
+
+#section-salvos-recen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #h1-salvos {
     font-family: 'PLAYFUL RUNWAY';
     font-weight: 400;
@@ -295,8 +319,55 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 3.75rem;
     margin-top: 55px;
+}
+
+#section-salvos > div {
+    display: flex;
+    flex-direction: column;
+    width: 14vw;
+    height: auto;
+    border: 3px solid #939191;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#img-fav {
+    width: 1.25vw;
+    height: 1.25vw;
+    padding: 0.5rem;
+    align-self: end;
+    cursor: pointer;
+}
+
+#img-prod {
+    width: 12vw;
+    height: 12.4vw;
+}
+
+#section-salvos > div > h1 {
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: normal;
+    padding-left: 1.1rem;
+    padding-top: 1rem;
+    align-self: start;
+}
+
+#section-salvos > div > p {
+    font-family: "Louis George Cafe Light";
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    text-align: justify;
+    max-width: 14rem;
+    padding: 1.1rem;
+    align-self: start;
 }
 
 #p3 {
@@ -309,8 +380,8 @@ main {
 }
 
 #section-maisprodutos {
-    width: 1920px;
-    height: 740px;
+    width: 100%;
+    height: auto;
     background-color: black;
     margin-top: 90px;
 }
@@ -324,14 +395,65 @@ main {
     margin-top: 106px;
 }
 
-#section-maisprodutos div {
+#section-maisprodutos > div {
     display: flex;
-    gap: 87px;
+    align-items: center;
     justify-content: center;
-    margin-top: 80px;
+    gap: clamp(3rem, 5.5vw, 5.5rem);
+    margin-bottom: clamp(2.5rem, 5vw, 5rem);
 }
 
-#section-farm {
+#section-maisprodutos > div > div {
+    display: flex;
+    flex-direction: column;
+    width: 16.5vw;
+    height: auto;
+    background-color: #FFF;
+    border-radius: 1.875rem;
+}
+
+#img-produto {
+    width: 100%;
+    height: 11vw;
+    border-radius: 1.25rem;
+}
+
+#section-maisprodutos > div > div > h1 {
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    padding: 1rem;
+}
+
+#section-maisprodutos > div > div > p {
+    font-family: "Louis George Cafe";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: normal;
+    text-align: justify;
+    margin: 0;
+    padding-left: 1rem;
+    max-width: 16.5rem;
+}
+
+#section-maisprodutos > div > div > div {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+#section-maisprodutos > div > div > div > h2 {
+    font-family: "The Next Font";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: normal;
+    padding: 1rem;
+    margin: 0;
+}
+
+#section-artigos-s2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -340,18 +462,53 @@ main {
     margin-bottom: 143px;
 }
 
-#foto1 {
+#section-artigos-s2 > div {
+    display: flex;
+    align-items: end;
+}
+
+#section-artigos-s2 > div > h1 {
+    font-family: "The Next Font";
+    font-size: 2.8125rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    padding: 1rem;
+}
+
+#artigo1-s2 {
+    background-color: #939191;
+    width: 25vw;
+    height: 21.9vw;
+}
+
+#artigo2-s2 {
+    background-color: #939191;
+    width: 25vw;
+    height: 21.9vw;
+}
+
+#artigo3-s2 {
     grid-column-start: 1;
     grid-row-start: 2;
+    background-color: #939191;
+    width: 25vw;
+    height: 21.9vw;
 }
 
-#foto2 {
+#artigo4-s2 {
     grid-column-start: 2;
     grid-row-start: 2;
+    background-color: #939191;
+    width: 25vw;
+    height: 21.9vw;
 }
 
-#foto3 {
+#artigo5-s2 {
     grid-row: span 2 / span 2;
     grid-column-start: 3;
     grid-row-start: 1;
+    background-color: #939191;
+    width: 25vw;
+    height: 47.1vw;
 }
