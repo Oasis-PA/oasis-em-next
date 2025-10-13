@@ -30,14 +30,14 @@ main {
     max-width: 1800px; /* Limita a largura máxima para telas muito grandes */
     height: auto;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* MODIFICADO: Alinha os itens ao topo para melhor alinhamento */
     flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
 }
 
 #imagens-artigos {
     width: 100%;
     max-width: 599px; /* Mantém a largura máxima do design original */
-    height: 117vh; /* Altura relativa para melhor adaptação */
+    height: 100vh; /* MODIFICADO: Aumenta a altura para ocupar a tela inteira */
     min-height: 400px;
     margin-right: 0; /* Removido para centralizar em telas menores */
     background-image: url(../../public/images/favoritos/imagem-principal.png);
@@ -572,12 +572,18 @@ main {
     main {
         flex-direction: column;
         align-items: center;
-        padding: 1rem;
+        padding: 0; /* MODIFICADO: Remove o padding para a imagem ocupar a tela toda */
     }
     #imagens-artigos {
         margin-right: 0;
         margin-bottom: 2rem;
-        height: 40vh;
+        height: 60vh; /* MODIFICADO: Altura maior para ocupar mais espaço no mobile */
+        width: 100%; /* NOVO: Garante que ocupe a largura toda */
+        max-width: 100%; /* NOVO: Sobrescreve a largura máxima do desktop */
+    }
+    #section-favoritos {
+        width: 100%;
+        margin-top: 0; /* Reseta a margem para alinhar abaixo da imagem */
     }
 }
 
