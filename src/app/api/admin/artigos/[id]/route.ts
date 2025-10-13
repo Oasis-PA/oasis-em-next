@@ -5,11 +5,12 @@ import { prisma } from '@/lib/prisma';
 // GET - Buscar artigo específico
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const artigo = await prisma.artigo.findUnique({
-      where: { id: parseInt(params.id) }
+      where: { id: parseInt(id) }
     });
 
     if (!artigo) {
@@ -32,23 +33,24 @@ export async function GET(
 // PUT - Atualizar artigo
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
-    const { 
-      titulo, 
-      slug, 
-      conteudo, 
+    const {
+      titulo,
+      slug,
+      conteudo,
       resumo,
       status,
       dataPublicacao,
-      tags 
+      tags
     } = body;
 
     // Verifica se o artigo existe
     const artigoExiste = await prisma.artigo.findUnique({
-      where: { id: parseInt(params.id) }
+      where: { id: parseInt(id) }
     });
 
     if (!artigoExiste) {
@@ -80,7 +82,7 @@ export async function PUT(
 
     // Atualiza o artigo
     const artigoAtualizado = await prisma.artigo.update({
-      where: { id: parseInt(params.id) },
+      where: { id: parseInt(id) },
       data: {
         titulo,
         slug,
@@ -105,11 +107,12 @@ export async function PUT(
 // DELETE - Excluir artigo
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await prisma.artigo.delete({
-      where: { id: parseInt(params.id) }
+      where: { id: parseInt(id) }
     });
 
     return NextResponse.json({ message: 'Artigo excluído com sucesso' });
