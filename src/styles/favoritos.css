@@ -653,3 +653,20 @@ main {
         margin-left: clamp(1rem, 5vw, 2rem);
     }
 }
+
+@media (max-width: 1200px) {
+
+    #section-imagens-artigos {
+        flex-wrap: nowrap; 
+        justify-content: flex-start;
+        overflow-x: auto; 
+        padding: 1rem; 
+        
+        scrollbar-width: thin;
+        scrollbar-color: #939191 transparent;
+    }
+    
+    #section-imagens-artigos > a > div {
+        flex-shrink: 0; 
+    }
+}
