@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import  '@/styles/login-admin.css';
 
 
 export default function AdminLoginPage() {
@@ -92,10 +93,7 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        <div className="login-footer">
-          <small>Para fins de desenvolvimento:</small>
-          <code>Usuário: admin | Senha: admin123</code>
-        </div>
+       
       </div>
     </div>
   );

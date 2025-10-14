@@ -5,14 +5,23 @@ import '@/styles/artigo-geral.css';
 export const dynamic = 'force-dynamic';
 
 export default async function ArtigosListPage() {
+  const now = new Date();
+
   const artigos = await prisma.artigo.findMany({
+    where: {
+      OR: [
+        { status: "publicado" },
+        { status: "agendado", dataPublicacao: { lte: now } }, // só inclui agendados já vencidos
+      ],
+    },
     select: {
       id: true,
       titulo: true,
       slug: true,
       conteudo: true,
       criadoEm: true,
-      dataPublicacao: true
+      dataPublicacao: true,
+      status: true,
     },
     orderBy: { criadoEm: "desc" },
   });

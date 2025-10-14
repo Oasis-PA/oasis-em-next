@@ -1,13 +1,27 @@
 // src/app/admin/artigos/editar/[id]/page.tsx
 "use client";
-
-import { useState, useEffect } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import styles from "@/styles/artigo.module.css"; // <-- import
+import '@/styles/admin-artigos.css';
 
 export default function EditarArtigoPage() {
-  const router = useRouter();
   const params = useParams();
+  const router = useRouter();
+  const id = params?.id;
+  useEffect(() => {
+    if (!id) { router.push("/admin/artigos"); return; }
+    console.log("cliente id:", id);
+    fetch(`/api/admin/artigos/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error(`${res.status}`);
+        return res.json();
+      })
+      .then(data => { /* set state */ })
+      .catch(err => { console.error("fetch artigo:", err); router.push("/admin/artigos"); });
+  }, [id, router]);
+
   const [formData, setFormData] = useState({
     titulo: '',
     slug: '',
@@ -21,10 +35,6 @@ export default function EditarArtigoPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
-
-  useEffect(() => {
-    fetchArtigo();
-  }, []);
 
   const fetchArtigo = async () => {
     try {
@@ -62,6 +72,10 @@ export default function EditarArtigoPage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (params?.id) fetchArtigo();
+  }, [params?.id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -272,22 +286,37 @@ export default function EditarArtigoPage() {
               </div>
             ) : (
               <div className="preview-area">
-                <ReactMarkdown
-                  components={{
-                    p: ({ children, node }) => {
-                      const hasOnlyImage = node?.children?.length === 1 && 
-                                          node.children[0].type === 'element' && 
-                                          node.children[0].tagName === 'img';
-                      if (hasOnlyImage) return <>{children}</>;
-                      return <p>{children}</p>;
-                    },
-                    img: ({ src, alt }) => (
-                      <img src={src} alt={alt || ''} className="preview-img" />
-                    ),
-                  }}
-                >
-                  {formData.conteudo}
-                </ReactMarkdown>
+                <div className={styles.container}>
+                  <article className={styles.article}>
+                    <ReactMarkdown
+                      components={{
+                        h1: ({ children }) => <h1 className={styles.titulo}>{children}</h1>,
+                        h2: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
+                        h3: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
+                        p: ({ children, node }) => {
+                          const hasOnlyImage = node?.children?.length === 1 &&
+                                              node.children[0].type === 'element' &&
+                                              node.children[0].tagName === 'img';
+                          if (hasOnlyImage) return <>{children}</>;
+                          return <p className={styles.paragrafo}>{children}</p>;
+                        },
+                        ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
+                        li: ({ children }) => <li>{children}</li>,
+                        img: ({ src, alt, title }) => {
+                          // alt pode conter classe custom, mas módulo garante estilo base
+                          return (
+                            <figure className={styles.artigoFigura}>
+                              <img src={src} alt={alt || ''} className={styles.artigoImagem} />
+                              {title && <figcaption className={styles.figcaption}>{title}</figcaption>}
+                            </figure>
+                          );
+                        },
+                      }}
+                    >
+                      {formData.conteudo}
+                    </ReactMarkdown>
+                  </article>
+                </div>
               </div>
             )}
           </div>

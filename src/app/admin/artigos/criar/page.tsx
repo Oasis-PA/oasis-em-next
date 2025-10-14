@@ -4,6 +4,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import '@/styles/admin-artigos.css';
+import styles from "@/styles/artigo.module.css"; // <-- import
 
 export default function NovoArtigoPage() {
   const router = useRouter();
@@ -251,22 +253,31 @@ export default function NovoArtigoPage() {
             ) : (
               <div className="preview-area">
                 {formData.conteudo ? (
-                  <ReactMarkdown
-                    components={{
-                      p: ({ children, node }) => {
-                        const hasOnlyImage = node?.children?.length === 1 && 
-                                            node.children[0].type === 'element' && 
-                                            node.children[0].tagName === 'img';
-                        if (hasOnlyImage) return <>{children}</>;
-                        return <p>{children}</p>;
-                      },
-                      img: ({ src, alt }) => (
-                        <img src={src} alt={alt || ''} className="preview-img" />
-                      ),
-                    }}
-                  >
-                    {formData.conteudo}
-                  </ReactMarkdown>
+                  <div className={styles.container}>
+                    <article className={styles.article}>
+                      <ReactMarkdown
+                        components={{
+                          p: ({ children, node }) => {
+                            const hasOnlyImage = node?.children?.length === 1 && 
+                                                node.children[0].type === 'element' && 
+                                                node.children[0].tagName === 'img';
+                            if (hasOnlyImage) return <>{children}</>;
+                            return <p>{children}</p>;
+                          },
+                          img: ({ src, alt }) => (
+                            <figure className={styles.artigoFigura}>
+                              <img src={src} alt={alt || ''} className={styles.artigoImagem} />
+                            </figure>
+                          ),
+                          h1: ({ children }) => <h1 className={styles.titulo}>{children}</h1>,
+                          h2: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
+                          ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
+                        }}
+                      >
+                        {formData.conteudo}
+                      </ReactMarkdown>
+                    </article>
+                  </div>
                 ) : (
                   <p className="preview-empty">Nenhum conteúdo para visualizar</p>
                 )}

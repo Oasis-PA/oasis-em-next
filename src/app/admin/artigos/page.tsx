@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import '@/styles/admin-artigos.css';
 
 interface Artigo {
   id: number;
@@ -91,7 +92,7 @@ export default function AdminArtigosPage() {
       <header className="admin-header">
         <h1>📝 Artigos</h1>
         <div className="header-actions">
-          <Link href="/admin/artigos/novo" className="btn-primary">
+          <Link href="/admin/artigos/criar" className="btn-primary">
             + Novo Artigo
           </Link>
           <button onClick={handleLogout} className="btn-logout">

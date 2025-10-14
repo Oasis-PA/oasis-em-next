@@ -1,36 +1,32 @@
 // src/app/api/admin/artigos/[id]/route.ts
-import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
-// GET - Buscar artigo específico
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+// GET - Buscar artigo específico com tags
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const { id } = await params;
-    const artigo = await prisma.artigo.findUnique({
-      where: { id: parseInt(id) }
+    const { id } = params;
+    console.log("API GET artigo id =", id);
+
+    // Se id for só dígitos, trata como number; caso contrário, trata como slug/string
+    const isNumeric = /^\d+$/.test(id);
+    const artigo = await prisma.artigo.findFirst({
+      where: isNumeric ? { id: Number(id) } : { slug: id },
+      include: { ArtigoTag: true }, // ajuste conforme seu schema
     });
 
     if (!artigo) {
-      return NextResponse.json(
-        { error: 'Artigo não encontrado' },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: "Artigo não encontrado" }, { status: 404 });
     }
 
     return NextResponse.json(artigo);
   } catch (error) {
-    console.error('Erro ao buscar artigo:', error);
-    return NextResponse.json(
-      { error: 'Erro ao buscar artigo' },
-      { status: 500 }
-    );
+    console.error("Erro GET artigo:", error);
+    return NextResponse.json({ message: "Erro interno" }, { status: 500 });
   }
 }
 
-// PUT - Atualizar artigo
+// PUT - Atualizar artigo com tags
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -38,7 +34,16 @@ export async function PUT(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { titulo, slug, conteudo } = body;
+    const { 
+      titulo, 
+      slug, 
+      conteudo, 
+      resumo, 
+      imagemHeader, 
+      status, 
+      dataPublicacao,
+      tagIds // Array de IDs das tags
+    } = body;
 
     // Verifica se o artigo existe
     const artigoExiste = await prisma.artigo.findUnique({
@@ -66,17 +71,60 @@ export async function PUT(
       }
     }
 
-    // Atualiza o artigo
-    const artigoAtualizado = await prisma.artigo.update({
-      where: { id: parseInt(id) },
-      data: {
-        titulo,
-        slug,
-        conteudo,
+    // Atualiza o artigo e suas tags em uma transação
+    const artigoAtualizado = await prisma.$transaction(async (tx) => {
+      // Atualiza o artigo
+      const artigo = await tx.artigo.update({
+        where: { id: parseInt(id) },
+        data: {
+          titulo,
+          slug,
+          conteudo,
+          resumo,
+          imagemHeader,
+          status,
+          dataPublicacao: dataPublicacao ? new Date(dataPublicacao) : null,
+        }
+      });
+
+      // Se tagIds foi fornecido, atualiza as tags
+      if (Array.isArray(tagIds)) {
+        // Remove todas as tags antigas
+        await tx.artigoTag.deleteMany({
+          where: { artigoId: parseInt(id) }
+        });
+
+        // Adiciona as novas tags
+        if (tagIds.length > 0) {
+          await tx.artigoTag.createMany({
+            data: tagIds.map((tagId: number) => ({
+              artigoId: parseInt(id),
+              tagId: tagId
+            }))
+          });
+        }
       }
+
+      // Busca o artigo atualizado com tags
+      return await tx.artigo.findUnique({
+        where: { id: parseInt(id) },
+        include: {
+          ArtigoTag: {
+            include: {
+              Tag: true
+            }
+          }
+        }
+      });
     });
 
-    return NextResponse.json(artigoAtualizado);
+    // Formatar resposta
+    const resultado = {
+      ...artigoAtualizado,
+      tags: artigoAtualizado?.ArtigoTag.map(at => at.Tag) || []
+    };
+
+    return NextResponse.json(resultado);
   } catch (error) {
     console.error('Erro ao atualizar artigo:', error);
     return NextResponse.json(
@@ -86,13 +134,16 @@ export async function PUT(
   }
 }
 
-// DELETE - Excluir artigo
+// DELETE - Excluir artigo (e relacionamentos em cascata)
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
+    
+    // O Prisma remove automaticamente os relacionamentos ArtigoTag
+    // se você configurou onDelete: Cascade no schema
     await prisma.artigo.delete({
       where: { id: parseInt(id) }
     });
