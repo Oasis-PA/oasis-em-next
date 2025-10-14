@@ -17,7 +17,16 @@
       "Bash(for file in findFirstEmpresas.schema.ts findFirstOrThrowEmpresas.schema.ts findManyEmpresas.schema.ts findFirstTipoPele.schema.ts findFirstOrThrowTipoPele.schema.ts findManyTipoPele.schema.ts findFirstOrThrowArtigo.schema.ts findManyArtigo.schema.ts)",
       "Bash(do sed -i \"s/include: ,//g\" \"$file\")",
       "Bash(done)",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "WebFetch(domain:www.figma.com)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "WebFetch(domain:127.0.0.1)",
+      "mcp__figma__get_metadata",
+      "mcp__figma__get_screenshot",
+      "mcp__figma__get_code",
+      "Bash(git checkout:*)",
+      "Read(//c/Users/stefano/Downloads/**)"
     ],
     "deny": [],
     "ask": []
