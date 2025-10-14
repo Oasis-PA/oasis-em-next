@@ -73,6 +73,17 @@ export default function EditarArtigoPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+
+    // auto-gerar slug a partir do título se ainda não houver slug
+    if (name === 'titulo' && !formData.slug) {
+      const slug = value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+      setFormData(prev => ({ ...prev, slug }));
+    }
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, tipo: 'header' | 'conteudo') => {
@@ -86,9 +97,18 @@ export default function EditarArtigoPage() {
 
     setUploadingImage(true);
 
+    // exigir slug antes do upload (segurança/nomes consistentes)
+    const slug = formData.slug?.trim() || "";
+    if (!slug) {
+      setUploadingImage(false);
+      alert("Você deve definir o slug antes de enviar a imagem do header.");
+      return;
+    }
+
     const formDataImg = new FormData();
     formDataImg.append('file', file);
     formDataImg.append('tipo', tipo);
+    formDataImg.append('slug', slug);
 
     try {
       const response = await fetch('/api/admin/upload', {
@@ -98,7 +118,7 @@ export default function EditarArtigoPage() {
 
       if (response.ok) {
         const data = await response.json();
-        
+
         if (tipo === 'header') {
           setFormData(prev => ({ ...prev, imagemHeader: data.url }));
           alert('Imagem do header atualizada!');
@@ -111,8 +131,15 @@ export default function EditarArtigoPage() {
           alert('Imagem adicionada ao conteúdo!');
         }
       } else {
-        const error = await response.json();
-        alert(error.error || 'Erro ao fazer upload');
+        // tentar ler JSON de erro, fallback para texto
+        let errBody = '';
+        try {
+          const j = await response.json();
+          errBody = j.error || JSON.stringify(j);
+        } catch {
+          errBody = await response.text();
+        }
+        alert(errBody || 'Erro ao fazer upload');
       }
     } catch (error) {
       console.error('Erro:', error);
