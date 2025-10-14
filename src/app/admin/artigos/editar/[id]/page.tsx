@@ -3,30 +3,18 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import styles from "@/styles/artigo.module.css"; // <-- import
+import styles from "@/styles/artigo.module.css";
 import '@/styles/admin-artigos.css';
 
 export default function EditarArtigoPage() {
   const params = useParams();
   const router = useRouter();
-  const id = params?.id;
-  useEffect(() => {
-    if (!id) { router.push("/admin/artigos"); return; }
-    console.log("cliente id:", id);
-    fetch(`/api/admin/artigos/${id}`)
-      .then(res => {
-        if (!res.ok) throw new Error(`${res.status}`);
-        return res.json();
-      })
-      .then(data => { /* set state */ })
-      .catch(err => { console.error("fetch artigo:", err); router.push("/admin/artigos"); });
-  }, [id, router]);
-
   const [formData, setFormData] = useState({
     titulo: '',
     slug: '',
     conteudo: '',
     resumo: '',
+    imagemHeader: '',
     status: 'rascunho',
     dataPublicacao: '',
     horaPublicacao: '',
@@ -35,6 +23,15 @@ export default function EditarArtigoPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+
+  useEffect(() => {
+    if (!params?.id) {
+      router.push("/admin/artigos");
+      return;
+    }
+    fetchArtigo();
+  }, [params?.id]);
 
   const fetchArtigo = async () => {
     try {
@@ -42,7 +39,6 @@ export default function EditarArtigoPage() {
       if (response.ok) {
         const data = await response.json();
         
-        // Separa data e hora
         let dataStr = '';
         let horaStr = '';
         if (data.dataPublicacao) {
@@ -56,6 +52,7 @@ export default function EditarArtigoPage() {
           slug: data.slug,
           conteudo: data.conteudo,
           resumo: data.resumo || '',
+          imagemHeader: data.imagemHeader || '',
           status: data.status,
           dataPublicacao: dataStr,
           horaPublicacao: horaStr,
@@ -73,13 +70,56 @@ export default function EditarArtigoPage() {
     }
   };
 
-  useEffect(() => {
-    if (params?.id) fetchArtigo();
-  }, [params?.id]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, tipo: 'header' | 'conteudo') => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Imagem muito grande! Máximo 5MB');
+      return;
+    }
+
+    setUploadingImage(true);
+
+    const formDataImg = new FormData();
+    formDataImg.append('file', file);
+    formDataImg.append('tipo', tipo);
+
+    try {
+      const response = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formDataImg,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (tipo === 'header') {
+          setFormData(prev => ({ ...prev, imagemHeader: data.url }));
+          alert('Imagem do header atualizada!');
+        } else {
+          const markdownImg = `\n\n![Descrição da imagem](${data.url})\n\n`;
+          setFormData(prev => ({
+            ...prev,
+            conteudo: prev.conteudo + markdownImg
+          }));
+          alert('Imagem adicionada ao conteúdo!');
+        }
+      } else {
+        const error = await response.json();
+        alert(error.error || 'Erro ao fazer upload');
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('Erro ao fazer upload');
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,6 +143,7 @@ export default function EditarArtigoPage() {
         slug: formData.slug,
         conteudo: formData.conteudo,
         resumo: formData.resumo || null,
+        imagemHeader: formData.imagemHeader || null,
         status: formData.status,
         dataPublicacao: dataPublicacaoCompleta,
         tags: tagsArray
@@ -245,6 +286,36 @@ export default function EditarArtigoPage() {
           </small>
         </div>
 
+        <div className="form-group">
+          <label>Imagem do Header</label>
+          <div className="upload-zone">
+            <input
+              type="file"
+              id="uploadHeader"
+              accept="image/*"
+              onChange={(e) => handleImageUpload(e, 'header')}
+              style={{ display: 'none' }}
+              disabled={uploadingImage}
+            />
+            <label htmlFor="uploadHeader" className="upload-btn">
+              {uploadingImage ? '⏳ Enviando...' : formData.imagemHeader ? '🔄 Trocar Imagem' : '📷 Escolher Imagem'}
+            </label>
+            {formData.imagemHeader && (
+              <div className="image-preview">
+                <img src={formData.imagemHeader} alt="Preview" />
+                <button
+                  type="button"
+                  className="remove-img"
+                  onClick={() => setFormData(prev => ({ ...prev, imagemHeader: '' }))}
+                >
+                  ✕ Remover
+                </button>
+              </div>
+            )}
+          </div>
+          <small>Recomendado: 1920x400px | Max: 5MB</small>
+        </div>
+
         <div className="editor-wrapper">
           <div className="editor-tabs">
             <button
@@ -266,7 +337,22 @@ export default function EditarArtigoPage() {
           <div className="editor-content">
             {!showPreview ? (
               <div className="editor-area">
-                <label htmlFor="conteudo">Conteúdo (Markdown) *</label>
+                <div className="editor-toolbar">
+                  <label htmlFor="conteudo">Conteúdo (Markdown) *</label>
+                  <div className="toolbar-buttons">
+                    <input
+                      type="file"
+                      id="uploadConteudo"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e, 'conteudo')}
+                      style={{ display: 'none' }}
+                      disabled={uploadingImage}
+                    />
+                    <label htmlFor="uploadConteudo" className="toolbar-btn">
+                      {uploadingImage ? '⏳' : '🖼️ Adicionar Imagem'}
+                    </label>
+                  </div>
+                </div>
                 <textarea
                   id="conteudo"
                   name="conteudo"
@@ -281,7 +367,6 @@ export default function EditarArtigoPage() {
                   <code>## Subtítulo</code>
                   <code>**negrito**</code>
                   <code>*itálico*</code>
-                  <code>![alt](/url)</code>
                 </div>
               </div>
             ) : (
@@ -303,7 +388,6 @@ export default function EditarArtigoPage() {
                         ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
                         li: ({ children }) => <li>{children}</li>,
                         img: ({ src, alt, title }) => {
-                          // alt pode conter classe custom, mas módulo garante estilo base
                           return (
                             <figure className={styles.artigoFigura}>
                               <img src={src} alt={alt || ''} className={styles.artigoImagem} />
