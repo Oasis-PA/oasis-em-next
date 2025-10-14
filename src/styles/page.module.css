@@ -24,11 +24,14 @@ html {
     height: 48.3vw;
     justify-content: end;
     align-items: center;
+    /* Este background agora é um fallback. O JS vai controlar a imagem. */
     background-image: url(../../public/images/tela-principal/banner1.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     flex-direction: column;
+    /* Adicionado para transições suaves de imagem de fundo */
+    transition: background-image 0.5s ease-in-out;
 }
 
 .mainContainer > h2 {
@@ -49,7 +52,7 @@ html {
     line-height: normal;
 }
 
-.mainContainer > button {
+.conhecaButton {
     width: 15rem;
     height: 4rem;
     border-radius: 2.25rem;
@@ -62,11 +65,25 @@ html {
     font-weight: 400;
     line-height: normal;
     margin-top: 2.5rem;
+    cursor: pointer;
+    /* Adições para o Link se comportar como o botão */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 
-.mainContainer > div {
+.dotsContainer {
     display: flex;
     flex-direction: row;
-    gap: 3rem;
+    gap: 2rem; /* Reduzi um pouco o gap */
     margin: 2rem; 
+    z-index: 10; /* Garante que as bolinhas fiquem na frente */
+}
+
+.dotButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
