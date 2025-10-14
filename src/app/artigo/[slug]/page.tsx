@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Header from "../../../components/header";
 import '@/styles/artigoteste.css';
+import fs from "fs";
+import path from "path";
 
 interface ArtigoProps {
   params: { slug: string };
@@ -71,13 +73,24 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     );
   }
 
-  // 👇 Constrói automaticamente o caminho da imagem baseado no slug
-  const imagemHeader = `/images/artigos/${params.slug}-header.png`;
+  // procura apenas na pasta public/images/artigos por várias extensões
+  const findHeaderUrl = (slug: string) => {
+    const exts = ["png", "jpg", "jpeg", "webp", "avif", "gif"];
+    for (const ext of exts) {
+      const fileName = `${slug}-header.${ext}`;
+      const filePath = path.join(process.cwd(), "public", "images", "artigos", fileName);
+      if (fs.existsSync(filePath)) {
+        return `/images/artigos/${fileName}`;
+      }
+    }
+    return null;
+  };
+
+  const imagemHeader = findHeaderUrl(params.slug);
 
   return (
     <>
-      <Header backgroundImage={imagemHeader} />
-      
+      {imagemHeader ? <Header backgroundImage={imagemHeader} /> : <Header />}
       <main>
         <article className="markdown-content">
           <ReactMarkdown
