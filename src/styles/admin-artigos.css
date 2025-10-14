@@ -3,6 +3,7 @@
 /* Container Principal */
 .admin-container {
   max-width: 1400px;
+  font-family: "Louis George Cafe", sans-serif;
   margin: 0 auto;
   padding: 2rem;
   min-height: 100vh;
@@ -40,12 +41,13 @@
   transition: all 0.3s;
   text-decoration: none;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-family: "Louis George Cafe", sans-serif;
 }
 
 .btn-primary {
   background: #AA35B0;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .btn-primary:hover {
@@ -126,7 +128,7 @@
 .stat-label {
   display: block;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
 }
 
@@ -146,6 +148,8 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s;
+  font-family: 'louis george cafe', sans-serif;
+  font-size: 0.9rem;
 }
 
 .filters button.active {
@@ -189,6 +193,7 @@
   margin: 0 0 0.5rem 0;
   color: #333;
   font-size: 1.2rem;
+  font-family: 'louis george cafe', sans-serif;
 }
 
 .slug {
