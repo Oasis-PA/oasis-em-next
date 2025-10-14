@@ -1,441 +1,72 @@
-
-.mainContainer {
+.mainContainer * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    width: 100%;
+    color: var(--corpo-texto);
+}
+
+body {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-}
-
-.sectionTitle {
-    text-align: center;
-    font-family: "PLAYFUL RUNWAY", sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 1.5rem;
-}
-
-.sectionHeader {
-    text-align: center;
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-.sectionHeader h2 {
-    font-family: "PLAYFUL RUNWAY", sans-serif;
-    font-size: clamp(2rem, 5vw, 2.6rem);
-}
-.sectionHeader p {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    max-width: 60ch;
-}
-
-.page1 { 
-    width: 100%; 
-    height: 100vh;
-    min-height: 600px;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    position: relative;
-    color: #fff;
-}
-
-.page1Main { 
-    display: flex; 
-    flex-flow: column nowrap; 
-    align-items: center; 
-    justify-content: center;
-    width: 100%; 
-    height: 100%; 
-    background: url("/images/tela-principal/page1/page1-imagem1.svg") center/cover no-repeat; 
-    gap: 1.5rem; 
-    padding: 1rem;
-    text-align: center;
-}
-
-.page1Main p { 
-    font-size: clamp(2rem, 6vw, 4rem); 
-    font-family: 'Louis George Cafe', sans-serif; 
-    text-shadow: 0px 0px 8px rgba(13, 0, 87, 0.9);
-}
-
-.page1Main h1 { 
-    font-size: clamp(4.5rem, 15vw, 9rem); 
-    font-family: 'The Next Font', sans-serif; 
-    text-shadow: 0px 4px 22px rgba(57, 16, 192, 0.89);
-    line-height: 1;
-}
-
-.page1Circulos { 
-    display: flex; 
-    gap: 10px; 
-    cursor: pointer; 
-}
-
-.page2 { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    background-color: black; 
-    width: 100%; 
-    padding: clamp(2rem, 8vw, 5rem) 0;
-    color: white;
-}
-
-.slidesContainer { 
-    display: flex; 
-    gap: 1.5rem; 
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 1rem 5%;
-    width: 100%;
-}
-.slidesContainer::-webkit-scrollbar { display: none; }
-
-.slide {
-    flex: 0 0 clamp(220px, 30vw, 255px);
-    background-color: white;
-    border-radius: 20px;
-    overflow: hidden;
-    color: #000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-.slide:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-.slide:active {
-    transform: translateY(-5px) scale(0.98);
-}
-.slide a {
-    color: inherit;
-    text-decoration: none;
-    display: block;
-}
-.slide img {
     width: 100%;
     height: auto;
-    aspect-ratio: 255 / 438;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-.slide:hover img {
-    transform: scale(1.08);
-}
-.slide figcaption {
-    padding: 1rem;
-    text-align: center;
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    font-weight: 700;
-    min-height: 80px;
-    display: flex;
+    background-color: var(--body-back);
     align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-}
-.slide:hover figcaption {
-    background-color: #f8f8f8;
-}
-
-.page3 {
-    width: 100%;
-    padding: clamp(2rem, 8vw, 5rem) 5%;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-}
-.page3Header { text-align: center; }
-.page3Header p { max-width: 50ch; margin: 1rem auto 0; }
-.page3Nav {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 1rem 0;
-    margin: 0;
-    border-bottom: 2px solid #ddd;
-    width: 100%;
-}
-.page3Nav a {
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(1rem, 3vw, 1.1rem);
-    color: rgba(0, 0, 0, 0.85);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-}
-.page3Nav a:hover { background-color: #f0f0f0; }
-
-.page3Grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    max-width: 1600px;
-}
-.page3Card {
-    text-align: center;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-.page3Card:hover {
-    transform: translateY(-8px);
-}
-.page3Card:active {
-    transform: translateY(-4px) scale(0.98);
-}
-.page3CardImage {
-    background: #5F0B38;
-    border-radius: 4px;
-    padding: 0.5rem 0.5rem 0;
-    color: #fff;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-.page3Card:hover .page3CardImage {
-    background: #7A0E46;
-    box-shadow: 0 8px 20px rgba(95, 11, 56, 0.5);
-}
-.page3CardImage h3 {
-    padding: 0.75rem 0;
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
-    transition: transform 0.3s ease;
-}
-.page3Card:hover .page3CardImage h3 {
-    transform: scale(1.05);
-}
-.page3CardImage img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-.page3Card:hover .page3CardImage img {
-    transform: scale(1.1);
-}
-.page3Card figcaption a {
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-.page3Card:hover figcaption a {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(95, 11, 56, 0.3);
 }
 
-.page5, .page6, .page7 {
-    width: 100%;
-    padding: clamp(2rem, 8vw, 5rem) 5%;
+html {
+    overflow-x: hidden;
 }
-.page6 { background: #ECC46F; }
 
-.infoBlock {
+.mainContainer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    height: 48.3vw;
+    justify-content: end;
     align-items: center;
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-.infoBlock.reversed {
-    flex-direction: row-reverse;
-}
-
-.infoBlock_figure, .infoBlock_article {
-    flex: 1 1 400px;
-}
-.infoBlock_figure {
-    overflow: hidden;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-.infoBlock:hover .infoBlock_figure {
-    transform: scale(1.02);
-}
-.infoBlock_figure img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    max-width: 721px;
-    transition: transform 0.4s ease;
-}
-.infoBlock:hover .infoBlock_figure img {
-    transform: scale(1.05);
-}
-
-.infoBlock_article {
-    display: flex;
+    background-image: url(../../public/images/tela-principal/banner1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-}
-.infoBlock.reversed .infoBlock_article {
-    align-items: flex-start;
-}
-.infoBlock_article h2 {
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(2rem, 5vw, 2.6rem);
-    line-height: 1.1;
-    transition: color 0.3s ease;
-}
-.infoBlock:hover .infoBlock_article h2 {
-    color: #5F0B38;
-}
-.infoBlock_article p {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    line-height: 1.6;
-    transition: transform 0.3s ease;
-}
-.infoBlock:hover .infoBlock_article p {
-    transform: translateX(5px);
-}
-.infoBlock_article a {
-    transition: all 0.3s ease;
-}
-.infoBlock_article a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-.infoBlock_article a:active {
-    transform: translateY(-1px) scale(0.98);
 }
 
-.page8 {
-    width: 100%;
-    padding: clamp(2rem, 8vw, 5rem) 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-.page8Header {
-    width: 100%;
-    background: #000;
-    padding: 1rem;
-    text-align: center;
-}
-.page8Header h2 {
+.mainContainer > h2 {
     color: #FFF;
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(2rem, 5vw, 2.5rem);
-}
-.page8Grid {
-    width: 100%;
-    max-width: 1600px;
-    padding: 0 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
-.page8Grid figure {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-.page8Grid figure:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-}
-.page8Grid figure:active {
-    transform: translateY(-4px) scale(0.98);
-}
-.page8Grid figure::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-}
-.page8Grid figure:hover::before {
-    opacity: 1;
-}
-.page8Grid img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-    transition: transform 0.4s ease;
-    display: block;
-}
-.page8Grid a:hover img {
-    transform: scale(1.12);
-}
-.page8Grid a {
-    display: block;
-    position: relative;
+    text-shadow: 0 0 8.8px rgba(13, 0, 87, 0.99);
+    font-family: "Louis George Cafe";
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 0.5;
 }
 
-.page9 {
-    width: 100%;
-    padding: clamp(2rem, 10vw, 6rem) 5%;
-    background: url('/images/tela-principal/page9/page9-background.png');
+.mainContainer > h1 {
+    color: #FFF;
+    text-shadow: 0 4px 22.133px #5F0B38;
+    font-family: "The Next Font";
+    font-size: 9.16669rem;
+    font-weight: 400;
+    line-height: normal;
 }
-.page9Grid {
-    max-width: 1600px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: clamp(2rem, 6vw, 6rem);
-    justify-content: center;
+
+.mainContainer > button {
+    width: 15rem;
+    height: 4rem;
+    border-radius: 2.25rem;
+    background: #722F53;
+    border-style: none;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 2.5rem;
 }
-.page9Grid figure {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-}
-.page9Grid figure:hover {
-    transform: translateY(-12px) rotate(1deg);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-}
-.page9Grid figure:active {
-    transform: translateY(-6px) scale(0.98);
-}
-.page9Grid figure::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 87, 34, 0.2) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-}
-.page9Grid figure:hover::after {
-    opacity: 1;
-}
-.page9Grid img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: block;
-}
-.page9Grid figure:hover img {
-    transform: scale(1.08) rotate(-1deg);
+
+.mainContainer > div {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin: 2rem; 
 }
