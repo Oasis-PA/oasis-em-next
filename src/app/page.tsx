@@ -26,10 +26,35 @@ const slidesData = [
   }
 ];
 
+const cortesData = {
+  feminino: [
+    { title: 'CORTE PIXIE', image: '/images/tela-principal/img-corte (1).png', link: '/corte-modelo' },
+    { title: 'WOLFCUT', image: '/images/tela-principal/img-corte (2).png', link: '/corte-modelo' },
+    { title: 'FRANJA', image: '/images/tela-principal/img-corte (3).png', link: '/corte-modelo' },
+    { title: 'CAMADAS', image: '/images/tela-principal/img-corte (4).png', link: '/corte-modelo' },
+  ],
+  masculino: [
+    { title: 'AMERICANO', image: '/images/tela-principal/img-corte (8).png', link: '/corte-modelo' },
+    { title: 'LOW FADE', image: '/images/tela-principal/img-corte (7).png', link: '/corte-modelo' },
+    { title: 'MULLET', image: '/images/tela-principal/img-corte (6).png', link: '/corte-modelo' },
+    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (5).png', link: '/corte-modelo' },
+  ],
+  mais50: [
+    { title: 'BORBOLETA', image: '/images/tela-principal/img-corte (12).png', link: '/corte-modelo' },
+    { title: 'CURTO', image: '/images/tela-principal/img-corte (11).png', link: '/corte-modelo' },
+    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (10).png', link: '/corte-modelo' },
+    { title: 'BOB ANGULAR', image: '/images/tela-principal/img-corte (9).png', link: '/corte-modelo' },
+  ]
+};
+
+
 export default function OasisHomepage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
+
+  const [activeCategory, setActiveCategory] = useState<'feminino' | 'masculino' | 'mais50'>('feminino');
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -43,7 +68,6 @@ export default function OasisHomepage() {
     const handleScroll = () => {
       if (cardsContainerRef.current) {
         const scrollLeft = cardsContainerRef.current.scrollLeft;
-        // Calcula a opacidade baseada no scroll (diminui conforme scrolla)
         const newOpacity = Math.max(0, 1 - (scrollLeft / 300));
         setTextOpacity(newOpacity);
       }
@@ -64,6 +88,8 @@ export default function OasisHomepage() {
   const handleDotClick = (index: number) => {
     setCurrentSlide(index);
   };
+
+  const currentCortes = cortesData[activeCategory];
 
   return (
     <>
@@ -226,44 +252,39 @@ export default function OasisHomepage() {
         <div className={styles.linha}></div>
         
         <div className={styles.categ}>
-          <h1>FEMININO</h1>
-          <h1>MASCULINO</h1>
-          <h1>PARA QUEM É +50</h1>
+          <button
+            className={`${styles.categoryButton} ${activeCategory === 'feminino' ? styles.activeCategory : ''}`}
+            onClick={() => setActiveCategory('feminino')}
+          >
+            FEMININO
+          </button>
+          <button
+            className={`${styles.categoryButton} ${activeCategory === 'masculino' ? styles.activeCategory : ''}`}
+            onClick={() => setActiveCategory('masculino')}
+          >
+            MASCULINO
+          </button>
+          <button
+            className={`${styles.categoryButton} ${activeCategory === 'mais50' ? styles.activeCategory : ''}`}
+            onClick={() => setActiveCategory('mais50')}
+          >
+            PARA QUEM É +50
+          </button>
         </div>
         <div className={styles.linha2}></div>
         
         <div className={styles.cortes}>
-          <div className={styles.cortecardconteiner}>
-            <div className={styles.cortecard}>
-              <h1>CORTE PIXIE</h1>
-              <img src="images/tela-principal/img-corte (1).png" alt="" />
+          {currentCortes.map((corte, index) => (
+            <div className={styles.cortecardconteiner} key={index}>
+              <div className={styles.cortecard}>
+                <h1>{corte.title}</h1>
+                <img src={corte.image} alt={`Imagem do ${corte.title}`} />
+              </div>
+              <Link href={corte.link} className={styles.conhecaCorteButton}>
+                CONHEÇA
+              </Link>
             </div>
-            <button>CONHEÇA</button>
-          </div>
-
-          <div className={styles.cortecardconteiner}>
-            <div className={styles.cortecard}>
-              <h1>WOLFCUT</h1>
-              <img src="images/tela-principal/img-corte (2).png" alt="" />
-            </div>
-            <button>CONHEÇA</button>
-          </div>
-
-          <div className={styles.cortecardconteiner}>
-            <div className={styles.cortecard}>
-              <h1>FRANJA</h1>
-              <img src="images/tela-principal/img-corte (3).png" alt="" />
-            </div>
-            <button>CONHEÇA</button>
-          </div>
-
-          <div className={styles.cortecardconteiner}>
-            <div className={styles.cortecard}>
-              <h1>CAMADAS</h1>
-              <img src="images/tela-principal/img-corte (4).png" alt="" />
-            </div>
-            <button>CONHEÇA</button>
-          </div>
+          ))}
         </div>
       </section>
     </>

@@ -31,7 +31,9 @@
       "Bash(for:*)",
       "Bash(npx tsx test-supabase-upload.ts)",
       "Bash(npx dotenvx run --env-file=.env.local -- npx tsx test-supabase-upload.ts)",
-      "Bash(del test-supabase-upload.ts)"
+      "Bash(del test-supabase-upload.ts)",
+      "Bash(npm run test:validations)",
+      "Bash(npm run test:api:*)"
     ],
     "deny": [],
     "ask": []
