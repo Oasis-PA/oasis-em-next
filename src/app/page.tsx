@@ -167,6 +167,104 @@ export default function OasisHomepage() {
           </Link>
         </div>
       </section>
+
+      <section className={styles.s2}>
+        <Link href='#'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-haircare.png" alt=""/>
+            <h1>HAIR CARE</h1>
+          </div>
+        </Link>
+
+        <Link href='#'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-tendencias.png" alt=""/>
+            <h1>TENDÊNCIAS</h1>
+          </div>
+        </Link>
+
+        <Link href='#'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-skincare.png" alt=""/>
+            <h1>SKINCARE</h1>
+          </div>
+        </Link>
+
+        <Link href='#'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-tinturas.png" alt=""/>
+            <h1>TINTURAS</h1>
+          </div>
+        </Link>
+
+        <Link href='#'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-produtos.png" alt=""/>
+            <h1>PRODUTOS</h1>
+          </div>
+        </Link>
+
+        <Link href='#'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-alimentacao.png" alt=""/>
+            <h1>ALIMENTAÇÃO</h1>
+          </div>
+        </Link>
+
+        <Link href='#'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-infantil.png" alt=""/>
+            <h1>INFANTIL</h1>
+          </div>
+        </Link>
+      </section>
+
+      <section className={styles.s3}>
+        <h1>Cortes em Alta</h1>
+        <p>As melhores recomendações de cortes de cabelos para todos os gêneros e idades</p>
+        <div className={styles.linha}></div>
+        
+        <div className={styles.categ}>
+          <h1>FEMININO</h1>
+          <h1>MASCULINO</h1>
+          <h1>PARA QUEM É +50</h1>
+        </div>
+        <div className={styles.linha2}></div>
+        
+        <div className={styles.cortes}>
+          <div className={styles.cortecardconteiner}>
+            <div className={styles.cortecard}>
+              <h1>CORTE PIXIE</h1>
+              <img src="images/tela-principal/img-corte (1).png" alt="" />
+            </div>
+            <button>CONHEÇA</button>
+          </div>
+
+          <div className={styles.cortecardconteiner}>
+            <div className={styles.cortecard}>
+              <h1>WOLFCUT</h1>
+              <img src="images/tela-principal/img-corte (2).png" alt="" />
+            </div>
+            <button>CONHEÇA</button>
+          </div>
+
+          <div className={styles.cortecardconteiner}>
+            <div className={styles.cortecard}>
+              <h1>FRANJA</h1>
+              <img src="images/tela-principal/img-corte (3).png" alt="" />
+            </div>
+            <button>CONHEÇA</button>
+          </div>
+
+          <div className={styles.cortecardconteiner}>
+            <div className={styles.cortecard}>
+              <h1>CAMADAS</h1>
+              <img src="images/tela-principal/img-corte (4).png" alt="" />
+            </div>
+            <button>CONHEÇA</button>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
