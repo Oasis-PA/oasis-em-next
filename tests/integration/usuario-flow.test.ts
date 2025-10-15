@@ -2,10 +2,12 @@
 import { NextRequest } from 'next/server';
 import { jest } from '@jest/globals';
 
+// Cria mock functions
 const mockFindUnique = jest.fn();
 const mockCreate = jest.fn();
 
-jest.mock('@/lib/prisma', () => ({
+// Mock do Prisma antes de importar as rotas
+jest.unstable_mockModule('@/lib/prisma', () => ({
   prisma: {
     usuario: {
       findUnique: mockFindUnique,
@@ -14,13 +16,13 @@ jest.mock('@/lib/prisma', () => ({
   },
 }));
 
-import { POST as checkEmailPOST } from '@/app/api/usuarios/check-email/route';
-import { POST as cadastroPOST } from '@/app/api/usuarios/cadastro/route';
+// Importa as rotas DEPOIS do mock
+const { POST: checkEmailPOST } = await import('@/app/api/usuarios/check-email/route');
+const { POST: cadastroPOST } = await import('@/app/api/usuarios/cadastro/route');
 
 describe('Fluxo completo de cadastro de usuário', () => {
   beforeEach(() => {
-    mockFindUnique.mockReset();
-    mockCreate.mockReset();
+    jest.clearAllMocks();
   });
 
   it('deve completar fluxo de cadastro com sucesso', async () => {
@@ -87,14 +89,23 @@ describe('Fluxo completo de cadastro de usuário', () => {
     const userData = {
       nome: 'João Duplicado',
       email: 'existente@teste.com',
-      senha: 'senha123',
+      senha: 'SenhaForte123!',
     };
 
     // Simula que email já existe
     mockFindUnique.mockResolvedValue({
-      id: 1,
-      email: userData.email,
+      id_usuario: 1,
       nome: 'Usuário Existente',
+      email: userData.email,
+      senha: 'hashedpassword',
+      id_genero: 1,
+      telefone: null,
+      data_nascimento: null,
+      data_cadastro: new Date(),
+      id_tipo_cabelo: null,
+      sobrenome: null,
+      sobre: null,
+      url_foto: null,
     });
 
     // Passo 1: Verificar email (deve retornar que já existe)

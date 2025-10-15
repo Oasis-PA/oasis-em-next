@@ -1,12 +1,14 @@
 // tests/api/usuarios-cadastro.test.ts
 import { NextRequest } from 'next/server';
-import { POST } from '@/app/api/usuarios/cadastro/route';
 import { jest } from '@jest/globals';
+import type { Usuario } from '@prisma/client';
 
-const mockFindUnique = jest.fn();
-const mockCreate = jest.fn();
+// Cria mock functions com tipos apropriados
+const mockFindUnique = jest.fn<() => Promise<Usuario | null>>();
+const mockCreate = jest.fn<() => Promise<Usuario>>();
 
-jest.mock('@/lib/prisma', () => ({
+// Mock do Prisma antes de importar a rota
+jest.unstable_mockModule('@/lib/prisma', () => ({
   prisma: {
     usuario: {
       findUnique: mockFindUnique,
@@ -15,10 +17,12 @@ jest.mock('@/lib/prisma', () => ({
   },
 }));
 
+// Importa a rota DEPOIS do mock
+const { POST } = await import('@/app/api/usuarios/cadastro/route');
+
 describe('POST /api/usuarios/cadastro', () => {
   beforeEach(() => {
-    mockFindUnique.mockReset();
-    mockCreate.mockReset();
+    jest.clearAllMocks();
     // Mock padrão: email não existe
     mockFindUnique.mockResolvedValue(null);
     // Mock padrão: cria usuário

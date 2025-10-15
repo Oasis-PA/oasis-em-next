@@ -1,5 +1,5 @@
 "use client";
-
+import { Header, Footer } from "@/components";
 import { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Link from "next/link";
@@ -93,6 +93,7 @@ export default function OasisHomepage() {
 
   return (
     <>
+    <Header/>
       <main 
         className={styles.mainContainer} 
         style={{ backgroundImage: `url(${slidesData[currentSlide].backgroundImage})` }}

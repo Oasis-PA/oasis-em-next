@@ -1,7 +1,6 @@
 // src/app/api/admin/upload/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,12 +18,27 @@ export async function POST(request: NextRequest) {
 
     if (!rawSlug || !rawSlug.trim()) {
       return NextResponse.json(
-        { error: 'Slug é obrigatório para uploads de header' },
+        { error: 'Slug é obrigatório para uploads' },
         { status: 400 }
       );
     }
 
-    // sanitize slug
+    // Validações de arquivo
+    if (!file.type.startsWith('image/')) {
+      return NextResponse.json(
+        { error: 'Arquivo deve ser uma imagem' },
+        { status: 400 }
+      );
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      return NextResponse.json(
+        { error: 'Imagem muito grande. Máximo 5MB' },
+        { status: 400 }
+      );
+    }
+
+    // Sanitize slug
     const safeSlug = rawSlug
       .toString()
       .toLowerCase()
@@ -37,26 +51,39 @@ export async function POST(request: NextRequest) {
 
     const ext = (file.name.split('.').pop() || 'jpg').replace(/[^a-z0-9]/gi, '');
     const rolePart = tipo === 'header' ? 'header' : 'conteudo';
+    const timestamp = Date.now();
 
-    // Nome deve ser apenas: <slug>-header.<ext>
-    const fileName = `${safeSlug}-${rolePart}.${ext}`;
+    // Nome do arquivo: <slug>-<tipo>-<timestamp>.<ext>
+    const fileName = `${safeSlug}-${rolePart}-${timestamp}.${ext}`;
+    const filePath = `artigos/${fileName}`;
 
-    // Cria diretório se não existir
-    const uploadDir = path.join(process.cwd(), 'public', 'images', 'artigos');
-    try {
-      await mkdir(uploadDir, { recursive: true });
-    } catch (error) {
-      // Diretório já existe
+    // Converte o arquivo para buffer
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    // Upload para Supabase Storage
+    const { error: uploadError } = await supabaseAdmin.storage
+      .from('artigos-imagens')
+      .upload(filePath, buffer, {
+        contentType: file.type,
+        upsert: false,
+        cacheControl: '3600'
+      });
+
+    if (uploadError) {
+      console.error('Erro no upload do Supabase:', uploadError);
+      return NextResponse.json(
+        { error: 'Erro ao fazer upload da imagem' },
+        { status: 500 }
+      );
     }
 
-    // Salva o arquivo
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const filePath = path.join(uploadDir, fileName);
-    await writeFile(filePath, buffer);
+    // Gera URL pública
+    const { data: urlData } = supabaseAdmin.storage
+      .from('artigos-imagens')
+      .getPublicUrl(filePath);
 
-    // Retorna a URL pública
-    const url = `/images/artigos/${fileName}`;
+    const url = urlData.publicUrl;
 
     return NextResponse.json({ url }, { status: 200 });
   } catch (error) {

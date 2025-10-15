@@ -24,5 +24,9 @@ module.exports = {
     '^.+\\.(ts|tsx)$': ['ts-jest', { useESM: true }],
   },
 
+  // Habilita o uso de manual mocks
+  clearMocks: true,
+  resetMocks: true,
+
   resolver: undefined,
 };

@@ -14,5 +14,6 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  // Outros mocks se precisar
+  // Limpa todos os mocks antes de cada teste
+  jest.clearAllMocks();
 });

@@ -1,10 +1,11 @@
 import { NextRequest } from 'next/server';
-import { POST } from '@/app/api/usuarios/check-email/route';
 import { jest } from '@jest/globals';
 
+// Cria mock functions
 const mockFindUnique = jest.fn();
 
-jest.mock('@/lib/prisma', () => ({
+// Mock do Prisma antes de importar a rota
+jest.unstable_mockModule('@/lib/prisma', () => ({
   prisma: {
     usuario: {
       findUnique: mockFindUnique,
@@ -12,9 +13,12 @@ jest.mock('@/lib/prisma', () => ({
   },
 }));
 
+// Importa a rota DEPOIS do mock
+const { POST } = await import('@/app/api/usuarios/check-email/route');
+
 describe('POST /api/usuarios/check-email', () => {
   beforeEach(() => {
-    mockFindUnique.mockReset();
+    jest.clearAllMocks();
     mockFindUnique.mockResolvedValue(null);
   });
 
