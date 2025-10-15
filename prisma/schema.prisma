@@ -29,23 +29,24 @@ model TipoCabelo {
 }
 
 model Usuario {
-  id_usuario      Int             @id @default(autoincrement())
+  id_usuario      Int              @id @default(autoincrement())
   nome            String
-  email           String          @unique
+  email           String           @unique
   telefone        String?
   senha           String
   data_nascimento DateTime?
-  data_cadastro   DateTime        @default(now())
+  data_cadastro   DateTime         @default(now())
   id_genero       Int
   id_tipo_cabelo  Int?
   sobrenome       String?
   sobre           String?
-  url_foto        String?         @db.VarChar
+  url_foto        String?          @db.VarChar
   avaliacoes      Avaliacao[]
   favoritos       Favorito[]
+  FavoritoArtigo  FavoritoArtigo[]
   passwordResets  PasswordReset[]
-  genero          Genero          @relation(fields: [id_genero], references: [id_genero])
-  tipo_cabelo     TipoCabelo?     @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
+  genero          Genero           @relation(fields: [id_genero], references: [id_genero])
+  tipo_cabelo     TipoCabelo?      @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
 }
 
 model Categoria {
@@ -66,8 +67,14 @@ model Produto {
   id_tag         Int?
   id_tipo_pele   Int?
   id_tipo_cabelo Int?
+  composicao     String?
+  qualidades     String?
+  mais_detalhes  String?
   url_imagem     String?         @db.VarChar(255)
   url_loja       String?         @db.VarChar(255)
+  composicao     String?         @db.VarChar
+  qualidades     String?         @db.VarChar
+  mais_detalhes  String?         @db.VarChar
   avaliacoes     Avaliacao[]
   favoritos      Favorito[]
   ImagemProduto  ImagemProduto[]
@@ -113,17 +120,18 @@ model PasswordReset {
 }
 
 model Artigo {
-  id             Int         @id @default(autoincrement())
-  titulo         String      @default("NOT NULL")
-  slug           String      @unique @default("NOT NULL")
-  conteudo       String      @default("NOT NULL")
-  criadoEm       DateTime    @default(now())
-  atualizadoEm   DateTime    @updatedAt
-  dataPublicacao DateTime?   @db.Timestamptz(6)
+  id             Int              @id @default(autoincrement())
+  titulo         String           @default("NOT NULL")
+  slug           String           @unique @default("NOT NULL")
+  conteudo       String           @default("NOT NULL")
+  criadoEm       DateTime         @default(now())
+  atualizadoEm   DateTime         @updatedAt
+  dataPublicacao DateTime?        @db.Timestamptz(6)
   resumo         String?
   imagemHeader   String?
-  status         String?     @default("rascunho")
+  status         String?          @default("rascunho")
   ArtigoTag      ArtigoTag[]
+  FavoritoArtigo FavoritoArtigo[]
 }
 
 model TipoPele {
@@ -163,4 +171,19 @@ model ArtigoTag {
   @@id([artigoId, tagId])
   @@index([artigoId])
   @@index([tagId])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FavoritoArtigo {
+  id_favorito_artigo Int      @id @default(autoincrement())
+  data_favoritado    DateTime @default(now()) @db.Timestamptz(6)
+  id_usuario         Int
+  id_artigo          Int
+  Artigo             Artigo   @relation(fields: [id_artigo], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_favorito_artigo_artigo")
+  Usuario            Usuario  @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction, map: "fk_favorito_artigo_usuario")
+
+  @@unique([id_usuario, id_artigo], map: "unique_usuario_artigo")
+  @@index([id_artigo], map: "idx_favorito_artigo_artigo")
+  @@index([data_favoritado], map: "idx_favorito_artigo_data")
+  @@index([id_usuario], map: "idx_favorito_artigo_usuario")
 }

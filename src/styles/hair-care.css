@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     min-height: 80vh;
-    background-color: #ebebeb;
+    background-color: #EFEBE9;
     flex-flow: row;
     box-sizing: border-box;
 }
@@ -13,9 +13,24 @@
     
     
 }
+#asM{
+font-family: 'THE NEXT FONT';
+min-width: 900px;
+text-align: left;
+margin-left: 10vw;
+}
+#as-melhores-dicas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    max-width: 2000px;
 
-#asM {
-    text-align: left;
 }
 
 #barra h1 {
