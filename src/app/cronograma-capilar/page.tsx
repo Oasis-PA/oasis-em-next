@@ -115,7 +115,7 @@ const CronogramaCapilar: React.FC = () => {
           <button className="descubra">DESCUBRA</button>
         </div>
         </section>
-        <section className="ousadas">
+        <section className="ousadas" id='ousadas2'>
           <div id="cansada2">
             <p className="texto-aposte">Vai se casar? esteja
               incrível para seu amor!</p>
@@ -176,7 +176,7 @@ const CronogramaCapilar: React.FC = () => {
                               <p className="sub2">Babosa</p>
                             </div>
                           </div>
-                          <img src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
+                          <img className='linha' src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
                           <div className="dicas_topicos">
                             <img className="sub0" src="/images/Cronograma-capilar/pote.svg" alt="Ícone de pote" />
                             <div>
@@ -184,7 +184,7 @@ const CronogramaCapilar: React.FC = () => {
                               <p className="sub2">Linha hidratante inoar</p>
                             </div>
                           </div>
-                          <img src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
+                          <img className='linha' src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
                           <div className="dicas_topicos">
                             <img className="sub0" src="/images/Cronograma-capilar/Sol.svg" alt="Ícone de sol" />
                             <div>
@@ -192,7 +192,7 @@ const CronogramaCapilar: React.FC = () => {
                               <p className="sub2">30 minutos</p>
                             </div>
                           </div>
-                          <img src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
+                          <img className='linha' src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
                           <div className="dicas_topicos">
                             <img className="sub0" src="/images/Cronograma-capilar/gota.svg" alt="Ícone de gota" />
                             <div>

@@ -65,11 +65,11 @@ html, body {
 
 @media screen and (max-width: 480px) {
   #mulher {
-    height: 40vh;
+    height: 65vh;
     padding: 0 1vw;
     justify-content: flex-start;
     padding-top: 15vh;
-    background-position: center top;
+    background-position: start top;
   }
 }
 
@@ -91,6 +91,16 @@ html, body {
   margin-top: 2vh;
   font-family: "THE NEXT FONT";
   font-weight: 700;
+}
+@media screen and (max-width: 480px) {
+  .cornograma {
+    font-size: clamp(4.2rem, 13vw, 7.5rem);
+  }
+  .cornograma2 {
+    margin-top: 2vh;
+    max-width: 200px;
+    font-size: clamp(1.3rem, 4vw, 2.5rem);
+}
 }
 
 /* ================================== */
@@ -475,7 +485,18 @@ html, body {
 .ousadas div {
   flex-grow: 1;
 }
+#ousadas2{
+  align-self: end;
+}
 #cansada1{
+  margin-left: 2vw;
+  max-width: 650px;
+}
+#cansada2{
+  margin-right: 2vw;
+  max-width: 650px;
+}
+#cansada3{
   margin-left: 2vw;
   max-width: 650px;
 }
@@ -593,6 +614,13 @@ html, body {
 }
 
 #dicas { padding: 1rem; background-color: white; }
+.linha {
+  width: 90%;
+  height: 2px;
+  background-color: #eee;
+  margin: 1.2rem auto;
+  border-radius: 1px;
+}
 #dicas_topo { display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 1.3vh; }
 #dicas_titulo { font-family: var(--font-secondary); font-size: clamp(1.5rem, 2.2vw, 2rem); }
 #dicas_subtitulo { font-family: var(--font-text); font-size: clamp(0.9rem, 1vw, 1.1rem); }
