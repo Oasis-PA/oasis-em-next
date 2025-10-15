@@ -79,7 +79,70 @@ export default function OasisHomepage() {
         </div>
       </main>
 
-      
+      <section className={styles.s1}>
+        <div className={styles.texttopics}>
+          <h1>HOT TOPICS</h1>
+          <h2>Fique por dentro dos assuntos mais quentes de beleza! Descubra dicas, 
+          tendências e tire suas dúvidas.</h2>
+        </div>
+        <div className={styles.cards}>
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="#">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+        </div>
+      </section>
     </>
   );
 }
