@@ -360,3 +360,268 @@ html {
 .conhecaCorteButton:hover {
     background: #8a3a65;
 }
+
+.s4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 8rem;
+    flex-direction: column;
+    margin-bottom: 11.5rem;
+}
+
+.s4 > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.s4 > p {
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: 1.66669rem;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 4.7rem;
+}
+
+.cardsperfil {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.cardperfil {
+    display: flex;
+    flex-direction: column;
+    width: 17vw; 
+    flex-shrink: 0;
+    height: auto;
+    border: 3px solid #939191;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardperfil > img {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+}
+
+.cardperfil > h1 {
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 1rem 1.1rem 0.5rem;
+    align-self: start;
+}
+
+.cardperfil > h2 {
+    font-family: "Louis George Cafe Light";
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: justify;
+    padding: 0 1.1rem 1.1rem;
+    align-self: start;
+}
+
+.cardperfil > button {
+    font-family: "The Next Font";
+    font-size: 1.2rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: #722F53;
+    color: #FFF;
+    width: 14.5rem;
+    border-radius: 1.6875rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.artigos {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    max-width: 100vw;
+}
+
+.artigo2 {
+    padding: clamp(2rem, 5vw, 4rem);
+    width: 100vw;
+    max-width: 2000px;
+    background: #ECC46F;
+    margin: clamp(2rem, 5vw, 4rem) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.contartigo {
+    padding: clamp(2.4rem, 7.5vw, 7rem);
+}
+
+.contartigo > h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+    max-width: 18ch;
+}
+
+.contartigo > p {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    letter-spacing: 0.06rem;
+    max-width: 43ch;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.contartigo > button {
+    width: 200px;
+    height: 55px;
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    border-radius: 5px;
+    background: #722F53;
+    border: none;
+    cursor: pointer;
+}
+
+.s3 img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
+.s6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+}
+
+.h1novidades {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: normal;
+    align-self: self-start;
+    background-color: #000;
+    width: 100%;
+    padding: 0.8rem;
+}
+
+.cardsnovidades {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.6rem;
+}
+
+.cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
+    display: flex;
+    width: 100%;
+    height: 22vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: end; 
+    cursor: pointer;
+}
+
+.cardnovidade1 > h1, .cardnovidade2 > h1, .cardnovidade3 > h1 , .cardnovidade4 > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 1rem;
+}
+
+.cardnovidade1 {background-image: url('../../public/images/tela-principal/img-prod(1).png');}
+.cardnovidade2 {background-image: url('../../public/images/tela-principal/img-prod(2).png');}
+.cardnovidade3 {background-image: url('../../public/images/tela-principal/img-prod(3).png');}
+.cardnovidade4 {background-image: url('../../public/images/tela-principal/img-prod(4).png');}
+
+.s7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.s7div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4.5rem;
+}
+
+.artigo1footer, .artigo2footer, .artigo3 {
+    display: flex;
+    width: 25vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center; 
+    cursor: pointer;
+    flex-direction: column;
+    height: 38.3vw;
+    justify-content: end;
+}
+
+.artigo1footer {background-image: url('../../public/images/tela-principal/img-artigo\(1\).png');}
+.artigo2footer {background-image: url('../../public/images/tela-principal/img-artigo\(2\).png');}
+.artigo3 {background-image: url('../../public/images/tela-principal/img-artigo\(3\).png');}
+
+.artigo1footer > h1, .artigo2footer > h1, .artigo3 > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2.3rem;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.artigo1footer > p, .artigo2footer > p, .artigo3 > p {
+    color: #FFF;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: normal;
+    max-width: 90%;
+}
+
+.artigo1footer > img, .artigo2footer > img, .artigo3 > img {
+    align-self: end;
+    margin: 1.2rem;
+}
+
+.fundoamarelo {
+    width: 100%;
+    height: 25vw;
+    background-color: #ECC46F;
+}
+
+

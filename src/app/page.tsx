@@ -219,13 +219,6 @@ export default function OasisHomepage() {
 
         <Link href='#'>
           <div className={styles.s2links}>
-            <img src="/images/tela-principal/img-tinturas.png" alt=""/>
-            <h1>TINTURAS</h1>
-          </div>
-        </Link>
-
-        <Link href='#'>
-          <div className={styles.s2links}>
             <img src="/images/tela-principal/img-produtos.png" alt=""/>
             <h1>PRODUTOS</h1>
           </div>
@@ -286,6 +279,125 @@ export default function OasisHomepage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className={styles.s4}>
+        <h1>Baseados no seu Perfil</h1>
+        <p>Uma lista de recomendações personalizadas baseadas <br></br>no seu perfil. Veja produtos que se foram feitos especialmente para você!</p>
+        <div className={styles.cardsperfil}>
+          <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button>IR PARA COMPRA</button>
+          </div>
+
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button>IR PARA COMPRA</button>
+          </div>
+
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button>IR PARA COMPRA</button>
+          </div>
+
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button>IR PARA COMPRA</button>
+          </div>
+          <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
+        </div>
+      </section>
+
+      <section className={styles.s5}>
+        <div className={styles.artigos}>
+            <img className={styles.artigo1} src="images/skincare/artigo1.png" alt="" />
+            <div className={styles.contartigo}>
+              <h1>Aposte em Maquiagens ousadas!</h1>
+              <p>Está cansada das mesmas makes monótonas e sem
+              brilho em toda festa? Veja agora mesmo 10 maquiagens 
+              para inovar e arrasar no visual! Aposte também em 
+              produtos que não danifiquem sua pele e preservem sua
+              beleza natural.</p>
+              <button>CONHEÇA</button>
+            </div>
+        </div>
+
+        <div className={styles.artigo2}>
+            <div className={styles.contartigo}>
+              <h1>Vai se casar? esteja incrível para seu amor!</h1>
+              <p>Está de casamento marcado mas ainda não tem certeza sobre
+              como deve se arrumar? Invista em você! Clique abaixo e 
+              descubra o kit de casamento perfeito, com looks, maquiagens
+              e penteados usados por famosos e feitos para você!
+              </p>
+              <button>CONHEÇA</button>
+            </div>
+            <img src="images/skincare/artigo2.png" alt="" />
+        </div>
+
+        <div className={styles.artigos}>
+            <img src="images/skincare/artigo3.png" alt="" />
+            <div className={styles.contartigo}>
+              <h1>autocuidado masculino</h1>
+              <p>Se importar com a própria beleza e querer se cuidar não
+                é mais algo irreal. Para quem dá aquele toque a mais na
+                aparência, recebe autoestima e felicidade renovadas! Leia 
+                agora por onde começar a ter uma rotina capilar e de 
+                skincare e dê uma repaginada total no visual!</p>
+              <button>CONHEÇA</button>
+            </div>
+        </div>
+      </section>
+
+      <section className={styles.s6}>
+        <div className={styles.h1novidades}>NOVIDADES</div>
+          <div className={styles.cardsnovidades}>
+            <div className={styles.cardnovidade1}>
+              <h1>Creme de Pentear Phytomanga Efeito Pesado 500ml</h1>
+            </div>
+
+            <div className={styles.cardnovidade2}>
+              <h1>EFFACLAR REEQUILIBRANTE</h1>
+            </div>
+
+            <div className={styles.cardnovidade3}>
+              <h1>produto</h1>
+            </div>
+
+            <div className={styles.cardnovidade4}>
+              <h1>produto</h1>
+            </div>
+          </div>
+      </section>
+
+      <section className={styles.s7}>
+        <div className={styles.s7div}>
+          <div className={styles.artigo1footer}>
+            <h1>diferença de gerações</h1>
+            <p>Os 10 tratamentos de pele mais comuns em 1950 e 2024</p>
+            <img src="images/tela-principal/seta-branca.svg" alt="" />
+          </div>
+          <div className={styles.artigo2footer}>
+            <h1>Cremes Infantis</h1>
+            <p>Veja os melhores produtos para suas crianças!</p>
+            <img src="images/tela-principal/seta-branca.svg" alt="" />
+          </div>
+          <div className={styles.artigo3}>
+            <h1>têndencias</h1>
+            <p>5 novos lançamentos que prometem abalar o mercado</p>
+            <img src="images/tela-principal/seta-branca.svg" alt="" />
+          </div>
+        </div>
+        <div className={styles.fundoamarelo}></div>
       </section>
     </>
   );
