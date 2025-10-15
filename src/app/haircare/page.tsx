@@ -9,8 +9,8 @@ const HairCarePage: React.FC = () => {
   return (
     <main>
       <section className="retangulo" id="barra">
-        <article>
-          <h1 id="asM">AS MELHORES DICAS PARA O SEU CABELO</h1>
+        <article id='as-melhores-dicas'>
+          <h1 id="asM">AS MELHORES DICAS PARA SEU CABELO</h1>
           <img src="/images/hair-care/image 47.png" alt="" id="img47" />
           
         </article>
