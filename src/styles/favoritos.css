@@ -13,7 +13,6 @@ body {
     display: flex;
     width: 100%;
     height: auto;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
 }
@@ -29,16 +28,14 @@ main {
     width: 100%;
     max-width: 1800px; /* Limita a largura máxima para telas muito grandes */
     height: auto;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* MODIFICADO: Alinha os itens ao topo para melhor alinhamento */
     flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
-    padding: 1rem;
 }
 
 #imagens-artigos {
     width: 100%;
     max-width: 599px; /* Mantém a largura máxima do design original */
-    height: 60vh; /* Altura relativa para melhor adaptação */
+    height: 100vh; /* MODIFICADO: Aumenta a altura para ocupar a tela inteira */
     min-height: 400px;
     margin-right: 0; /* Removido para centralizar em telas menores */
     background-image: url(../../public/images/favoritos/imagem-principal.png);
@@ -72,6 +69,7 @@ main {
     font-family: 'PLAYFUL RUNWAY';
     font-weight: 400;
     font-size: clamp(3.5rem, 10vw, 6.875rem); /* Fonte fluida */
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #p1 {
@@ -80,7 +78,7 @@ main {
     font-family: 'Louis George Cafe';
     font-weight: 400;
     font-size: clamp(1rem, 2.5vw, 1.25rem); /* Fonte fluida */
-    margin-top: 1rem;
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #h1-artigos {
@@ -88,6 +86,8 @@ main {
     font-weight: 400;
     font-size: clamp(2rem, 5vw, 2.8rem);
     margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #section-imagens-artigos {
@@ -567,36 +567,69 @@ main {
 
 /* ---- MEDIA QUERIES PARA AJUSTES FINOS ---- */
 @media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
+    
     main {
         flex-direction: column;
         align-items: center;
-        padding: 1rem;
+        justify-content: center;
+        padding: 0; /* MODIFICADO: Remove o padding para a imagem ocupar a tela toda */
     }
     #imagens-artigos {
         margin-right: 0;
         margin-bottom: 2rem;
-        height: 50vh;
+        height: 60vh; /* MODIFICADO: Altura maior para ocupar mais espaço no mobile */
+        width: 100%; /* NOVO: Garante que ocupe a largura toda */
+        max-width: 100%; /* NOVO: Sobrescreve a largura máxima do desktop */
+    }
+    #section-favoritos {
+        width: 100%;
+        margin-top: 0; /* Reseta a margem para alinhar abaixo da imagem */
     }
 }
 
 @media (max-width: 900px) {
-    /* Torna o grid de mosaico uma única coluna em telas menores */
+    /* MODIFICADO: Torna o grid de mosaico em 2 colunas */
+     body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
     #section-artigos-s2 {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto; /* Altura automática */
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: auto;
         height: auto;
     }
     .artigo-s2-item {
-        height: 350px; /* Altura fixa para cada item na coluna única */
+        height: 350px; 
     }
-    /* Reseta as posições específicas do grid */
-    #artigo1-s2, #artigo2-s2, #artigo3-s2, #artigo4-s2, #artigo5-s2 {
+    #artigo1-s2, #artigo2-s2, #artigo3-s2, #artigo4-s2 {
         grid-column: auto;
         grid-row: auto;
+    }
+    /* NOVO: Faz o quinto artigo ocupar a largura total */
+    #artigo5-s2 {
+        grid-column: 1 / -1;
+    }
+    .card-marrom #img-marrom {
+        width: 250px;
     }
 }
 
 @media (max-width: 768px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
     .card-marrom {
         flex-direction: column;
         text-align: center;
@@ -616,17 +649,67 @@ main {
     #section-artigos-s2 {
         margin: 70px auto;
     }
+
+    .card-marrom #img-marrom {
+        width: 250px;
+    }
+    
+    /* Regra para quebrar "Mais Produtos" em 2 colunas */
+    #container-maisprodutos {
+        gap: 1rem;
+    }
+    .card-maisprodutos {
+        width: calc(50% - 0.5rem); 
+        max-width: none; 
+    }
 }
 
 @media (max-width: 480px) {
-    #section-imagens-artigos > a > div {
-        width: 100%;
-        height: 250px;
+    body {
+        align-items: center;
     }
+
+    main {
+        justify-content: center;
+    }
+    
     .card-marrom #img-marrom {
-        width: 150px;
+        width: 250px;
     }
     #section-artigo div {
         margin-left: clamp(1rem, 5vw, 2rem);
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    #section-imagens-artigos {
+        flex-wrap: nowrap; 
+        justify-content: flex-start;
+        overflow-x: auto; 
+        padding: 1rem; 
+        
+        scrollbar-width: thin;
+        scrollbar-color: #939191 transparent;
+    }
+    
+    #section-imagens-artigos > a > div {
+        flex-shrink: 0; 
+    }
+}
+
+@media (max-width: 1650px) {
+         body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
     }
 }

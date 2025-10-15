@@ -1,5 +1,48 @@
-#barra {
+:root {
+    --body-back: #ffffff;
+    --corpo-texto: #000000; 
+    --header-color: #000000; 
+    --back-header: #fff;
+    --shadow: #f8f4f4;
+    --label: #000000;
+    --footer: #ffffff;
+}
+.dark:root{
+    --body-back: #0e0e0e;
+    --header-color: #ffffff; 
+    --back-header: #000000;
+    --corpo-texto: #ffffff ; 
+    --footer: #000000;
+    --shadow: #161616;
+    --label: #f3c11e;
+}
+
+html{
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+}
+body
+{
+    height: 100%;
+}
+body, html
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+}
+
+#barra {
     width: 100%;
     min-height: 80vh;
     background-color: #ebebeb;
@@ -8,14 +51,20 @@
 }
 
 #img47 {
-    display: flex;
-   
-    
-    
+    margin-top: 2.8%;
+    margin-left: 62%;
+    max-width: 45%;
+    height: auto;
+    display: block;
 }
 
 #asM {
     text-align: left;
+    font-family: "The Next Font";
+    font-size: 8rem;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 12.8rem;
 }
 
 #barra h1 {
@@ -63,6 +112,7 @@
     margin: 10px 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.4s ease;
+    font-family: "Louis George Cafe";
 }
 
 .retangulo-item:hover {
@@ -159,7 +209,7 @@
     color: white;
     border: 3px;
     border-radius: 39.41px;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -176,10 +226,12 @@
 }
 
 #nossosTutoriais {
-    font-size: 110px;
+    font-size: 6.8rem;
     display: flex;
     justify-content: center;
     margin: 40px;
+    font-family: "PLAYFUL RUNWAY";
+    font-weight: 400;
 }
 
 .container-retangulos {

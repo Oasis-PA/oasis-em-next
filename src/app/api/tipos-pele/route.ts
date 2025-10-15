@@ -1,5 +1,5 @@
-// Rota: /api/tags
-// Tabela Supabase: public.Tag (para filtros de produto: condicionador, shampoo, etc.)
+// Rota: /api/tipos-pele
+// Tabela Supabase: public.TipoPele (Assumindo que você tem esta tabela)
 
 import { createClient } from '@supabase/supabase-js'; 
 import { NextResponse } from 'next/server';
@@ -10,14 +10,14 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function GET() {
+    // OBS: Ajuste o nome da tabela (TipoPele) e o ID (id_tipo_pele) conforme seu DB!
     const { data, error } = await supabase
-        .from('Tag') 
-        .select('id_tag, nome'); // Colunas da sua tabela Tag
+        .from('TipoPele') 
+        .select('id_tipo_pele, nome'); 
 
     if (error) {
-        console.error('Erro ao buscar Tags:', error);
+        console.error('Erro ao buscar Tipos de Pele:', error);
         return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
     }
-    // Retorna o formato esperado: [{ id_tag: 1, nome: 'condicionador' }, ...]
     return NextResponse.json(data);
 }
