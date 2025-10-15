@@ -101,6 +101,8 @@ html {
     max-width: 26rem;
     display: flex;
     flex-direction: column;
+    transition: opacity 0.3s ease; /* Transição suave para a opacidade */
+    margin: 8rem;
 }
 
 .texttopics > h1 {
@@ -126,6 +128,29 @@ html {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
+    overflow-x: auto; /* Permite scroll horizontal */
+    flex-wrap: nowrap; /* Mantém os cards em uma linha */
+    padding-right: 2rem; /* Espaçamento à direita */
+    scrollbar-width: thin; /* Firefox - scrollbar mais fina */
+    scrollbar-color: #722F53 #1a1a1a; /* Firefox - cor do scrollbar */
+}
+
+/* Estilização do scrollbar para Chrome, Safari e Edge */
+.cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.cards::-webkit-scrollbar-thumb {
+    background: #722F53;
+    border-radius: 4px;
+}
+
+.cards::-webkit-scrollbar-thumb:hover {
+    background: #8a3a65;
 }
 
 .card {
@@ -135,6 +160,7 @@ html {
    width: 13.3vw;
    height: 29.5vw;
    border-radius: 1vw;
+   flex-shrink: 0; /* Impede que os cards encolham */
 }
 
 .card > img {

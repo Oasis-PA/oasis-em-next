@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import styles from '@/styles/page.module.css';
@@ -28,6 +28,8 @@ const slidesData = [
 
 export default function OasisHomepage() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [textOpacity, setTextOpacity] = useState(1);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -35,6 +37,28 @@ export default function OasisHomepage() {
     }, 5000);
 
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (cardsContainerRef.current) {
+        const scrollLeft = cardsContainerRef.current.scrollLeft;
+        // Calcula a opacidade baseada no scroll (diminui conforme scrolla)
+        const newOpacity = Math.max(0, 1 - (scrollLeft / 300));
+        setTextOpacity(newOpacity);
+      }
+    };
+
+    const cardsContainer = cardsContainerRef.current;
+    if (cardsContainer) {
+      cardsContainer.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (cardsContainer) {
+        cardsContainer.removeEventListener('scroll', handleScroll);
+      }
+    };
   }, []);
 
   const handleDotClick = (index: number) => {
@@ -80,12 +104,12 @@ export default function OasisHomepage() {
       </main>
 
       <section className={styles.s1}>
-        <div className={styles.texttopics}>
+        <div className={styles.texttopics} style={{ opacity: textOpacity }}>
           <h1>HOT TOPICS</h1>
           <h2>Fique por dentro dos assuntos mais quentes de beleza! Descubra dicas, 
           tendências e tire suas dúvidas.</h2>
         </div>
-        <div className={styles.cards}>
+        <div className={styles.cards} ref={cardsContainerRef}>
           <Link href="#">
             <div className={styles.card}>
               <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
