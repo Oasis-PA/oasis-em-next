@@ -3,11 +3,9 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Header from "../../../components/header";
 import '@/styles/artigoteste.css';
-import fs from "fs";
-import path from "path";
 
 interface ArtigoProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -26,8 +24,11 @@ export async function generateStaticParams() {
 }
 
 export default async function ArtigoPage({ params }: ArtigoProps) {
+  // Await params antes de usar
+  const { slug } = await params;
+
   const artigo = await prisma.artigo.findUnique({
-    where: { slug: params.slug }
+    where: { slug }
   });
 
   // Se não existir, 404
@@ -73,20 +74,8 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     );
   }
 
-  // procura apenas na pasta public/images/artigos por várias extensões
-  const findHeaderUrl = (slug: string) => {
-    const exts = ["png", "jpg", "jpeg", "webp", "avif", "gif"];
-    for (const ext of exts) {
-      const fileName = `${slug}-header.${ext}`;
-      const filePath = path.join(process.cwd(), "public", "images", "artigos", fileName);
-      if (fs.existsSync(filePath)) {
-        return `/images/artigos/${fileName}`;
-      }
-    }
-    return null;
-  };
-
-  const imagemHeader = findHeaderUrl(params.slug);
+  // Usa a imagem do header do banco de dados (Supabase Storage)
+  const imagemHeader = artigo.imagemHeader;
 
   return (
     <>
