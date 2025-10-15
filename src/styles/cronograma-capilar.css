@@ -455,6 +455,7 @@ html, body {
 .apostas {
   display: flex;
   flex-direction: column;
+  margin-top: 5vh;
   padding: 5vh 5vw;
   gap: 5vh;
 }
@@ -466,16 +467,20 @@ html, body {
   gap: 2rem;
 }
 .ousadas img {
-  width: 50%;
-  max-width: 500px;
+  width: 70%;
+  max-width: 800px;
   height: auto;
   flex-shrink: 0;
 }
 .ousadas div {
   flex-grow: 1;
 }
-
+#cansada1{
+  margin-left: 2vw;
+  max-width: 650px;
+}
 .descubra {
+  margin-top: 2vh;
   background-color: #722F53;
   width: clamp(120px, 9vw, 180px);
   height: clamp(40px, 2.3vw, 55px);
