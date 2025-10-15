@@ -397,7 +397,6 @@ export default function OasisHomepage() {
             <img src="images/tela-principal/seta-branca.svg" alt="" />
           </div>
         </div>
-        <div className={styles.fundoamarelo}></div>
       </section>
     </>
   );
