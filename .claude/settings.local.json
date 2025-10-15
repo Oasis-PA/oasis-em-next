@@ -26,7 +26,9 @@
       "mcp__figma__get_screenshot",
       "mcp__figma__get_code",
       "Bash(git checkout:*)",
-      "Read(//c/Users/stefano/Downloads/**)"
+      "Read(//c/Users/stefano/Downloads/**)",
+      "Bash(node:*)",
+      "Bash(for:*)"
     ],
     "deny": [],
     "ask": []
