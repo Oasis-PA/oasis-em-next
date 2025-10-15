@@ -21,8 +21,25 @@ module.exports = {
   },
 
   transform: {
-    '^.+\\.(ts|tsx)$': ['ts-jest', { useESM: true }],
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      {
+        useESM: true,
+        tsconfig: {
+          allowSyntheticDefaultImports: true,
+          esModuleInterop: true,
+        },
+      },
+    ],
   },
 
+  // Habilita o uso de manual mocks
+  clearMocks: true,
+  resetMocks: true,
+
   resolver: undefined,
+
+  // Configurações de performance
+  maxWorkers: 2, // Limita workers para evitar OOM
+  workerIdleMemoryLimit: '512MB', // Limita memória dos workers
 };

@@ -26,7 +26,14 @@
       "mcp__figma__get_screenshot",
       "mcp__figma__get_code",
       "Bash(git checkout:*)",
-      "Read(//c/Users/stefano/Downloads/**)"
+      "Read(//c/Users/stefano/Downloads/**)",
+      "Bash(node:*)",
+      "Bash(for:*)",
+      "Bash(npx tsx test-supabase-upload.ts)",
+      "Bash(npx dotenvx run --env-file=.env.local -- npx tsx test-supabase-upload.ts)",
+      "Bash(del test-supabase-upload.ts)",
+      "Bash(npm run test:validations)",
+      "Bash(npm run test:api:*)"
     ],
     "deny": [],
     "ask": []

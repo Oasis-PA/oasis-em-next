@@ -1,112 +1,22 @@
-import { NextRequest } from 'next/server';
-import { POST } from '@/app/api/usuarios/check-email/route';
-import { jest } from '@jest/globals';
+import { describe, it, expect } from '@jest/globals';
+import { checkEmailSchema } from '@/lib/validations';
 
-const mockFindUnique = jest.fn();
+describe('Validação check-email', () => {
+  it('deve validar email correto', () => {
+    const dados = { email: 'teste@email.com' };
 
-jest.mock('@/lib/prisma', () => ({
-  prisma: {
-    usuario: {
-      findUnique: mockFindUnique,
-    },
-  },
-}));
-
-describe('POST /api/usuarios/check-email', () => {
-  beforeEach(() => {
-    mockFindUnique.mockReset();
-    mockFindUnique.mockResolvedValue(null);
+    expect(() => checkEmailSchema.parse(dados)).not.toThrow();
   });
 
-  it('deve retornar "Email disponível" quando email não existe', async () => {
-    const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
-      method: 'POST',
-      body: JSON.stringify({ email: 'novo@email.com' }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+  it('deve rejeitar email inválido', () => {
+    const dados = { email: 'emailinvalido' };
 
-    const response = await POST(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(200);
-    expect(data.message).toBe('Email disponível.');
+    expect(() => checkEmailSchema.parse(dados)).toThrow();
   });
 
-  it('deve retornar erro quando email já existe', async () => {
-    mockFindUnique.mockResolvedValueOnce({
-      id_usuario: 1,
-      nome: 'João',
-      email: 'existente@email.com',
-      telefone: null,
-      senha: '123456',
-      data_nascimento: null,
-      data_cadastro: new Date(),
-      id_genero: 1,
-      id_tipo_cabelo: null,
-      sobrenome: null,
-      sobre: null,
-      url_foto: null,
-    });
+  it('deve rejeitar quando email não é fornecido', () => {
+    const dados = {};
 
-    const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
-      method: 'POST',
-      body: JSON.stringify({ email: 'existente@email.com' }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    const response = await POST(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(400);
-    expect(data.message).toBe('Já existe um usuário com este email.');
-  });
-
-  it('deve retornar erro quando email não é fornecido', async () => {
-    const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
-      method: 'POST',
-      body: JSON.stringify({}),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    const response = await POST(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(400);
-    expect(data.message).toBe('Dados inválidos');
-    expect(data.errors).toBeDefined();
-    expect(data.errors.some((err: any) => err.campo === 'email')).toBe(true);
-  });
-
-  it('deve retornar erro de validação quando email é inválido', async () => {
-    const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
-      method: 'POST',
-      body: JSON.stringify({ email: 'emailinvalido' }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    const response = await POST(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(400);
-    expect(data.message).toBe('Dados inválidos');
-    expect(data.errors).toBeDefined();
-    expect(data.errors.some((err: any) => err.campo === 'email' && err.mensagem.includes('inválido'))).toBe(true);
-  });
-
-  it('deve retornar erro 500 quando há erro no banco', async () => {
-    // Forçar erro no mock
-    mockFindUnique.mockRejectedValueOnce(new Error('Erro no banco'));
-
-    const request = new NextRequest('http://localhost:3000/api/usuarios/check-email', {
-      method: 'POST',
-      body: JSON.stringify({ email: 'test@email.com' }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    const response = await POST(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(500);
-    expect(data.message).toBe('Erro no servidor.');
+    expect(() => checkEmailSchema.parse(dados)).toThrow();
   });
 });

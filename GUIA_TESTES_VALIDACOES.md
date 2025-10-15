@@ -212,10 +212,6 @@ try {
 - ✅ Aceita: preço positivo, nome com 2+ caracteres
 - ❌ Rejeita: preço negativo, nome muito curto
 
-### **Validações de Avaliação**
-- ✅ Aceita: nota de 1 a 5 (inteiro)
-- ❌ Rejeita: nota 0, nota 6, nota decimal (4.5)
-
 ---
 
 ## 🐛 Debugando Erros de Validação
@@ -245,17 +241,20 @@ Use essa informação para corrigir os dados de entrada.
 ## 📂 Arquivos de Teste
 
 - **Testes automatizados:**
-  - `tests/validations/usuario.test.ts`
-  - `tests/validations/produto.test.ts`
-  - `tests/validations/avaliacao.test.ts`
+  - `tests/validations/usuario.test.ts` - Validações de usuário
+  - `tests/validations/produto.test.ts` - Validações de produto
+  - `tests/api/usuarios-cadastro.test.ts` - Validações de cadastro
+  - `tests/api/usuarios-check-email.test.ts` - Validações de email
+  - `tests/api/exemplo.test.ts` - Exemplo de teste
+  - `tests/alias.test.ts` - Testes de alias de imports
 
 - **Script manual:**
   - `scripts/test-validations.ts`
 
 - **Validações:**
-  - `src/lib/validations/usuario.ts`
-  - `src/lib/validations/produto.ts`
-  - `src/lib/validations/avaliacao.ts`
+  - `src/lib/validations/usuario.ts` - Schemas de usuário
+  - `src/lib/validations/produto.ts` - Schemas de produto
+  - `src/lib/validations/avaliacao.ts` - Schemas de avaliação (apenas validação, sem API)
 
 ---
 
