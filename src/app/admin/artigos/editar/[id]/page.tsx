@@ -1,13 +1,13 @@
-// src/app/admin/artigos/novo/page.tsx
+// src/app/admin/artigos/editar/[id]/page.tsx
 "use client";
-
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import '@/styles/admin-artigos.css';
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import styles from "@/styles/artigo.module.css";
+import '@/styles/admin-artigos.css';
 
-export default function NovoArtigoPage() {
+export default function EditarArtigoPage() {
+  const params = useParams();
   const router = useRouter();
   const [formData, setFormData] = useState({
     titulo: '',
@@ -20,14 +20,61 @@ export default function NovoArtigoPage() {
     horaPublicacao: '',
     tags: ''
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+
+  useEffect(() => {
+    if (!params?.id) {
+      router.push("/admin/artigos");
+      return;
+    }
+    fetchArtigo();
+  }, [params?.id]);
+
+  const fetchArtigo = async () => {
+    try {
+      const response = await fetch(`/api/admin/artigos/${params.id}`);
+      if (response.ok) {
+        const data = await response.json();
+        
+        let dataStr = '';
+        let horaStr = '';
+        if (data.dataPublicacao) {
+          const dt = new Date(data.dataPublicacao);
+          dataStr = dt.toISOString().split('T')[0];
+          horaStr = dt.toTimeString().slice(0, 5);
+        }
+
+        setFormData({
+          titulo: data.titulo,
+          slug: data.slug,
+          conteudo: data.conteudo,
+          resumo: data.resumo || '',
+          imagemHeader: data.imagemHeader || '',
+          status: data.status,
+          dataPublicacao: dataStr,
+          horaPublicacao: horaStr,
+          tags: data.tags ? data.tags.join(', ') : ''
+        });
+      } else {
+        alert('Artigo não encontrado');
+        router.push('/admin/artigos');
+      }
+    } catch (error) {
+      console.error('Erro ao carregar artigo:', error);
+      alert('Erro ao carregar artigo');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
+    // auto-gerar slug a partir do título se ainda não houver slug
     if (name === 'titulo' && !formData.slug) {
       const slug = value
         .toLowerCase()
@@ -50,40 +97,53 @@ export default function NovoArtigoPage() {
 
     setUploadingImage(true);
 
-    const slug = formData.slug?.trim() || ""; // use o campo slug do state
+    // exigir slug antes do upload (segurança/nomes consistentes)
+    const slug = formData.slug?.trim() || "";
     if (!slug) {
+      setUploadingImage(false);
       alert("Você deve definir o slug antes de enviar a imagem do header.");
       return;
     }
 
-    const fd = new FormData();
-    fd.append("file", file);
-    fd.append("tipo", tipo);
-    fd.append("slug", slug);
-
-    const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-    if (!res.ok) {
-      const body = await res.text();
-      alert("Falha no upload: " + body);
-      return;
-    }
-    const data = await res.json();
+    const formDataImg = new FormData();
+    formDataImg.append('file', file);
+    formDataImg.append('tipo', tipo);
+    formDataImg.append('slug', slug);
 
     try {
-      if (tipo === 'header') {
-        setFormData(prev => ({ ...prev, imagemHeader: data.url }));
-        alert('Imagem do header enviada!');
+      const response = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formDataImg,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        if (tipo === 'header') {
+          setFormData(prev => ({ ...prev, imagemHeader: data.url }));
+          alert('Imagem do header atualizada!');
+        } else {
+          const markdownImg = `\n\n![Descrição da imagem](${data.url})\n\n`;
+          setFormData(prev => ({
+            ...prev,
+            conteudo: prev.conteudo + markdownImg
+          }));
+          alert('Imagem adicionada ao conteúdo!');
+        }
       } else {
-        const markdownImg = `\n\n![Descrição da imagem](${data.url})\n\n`;
-        setFormData(prev => ({
-          ...prev,
-          conteudo: prev.conteudo + markdownImg
-        }));
-        alert('Imagem adicionada ao conteúdo!');
+        // tentar ler JSON de erro, fallback para texto
+        let errBody = '';
+        try {
+          const j = await response.json();
+          errBody = j.error || JSON.stringify(j);
+        } catch {
+          errBody = await response.text();
+        }
+        alert(errBody || 'Erro ao fazer upload');
       }
     } catch (error) {
-      console.error('Erro ao processar a imagem:', error);
-      alert('Erro ao processar a imagem');
+      console.error('Erro:', error);
+      alert('Erro ao fazer upload');
     } finally {
       setUploadingImage(false);
     }
@@ -91,7 +151,7 @@ export default function NovoArtigoPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    setIsSaving(true);
 
     try {
       let dataPublicacaoCompleta = null;
@@ -116,38 +176,39 @@ export default function NovoArtigoPage() {
         tags: tagsArray
       };
 
-      const response = await fetch('/api/admin/artigos', {
-        method: 'POST',
+      const response = await fetch(`/api/admin/artigos/${params.id}`, {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
-        alert('Artigo salvo com sucesso!');
+        alert('Artigo atualizado com sucesso!');
         router.push('/admin/artigos');
       } else {
         const data = await response.json();
-        alert(data.error || 'Erro ao salvar artigo');
+        alert(data.error || 'Erro ao atualizar artigo');
       }
     } catch (error) {
       console.error('Erro:', error);
-      alert('Erro ao salvar artigo');
+      alert('Erro ao atualizar artigo');
     } finally {
-      setIsLoading(false);
+      setIsSaving(false);
     }
   };
 
-  const salvarRascunho = () => {
-    setFormData(prev => ({ ...prev, status: 'rascunho' }));
-    setTimeout(() => {
-      document.querySelector('form')?.requestSubmit();
-    }, 100);
-  };
+  if (isLoading) {
+    return (
+      <div className="admin-container">
+        <div className="loading">Carregando artigo...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="admin-container">
       <header className="admin-header">
-        <h1>Novo Artigo</h1>
+        <h1>Editar Artigo</h1>
         <button onClick={() => router.back()} className="btn-secondary">
           ← Voltar
         </button>
@@ -164,7 +225,6 @@ export default function NovoArtigoPage() {
               value={formData.titulo}
               onChange={handleChange}
               required
-              placeholder="Ex: 5 Dicas de Skincare para o Verão"
             />
           </div>
 
@@ -177,9 +237,8 @@ export default function NovoArtigoPage() {
               value={formData.slug}
               onChange={handleChange}
               required
-              placeholder="dicas-skincare-verao"
             />
-            <small>URL: /artigo/{formData.slug || 'seu-slug'}</small>
+            <small>URL: /artigo/{formData.slug}</small>
           </div>
         </div>
 
@@ -193,8 +252,8 @@ export default function NovoArtigoPage() {
               onChange={handleChange}
             >
               <option value="rascunho">📝 Rascunho</option>
-              <option value="publicado">✓ Publicar Agora</option>
-              <option value="agendado">🕐 Agendar Publicação</option>
+              <option value="publicado">✓ Publicado</option>
+              <option value="agendado">🕐 Agendado</option>
             </select>
           </div>
 
@@ -236,7 +295,6 @@ export default function NovoArtigoPage() {
             onChange={handleChange}
             placeholder="skincare, beleza, tutorial"
           />
-          <small>Ex: skincare, beleza, rotina</small>
         </div>
 
         <div className="form-group">
@@ -246,7 +304,7 @@ export default function NovoArtigoPage() {
             name="resumo"
             value={formData.resumo}
             onChange={handleChange}
-            placeholder="Breve descrição do artigo (recomendado 150-160 caracteres)"
+            placeholder="Breve descrição do artigo"
             rows={3}
             maxLength={160}
           />
@@ -267,7 +325,7 @@ export default function NovoArtigoPage() {
               disabled={uploadingImage}
             />
             <label htmlFor="uploadHeader" className="upload-btn">
-              {uploadingImage ? '⏳ Enviando...' : '📷 Escolher Imagem'}
+              {uploadingImage ? '⏳ Enviando...' : formData.imagemHeader ? '🔄 Trocar Imagem' : '📷 Escolher Imagem'}
             </label>
             {formData.imagemHeader && (
               <div className="image-preview">
@@ -282,7 +340,7 @@ export default function NovoArtigoPage() {
               </div>
             )}
           </div>
-          <small>Recomendado: 1920x400px | Max: 5MB | JPG, PNG, WEBP, GIF</small>
+          <small>Recomendado: 1920x400px | Max: 5MB</small>
         </div>
 
         <div className="editor-wrapper">
@@ -329,7 +387,6 @@ export default function NovoArtigoPage() {
                   onChange={handleChange}
                   required
                   rows={20}
-                  placeholder="# Título Principal&#10;&#10;Escreva seu artigo aqui...&#10;&#10;## Subtítulo&#10;&#10;**Negrito** e *itálico*&#10;&#10;Use o botão 'Adicionar Imagem' acima para inserir imagens"
                 />
                 <div className="markdown-hints">
                   <strong>Dicas:</strong>
@@ -341,35 +398,36 @@ export default function NovoArtigoPage() {
               </div>
             ) : (
               <div className="preview-area">
-                {formData.conteudo ? (
-                  <div className={styles.container}>
-                    <article className={styles.article}>
-                      <ReactMarkdown
-                        components={{
-                          p: ({ children, node }) => {
-                            const hasOnlyImage = node?.children?.length === 1 && 
-                                                node.children[0].type === 'element' && 
-                                                node.children[0].tagName === 'img';
-                            if (hasOnlyImage) return <>{children}</>;
-                            return <p>{children}</p>;
-                          },
-                          img: ({ src, alt }) => (
+                <div className={styles.container}>
+                  <article className={styles.article}>
+                    <ReactMarkdown
+                      components={{
+                        h1: ({ children }) => <h1 className={styles.titulo}>{children}</h1>,
+                        h2: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
+                        h3: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
+                        p: ({ children, node }) => {
+                          const hasOnlyImage = node?.children?.length === 1 &&
+                                              node.children[0].type === 'element' &&
+                                              node.children[0].tagName === 'img';
+                          if (hasOnlyImage) return <>{children}</>;
+                          return <p className={styles.paragrafo}>{children}</p>;
+                        },
+                        ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
+                        li: ({ children }) => <li>{children}</li>,
+                        img: ({ src, alt, title }) => {
+                          return (
                             <figure className={styles.artigoFigura}>
                               <img src={src} alt={alt || ''} className={styles.artigoImagem} />
+                              {title && <figcaption className={styles.figcaption}>{title}</figcaption>}
                             </figure>
-                          ),
-                          h1: ({ children }) => <h1 className={styles.titulo}>{children}</h1>,
-                          h2: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
-                          ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
-                        }}
-                      >
-                        {formData.conteudo}
-                      </ReactMarkdown>
-                    </article>
-                  </div>
-                ) : (
-                  <p className="preview-empty">Nenhum conteúdo para visualizar</p>
-                )}
+                          );
+                        },
+                      }}
+                    >
+                      {formData.conteudo}
+                    </ReactMarkdown>
+                  </article>
+                </div>
               </div>
             )}
           </div>
@@ -380,27 +438,16 @@ export default function NovoArtigoPage() {
             type="button"
             onClick={() => router.back()}
             className="btn-secondary"
-            disabled={isLoading}
+            disabled={isSaving}
           >
             Cancelar
           </button>
           <button
-            type="button"
-            onClick={salvarRascunho}
-            className="btn-draft"
-            disabled={isLoading}
-          >
-            💾 Salvar Rascunho
-          </button>
-          <button
             type="submit"
             className="btn-primary"
-            disabled={isLoading}
+            disabled={isSaving}
           >
-            {isLoading ? 'Salvando...' : 
-             formData.status === 'publicado' ? '✓ Publicar' :
-             formData.status === 'agendado' ? '🕐 Agendar' :
-             '💾 Salvar'}
+            {isSaving ? 'Salvando...' : '✓ Atualizar'}
           </button>
         </div>
       </form>

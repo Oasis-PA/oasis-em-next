@@ -2,16 +2,36 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-// GET - Listar artigos
-export async function GET() {
+// GET - Listar todos os artigos com tags
+export async function GET(request: NextRequest) {
   try {
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status');
+
+    const where = status ? { status } : {};
+
     const artigos = await prisma.artigo.findMany({
+      where,
+      include: {
+        ArtigoTag: {
+          include: {
+            Tag: true
+          }
+        }
+      },
       orderBy: {
         criadoEm: 'desc'
       }
     });
 
-    return NextResponse.json(artigos);
+    // Formatar resposta para incluir apenas os nomes das tags
+    const artigosFormatados = artigos.map(artigo => ({
+      ...artigo,
+      tags: artigo.ArtigoTag.map(at => at.Tag.nome),
+      createdAt: artigo.criadoEm // Compatibilidade com o frontend
+    }));
+
+    return NextResponse.json(artigosFormatados);
   } catch (error) {
     console.error('Erro ao buscar artigos:', error);
     return NextResponse.json(
@@ -21,19 +41,20 @@ export async function GET() {
   }
 }
 
-// POST - Criar novo artigo
+// POST - Criar novo artigo com tags
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { titulo, slug, conteudo } = body;
-
-    // Validações
-    if (!titulo || !slug || !conteudo) {
-      return NextResponse.json(
-        { error: 'Título, slug e conteúdo são obrigatórios' },
-        { status: 400 }
-      );
-    }
+    const { 
+      titulo, 
+      slug, 
+      conteudo, 
+      resumo, 
+      imagemHeader, 
+      status, 
+      dataPublicacao,
+      tagIds 
+    } = body;
 
     // Verifica se o slug já existe
     const slugExiste = await prisma.artigo.findUnique({
@@ -42,21 +63,56 @@ export async function POST(request: NextRequest) {
 
     if (slugExiste) {
       return NextResponse.json(
-        { error: 'Já existe um artigo com este slug' },
+        { error: 'Este slug já está sendo usado' },
         { status: 409 }
       );
     }
 
-    // Cria o artigo
-    const novoArtigo = await prisma.artigo.create({
-      data: {
-        titulo,
-        slug,
-        conteudo,
+    // Cria o artigo com tags em uma transação
+    const novoArtigo = await prisma.$transaction(async (tx) => {
+      // Cria o artigo
+      const artigo = await tx.artigo.create({
+        data: {
+          titulo,
+          slug,
+          conteudo,
+          resumo,
+          imagemHeader,
+          status: status || 'rascunho',
+          dataPublicacao: dataPublicacao ? new Date(dataPublicacao) : null,
+        }
+      });
+
+      // Adiciona as tags se fornecidas
+      if (Array.isArray(tagIds) && tagIds.length > 0) {
+        await tx.artigoTag.createMany({
+          data: tagIds.map((tagId: number) => ({
+            artigoId: artigo.id,
+            tagId: tagId
+          }))
+        });
       }
+
+      // Busca o artigo criado com tags
+      return await tx.artigo.findUnique({
+        where: { id: artigo.id },
+        include: {
+          ArtigoTag: {
+            include: {
+              Tag: true
+            }
+          }
+        }
+      });
     });
 
-    return NextResponse.json(novoArtigo, { status: 201 });
+    // Formatar resposta
+    const resultado = {
+      ...novoArtigo,
+      tags: novoArtigo?.ArtigoTag.map(at => at.Tag.nome) || []
+    };
+
+    return NextResponse.json(resultado, { status: 201 });
   } catch (error) {
     console.error('Erro ao criar artigo:', error);
     return NextResponse.json(
