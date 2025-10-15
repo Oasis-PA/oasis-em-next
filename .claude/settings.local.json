@@ -28,7 +28,9 @@
       "Bash(git checkout:*)",
       "Read(//c/Users/stefano/Downloads/**)",
       "Bash(node:*)",
-      "Bash(for:*)"
+      "Bash(for:*)",
+      "Bash(npx tsx test-supabase-upload.ts)",
+      "Bash(npx dotenvx run --env-file=.env.local -- npx tsx test-supabase-upload.ts)"
     ],
     "deny": [],
     "ask": []
