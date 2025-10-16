@@ -1,7 +1,3 @@
-/* =================================== */
-/* Estilos Globais e do Header */
-/* =================================== */
-
 * {
     box-sizing: border-box; 
     margin: 0;
@@ -178,6 +174,12 @@ footer {
     transition: color 0.3s, transform 0.3s;
 }
 
+.footer-column h2 a {
+    color: inherit; 
+    text-decoration: none; 
+    font-size: 0.8rem;
+}
+
 .footer-column h2:hover {
     color: #7D4AB3;
     cursor: pointer; 
@@ -190,7 +192,6 @@ footer {
   object-fit: contain;
 }
 
-/* Esconde o botão do acordeão por padrão (em desktop) */
 .accordion-header {
     display: none;
 }
@@ -214,7 +215,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* --- Header Responsivo --- */
     header { padding: 1.5rem 1rem; }
     .em_ciminha { width: 100%; }
     #imagi { width: 8rem; height: 5rem; }
@@ -224,7 +224,6 @@ footer {
     #user { width: 3rem; height: 3.5rem; }
     .em_baixinho { display: none; }
 
-    /* --- Footer Responsivo com Acordeão --- */
     footer {
         flex-direction: column;
         padding: 2rem 1rem;
@@ -237,7 +236,6 @@ footer {
         max-width: 400px;
     }
 
-    /* REQUISITO: Oculta o segundo logo em telas pequenas */
     .footer-logo--secondary {
         display: none;
     }
@@ -251,7 +249,6 @@ footer {
         border-bottom: none;
     }
 
-    /* CORREÇÃO: Mostra os títulos como botões clicáveis no mobile */
     .accordion-header {
         display: block;
         background: none;
@@ -262,7 +259,6 @@ footer {
         position: relative;
     }
 
-    /* Garante que os H1 de desktop não apareçam junto com os botões */
     .footer-column > h1 {
         display: none;
     }
@@ -289,7 +285,6 @@ footer {
         transform: translateY(-50%) rotate(45deg);
     }
     
-    /* CORREÇÃO: Esconde o conteúdo do acordeão (os links H2) por padrão no mobile */
     .accordion-content {
         max-height: 0;
         overflow: hidden;
@@ -310,7 +305,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-    /* --- Header Responsivo --- */
     header { padding: 1rem; }
     #imagi { width: 7rem; height: 4rem; }
     .emoticus { gap: 1.5rem; }
