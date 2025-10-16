@@ -1,4 +1,4 @@
-// file: app/api/produtos/route.ts
+// file: app/api/produtos/route.ts - CÓDIGO ATUALIZADO
 
 import { createClient } from '@supabase/supabase-js'; 
 import { NextResponse } from 'next/server';
@@ -14,12 +14,11 @@ export async function GET(request: NextRequest) {
     const categoriaId = searchParams.get('id_categoria');
     const cabeloId = searchParams.get('id_tipo_cabelo');
     const peleId = searchParams.get('id_tipo_pele');
-    const precoId = searchParams.get('id_preco');
+    const marca = searchParams.get('marca'); // ✅ ALTERADO: de 'id_preco' para 'marca'
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '12');
     
     try {
-        // ✅ QUERY CORRIGIDA: url_imagem agora vem diretamente da tabela Produto
         let query = supabase
             .from('Produto')
             .select(`
@@ -32,48 +31,14 @@ export async function GET(request: NextRequest) {
             `, { count: 'exact' });
 
         // APLICAR FILTROS
-        if (tagId) {
-            query = query.eq('id_tag', tagId);
-        }
+        if (tagId) query = query.eq('id_tag', tagId);
+        if (categoriaId) query = query.eq('id_categoria', categoriaId);
+        if (cabeloId) query = query.eq('id_tipo_cabelo', cabeloId);
+        if (peleId) query = query.eq('id_tipo_pele', peleId);
 
-        // ⚠️ CENÁRIO 1: Se 'id_categoria' existe diretamente na tabela Produto
-        if (categoriaId) {
-            query = query.eq('id_categoria', categoriaId);
-        }
-
-        // ⚠️ CENÁRIO 2: Se houver tabela intermediária (ex: ProdutoTipoCabelo)
-        // Precisará de uma subquery ou join adicional
-        if (cabeloId) {
-            // Se existir coluna direta:
-            query = query.eq('id_tipo_cabelo', cabeloId);
-            
-            // OU se for relação N:N através de tabela intermediária:
-            // const { data: produtoIds } = await supabase
-            //     .from('ProdutoTipoCabelo')
-            //     .select('id_produto')
-            //     .eq('id_tipo_cabelo', cabeloId);
-            // if (produtoIds) {
-            //     query = query.in('id_produto', produtoIds.map(p => p.id_produto));
-            // }
-        }
-
-        if (peleId) {
-            query = query.eq('id_tipo_pele', peleId);
-        }
-
-        // FILTRO DE PREÇO (se houver coluna 'preco' na tabela)
-        if (precoId) {
-            switch(precoId) {
-                case '1':
-                    query = query.lte('preco', 50);
-                    break;
-                case '2':
-                    query = query.gte('preco', 50).lte('preco', 100);
-                    break;
-                case '3':
-                    query = query.gte('preco', 100);
-                    break;
-            }
+        // ✅ NOVO: Filtro de Marca (substituindo o de preço)
+        if (marca) {
+            query = query.eq('marca', marca);
         }
 
         // PAGINAÇÃO
@@ -91,12 +56,11 @@ export async function GET(request: NextRequest) {
             );
         }
 
-        // FORMATAÇÃO DOS DADOS
         const formattedProducts = produtos?.map((p: any) => ({
             id_produto: p.id_produto,
             nome: p.nome,
             url_loja: p.url_loja,
-            url_imagem: p.url_imagem || null, // ✅ url_imagem vem diretamente da tabela
+            url_imagem: p.url_imagem || null,
             tag_principal: p.Tag?.nome || '',
             id_tag: p.id_tag
         })) || [];
