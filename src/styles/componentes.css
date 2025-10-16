@@ -1,8 +1,7 @@
 /* =================================== */
-/* Melhoras Globais */
+/* Estilos Globais e do Header */
 /* =================================== */
 
-/* Define um modelo de caixa mais intuitivo e remove margens/preenchimentos padrão */
 * {
     box-sizing: border-box; 
     margin: 0;
@@ -97,26 +96,12 @@ header {
     white-space: nowrap; 
 }
 
-#redirecionavel:hover {
-    color: #AA35B0;
-}
+#redirecionavel:hover { color: #AA35B0; }
+#redirecionavel:active { color: #47164A; }
+#redirecionavel2:hover { color: #F2A518; }
+#redirecionavel2:active { color: #b08c16; }
 
-#redirecionavel:active {
-    color: #47164A;
-}
-
-#redirecionavel2:hover {
-    color: #F2A518;
-}
-
-#redirecionavel2:active {
-    color: #b08c16;
-}
-
-.user-menu-container {
-  position: relative; 
-}
-
+.user-menu-container { position: relative; }
 .user-popup {
   position: absolute;
   top: calc(100% + 10px);
@@ -132,15 +117,8 @@ header {
   gap: 0.5rem;
   width: 180px; 
 }
-
-.user-popup p {
-  font-weight: bold;
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.user-popup a,
-.user-popup button {
+.user-popup p { font-weight: bold; margin: 0 0 0.5rem 0; color: #333; }
+.user-popup a, .user-popup button {
   text-decoration: none;
   color: #333;
   background: none;
@@ -152,83 +130,74 @@ header {
   border-radius: 4px;
   font-size: 0.9rem;
 }
-
-.user-popup a:hover,
-.user-popup button:hover {
-  background-color: #f0f0f0;
-}
+.user-popup a:hover, .user-popup button:hover { background-color: #f0f0f0; }
 
 /* =================================== */
-/* Estilos do Footer Melhorados */
+/* Estilos do Footer (Base para Desktop) */
 /* =================================== */
 
 footer {
     background-color: #343434;
     width: 100%;
-    height: auto; /* Alterado de 17vw para altura automática */
+    height: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    padding: 3rem 2rem; /* Adicionado preenchimento para espaçamento interno */
-    gap: 2rem; /* Adicionado gap para espaçar os itens principais */
-    flex-wrap: wrap; /* Permite que os itens quebrem linha se necessário */
+    padding: 3rem 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
-/* Container principal dos links */
-footer > div {
+.footer-links-container {
     display: flex;
-    gap: 5rem; /* Reduzido o gap original de 10rem */
-    flex-wrap: wrap; /* Permite que as colunas de links quebrem linha */
+    gap: 5rem;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
-/* Colunas de links */
-footer > div > div {
-  min-width: 180px; /* Garante que as colunas não fiquem espremidas */
+.footer-column {
+  min-width: 180px;
 }
 
-footer > div > div > h1 {
+.footer-column h1 {
     font-family: "PLAYFUL RUNWAY";
     font-size: 1.3rem;
     font-weight: 400;
     line-height: normal;
     color: #F2A518;
-    margin-bottom: 1rem; /* Adicionado espaçamento abaixo dos títulos */
+    margin-bottom: 1rem;
 }
 
-footer > div > div > h2 {
+.footer-column h2 {
     color: #FFF;
     font-family: "The Next Font";
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.6rem;
-    transition: color 0.3s, transform 0.3s; /* Melhorada a transição do hover */
+    transition: color 0.3s, transform 0.3s;
 }
 
-footer > div > div > h2:hover {
+.footer-column h2:hover {
     color: #7D4AB3;
     cursor: pointer; 
-    transform: scale(1.05); /* Efeito de hover mais sutil */
+    transform: scale(1.05);
 }
 
-/* Nova classe para controlar o tamanho das imagens do footer */
 .footer-logo {
   max-width: 160px;
   height: auto;
   object-fit: contain;
 }
 
-/* =================================== */
-/* Início das Media Queries para Responsividade */
-/* =================================== */
-
-@media (max-width: 1200px) {
-  /* Reduz o gap entre as colunas do footer em telas um pouco menores */
-  footer > div {
-    gap: 3rem;
-  }
+/* Esconde o botão do acordeão por padrão (em desktop) */
+.accordion-header {
+    display: none;
 }
+
+/* =================================== */
+/* Início das Media Queries */
+/* =================================== */
 
 @media (max-width: 992px) {
     .coisas {
@@ -236,86 +205,117 @@ footer > div > div > h2:hover {
         gap: 0.5rem;
         justify-content: space-around;
     }
-
     #redirecionavel, #redirecionavel2 {
         font-size: 1.2rem;
     }
-
-    /* O rodapé agora se torna vertical */
-    footer {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    /* As colunas de links também ficam na vertical */
-    footer > div {
-        flex-direction: column;
-        gap: 2.5rem;
-        align-items: center;
+    .footer-links-container {
+      gap: 3rem;
     }
 }
 
 @media (max-width: 768px) {
-    header {
-        padding: 1.5rem 1rem;
-    }
-
-    .em_ciminha {
-        width: 100%;
-    }
-
-    #imagi {
-        width: 8rem;
-        height: 5rem;
-    }
-
-    .emoticus {
-        gap: 2rem;
-    }
-
+    /* --- Header Responsivo --- */
+    header { padding: 1.5rem 1rem; }
+    .em_ciminha { width: 100%; }
+    #imagi { width: 8rem; height: 5rem; }
+    .emoticus { gap: 2rem; }
     #algo { width: 2.5rem; height: 2.1rem; }
     #coracao { width: 3rem; height: 3.5rem; }
     #user { width: 3rem; height: 3.5rem; }
+    .em_baixinho { display: none; }
+
+    /* --- Footer Responsivo com Acordeão --- */
+    footer {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
     
-    .coisas {
-      flex-wrap: wrap; 
-      justify-content: center; 
-      gap: 1rem 1.5rem; 
+    .footer-links-container {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        max-width: 400px;
     }
 
-    #redirecionavel, #redirecionavel2 {
+    /* REQUISITO: Oculta o segundo logo em telas pequenas */
+    .footer-logo--secondary {
+        display: none;
+    }
+
+    .footer-column {
+        min-width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #555;
+    }
+    .footer-column:last-child {
+        border-bottom: none;
+    }
+
+    /* CORREÇÃO: Mostra os títulos como botões clicáveis no mobile */
+    .accordion-header {
+        display: block;
+        background: none;
+        border: none;
+        padding: 1rem 0.5rem;
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+    }
+
+    /* Garante que os H1 de desktop não apareçam junto com os botões */
+    .footer-column > h1 {
+        display: none;
+    }
+
+    .accordion-header h1 {
+        margin: 0;
         font-size: 1.1rem;
+        text-align: left;
     }
 
-    .em_baixinho {
-      display: none;
+    .accordion-header::after {
+        content: '+';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        font-weight: 200;
+        color: #F2A518;
+        transition: transform 0.3s ease;
+    }
+    
+    .accordion-content.open ~ .accordion-header::after {
+        transform: translateY(-50%) rotate(45deg);
+    }
+    
+    /* CORREÇÃO: Esconde o conteúdo do acordeão (os links H2) por padrão no mobile */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        background-color: #424242;
+    }
+    
+    .accordion-content.open {
+        max-height: 250px;
+        padding: 0.5rem 0;
+    }
+
+    .accordion-content h2 {
+        display: block;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    header {
-        padding: 1rem;
-    }
-
-    #imagi {
-        width: 7rem;
-        height: 4rem;
-    }
-
-    .emoticus {
-        gap: 1.5rem; 
-    }
-
+    /* --- Header Responsivo --- */
+    header { padding: 1rem; }
+    #imagi { width: 7rem; height: 4rem; }
+    .emoticus { gap: 1.5rem; }
     #algo { width: 2.2rem; height: 1.8rem; }
     #coracao { width: 2.6rem; height: 3rem; }
     #user { width: 2.6rem; height: 3rem; }
-
-    #redirecionavel, #redirecionavel2 {
-        font-size: 1rem;
-    }
-
-    .user-popup {
-      right: -1rem; 
-      width: 160px;
-    }
+    .user-popup { right: 5px; width: 160px; }
 }
