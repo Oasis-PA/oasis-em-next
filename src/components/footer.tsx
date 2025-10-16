@@ -21,9 +21,8 @@ export default function Footer() {
             <h1>Mapa do site</h1>
           </button>
           <div className={`accordion-content ${openAccordion === 'mapa' ? 'open' : ''}`}>
-            <h2><Link href="/quem-somos">QUEM SOMOS?</Link></h2>
-            <h2><Link href="/parcerias">PARCERIAS</Link></h2>
-            <h2><Link href="/contato">CONTATO</Link></h2>
+            <h2><Link href="https://www.canva.com/design/DAGUDgD6xDA/bBIs_ChnovCCuLiIotu_JQ/edit">QUEM SOMOS?</Link></h2>
+            <h2><Link href="/parcerias-empresas">PARCERIAS</Link></h2>
           </div>
         </div>
 
@@ -33,8 +32,8 @@ export default function Footer() {
             <h1>Usuário</h1>
           </button>
           <div className={`accordion-content ${openAccordion === 'usuario' ? 'open' : ''}`}>
-            <h2><Link href="/minha-conta">MINHA CONTA</Link></h2>
-            <h2><Link href="/meu-perfil">MEU PERFIL</Link></h2>
+            <h2><Link href="/gerenciamento">MINHA CONTA</Link></h2>
+            <h2><Link href="/perfil">MEU PERFIL</Link></h2>
             <h2><Link href="/favoritos">FAVORITOS</Link></h2>
             <h2><Link href="/produtos">PRODUTOS</Link></h2>
             <h2><Link href="/cadastro">CADASTRE-SE</Link></h2>
@@ -48,8 +47,8 @@ export default function Footer() {
           </button>
           <div className={`accordion-content ${openAccordion === 'suporte' ? 'open' : ''}`}>
             <h2><Link href="/central-ajuda">CENTRAL DE AJUDA</Link></h2>
-            <h2><Link href="/politica-de-privacidade">POLÍTICA DE PRIVACIDADE</Link></h2>
-            <h2><Link href="/termos-de-uso">TERMOS DE USO</Link></h2>
+            <h2><Link href="/central-ajuda">POLÍTICA DE PRIVACIDADE</Link></h2>
+            <h2><Link href="/central-ajuda">TERMOS DE USO</Link></h2>
           </div>
         </div>
 
