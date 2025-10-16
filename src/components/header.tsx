@@ -67,7 +67,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
           <div id="imagi" aria-label="Página inicial"></div>
         </Link>
         <div className="emoticus">
-          <Link href="/">
+          <Link href="/guia">
             <div id="algo" aria-label="Buscar"></div>
           </Link>
           <Link href="/favoritos">
@@ -98,8 +98,8 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
       </section>
       <section className="em_baixinho">
         <div className="coisas">
-          <Link href="/corteS" id="redirecionavel">Cortes</Link>
-          <Link href="/" id="redirecionavel">Hair Care</Link>
+          <Link href="/cortes-geral" id="redirecionavel">Cortes</Link>
+          <Link href="/haircare" id="redirecionavel">Hair Care</Link>
           <Link href="/tinturas" id="redirecionavel">Tinturas</Link>
           <Link href="/skincare" id="redirecionavel">Skincare</Link>
           <Link href="/cronograma-capilar" id="redirecionavel2">Cronograma Capilar</Link>
