@@ -21,35 +21,38 @@ html {
 .mainContainer {
     display: flex;
     width: 100%;
-    height: 48.3vw;
+    height: 48.3vw; /* Mantido para desktop, mas ajustado em mobile */
+    min-height: 500px;
     justify-content: end;
     align-items: center;
-    /* Este background agora é um fallback. O JS vai controlar a imagem. */
     background-image: url(../../public/images/tela-principal/banner1.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     flex-direction: column;
-    /* Adicionado para transições suaves de imagem de fundo */
     transition: background-image 0.5s ease-in-out;
+    box-sizing: border-box; /* Garante que padding não afete o width/height total */
 }
 
 .mainContainer > h2 {
     color: #FFF;
     text-shadow: 0 0 8.8px rgba(13, 0, 87, 0.99);
     font-family: "Louis George Cafe";
-    font-size: 4rem;
+    /* Usando clamp para fonte fluida: min, ideal, max */
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 400;
-    line-height: 0.5;
+    line-height: 1;
+    text-align: center;
 }
 
 .mainContainer > h1 {
     color: #FFF;
     text-shadow: 0 4px 22.133px #5F0B38;
     font-family: "The Next Font";
-    font-size: 9.16669rem;
+    font-size: clamp(4rem, 12vw, 9.16rem);
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.1;
+    text-align: center;
 }
 
 .conhecaButton {
@@ -66,19 +69,19 @@ html {
     line-height: normal;
     margin-top: 2.5rem;
     cursor: pointer;
-    /* Adições para o Link se comportar como o botão */
     display: inline-flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    transition: transform 0.2s ease;
 }
 
 .dotsContainer {
     display: flex;
     flex-direction: row;
-    gap: 2em; /* Reduzi um pouco o gap */
+    gap: 2rem;
     margin: 2rem; 
-    z-index: 10; /* Garante que as bolinhas fiquem na frente */
+    z-index: 10;
 }
 
 .dotButton {
@@ -88,13 +91,16 @@ html {
   cursor: pointer;
 }
 
+/* Seção 1: Hot Topics */
 .s1 {
     display: flex;
     width: 100%;
-    height: 37.5vw;
+    min-height: 37.5vw;
     background-color: black;
     align-items: center;
     justify-content: center;
+    padding: 4rem 6rem;
+    box-sizing: border-box;
 }
 
 .texttopics {
@@ -102,7 +108,7 @@ html {
     display: flex;
     flex-direction: column;
     transition: opacity 0.3s ease;
-    margin: 8rem;
+    margin-right: 4rem;
 }
 
 .texttopics > h1 {
@@ -135,53 +141,51 @@ html {
     margin-right: 2rem;
     scrollbar-width: thin;
     scrollbar-color: #FFF #1a1a1a;
+    flex-grow: 1; /* Permite que os cards ocupem o espaço disponível */
+    padding-left: 2rem;
 }
 
-.cards::-webkit-scrollbar {
-    height: 8px;
-}
-
-.cards::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-
-.cards::-webkit-scrollbar-thumb {
-    background: #722F53;
-    border-radius: 4px;
-}
-
-.cards::-webkit-scrollbar-thumb:hover {
-    background: #8a3a65;
-}
+.cards::-webkit-scrollbar { height: 8px; }
+.cards::-webkit-scrollbar-track { background: #1a1a1a; }
+.cards::-webkit-scrollbar-thumb { background: #722F53; border-radius: 4px; }
+.cards::-webkit-scrollbar-thumb:hover { background: #8a3a65; }
 
 .card {
    display: flex;
    flex-direction: column;
    background-color: #FFF;
    width: 13.3vw;
-   height: 29.5vw;
-   border-radius: 1vw;
+   height: 29.5vw; 
+   min-width: 255px; 
+   min-height: 450px;
+   border-radius: 18px;
    flex-shrink: 0;
+   overflow: hidden;
 }
 
 .card > img {
-    width: 13.3vw;  
-    height: 22.5vw;
+    width: 100%;  
+    height: 75%; 
+    object-fit: cover;
 }
 
 .card > p {
     font-family: "Louis George Cafe";
-    font-size: 1.3125rem;
+    font-size: clamp(1rem, 1.5vw, 1.3125rem); /* Fonte fluida */
     font-weight: 400;
     line-height: normal;
     text-align: left;
-    padding: 1.5rem;
+    padding: clamp(1.125rem, 1.5vw, 1.5rem);
+    flex-grow: 1; /* Ocupa o espaço restante */
 }
 
+/* Seção 2: Links de Categoria */
 .s2 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around; /* Revertendo ao layout original */
     align-items: center;
+    flex-wrap: wrap; /* Adicionado para que os itens quebrem a linha em telas menores */
+    gap: 2rem; /* Adiciona um espaçamento quando os itens quebram a linha */
     width: 90%;
     height: auto;
     margin-top: 9rem;
@@ -192,6 +196,19 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding: 1rem; /* Adiciona um respiro para cada item */
+}
+
+/* Removendo a largura fixa da imagem para restaurar o tamanho original */
+.s2links > img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.s2links:hover > img {
+    transform: scale(1.08);
 }
 
 .s2links > h1 {
@@ -201,6 +218,7 @@ html {
     margin-top: 2rem;
 }
 
+/* Seção 3: Cortes em Alta */
 .s3 {
     display: flex;
     justify-content: center;
@@ -209,57 +227,45 @@ html {
     height: auto;
     margin-top: 8rem;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .s3 > h1 {
     font-family: "PLAYFUL RUNWAY";
-    font-size: 2.6em;
+    font-size: clamp(2rem, 4vw, 2.6em);
     font-weight: 400;
     line-height: 1.5;
+    text-align: center;
 }
 
 .s3 > p {
     text-align: center;
     font-family: "Louis George Cafe";
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
     font-weight: 400;
     line-height: normal;
     max-width: 36rem;
     margin-bottom: 6.5rem;
 }
 
-.linha {
-    background-color: #000;
-    width: 100%;
-    height: 1px;
-}
-
-.linha2 {
-    background-color: #000;
-    width: 80%;
-    height: 1px;
-}
+.linha { width: 100%; height: 1px; background-color: #000; }
+.linha2 { width: 80%; height: 1px; background-color: #000; }
 
 .categ {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas pequenas */
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around; /* Centraliza os botões */
     width: 80%;
     margin-top: 2rem;
-}
-
-.categ > h1 {
-    font-family: "The Next Font";
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 2;
 }
 
 .cortes {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Permite que os cards quebrem a linha */
     gap: 5rem;
     margin-top: 2.5rem;
 }
@@ -271,30 +277,13 @@ html {
     align-items: center;
 }
 
-.cortecardconteiner > button {
-    display: flex;
-    width: 12.6rem;
-    height: 3.3rem;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    border-radius: 1.8rem;
-    background: #722F53;
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.2rem;
-    font-weight: 400;
-    cursor: pointer;
-}
-
 .cortecard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #5F0B38;
-    width: 15vw;
+    width: clamp(250px, 15vw, 300px); /* Tamanho fluido com min/max */
     height: auto;
 }
 
@@ -305,12 +294,15 @@ html {
     font-weight: 400;
     line-height: normal;
     padding: 0.5rem;
+    text-align: center;
+    flex-wrap: nowrap;
 }
 
 .cortecard > img {
     padding: 0.5rem;
     width: 100%;
-    height: 100%;
+    height: auto;
+    box-sizing: border-box;
 }
 
 .categoryButton {
@@ -326,15 +318,12 @@ html {
     color: #333;
 }
 
-.categoryButton:hover {
-    color: #420E45; 
-    transform: scale(1.05); 
-}
+.categoryButton:hover { color: #420E45; transform: scale(1.05); }
 
 .activeCategory {
     color: #FFF;
     text-shadow: 2px 2px 9.4px #2C0066;
-    border-bottom: 2px solid #5F0B38; /* Adiciona uma linha embaixo */
+    border-bottom: 2px solid #5F0B38;
 }
 
 .conhecaCorteButton {
@@ -357,35 +346,37 @@ html {
     transition: background-color 0.2s ease;
 }
 
-.conhecaCorteButton:hover {
-    background: #8a3a65;
-}
+.conhecaCorteButton:hover { background: #8a3a65; }
 
+/* Seção 4: Baseados no seu Perfil */
 .s4 {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
     margin-top: 8rem;
     flex-direction: column;
     margin-bottom: 11.5rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
 }
 
 .s4 > h1 {
     font-family: "PLAYFUL RUNWAY";
-    font-size: 2.6rem;
+    font-size: clamp(2rem, 4vw, 2.6rem);
     font-weight: 400;
     line-height: normal;
+    text-align: center;
 }
 
 .s4 > p {
     text-align: center;
     font-family: "Louis George Cafe";
-    font-size: 1.66669rem;
+    font-size: clamp(1.2rem, 2vw, 1.66rem);
     font-weight: 400;
     line-height: normal;
     margin-bottom: 4.7rem;
+    margin-top: 1rem;
 }
 
 .cardsperfil {
@@ -393,13 +384,14 @@ html {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Quebra a linha em telas menores */
     gap: 3rem;
 }
 
 .cardperfil {
     display: flex;
     flex-direction: column;
-    width: 17vw; 
+    width: clamp(250px, 17vw, 320px); /* Tamanho fluido */
     flex-shrink: 0;
     height: auto;
     border: 3px solid #939191;
@@ -411,6 +403,7 @@ html {
     width: 100%;
     height: auto;
     padding: 1rem;
+    box-sizing: border-box;
 }
 
 .cardperfil > h1 {
@@ -428,6 +421,7 @@ html {
     text-align: justify;
     padding: 0 1.1rem 1.1rem;
     align-self: start;
+    flex-grow: 1; /* Ocupa espaço disponível */
 }
 
 .cardperfil > button {
@@ -439,13 +433,22 @@ html {
     padding: 0.5rem 1rem;
     background-color: #722F53;
     color: #FFF;
-    width: 14.5rem;
+    width: 90%;
     border-radius: 1.6875rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
 }
 
-.artigos {
+.arrow {
+    display: flex;
+    margin: clamp(1.5rem, 2.5vw, 2.5rem);
+    align-self: end;
+    gap: 4rem;
+    width: 15%;
+}
+
+/* Seção 5: Artigos */
+.artigos, .artigo2 {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -468,7 +471,7 @@ html {
 }
 
 .contartigo {
-    padding: clamp(2.4rem, 7.5vw, 7rem);
+    padding: clamp(1.5rem, 5vw, 7rem);
 }
 
 .contartigo > h1 {
@@ -501,20 +504,21 @@ html {
     cursor: pointer;
 }
 
-.s3 img {
+.s5 img {
     width: 100%;
     max-width: 700px;
     height: auto;
+    object-fit: cover;
 }
 
+/* Seção 6: Novidades */
 .s6 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 85%;
-    margin-top: 15rem;
-    margin-bottom: 10rem;
+    margin: 15rem auto 10rem auto;
 }
 
 .h1novidades {
@@ -527,10 +531,12 @@ html {
     background-color: #000;
     width: 100%;
     padding: 0.8rem;
+    box-sizing: border-box;
 }
 
 .cardsnovidades {
-    display: flex;
+    display: grid; /* Grid para responsividade */
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas em desktop */
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -541,20 +547,37 @@ html {
     display: flex;
     width: 100%;
     height: 22vw;
+    min-height: 200px; /* Altura mínima para não colapsar */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     align-items: end; 
     cursor: pointer;
+    position: relative;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Overlay para escurecer a imagem e melhorar legibilidade do texto */
+.cardnovidade1::before, .cardnovidade2::before, .cardnovidade3::before, .cardnovidade4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
 .cardnovidade1 > h1, .cardnovidade2 > h1, .cardnovidade3 > h1 , .cardnovidade4 > h1 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     font-weight: 400;
     line-height: normal;
-    margin: 1rem;
+    margin: 0;
+    position: relative; /* Para ficar acima do overlay */
+    z-index: 2;
 }
 
 .cardnovidade1 {background-image: url('../../public/images/tela-principal/img-prod(1).png');}
@@ -562,6 +585,8 @@ html {
 .cardnovidade3 {background-image: url('../../public/images/tela-principal/img-prod(3).png');}
 .cardnovidade4 {background-image: url('../../public/images/tela-principal/img-prod(4).png');}
 
+
+/* Seção 7: Footer Artigos */
 .s7 {
     display: flex;
     flex-direction: column;
@@ -569,6 +594,7 @@ html {
     align-items: center;
     width: 100%;
     padding: 10vw 0;
+    box-sizing: border-box;
     position: relative;
     overflow: hidden;
 }
@@ -588,23 +614,25 @@ html {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Alinha os itens para terem a mesma altura */
     gap: 4.5rem;
     width: 100%;
+    max-width: 1600px;
     z-index: 1;
     position: relative;
+    padding: 1rem;
 }
 
 .artigo1footer, .artigo2footer, .artigo3 {
     display: flex;
-    width: 25vw;
+    width: 100%; /* Ocupa o espaço da coluna do grid/flex */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     align-items: center; 
     cursor: pointer;
     flex-direction: column;
-    height: 38.3vw;
+    min-height: 700px;
     justify-content: end;
 }
 
@@ -615,16 +643,17 @@ html {
 .artigo1footer > h1, .artigo2footer > h1, .artigo3 > h1 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: 2.3rem;
+    font-size: clamp(1.8rem, 3vw, 2.3rem);
     font-weight: 400;
     line-height: normal;
+    text-align: center;
 }
 
 .artigo1footer > p, .artigo2footer > p, .artigo3 > p {
     color: #FFF;
     text-align: center;
     font-family: "Louis George Cafe";
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
     font-weight: 400;
     line-height: normal;
     max-width: 90%;
@@ -633,4 +662,213 @@ html {
 .artigo1footer > img, .artigo2footer > img, .artigo3 > img {
     align-self: end;
     margin: 1.2rem;
+}
+
+/* =========================================== */
+/* =========== MEDIA QUERIES ================= */
+/* =========================================== */
+
+/* Telas de Tablet */
+@media (max-width: 1024px) {
+    .s1 {
+        flex-direction: column; /* Texto acima dos cards */
+        padding: 4rem 2rem;
+    }
+    .texttopics {
+        margin-right: 0;
+        margin-bottom: 3rem;
+        max-width: 100%;
+        text-align: center;
+    }
+    .texttopics > h2 {
+        text-align: center;
+    }
+    .cards {
+        width: 100%;
+    }
+    .cardsperfil {
+        gap: 2rem;
+    }
+    .s6 {
+      width: 90%;
+      margin: 10rem auto 8rem auto;
+    }
+    .cardsnovidades {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablet */
+        gap: 1rem;
+    }
+    .cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
+        height: 30vw;
+    }
+    .s7div {
+        gap: 2rem;
+    }
+}
+
+/* Telas de Celular */
+@media (max-width: 768px) {
+    .mainContainer {
+        height: 100vh; /* Ocupa a tela inteira */
+    }
+    .mainContainer > h2 {
+        line-height: 1.2;
+    }
+    .s1 {
+        padding: 3rem 1rem;
+    }
+    .s2 {
+        margin: 5rem auto;
+        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .s3 {
+        margin-top: 5rem;
+        padding: 0 1rem;
+    }
+    .s3 > p {
+        margin-bottom: 3rem;
+    }
+    .linha2 {
+        width: 95%;
+    }
+    .categ {
+        width: 100%;
+        gap: 1rem;
+    }
+    .cortes {
+    /* Mude de 'column' para 'row' e permita a quebra de linha */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* Reduza o espaçamento para caber melhor no mobile */
+    gap: 2rem 1rem; /* 2rem vertical, 1rem horizontal */
+    }
+
+    .cortecardconteiner {
+        /* A chave: define que cada card deve ocupar quase 50% do espaço */
+        flex-basis: calc(50% - 0.5rem); /* 50% menos metade do gap horizontal */
+        box-sizing: border-box;
+    }
+
+    .cortecard {
+        /* Garante que o card ocupe todo o espaço do seu contêiner pai */
+        width: 100%;
+    }
+    .s4 {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+   .cardsperfil {
+    /* Mude de 'column' para 'row' e permita a quebra de linha */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* Adiciona um espaçamento mais adequado para o mobile */
+    gap: 1.5rem;
+}
+
+.cardperfil {
+    /* Define a largura exata para que apenas 2 cards caibam por linha */
+    flex-basis: calc(50% - 0.75rem); /* 50% da largura, menos metade do gap */
+    width: auto; /* Reseta a largura do desktop para não haver conflito */
+}
+    .artigos, .artigo2 {
+        flex-direction: column;
+    }
+    /* Inverte a ordem visual no mobile para o artigo 2 */
+    .artigo2 {
+        flex-direction: column-reverse;
+    }
+    .s5 img {
+        max-width: 100%;
+    }
+    .s6 {
+        width: 95%;
+        margin: 8rem auto 6rem auto;
+    }
+    .cardsnovidades {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+        gap: 0.5rem;
+    }
+    .cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
+        height: 45vw; /* Ajusta altura para o grid 2x2 */
+    }
+    .s7div {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .artigo1footer, .artigo2footer, .artigo3 {
+        width: 90vw;
+        max-width: 400px;
+        min-height: 400px;
+    }
+    .s2 {
+        justify-content: center; /* Altera para 'center' para um alinhamento mais limpo em grid */
+        gap: 1.5rem 1rem; /* Adiciona um gap vertical e horizontal */
+    }
+
+   .s2links {
+   /* Garante que cada item ocupe exatamente o espaço para caber 2 por linha */
+   flex-basis: calc(50% - 1rem); /* Cada item terá 50% da largura, menos metade do gap */
+   flex-grow: 0; /* Impede que os itens cresçam e quebrem a linha */
+}
+
+    .s2links > h1 {
+        font-size: 1.5rem; /* Reduz a fonte para caber melhor */
+        margin-top: 1rem;
+}
+}
+
+/* Media query específico para telas menores que 500px */
+@media (max-width: 500px) {
+  .s2links > img {
+    /* Diminui o tamanho da imagem para que ela caiba no layout de duas colunas */
+    width: 110px;
+  }
+
+  .s2links > h1 {
+    /* Reduz também a fonte do título para harmonizar com a imagem menor */
+    font-size: 1.3rem;
+  }
+  .cortes {
+      /* Reduz o espaçamento entre os cards para ganhar espaço */
+      gap: 1.5rem 0.5rem;
+  }
+
+  .cortecard > h1 {
+      /* Reduz a fonte do título do corte para que ele não force a quebra */
+      font-size: 1.3rem;
+  }
+
+  .conhecaCorteButton {
+      /* Opcional: ajusta o botão para telas bem pequenas */
+      width: 90%;
+      font-size: 1.1rem;
+  }
+  .s4 {
+    /* Reduz o padding lateral para dar mais espaço aos cards */
+    padding: 0 1rem;
+}
+
+.cardperfil > h1 {
+    /* Diminui o título do produto */
+    font-size: 1.1rem;
+    padding-top: 0.5rem; /* Ajusta o espaçamento */
+}
+
+.cardperfil > h2 {
+    /* Diminui a descrição e muda o alinhamento */
+    font-size: 1rem;
+    text-align: left; /* Alinhamento à esquerda é mais legível em colunas estreitas */
+    line-height: 1.4; /* Melhora a legibilidade */
+}
+
+.cardperfil > button {
+    /* Deixa o botão mais delicado */
+    font-size: 1rem;
+    padding: 0.6rem;
+    width: 85%;
+}
+  
+.arrow {
+    margin-right: 4rem;
+}
 }

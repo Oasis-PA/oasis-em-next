@@ -284,7 +284,6 @@ export default function OasisHomepage() {
         <h1>Baseados no seu Perfil</h1>
         <p>Uma lista de recomendações personalizadas baseadas <br></br>no seu perfil. Veja produtos que se foram feitos especialmente para você!</p>
         <div className={styles.cardsperfil}>
-          <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
           <div className={styles.cardperfil}>
             <img src="/images/favoritos/imagem-produto.png" alt="" />
             <h1>PRODUTO TAL</h1>
@@ -312,7 +311,10 @@ export default function OasisHomepage() {
             <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
             <button>IR PARA COMPRA</button>
           </div>
-          <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
+          
+        </div>
+        <div className={styles.arrow}>
+          <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link> <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
         </div>
       </section>
 
