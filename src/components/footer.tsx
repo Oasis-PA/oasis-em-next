@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer>
-      <img src="images/logo-footer.png" alt="Logo principal da marca" className="footer-logo" />
+      <Link href='/'><img src="images/logo-footer.png" alt="Logo principal da marca" className="footer-logo" /></Link>
       
       <div className="footer-links-container">
         

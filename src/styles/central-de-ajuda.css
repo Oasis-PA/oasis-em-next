@@ -240,7 +240,6 @@ h3 {
     z-index: -1;
 }
 
-
 @media (max-width: 768px) {
     #s1 {
         padding: clamp(1rem, 4vw, 3rem) clamp(0.5rem, 2vw, 1.5rem);
