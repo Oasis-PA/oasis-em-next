@@ -400,6 +400,7 @@ export default function OasisHomepage() {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

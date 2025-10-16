@@ -1,4 +1,14 @@
-/* Estilos originais para Desktop (base) */
+/* =================================== */
+/* Melhoras Globais */
+/* =================================== */
+
+/* Define um modelo de caixa mais intuitivo e remove margens/preenchimentos padrão */
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
 header {
     width: 100%;
     height: auto;
@@ -8,7 +18,6 @@ header {
     gap: 1rem;
     background-color: white;
     padding: 2rem;
-    box-sizing: border-box; /* Boa prática para incluir padding no cálculo do tamanho */
 }
 
 .em_ciminha {
@@ -72,10 +81,9 @@ header {
     display: flex;
     justify-content: space-between;
     width: 95%;
-    gap: 1.5rem; /* Ajustado para um pouco mais de espaço */
+    gap: 1.5rem;
 }
 
-/* Tipografia original revertida conforme solicitado */
 #redirecionavel, #redirecionavel2 {
     color: #040101;
     text-align: center;
@@ -86,7 +94,7 @@ header {
     font-weight: 400;
     line-height: normal;
     transition: color 0.4s;
-    white-space: nowrap; /* Impede que o texto do link quebre em duas linhas */
+    white-space: nowrap; 
 }
 
 #redirecionavel:hover {
@@ -105,155 +113,13 @@ header {
     color: #b08c16;
 }
 
-/* Estilos do Footer */
-footer {
-    width: 100%;
-    height: auto;
-    background-color: #343434;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    box-sizing: border-box;
-}
-
-.cositas {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    align-items: flex-start; /* Alinha os itens ao topo */
-}
-
-.uno {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem; /* Adicionado para espaçar logo e redes sociais */
-}
-
-#logo {
-    background-image: url('/images/logo-footer.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 8rem;
-    height: 7rem;
-}
-
-.redes {
-    display: flex;
-    justify-content: space-between;
-    width: 10rem;
-}
-
-#instagram, #twitter, #facebuk, #pintereste {
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 1.6rem;
-    height: 2rem;
-}
-
-#instagram { background-image: url('/images/insta.png'); }
-#twitter { background-image: url('/images/x.png'); }
-#facebuk { background-image: url('/images/facebook-icone.png'); }
-#pintereste { background-image: url('/images/pinterest-icone.png'); }
-
-
-.textinho {
-    display: flex;
-    flex-direction: column;
-}
-
-.dos h1 {
-    color: #F2A518;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-bottom: 0.5rem;
-}
-
-.dos a {
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: 0.8rem; /* Aumentado para melhor legibilidade */
-    text-decoration: none;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5rem; /* Ajustado para melhor espaçamento */
-}
-
-.tres {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-}
-
-.tres h1 {
-    color: #F2A518;
-    font-family: "The Next Font";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.tres h2 {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: 0.75rem; /* Aumentado */
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1rem; /* Ajustado */
-}
-
-.tres h3 {
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: 0.65rem; /* Aumentado */
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1rem; /* Ajustado */
-    margin-bottom: 1.5rem;
-}
-
-.tres button {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 0.82219rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    background-color: #722F53;
-    border: none;
-    border-radius: 4rem;
-    width: 8rem;
-    height: 1.8rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.tres button:hover {
-    background-color: #8f406a;
-}
-
-.cuatro {
-    background-image: url('/images/logo2.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 7rem;
-    height: 7rem;
-}
-
-/* Estilos do Popup do Usuário */
 .user-menu-container {
   position: relative; 
 }
 
 .user-popup {
   position: absolute;
-  top: calc(100% + 10px); /* Posiciona abaixo do ícone com um espaçamento */
+  top: calc(100% + 10px);
   right: 0;
   background-color: white;
   border: 1px solid #ccc;
@@ -284,7 +150,7 @@ footer {
   cursor: pointer;
   width: 100%;
   border-radius: 4px;
-  font-size: 0.9rem; /* Garantir tamanho de fonte consistente */
+  font-size: 0.9rem;
 }
 
 .user-popup a:hover,
@@ -292,34 +158,103 @@ footer {
   background-color: #f0f0f0;
 }
 
+/* =================================== */
+/* Estilos do Footer Melhorados */
+/* =================================== */
+
+footer {
+    background-color: #343434;
+    width: 100%;
+    height: auto; /* Alterado de 17vw para altura automática */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 3rem 2rem; /* Adicionado preenchimento para espaçamento interno */
+    gap: 2rem; /* Adicionado gap para espaçar os itens principais */
+    flex-wrap: wrap; /* Permite que os itens quebrem linha se necessário */
+}
+
+/* Container principal dos links */
+footer > div {
+    display: flex;
+    gap: 5rem; /* Reduzido o gap original de 10rem */
+    flex-wrap: wrap; /* Permite que as colunas de links quebrem linha */
+    justify-content: center;
+}
+
+/* Colunas de links */
+footer > div > div {
+  min-width: 180px; /* Garante que as colunas não fiquem espremidas */
+}
+
+footer > div > div > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: normal;
+    color: #F2A518;
+    margin-bottom: 1rem; /* Adicionado espaçamento abaixo dos títulos */
+}
+
+footer > div > div > h2 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    transition: color 0.3s, transform 0.3s; /* Melhorada a transição do hover */
+}
+
+footer > div > div > h2:hover {
+    color: #7D4AB3;
+    cursor: pointer; 
+    transform: scale(1.05); /* Efeito de hover mais sutil */
+}
+
+/* Nova classe para controlar o tamanho das imagens do footer */
+.footer-logo {
+  max-width: 160px;
+  height: auto;
+  object-fit: contain;
+}
 
 /* =================================== */
 /* Início das Media Queries para Responsividade */
 /* =================================== */
 
-/* Telas de tablets e celulares maiores (até 992px) */
+@media (max-width: 1200px) {
+  /* Reduz o gap entre as colunas do footer em telas um pouco menores */
+  footer > div {
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 992px) {
     .coisas {
         width: 98%;
         gap: 0.5rem;
-        justify-content: space-around; /* Melhora a distribuição */
+        justify-content: space-around;
     }
 
     #redirecionavel, #redirecionavel2 {
         font-size: 1.2rem;
     }
-    
-    .cositas {
-        width: 95%;
+
+    /* O rodapé agora se torna vertical */
+    footer {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .tres {
-        width: 25%;
+    /* As colunas de links também ficam na vertical */
+    footer > div {
+        flex-direction: column;
+        gap: 2.5rem;
+        align-items: center;
     }
 }
 
-
-/* Telas de tablets menores e celulares (até 768px) */
 @media (max-width: 768px) {
     header {
         padding: 1.5rem 1rem;
@@ -343,52 +278,20 @@ footer {
     #user { width: 3rem; height: 3.5rem; }
     
     .coisas {
-      flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
-      justify-content: center; /* Centraliza os links quando quebram a linha */
-      gap: 1rem 1.5rem; /* Espaçamento vertical e horizontal */
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 1rem 1.5rem; 
     }
 
     #redirecionavel, #redirecionavel2 {
         font-size: 1.1rem;
     }
 
-    /* Footer responsivo */
-    footer {
-        padding: 2rem 1rem;
-    }
-    
-    .cositas {
-        flex-direction: column; /* Empilha os itens verticalmente */
-        align-items: center; /* Centraliza tudo */
-        gap: 2.5rem; /* Espaço entre os blocos empilhados */
-        text-align: center;
-    }
-
-    .uno, .dos, .tres, .cuatro {
-        width: 100%;
-        align-items: center; /* Centraliza o conteúdo de cada bloco */
-    }
-
-    .dos a {
-        line-height: 1.8rem;
-    }
-    
-    .tres {
-        width: 80%; /* Ocupa uma largura maior para ser mais legível */
-        max-width: 350px;
-    }
-
-    .tres h2, .tres h3 {
-        line-height: 1.5rem;
-    }
-
     .em_baixinho {
-    display: none;
-  }
+      display: none;
+    }
 }
 
-
-/* Telas de celulares pequenos (até 480px) */
 @media (max-width: 480px) {
     header {
         padding: 1rem;
@@ -400,7 +303,7 @@ footer {
     }
 
     .emoticus {
-        gap: 1.5rem; /* Diminui ainda mais o espaço entre os ícones */
+        gap: 1.5rem; 
     }
 
     #algo { width: 2.2rem; height: 1.8rem; }
@@ -408,11 +311,11 @@ footer {
     #user { width: 2.6rem; height: 3rem; }
 
     #redirecionavel, #redirecionavel2 {
-        font-size: 1rem; /* Reduz a fonte para caber melhor */
+        font-size: 1rem;
     }
 
     .user-popup {
-      right: -1rem; /* Ajusta a posição para não sair da tela */
+      right: -1rem; 
       width: 160px;
     }
 }

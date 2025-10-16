@@ -21,7 +21,7 @@ html {
 .mainContainer {
     display: flex;
     width: 100%;
-    height: 48.3vw; /* Mantido para desktop, mas ajustado em mobile */
+    height: 48.3vw; 
     min-height: 500px;
     justify-content: end;
     align-items: center;
@@ -31,14 +31,13 @@ html {
     background-position: center;
     flex-direction: column;
     transition: background-image 0.5s ease-in-out;
-    box-sizing: border-box; /* Garante que padding não afete o width/height total */
+    box-sizing: border-box; 
 }
 
 .mainContainer > h2 {
     color: #FFF;
     text-shadow: 0 0 8.8px rgba(13, 0, 87, 0.99);
     font-family: "Louis George Cafe";
-    /* Usando clamp para fonte fluida: min, ideal, max */
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 400;
     line-height: 1;
@@ -141,7 +140,7 @@ html {
     margin-right: 2rem;
     scrollbar-width: thin;
     scrollbar-color: #FFF #1a1a1a;
-    flex-grow: 1; /* Permite que os cards ocupem o espaço disponível */
+    flex-grow: 1; 
     padding-left: 2rem;
 }
 
@@ -171,7 +170,7 @@ html {
 
 .card > p {
     font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 1.5vw, 1.3125rem); /* Fonte fluida */
+    font-size: clamp(1rem, 1.5vw, 1.3125rem);
     font-weight: 400;
     line-height: normal;
     text-align: left;
@@ -182,10 +181,10 @@ html {
 /* Seção 2: Links de Categoria */
 .s2 {
     display: flex;
-    justify-content: space-around; /* Revertendo ao layout original */
+    justify-content: space-around; 
     align-items: center;
-    flex-wrap: wrap; /* Adicionado para que os itens quebrem a linha em telas menores */
-    gap: 2rem; /* Adiciona um espaçamento quando os itens quebram a linha */
+    flex-wrap: wrap; 
+    gap: 2rem;
     width: 90%;
     height: auto;
     margin-top: 9rem;
@@ -197,10 +196,9 @@ html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 1rem; /* Adiciona um respiro para cada item */
+    padding: 1rem; 
 }
 
-/* Removendo a largura fixa da imagem para restaurar o tamanho original */
 .s2links > img {
     max-width: 100%;
     height: auto;
@@ -254,9 +252,9 @@ html {
 .categ {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas pequenas */
+    flex-wrap: wrap; 
     align-items: center;
-    justify-content: space-around; /* Centraliza os botões */
+    justify-content: space-around; 
     width: 80%;
     margin-top: 2rem;
 }
@@ -265,7 +263,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* Permite que os cards quebrem a linha */
+    flex-wrap: wrap; 
     gap: 5rem;
     margin-top: 2.5rem;
 }
@@ -283,7 +281,7 @@ html {
     justify-content: center;
     align-items: center;
     background-color: #5F0B38;
-    width: clamp(250px, 15vw, 300px); /* Tamanho fluido com min/max */
+    width: clamp(250px, 15vw, 300px);
     height: auto;
 }
 
@@ -384,14 +382,14 @@ html {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* Quebra a linha em telas menores */
+    flex-wrap: wrap; 
     gap: 3rem;
 }
 
 .cardperfil {
     display: flex;
     flex-direction: column;
-    width: clamp(250px, 17vw, 320px); /* Tamanho fluido */
+    width: clamp(250px, 17vw, 320px);
     flex-shrink: 0;
     height: auto;
     border: 3px solid #939191;
@@ -421,7 +419,7 @@ html {
     text-align: justify;
     padding: 0 1.1rem 1.1rem;
     align-self: start;
-    flex-grow: 1; /* Ocupa espaço disponível */
+    flex-grow: 1; 
 }
 
 .cardperfil > button {
@@ -535,8 +533,8 @@ html {
 }
 
 .cardsnovidades {
-    display: grid; /* Grid para responsividade */
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas em desktop */
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -547,7 +545,7 @@ html {
     display: flex;
     width: 100%;
     height: 22vw;
-    min-height: 200px; /* Altura mínima para não colapsar */
+    min-height: 200px; 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -558,7 +556,6 @@ html {
     box-sizing: border-box;
 }
 
-/* Overlay para escurecer a imagem e melhorar legibilidade do texto */
 .cardnovidade1::before, .cardnovidade2::before, .cardnovidade3::before, .cardnovidade4::before {
     content: '';
     position: absolute;
@@ -576,7 +573,7 @@ html {
     font-weight: 400;
     line-height: normal;
     margin: 0;
-    position: relative; /* Para ficar acima do overlay */
+    position: relative; 
     z-index: 2;
 }
 
@@ -614,7 +611,7 @@ html {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center; /* Alinha os itens para terem a mesma altura */
+    align-items: center;
     gap: 4.5rem;
     width: 100%;
     max-width: 1600px;
@@ -625,7 +622,7 @@ html {
 
 .artigo1footer, .artigo2footer, .artigo3 {
     display: flex;
-    width: 100%; /* Ocupa o espaço da coluna do grid/flex */
+    width: 100%; 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -671,7 +668,7 @@ html {
 /* Telas de Tablet */
 @media (max-width: 1024px) {
     .s1 {
-        flex-direction: column; /* Texto acima dos cards */
+        flex-direction: column; 
         padding: 4rem 2rem;
     }
     .texttopics {
@@ -694,7 +691,7 @@ html {
       margin: 10rem auto 8rem auto;
     }
     .cardsnovidades {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablet */
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
     .cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
@@ -708,7 +705,7 @@ html {
 /* Telas de Celular */
 @media (max-width: 768px) {
     .mainContainer {
-        height: 100vh; /* Ocupa a tela inteira */
+        height: 100vh; 
     }
     .mainContainer > h2 {
         line-height: 1.2;
@@ -736,21 +733,17 @@ html {
         gap: 1rem;
     }
     .cortes {
-    /* Mude de 'column' para 'row' e permita a quebra de linha */
     flex-direction: row;
     flex-wrap: wrap;
-    /* Reduza o espaçamento para caber melhor no mobile */
-    gap: 2rem 1rem; /* 2rem vertical, 1rem horizontal */
+    gap: 2rem 1rem;
     }
 
     .cortecardconteiner {
-        /* A chave: define que cada card deve ocupar quase 50% do espaço */
-        flex-basis: calc(50% - 0.5rem); /* 50% menos metade do gap horizontal */
+        flex-basis: calc(50% - 0.5rem);
         box-sizing: border-box;
     }
 
     .cortecard {
-        /* Garante que o card ocupe todo o espaço do seu contêiner pai */
         width: 100%;
     }
     .s4 {
@@ -758,22 +751,18 @@ html {
         margin-bottom: 5rem;
     }
    .cardsperfil {
-    /* Mude de 'column' para 'row' e permita a quebra de linha */
     flex-direction: row;
     flex-wrap: wrap;
-    /* Adiciona um espaçamento mais adequado para o mobile */
     gap: 1.5rem;
 }
 
 .cardperfil {
-    /* Define a largura exata para que apenas 2 cards caibam por linha */
-    flex-basis: calc(50% - 0.75rem); /* 50% da largura, menos metade do gap */
-    width: auto; /* Reseta a largura do desktop para não haver conflito */
+    flex-basis: calc(50% - 0.75rem);
+    width: auto;
 }
     .artigos, .artigo2 {
         flex-direction: column;
     }
-    /* Inverte a ordem visual no mobile para o artigo 2 */
     .artigo2 {
         flex-direction: column-reverse;
     }
@@ -785,11 +774,11 @@ html {
         margin: 8rem auto 6rem auto;
     }
     .cardsnovidades {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 0.5rem;
     }
     .cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
-        height: 45vw; /* Ajusta altura para o grid 2x2 */
+        height: 45vw;
     }
     .s7div {
         flex-direction: column;
@@ -801,68 +790,57 @@ html {
         min-height: 400px;
     }
     .s2 {
-        justify-content: center; /* Altera para 'center' para um alinhamento mais limpo em grid */
-        gap: 1.5rem 1rem; /* Adiciona um gap vertical e horizontal */
+        justify-content: center; 
+        gap: 1.5rem 1rem; 
     }
 
    .s2links {
-   /* Garante que cada item ocupe exatamente o espaço para caber 2 por linha */
-   flex-basis: calc(50% - 1rem); /* Cada item terá 50% da largura, menos metade do gap */
-   flex-grow: 0; /* Impede que os itens cresçam e quebrem a linha */
+   flex-basis: calc(50% - 1rem);
+   flex-grow: 0;
 }
 
     .s2links > h1 {
-        font-size: 1.5rem; /* Reduz a fonte para caber melhor */
+        font-size: 1.5rem; 
         margin-top: 1rem;
 }
 }
 
-/* Media query específico para telas menores que 500px */
 @media (max-width: 500px) {
   .s2links > img {
-    /* Diminui o tamanho da imagem para que ela caiba no layout de duas colunas */
     width: 110px;
   }
 
   .s2links > h1 {
-    /* Reduz também a fonte do título para harmonizar com a imagem menor */
     font-size: 1.3rem;
   }
   .cortes {
-      /* Reduz o espaçamento entre os cards para ganhar espaço */
       gap: 1.5rem 0.5rem;
   }
 
   .cortecard > h1 {
-      /* Reduz a fonte do título do corte para que ele não force a quebra */
       font-size: 1.3rem;
   }
 
   .conhecaCorteButton {
-      /* Opcional: ajusta o botão para telas bem pequenas */
       width: 90%;
       font-size: 1.1rem;
   }
   .s4 {
-    /* Reduz o padding lateral para dar mais espaço aos cards */
     padding: 0 1rem;
 }
 
 .cardperfil > h1 {
-    /* Diminui o título do produto */
     font-size: 1.1rem;
-    padding-top: 0.5rem; /* Ajusta o espaçamento */
+    padding-top: 0.5rem;
 }
 
 .cardperfil > h2 {
-    /* Diminui a descrição e muda o alinhamento */
     font-size: 1rem;
-    text-align: left; /* Alinhamento à esquerda é mais legível em colunas estreitas */
-    line-height: 1.4; /* Melhora a legibilidade */
+    text-align: left; 
+    line-height: 1.4; 
 }
 
 .cardperfil > button {
-    /* Deixa o botão mais delicado */
     font-size: 1rem;
     padding: 0.6rem;
     width: 85%;
