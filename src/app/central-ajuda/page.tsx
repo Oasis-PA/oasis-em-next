@@ -10,8 +10,7 @@ import "@/styles/central-de-ajuda.css";
 export default function CentralDeAjuda() {
   return (
     <>
-    <Header backgroundImage="/images/central-ajuda/central-ajuda-banner.png" className="dark"/>
-
+    <Header backgroundImage="/images/central-ajuda/central-ajuda-banner.png" theme="dark" className="header-ajuda"/>
     <section id="s1"> 
       <p id="p1">Aqui você encontra todas as informações necessárias para utilizar nosso site da 
         melhor forma possível. Se precisar de suporte, navegue pelos tópicos abaixo ou entre em 

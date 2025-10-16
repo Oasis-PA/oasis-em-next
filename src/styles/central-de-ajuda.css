@@ -20,6 +20,32 @@ html {
     width: 100%;
 }
 
+.header-ajuda {
+    height: 470px;
+    position: relative;
+}
+
+.header-ajuda::after {
+    content: 'Bem-vindo à nossa Central de Ajuda!';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3B211D;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    font-weight: 400;
+    font-family: 'The Next Font';
+    width: 80%;
+    height: 7.5vw;
+    box-sizing: border-box;
+    position: absolute; 
+    bottom: 0;         
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 main {
     display: flex;
     width: 100%;
@@ -272,6 +298,10 @@ h3 {
         width: 300vw;
         max-width: 300vw;
     }
+
+    .header-ajuda {
+        height: 220px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -330,6 +360,14 @@ h3 {
         width: 400vw;
         max-width: 400vw;
         height: clamp(18rem, 40vw, 30rem);
+    }
+
+      .header-ajuda {
+        height: 170px;
+    }
+
+    .header-ajuda::after {
+        font-size: clamp(0.75rem, 3.5vw, 1.125rem);
     }
 }
 
