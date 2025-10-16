@@ -9,14 +9,15 @@ interface User {
   nome: string;
 }
 
-// 👇 Nova interface para as props do Header
+// Interface de props atualizada para incluir className e theme
 interface HeaderProps {
-  backgroundImage?: string; // URL da imagem de fundo (opcional)
-  backgroundColor?: string; // Cor de fundo alternativa (opcional)
+  backgroundImage?: string;
+  backgroundColor?: string;
+  className?: string; // Para classes customizadas (ex: altura específica)
+  theme?: 'light' | 'dark'; // Para alternar entre o tema claro e escuro
 }
 
-// 👇 Adicionar props ao componente
-export default function Header({ backgroundImage, backgroundColor = 'white' }: HeaderProps) {
+export default function Header({ backgroundImage, backgroundColor = 'white', className, theme = 'light' }: HeaderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +50,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
     window.location.href = '/login';
   };
 
-  // 👇 Estilo dinâmico para o header
+  // Estilo dinâmico para o header (fundo)
   const headerStyle: React.CSSProperties = {
     ...(backgroundImage && {
       backgroundImage: `url(${backgroundImage})`,
@@ -61,7 +62,8 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
   };
 
   return (
-    <header style={headerStyle}>
+    // A classe do tema (`light` ou `dark`) é combinada com qualquer outra classe passada via props
+    <header style={headerStyle} className={`${theme} ${className || ''}`}>
       <section className="em_ciminha">
         <Link href="/">
           <div id="imagi" aria-label="Página inicial"></div>

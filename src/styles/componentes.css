@@ -313,3 +313,42 @@ footer {
     #user { width: 2.6rem; height: 3rem; }
     .user-popup { right: 5px; width: 160px; }
 }
+
+/* =================================== */
+/* Estilos do Tema Escuro para o Header */
+/* =================================== */
+
+.dark #imagi {
+  background-image: url('/images/logo-white.png');
+}
+
+.dark #algo {
+  background-image: url('/images/guia-white.svg');
+}
+
+.dark #coracao {
+  background-image: url('/images/coracao-white.svg');
+}
+
+.dark #user {
+  background-image: url('/images/perfil-white.svg');
+}
+
+.dark #redirecionavel,
+.dark #redirecionavel2 {
+  color: #FFFFFF;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* 4. Ajusta as cores de HOVER para o tema escuro */
+.dark #redirecionavel:hover {
+  color: #AA35B0; /* Cor original do hover */
+}
+
+.dark #redirecionavel2:hover {
+  color: #F2A518; /* Cor original do hover */
+}
+
+.dark #redirecionavel2:active {
+    color: #b08c16; /* Cor original do active */
+}
