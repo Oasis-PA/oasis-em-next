@@ -500,23 +500,23 @@ margin-top: clamp(1.4rem, 7vw, 9.5rem);
         gap: 1.5rem;
     }
 #card1{
-    background-size: 98%;
+    background-size: 95%;
     background-image: url(/images/skincare/dica1-bg.png);
 }
 #card2{
-    background-size: 98%;
+    background-size: 95%;
     background-image: url(/images/skincare/dica2-bg.png);
 }
 #card3{
-    background-size: 98%;
+    background-size: 95%;
     background-image: url(/images/skincare/dica3-bg.png);
 }
 #card4{
-    background-size: 98%;
+    background-size: 95%;
     background-image: url(/images/skincare/dica4-bg.png);
 }
 #card5{
-    background-size: 98%;
+    background-size: 95%;
     background-image: url(/images/skincare/dica5-bg.png);
 } 
 
