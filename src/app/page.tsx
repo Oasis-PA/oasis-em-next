@@ -93,6 +93,7 @@ export default function OasisHomepage() {
 
   return (
     <>
+    <Header/>
       <main 
         className={styles.mainContainer} 
         style={{ backgroundImage: `url(${slidesData[currentSlide].backgroundImage})` }}
