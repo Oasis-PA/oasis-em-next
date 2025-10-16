@@ -107,15 +107,12 @@ html, body {
 /* SEÇÕES DE CONTEÚDO                 */
 /* ================================== */
 
-.ola, .veja {
+.ola {
   text-align: center;
   font-family: var(--font-primary);
   margin: 10vh 0 4vh 0;
   padding: 0 2vw;
-}
-
-.ola {
-  font-size: clamp(4.8rem, 5.8vw, 5.8rem);
+  font-size: clamp(3.2rem, 5.8vw, 5.8rem);
   color: #000;
   font-family: "PLAYFUL RUNWAY";
   font-style: normal;
@@ -124,6 +121,10 @@ html, body {
 }
 
 .veja {
+  text-align: center;
+  font-family: var(--font-primary);
+  margin: 4.5vh 0 4vh 0;
+  padding: 0 2vw;
   font-size: clamp(3.5rem, 6vw, 5.5rem);
 }
 
@@ -168,7 +169,7 @@ html, body {
 .precisa {
   color: white;
   font-family: var(--font-secondary);
-  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-size: clamp(1.7rem, 2vw, 2.2rem);
   font-weight: 900;
   margin-bottom: 1.5vh;
 }
@@ -176,7 +177,7 @@ html, body {
 .nossa {
   color: white;
   font-family: var(--font-text);
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-size: clamp(1.2rem, 2.5vw, 2.4rem);
   line-height: 1.5;
 }
 
@@ -336,6 +337,13 @@ html, body {
     width: clamp(65px, 25vw, 98px);
   }
 }
+@media screen and (max-width: 480px) {
+  .conheca {
+    margin-top: -10vw;
+    margin-right: 6.5vw;
+    width: clamp(10vw, 25vw, 98px);
+  }
+}
 /* SEÇÃO PRATICIDADE */
 .pratica {
   margin: 10vh 10vw;
@@ -484,6 +492,15 @@ html, body {
 }
 .ousadas div {
   flex-grow: 1;
+}
+@media screen and (max-width: 1024px) {
+  
+  
+  #ousadas2{
+    flex-direction: column-reverse;
+    
+    
+  }
 }
 #ousadas2{
   align-self: end;
@@ -758,13 +775,19 @@ html, body {
   /* Seção de apostas empilhada */
   .ousadas {
     flex-direction: column;
+    
+  }
+  #ousadas1{
+    flex-direction: column;
+  }
+  #ousadas3{
+    flex-direction: column-reverse;
   }
   .ousadas img {
     width: 100%;
     max-width: 400px; /* Limita o tamanho da imagem */
   }
   /* Inverte a ordem da segunda seção para manter o padrão imagem/texto */
-  #ousadas1, #ousadas3 { flex-direction: column-reverse; }
   
   #direita{
     flex-direction: column;
