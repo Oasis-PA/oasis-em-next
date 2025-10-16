@@ -103,7 +103,7 @@ const CronogramaCapilar: React.FC = () => {
       </section>
 
       <div className="apostas">
-        <section className="ousadas" id="ousadas1">
+        <section  className="ousadas" id='ousadas1'>
         <img src="/images/Cronograma-capilar/Aposte.png" alt="Aposte em maquiagens ousadas" />
         <div id="cansada1" >
           <p className="texto-aposte">Aposte em Maquiagens ousadas!</p>
