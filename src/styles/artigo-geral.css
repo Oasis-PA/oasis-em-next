@@ -1,6 +1,3 @@
-/* ================================================= */
-/* SEU CÓDIGO CSS ORIGINAL - INTACTO        */
-/* ================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -126,6 +123,21 @@
     gap: 1rem;
 }
 
+@media (max-width: 768px) {
+    .artigos-container {
+        padding: 2rem 1rem;
+    }
+
+    .artigos-titulo {
+        font-size: 2.5rem;
+    }
+
+    .artigos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
 .check{
     opacity: 0;
     position: absolute;
@@ -134,16 +146,20 @@
     margin-top: 18px;
     margin-bottom: -10px;
     margin-left: 92%;
+
     background-color: var(--label);
     border-radius: 29px;
     border: 0.1px solid #000000;
+
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
     justify-content: space-around;
     width: 3%;
     height: 29px;
+
     transform: scale(1.1);
 }
 .imagem {
@@ -295,7 +311,7 @@ margin-top: 18px;
     font-size: var(--CORPO-DE-TEXTO-2, 16px);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;   
+    line-height: normal;  
     text-align: center;
 
 }
@@ -306,6 +322,8 @@ margin-top: 18px;
     margin-left: -780px;
     width: 50%;
     height: 230px;
+
+
 }
 .grupo-2 > svg
 {
@@ -387,7 +405,7 @@ margin-top: 18px;
     line-height: normal;
 
     margin-left: 380px;
-    transform: translateY(-310px);      
+    transform: translateY(-310px);    
 }
 .grupo-3 > p
 {
@@ -396,10 +414,44 @@ margin-top: 18px;
     height: 97px;
     flex-shrink: 0;
 }
+.descrição
+{
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-1, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transform: translatey(-248px);
+}
 .grupo-3 > svg
 {
     transform: translatey(-323px);
     margin-left: 780px;
+}
+.Cartegorias-ladodireito
+{
+    display: flex;
+    gap: 19px;
+    margin-left: 380px;
+    transform: translateY(-246px);
+
+
+
+    p{
+    font-family: "Louis George Cafe";
+    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+
+    border-radius: 30px;
+    border: 1px solid #585858;
+    background: #FFF;
+    width: 81px;
+    height: 21px;
+    flex-shrink: 0;
+    }
 }
 .seção
 {
@@ -418,6 +470,8 @@ margin-top: 18px;
     margin-top: 400px;
     width: 100%;
     height: 700px;
+    
+
 }
 #data 
 {
@@ -438,7 +492,8 @@ margin-top: 18px;
     font-weight: 400;
     line-height: normal;
     margin-top: 9px;
-   }
+ }
+
 }
 #texto
 {
@@ -450,7 +505,7 @@ margin-top: 18px;
     margin-left: 54px;
     margin-top: 279px;
     position: relative;
-    
+   
     h5{
     font-family: "The Next Font";
     font-size: 64px;
@@ -463,8 +518,10 @@ margin-top: 18px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
+
     margin-left: 20px;
     }
+   
 }
 #carte-seção
 {
@@ -478,7 +535,7 @@ margin-top: 18px;
    margin-top: 60%; 
 }
 .grupo-4
-{   
+{  
     width: 30%;
     height: 700px;
 }
@@ -498,6 +555,7 @@ margin-top: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
     width: 390px;
     height: 97px;
     margin-top: 55px;
@@ -534,18 +592,19 @@ margin-top: 18px;
 .grupo-5 > h4
 {
     color: #ffffff;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-1, 110px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 111px;
-    display: flex;
-    width: 714px;
-    height: 163px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    transform: translateY(-299px);
+font-family: "The Next Font";
+font-size: var(--TTULO-1, 110px);
+font-style: normal;
+font-weight: 400;
+line-height: 111px;
+
+display: flex;
+width: 714px;
+height: 163px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+transform: translateY(-299px);
 }
 #data5
 {
@@ -564,6 +623,7 @@ margin-top: 18px;
     margin-left: 535px;
     transform: translateY(-7px);
     
+   
     p{
     border-radius: 30px;
     border: 1px solid #585858;
@@ -572,6 +632,7 @@ margin-top: 18px;
     height: 21px;
     flex-shrink: 0;
     text-align: center;
+
     color: #000;
     font-family: "Louis George Cafe";
     font-size: var(--CORPO-DE-TEXTO-2, 16px);
@@ -579,6 +640,7 @@ margin-top: 18px;
     font-weight: 400;
     line-height: normal;
     }
+    
 }
 #linha
 {
@@ -607,8 +669,10 @@ margin-top: 18px;
     margin-left: 12px;
 }
 .save-icon{
+   
     margin-left: 87%;
     transform: translatey(-50%);
+    
 }
 #sorriso{
     margin-left: 97%;
@@ -626,6 +690,7 @@ margin-top: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
     margin-top: 307px;
     margin-left: -1px;
 }
@@ -636,6 +701,7 @@ margin-top: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
     width: 380px;
     height: 97px;
     flex-shrink: 0;
@@ -655,6 +721,7 @@ margin-top: 18px;
     border-radius: 30px;
     border: 1px solid #ffffff;
     background: rgba(255, 255, 255, 0.00);
+
     font-family: "Louis George Cafe";
     color: #FFF;
     font-size: var(--CORPO-DE-TEXTO-2, 16px);
@@ -662,7 +729,11 @@ margin-top: 18px;
     font-weight: 400;
     line-height: normal;
     text-align: center;
+
+
     }
+
+
 }
 .grupos-linha2
 {
@@ -700,10 +771,12 @@ margin-top: 18px;
     border-radius: 27px;
     background: #722F53;
     border-style: none;
+
     margin-top: 500px;
     margin-left: -900px;
+    
     display: flex;
-    width: 2px;
+    width: 2x;
     height: 49px;
     padding: 8px 39px;
     justify-content: center;
@@ -721,6 +794,8 @@ margin-top: 18px;
     font-weight: 400;
     line-height: normal;
     }
+
+    
 }
 .seção3
 {
@@ -746,6 +821,7 @@ margin-left: 12px;
     border-radius: 30px;
     border: 1px solid #000000;
     background: rgba(255, 255, 255, 0.00);
+
     font-family: "Louis George Cafe";
     color: #000000;
     font-size: var(--CORPO-DE-TEXTO-2, 16px);
@@ -764,6 +840,7 @@ margin-left: 12px;
     font-weight: 400;
     line-height: normal;
     margin-top: 460px;
+
     display: flex;
     width: 464px;
     height: 160px;
@@ -784,6 +861,7 @@ margin-left: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 46px;
+
     display: flex;
     margin-top: 208px;
     width: 464px;
@@ -822,6 +900,7 @@ margin-left: 12px;
         border-radius: 30px;
         border: 1px solid #ffffff;
         background: rgba(255, 255, 255, 0.00);
+    
         font-family: "Louis George Cafe";
         color: #FFF;
         font-size: var(--CORPO-DE-TEXTO-2, 16px);
@@ -829,22 +908,25 @@ margin-left: 12px;
         font-weight: 400;
         line-height: normal;
         text-align: center;   
-       }
+     }
 }
 .linha1
-{   
+{  
    margin-left: 600px;
    display: flex;
    gap: 60px;
    margin-top: -19.3%;
+
 }
 .linha2
 {
+    
     margin-left: 600px;
     display: flex;
     gap: 60px;
     margin-top: 11.5%;
     height: 422px;
+ 
 }
 footer {
     display: flex;
@@ -855,210 +937,3 @@ footer iframe {
     height: 400px;
 }
 
-
-/* ================================================= */
-/* NOVO CÓDIGO PARA RESPONSIVIDADE           */
-/* ================================================= */
-
-/* Para telas de até 1200px (tablets em modo paisagem e desktops menores) */
-@media (max-width: 1200px) {
-    
-    /* Centraliza o layout e remove margens laterais fixas */
-    body {
-        padding: 0 2rem; /* Adiciona um respiro nas laterais */
-    }
-
-    /* Ajusta o grid principal para ser uma única coluna */
-    main {
-        display: flex; /* Troca de grid para flexbox para facilitar o empilhamento */
-        flex-direction: column;
-        align-items: center; /* Centraliza os itens */
-        margin-top: 2rem;
-        gap: 2rem;
-    }
-
-    /* Remove posicionamentos fixos do título "RECENTES" */
-    main > h5 {
-        position: static;
-        margin: 0 0 2rem 0;
-    }
-    
-    /* Anula as medidas fixas de todos os grupos e seções */
-    .grupo-1, .grupo-2, .grupo-3, .seção, .seção2, .seção3, .grupos-linha1, .grupos-linha2, .cronograma-capilar, .linha1, .linha2 {
-        width: 100%;
-        max-width: 700px; /* Limita a largura máxima para leitura */
-        height: auto;
-        margin: 0 !important; /* Reseta todas as margens fixas e negativas */
-        display: flex;
-        flex-direction: column;
-        position: relative; /* Mantém o contexto de posicionamento para filhos */
-        grid-area: auto; /* Anula a definição de área do grid */
-    }
-
-    .grupo-1 > img, .seção {
-        width: 100%;
-        height: auto;
-        background-size: cover;
-        background-position: center;
-        aspect-ratio: 16 / 9; /* Proporção para a imagem não ficar muito alta */
-    }
-
-    /* Reposiciona textos que eram absolutos */
-    .grupo-1 > p, .grupo-1 > h4, .Cartegorias {
-        position: static; /* Tira do posicionamento absoluto */
-        transform: none;
-        margin: 0;
-        width: 100%;
-        line-height: 1.4;
-        color: var(--text-color); /* Garante que o texto seja legível */
-        text-align: center;
-        padding: 0.5rem 0;
-    }
-    .Cartegorias {
-        order: 3; /* Muda a ordem para aparecer depois do título */
-        justify-content: center;
-    }
-    .grupo-1 > h4 { order: 2; }
-    .grupo-1 > p { order: 1; }
-    .grupo-1 > svg { display: none; } /* Esconde SVGs de posicionamento */
-
-    /* Anula posicionamentos complexos dos grupos 2 e 3 */
-    .grupo-2, .grupo-3, .grupo-4, .grupo-5, .grupo-6, .grupo-7 {
-        width: 100%;
-        max-width: 500px; /* Um pouco menor para variedade */
-    }
-    .grupo-2 > h4, .grupo-2 > p, .descrição, .data, .Cartegorias-ladodireito,
-    .grupo-3 > h4, .grupo-3 > p, .grupo-5 > h4, #descri, .Cartegorias-grupo5,
-    .h4-linha, .descrição-linha, .Cartegorias-linha, .grupo-6 > h4, .Cartegorias-g6,
-    .grupo-7 > h4, .Cartegorias-g7, .datag7 {
-        transform: none !important;
-        position: static;
-        margin: 0.5rem auto;
-        width: 90%;
-        height: auto;
-        text-align: center;
-    }
-    .Cartegorias-ladodireito, .Cartegorias-grupo5, .Cartegorias-linha, .Cartegorias-g6, .Cartegorias-g7 {
-        justify-content: center;
-        flex-wrap: wrap; /* Permite que as categorias quebrem a linha */
-    }
-
-    /* Ajusta a seção da mulher na pedra */
-    #data, #texto {
-        position: static;
-        width: 90%;
-        margin: 1rem auto;
-    }
-    #texto h5 {
-        width: 100%;
-        font-size: 2.5rem; /* Reduz o tamanho da fonte */
-        text-align: center;
-        margin: 0;
-        height: auto;
-        line-height: 1.2;
-    }
-
-    /* Ajusta o cronograma capilar */
-    .cronograma-capilar {
-        align-items: center;
-    }
-    .cronograma-capilar img { width: 100%; max-width: 500px; height: auto; }
-    .cronograma-capilar h5 { 
-        width: 100%; 
-        font-size: 2.5rem; 
-        line-height: 1.2; 
-        text-align: center;
-        margin: 1rem 0;
-    }
-    .cronograma-capilar button {
-        margin: 1rem 0 0 0;
-        width: auto;
-        height: auto;
-        padding: 0.75rem 2rem;
-    }
-
-    footer iframe {
-        width: 100%;
-        height: 300px;
-    }
-}
-
-
-/* Para telas de até 768px (celulares) */
-@media (max-width: 768px) {
-    body {
-        padding: 0 1rem; 
-    }
-
-    /* CONSOLIDAÇÃO: Reduz o tamanho das fontes principais (mantendo a última definição, mas ajustada) */
-    body > h5 {
-        font-size: 2rem; /* Usa 2rem para ser menor que 2.5rem */
-        line-height: 1.2;
-    }
-    body > p {
-        font-size: 1rem;
-        margin-bottom: 3rem;
-    }
-    
-    /* ADIÇÃO: Aumenta o espaçamento geral entre as seções */
-    main {
-        gap: 3rem; /* Aumenta o espaçamento entre o título principal e as linhas de cards */
-    }
-
-    /* Ajuste para garantir que todos os grupos tenham margem inferior */
-    .grupo-1, .grupo-2, .grupo-3, .seção, .seção2, .seção3, .grupos-linha1, .grupos-linha2, .cronograma-capilar, .linha1, .linha2 {
-        margin: 1rem auto 3rem auto !important; /* Adiciona margem inferior (3rem) para separar bem os blocos */
-    }
-
-    /* ADIÇÃO: Espaçamento dentro dos cards (se eles estiverem usando padding interno) */
-    .artigo-card-content {
-        padding: 1.5rem 1rem; /* Mais padding interno */
-        gap: 0.75rem; /* Mais espaçamento entre os elementos internos do card */
-    }
-
-    /* CONSOLIDAÇÃO: Reduz ainda mais as fontes dos títulos dos cards (usando 1.5rem, o menor valor) */
-    .grupo-1 > h4, #texto h5, .grupo-5 > h4, .cronograma-capilar h5, .grupo-7 > h4 {
-        font-size: 1.5rem;
-    }
-
-    /* REFORÇO: Garantindo que o conteúdo do card não tenha margens negativas */
-    .grupo-2 > h4, .grupo-2 > p, .descrição, .data, .Cartegorias-ladodireito,
-    .grupo-3 > h4, .grupo-3 > p, .grupo-5 > h4, #descri, .Cartegorias-grupo5,
-    .h4-linha, .descrição-linha, .Cartegorias-linha, .grupo-6 > h4, .Cartegorias-g6,
-    .grupo-7 > h4, .Cartegorias-g7, .datag7 {
-        transform: none !important;
-        position: static;
-        margin: 0.5rem auto;
-        width: 90%; 
-        height: auto;
-        text-align: center;
-    }
-
-    /* REFORÇO: Ajuste para o grupo principal de destaque */
-    .grupo-1 {
-        height: auto;
-        padding-bottom: 2rem; 
-    }
-    
-    /* REFORÇO: Garante que as imagens não tenham margens negativas */
-    .grupo-1 > img {
-        margin-top: 0 !important;
-    }
-
-    /* Ajusta o seletor de tema (dark/light) */
-    .label {
-        margin: 0 auto 2rem auto; /* Centraliza e adiciona margem inferior */
-        width: 60px;
-        height: 30px;
-    }
-    
-    /* NOVO: Ajusta o tamanho máximo das categorias para não ficarem gigantes */
-    .Cartegorias p, .Cartegorias-ladodireito p, .Cartegorias-grupo5 p, .Cartegorias-linha p, .Cartegorias-g6 p, .Cartegorias-g7 p {
-        width: auto; /* Permite que a largura seja definida pelo conteúdo */
-        max-width: 150px; /* Limita um tamanho máximo razoável */
-    }
-    
-    .grupo-1 > svg, .grupo-2 > svg, .grupo-3 > svg, .grupo-4 > svg, .grupo-5 > svg, .grupo-6 > svg, .grupo-7 > svg {
-        display: none; /* Esconde todos os SVGs */
-    }
-}
