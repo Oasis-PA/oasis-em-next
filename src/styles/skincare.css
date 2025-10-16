@@ -417,25 +417,65 @@ margin-top: clamp(1.4rem, 7vw, 9.5rem);
 }
 
 /* 3. IMAGENS DE FUNDO (mantidas com IDs) */
-#card1 { background-image: url(/images/skincare/card1.png); }
-#card2 { background-image: url(/images/skincare/card2.png); } 
-#card3 { background-image: url(/images/skincare/card3.png); }
-#card4 { background-image: url(/images/skincare/card4.png); }
-#card5 { background-image: url(/images/skincare/card5.png); }
+#card1 { background-image: url(/images/skincare/card1.png); background-size: 98%;}
+#card2 { background-image: url(/images/skincare/card2.png); background-size: 98%;} 
+#card3 { background-image: url(/images/skincare/card3.png); background-size: 98%;}
+#card4 { background-image: url(/images/skincare/card4.png); background-size: 98%;}
+#card5 { background-image: url(/images/skincare/card5.png); background-size: 98%;}
 
-#card1:hover { background-image: url(/images/skincare/dica1-bg.png); }
-#card2:hover { background-image: url(/images/skincare/dica2-bg.png); } 
-#card3:hover { background-image: url(/images/skincare/dica3-bg.png); }
-#card4:hover { background-image: url(/images/skincare/dica4-bg.png); }
-#card5:hover { background-image: url(/images/skincare/dica5-bg.png); }
+#card1:hover { background-image: url(/images/skincare/dica1-bg.png); background-size: 98%;}
+#card2:hover { background-image: url(/images/skincare/dica2-bg.png); background-size: 98%;} 
+#card3:hover { background-image: url(/images/skincare/dica3-bg.png); background-size: 98%;}
+#card4:hover { background-image: url(/images/skincare/dica4-bg.png); background-size: 98%;}
+#card5:hover { background-image: url(/images/skincare/dica5-bg.png); background-size: 98%;}
+@media (min-width: 950px) and (max-width: 1900px) {
+    .conteudo {
+        margin-top: clamp(1.5rem, 3vw, 4rem);
 
+    }
+
+.conteudo > h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.2rem, 2.3vw, 1.9rem);
+    margin-bottom: 0.5rem;
+}
+
+.conteudo > p {
+    color: #FFF;
+    text-align: justify;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+}
 /* 4. MEDIA QUERY PARA RESPONSIVIDADE */
 @media (max-width: 1300px) {
+#card1 { background-image: url(/images/skincare/card1.png); background-size: 98%;}
+#card2 { background-image: url(/images/skincare/card2.png); background-size: 98%;} 
+#card3 { background-image: url(/images/skincare/card3.png); background-size: 98%;}
+#card4 { background-image: url(/images/skincare/card4.png); background-size: 98%;}
+#card5 { background-image: url(/images/skincare/card5.png); background-size: 98%;}
+
+#card1:hover { background-image: url(/images/skincare/dica1-bg.png); background-size: 98%;}
+#card2:hover { background-image: url(/images/skincare/dica2-bg.png); background-size: 98%;} 
+#card3:hover { background-image: url(/images/skincare/dica3-bg.png); background-size: 98%;}
+#card4:hover { background-image: url(/images/skincare/dica4-bg.png); background-size: 98%;}
+#card5:hover { background-image: url(/images/skincare/dica5-bg.png); background-size: 98%;}
     #dicas {
         /* Garante um espaçamento consistente */
-        gap: 1.5rem;
+        gap: 2.5rem;
+        
     }
     .card-item {
+        
         /* Define a largura para que apenas 2 itens caibam por linha */
         flex-basis: calc(50% - 1.5rem); /* 50% menos o gap */
         flex-grow: 1; /* Permite que cresça para preencher o espaço se for ímpar */
@@ -451,24 +491,32 @@ margin-top: clamp(1.4rem, 7vw, 9.5rem);
 
 
 @media (max-width: 950px) {
+    .conteudo{
+        background: none;
+    }
     #dicas {
         flex-direction: column; /* Empilha os cards verticalmente */
         align-items: center; /* Centraliza os cards empilhados */
         gap: 1.5rem;
     }
 #card1{
+    background-size: 98%;
     background-image: url(/images/skincare/dica1-bg.png);
 }
 #card2{
+    background-size: 98%;
     background-image: url(/images/skincare/dica2-bg.png);
 }
 #card3{
+    background-size: 98%;
     background-image: url(/images/skincare/dica3-bg.png);
 }
 #card4{
+    background-size: 98%;
     background-image: url(/images/skincare/dica4-bg.png);
 }
 #card5{
+    background-size: 98%;
     background-image: url(/images/skincare/dica5-bg.png);
 } 
 
@@ -487,10 +535,12 @@ width: 40%;
 
 
 .card-item {
+    
         flex-basis: auto; /* Reseta a base flex */
         width: 90%; /* Ocupa 90% da largura da tela */
         max-width: 400px; /* Limite de largura */
         height: 500px; /* Altura fixa em telas menores */
+        
     }
 
     /* Desativa o efeito de expansão no hover para dispositivos de toque */
@@ -500,6 +550,7 @@ width: 40%;
     
     /* Deixa o conteúdo sempre um pouco visível em telas menores */
     .card-item .conteudo {
+        
         opacity: 1;
         justify-content: flex-start;
     }
