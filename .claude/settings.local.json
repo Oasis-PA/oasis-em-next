@@ -39,7 +39,8 @@
       "Bash(then echo \"✅ .env.local encontrado\")",
       "Bash(else echo \"❌ .env.local NÃO encontrado\")",
       "Bash(fi)",
-      "Bash(npm:*)"
+      "Bash(npm:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []

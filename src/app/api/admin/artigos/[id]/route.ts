@@ -13,11 +13,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const artigo = isNumeric
       ? await prisma.artigo.findUnique({
           where: { id: Number(id) },
-          include: { ArtigoTag: true },
         })
       : await prisma.artigo.findUnique({
           where: { slug: id },
-          include: { ArtigoTag: true },
         });
 
     if (!artigo) {
