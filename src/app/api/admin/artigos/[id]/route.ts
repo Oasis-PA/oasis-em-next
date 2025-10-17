@@ -10,9 +10,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     // Se id for só dígitos, trata como number; caso contrário, trata como slug/string
     const isNumeric = /^\d+$/.test(id);
-    const artigo = await prisma.artigo.findFirst({
+    const artigo = await prisma.artigo.findUnique({
       where: isNumeric ? { id: Number(id) } : { slug: id },
-      include: { ArtigoTag: true }, // ajuste conforme seu schema
+      include: { ArtigoTag: true },
     });
 
     if (!artigo) {
