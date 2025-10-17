@@ -10,10 +10,13 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     // Se id for só dígitos, trata como number; caso contrário, trata como slug/string
     const isNumeric = /^\d+$/.test(id);
-    const artigo = await prisma.artigo.findUnique({
-      where: isNumeric ? { id: Number(id) } : { slug: id },
-      include: { ArtigoTag: true },
-    });
+    const artigo = isNumeric
+      ? await prisma.artigo.findUnique({
+          where: { id: Number(id) },
+        })
+      : await prisma.artigo.findUnique({
+          where: { slug: id },
+        });
 
     if (!artigo) {
       return NextResponse.json({ message: "Artigo não encontrado" }, { status: 404 });
