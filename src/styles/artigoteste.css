@@ -39,6 +39,7 @@ main > article {
     color: var(--corpo-texto);
     border-radius: 8px 8px 0 0; 
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
 }
 
 main > article h1 {
