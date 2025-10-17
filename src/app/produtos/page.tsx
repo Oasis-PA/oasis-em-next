@@ -1,4 +1,4 @@
-// file: app/produtos/page.tsx - CÓDIGO COMPLETO COM TODAS AS CORREÇÕES
+// file: app/produtos/page.tsx - CÓDIGO ATUALIZADO
 
 "use client";
 
@@ -84,22 +84,21 @@ const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, o
     );
 };
 
-
 // -----------------------------------------------------
 // FiltrosBarra
 // -----------------------------------------------------
 
 interface FiltrosBarraProps {
     currentTagId: number | null;
-    onTagChange: (id: string | number | null) => void; // ✅ CORRIGIDO
+    onTagChange: (id: string | number | null) => void;
     currentCategoriaId: number | null;
-    onCategoriaChange: (id: string | number | null) => void; // ✅ CORRIGIDO
+    onCategoriaChange: (id: string | number | null) => void;
     currentCabeloId: number | null;
-    onCabeloChange: (id: string | number | null) => void; // ✅ CORRIGIDO
+    onCabeloChange: (id: string | number | null) => void;
     currentPeleId: number | null;
-    onPeleChange: (id: string | number | null) => void; // ✅ CORRIGIDO
+    onPeleChange: (id: string | number | null) => void;
     currentMarca: string | null;
-    onMarcaChange: (id: string | number | null) => void; // ✅ CORRETO
+    onMarcaChange: (id: string | number | null) => void;
 }
 
 const FiltrosBarra: React.FC<FiltrosBarraProps> = ({ 
@@ -164,8 +163,6 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
                 <FilterDropdown label="CATEGORIA" currentValue={getFilterName(categoriaOptions, currentCategoriaId)} currentId={currentCategoriaId} options={categoriaOptions} onFilterChange={onCategoriaChange} disabled={loadingFilters} />
                 <FilterDropdown label="TIPO DE CABELO" currentValue={getFilterName(cabeloOptions, currentCabeloId)} currentId={currentCabeloId} options={cabeloOptions} onFilterChange={onCabeloChange} disabled={loadingFilters} />
                 <FilterDropdown label="TIPO DE PELE" currentValue={getFilterName(peleOptions, currentPeleId)} currentId={currentPeleId} options={peleOptions} onFilterChange={onPeleChange} disabled={loadingFilters} />
-            
-               
             </div>
         </div>
     );
@@ -176,21 +173,27 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
 // -----------------------------------------------------
 
 const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
-    const linkHref = produto.url_loja || '#'; 
-    const isDisabled = !produto.url_loja;
     const imageSrc = produto.url_imagem || '/images/produtos/default-placeholder.png'; 
     
     return (
         <div className="produto-card">
             <div className="card-inner-wrapper">
-                <Image src={imageSrc} width={150} height={150} alt={produto.nome} className="produto-card-image" unoptimized={true} priority={true} />
+                <Image 
+                    src={imageSrc} 
+                    width={150} 
+                    height={150} 
+                    alt={produto.nome} 
+                    className="produto-card-image" 
+                    unoptimized={true} 
+                    priority={true} 
+                />
                 <div className="card-text">
                     <p className="card-tag">{produto.tag_principal}</p>
                     <h2 className="card-title">{produto.nome.toUpperCase()}</h2>
                 </div>
-                <Link href={linkHref} passHref target={isDisabled ? '_self' : '_blank'} rel="noopener noreferrer" style={{ pointerEvents: isDisabled ? 'none' : 'auto' }} >
-                    <button className={`card-button ${isDisabled ? 'disabled' : ''}`}>
-                        {isDisabled ? 'LINK INDISPONÍVEL' : 'VER MAIS'}
+                <Link href={`/produtos/${produto.id_produto}`}>
+                    <button className="card-button">
+                        VER MAIS
                     </button>
                 </Link>
             </div>
@@ -233,7 +236,7 @@ const ProdutosGrid: React.FC<ProdutosGridProps> = ({ tagId, categoriaId, cabeloI
             if (marca !== null) params.append('marca', marca);
             
             params.append('page', String(pageNum));
-            params.append('limit', '12');
+            params.append('limit', '8');
             
             const url = `/api/produtos?${params.toString()}`; 
             const res = await fetch(url); 
@@ -328,49 +331,53 @@ export default function ProdutosPage() {
             </main>
 
             <section id="s1">
-                <Image src="/images/produtos/marca (1).png" alt="SalonLine" width={120} height={60} />
-                <Image src="/images/produtos/marca (2).png" alt="Kolene" width={120} height={60} />
-                <Image src="/images/produtos/marca (3).png" alt="WidiCare" width={120} height={60} />
-                <Image src="/images/produtos/marca (4).png" alt="Nivea" width={120} height={60} />
-                <Image src="/images/produtos/marca (5).png" alt="Principia" width={120} height={60} />
+                <Image src="/images/produtos/marca (1).png" alt="SalonLine" width={200} height={60} />
+                <Image src="/images/produtos/marca (2).png" alt="Kolene" width={200} height={60} />
+                <Image src="/images/produtos/marca (3).png" alt="WidiCare" width={200} height={60} />
+                <Image src="/images/produtos/marca (4).png" alt="Nivea" width={200} height={60} />
+                <Image src="/images/produtos/marca (5).png" alt="Principia" width={200} height={60} />
             </section>
 
             <figure>
-                <Image src="/images/produtos/quiz.png" alt="quiz-cronograma-capilar" width={400} height={120} />
+                <Image src="/images/produtos/quiz.png" alt="quiz-cronograma-capilar" width={600} height={120} />
             </figure>
 
             <section id="s2">
                 <div className="linha-texto"><h1>TIPOS DE CABELO</h1><div id="linha"></div></div>
                 <div className="imagens-s2">
-                    <Image src="/images/produtos/cabelo (1).png" alt="Ondulados" width={100} height={100} />
-                    <Image src="/images/produtos/cabelo (2).png" alt="Cacheados" width={100} height={100} />
-                    <Image src="/images/produtos/cabelo (3).png" alt="Crespo" width={100} height={100} />
-                    <Image src="/images/produtos/cabelo (4).png" alt="C/Química" width={100} height={100} />
+                    <Image src="/images/produtos/cabelo (1).png" alt="Ondulados" width={200} height={100} />
+                    <Image src="/images/produtos/cabelo (2).png" alt="Cacheados" width={200} height={100} />
+                    <Image src="/images/produtos/cabelo (3).png" alt="Crespo" width={200} height={100} />
+                    <Image src="/images/produtos/cabelo (4).png" alt="C/Química" width={200} height={100} />
                 </div>
                 <div className="linha-texto"><div id="linha2"></div><h1>TIPOS DE PELE</h1></div>
                 <div className="imagens-s2">
-                    <Image src="/images/produtos/pele (1).png" alt="" width={100} height={100} />
-                    <Image src="/images/produtos/pele (2).png" alt="" width={100} height={100} />
-                    <Image src="/images/produtos/pele (3).png" alt="" width={100} height={100} />
-                    <Image src="/images/produtos/pele (4).png" alt="" width={100} height={100} />
+                    <Image src="/images/produtos/pele (1).png" alt="" width={200} height={100} />
+                    <Image src="/images/produtos/pele (2).png" alt="" width={200} height={100} />
+                    <Image src="/images/produtos/pele (3).png" alt="" width={200} height={100} />
+                    <Image src="/images/produtos/pele (4).png" alt="" width={200} height={100} />
                 </div>
             </section>
             
-            <FiltrosBarra 
-                currentTagId={tagFiltroId} onTagChange={handleTagChange}
-                currentCategoriaId={categoriaFiltroId} onCategoriaChange={handleCategoriaChange}
-                currentCabeloId={cabeloFiltroId} onCabeloChange={handleCabeloChange}
-                currentPeleId={peleFiltroId} onPeleChange={handlePeleChange}
-                currentMarca={marcaFiltro} onMarcaChange={handleMarcaChange}
-            />
-            
-            <ProdutosGrid 
-                tagId={tagFiltroId} 
-                categoriaId={categoriaFiltroId}
-                cabeloId={cabeloFiltroId}
-                peleId={peleFiltroId}
-                marca={marcaFiltro}
-            />
+            {/* ▼▼▼ MUDANÇA PRINCIPAL AQUI ▼▼▼ */}
+            <div className="produtos-layout-wrapper">
+                <FiltrosBarra 
+                    currentTagId={tagFiltroId} onTagChange={handleTagChange}
+                    currentCategoriaId={categoriaFiltroId} onCategoriaChange={handleCategoriaChange}
+                    currentCabeloId={cabeloFiltroId} onCabeloChange={handleCabeloChange}
+                    currentPeleId={peleFiltroId} onPeleChange={handlePeleChange}
+                    currentMarca={marcaFiltro} onMarcaChange={handleMarcaChange}
+                />
+                
+                <ProdutosGrid 
+                    tagId={tagFiltroId} 
+                    categoriaId={categoriaFiltroId}
+                    cabeloId={cabeloFiltroId}
+                    peleId={peleFiltroId}
+                    marca={marcaFiltro}
+                />
+            </div>
+            {/* ▲▲▲ FIM DA MUDANÇA ▲▲▲ */}
 
             <Footer />
         </>

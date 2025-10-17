@@ -135,13 +135,10 @@ figure > img {
 
 
 .filter-dropdown-container {
-    /* 🚩 NOVIDADE: Necessário para posicionar a lista suspensa (ul) */
     position: relative; 
-    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
     background-color: white;
     border-radius: 30px; 
     padding: 8px 15px 8px 20px; 
@@ -167,12 +164,10 @@ figure > img {
 
 
 .filter-content {
-    /* 🚩 MUDANÇA: Agora é um botão, garantindo que o clique funcione na área toda */
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    
     background: none;
     border: none;
     padding: 0;
@@ -185,7 +180,6 @@ figure > img {
     font-weight: 700;
     color: #343a40; 
     margin-right: 10px;
-    /* Para garantir que o texto não seja afetado pelo botão */
     line-height: 1.5; 
 }
 
@@ -204,9 +198,7 @@ figure > img {
     transition: transform 0.2s;
 }
 
-/* 🚩 NOVIDADE: Rotação da seta quando o dropdown está ativo */
 .filter-dropdown-container.active .filter-icon-circle {
-    /* Rotaciona a seta para cima */
     transform: rotate(180deg);
 }
 
@@ -215,30 +207,21 @@ figure > img {
     stroke-width: 2.5;
 }
 
-/* ----------------------------------------------------- */
-/* 🚩 NOVIDADE: Estilos da Lista Suspensa (Dropdown Options) */
-/* ----------------------------------------------------- */
-
 .dropdown-options-list {
-    /* 🚩 POSICIONAMENTO: Faz a lista aparecer sobre o conteúdo */
     position: absolute;
-    top: 100%; /* Começa logo abaixo do filtro */
+    top: 100%;
     left: 0;
-    
     width: 100%;
     min-width: 200px;
     z-index: 10;
-    
     background-color: white;
     border-radius: 10px;
     padding: 10px 0;
-    
     list-style: none;
     margin: 5px 0 0 0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border: 1px solid #f0f0f0;
-    
-    overflow: hidden; /* Garante que as bordas da lista fiquem arredondadas */
+    overflow: hidden;
 }
 
 .dropdown-options-list li {
@@ -255,7 +238,7 @@ figure > img {
 
 .dropdown-options-list li.selected {
     font-weight: 700;
-    background-color: #f7f3fa; /* Cor de fundo para a opção selecionada */
+    background-color: #f7f3fa;
     color: #5F0B38;
 }
 
@@ -279,7 +262,7 @@ figure > img {
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border: 2px solid #5F0B38; /* Borda da cor da marca */
+    border: 2px solid #5F0B38;
     padding: 10px;
 }
 
@@ -294,10 +277,13 @@ figure > img {
 }
 
 .produto-card-image {
-    width: 100%; 
-    max-height: 250px;
+    width: 100% !important; 
+    height: auto !important;
+    max-height: 300px;
     object-fit: contain; 
     margin-bottom: 15px;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .card-tag {
@@ -329,7 +315,6 @@ figure > img {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
-    
     margin-top: auto; 
 }
 
@@ -337,42 +322,10 @@ figure > img {
     background-color: #a56f96;
 }
 
-
-/* --- RESPONSIVIDADE (Ajuste a grade para telas menores) --- */
-@media (max-width: 1024px) {
-    .produtos-grid-wrapper {
-        /* 3 colunas em tablets */
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .produtos-grid-wrapper {
-        /* 2 colunas em telas menores */
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .filtros-barra-wrapper {
-        /* Reduz o gap do filtro em telas menores */
-        gap: 4vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .produtos-grid-wrapper {
-        /* 1 coluna em celulares */
-        grid-template-columns: 1fr;
-    }
-    
-    .filter-dropdown-container {
-        /* Faz os filtros ocuparem mais espaço em telas muito pequenas */
-        min-width: 40vw;
-    }
-}
-
 .load-more-container {
     width: 100%;
-    margin-top: 2vh;
+    margin-top: 1vh;
+    margin-bottom: 15vh;
     padding: 50px 0; 
     display: flex;
     justify-content: center; 
@@ -398,4 +351,81 @@ figure > img {
     border-color: #a0a0a0;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
+}
+
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+    .produtos-grid-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Substitua todo o seu bloco @media (max-width: 768px) por este */
+
+@media (max-width: 768px) {
+    /* --- Layout Sidebar para Filtros e Produtos --- */
+    .produtos-layout-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 25px;
+        max-width: 95vw;
+        margin: 0 auto;
+        padding: 0 15px;
+        margin-top: 50px; /* <-- ADICIONADO: Espaçamento em relação ao topo */
+    }
+
+    /* --- Coluna da Esquerda (Filtros) --- */
+    .filtros-barra-fundo {
+        flex: 0 0 220px;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .filtros-barra-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding: 0;
+    }
+
+    /* ▼▼▼ ADIÇÃO IMPORTANTE AQUI ▼▼▼ 
+      Esta regra faz o filtro ativo (e sua lista) pular para frente dos outros.
+    */
+    .filter-dropdown-container.active {
+        z-index: 20; 
+    }
+
+    /* --- Coluna da Direita (Produtos) --- */
+    #produtos-grid-section {
+        flex-grow: 1;
+        padding: 0;
+    }
+
+    .produtos-grid-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .produtos-grid-wrapper {
+        /* Mantém 2 colunas, mas pode ser ajustado para 1 se preferir */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px; /* Reduz o espaço em telas bem pequenas */
+    }
+
+    /* Ajusta a sidebar para telas muito pequenas */
+    .produtos-layout-wrapper {
+        gap: 15px;
+    }
+
+    .filtros-barra-fundo {
+        flex: 0 0 180px; /* Reduz um pouco a largura da sidebar */
+    }
+    
+    .filter-dropdown-container {
+        min-width: unset; /* Permite que o filtro se ajuste à sidebar */
+        width: 100%;
+    }
 }

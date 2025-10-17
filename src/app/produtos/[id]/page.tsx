@@ -1,35 +1,84 @@
+// file: app/produtos/[id]/page.tsx
+
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 import "@/styles/tela-de-produto.css";
-import {Header, Footer} from "@/components";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+
+interface ProdutoData {
+  id_produto: number;
+  nome: string;
+  url_loja: string | null;
+  url_imagem: string | null;
+  composicao: string;
+  qualidades: string;
+  mais_detalhes: string;
+  tag_principal: string;
+  preco?: string;
+}
 
 export default function PaginaDeProduto() {
-  // Estado para o tema (claro/escuro)
+  const params = useParams();
+  const router = useRouter();
+  const id = params?.id as string;
+
+  // Estados
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Estado para a classe 'active' das seções
   const [activeDetalhe, setActiveDetalhe] = useState('');
-
-  // Estado para a seta de navegação
   const [isSetaLeft, setIsSetaLeft] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState<string | null>(null);
 
-  // Refs para cada seção
+  // Refs
   const composicaoRef = useRef<HTMLHeadingElement>(null);
   const qualidadesRef = useRef<HTMLHeadingElement>(null);
   const maisDetalhesRef = useRef<HTMLHeadingElement>(null);
 
-  // Dados do produto (virão do banco)
-  const [produtoData, setProdutoData] = useState({
-    nome: "Creme de Pentear Phytomanga Efeito Pesado 500ml",
-    preco: "71,59",
-    url_loja: "https://unsplash.com/es/fotos/botella-de-plastico-blanca-y-amarilla-kEgH3e1Cdb4",
-    url_imagem: "/images/tela-de-produto/Rectangle-187.png",
+  // Dados do produto
+  const [produtoData, setProdutoData] = useState<ProdutoData>({
+    id_produto: 0,
+    nome: "",
+    url_loja: null,
+    url_imagem: null,
     composicao: "",
     qualidades: "",
-    mais_detalhes: ""
+    mais_detalhes: "",
+    tag_principal: "",
+    preco: ""
   });
+
+  // Buscar dados do produto
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchProduto = async () => {
+      setLoading(true);
+      setErro(null);
+
+      try {
+        const res = await fetch(`/api/produtos/${id}`);
+        
+        if (!res.ok) {
+          throw new Error('Produto não encontrado');
+        }
+
+        const data = await res.json();
+        console.log('Dados recebidos da API:', data); // Debug
+        setProdutoData(data);
+      } catch (e: any) {
+        console.error('Erro ao carregar produto:', e);
+        setErro(e.message || 'Erro ao carregar produto');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduto();
+  }, [id]);
 
   // Hook para o tema
   useEffect(() => {
@@ -78,13 +127,32 @@ export default function PaginaDeProduto() {
     };
   }, [activeDetalhe]);
 
+  // Debug: Monitorar mudanças no activeDetalhe
+  useEffect(() => {
+    console.log('activeDetalhe mudou para:', activeDetalhe);
+  }, [activeDetalhe]);
+
+  // Debug: Monitorar dados do produto
+  useEffect(() => {
+    console.log('Dados do produto:', {
+      composicao: produtoData.composicao,
+      qualidades: produtoData.qualidades,
+      mais_detalhes: produtoData.mais_detalhes
+    });
+  }, [produtoData]);
+
   // Função para lidar com o clique no botão amarelo
   const handleBotaoAmareloClick = () => {
-    window.location.href = produtoData.url_loja;
+    if (produtoData.url_loja) {
+      window.open(produtoData.url_loja, '_blank');
+    }
   };
 
   // Função para lidar com o clique nos detalhes
   const handleDetalheClick = (detalhe: string) => {
+    console.log('Clicou em:', detalhe); // Debug
+    console.log('Estado atual:', activeDetalhe); // Debug
+    
     if (activeDetalhe === detalhe) {
       setActiveDetalhe('');
     } else {
@@ -97,6 +165,34 @@ export default function PaginaDeProduto() {
     setIsSetaLeft(prev => !prev);
   };
 
+  // Loading e erro
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main style={{ padding: '2rem', textAlign: 'center' }}>
+          <p>Carregando produto...</p>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (erro) {
+    return (
+      <>
+        <Header />
+        <main style={{ padding: '2rem', textAlign: 'center' }}>
+          <p>Erro: {erro}</p>
+          <button onClick={() => router.push('/produtos')}>Voltar para produtos</button>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  const imageSrc = produtoData.url_imagem || '/images/produtos/default-placeholder.png';
+
   return (
     <>
       <Header />
@@ -106,26 +202,27 @@ export default function PaginaDeProduto() {
           <div className="img-container">
             <Image 
               id="img" 
-              src={produtoData.url_imagem} 
-              alt="imagem do produto" 
+              src={imageSrc} 
+              alt={produtoData.nome} 
               width={300} 
-              height={400} 
+              height={400}
+              unoptimized={true}
             />
           </div>
           <section className="produto-info">
             <h2 id="nomeProduto">{produtoData.nome}</h2>
             <p id="menorValor">Valor</p>
-            <h2 id="preço">R$ {produtoData.preco}</h2>
+            <h2 id="preco">R$ {produtoData.preco || "0,00"}</h2>
             
             <div className="detalhes">
               {/* COMPOSIÇÃO */}
               <h5
                 ref={composicaoRef}
-                className={`composiçao ${activeDetalhe === 'composiçao' ? 'active' : ''}`}
-                onClick={() => handleDetalheClick('composiçao')}
+                className={`composicao ${activeDetalhe === 'composicao' ? 'active' : ''}`}
+                onClick={() => handleDetalheClick('composicao')}
               >
                 Composição
-                <span className={`tooltip-text ${activeDetalhe === 'composiçao' ? 'active' : ''}`}>
+                <span className={`tooltip-text ${activeDetalhe === 'composicao' ? 'active' : ''}`}>
                   {produtoData.composicao || "Informação não disponível"}
                 </span>
               </h5>
@@ -156,8 +253,14 @@ export default function PaginaDeProduto() {
             </div>
 
             <aside className="container" id="vaAoSite">
-              <button className="botaoAmarelo" onClick={handleBotaoAmareloClick}>
-                <h3 className="VaParaCompra">VÁ AO SITE</h3>
+              <button 
+                className="botaoAmarelo" 
+                onClick={handleBotaoAmareloClick}
+                disabled={!produtoData.url_loja}
+              >
+                <h3 className="VaParaCompra">
+                  {produtoData.url_loja ? 'VÁ AO SITE' : 'LINK INDISPONÍVEL'}
+                </h3>
               </button>
             </aside>
           </section>
