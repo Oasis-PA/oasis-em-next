@@ -194,7 +194,7 @@ export default function PaginaDeProduto() {
 
   return (
     <>
-      <Header />
+      <Header className="header-transparente"/>
 
       <main>
         <article id="pagina1">

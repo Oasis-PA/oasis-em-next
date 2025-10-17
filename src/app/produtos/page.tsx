@@ -324,7 +324,7 @@ export default function ProdutosPage() {
 
     return (
         <>
-            <Header />
+            <Header className="header-transparente"/>
             <main>
                 <h1>PRODUTOS RECOMENDADOS</h1>
                 <p>Encontre itens de cuidado para cabelo, pele <br></br> e muito mais.</p>
