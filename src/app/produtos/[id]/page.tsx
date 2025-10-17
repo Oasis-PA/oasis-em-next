@@ -6,8 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import "@/styles/tela-de-produto.css";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import {Header, Footer} from "@/components";
 
 interface ProdutoData {
   id_produto: number;
