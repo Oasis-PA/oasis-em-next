@@ -1,12 +1,13 @@
 'use client';
 
-import {Footer} from "@/components";
+import {Header, Footer} from "@/components";
 import Image from "next/image";
 import "@/styles/corte-modelo.css";
 
 export default function cortemodelo() {
   return (
     <>
+    <Header/>
  <main>
         <section className="principal">
             <img id="img-principal" src="/images/corte-modelo/img-principal.png" alt="Imagem mulher com cabelo curto"/>
@@ -99,5 +100,6 @@ export default function cortemodelo() {
           </div>
         </section>
       </main>
+      <Footer/>
       </>
 )}

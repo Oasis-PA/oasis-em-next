@@ -10,6 +10,7 @@ import "@/styles/infantil.css";
 export default function infantil() {
   return (
     <>
+    <Header/>
     <main>
         <div id="d1">
             <h1>Cuidados <span id="span1">infantis</span> com <span id="span2">carinho</span> e <span id="span3">identidade!</span></h1>
@@ -179,6 +180,7 @@ export default function infantil() {
             </div>
         </div>
     </section>
+    <Footer/>
     </>
   );
 }

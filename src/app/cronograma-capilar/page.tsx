@@ -4,12 +4,13 @@
 
 import React from 'react';
 import Script from 'next/script'; // Componente otimizado do Next.js para carregar scripts
-
+import { Header, Footer } from "@/components";
 import '@/styles/cronograma-capilar.css'; 
 
 const CronogramaCapilar: React.FC = () => {
   return (
     <>
+    <Header/>
       <section id="mulher">
           <p className="cornograma">Cronograma <br />Capilar</p>
           <p className="cornograma2">Descubra o tratamento ideal <br />para voce!</p>
@@ -230,6 +231,7 @@ const CronogramaCapilar: React.FC = () => {
         src="/cronograma-capilar.js" 
         strategy="afterInteractive" 
       />
+      <Footer/>
     </>
   );
 };

@@ -378,6 +378,7 @@ main {
     padding-left: clamp(1rem, 7vw, 8rem);
     flex-direction: column;
     gap: clamp(1rem, 3vw, 3rem);
+    margin-bottom: 10rem;
 }
 
 .dicas {

@@ -1,0 +1,99 @@
+/* NOTA: Este CSS usa as fontes personalizadas "The Next Font" e "Louis George Cafe"
+  que você está utilizando na sua página principal. Certifique-se de que elas 
+  estejam sendo importadas globalmente no seu projeto (ex: no seu layout.tsx ou 
+  globals.css) para que o estilo seja aplicado corretamente.
+*/
+
+/* Estilos Globais */
+body {
+  background-color: #fdfaf7; /* Um fundo levemente off-white para combinar com a paleta quente */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container Principal */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Card de Redefinição de Senha */
+.reset-card {
+  background-color: #FFFFFF;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+/* Título */
+.reset-card h1 {
+  font-family: "The Next Font", sans-serif;
+  color: #5F0B38; /* Tom de vinho escuro dos títulos do seu site */
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Formulário */
+.reset-form input[type="password"] {
+  font-family: "Louis George Cafe", sans-serif;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reset-form input[type="password"]::placeholder {
+  color: #aaa;
+}
+
+.reset-form input[type="password"]:focus {
+  outline: none;
+  border-color: #722F53;
+  box-shadow: 0 0 0 3px rgba(114, 47, 83, 0.15);
+}
+
+/* Botão */
+.submit-btn {
+  font-family: "The Next Font", sans-serif;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background-color: #722F53; /* Cor primária dos botões do seu site */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 2rem; /* Mesmo estilo "pill-shape" do .conhecaButton */
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #5F0B38; /* Cor mais escura para o hover */
+  transform: scale(1.02);
+}
+
+/* Mensagem de feedback (sucesso ou erro) */
+.feedback-message {
+  font-family: "Louis George Cafe", sans-serif;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  padding: 0.8rem;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+}
