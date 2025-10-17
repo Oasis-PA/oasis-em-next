@@ -1,167 +1,169 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body
-{
+
+body {
     width: 100%;
-   height: 100%;
-   display: flex;
-   flex-flow: column nowrap;
-   align-items: center;
-   background-color: var(--body-back);
-   color: var(--corpo-texto);
-}
-header{
-    width: 100%;
-    height: 560px;
-    flex-shrink: 0;
-   
-    position: relative;
-   
-}
-main
-{
-    position: relative;
-    width: 70%;
+    min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    background-color: #AA35B0;
-
-}
-/*  contêiner, imagem e legenda */
-
-.artigo-figura.imagem-mulher {
- 
-  border: 5px solid #29a1c5; 
-    
-  box-shadow: 0 8px 20px rgba(12, 50, 109, 0.3); 
+    background-color: var(--body-back);
+    color: var(--corpo-texto);
+    font-family: "Louis George Cafe", sans-serif;
 }
 
-/*  apenas a imagem dentro */
-.artigo-figura.imagem-mulher .artigo-imagem {
-  border-radius: 30%; 
-  border: 5px solid #cf7ed3; 
-    width: 40%;
-  box-shadow: 0 8px 20px rgba(170, 53, 176, 0.3); 
-}
-/*  legenda */
-.artigo-figura.imagem-mulher figcaption {
-  color: #AA35B0;
-  font-weight: bold;
-  font-size: 1rem;
+header {
+    width: 100%;
+    height: 560px;
+    flex-shrink: 0;
+    position: relative;
 }
 
-main > article
-{
-    padding-top: 100px;
-    padding-left: 224px;
-    padding-right: 224px;
-    margin-top: -209px;
-    width: 115%;
+main {
+    position: relative;
+    width: 100%; 
+    max-width: 1200px; 
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+main > article {
+    width: 100%; 
+    padding: 100px 5%; 
+    margin-top: -200px;
     background-color: #ffffff;
     color: var(--corpo-texto);
+    border-radius: 8px 8px 0 0; 
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
 }
-main > article > h1
-{
-font-family: "Louis George Cafe";
-font-size: 48px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-margin-bottom: 68px;
-}
-main > article > p
-{
-font-family: "Louis George Cafe";
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: 35px;
-text-align: justify;
-}
-main > article > h3
-{
-font-family: "Louis George Cafe";
-font-size: 37.333px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
-main> h1, main > article > h3, p
-{
-    margin-bottom: 96px;
-}
-main > article > ul
-{
-    color:black;
-font-family: "Louis George Cafe";
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: 35px;
-margin-bottom: 140px;
-list-style-type: disc;
-list-style-position: inside;
-}
-main> h1, main > article > h3, p, ul
-{
-    margin-bottom: 68px;
-}
-.texto-amarelo:hover
-{
-    color: #F2A518;
-    transition: all 0.5s ease;
 
+main > article h1 {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
 }
-.texto-amarelo:active
+
+main > article h3 {
+    font-size: clamp(1.5rem, 4vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+main > article p,
+main > article li {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+main > article p {
+    text-align: justify;
+}
+
+main > article > h1,
+main > article > h3,
+main > article > p,
+main > article > ul,
+main > article > ol,
+main > article > figure 
 {
-  
+    margin-bottom: clamp(2rem, 5vw, 4rem); 
+}
+
+
+main > article > ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 20px; 
+}
+
+.artigo-figura {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    width: 100%; 
+}
+
+.artigo-imagem {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.artigo-figura figcaption {
+    text-align: center;
+    margin-top: 12px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    color: #666;
+    font-style: italic;
+}
+
+
+
+.artigo-figura.imagem-destaque {
+    max-width: 80%; 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 5px solid #AA35B0;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(170, 53, 176, 0.3);
+}
+
+.artigo-figura.imagem-destaque .artigo-imagem {
+    border-radius: 4px;
+}
+
+
+/* --- INTERATIVIDADE --- */
+.texto-amarelo:hover {
+    color: #F2A518;
+    transition: all 0.3s ease;
+}
+
+.texto-amarelo:active {
     color: #C17802;
 }
-.texto-roxo:hover
-{
-    transition: all 0.5s ease;
+
+.texto-roxo:hover {
+    transition: all 0.3s ease;
     color: #AA35B0;
     cursor: pointer;
 }
-@media  (min-width: 200px) and (max-width: 580px) {
-    main > article > p
-    {
-        width: 400px;
+
+
+/* --- MEDIA QUERIES --- */
+/* Para telas menores (tablets e celulares grandes) */
+@media (max-width: 768px) {
+    main > article {
+        margin-top: -100px; /* Reduz a sobreposição em telas menores */
+        padding: 60px 5%; /* Ajusta o padding */
     }
-    main > article > h1
-    {
-        width: 400px;
-    }
-    main > article > h3
-    {
-        width: 400px;
-    }
-    main > article > ul > li
-    {
-        width: 400px;
+
+    main > article > ul {
+        padding-left: 10px;
     }
 }
-@media  (min-width: 580px) and (max-width: 1200px) {
 
-    main > article > p
-    {
-        width: 600px;
+/* Para celulares */
+@media (max-width: 480px) {
+    header {
+        height: 300px; /* Diminui a altura do header */
     }
-    main > article > h1
-    {
-        width: 600px;
+
+    main > article {
+        margin-top: -50px; /* Reduz ainda mais a sobreposição */
+        padding: 40px 5%;
     }
-    main > article > h3
-    {
-        width: 600px;
-    }
-    main > article > ul > li
-    {
-        width: 600px;
+    
+    /* Justificar texto pode ficar estranho em telas muito pequenas */
+    main > article p {
+        text-align: left; 
     }
 }
