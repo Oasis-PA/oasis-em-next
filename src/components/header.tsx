@@ -1,4 +1,3 @@
-// Em: src/components/Header.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -9,14 +8,14 @@ interface User {
   nome: string;
 }
 
-// 👇 Nova interface para as props do Header
 interface HeaderProps {
-  backgroundImage?: string; // URL da imagem de fundo (opcional)
-  backgroundColor?: string; // Cor de fundo alternativa (opcional)
+  backgroundImage?: string;
+  backgroundColor?: string;
+  className?: string; 
+  theme?: 'light' | 'dark';
 }
 
-// 👇 Adicionar props ao componente
-export default function Header({ backgroundImage, backgroundColor = 'white' }: HeaderProps) {
+export default function Header({ backgroundImage, backgroundColor = 'white', className, theme = 'light' }: HeaderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +48,6 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
     window.location.href = '/login';
   };
 
-  // 👇 Estilo dinâmico para o header
   const headerStyle: React.CSSProperties = {
     ...(backgroundImage && {
       backgroundImage: `url(${backgroundImage})`,
@@ -61,13 +59,13 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
   };
 
   return (
-    <header style={headerStyle}>
+    <header style={headerStyle} className={`${theme} ${className || ''}`}>
       <section className="em_ciminha">
         <Link href="/">
           <div id="imagi" aria-label="Página inicial"></div>
         </Link>
         <div className="emoticus">
-          <Link href="/">
+          <Link href="/guia">
             <div id="algo" aria-label="Buscar"></div>
           </Link>
           <Link href="/favoritos">
@@ -98,8 +96,8 @@ export default function Header({ backgroundImage, backgroundColor = 'white' }: H
       </section>
       <section className="em_baixinho">
         <div className="coisas">
-          <Link href="/corteS" id="redirecionavel">Cortes</Link>
-          <Link href="/" id="redirecionavel">Hair Care</Link>
+          <Link href="/cortes-geral" id="redirecionavel">Cortes</Link>
+          <Link href="/haircare" id="redirecionavel">Hair Care</Link>
           <Link href="/tinturas" id="redirecionavel">Tinturas</Link>
           <Link href="/skincare" id="redirecionavel">Skincare</Link>
           <Link href="/cronograma-capilar" id="redirecionavel2">Cronograma Capilar</Link>

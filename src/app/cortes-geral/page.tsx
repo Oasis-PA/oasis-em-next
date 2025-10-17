@@ -1,11 +1,14 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link'; 
-
+import { Header, Footer } from "@/components";
 import '@/styles/cortes-geral.css';
 
 export default function cortegeral() {
   return (
     <>
+    <Header/>
     <section className='voce_procura'>
           <img src="/images/cortes-geral/temos.png" alt="" />
           <div className="texto-procura">
@@ -101,6 +104,7 @@ export default function cortegeral() {
           <button id="button2">VEJA MAIS</button>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

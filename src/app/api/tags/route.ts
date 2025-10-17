@@ -1,21 +1,23 @@
-// app/api/tags/route.ts
+// Rota: /api/tags
+// Tabela Supabase: public.Tag (para filtros de produto: condicionador, shampoo, etc.)
 
+import { createClient } from '@supabase/supabase-js'; 
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+
+// 🚨 SUBSTITUA PELAS SUAS VARIÁVEIS DE AMBIENTE REAIS
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function GET() {
-  try {
-    const tags = await prisma.tag.findMany({
-      orderBy: { nome: 'asc' },
-    });
-    
-    return NextResponse.json(tags);
+    const { data, error } = await supabase
+        .from('Tag') 
+        .select('id_tag, nome'); // Colunas da sua tabela Tag
 
-  } catch (error) {
-    console.error('Erro ao buscar tags:', error);
-    return NextResponse.json(
-      { message: 'Erro ao carregar tags.', error: String(error) },
-      { status: 500 }
-    );
-  }
+    if (error) {
+        console.error('Erro ao buscar Tags:', error);
+        return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
+    }
+    // Retorna o formato esperado: [{ id_tag: 1, nome: 'condicionador' }, ...]
+    return NextResponse.json(data);
 }

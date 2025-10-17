@@ -4,6 +4,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import '@/styles/admin-artigos.css';
+import styles from "@/styles/artigo.module.css";
 
 export default function NovoArtigoPage() {
   const router = useRouter();
@@ -12,6 +14,7 @@ export default function NovoArtigoPage() {
     slug: '',
     conteudo: '',
     resumo: '',
+    imagemHeader: '',
     status: 'rascunho',
     dataPublicacao: '',
     horaPublicacao: '',
@@ -19,12 +22,12 @@ export default function NovoArtigoPage() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
-    // Gera slug automaticamente ao digitar o título
     if (name === 'titulo' && !formData.slug) {
       const slug = value
         .toLowerCase()
@@ -36,19 +39,67 @@ export default function NovoArtigoPage() {
     }
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, tipo: 'header' | 'conteudo') => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Imagem muito grande! Máximo 5MB');
+      return;
+    }
+
+    setUploadingImage(true);
+
+    const slug = formData.slug?.trim() || ""; // use o campo slug do state
+    if (!slug) {
+      alert("Você deve definir o slug antes de enviar a imagem do header.");
+      return;
+    }
+
+    const fd = new FormData();
+    fd.append("file", file);
+    fd.append("tipo", tipo);
+    fd.append("slug", slug);
+
+    const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+    if (!res.ok) {
+      const body = await res.text();
+      alert("Falha no upload: " + body);
+      return;
+    }
+    const data = await res.json();
+
+    try {
+      if (tipo === 'header') {
+        setFormData(prev => ({ ...prev, imagemHeader: data.url }));
+        alert('Imagem do header enviada!');
+      } else {
+        const markdownImg = `\n\n![Descrição da imagem](${data.url})\n\n`;
+        setFormData(prev => ({
+          ...prev,
+          conteudo: prev.conteudo + markdownImg
+        }));
+        alert('Imagem adicionada ao conteúdo!');
+      }
+    } catch (error) {
+      console.error('Erro ao processar a imagem:', error);
+      alert('Erro ao processar a imagem');
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      // Combina data e hora se status for agendado
       let dataPublicacaoCompleta = null;
       if (formData.status === 'agendado' && formData.dataPublicacao) {
         const hora = formData.horaPublicacao || '12:00';
         dataPublicacaoCompleta = `${formData.dataPublicacao}T${hora}:00`;
       }
 
-      // Converte tags de string para array
       const tagsArray = formData.tags
         .split(',')
         .map(tag => tag.trim())
@@ -59,6 +110,7 @@ export default function NovoArtigoPage() {
         slug: formData.slug,
         conteudo: formData.conteudo,
         resumo: formData.resumo || null,
+        imagemHeader: formData.imagemHeader || null,
         status: formData.status,
         dataPublicacao: dataPublicacaoCompleta,
         tags: tagsArray
@@ -102,7 +154,6 @@ export default function NovoArtigoPage() {
       </header>
 
       <form onSubmit={handleSubmit} className="artigo-form">
-        {/* Linha 1: Título e Slug */}
         <div className="form-row">
           <div className="form-group flex-2">
             <label htmlFor="titulo">Título *</label>
@@ -132,7 +183,6 @@ export default function NovoArtigoPage() {
           </div>
         </div>
 
-        {/* Linha 2: Status e Agendamento */}
         <div className="form-row">
           <div className="form-group flex-1">
             <label htmlFor="status">Status *</label>
@@ -176,7 +226,6 @@ export default function NovoArtigoPage() {
           )}
         </div>
 
-        {/* Tags */}
         <div className="form-group">
           <label htmlFor="tags">Tags (separadas por vírgula)</label>
           <input
@@ -190,7 +239,6 @@ export default function NovoArtigoPage() {
           <small>Ex: skincare, beleza, rotina</small>
         </div>
 
-        {/* Resumo com contador */}
         <div className="form-group">
           <label htmlFor="resumo">Resumo/Descrição (SEO)</label>
           <textarea
@@ -207,7 +255,36 @@ export default function NovoArtigoPage() {
           </small>
         </div>
 
-        {/* Editor com Preview */}
+        <div className="form-group">
+          <label>Imagem do Header</label>
+          <div className="upload-zone">
+            <input
+              type="file"
+              id="uploadHeader"
+              accept="image/*"
+              onChange={(e) => handleImageUpload(e, 'header')}
+              style={{ display: 'none' }}
+              disabled={uploadingImage}
+            />
+            <label htmlFor="uploadHeader" className="upload-btn">
+              {uploadingImage ? '⏳ Enviando...' : '📷 Escolher Imagem'}
+            </label>
+            {formData.imagemHeader && (
+              <div className="image-preview">
+                <img src={formData.imagemHeader} alt="Preview" />
+                <button
+                  type="button"
+                  className="remove-img"
+                  onClick={() => setFormData(prev => ({ ...prev, imagemHeader: '' }))}
+                >
+                  ✕ Remover
+                </button>
+              </div>
+            )}
+          </div>
+          <small>Recomendado: 1920x400px | Max: 5MB | JPG, PNG, WEBP, GIF</small>
+        </div>
+
         <div className="editor-wrapper">
           <div className="editor-tabs">
             <button
@@ -229,7 +306,22 @@ export default function NovoArtigoPage() {
           <div className="editor-content">
             {!showPreview ? (
               <div className="editor-area">
-                <label htmlFor="conteudo">Conteúdo (Markdown) *</label>
+                <div className="editor-toolbar">
+                  <label htmlFor="conteudo">Conteúdo (Markdown) *</label>
+                  <div className="toolbar-buttons">
+                    <input
+                      type="file"
+                      id="uploadConteudo"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e, 'conteudo')}
+                      style={{ display: 'none' }}
+                      disabled={uploadingImage}
+                    />
+                    <label htmlFor="uploadConteudo" className="toolbar-btn">
+                      {uploadingImage ? '⏳' : '🖼️ Adicionar Imagem'}
+                    </label>
+                  </div>
+                </div>
                 <textarea
                   id="conteudo"
                   name="conteudo"
@@ -237,7 +329,7 @@ export default function NovoArtigoPage() {
                   onChange={handleChange}
                   required
                   rows={20}
-                  placeholder="# Título Principal&#10;&#10;Escreva seu artigo aqui...&#10;&#10;## Subtítulo&#10;&#10;**Negrito** e *itálico*&#10;&#10;![Imagem](/images/artigos/imagem.png)"
+                  placeholder="# Título Principal&#10;&#10;Escreva seu artigo aqui...&#10;&#10;## Subtítulo&#10;&#10;**Negrito** e *itálico*&#10;&#10;Use o botão 'Adicionar Imagem' acima para inserir imagens"
                 />
                 <div className="markdown-hints">
                   <strong>Dicas:</strong>
@@ -245,28 +337,36 @@ export default function NovoArtigoPage() {
                   <code>## Subtítulo</code>
                   <code>**negrito**</code>
                   <code>*itálico*</code>
-                  <code>![alt](/url)</code>
                 </div>
               </div>
             ) : (
               <div className="preview-area">
                 {formData.conteudo ? (
-                  <ReactMarkdown
-                    components={{
-                      p: ({ children, node }) => {
-                        const hasOnlyImage = node?.children?.length === 1 && 
-                                            node.children[0].type === 'element' && 
-                                            node.children[0].tagName === 'img';
-                        if (hasOnlyImage) return <>{children}</>;
-                        return <p>{children}</p>;
-                      },
-                      img: ({ src, alt }) => (
-                        <img src={src} alt={alt || ''} className="preview-img" />
-                      ),
-                    }}
-                  >
-                    {formData.conteudo}
-                  </ReactMarkdown>
+                  <div className={styles.container}>
+                    <article className={styles.article}>
+                      <ReactMarkdown
+                        components={{
+                          p: ({ children, node }) => {
+                            const hasOnlyImage = node?.children?.length === 1 && 
+                                                node.children[0].type === 'element' && 
+                                                node.children[0].tagName === 'img';
+                            if (hasOnlyImage) return <>{children}</>;
+                            return <p>{children}</p>;
+                          },
+                          img: ({ src, alt }) => (
+                            <figure className={styles.artigoFigura}>
+                              <img src={src} alt={alt || ''} className={styles.artigoImagem} />
+                            </figure>
+                          ),
+                          h1: ({ children }) => <h1 className={styles.titulo}>{children}</h1>,
+                          h2: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
+                          ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
+                        }}
+                      >
+                        {formData.conteudo}
+                      </ReactMarkdown>
+                    </article>
+                  </div>
                 ) : (
                   <p className="preview-empty">Nenhum conteúdo para visualizar</p>
                 )}
@@ -275,7 +375,6 @@ export default function NovoArtigoPage() {
           </div>
         </div>
 
-        {/* Ações */}
         <div className="form-actions">
           <button
             type="button"

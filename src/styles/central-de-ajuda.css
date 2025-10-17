@@ -20,6 +20,32 @@ html {
     width: 100%;
 }
 
+.header-ajuda {
+    height: 470px;
+    position: relative;
+}
+
+.header-ajuda::after {
+    content: 'Bem-vindo à nossa Central de Ajuda!';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3B211D;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    font-weight: 400;
+    font-family: 'The Next Font';
+    width: 80%;
+    height: 7.5vw;
+    box-sizing: border-box;
+    position: absolute; 
+    bottom: 0;         
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 main {
     display: flex;
     width: 100%;
@@ -49,7 +75,7 @@ main {
     width: 100%;
     color: #616161;
     text-align: center;
-    font-family: Inter;
+    font-family: "Louis George Cafe";
     font-size: clamp(1.25rem, 3vw, 2.25rem);
     font-weight: 600;
     word-wrap: break-word;
@@ -81,9 +107,9 @@ main {
 
 #d1 > p {
     color: #FFF;
-    font-family: Inter;
+    font-family: "The Next Font";
     font-size: clamp(1.25rem, 3vw, 2.25rem);
-    font-weight: 700;
+    font-weight: 400;
     max-width: 36.221rem;
     width: 100%;
     margin-left: clamp(1rem, 3.33vw, 3.33rem);
@@ -110,9 +136,9 @@ main {
     height: auto;
     text-align: justify;
     color: #000;
-    font-family: Inter;
+    font-family: "Louis George Cafe";
     font-size: clamp(1rem, 2.5vw, 2rem);
-    font-weight: 600;
+    font-weight: 400;
     padding: clamp(1.5rem, 3vw, 3rem);
     word-wrap: break-word;
     box-sizing: border-box;
@@ -137,9 +163,9 @@ main {
 
 h3 {
     color: #000;
-    font-family: Inter;
+    font-family: "The Next Font";
     font-size: clamp(1.25rem, 3vw, 2.25rem);
-    font-weight: 700;
+    font-weight: 400;
     word-wrap: break-word;
 }
 
@@ -147,7 +173,7 @@ h3 {
     margin-top: clamp(0.75rem, 1.25vw, 1.25rem);
     margin-left: clamp(1rem, 2.5vw, 2.5rem);
     color: #000;
-    font-family: Inter;
+    font-family: "Louis George Cafe";
     font-size: clamp(1rem, 2.5vw, 1.875rem);
     font-weight: 400;
     word-wrap: break-word;
@@ -178,9 +204,9 @@ h3 {
 
 .d5 > p {
     color: #FFF;
-    font-family: Inter;
+    font-family: "The Next Font";
     font-size: clamp(1rem, 2.5vw, 1.875rem);
-    font-weight: 700;
+    font-weight: 400;
     max-width: 70rem;
     width: 100%;
     height: auto;
@@ -240,7 +266,6 @@ h3 {
     z-index: -1;
 }
 
-
 @media (max-width: 768px) {
     #s1 {
         padding: clamp(1rem, 4vw, 3rem) clamp(0.5rem, 2vw, 1.5rem);
@@ -272,6 +297,10 @@ h3 {
     #fundo-marrom {
         width: 300vw;
         max-width: 300vw;
+    }
+
+    .header-ajuda {
+        height: 220px;
     }
 }
 
@@ -331,6 +360,14 @@ h3 {
         width: 400vw;
         max-width: 400vw;
         height: clamp(18rem, 40vw, 30rem);
+    }
+
+      .header-ajuda {
+        height: 170px;
+    }
+
+    .header-ajuda::after {
+        font-size: clamp(0.75rem, 3.5vw, 1.125rem);
     }
 }
 

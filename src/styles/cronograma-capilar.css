@@ -65,11 +65,11 @@ html, body {
 
 @media screen and (max-width: 480px) {
   #mulher {
-    height: 40vh;
+    height: 65vh;
     padding: 0 1vw;
     justify-content: flex-start;
     padding-top: 15vh;
-    background-position: center top;
+    background-position: start top;
   }
 }
 
@@ -92,20 +92,27 @@ html, body {
   font-family: "THE NEXT FONT";
   font-weight: 700;
 }
+@media screen and (max-width: 480px) {
+  .cornograma {
+    font-size: clamp(4.2rem, 13vw, 7.5rem);
+  }
+  .cornograma2 {
+    margin-top: 2vh;
+    max-width: 200px;
+    font-size: clamp(1.3rem, 4vw, 2.5rem);
+}
+}
 
 /* ================================== */
 /* SEÇÕES DE CONTEÚDO                 */
 /* ================================== */
 
-.ola, .veja {
+.ola {
   text-align: center;
   font-family: var(--font-primary);
   margin: 10vh 0 4vh 0;
   padding: 0 2vw;
-}
-
-.ola {
-  font-size: clamp(4.8rem, 5.8vw, 5.8rem);
+  font-size: clamp(3.2rem, 5.8vw, 5.8rem);
   color: #000;
   font-family: "PLAYFUL RUNWAY";
   font-style: normal;
@@ -114,6 +121,10 @@ html, body {
 }
 
 .veja {
+  text-align: center;
+  font-family: var(--font-primary);
+  margin: 4.5vh 0 4vh 0;
+  padding: 0 2vw;
   font-size: clamp(3.5rem, 6vw, 5.5rem);
 }
 
@@ -125,7 +136,7 @@ html, body {
 }
 
 .aqui {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1.5rem, 3.7vw, 2.1rem);
 }
 
 .se {
@@ -158,7 +169,7 @@ html, body {
 .precisa {
   color: white;
   font-family: var(--font-secondary);
-  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-size: clamp(1.7rem, 2vw, 2.2rem);
   font-weight: 900;
   margin-bottom: 1.5vh;
 }
@@ -166,7 +177,7 @@ html, body {
 .nossa {
   color: white;
   font-family: var(--font-text);
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-size: clamp(1.2rem, 2.5vw, 2.4rem);
   line-height: 1.5;
 }
 
@@ -244,7 +255,7 @@ html, body {
   height: auto; /* Altura automática baseada no conteúdo */
   min-height: 400px;
   background-color: rgb(247, 243, 243);
-  box-shadow: 0px 25px 45px rgba(123, 26, 148, 0.15);
+  box-shadow: 50px 50px 50px rgba(117, 25, 139, 0.15);
 }
 
 .imagem {
@@ -289,7 +300,50 @@ html, body {
   margin-right: 13vw;
   cursor: pointer;
 }
+@media screen and (min-width: 1624px) {
+  .conheca {
+    margin-top: -10vw;
+    margin-right: 11vw;
+    width: clamp(150px, 18vw, 275px);
+  }
+}
+@media screen and (min-width: 1040px) {
+  .conheca {
+    margin-top: -10vw;
+    margin-right: 9.5vw;
+    width: clamp(150px, 18vw, 275px);
+  }
+}
+@media screen and (max-width: 1024px) {
+  .conheca {
+    margin-top: -10vw;
+    margin-right: 8vw;
+    width: clamp(120px, 18vw, 175px);
+  }
+}
 
+@media screen and (max-width: 768px) {
+  .conheca {
+    margin-top: -10vw;
+    margin-right: 6.8vw;
+    width: clamp(90px, 22vw, 140px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .conheca {
+    margin-top: -10vw;
+    margin-right: 6.5vw;
+    width: clamp(65px, 25vw, 98px);
+  }
+}
+@media screen and (max-width: 480px) {
+  .conheca {
+    margin-top: -10vw;
+    margin-right: 6.5vw;
+    width: clamp(10vw, 25vw, 98px);
+  }
+}
 /* SEÇÃO PRATICIDADE */
 .pratica {
   margin: 10vh 10vw;
@@ -304,11 +358,34 @@ html, body {
   line-height: 1.2;
   margin-top: 20vh;
 }
+@media screen and (max-width: 1850px) {
+  .pratica {
+    
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .praticidade{
+    margin-top: 12vh;
+  }
+  .pratica {
+    
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+  }
+}
 @media screen and (max-width: 768px) {
-  .praticidade {
+  .pratica {
     
     margin-top: 8vh;
-    
+    margin-bottom: 4vh;
+  }
+}
+@media screen and (max-width: 500px) {
+  .praticidade{
+    margin-top: 7vh;
+   
   }
 }
 .autocuidado {
@@ -352,7 +429,7 @@ html, body {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-width: var(--item-min-width);
   position: relative;
   scroll-snap-align: center;
@@ -383,11 +460,11 @@ html, body {
   top: 7%;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%; /* Garante que o texto não saia da imagem */
+  width: 85%; /* Garante que o texto não saia da imagem */
   color: #ffffff;
   font-family: var(--font-secondary);
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-  text-align: center; /* Centralizado para melhor visualização */
+  font-size: clamp(2.3rem, 3vw, 3rem);
+  text-align: left; /* Centralizado para melhor visualização */
 }
 
 /* ================================== */
@@ -396,6 +473,7 @@ html, body {
 .apostas {
   display: flex;
   flex-direction: column;
+  margin-top: 5vh;
   padding: 5vh 5vw;
   gap: 5vh;
 }
@@ -407,16 +485,40 @@ html, body {
   gap: 2rem;
 }
 .ousadas img {
-  width: 50%;
-  max-width: 500px;
+  width: 70%;
+  max-width: 800px;
   height: auto;
   flex-shrink: 0;
 }
 .ousadas div {
   flex-grow: 1;
 }
-
+@media screen and (max-width: 1024px) {
+  
+  
+  #ousadas2{
+    flex-direction: column-reverse;
+    
+    
+  }
+}
+#ousadas2{
+  align-self: end;
+}
+#cansada1{
+  margin-left: 2vw;
+  max-width: 650px;
+}
+#cansada2{
+  margin-right: 2vw;
+  max-width: 650px;
+}
+#cansada3{
+  margin-left: 2vw;
+  max-width: 650px;
+}
 .descubra {
+  margin-top: 2vh;
   background-color: #722F53;
   width: clamp(120px, 9vw, 180px);
   height: clamp(40px, 2.3vw, 55px);
@@ -529,6 +631,13 @@ html, body {
 }
 
 #dicas { padding: 1rem; background-color: white; }
+.linha {
+  width: 90%;
+  height: 2px;
+  background-color: #eee;
+  margin: 1.2rem auto;
+  border-radius: 1px;
+}
 #dicas_topo { display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 1.3vh; }
 #dicas_titulo { font-family: var(--font-secondary); font-size: clamp(1.5rem, 2.2vw, 2rem); }
 #dicas_subtitulo { font-family: var(--font-text); font-size: clamp(0.9rem, 1vw, 1.1rem); }
@@ -666,13 +775,19 @@ html, body {
   /* Seção de apostas empilhada */
   .ousadas {
     flex-direction: column;
+    
+  }
+  #ousadas1{
+    flex-direction: column;
+  }
+  #ousadas3{
+    flex-direction: column-reverse;
   }
   .ousadas img {
     width: 100%;
     max-width: 400px; /* Limita o tamanho da imagem */
   }
   /* Inverte a ordem da segunda seção para manter o padrão imagem/texto */
-  #ousadas1, #ousadas3 { flex-direction: column-reverse; }
   
   #direita{
     flex-direction: column;

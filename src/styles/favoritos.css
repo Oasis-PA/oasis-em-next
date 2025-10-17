@@ -1,39 +1,47 @@
-main * {
+/* ---- RESET E CONFIGURAÇÕES GLOBAIS ---- */
+* {
     margin: 0;
     padding: 0;
-    color: var(--corpo-texto);
     box-sizing: border-box;
+}
+
+main * {
+    color: var(--corpo-texto);
 }
 
 body {
     display: flex;
     width: 100%;
     height: auto;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
 }
 
 html {
     overflow-x: hidden;
+    font-size: 16px; /* Base para unidades rem */
 }
 
+/* ---- SEÇÃO PRINCIPAL (MAIN) ---- */
 main {
     display: flex;
     width: 100%;
+    max-width: 1800px; /* Limita a largura máxima para telas muito grandes */
     height: auto;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* MODIFICADO: Alinha os itens ao topo para melhor alinhamento */
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
 }
 
 #imagens-artigos {
-    width: 599px;
-    height: 1189px;
-    margin-right: 46px;
+    width: 100%;
+    max-width: 599px; /* Mantém a largura máxima do design original */
+    height: 100vh; /* MODIFICADO: Aumenta a altura para ocupar a tela inteira */
+    min-height: 400px;
+    margin-right: 0; /* Removido para centralizar em telas menores */
     background-image: url(../../public/images/favoritos/imagem-principal.png);
     display: flex;
     align-items: end;
-    padding: clamp(0.875rem, 1vw, 1rem);
+    padding: clamp(0.875rem, 2vw, 1.5rem);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,49 +50,58 @@ main {
 #imagens-artigos h1 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: clamp(2.5rem, 6vw, 6rem);
+    font-size: clamp(2.5rem, 8vw, 6rem);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.1;
 }
 
 #section-favoritos {
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    width: 100%;
+    max-width: 1129px;
+    padding: 0 1rem; /* Adicionado padding para não colar nas bordas */
 }
 
 #h1-favoritos {
     font-family: 'PLAYFUL RUNWAY';
     font-weight: 400;
-    font-size: 110px;
+    font-size: clamp(3.5rem, 10vw, 6.875rem); /* Fonte fluida */
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #p1 {
-    width: 1129px;
-    height: 46px;
+    width: 100%; /* Largura total para ser responsivo */
+    height: auto;
     font-family: 'Louis George Cafe';
     font-weight: 400;
-    font-size: 20px;
+    font-size: clamp(1rem, 2.5vw, 1.25rem); /* Fonte fluida */
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #h1-artigos {
     font-family: 'The Next Font';
     font-weight: 400;
-    font-size: 45px;
-    margin-top: 107px;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #section-imagens-artigos {
     display: flex;
     flex-wrap: wrap;
-    width: 1350px;
+    width: 100%; /* Largura total para responsividade */
+    justify-content: center; /* Centraliza os artigos */
+    gap: 2rem; /* Espaçamento entre os artigos */
 }
 
-#section-imagens-artigos div {
-    width: 327px;
+#section-imagens-artigos > a > div {
+    width: 327px; /* Mantém a largura mas permitirá quebra de linha */
     height: 215px;
-    margin: 44px 60px 0px 0px;
+    margin: 0; /* Margin agora é controlada pelo gap */
     object-fit: cover;
 }
 
@@ -105,6 +122,10 @@ main {
     display: flex;
     align-items: end;
     padding: clamp(0.875rem, 1vw, 1rem);
+    transition: transform 0.3s ease;
+}
+#artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, #artigo5:hover, #artigo6:hover, #artigo7:hover, #artigo8:hover, #artigo9:hover {
+    transform: scale(1.05); /* Efeito de hover sutil */
 }
 
 #section-imagens-artigos div h1 {
@@ -116,6 +137,7 @@ main {
     text-decoration: none;
 }
 
+/* ---- SEÇÃO ARTIGO DESTAQUE ---- */
 #section-artigo {
     margin-top: 145px;
     display: flex;
@@ -127,26 +149,25 @@ main {
     background-size: cover;
     background-image: url(../../public/images/favoritos/imagem-artigo.png);
     flex-direction: column;
+    padding: 2rem 0; /* Padding vertical para respiro */
 }
 
 #section-artigo div {
-    margin-top: 8rem;
-    margin-left: clamp(5rem, 11.5vw, 11.5rem);
+    margin-top: 0;
+    margin-left: clamp(2rem, 11.5vw, 11.5rem);
 }
 
 #section-artigo h1 {
-    font-family: "The Next Font"; 
+    font-family: "The Next Font";
     font-size: clamp(2rem, 4vw, 4rem);
     font-weight: 400;
-    margin: 0;
 }
 
 #section-artigo h4 {
     font-family: "Louis George Cafe";
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 400;
     line-height: normal;
-    margin: 0;
 }
 
 #button-conheca {
@@ -161,6 +182,7 @@ main {
     height: 49px;
     cursor: pointer;
     margin-top: clamp(2rem, 3vw, 3rem);
+    transition: all 0.3s ease; /* Transição suave para hover/active */
 }
 
 #button-conheca:hover {
@@ -179,14 +201,15 @@ main {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
 }
 
+/* ---- SEÇÃO CATEGORIAS ---- */
 #section-artigos {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* RESPONSIVO: Permite quebrar linha */
+    flex-wrap: wrap;
     justify-content: center;
     gap: clamp(1rem, 3vw, 3.3rem);
     width: 100%;
-    padding: clamp(2rem, 8vw, 8rem) 1rem;
+    padding: clamp(2rem, 8vw, 8rem) clamp(1rem, 5vw, 5rem);
 }
 
 .categ {
@@ -197,9 +220,9 @@ main {
 }
 
 .categ > img {
-    width: clamp(85px, 13vw, 220px); 
+    width: clamp(85px, 13vw, 220px);
     height: auto;
-    aspect-ratio: 1 / 1; 
+    aspect-ratio: 1 / 1;
     object-fit: cover;
 }
 
@@ -211,65 +234,74 @@ main {
     font-weight: 400;
 }
 
+/* ---- SEÇÃO CARDS MARRONS ---- */
 #section-imagem-marrom {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: clamp(2rem, 1rem + 4vw, 5.86rem);
+    gap: clamp(2rem, 4vw, 5.86rem);
     width: 100%;
+    padding: 2rem 1rem;
 }
 
-#section-imagem-marrom div {
+.card-marrom {
     background: #5E332C;
-    width: 24.8vw;
+    width: 100%;
+    max-width: 500px; /* Largura máxima por card */
     height: auto;
+    min-height: 17rem;
     border-radius: 1.875rem;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap; /* Permite quebrar linha dentro do card em telas pequenas */
 }
 
 #img-marrom {
-    width: 11.25vw;
-    height: 12.75vw;
-    padding: 1.5rem;
+    width: clamp(120px, 15vw, 216px);
+    height: auto;
+    padding: 1rem;
 }
 
-#section-imagem-marrom > div > div {
+.card-marrom-content {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    justify-content: center;
+    flex: 1; /* Permite que o conteúdo ocupe o espaço restante */
+    padding: 0 1rem;
 }
 
-#section-imagem-marrom > div > div > img {
-    width: 1.75vw;
-    height: 1.75vw;
+.card-marrom-content > img {
+    width: 1.75rem;
+    height: 1.75rem;
     align-self: end;
-    margin-right: 1rem;
     cursor: pointer;
 }
 
-#section-imagem-marrom > div > div > h1 {
+.card-marrom-content > h1 {
     color: #FFF;
     font-family: "The Next Font";
     font-size: 1.25rem;
     font-weight: 400;
-    margin: 0;
     line-height: 2.5rem;
+    align-self: start;
 }
 
-#section-imagem-marrom > div > div > p {
+.card-marrom-content > p {
     color: #FFF;
     font-family: "Louis George Cafe Light";
     font-size: 1.25rem;
     font-weight: 100;
     line-height: normal;
-    margin: 0;
     text-align: justify;
-    max-width: 12rem;
+    max-width: 100%; /* Ajustado para ser responsivo */
+    align-self: start;
 }
 
-#section-imagem-marrom > div > div > button {
+.card-marrom-content > button {
     border: none;
     color: white;
     font-family: 'The Next Font';
@@ -281,6 +313,8 @@ main {
     border-radius: 2px;
     cursor: pointer;
     margin-top: 1.75rem;
+    align-self: start;
+    transition: all 0.3s ease;
 }
 
 #section-imagem-marrom > div > div > button:hover {
@@ -304,12 +338,14 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 0 1rem;
 }
 
 #h1-salvos {
     font-family: 'PLAYFUL RUNWAY';
     font-weight: 400;
-    font-size: 45px;
+    font-size: clamp(2rem, 5vw, 2.8rem);
     margin-top: 150px;
     text-align: center;
 }
@@ -319,14 +355,21 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 3.75rem;
+    gap: 2rem;
     margin-top: 55px;
+    width: 100%;
+    overflow-x: auto; /* MODIFICADO: Retorna o scroll horizontal */
+    padding: 1rem;
+    /* Melhora a aparência da barra de scroll (opcional) */
+    scrollbar-width: thin;
+    scrollbar-color: #939191 transparent;
 }
 
-#section-salvos > div {
+.card-salvo {
     display: flex;
     flex-direction: column;
-    width: 14vw;
+    width: 250px; 
+    flex-shrink: 0; /* MODIFICADO: Impede que os cards encolham */
     height: auto;
     border: 3px solid #939191;
     justify-content: center;
@@ -335,38 +378,34 @@ main {
 }
 
 #img-fav {
-    width: 1.25vw;
-    height: 1.25vw;
+    width: 1.5rem;
+    height: 1.5rem;
     padding: 0.5rem;
     align-self: end;
     cursor: pointer;
 }
 
 #img-prod {
-    width: 12vw;
-    height: 12.4vw;
+    width: 80%;
+    height: auto;
+    aspect-ratio: 1/1.03;
+    object-fit: cover;
 }
 
-#section-salvos > div > h1 {
+.card-salvo > h1 {
     font-family: "The Next Font";
     font-size: 1.25rem;
     font-weight: 400;
-    margin: 0;
-    line-height: normal;
-    padding-left: 1.1rem;
-    padding-top: 1rem;
+    padding: 1rem 1.1rem 0.5rem;
     align-self: start;
 }
 
-#section-salvos > div > p {
+.card-salvo > p {
     font-family: "Louis George Cafe Light";
     font-size: 1.25rem;
     font-weight: 400;
-    line-height: normal;
-    margin: 0;
     text-align: justify;
-    max-width: 14rem;
-    padding: 1.1rem;
+    padding: 0 1.1rem 1.1rem;
     align-self: start;
 }
 
@@ -377,138 +416,300 @@ main {
     text-align: center;
     margin-top: 62px;
     margin-bottom: 90px;
+    cursor: pointer;
+    text-decoration: underline; /* NOVO: Adiciona sublinhado para parecer link */
+    transition: color 0.3s ease;
+}
+#p3:hover {
+    color: #722F53; /* NOVO: Muda de cor no hover */
 }
 
+#img-dourada {
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+/* ---- SEÇÃO MAIS PRODUTOS ---- */
 #section-maisprodutos {
     width: 100%;
     height: auto;
     background-color: black;
-    margin-top: 90px;
+    padding: 5rem 0;
+    margin-top: clamp(3rem, 5.5vw, 5.5rem);
 }
 
 #h1-maisprodutos {
     font-family: 'The Next Font';
     font-weight: 400;
-    font-size: 110px;   
+    font-size: clamp(3rem, 10vw, 6.875rem);
     color: #FFFFFF;
     text-align: center;
-    margin-top: 106px;
+    padding: 0 1rem;
 }
 
-#section-maisprodutos > div {
+#container-maisprodutos {
     display: flex;
-    align-items: center;
+    align-items: stretch; /* Alinha os itens para terem a mesma altura */
     justify-content: center;
-    gap: clamp(3rem, 5.5vw, 5.5rem);
-    margin-bottom: clamp(2.5rem, 5vw, 5rem);
+    gap: clamp(2rem, 4vw, 5.5rem);
+    margin: clamp(2.5rem, 5vw, 5rem) 0;
+    flex-wrap: wrap; /* Permite quebrar linha */
+    padding: 0 1rem;
 }
 
-#section-maisprodutos > div > div {
+.card-maisprodutos {
     display: flex;
     flex-direction: column;
-    width: 16.5vw;
+    width: 100%;
+    max-width: 320px; /* Largura máxima para os cards */
     height: auto;
     background-color: #FFF;
     border-radius: 1.875rem;
 }
 
-#img-produto {
+.card-maisprodutos #img-produto {
     width: 100%;
-    height: 11vw;
-    border-radius: 1.25rem;
+    height: 15rem; /* Altura fixa para a imagem */
+    object-fit: cover;
+    border-radius: 1.25rem 1.25rem 0 0;
 }
 
-#section-maisprodutos > div > div > h1 {
+.card-maisprodutos > h1 {
     font-family: "The Next Font";
     font-size: 1.25rem;
     font-weight: 400;
-    line-height: normal;
-    margin: 0;
     padding: 1rem;
 }
 
-#section-maisprodutos > div > div > p {
+.card-maisprodutos > p {
     font-family: "Louis George Cafe";
     font-size: 1rem;
     font-weight: 400;
-    line-height: normal;
     text-align: justify;
-    margin: 0;
-    padding-left: 1rem;
-    max-width: 16.5rem;
+    padding: 0 1rem;
+    flex-grow: 1; /* Faz o parágrafo crescer para empurrar o link para baixo */
 }
 
-#section-maisprodutos > div > div > div {
+.card-maisprodutos > div {
     display: flex;
     flex-direction: row;
     cursor: pointer;
+    align-items: center;
 }
 
-#section-maisprodutos > div > div > div > h2 {
+.card-maisprodutos > div > h2 {
     font-family: "The Next Font";
     font-size: 1rem;
     font-weight: 400;
-    line-height: normal;
-    padding: 1rem;
-    margin: 0;
+    margin: 1.5rem 0.3rem 1.5rem 1rem;
 }
 
+/* ---- SEÇÃO ARTIGOS GRID FINAL (Layout Mosaico) ---- */
 #section-artigos-s2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 44px;
-    margin-top: 143px;
-    margin-bottom: 143px;
+    grid-template-rows: repeat(2, 250px); /* Define 2 linhas de altura fixa */
+    gap: 20px;
+    margin: 143px auto;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 1400px;
 }
 
-#section-artigos-s2 > div {
+.artigo-s2-item {
     display: flex;
-    align-items: end;
-}
-
-#section-artigos-s2 > div > h1 {
-    font-family: "The Next Font";
-    font-size: 2.8125rem;
-    font-weight: 400;
-    line-height: normal;
-    margin: 0;
-    padding: 1rem;
-}
-
-#artigo1-s2 {
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
     background-color: #939191;
-    width: 25vw;
-    height: 21.9vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.artigo-s2-item > h1 {
+    font-family: "The Next Font";
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 1.5rem;
+}
+
+/* Posições específicas do Mosaico */
+#artigo1-s2 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
 }
 
 #artigo2-s2 {
-    background-color: #939191;
-    width: 25vw;
-    height: 21.9vw;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
 }
 
 #artigo3-s2 {
-    grid-column-start: 1;
-    grid-row-start: 2;
-    background-color: #939191;
-    width: 25vw;
-    height: 21.9vw;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
 }
 
 #artigo4-s2 {
-    grid-column-start: 2;
-    grid-row-start: 2;
-    background-color: #939191;
-    width: 25vw;
-    height: 21.9vw;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
 }
 
 #artigo5-s2 {
-    grid-row: span 2 / span 2;
-    grid-column-start: 3;
-    grid-row-start: 1;
-    background-color: #939191;
-    width: 25vw;
-    height: 47.1vw;
+    grid-column: 3 / 4;
+    grid-row: 1 / 3; /* Ocupa as duas linhas de altura */
+}
+
+
+/* ---- MEDIA QUERIES PARA AJUSTES FINOS ---- */
+@media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
+    
+    main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0; /* MODIFICADO: Remove o padding para a imagem ocupar a tela toda */
+    }
+    #imagens-artigos {
+        margin-right: 0;
+        margin-bottom: 2rem;
+        height: 60vh; /* MODIFICADO: Altura maior para ocupar mais espaço no mobile */
+        width: 100%; /* NOVO: Garante que ocupe a largura toda */
+        max-width: 100%; /* NOVO: Sobrescreve a largura máxima do desktop */
+    }
+    #section-favoritos {
+        width: 100%;
+        margin-top: 0; /* Reseta a margem para alinhar abaixo da imagem */
+    }
+}
+
+@media (max-width: 900px) {
+    /* MODIFICADO: Torna o grid de mosaico em 2 colunas */
+     body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
+    #section-artigos-s2 {
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: auto;
+        height: auto;
+    }
+    .artigo-s2-item {
+        height: 350px; 
+    }
+    #artigo1-s2, #artigo2-s2, #artigo3-s2, #artigo4-s2 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    /* NOVO: Faz o quinto artigo ocupar a largura total */
+    #artigo5-s2 {
+        grid-column: 1 / -1;
+    }
+    .card-marrom #img-marrom {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
+    .card-marrom {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-marrom-content {
+        align-items: center;
+    }
+    .card-marrom-content > img {
+        align-self: flex-end; 
+    }
+    .card-marrom-content > h1, .card-marrom-content > p, .card-marrom-content > button {
+        align-self: center;
+    }
+    #section-salvos > a { /* Esconde as setas, focando no scroll por toque */
+        display: none;
+    }
+    #section-artigos-s2 {
+        margin: 70px auto;
+    }
+
+    .card-marrom #img-marrom {
+        width: 250px;
+    }
+    
+    /* Regra para quebrar "Mais Produtos" em 2 colunas */
+    #container-maisprodutos {
+        gap: 1rem;
+    }
+    .card-maisprodutos {
+        width: calc(50% - 0.5rem); 
+        max-width: none; 
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
+    .card-marrom #img-marrom {
+        width: 250px;
+    }
+    #section-artigo div {
+        margin-left: clamp(1rem, 5vw, 2rem);
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    #section-imagens-artigos {
+        flex-wrap: nowrap; 
+        justify-content: flex-start;
+        overflow-x: auto; 
+        padding: 1rem; 
+        
+        scrollbar-width: thin;
+        scrollbar-color: #939191 transparent;
+    }
+    
+    #section-imagens-artigos > a > div {
+        flex-shrink: 0; 
+    }
+}
+
+@media (max-width: 1650px) {
+         body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
 }

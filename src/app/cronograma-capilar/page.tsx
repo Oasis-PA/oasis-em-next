@@ -4,12 +4,13 @@
 
 import React from 'react';
 import Script from 'next/script'; // Componente otimizado do Next.js para carregar scripts
-
+import { Header, Footer } from "@/components";
 import '@/styles/cronograma-capilar.css'; 
 
 const CronogramaCapilar: React.FC = () => {
   return (
     <>
+    <Header/>
       <section id="mulher">
           <p className="cornograma">Cronograma <br />Capilar</p>
           <p className="cornograma2">Descubra o tratamento ideal <br />para voce!</p>
@@ -103,7 +104,7 @@ const CronogramaCapilar: React.FC = () => {
       </section>
 
       <div className="apostas">
-        <section className="ousadas" id="ousadas1">
+        <section  className="ousadas" id='ousadas1'>
         <img src="/images/Cronograma-capilar/Aposte.png" alt="Aposte em maquiagens ousadas" />
         <div id="cansada1" >
           <p className="texto-aposte">Aposte em Maquiagens ousadas!</p>
@@ -115,7 +116,7 @@ const CronogramaCapilar: React.FC = () => {
           <button className="descubra">DESCUBRA</button>
         </div>
         </section>
-        <section className="ousadas">
+        <section className="ousadas" id='ousadas2'>
           <div id="cansada2">
             <p className="texto-aposte">Vai se casar? esteja
               incrível para seu amor!</p>
@@ -176,7 +177,7 @@ const CronogramaCapilar: React.FC = () => {
                               <p className="sub2">Babosa</p>
                             </div>
                           </div>
-                          <img src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
+                          <img className='linha' src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
                           <div className="dicas_topicos">
                             <img className="sub0" src="/images/Cronograma-capilar/pote.svg" alt="Ícone de pote" />
                             <div>
@@ -184,7 +185,7 @@ const CronogramaCapilar: React.FC = () => {
                               <p className="sub2">Linha hidratante inoar</p>
                             </div>
                           </div>
-                          <img src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
+                          <img className='linha' src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
                           <div className="dicas_topicos">
                             <img className="sub0" src="/images/Cronograma-capilar/Sol.svg" alt="Ícone de sol" />
                             <div>
@@ -192,7 +193,7 @@ const CronogramaCapilar: React.FC = () => {
                               <p className="sub2">30 minutos</p>
                             </div>
                           </div>
-                          <img src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
+                          <img className='linha' src="/images/Cronograma-capilar/linha.svg" alt="linha divisória" />
                           <div className="dicas_topicos">
                             <img className="sub0" src="/images/Cronograma-capilar/gota.svg" alt="Ícone de gota" />
                             <div>
@@ -230,6 +231,7 @@ const CronogramaCapilar: React.FC = () => {
         src="/cronograma-capilar.js" 
         strategy="afterInteractive" 
       />
+      <Footer/>
     </>
   );
 };

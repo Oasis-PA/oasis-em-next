@@ -32,10 +32,11 @@ export default function guia() {
 
   return (
     <>
-    <header>
+    <Header/>
+    <section className="section-header">
         <h1>Guia do site</h1>
         <p>Seu caminho para descobrir produtos, artigos e muito mais!</p>
-    </header>
+    </section>
 
     <main>
         <section id="s1">
@@ -183,6 +184,7 @@ export default function guia() {
             </div>
         </section>
     </main>
+    <Footer/>
     </>
   );
 }

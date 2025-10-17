@@ -10,6 +10,7 @@ import "@/styles/tinturas.css";
 export default function tinturas() {
   return (
     <>
+    <Header/>
       <main>
         <h1>Cores que Representam</h1>
         <h5>Tinturas pensadas para realçar a sua beleza única — com tons vibrantes, profundos e que respeitam sua identidade.</h5>
@@ -106,6 +107,7 @@ export default function tinturas() {
         </div>
       </div>
     </section>
+    <Footer/>
    </>
   );
 }

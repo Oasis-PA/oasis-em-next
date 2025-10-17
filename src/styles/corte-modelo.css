@@ -13,7 +13,7 @@ html {
 
 .principal {
     width: 100%;
-    margin-top: 10vh;
+    margin-top: 3vh;
     margin-left: 8vh;
     display: flex;
     align-items: flex-start;
@@ -152,7 +152,7 @@ html {
 .recs {
     display: flex;
     gap: 6vh;
-    margin: 0;
+    margin-bottom: 8rem;
 }
 
 #tit-4 {

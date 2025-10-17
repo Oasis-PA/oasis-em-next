@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
 header {
     width: 100%;
     height: auto;
@@ -28,31 +34,34 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem; 
 }
 
 #algo {
-    background-image: url('/images/lupa.svg');
+    background-image: url('/images/guia.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 2.5rem;
-    height: 3rem;
+    width: 3rem;
+    height: 2.6rem;
+    cursor: pointer;
 }
 
 #coracao {
     background-image: url('/images/coracao.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 2.5rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 4rem;
+    cursor: pointer;
 }
 
 #user {
     background-image: url('/images/perfil.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 2.5rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 4rem;
+    cursor: pointer; 
 }
 
 .em_baixinho {
@@ -60,13 +69,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0.5rem;
 }
 
 .coisas {
     display: flex;
     justify-content: space-between;
     width: 95%;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 #redirecionavel, #redirecionavel2 {
@@ -79,212 +89,32 @@ header {
     font-weight: 400;
     line-height: normal;
     transition: color 0.4s;
+    white-space: nowrap; 
 }
 
-#redirecionavel:hover {
-    color: #AA35B0;
-}
+#redirecionavel:hover { color: #AA35B0; }
+#redirecionavel:active { color: #47164A; }
+#redirecionavel2:hover { color: #F2A518; }
+#redirecionavel2:active { color: #b08c16; }
 
-#redirecionavel:active {
-    color: #47164A;
-}
-
-#redirecionavel2:hover {
-    color: #F2A518;
-}
-
-#redirecionavel2:active {
-    color: #b08c16;
-}
-
-
-
-
-
-
-
-
-
-
-footer {
-    width: 100%;
-    height: auto;
-    background-color: #343434;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
-.cositas {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-}
-
-.uno {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-}
-
-#logo {
-    background-image: url('/images/logo-footer.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 8rem;
-    height: 7rem;
-}
-
-.redes {
-    display: flex;
-    justify-content: space-between;
-    width: 10rem;
-}
-
-#instagram {
-    background-image: url('/images/insta.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 1.6rem;
-    height: 2rem;
-}
-
-#twitter {
-    background-image: url('/images/x.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 1.6rem;
-    height: 2rem;
-}
-
-#facebuk {
-    background-image: url('/images/facebook-icone.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 1.6rem;
-    height: 2rem;
-}
-
-#pintereste {
-    background-image: url('/images/pinterest-icone.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 1.6rem;
-    height: 2rem;
-}
-
-.textinho {
-    display: flex;
-    flex-direction: column;
-}
-
-.dos h1 {
-    color: #F2A518;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.dos a {
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: 0.5rem;
-    text-decoration: none;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.25rem; 
-}
-
-.tres {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-}
-
-.tres h1 {
-    color: #F2A518;
-    font-family: "The Next Font";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.tres h2 {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: 0.625rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 0.75rem; 
-}
-
-.tres h3 {
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: 0.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 0.75rem; 
-    margin-bottom: 2rem;
-}
-
-.tres button {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 0.82219rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    background-color: #722F53;
-    border: none;
-    border-radius: 4rem;
-    width: 8rem;
-    height: 1.8rem;
-}
-
-.cuatro {
-    background-image: url('/images/logo2.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 7rem;
-    height: 7rem;
-}
-/* Em: src/styles/componentes.css */
-
-.user-menu-container {
-  position: relative; /* Essencial para que o popup se posicione em relação a este container */
-}
-
+.user-menu-container { position: relative; }
 .user-popup {
   position: absolute;
-  top: 50px; /* Ajuste conforme a altura do seu header */
+  top: calc(100% + 10px);
   right: 0;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100; /* Garante que o popup fique por cima de outros elementos */
+  z-index: 100; 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 180px; /* Largura do popup */
+  width: 180px; 
 }
-
-.user-popup p {
-  font-weight: bold;
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.user-popup a,
-.user-popup button {
+.user-popup p { font-weight: bold; margin: 0 0 0.5rem 0; color: #333; }
+.user-popup a, .user-popup button {
   text-decoration: none;
   color: #333;
   background: none;
@@ -294,9 +124,231 @@ footer {
   cursor: pointer;
   width: 100%;
   border-radius: 4px;
+  font-size: 0.9rem;
+}
+.user-popup a:hover, .user-popup button:hover { background-color: #f0f0f0; }
+
+/* =================================== */
+/* Estilos do Footer (Base para Desktop) */
+/* =================================== */
+
+footer {
+    background-color: #343434;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 3rem 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
-.user-popup a:hover,
-.user-popup button:hover {
-  background-color: #f0f0f0;
+.footer-links-container {
+    display: flex;
+    gap: 5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: normal;
+    color: #F2A518;
+    margin-bottom: 1rem;
+}
+
+.footer-column h2 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer-column h2 a {
+    color: inherit; 
+    text-decoration: none; 
+    font-size: 0.8rem;
+}
+
+.footer-column h2:hover {
+    color: #7D4AB3;
+    cursor: pointer; 
+    transform: scale(1.05);
+}
+
+.footer-logo {
+  max-width: 160px;
+  height: auto;
+  object-fit: contain;
+}
+
+.accordion-header {
+    display: none;
+}
+
+/* =================================== */
+/* Início das Media Queries */
+/* =================================== */
+
+@media (max-width: 992px) {
+    .coisas {
+        width: 98%;
+        gap: 0.5rem;
+        justify-content: space-around;
+    }
+    #redirecionavel, #redirecionavel2 {
+        font-size: 1.2rem;
+    }
+    .footer-links-container {
+      gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header { padding: 1.5rem 1rem; }
+    .em_ciminha { width: 100%; }
+    #imagi { width: 8rem; height: 5rem; }
+    .emoticus { gap: 2rem; }
+    #algo { width: 2.5rem; height: 2.1rem; }
+    #coracao { width: 3rem; height: 3.5rem; }
+    #user { width: 3rem; height: 3.5rem; }
+    .em_baixinho { display: none; }
+
+    footer {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+    
+    .footer-links-container {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .footer-logo--secondary {
+        display: none;
+    }
+
+    .footer-column {
+        min-width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #555;
+    }
+    .footer-column:last-child {
+        border-bottom: none;
+    }
+
+    .accordion-header {
+        display: block;
+        background: none;
+        border: none;
+        padding: 1rem 0.5rem;
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .footer-column > h1 {
+        display: none;
+    }
+
+    .accordion-header h1 {
+        margin: 0;
+        font-size: 1.1rem;
+        text-align: left;
+    }
+
+    .accordion-header::after {
+        content: '+';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        font-weight: 200;
+        color: #F2A518;
+        transition: transform 0.3s ease;
+    }
+    
+    .accordion-content.open ~ .accordion-header::after {
+        transform: translateY(-50%) rotate(45deg);
+    }
+    
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        background-color: #424242;
+    }
+    
+    .accordion-content.open {
+        max-height: 250px;
+        padding: 0.5rem 0;
+    }
+
+    .accordion-content h2 {
+        display: block;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header { padding: 1rem; }
+    #imagi { width: 7rem; height: 4rem; }
+    .emoticus { gap: 1.5rem; }
+    #algo { width: 2.2rem; height: 1.8rem; }
+    #coracao { width: 2.6rem; height: 3rem; }
+    #user { width: 2.6rem; height: 3rem; }
+    .user-popup { right: 5px; width: 160px; }
+}
+
+/* =================================== */
+/* Estilos do Tema Escuro para o Header */
+/* =================================== */
+
+.dark #imagi {
+  background-image: url('/images/logo-white.png');
+}
+
+.dark #algo {
+  background-image: url('/images/guia-white.svg');
+}
+
+.dark #coracao {
+  background-image: url('/images/coracao-white.svg');
+}
+
+.dark #user {
+  background-image: url('/images/perfil-white.svg');
+}
+
+.dark #redirecionavel,
+.dark #redirecionavel2 {
+  color: #FFFFFF;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* 4. Ajusta as cores de HOVER para o tema escuro */
+.dark #redirecionavel:hover {
+  color: #AA35B0; /* Cor original do hover */
+}
+
+.dark #redirecionavel2:hover {
+  color: #F2A518; /* Cor original do hover */
+}
+
+.dark #redirecionavel2:active {
+    color: #b08c16; /* Cor original do active */
 }

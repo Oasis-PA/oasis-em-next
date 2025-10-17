@@ -10,6 +10,7 @@ import "@/styles/meuperfil-after.css";
 export default function meuperfilafter() {
   return (
     <>
+    <Header/>
       <main>
         <div>
             <h1>Seu perfil está pronto, [nome]!</h1>
@@ -116,6 +117,7 @@ export default function meuperfilafter() {
             <button>DESCUBRA</button>
         </div>
       </section>
+      <Footer/>
    </>
   );
 }

@@ -1,277 +1,857 @@
-
-.mainContainer {
+.mainContainer * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    width: 100%;
+    color: var(--corpo-texto);
+}
+
+body {
     display: flex;
-    flex-flow: column nowrap;
+    width: 100%;
+    height: auto;
+    background-color: var(--body-back);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.mainContainer {
+    display: flex;
+    width: 100%;
+    height: 48.3vw; 
+    min-height: 500px;
+    justify-content: end;
+    align-items: center;
+    background-image: url(../../public/images/tela-principal/banner1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-direction: column;
+    transition: background-image 0.5s ease-in-out;
+    box-sizing: border-box; 
+}
+
+.mainContainer > h2 {
+    color: #FFF;
+    text-shadow: 0 0 8.8px rgba(13, 0, 87, 0.99);
+    font-family: "Louis George Cafe";
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+}
+
+.mainContainer > h1 {
+    color: #FFF;
+    text-shadow: 0 4px 22.133px #5F0B38;
+    font-family: "The Next Font";
+    font-size: clamp(4rem, 12vw, 9.16rem);
+    font-weight: 400;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.conhecaButton {
+    width: 15rem;
+    height: 4rem;
+    border-radius: 2.25rem;
+    background: #722F53;
+    border-style: none;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 2.5rem;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.dotsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin: 2rem; 
+    z-index: 10;
+}
+
+.dotButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Seção 1: Hot Topics */
+.s1 {
+    display: flex;
+    width: 100%;
+    min-height: 37.5vw;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 6rem;
+    box-sizing: border-box;
+}
+
+.texttopics {
+    max-width: 26rem;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+    margin-right: 4rem;
+}
+
+.texttopics > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2.6875rem;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.texttopics > h2 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-weight: 100;
+    line-height: normal;
+    font-size: 1.3125rem;
+    margin-top: 1rem;
+    text-align: justify;
+}
+
+.cards {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-right: 2rem;
+    padding-bottom: 1.5rem;
+    margin-right: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: #FFF #1a1a1a;
+    flex-grow: 1; 
+    padding-left: 2rem;
+}
+
+.cards::-webkit-scrollbar { height: 8px; }
+.cards::-webkit-scrollbar-track { background: #1a1a1a; }
+.cards::-webkit-scrollbar-thumb { background: #722F53; border-radius: 4px; }
+.cards::-webkit-scrollbar-thumb:hover { background: #8a3a65; }
+
+.card {
+   display: flex;
+   flex-direction: column;
+   background-color: #FFF;
+   width: 13.3vw;
+   height: 29.5vw; 
+   min-width: 255px; 
+   min-height: 450px;
+   border-radius: 18px;
+   flex-shrink: 0;
+   overflow: hidden;
+}
+
+.card > img {
+    width: 100%;  
+    height: 75%; 
+    object-fit: cover;
+}
+
+.card > p {
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 1.5vw, 1.3125rem);
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    padding: clamp(1.125rem, 1.5vw, 1.5rem);
+    flex-grow: 1; /* Ocupa o espaço restante */
+}
+
+/* Seção 2: Links de Categoria */
+.s2 {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 2rem;
+    width: 90%;
+    height: auto;
+    margin-top: 9rem;
+}
+
+.s2links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem; 
+}
+
+.s2links > img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.s2links:hover > img {
+    transform: scale(1.08);
+}
+
+.s2links > h1 {
+    font-family: "The Next Font";
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+/* Seção 3: Cortes em Alta */
+.s3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 8rem;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.s3 > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2rem, 4vw, 2.6em);
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.s3 > p {
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 400;
+    line-height: normal;
+    max-width: 36rem;
+    margin-bottom: 6.5rem;
+}
+
+.linha { width: 100%; height: 1px; background-color: #000; }
+.linha2 { width: 80%; height: 1px; background-color: #000; }
+
+.categ {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: space-around; 
+    width: 80%;
+    margin-top: 2rem;
+}
+
+.cortes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 5rem;
+    margin-top: 2.5rem;
+}
+
+.cortecardconteiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.sectionTitle {
+.cortecard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5F0B38;
+    width: clamp(250px, 15vw, 300px);
+    height: auto;
+}
+
+.cortecard > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0.5rem;
     text-align: center;
-    font-family: "PLAYFUL RUNWAY", sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    flex-wrap: nowrap;
+}
+
+.cortecard > img {
+    padding: 0.5rem;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.categoryButton {
+    font-family: "The Next Font";
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 2;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease; 
+    color: #333;
+}
+
+.categoryButton:hover { color: #420E45; transform: scale(1.05); }
+
+.activeCategory {
+    color: #FFF;
+    text-shadow: 2px 2px 9.4px #2C0066;
+    border-bottom: 2px solid #5F0B38;
+}
+
+.conhecaCorteButton {
+    display: flex;
+    width: 12.6rem;
+    height: 3.3rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    border-radius: 1.8rem;
+    background: #722F53;
+    color: #FFF;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    text-decoration: none; 
+    transition: background-color 0.2s ease;
+}
+
+.conhecaCorteButton:hover { background: #8a3a65; }
+
+/* Seção 4: Baseados no seu Perfil */
+.s4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 8rem;
+    flex-direction: column;
+    margin-bottom: 11.5rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+.s4 > h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.s4 > p {
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.2rem, 2vw, 1.66rem);
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 4.7rem;
+    margin-top: 1rem;
+}
+
+.cardsperfil {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 3rem;
+}
+
+.cardperfil {
+    display: flex;
+    flex-direction: column;
+    width: clamp(250px, 17vw, 320px);
+    flex-shrink: 0;
+    height: auto;
+    border: 3px solid #939191;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardperfil > img {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.cardperfil > h1 {
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 1rem 1.1rem 0.5rem;
+    align-self: start;
+}
+
+.cardperfil > h2 {
+    font-family: "Louis George Cafe Light";
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: justify;
+    padding: 0 1.1rem 1.1rem;
+    align-self: start;
+    flex-grow: 1; 
+}
+
+.buttonPerfil {
+    font-family: "The Next Font";
+    font-size: 1.2rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: #722F53;
+    color: #FFF;
+    width: 90%;
+    border-radius: 1.6875rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.buttonPerfil a{
+    color: #FFF;
+    font-size: 1.2rem;
+}
+
+.arrow {
+    display: flex;
+    margin: clamp(1.5rem, 2.5vw, 2.5rem);
+    align-self: end;
+    gap: 4rem;
+    width: 15%;
+}
+
+/* Seção 5: Artigos */
+.artigos, .artigo2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    max-width: 100vw;
+}
+
+.artigo2 {
+    padding: clamp(2rem, 5vw, 4rem);
+    width: 100vw;
+    max-width: 2000px;
+    background: #ECC46F;
+    margin: clamp(2rem, 5vw, 4rem) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.contartigo {
+    padding: clamp(1.5rem, 5vw, 7rem);
+}
+
+.contartigo > h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+    max-width: 18ch;
+}
+
+.contartigo > p {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    letter-spacing: 0.06rem;
+    max-width: 43ch;
+    text-align: justify;
+    line-height: 1.6;
     margin-bottom: 1.5rem;
 }
 
-.sectionHeader {
-    text-align: center;
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-.sectionHeader h2 {
-    font-family: "PLAYFUL RUNWAY", sans-serif;
-    font-size: clamp(2rem, 5vw, 2.6rem);
-}
-.sectionHeader p {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    max-width: 60ch;
-}
-
-.page1 { 
-    width: 100%; 
-    height: 100vh;
-    min-height: 600px;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    position: relative;
-    color: #fff;
-}
-
-.page1Main { 
-    display: flex; 
-    flex-flow: column nowrap; 
-    align-items: center; 
-    justify-content: center;
-    width: 100%; 
-    height: 100%; 
-    background: url("/images/tela-principal/page1/page1-imagem1.svg") center/cover no-repeat; 
-    gap: 1.5rem; 
-    padding: 1rem;
-    text-align: center;
-}
-
-.page1Main p { 
-    font-size: clamp(2rem, 6vw, 4rem); 
-    font-family: 'Louis George Cafe', sans-serif; 
-    text-shadow: 0px 0px 8px rgba(13, 0, 87, 0.9);
-}
-
-.page1Main h1 { 
-    font-size: clamp(4.5rem, 15vw, 9rem); 
-    font-family: 'The Next Font', sans-serif; 
-    text-shadow: 0px 4px 22px rgba(57, 16, 192, 0.89);
-    line-height: 1;
-}
-
-.page1Circulos { 
-    display: flex; 
-    gap: 10px; 
-    cursor: pointer; 
-}
-
-.page2 { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    background-color: black; 
-    width: 100%; 
-    padding: clamp(2rem, 8vw, 5rem) 0;
-    color: white;
-}
-
-.slidesContainer { 
-    display: flex; 
-    gap: 1.5rem; 
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 1rem 5%;
-    width: 100%;
-}
-.slidesContainer::-webkit-scrollbar { display: none; }
-
-.slide { 
-    flex: 0 0 clamp(220px, 30vw, 255px);
-    background-color: white; 
-    border-radius: 20px; 
-    overflow: hidden;
-    color: #000;
-}
-.slide a { color: inherit; text-decoration: none; }
-.slide img { 
-    width: 100%; 
-    height: auto; 
-    aspect-ratio: 255 / 438;
-    object-fit: cover; 
-}
-.slide figcaption { 
-    padding: 1rem; 
-    text-align: center; 
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    font-weight: 700; 
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.page3 {
-    width: 100%;
-    padding: clamp(2rem, 8vw, 5rem) 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-}
-.page3Header { text-align: center; }
-.page3Header p { max-width: 50ch; margin: 1rem auto 0; }
-.page3Nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 1rem 0;
-    margin: 0;
-    border-bottom: 2px solid #ddd;
-    width: 100%;
-}
-.page3Nav a {
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(1rem, 3vw, 1.1rem);
-    color: rgba(0, 0, 0, 0.85);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-}
-.page3Nav a:hover { background-color: #f0f0f0; }
-
-.page3Grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    max-width: 1600px;
-}
-.page3Card { text-align: center; }
-.page3CardImage {
-    background: #5F0B38;
-    border-radius: 4px;
-    padding: 0.5rem 0.5rem 0;
-    color: #fff;
-    margin-bottom: 1rem;
-}
-.page3CardImage h3 {
-    padding: 0.75rem 0;
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
-}
-.page3CardImage img { width: 100%; height: auto; object-fit: cover; }
-
-.page5, .page6, .page7 {
-    width: 100%;
-    padding: clamp(2rem, 8vw, 5rem) 5%;
-}
-.page6 { background: #ECC46F; }
-
-.infoBlock {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-.infoBlock.reversed { flex-direction: row-reverse; }
-
-.infoBlock_figure, .infoBlock_article {
-    flex: 1 1 400px;
-}
-.infoBlock_figure img { width: 100%; height: auto; object-fit: contain; max-width: 721px; }
-
-.infoBlock_article {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-}
-.infoBlock.reversed .infoBlock_article {
-    align-items: flex-start;
-}
-.infoBlock_article h2 {
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(2rem, 5vw, 2.6rem);
-    line-height: 1.1;
-}
-.infoBlock_article p {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    line-height: 1.6;
-}
-
-.page8 {
-    width: 100%;
-    padding: clamp(2rem, 8vw, 5rem) 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-.page8Header {
-    width: 100%;
-    background: #000;
-    padding: 1rem;
-    text-align: center;
-}
-.page8Header h2 {
+.contartigo > button {
+    width: 200px;
+    height: 55px;
     color: #FFF;
     font-family: "The Next Font", sans-serif;
-    font-size: clamp(2rem, 5vw, 2.5rem);
-}
-.page8Grid {
-    width: 100%;
-    max-width: 1600px;
-    padding: 0 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
-.page8Grid img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-    transition: transform 0.3s ease;
-}
-.page8Grid a:hover img {
-    transform: scale(1.05);
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    border-radius: 5px;
+    background: #722F53;
+    border: none;
+    cursor: pointer;
 }
 
-.page9 {
+.s5 img {
     width: 100%;
-    padding: clamp(2rem, 10vw, 6rem) 5%;
-    background: url('/images/tela-principal/page9/page9-background.png');
-}
-.page9Grid {
-    max-width: 1600px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: clamp(2rem, 6vw, 6rem);
-    justify-content: center;
-}
-.page9Grid img {
-    width: 100%;
+    max-width: 700px;
     height: auto;
     object-fit: cover;
+}
+
+/* Seção 6: Novidades */
+.s6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin: 15rem auto 10rem auto;
+}
+
+.h1novidades {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: normal;
+    align-self: self-start;
+    background-color: #000;
+    width: 100%;
+    padding: 0.8rem;
+    box-sizing: border-box;
+}
+
+.cardsnovidades {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.6rem;
+}
+
+.cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
+    display: flex;
+    width: 100%;
+    height: 22vw;
+    min-height: 200px; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: end; 
+    cursor: pointer;
+    position: relative;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.cardnovidade1::before, .cardnovidade2::before, .cardnovidade3::before, .cardnovidade4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.cardnovidade1 > h1, .cardnovidade2 > h1, .cardnovidade3 > h1 , .cardnovidade4 > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    position: relative; 
+    z-index: 2;
+}
+
+.cardnovidade1 {background-image: url('../../public/images/tela-principal/img-prod(1).png');}
+.cardnovidade2 {background-image: url('../../public/images/tela-principal/img-prod(2).png');}
+.cardnovidade3 {background-image: url('../../public/images/tela-principal/img-prod(3).png');}
+.cardnovidade4 {background-image: url('../../public/images/tela-principal/img-prod(4).png');}
+
+
+/* Seção 7: Footer Artigos */
+.s7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10vw 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.s7::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 33.3%;
+    background-color: #ECC46F;
+    z-index: 0;
+}
+
+.s7div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4.5rem;
+    width: 100%;
+    max-width: 1600px;
+    z-index: 1;
+    position: relative;
+    padding: 1rem;
+}
+
+.artigo1footer, .artigo2footer, .artigo3 {
+    display: flex;
+    width: 100%; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center; 
+    cursor: pointer;
+    flex-direction: column;
+    min-height: 700px;
+    justify-content: end;
+}
+
+.artigo1footer {background-image: url('../../public/images/tela-principal/img-artigo\(1\).png');}
+.artigo2footer {background-image: url('../../public/images/tela-principal/img-artigo\(2\).png');}
+.artigo3 {background-image: url('../../public/images/tela-principal/img-artigo\(3\).png');}
+
+.artigo1footer > h1, .artigo2footer > h1, .artigo3 > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1.8rem, 3vw, 2.3rem);
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.artigo1footer > p, .artigo2footer > p, .artigo3 > p {
+    color: #FFF;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-weight: 400;
+    line-height: normal;
+    max-width: 90%;
+}
+
+.artigo1footer > img, .artigo2footer > img, .artigo3 > img {
+    align-self: end;
+    margin: 1.2rem;
+}
+
+/* =========================================== */
+/* =========== MEDIA QUERIES ================= */
+/* =========================================== */
+
+/* Telas de Tablet */
+@media (max-width: 1024px) {
+    .s1 {
+        flex-direction: column; 
+        padding: 4rem 2rem;
+    }
+    .texttopics {
+        margin-right: 0;
+        margin-bottom: 3rem;
+        max-width: 100%;
+        text-align: center;
+    }
+    .texttopics > h2 {
+        text-align: center;
+    }
+    .cards {
+        width: 100%;
+    }
+    .cardsperfil {
+        gap: 2rem;
+    }
+    .s6 {
+      width: 90%;
+      margin: 10rem auto 8rem auto;
+    }
+    .cardsnovidades {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
+        height: 30vw;
+    }
+    .s7div {
+        gap: 2rem;
+    }
+}
+
+/* Telas de Celular */
+@media (max-width: 768px) {
+    .mainContainer {
+        height: 100vh; 
+    }
+    .mainContainer > h2 {
+        line-height: 1.2;
+    }
+    .s1 {
+        padding: 3rem 1rem;
+    }
+    .s2 {
+        margin: 5rem auto;
+        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .s3 {
+        margin-top: 5rem;
+        padding: 0 1rem;
+    }
+    .s3 > p {
+        margin-bottom: 3rem;
+    }
+    .linha2 {
+        width: 95%;
+    }
+    .categ {
+        width: 100%;
+        gap: 1rem;
+    }
+    .cortes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem 1rem;
+    }
+
+    .cortecardconteiner {
+        flex-basis: calc(50% - 0.5rem);
+        box-sizing: border-box;
+    }
+
+    .cortecard {
+        width: 100%;
+    }
+    .s4 {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+   .cardsperfil {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.cardperfil {
+    flex-basis: calc(50% - 0.75rem);
+    width: auto;
+}
+    .artigos, .artigo2 {
+        flex-direction: column;
+    }
+    .artigo2 {
+        flex-direction: column-reverse;
+    }
+    .s5 img {
+        max-width: 100%;
+    }
+    .s6 {
+        width: 95%;
+        margin: 8rem auto 6rem auto;
+    }
+    .cardsnovidades {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.5rem;
+    }
+    .cardnovidade1, .cardnovidade2, .cardnovidade3, .cardnovidade4 {
+        height: 45vw;
+    }
+    .s7div {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .artigo1footer, .artigo2footer, .artigo3 {
+        width: 90vw;
+        max-width: 400px;
+        min-height: 400px;
+    }
+    .s2 {
+        justify-content: center; 
+        gap: 1.5rem 1rem; 
+    }
+
+   .s2links {
+   flex-basis: calc(50% - 1rem);
+   flex-grow: 0;
+}
+
+    .s2links > h1 {
+        font-size: 1.5rem; 
+        margin-top: 1rem;
+}
+}
+
+@media (max-width: 500px) {
+  .s2links > img {
+    width: 110px;
+  }
+
+  .s2links > h1 {
+    font-size: 1.3rem;
+  }
+  .cortes {
+      gap: 1.5rem 0.5rem;
+  }
+
+  .cortecard > h1 {
+      font-size: 1.3rem;
+  }
+
+  .conhecaCorteButton {
+      width: 90%;
+      font-size: 1.1rem;
+  }
+  .s4 {
+    padding: 0 1rem;
+}
+
+.cardperfil > h1 {
+    font-size: 1.1rem;
+    padding-top: 0.5rem;
+}
+
+.cardperfil > h2 {
+    font-size: 1rem;
+    text-align: left; 
+    line-height: 1.4; 
+}
+
+.buttonPerfil {
+    font-size: 1rem;
+    padding: 0.6rem;
+    width: 85%;
+}
+  
+.arrow {
+    margin-right: 4rem;
+}
 }

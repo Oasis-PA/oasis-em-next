@@ -1,74 +1,40 @@
-:root {
-    --body-back: #ffffff;
-    --corpo-texto: #000000; 
-    --header-color: #000000; 
-    --back-header: #fff;
-    --shadow: #f8f4f4;
-    --label: #000000;
-    --footer: #ffffff;
-}
-.dark:root{
-    --body-back: #0e0e0e;
-    --header-color: #ffffff; 
-    --back-header: #000000;
-    --corpo-texto: #ffffff ; 
-    --footer: #000000;
-    --shadow: #161616;
-    --label: #f3c11e;
-}
-
-html{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-body
-{
-    height: 100%;
-}
-body, html
-{
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-}
-
-iframe {
-    width: 100%;
-    height: 200px;
-    background-color: rgb(255, 255, 255);
-}
-
 #barra {
+    display: flex;
     width: 100%;
     min-height: 80vh;
-    background-color: #ebebeb;
-    position: relative;
+    background-color: #EFEBE9;
+    flex-flow: row;
     box-sizing: border-box;
 }
 
 #img47 {
-    margin-top: 2.8%;
-    margin-left: 62%;
-    max-width: 45%;
-    height: auto;
-    display: block;
+    display: flex;
+   
+    
+    
 }
+#asM{
+font-family: 'THE NEXT FONT';
+min-width: 900px;
+text-align: left;
+margin-left: 10vw;
+}
+#as-melhores-dicas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    max-width: 2000px;
 
-#asM {
-    text-align: left;
 }
 
 #barra h1 {
-    position: absolute;
-    width: 50%;
-    max-width: 60vw;
-    margin-left: 6vw;
-    top: 40%;
-    transform: translateY(-50%);
+    display: flex;
     font-size: 5vw;
     color: #070707;
     line-height: 1.1;
@@ -471,7 +437,7 @@ iframe {
 .container2 {
     margin-top: 217px;
     display: flex;
-    margin-bottom: 2vw;
+    margin-bottom: 6vw;
     
 }
 
@@ -534,127 +500,4 @@ iframe {
     width: 844px;
     height: 315px;
     font-size: 20px;
-}
-
-
-
-footer
-{
-    display: flex ;
-    width: 100%;
-    height: 449px;
-    background-color: #343434;
-}
-footer>#img-footer>#logo-footer
-{
-    height: 160px;
-}    
-footer>#img-footer
-{
- 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-left: 7%;
-  margin-bottom: 70px;
-  object-fit: contain;
-
-}   
-footer>#img-footer>#logos-apps>img{
-   height: 40px;
-}
-.grupos-footer
-{
-    display: flex;
-    flex-flow: column nowrap;
-    margin-top: 5px;
-}
-#invi-2
-{
-    width: 30%;
-}
-.grupos-footer>p
-{
- margin-bottom: 10px;
- display: flex;
- flex-direction: column;
- font-size: 1.0rem;
- font-style: normal;
- font-family: Next Font; 
-}
-footer> .grupos-footer
-{
-    color: white;
-    width: 100%;
-}
-footer>.grupos-footer>h2
-{
-    background: linear-gradient(to bottom, #F2A518, #ECC46F);
-    background-clip: text; 
-    color: transparent; 
-    font-family: PLAYFUL RUNWAY;
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-}
-#grupo-1
-{
-    display: flex;
-    padding: 50px ;
-    text-align: left;
-}
-#grupo-2
-{
-    padding: 50px ;
-    margin-left: -100px;
-}
-#grupo-3
-{
-    padding: 50px ;
-    margin-left: -100px;
-}
-#grupo-4
-{
-    padding: 50px ;
-    margin-top: 13px;
-    margin-left: -90px;
-}
-#grupo-4>p
-{
- color: rgb(255, 255, 255);
- font-size: 0.9rem;
- font-family: Louis George Cafe;
-}
-#grupo-4>h1
-{
-    background: linear-gradient(to right, #F2A518, #ECC46F);
-    background-clip: text; 
-    color: transparent; 
-    margin-bottom: 9px;
-    font-size: 1.6rem;
-    font-family: Next Font; 
-
-}
-#grupo-4>h6
-{
-    font-size: 1.1rem;
-    font-family: Next Font;
-    line-height: 1.3;   
-}
-footer>#grupo-4>button{
-    width: 139.90px;
-    height: 32.25px;
-    background-color: #722F53;
-    color: rgb(250, 250, 250);
-    border-radius: 17.76px;
-    display: block;
-    border: none;
-    margin-top: 15px;
-    font-size: 0.9rem;
-    font-family: Next Font;
-    font-weight: 10px;    
-}
-#logo-2{
-    margin-right: 4px;
-    transform: translate(-100px, -2px);
 }

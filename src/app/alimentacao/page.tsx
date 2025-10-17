@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { Header, Footer } from "@/components";
+
 
 // Importando as folhas de estilo. Verifique se os caminhos estao corretos.
 import '@/styles/alimentacao.css';
@@ -9,8 +11,7 @@ import '@/styles/alimentacao.css';
 const AlimentacaoPage: React.FC = () => {
   return (
     <>
-      {/* A secao HEADER foi removida conforme solicitado */}
-
+     <Header/> 
       <section id="banner">
         <div className="texto-banner">
           <h1>NUTRIENTES <span style={{ color: '#ECC46F' }}>CERTOS</span>, <br />FIOS MAIS <span style={{ color: '#ECC46F' }}>FORTES!</span></h1>
@@ -132,8 +133,7 @@ const AlimentacaoPage: React.FC = () => {
           </div>
         </section>
       </section>
-
-      
+      <Footer/>
     </>
   );
 };

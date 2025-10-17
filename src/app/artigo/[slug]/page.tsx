@@ -1,28 +1,67 @@
 import { prisma } from "@/lib/prisma";
+import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Header from "../../../components/header";
 import '@/styles/artigoteste.css';
 
 interface ArtigoProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
+  const now = new Date();
   const artigos: { slug: string }[] = await prisma.artigo.findMany({
+    where: {
+      OR: [
+        { status: "publicado" },
+        { status: "agendado", dataPublicacao: { lte: now } },
+      ],
+    },
     select: { slug: true },
   });
 
-  return artigos
-    .filter((a) => a.slug)
-    .map((a) => ({ slug: a.slug }));
+  return artigos.filter((a) => a.slug).map((a) => ({ slug: a.slug }));
 }
 
 export default async function ArtigoPage({ params }: ArtigoProps) {
+  // Await params antes de usar
+  const { slug } = await params;
+
   const artigo = await prisma.artigo.findUnique({
-    where: { slug: params.slug }
+    where: { slug }
   });
 
-  if (!artigo || !artigo.conteudo) {
+  // Se não existir, 404
+  if (!artigo) return notFound();
+
+  // Bloquear rascunhos
+  if (artigo.status === "rascunho") return notFound();
+
+  // Bloquear agendados antes da data
+  if (artigo.status === "agendado") {
+    const now = new Date();
+    const pub = artigo.dataPublicacao ? new Date(artigo.dataPublicacao) : null;
+    // se data de publicação não definida ou maior que agora -> 404
+    if (!pub || pub.getTime() > now.getTime()) return notFound();
+  }
+
+  // Se estiver agendado e a data já passou, atualiza para publicado
+  if (artigo.status === "agendado" && artigo.dataPublicacao) {
+    const now = new Date();
+    const pub = new Date(artigo.dataPublicacao);
+    if (pub.getTime() <= now.getTime()) {
+      await prisma.artigo.update({
+        where: { id: artigo.id },
+        data: { status: "publicado" },
+      });
+      // recarregar artigo atualizado
+      const atualizado = await prisma.artigo.findUnique({ where: { id: artigo.id } });
+      if (!atualizado) return notFound();
+      // use 'atualizado' daqui pra frente
+    }
+  }
+
+  if (!artigo.conteudo) {
     return (
       <>
         <Header />
@@ -35,13 +74,12 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     );
   }
 
-  // 👇 Constrói automaticamente o caminho da imagem baseado no slug
-  const imagemHeader = `/images/artigos/${params.slug}-header.png`;
+  // Usa a imagem do header do banco de dados (Supabase Storage)
+  const imagemHeader = artigo.imagemHeader;
 
   return (
     <>
-      <Header backgroundImage={imagemHeader} />
-      
+      {imagemHeader ? <Header backgroundImage={imagemHeader} /> : <Header />}
       <main>
         <article className="markdown-content">
           <ReactMarkdown

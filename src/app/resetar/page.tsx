@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
+import "@/styles/resetar.css"; // Certifique-se que o caminho está correto
 
-export default function resetar() {
+export default function ResetarPage() {
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
 
@@ -25,26 +26,25 @@ export default function resetar() {
   }
 
   return (
-    <main className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded shadow-md w-96">
-        <h1 className="text-xl font-bold mb-4">Redefinir Senha</h1>
-        <form onSubmit={handleReset}>
+    <main className="main-container">
+      <div className="reset-card">
+        <h1>Redefinir Senha</h1>
+        <form onSubmit={handleReset} className="reset-form">
           <input
             type="password"
             placeholder="Nova senha"
-            className="border w-full p-2 mb-3 rounded"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             required
           />
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+            className="submit-btn"
           >
             Salvar nova senha
           </button>
         </form>
-        {mensagem && <p className="mt-3 text-sm text-gray-700">{mensagem}</p>}
+        {mensagem && <p className="feedback-message">{mensagem}</p>}
       </div>
     </main>
   );

@@ -10,6 +10,7 @@ import "@/styles/favoritos.css";
 const Favoritos: React.FC = () => {
   return (
     <>
+      <Header/>
       <main>
         <figure id="imagens-artigos">
             <h1>Quais as tendências de 2025?</h1>
@@ -26,42 +27,42 @@ const Favoritos: React.FC = () => {
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo2">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo3">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo4">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo5">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo6">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo7">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo8">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
                 <Link href="#">
-                    <div id="artigo1">
+                    <div id="artigo9">
                         <h1>ARTIGO AQUI</h1>
                     </div>
                 </Link>
@@ -110,9 +111,9 @@ const Favoritos: React.FC = () => {
     </section>
 
     <section id="section-imagem-marrom">
-        <div>
+        <div className="card-marrom">
             <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div>
+            <div className="card-marrom-content">
                 <img src="/images/favoritos/fav.svg" alt="" />
                 <h1>PRODUTO TAL</h1>
                 <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
@@ -120,9 +121,9 @@ const Favoritos: React.FC = () => {
             </div>
         </div>
 
-        <div>
+        <div className="card-marrom">
             <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div>
+            <div className="card-marrom-content">
                 <img src="/images/favoritos/fav.svg" alt="" />
                 <h1>PRODUTO TAL</h1>
                 <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
@@ -130,9 +131,9 @@ const Favoritos: React.FC = () => {
             </div>
         </div>
 
-        <div>
+        <div className="card-marrom">
             <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div>
+            <div className="card-marrom-content">
                 <img src="/images/favoritos/fav.svg" alt="" />
                 <h1>PRODUTO TAL</h1>
                 <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
@@ -145,35 +146,35 @@ const Favoritos: React.FC = () => {
         <h1 id="h1-salvos">Salvos Recentemente</h1>
         <div id="section-salvos">
             <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
-            <div>
+            <div className="card-salvo">
                 <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
                 <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
                 <h1>PRODUTO TAL</h1>
                 <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
             </div>
 
-            <div>
+            <div className="card-salvo">
                 <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
                 <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
                 <h1>PRODUTO TAL</h1>
                 <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
             </div>
 
-            <div>
+            <div className="card-salvo">
                 <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
                 <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
                 <h1>PRODUTO TAL</h1>
                 <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
             </div>
 
-            <div>
+            <div className="card-salvo">
                 <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
                 <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
                 <h1>PRODUTO TAL</h1>
                 <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
             </div>
 
-            <div>
+            <div className="card-salvo">
                 <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
                 <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
                 <h1>PRODUTO TAL</h1>
@@ -181,14 +182,16 @@ const Favoritos: React.FC = () => {
             </div>
             <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
         </div>
-        <p id="p3">Veja lista completa</p>
-        <img src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
+        <Link href="#">
+            <p id="p3">Veja lista completa</p>
+        </Link>
+        <img id="img-dourada" src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
     </section>
 
     <section id="section-maisprodutos">
         <h1 id="h1-maisprodutos">MAIS PRODUTOS</h1>
-        <div>
-           <div>
+        <div id="container-maisprodutos">
+           <div className="card-maisprodutos">
                <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
                <h1>PRODUTO TAL</h1>
                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
@@ -198,7 +201,7 @@ const Favoritos: React.FC = () => {
                </div>
            </div>
 
-           <div>
+           <div className="card-maisprodutos">
                <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
                <h1>PRODUTO TAL</h1>
                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
@@ -208,7 +211,7 @@ const Favoritos: React.FC = () => {
                </div>
            </div>
 
-           <div>
+           <div className="card-maisprodutos">
                <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
                <h1>PRODUTO TAL</h1>
                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
@@ -218,7 +221,7 @@ const Favoritos: React.FC = () => {
                </div>
            </div>
 
-           <div>
+           <div className="card-maisprodutos">
                <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
                <h1>PRODUTO TAL</h1>
                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
@@ -231,27 +234,26 @@ const Favoritos: React.FC = () => {
     </section>
 
     <section id="section-artigos-s2">
-        <div id="artigo1-s2">
-            <h1>COLOCAR ARTIGO AQUI</h1>
+        <div id="artigo1-s2" className="artigo-s2-item">
+            <h1>COLEÇÃO VERÃO FARM 2025</h1>
         </div>
 
-        <div id="artigo2-s2">
-            <h1>COLOCAR ARTIGO AQUI</h1>
+        <div id="artigo2-s2" className="artigo-s2-item">
+            <h1>COLEÇÃO VERÃO FARM 2025</h1>
         </div>
 
-        <div id="artigo3-s2">
-            <h1>COLOCAR ARTIGO AQUI</h1>
+        <div id="artigo3-s2" className="artigo-s2-item">
+            <h1>COLEÇÃO VERÃO FARM 2025</h1>
         </div>
-        <div id="artigo4-s2">
-            <h1>COLOCAR ARTIGO AQUI</h1>
+        <div id="artigo4-s2" className="artigo-s2-item">
+            <h1>COLEÇÃO VERÃO FARM 2025</h1>
         </div>
 
-        <div id="artigo5-s2">
-            <h1>COLOCAR ARTIGO AQUI</h1>
+        <div id="artigo5-s2" className="artigo-s2-item">
+            <h1>COLEÇÃO VERÃO FARM 2025</h1>
         </div>
     </section>
-
-  
+    <Footer/>
     </>
   );
 }
