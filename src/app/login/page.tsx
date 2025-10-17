@@ -159,7 +159,7 @@ export default function Login() {
 
       <figure id="figure-padding-login">
         <Image
-          src="/images/tela-de-cadastro/imagem-tela-login-amarelo.png"
+          src="/images/tela-de-cadastro/Imagem-tela-login-amarelo.png"
           alt="imagem-tela-login-amarelo"
           width={850}
           height={1049}
