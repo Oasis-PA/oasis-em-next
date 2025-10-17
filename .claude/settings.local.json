@@ -40,7 +40,8 @@
       "Bash(else echo \"❌ .env.local NÃO encontrado\")",
       "Bash(fi)",
       "Bash(npm:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
