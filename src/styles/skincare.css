@@ -35,7 +35,16 @@ main {
 /* HEADER                             */
 /* ================================== */
 
-header {
+.header-transparente {
+  background-color: transparent !important;
+  position: absolute;
+  top: 0;        
+  left: 0;         
+  width: 100%;    
+  z-index: 1000;
+}
+
+.section-header {
     background-image: url('../../public/images/skincare/header-bg.png');
     width: 100%;
     height: 60vh; /* Unidade mais consistente */
@@ -50,17 +59,17 @@ header {
     max-width: 2200px;
 }
 
-header > h1, header > h2 {
+.section-header > h1, .section-header > h2 {
     color: white;
     font-family: "The Next Font", sans-serif;
     line-height: 1; /* Ajuste para melhor controle */
 }
 
-header > h1 {
+.section-header > h1 {
     font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
 }
 
-header > h2 {
+.section-header > h2 {
    font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
     opacity: 50%;
 }
