@@ -1,4 +1,3 @@
-// Em: src/components/Header.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -9,12 +8,11 @@ interface User {
   nome: string;
 }
 
-// Interface de props atualizada para incluir className e theme
 interface HeaderProps {
   backgroundImage?: string;
   backgroundColor?: string;
-  className?: string; // Para classes customizadas (ex: altura específica)
-  theme?: 'light' | 'dark'; // Para alternar entre o tema claro e escuro
+  className?: string; 
+  theme?: 'light' | 'dark';
 }
 
 export default function Header({ backgroundImage, backgroundColor = 'white', className, theme = 'light' }: HeaderProps) {
@@ -50,7 +48,6 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
     window.location.href = '/login';
   };
 
-  // Estilo dinâmico para o header (fundo)
   const headerStyle: React.CSSProperties = {
     ...(backgroundImage && {
       backgroundImage: `url(${backgroundImage})`,
@@ -62,7 +59,6 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
   };
 
   return (
-    // A classe do tema (`light` ou `dark`) é combinada com qualquer outra classe passada via props
     <header style={headerStyle} className={`${theme} ${className || ''}`}>
       <section className="em_ciminha">
         <Link href="/">

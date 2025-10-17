@@ -1,12 +1,16 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link'; 
 import Script from 'next/script'; 
 import image from 'next/image'; 
-
+import { Header, Footer } from "@/components";
 import '@/styles/hair-care.css';
 
 const HairCarePage: React.FC = () => {
   return (
+    <>
+    <Header/>
     <main>
       <section className="retangulo" id="barra">
         <article id='as-melhores-dicas'>
@@ -138,6 +142,8 @@ const HairCarePage: React.FC = () => {
       {/* Carrega o script da pasta /public de forma otimizada */}
       <Script src="/Hair-care.js" strategy="lazyOnload" />
     </main>
+    <Footer/>
+  </>
   );
 };
 

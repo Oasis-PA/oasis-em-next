@@ -10,10 +10,11 @@ import "@/styles/skincare.css";
 export default function skincare() {
   return (
     <>
-    <header>
+    <Header className="header-transparente"/>
+    <section className="section-header">
       <h1>SKIN</h1>
       <h2>CARE</h2>
-    </header>
+    </section>
     
     <main>
       <section id="s1">

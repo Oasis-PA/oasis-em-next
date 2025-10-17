@@ -9,26 +9,6 @@ main * {
   color: var(--corpo-texto);
 }
 
-:root {
-  --body-back: #ffffff;
-  --corpo-texto: #000000; 
-  --back-header: #fff;
-  --border-form: #000000;
-  --border-linhas: rgba(0, 0, 0, 0.5);
-  --eusou: #ffffff;
-  --eusou2: #FAF5FF;
-}
-
-.dark:root {
-  --body-back: #0e0e0e;
-  --corpo-texto: #ffffff; 
-  --back-header: #000000;
-  --border-form: #fff;
-  --border-linhas: rgba(255, 255, 255, 0.5);
-  --eusou: #000000;
-  --eusou2: #181818;
-}
-
 /* ================================== */
 /* LAYOUT PRINCIPAL                   */
 /* ================================== */
@@ -271,7 +251,7 @@ form {
      
 .eusou {
   border: 2px solid #5F0B38;
-  background: var(--eusou2);
+  background: #FFF8E9;
 }
 
 .eusou2 {

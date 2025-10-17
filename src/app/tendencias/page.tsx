@@ -1,6 +1,6 @@
 'use client';
 
-import {Footer} from "@/components";
+import {Header, Footer} from "@/components";
 import Image from "next/image";
 import "@/styles/tendencias.css";
 
@@ -10,7 +10,7 @@ export default function tendencias() {
 
   return (
     <>
-  
+    <Header/>
     <main>
       <section className="primeiro">
         <div className="banner-principal">

@@ -5,6 +5,7 @@ import Script from 'next/script';
 import Image from 'next/image';
 import '@/styles/parcerias-usuarios.css';
 import '@/styles/globals.css';
+import {Header, Footer} from "@/components";
 
 // Interface para estruturar os dados da API
 interface Localidade {
@@ -83,6 +84,7 @@ const ParceriasUsuariosPage: React.FC = () => {
 
   return (
     <>
+    <Header/>
       <main>
         <div id="container">
           <form action="" method="get">
@@ -182,7 +184,7 @@ const ParceriasUsuariosPage: React.FC = () => {
 
             {/* Links de navegação */}
             <div className="eu">
-              <Link className="eusou" href="/atendimento-usuario">
+              <Link className="eusou" href="/parcerias-influenciadores">
                 <img src="/images/atendimento-usuario/usuario.png" alt="Ícone de usuário" />
                 <p className="eusoua">Eu sou um usuário</p>
                 <p className="eusoub">Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
@@ -206,6 +208,7 @@ const ParceriasUsuariosPage: React.FC = () => {
       </main>
 
       <Script src="/parcerias.js" strategy="afterInteractive" />
+    <Footer/>
     </>
   );
 };

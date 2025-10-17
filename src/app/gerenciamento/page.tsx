@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Layout from "./layout";
+import { Header, Footer } from "@/components";
 
 export default function GerenciamentoConta() {
   const [email, setEmail] = useState("");
@@ -104,6 +105,7 @@ export default function GerenciamentoConta() {
 
   return (
     <Layout>
+      <Header/>
       <main>
         <section>
           <form onSubmit={handleSave}>
