@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Layout from "./layout";
 
+
 export default function GerenciamentoConta() {
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
@@ -21,7 +22,7 @@ export default function GerenciamentoConta() {
     sobrenome: "",
     sobre: "",
   });
-  
+
   const [initialUser, setInitialUser] = useState({ ...user });
   useEffect(() => {
     fetch("/api/usuarios/perfil")
@@ -104,6 +105,7 @@ export default function GerenciamentoConta() {
 
   return (
     <Layout>
+
       <main>
         <section>
           <form onSubmit={handleSave}>
@@ -153,7 +155,7 @@ export default function GerenciamentoConta() {
               <a href="#" className="excluir-link" onClick={(e) => { e.preventDefault(); setShowDeleteModal(true); }}>Excluir sua conta</a>
             </div>
 
-            
+
           </form>
         </section>
           <footer>
@@ -213,7 +215,7 @@ export default function GerenciamentoConta() {
           </div>
         </div>
       )}
-      
+
     </Layout>
   );
 }

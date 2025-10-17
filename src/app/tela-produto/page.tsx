@@ -3,8 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import "@/styles/tela-de-produto.css";
-import Header from "@/components/header";
-import Footer from "../../../arquivos/Footer";
+import {Header, Footer} from "@/components";
 
 export default function PaginaDeProduto() {
   // Estado para o tema (claro/escuro)

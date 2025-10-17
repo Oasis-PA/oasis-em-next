@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
+import {Header, Footer} from "@/components";
 import '@/styles/parcerias-empresas.css';
 
 const ParceriasEmpresasPage: React.FC = () => {
@@ -77,6 +78,7 @@ const ParceriasEmpresasPage: React.FC = () => {
 
     return (
         <>
+        <Header/>
             <main>
                 <article id="container">
                     <form onSubmit={handleSubmit}>
@@ -194,6 +196,7 @@ const ParceriasEmpresasPage: React.FC = () => {
             </main>
 
             <Script src="/parcerias.js" strategy="afterInteractive" />
+        <Footer/>
         </>
     );
 };

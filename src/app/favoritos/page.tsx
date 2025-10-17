@@ -10,6 +10,7 @@ import "@/styles/favoritos.css";
 const Favoritos: React.FC = () => {
   return (
     <>
+      <Header/>
       <main>
         <figure id="imagens-artigos">
             <h1>Quais as tendências de 2025?</h1>
@@ -252,7 +253,7 @@ const Favoritos: React.FC = () => {
             <h1>COLEÇÃO VERÃO FARM 2025</h1>
         </div>
     </section>
-
+    <Footer/>
     </>
   );
 }

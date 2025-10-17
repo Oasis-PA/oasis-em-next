@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Layout from "./layout";
 
+
 interface User {
   id_usuario?: number;
   nome: string;
@@ -85,6 +86,7 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
 
   return (
     <Layout>
+     
       <main>
         <div className="informa">
           <h4>EDITE SEU PERFIL</h4>

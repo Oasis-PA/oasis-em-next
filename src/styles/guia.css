@@ -27,7 +27,7 @@ main {
     flex-direction: column;
 }
 
-header {
+.section-header {
     background-image: url('../../public/images/guia/header-bg.png');
     width: 100%;
     min-height: 30.35vw;
@@ -40,13 +40,13 @@ header {
     padding: clamp(1.5rem, 12vw, 7rem);
 }
 
-header > h1 {
+.section-header > h1 {
     color: #FFF;
     font-family: "The Next Font", sans-serif;
     font-size: clamp(2.5rem, 12vw, 6.25rem);
 }
 
-header > p {
+.section-header > p {
     color: #FFF;
     font-family: "Louis George Cafe", sans-serif;
     font-size: clamp(1.2rem, 4vw, 2rem);
@@ -90,6 +90,7 @@ header > p {
 #guia > div > h1 {
     font-family: "PLAYFUL RUNWAY", sans-serif;
     font-size: clamp(1.4rem, 4.5vw, 2.25rem);
+    font-weight: 400;
 }
 
 #guia > div > img {

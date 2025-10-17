@@ -33,6 +33,7 @@ main > h1 {
     font-size: clamp(2rem, 9vw, 4.96538rem);
     margin-left: clamp(1rem, 15vw, 9.3rem);
     line-height: normal;
+    margin-top: 3rem;
 }
 
 main > p {
