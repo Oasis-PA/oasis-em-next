@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Layout from "./layout";
-import {Header, Footer} from "@/components";
+
 
 interface User {
   id_usuario?: number;
@@ -86,7 +86,7 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
 
   return (
     <Layout>
-      <Header/>
+     
       <main>
         <div className="informa">
           <h4>EDITE SEU PERFIL</h4>

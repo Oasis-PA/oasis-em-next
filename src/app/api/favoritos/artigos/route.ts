@@ -1,18 +1,19 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth"; // ou o caminho correto do seu authOptions
+import jwt from "jsonwebtoken";
 
 export async function POST(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    
-    if (!session?.user?.id_usuario) {
+    const token = req.cookies.get("auth-token")?.value;
+
+    if (!token) {
       return NextResponse.json(
         { error: "Não autenticado" },
         { status: 401 }
       );
     }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
 
     const { id_artigo } = await req.json();
 
@@ -41,8 +42,8 @@ export async function POST(req: NextRequest) {
     // Verifica se já está favoritado
     const existente = await prisma.favoritoArtigo.findUnique({
       where: {
-        unique_usuario_artigo: {
-          id_usuario: session.user.id_usuario,
+        id_usuario_id_artigo: {
+          id_usuario: decoded.id,
           id_artigo: artigoId,
         },
       },
@@ -61,7 +62,7 @@ export async function POST(req: NextRequest) {
     // Cria o favorito
     const favorito = await prisma.favoritoArtigo.create({
       data: {
-        id_usuario: session.user.id_usuario,
+        id_usuario: decoded.id,
         id_artigo: artigoId,
       },
       include: {
@@ -94,14 +95,16 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    
-    if (!session?.user?.id_usuario) {
+    const token = req.cookies.get("auth-token")?.value;
+
+    if (!token) {
       return NextResponse.json(
         { error: "Não autenticado" },
         { status: 401 }
       );
     }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
 
     const { searchParams } = new URL(req.url);
     const id_artigo = searchParams.get("id_artigo");
@@ -118,8 +121,8 @@ export async function DELETE(req: NextRequest) {
     // Remove o favorito
     await prisma.favoritoArtigo.delete({
       where: {
-        unique_usuario_artigo: {
-          id_usuario: session.user.id_usuario,
+        id_usuario_id_artigo: {
+          id_usuario: decoded.id,
           id_artigo: artigoId,
         },
       },
@@ -148,18 +151,20 @@ export async function DELETE(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    
-    if (!session?.user?.id_usuario) {
+    const token = req.cookies.get("auth-token")?.value;
+
+    if (!token) {
       return NextResponse.json(
         { error: "Não autenticado" },
         { status: 401 }
       );
     }
 
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
+
     const favoritos = await prisma.favoritoArtigo.findMany({
       where: {
-        id_usuario: session.user.id_usuario,
+        id_usuario: decoded.id,
       },
       include: {
         Artigo: {
