@@ -244,7 +244,7 @@ export default function PaginaDeProduto() {
                 className={`maisDetalhes ${activeDetalhe === 'maisDetalhes' ? 'active' : ''}`}
                 onClick={() => handleDetalheClick('maisDetalhes')}
               >
-                Mais Detalhes
+                Dicas de uso
                 <span className={`tooltip-text ${activeDetalhe === 'maisDetalhes' ? 'active' : ''}`}>
                   {produtoData.mais_detalhes || "Informação não disponível"}
                 </span>
