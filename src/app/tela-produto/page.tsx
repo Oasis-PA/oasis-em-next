@@ -99,7 +99,7 @@ export default function PaginaDeProduto() {
 
   return (
     <>
-      <Header />
+      <Header/>
 
       <main>
         <article id="pagina1">
@@ -168,7 +168,7 @@ export default function PaginaDeProduto() {
        
       </main>
 
-      <Footer />
+      <Footer/>
     </>
   );
 }
