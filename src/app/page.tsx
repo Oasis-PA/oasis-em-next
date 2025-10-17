@@ -137,59 +137,52 @@ export default function OasisHomepage() {
           tendências e tire suas dúvidas.</h2>
         </div>
         <div className={styles.cards} ref={cardsContainerRef}>
-          <Link href="#">
+          <Link href="artigo/acidificacao-no-cabelo">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <img src="/images/tela-principal/artigo-hot-1.jpg" alt="acidificacao-no-cabelo" />
               <p>Como fazer acidificação no cabelo? Confira dicas</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/serum-facial">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-2.png" alt="serum-facial" />
+              <p>Sérum Facial: o que é, como usar e para que serve</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/acido-hialuronico">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-3.jpg" alt="acido-hialuronico" />
+              <p>Ácido hialurônico nos cabelos? Entenda os benefícios.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/erros-cronograma-capilar">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-4.jpg" alt="erros-cronograma-capilar" />
+              <p>Seu cronograma capilar não dá certo? Evite estes erros.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/oleos-essenciais-para-cabelo">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-5.jpg" alt="oleos-essenciais-para-cabelo" />
+              <p>Quais óleos essenciais usar no cabelo? Veja 7 opções.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/5-receitas-naturais">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-6.jpg" alt="5-receitas-naturais" />
+              <p>Quer ter fios mais fortes? Confira 5 receitas caseiras.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/tons-de-cabelo-verao">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
-            </div>
-          </Link>
-
-          <Link href="#">
-            <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-7.jpg" alt="tons-de-cabelo-verao" />
+              <p>Quer renovar o visual no verão? Inspire-se com os tons.</p>
             </div>
           </Link>
         </div>
@@ -329,7 +322,7 @@ export default function OasisHomepage() {
               para inovar e arrasar no visual! Aposte também em 
               produtos que não danifiquem sua pele e preservem sua
               beleza natural.</p>
-              <button>CONHEÇA</button>
+              <button><Link href='/'>CONHEÇA</Link></button>
             </div>
         </div>
 
@@ -341,7 +334,7 @@ export default function OasisHomepage() {
               descubra o kit de casamento perfeito, com looks, maquiagens
               e penteados usados por famosos e feitos para você!
               </p>
-              <button>CONHEÇA</button>
+              <button><Link href='artigo/vai-se-casar'>CONHEÇA</Link></button>
             </div>
             <img src="images/skincare/artigo2.png" alt="" />
         </div>
@@ -355,7 +348,7 @@ export default function OasisHomepage() {
                 aparência, recebe autoestima e felicidade renovadas! Leia 
                 agora por onde começar a ter uma rotina capilar e de 
                 skincare e dê uma repaginada total no visual!</p>
-              <button>CONHEÇA</button>
+              <button><Link href='artigo/autocuidado-masculino'>CONHEÇA</Link></button>
             </div>
         </div>
       </section>
@@ -391,21 +384,30 @@ export default function OasisHomepage() {
 
       <section className={styles.s7}>
         <div className={styles.s7div}>
-          <div className={styles.artigo1footer}>
-            <h1>diferença de gerações</h1>
-            <p>Os 10 tratamentos de pele mais comuns em 1950 e 2024</p>
-            <img src="images/tela-principal/seta-branca.svg" alt="" />
-          </div>
-          <div className={styles.artigo2footer}>
-            <h1>Cremes Infantis</h1>
-            <p>Veja os melhores produtos para suas crianças!</p>
-            <img src="images/tela-principal/seta-branca.svg" alt="" />
-          </div>
-          <div className={styles.artigo3}>
-            <h1>têndencias</h1>
-            <p>5 novos lançamentos que prometem abalar o mercado</p>
-            <img src="images/tela-principal/seta-branca.svg" alt="" />
-          </div>
+          <Link href='artigo/diferenca-de-geracoes'>
+            <div className={styles.artigo1footer}>
+              <h1>diferença de gerações</h1>
+              <p>Os 10 tratamentos de pele mais comuns em 1950 e 2024</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+          <Link href='/infantil'>
+            <div className={styles.artigo2footer}>
+              <h1>Cremes Infantis</h1>
+              <p>Veja os melhores produtos para suas crianças!</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+          <Link href='/tendencias'>
+            <div className={styles.artigo3}>
+              <h1>têndencias</h1>
+              <p>5 novos lançamentos que prometem abalar o mercado</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
         </div>
       </section>
       <Footer/>

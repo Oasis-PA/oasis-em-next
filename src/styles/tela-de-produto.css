@@ -1,32 +1,3 @@
-:root {
-  --body-back: #ffffff;
-  --corpo-texto: #000000;
-  --header-color: #000000;
-  --back-header: #fff;
-  --shadow: #f8f4f4;
-  --label: #000000;
-  --footer: #ffffff;
-  --preço: #5F0B38;
-  --barra: #DBDBDB;
-  --email: #D9D9D9;
-  --place: #202020;
-}
-
-.dark:root {
-  --body-back: #0e0e0e;
-  --header-color: #ffffff;
-  --back-header: #000000;
-  --corpo-texto: #ffffff;
-  --footer: #000000;
-  --shadow: #161616;
-  --label: #f3c11e;
-  --preço: #940852;
-  --barra: #242323;
-  --email: #2b2b2b;
-  --place: #b8b8b8;
-}
-
-/* Reset e estilos gerais */
 main * {
   margin: 0;
   padding: 0;
@@ -45,6 +16,7 @@ main {
   width: 100%;
   max-width: 1920px;
   padding: 0 20px;
+  background-color: var(--body-back);
 }
 
 /* Botão de tema */
@@ -53,6 +25,10 @@ main {
   justify-content: flex-end;
   padding: 10px 20px;
   width: 100%;
+}
+
+.header-transparente {
+    background-color: transparent !important;
 }
 
 .check {
@@ -90,13 +66,6 @@ main {
 .check:checked ~ .bolinha {
   transform: translateX(3px);
   margin-top: -30px;
-}
-
-/* iframe */
-iframe {
-  width: 100%;
-  height: 200px;
-  background-color: rgb(255, 255, 255);
 }
 
 /* Container principal do produto */
@@ -139,6 +108,7 @@ iframe {
   font-size: 2.5rem;
   width: 100%;
   margin: 15px 0;
+  font-weight: 400;
 }
 
 #menorValor {
@@ -147,11 +117,12 @@ iframe {
   margin-bottom: 5px;
 }
 
-#preço {
+#preco {
   font-size: 2.5rem;
   font-family: "The Next Font", serif;
-  color: var(--preço);
-  margin-bottom: 20px;
+  color: var(--preco);
+  margin-bottom: 50px;
+  font-weight: 400;
 }
 
 .detalhes {
@@ -163,12 +134,13 @@ iframe {
   flex-wrap: wrap;
   gap: 40px;
   margin-bottom: 20px;
+  font-weight: 400;
 }
 
 /* ============================================
    ESTILOS COMPARTILHADOS PARA TODAS AS SEÇÕES
    ============================================ */
-.composiçao,
+.composicao,
 .qualidades,
 .maisDetalhes {
   position: relative;
@@ -179,14 +151,14 @@ iframe {
 }
 
 /* Hover para todas as seções */
-.composiçao:hover,
+.composicao:hover,
 .qualidades:hover,
 .maisDetalhes:hover {
   border: 3px solid rgba(0, 0, 0, 0.2);
 }
 
 /* Borda quando ativo */
-.composiçao.active,
+.composicao.active,
 .qualidades.active,
 .maisDetalhes.active {
   border: 3px solid rgba(0, 0, 0, 0.3);
@@ -219,7 +191,7 @@ iframe {
 }
 
 /* Tooltip visível quando ativo - todas as seções */
-.composiçao .tooltip-text.active,
+.composicao .tooltip-text.active,
 .qualidades .tooltip-text.active,
 .maisDetalhes .tooltip-text.active {
   border: 3px solid rgba(0, 0, 0, 0.3);
@@ -265,18 +237,24 @@ iframe {
 
 .botaoAmarelo {
   cursor: pointer;
-  width: 135px;
+  width: 80%;
   height: 48.75px;
   background-color: #F2A518;
   border: none;
   margin-bottom: 10px;
-  margin-top: 30vh;
+  margin-top: 5vh;
   transition: background 0.3s ease, box-shadow 0.3s ease;
+  align-self: center;
 }
 
 .botaoAmarelo:hover {
   background: radial-gradient(65% 65% at 51% 37%, rgba(242, 165, 24, 1) 0%, rgba(255, 239, 204, 1) 100%);
   box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
+}
+
+.botaoAmarelo:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Linha divisória */
@@ -337,13 +315,13 @@ iframe {
   object-fit: cover;
 }
 
-#ForçaeVigor {
+#ForcaeVigor {
   font-family: "Louis George Cafe", sans-serif;
   font-size: 1.1rem;
   margin: 10px 20px;
 }
 
-#descriçaoProduto {
+#descricaoProduto {
   font-family: "The Next Font", serif;
   font-size: 1.1rem;
   margin: 10px 20px;
@@ -416,7 +394,7 @@ iframe {
   box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
 }
 
-#maisOpções {
+#maisOpcoes {
   font-size: 1.3rem;
   font-family: "The Next Font", serif;
   color: rgb(255, 255, 255);
@@ -485,122 +463,6 @@ iframe {
   color: var(--place);
 }
 
-/* Footer */
-footer {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  background-color: #343434;
-  padding: 40px 20px;
-  color: white;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 70%;
-}
-
-#img-footer {
-  width: 20%;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-#logo-footer {
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-#logos-apps {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-#logos-apps img {
-  height: 30px;
-  width: auto;
-}
-
-.grupos-footer {
-  margin-bottom: 30px;
-  width: 22%;
-  min-width: 150px;
-}
-
-.grupos-footer > h2 {
-  background: linear-gradient(to bottom, #F2A518, #ECC46F);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-family: "PLAYFUL RUNWAY", sans-serif;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-}
-
-.grupos-footer > p {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  font-family: "Next Font", sans-serif;
-}
-
-#grupo-4 > h1 {
-  background: linear-gradient(to right, #F2A518, #ECC46F);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-  font-family: "Next Font", sans-serif;
-}
-
-#grupo-4 > p {
-  color: rgb(255, 255, 255);
-  font-size: 0.9rem;
-  font-family: "Louis George Cafe", sans-serif;
-  margin-bottom: 10px;
-}
-
-#grupo-4 > h6 {
-  font-size: 0.9rem;
-  font-family: "Next Font", sans-serif;
-  line-height: 1.3;
-  margin-bottom: 15px;
-}
-
-#grupo-4 > button {
-  width: 139.90px;
-  height: 32.25px;
-  background-color: #722F53;
-  color: rgb(250, 250, 250);
-  border-radius: 17.76px;
-  border: none;
-  margin-top: 15px;
-  font-size: 0.9rem;
-  font-family: "Next Font", sans-serif;
-  cursor: pointer;
-}
-
-#logo-2 {
-  width: 10%;
-  min-width: 100px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-#logo-2 img {
-  max-width: 100%;
-  height: auto;
-}
-
 @font-face {
   font-family: "Next Font";
   src: url(/public/assets/fontes/TheNextFont.ttf);
@@ -623,14 +485,6 @@ footer {
   #vaAoSite {
     align-self: center;
     margin-top: 30px;
-  }
-
-  .footer-content {
-    width: 100%;
-  }
-
-  #img-footer {
-    width: 100%;
   }
   
   .tooltip-text {
@@ -655,15 +509,6 @@ footer {
 
   #seta {
     display: none;
-  }
-
-  .footer-content {
-    justify-content: flex-start;
-  }
-
-  .grupos-footer {
-    width: 45%;
-    margin-right: 5%;
   }
   
   .tooltip-text {
@@ -695,10 +540,6 @@ footer {
   .botao {
     width: 100%;
     height: 50px;
-  }
-
-  .grupos-footer {
-    width: 100%;
   }
   
   .tooltip-text {

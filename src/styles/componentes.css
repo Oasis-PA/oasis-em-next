@@ -13,6 +13,8 @@ header {
     gap: 1rem;
     background-color: white;
     padding: 2rem;
+    position: relative;
+    z-index: 999;
 }
 
 .em_ciminha {
@@ -129,6 +131,84 @@ header {
 .user-popup a:hover, .user-popup button:hover { background-color: #f0f0f0; }
 
 /* =================================== */
+/* Estilos do Menu Hambúrguer e Lateral */
+/* =================================== */
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2.2rem;
+    height: 1.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+.dark .hamburger-menu .bar {
+    background-color: #FFF;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background-color: #f4f4f4;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+    gap: 1rem;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+    box-shadow: 5px 0px 15px rgba(0,0,0,0.2);
+}
+
+.mobile-menu a {
+    color: #333;
+    text-decoration: none;
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.mobile-menu a:hover {
+    background-color: #e0e0e0;
+}
+
+/* NOVO: Estilo para o botão de fechar */
+.close-menu-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+}
+
+
+/* =================================== */
 /* Estilos do Footer (Base para Desktop) */
 /* =================================== */
 
@@ -215,14 +295,40 @@ footer {
 }
 
 @media (max-width: 768px) {
-    header { padding: 1.5rem 1rem; }
-    .em_ciminha { width: 100%; }
-    #imagi { width: 8rem; height: 5rem; }
-    .emoticus { gap: 2rem; }
+    header { 
+        padding: 1.5rem 1rem; 
+    }
+    .em_ciminha { 
+        width: 100%; 
+    }
+    
+    /* NOVO: Estilo para o container da esquerda */
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem; /* Espaçamento entre o menu e a logo */
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    #imagi { 
+        width: 8rem; 
+        height: 5rem; 
+    }
+
+    .emoticus { 
+        gap: 2rem; 
+    }
+
     #algo { width: 2.5rem; height: 2.1rem; }
     #coracao { width: 3rem; height: 3.5rem; }
     #user { width: 3rem; height: 3.5rem; }
-    .em_baixinho { display: none; }
+    
+    .em_baixinho { 
+        display: none; 
+    }
 
     footer {
         flex-direction: column;
@@ -305,12 +411,13 @@ footer {
 }
 
 @media (max-width: 480px) {
-    header { padding: 1rem; }
+    header { padding: 1rem 0.8rem; }
+    .header-left { gap: 0.8rem; }
     #imagi { width: 7rem; height: 4rem; }
-    .emoticus { gap: 1.5rem; }
-    #algo { width: 2.2rem; height: 1.8rem; }
-    #coracao { width: 2.6rem; height: 3rem; }
-    #user { width: 2.6rem; height: 3rem; }
+    .emoticus { gap: 1.2rem; }
+    #algo { width: 2.0rem; height: 1.7rem; }
+    #coracao { width: 2.4rem; height: 2.8rem; }
+    #user { width: 2.4rem; height: 2.8rem; }
     .user-popup { right: 5px; width: 160px; }
 }
 
@@ -340,15 +447,14 @@ footer {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* 4. Ajusta as cores de HOVER para o tema escuro */
 .dark #redirecionavel:hover {
-  color: #AA35B0; /* Cor original do hover */
+  color: #AA35B0;
 }
 
 .dark #redirecionavel2:hover {
-  color: #F2A518; /* Cor original do hover */
+  color: #F2A518;
 }
 
 .dark #redirecionavel2:active {
-    color: #b08c16; /* Cor original do active */
+    color: #b08c16;
 }
