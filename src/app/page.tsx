@@ -196,42 +196,42 @@ export default function OasisHomepage() {
       </section>
 
       <section className={styles.s2}>
-        <Link href='#'>
+        <Link href='/haircare'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-haircare.png" alt=""/>
             <h1>HAIR CARE</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/tendencias'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-tendencias.png" alt=""/>
             <h1>TENDÊNCIAS</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/skincare'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-skincare.png" alt=""/>
             <h1>SKINCARE</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/produtos'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-produtos.png" alt=""/>
             <h1>PRODUTOS</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/alimentacao'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-alimentacao.png" alt=""/>
             <h1>ALIMENTAÇÃO</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/infantil'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-infantil.png" alt=""/>
             <h1>INFANTIL</h1>
@@ -289,28 +289,28 @@ export default function OasisHomepage() {
             <img src="/images/favoritos/imagem-produto.png" alt="" />
             <h1>PRODUTO TAL</h1>
             <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button>IR PARA COMPRA</button>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
           </div>
 
           <div className={styles.cardperfil}>
             <img src="/images/favoritos/imagem-produto.png" alt="" />
             <h1>PRODUTO TAL</h1>
             <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button>IR PARA COMPRA</button>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
           </div>
 
           <div className={styles.cardperfil}>
             <img src="/images/favoritos/imagem-produto.png" alt="" />
             <h1>PRODUTO TAL</h1>
             <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button>IR PARA COMPRA</button>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
           </div>
 
           <div className={styles.cardperfil}>
             <img src="/images/favoritos/imagem-produto.png" alt="" />
             <h1>PRODUTO TAL</h1>
             <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button>IR PARA COMPRA</button>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
           </div>
           
         </div>
@@ -363,21 +363,29 @@ export default function OasisHomepage() {
       <section className={styles.s6}>
         <div className={styles.h1novidades}>NOVIDADES</div>
           <div className={styles.cardsnovidades}>
-            <div className={styles.cardnovidade1}>
-              <h1>Creme de Pentear Phytomanga Efeito Pesado 500ml</h1>
-            </div>
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade1}>
+                <h1>Creme de Pentear Phytomanga Efeito Pesado 500ml</h1>
+              </div>
+            </Link>
 
-            <div className={styles.cardnovidade2}>
-              <h1>EFFACLAR REEQUILIBRANTE</h1>
-            </div>
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade2}>
+                <h1>EFFACLAR REEQUILIBRANTE</h1>
+              </div>
+            </Link>
 
-            <div className={styles.cardnovidade3}>
-              <h1>produto</h1>
-            </div>
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade3}>
+                <h1>produto</h1>
+              </div>
+            </Link>
 
-            <div className={styles.cardnovidade4}>
-              <h1>produto</h1>
-            </div>
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade4}>
+                <h1>produto</h1>
+              </div>
+            </Link>
           </div>
       </section>
 
