@@ -35,10 +35,6 @@ const ManualPage: React.FC = () => {
             <div id="quiz">Personalizável</div>
             <h1>Manual</h1>
             <p>Prefere ter controle total? No cronograma manual, você escolhe cada etapa, define os dias e organiza como quiser. É ideal para quem já conhece as necessidades do próprio cabelo ou quer liberdade para experimentar e montar o próprio ritmo de cuidados.</p>
-            <div className="leia">
-              <h4>Leia mais</h4>
-              <Image src="/images/seta direita.png" alt="Seta para a esquerda" width={16} height={16} />
-            </div>
             <div className="abaixo">
               <Link href="/">
                 <button>Faça Agora</button>
@@ -46,14 +42,10 @@ const ManualPage: React.FC = () => {
               <div className="beneficios">
                 <h3>Benefícios</h3>
                 <div className="textinhos">
-                  <div className="em-cima">
-                    <p>Total controle</p>
-                    <p>Autonomia no cuidado</p>
-                  </div>
-                  <div className="em-baixo">
-                    <p>Experiência personalizada</p>
-                    <p>Flexibilidade total</p>
-                  </div>
+                  <p>Total controle</p>
+                  <p>Autonomia no cuidado</p>
+                  <p>Experiência personalizada</p>
+                  <p>Flexibilidade total</p>
                 </div>
               </div>
             </div>
