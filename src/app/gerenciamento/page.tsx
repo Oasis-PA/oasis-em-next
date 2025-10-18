@@ -17,26 +17,38 @@ export default function GerenciamentoConta() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [confirmacaoTexto, setConfirmacaoTexto] = useState("");
   const [mensagem, setMensagem] = useState("");
-  const [user, setUser] = useState({
-    nome: "",
-    sobrenome: "",
-    sobre: "",
+
+  // Estados para a função Redefinir
+  const [initialData, setInitialData] = useState({
+    email: "",
+    telefone: "",
+    dataNascimento: "",
+    genero: null as number | null,
   });
 
-  const [initialUser, setInitialUser] = useState({ ...user });
+
   useEffect(() => {
+    // Busca dados do perfil
     fetch("/api/usuarios/perfil")
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data) {
-          setEmail(data.email || "");
-          setTelefone(data.telefone || "");
-          setDataNascimento(data.data_nascimento?.split("T")[0] || "");
-          setGenero(data.id_genero || null);
+          const fetchedData = {
+            email: data.email || "",
+            telefone: data.telefone || "",
+            dataNascimento: data.data_nascimento?.split("T")[0] || "",
+            genero: data.id_genero || null,
+          };
+          setEmail(fetchedData.email);
+          setTelefone(fetchedData.telefone);
+          setDataNascimento(fetchedData.dataNascimento);
+          setGenero(fetchedData.genero);
+          setInitialData(fetchedData); // Guarda o estado inicial
         }
       })
       .catch(err => console.error(err));
 
+    // Busca lista de gêneros
     fetch("/api/usuarios/generos")
       .then(res => res.ok ? res.json() : [])
       .then(lista => setGeneros(lista))
@@ -45,26 +57,35 @@ export default function GerenciamentoConta() {
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!genero) return alert("Selecione um gênero");
+    if (!genero) {
+        setMensagem("Por favor, selecione um gênero.");
+        return;
+    };
 
     try {
       const res = await fetch("/api/usuarios/pessoais", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, telefone, data_nascimento: dataNascimento, genero }),
+        body: JSON.stringify({ email, telefone, data_nascimento: dataNascimento, id_genero: genero }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      alert("Dados atualizados!");
+      setMensagem("Dados atualizados com sucesso!");
     } catch (err: any) {
-      alert(err.message);
+      setMensagem(err.message);
     }
   };
 
   const handlePasswordChange = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (novaSenha !== confirmarSenha) return alert("Senhas não coincidem");
-    if (novaSenha.length < 6) return alert("Senha muito curta");
+    if (novaSenha !== confirmarSenha) {
+        setMensagem("As novas senhas não coincidem.");
+        return;
+    }
+    if (novaSenha.length < 6) {
+        setMensagem("A nova senha deve ter no mínimo 6 caracteres.");
+        return;
+    }
 
     try {
       const res = await fetch("/api/usuarios/pessoais", {
@@ -72,43 +93,51 @@ export default function GerenciamentoConta() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ senhaAtual, novaSenha }),
       });
-      if (!res.ok) throw new Error("Erro ao alterar senha");
-      alert("Senha alterada!");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setMensagem("Senha alterada com sucesso!");
       setShowPasswordModal(false);
       setSenhaAtual("");
       setNovaSenha("");
       setConfirmarSenha("");
-    } catch (err: any) {
-      alert(err.message);
+    } catch (err: any)      {
+      setMensagem(err.message);
     }
   };
 
   const handleDeleteAccount = async () => {
     if (confirmacaoTexto.toUpperCase() !== "EXCLUIR") {
-      return alert("Digite EXCLUIR para confirmar");
+      setMensagem("Digite EXCLUIR para confirmar a exclusão.");
+      return;
     }
 
     try {
       const res = await fetch("/api/usuarios/excluir", { method: "DELETE" });
-      if (!res.ok) throw new Error("Erro ao excluir");
-      alert("Conta excluída!");
+      if (!res.ok) throw new Error("Erro ao excluir a conta.");
+      alert("Conta excluída com sucesso!");
       window.location.href = "/";
     } catch (err: any) {
-      alert(err.message);
+      setMensagem(err.message);
     }
   };
 
+  // Função Redefinir agora restaura para os dados iniciais
   const handleReset = () => {
-    setUser({ ...initialUser });
-    setMensagem(""); // limpa a mensagem
+    setEmail(initialData.email);
+    setTelefone(initialData.telefone);
+    setDataNascimento(initialData.dataNascimento);
+    setGenero(initialData.genero);
+    setMensagem(""); // Limpa qualquer mensagem de feedback
   };
+
 
   return (
     <Layout>
 
       <main>
         <section>
-          <form onSubmit={handleSave}>
+          {/* MELHORIA: Adicionado id ao form e removido o onClick do botão salvar */}
+          <form id="gerenciamento-form" onSubmit={handleSave}>
             <h1>GERENCIE SUA CONTA</h1>
             <p id="faca-alteracoes">Faça alterações nas suas informações pessoais ou no tipo de conta.</p>
 
@@ -122,7 +151,7 @@ export default function GerenciamentoConta() {
             <div className="form-group password-group">
               <label htmlFor="senha">Senha</label>
               <div className="password-container">
-                <input type="password" id="senha" value="************" disabled />
+                <input type="password" id="senha" value="************" disabled readOnly />
                 <a href="#" className="alterar-link" onClick={(e) => { e.preventDefault(); setShowPasswordModal(true); }}>Alterar</a>
               </div>
             </div>
@@ -142,7 +171,7 @@ export default function GerenciamentoConta() {
             <div className="form-group">
               <label htmlFor="genero">Gênero *</label>
               <select id="genero" value={genero ?? ""} onChange={(e) => setGenero(Number(e.target.value))} required>
-                <option value="">Selecione um gênero...</option>
+                <option value="" disabled>Selecione um gênero...</option>
                 {generos.map((g) => (
                   <option key={g.id_genero} value={g.id_genero}>{g.nome}</option>
                 ))}
@@ -154,14 +183,22 @@ export default function GerenciamentoConta() {
               <p>Exclua permanentemente seus dados e tudo que estiver associado à sua conta</p>
               <a href="#" className="excluir-link" onClick={(e) => { e.preventDefault(); setShowDeleteModal(true); }}>Excluir sua conta</a>
             </div>
-
-
           </form>
         </section>
-          <footer>
-        <button type="button" onClick={handleReset}>Redefinir</button>
-        <button id="salvs" type="button" onClick={handleSave}>Salvar</button>
-      </footer>
+
+        {/* ============================================
+            BOTÕES DO FOOTER CORRIGIDOS
+            ============================================ */}
+        <footer>
+          <button type="button" onClick={handleReset} className="btn btn-secondary">
+            Redefinir
+          </button>
+          <button type="submit" form="gerenciamento-form" className="btn btn-primary">
+            Salvar
+          </button>
+        </footer>
+
+        {mensagem && <p className="feedback-message">{mensagem}</p>}
       </main>
 
       {showPasswordModal && (
@@ -181,9 +218,10 @@ export default function GerenciamentoConta() {
                 <label>Confirmar Nova Senha *</label>
                 <input type="password" value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} required minLength={6} />
               </div>
+              {/* BOTÕES DO MODAL DE SENHA CORRIGIDOS */}
               <div className="form-actions">
-                <button type="submit" className="btn-salvar">Salvar</button>
-                <button type="button" className="btn-cancelar" onClick={() => { setShowPasswordModal(false); setSenhaAtual(""); setNovaSenha(""); setConfirmarSenha(""); }}>Cancelar</button>
+                <button type="submit" className="btn btn-primary">Salvar</button>
+                <button type="button" className="btn btn-secondary" onClick={() => { setShowPasswordModal(false); setSenhaAtual(""); setNovaSenha(""); setConfirmarSenha(""); }}>Cancelar</button>
               </div>
             </form>
           </div>
@@ -208,9 +246,10 @@ export default function GerenciamentoConta() {
               <label>Para confirmar, digite <strong>EXCLUIR</strong> abaixo:</label>
               <input type="text" value={confirmacaoTexto} onChange={(e) => setConfirmacaoTexto(e.target.value)} placeholder="Digite EXCLUIR" />
             </div>
+            {/* BOTÕES DO MODAL DE EXCLUSÃO CORRIGIDOS */}
             <div className="form-actions">
-              <button type="button" className="btn-excluir-confirmar" onClick={handleDeleteAccount} disabled={confirmacaoTexto.toUpperCase() !== "EXCLUIR"}>Excluir Permanentemente</button>
-              <button type="button" className="btn-cancelar" onClick={() => { setShowDeleteModal(false); setConfirmacaoTexto(""); }}>Cancelar</button>
+              <button type="button" className="btn btn-danger" onClick={handleDeleteAccount} disabled={confirmacaoTexto.toUpperCase() !== "EXCLUIR"}>Excluir Permanentemente</button>
+              <button type="button" className="btn btn-secondary" onClick={() => { setShowDeleteModal(false); setConfirmacaoTexto(""); }}>Cancelar</button>
             </div>
           </div>
         </div>
