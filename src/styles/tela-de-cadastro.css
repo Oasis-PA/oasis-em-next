@@ -162,6 +162,16 @@ a {
     align-items: center;
 }
 
+#section-checkbox-login button {
+    border: none;
+    background-color: transparent;
+    color: #7D4AB3;
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    font-weight: 700;
+    cursor: pointer;
+}
+
 #section-checkbox-cadastro {
     display: flex;
     margin: 20px 0px 0px 0px;
