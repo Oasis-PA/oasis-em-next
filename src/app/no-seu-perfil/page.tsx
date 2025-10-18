@@ -33,10 +33,6 @@ const QuestionarioPage: React.FC = () => {
             <div id="quiz">Personalizável</div>
             <h1>Com base no seu perfil</h1>
             <p>Esse modelo usa informações básicas obtidas com a análise de seu perfil após o login. Não é necessário responder perguntas, mas ainda assim você recebe um plano mais direcionado, pensado para perfis semelhantes ao seu.</p>
-            <div className="leia">
-              <h4>Leia mais</h4>
-              <Image src="/images/seta direita.png" alt="Seta para a esquerda" width={16} height={16} />
-            </div>
             <div className="abaixo">
               <Link href="/">
                 <button>Descubra seu cronograma</button>
