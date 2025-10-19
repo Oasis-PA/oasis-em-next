@@ -135,7 +135,7 @@ const HairCarePage: React.FC = () => {
             O óleo de rosa mosqueta oferece propriedades antioxidantes e ajuda a evitar o envelhecimento precoce. "Além disso, também age na manutenção da integridade e na regeneração da pele". Dessa forma, o ativo pode ser um grande aliado para a cicatrização e para a melhora de inflamações.
             “Todos podem usar e sentir os benefícios do óleo de rosa mosqueta. Pode ser que pessoas com a pele oleosa não se sintam tão confortáveis com o sensorial do produto, porém ele não aumenta a oleosidade ou piora a acne, então, pode ser usado tranquilamente, mas é claro que sem excessos”.
           </p>
-          <button className="botao-roxo">CONHEÇA</button>
+          <button className="botao-roxo"><Link href='/artigo/oleo-de-rosa-mosqueta'>CONHEÇA</Link></button>
         </article>
       </section>
       
