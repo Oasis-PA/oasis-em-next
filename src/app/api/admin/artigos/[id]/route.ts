@@ -13,16 +13,36 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const artigo = isNumeric
       ? await prisma.artigo.findUnique({
           where: { id: Number(id) },
+          include: {
+            ArtigoTag: {
+              include: {
+                Tag: true
+              }
+            }
+          }
         })
       : await prisma.artigo.findUnique({
           where: { slug: id },
+          include: {
+            ArtigoTag: {
+              include: {
+                Tag: true
+              }
+            }
+          }
         });
 
     if (!artigo) {
       return NextResponse.json({ message: "Artigo não encontrado" }, { status: 404 });
     }
 
-    return NextResponse.json(artigo);
+    // Formatar resposta com tags
+    const resultado = {
+      ...artigo,
+      tags: artigo.ArtigoTag.map(at => at.Tag.nome)
+    };
+
+    return NextResponse.json(resultado);
   } catch (error) {
     console.error("Erro GET artigo:", error);
     return NextResponse.json({ message: "Erro interno" }, { status: 500 });
@@ -45,7 +65,8 @@ export async function PUT(
       imagemHeader, 
       status, 
       dataPublicacao,
-      tagIds // Array de IDs das tags
+      tagIds,
+      themeDark  // ← ADICIONADO
     } = body;
 
     // Verifica se o artigo existe
@@ -87,6 +108,7 @@ export async function PUT(
           imagemHeader,
           status,
           dataPublicacao: dataPublicacao ? new Date(dataPublicacao) : null,
+          themeDark: themeDark || false  // ← ADICIONADO
         }
       });
 
@@ -124,7 +146,7 @@ export async function PUT(
     // Formatar resposta
     const resultado = {
       ...artigoAtualizado,
-      tags: artigoAtualizado?.ArtigoTag.map(at => at.Tag) || []
+      tags: artigoAtualizado?.ArtigoTag.map(at => at.Tag.nome) || []
     };
 
     return NextResponse.json(resultado);
