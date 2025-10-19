@@ -3,6 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import ThemeToggle from "@/components/ThemeToggle";
 import styles from "@/styles/artigo.module.css";
 import '@/styles/admin-artigos.css';
 
@@ -74,7 +75,6 @@ export default function EditarArtigoPage() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
-    // auto-gerar slug a partir do título se ainda não houver slug
     if (name === 'titulo' && !formData.slug) {
       const slug = value
         .toLowerCase()
@@ -97,7 +97,6 @@ export default function EditarArtigoPage() {
 
     setUploadingImage(true);
 
-    // exigir slug antes do upload (segurança/nomes consistentes)
     const slug = formData.slug?.trim() || "";
     if (!slug) {
       setUploadingImage(false);
@@ -131,7 +130,6 @@ export default function EditarArtigoPage() {
           alert('Imagem adicionada ao conteúdo!');
         }
       } else {
-        // tentar ler JSON de erro, fallback para texto
         let errBody = '';
         try {
           const j = await response.json();
@@ -209,9 +207,12 @@ export default function EditarArtigoPage() {
     <div className="admin-container">
       <header className="admin-header">
         <h1>Editar Artigo</h1>
-        <button onClick={() => router.back()} className="btn-secondary">
-          ← Voltar
-        </button>
+        <div className="header-actions">
+          <ThemeToggle />
+          <button onClick={() => router.back()} className="btn-secondary">
+            ← Voltar
+          </button>
+        </div>
       </header>
 
       <form onSubmit={handleSubmit} className="artigo-form">

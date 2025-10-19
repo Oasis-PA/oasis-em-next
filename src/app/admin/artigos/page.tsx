@@ -1,9 +1,10 @@
 // src/app/admin/artigos/page.tsx
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import ThemeToggle from '@/components/ThemeToggle';
 import '@/styles/admin-artigos.css';
 
 interface Artigo {
@@ -16,7 +17,7 @@ interface Artigo {
   createdAt: string;
 }
 
-export default function AdminArtigosPage() {
+export default function AdminArtigosPage({ children }: { children?: ReactNode }) {
   const router = useRouter();
   const [artigos, setArtigos] = useState<Artigo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +25,7 @@ export default function AdminArtigosPage() {
 
   useEffect(() => {
     fetchArtigos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter]);
 
   const fetchArtigos = async () => {
@@ -95,6 +97,7 @@ export default function AdminArtigosPage() {
           <Link href="/admin/artigos/criar" className="btn-primary">
             + Novo Artigo
           </Link>
+          <ThemeToggle />
           <button onClick={handleLogout} className="btn-logout">
             Sair
           </button>
@@ -152,7 +155,7 @@ export default function AdminArtigosPage() {
       ) : artigos.length === 0 ? (
         <div className="empty">
           <p>Nenhum artigo encontrado</p>
-          <Link href="/admin/artigos/novo" className="btn-primary">
+          <Link href="/admin/artigos/criar" className="btn-primary">
             Criar Primeiro Artigo
           </Link>
         </div>
@@ -167,7 +170,7 @@ export default function AdminArtigosPage() {
                   <span className={`status ${artigo.status}`}>
                     {getStatusDisplay(artigo.status, artigo.dataPublicacao)}
                   </span>
-                  {artigo.tags.length > 0 && (
+                  { (artigo.tags?.length ?? 0) > 0 && (
                     <span className="tags">
                       🏷️ {artigo.tags.join(', ')}
                     </span>

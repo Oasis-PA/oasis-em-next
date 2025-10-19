@@ -1,13 +1,54 @@
 /* src/styles/admin-artigos.css */
 
+:root {
+  --light-bg: #f5f5f5;
+  --light-card: #ffffff;
+  --light-text: #333333;
+  --light-text-secondary: #666666;
+  --light-border: #dddddd;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+
+  --dark-bg: #1a1a1a;
+  --dark-card: #2a2a2a;
+  --dark-text: #e0e0e0;
+  --dark-text-secondary: #a0a0a0;
+  --dark-border: #444444;
+  --dark-shadow: rgba(0, 0, 0, 0.3);
+
+  --primary-color: #AA35B0;
+  --primary-dark: #8a2b8f;
+}
+
+/* Tema Claro (padrão) */
+.light-theme {
+  --bg: var(--light-bg);
+  --card: var(--light-card);
+  --text: var(--light-text);
+  --text-secondary: var(--light-text-secondary);
+  --border: var(--light-border);
+  --shadow: var(--light-shadow);
+}
+
+/* Tema Escuro */
+.dark-theme {
+  --bg: var(--dark-bg);
+  --card: var(--dark-card);
+  --text: var(--dark-text);
+  --text-secondary: var(--dark-text-secondary);
+  --border: var(--dark-border);
+  --shadow: var(--dark-shadow);
+}
+
 /* Container Principal */
 .admin-container {
-  max-width: 1400px;
+  max-width: 100%;
   font-family: "Louis George Cafe", sans-serif;
   margin: 0 auto;
   padding: 2rem;
   min-height: 100vh;
-  background: #f5f5f5;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Header */
@@ -17,22 +58,56 @@
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 3px solid #AA35B0;
+  border-bottom: 3px solid var(--primary-color);
 }
 
 .admin-header h1 {
   font-size: 2rem;
   margin: 0;
-  color: #333;
+  color: var(--text);
+  transition: color 0.3s ease;
 }
 
 .header-actions {
   display: flex;
   gap: 1rem;
+  align-items: center;
+}
+
+/* Botão Theme Toggle */
+.theme-toggle {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 2px solid var(--primary-color);
+  background: var(--card);
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.theme-toggle:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(170, 53, 176, 0.4);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
 }
 
 /* Botões */
-.btn-primary, .btn-secondary, .btn-draft, .btn-logout {
+.btn-primary,
+.btn-secondary,
+.btn-draft,
+.btn-logout {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
@@ -46,12 +121,12 @@
 }
 
 .btn-primary {
-  background: #AA35B0;
-  color: rgb(255, 255, 255);
+  background: var(--primary-color);
+  color: white;
 }
 
 .btn-primary:hover {
-  background: #8a2b8f;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(170, 53, 176, 0.3);
 }
@@ -83,7 +158,9 @@
   background: #c82333;
 }
 
-.btn-primary:disabled, .btn-secondary:disabled, .btn-draft:disabled {
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-draft:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
@@ -98,12 +175,13 @@
 }
 
 .stat {
-  background: white;
+  background: var(--card);
   padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow);
   border-left: 4px solid #6c757d;
+  transition: all 0.3s ease;
 }
 
 .stat.published {
@@ -122,14 +200,15 @@
   display: block;
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
+  color: var(--primary-color);
 }
 
 .stat-label {
   display: block;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1.2rem;
   margin-top: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 /* Filtros */
@@ -142,24 +221,25 @@
 
 .filters button {
   padding: 0.5rem 1rem;
-  border: 2px solid #ddd;
-  background: white;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s;
-  font-family: 'louis george cafe', sans-serif;
+  font-family: "Louis George Cafe", sans-serif;
   font-size: 0.9rem;
 }
 
 .filters button.active {
-  background: #AA35B0;
+  background: var(--primary-color);
   color: white;
-  border-color: #AA35B0;
+  border-color: var(--primary-color);
 }
 
 .filters button:hover {
-  border-color: #AA35B0;
+  border-color: var(--primary-color);
 }
 
 /* Lista de Artigos */
@@ -170,19 +250,19 @@
 }
 
 .artigo-item {
-  background: white;
+  background: var(--card);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .artigo-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .artigo-content {
@@ -191,15 +271,17 @@
 
 .artigo-content h3 {
   margin: 0 0 0.5rem 0;
-  color: #333;
+  color: var(--text);
   font-size: 1.2rem;
-  font-family: 'louis george cafe', sans-serif;
+  font-family: "Louis George Cafe", sans-serif;
+  transition: color 0.3s ease;
 }
 
 .slug {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   font-family: monospace;
+  transition: color 0.3s ease;
 }
 
 .artigo-meta {
@@ -222,9 +304,19 @@
   color: #155724;
 }
 
+.dark-theme .status.publicado {
+  background: #1b4332;
+  color: #52b788;
+}
+
 .status.rascunho {
   background: #fff3cd;
   color: #856404;
+}
+
+.dark-theme .status.rascunho {
+  background: #4a3f1f;
+  color: #f4d35e;
 }
 
 .status.agendado {
@@ -232,9 +324,16 @@
   color: #0c5460;
 }
 
-.tags, .date {
+.dark-theme .status.agendado {
+  background: #1f3a4a;
+  color: #74b5d4;
+}
+
+.tags,
+.date {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .artigo-actions {
@@ -254,9 +353,17 @@
   display: inline-block;
 }
 
+.dark-theme .btn-icon {
+  background: #3a3a3a;
+}
+
 .btn-icon:hover {
   background: #e9ecef;
   transform: scale(1.1);
+}
+
+.dark-theme .btn-icon:hover {
+  background: #4a4a4a;
 }
 
 .btn-icon.delete:hover {
@@ -264,25 +371,29 @@
 }
 
 /* Loading e Empty */
-.loading, .empty {
+.loading,
+.empty {
   text-align: center;
   padding: 3rem;
-  background: white;
+  background: var(--card);
   border-radius: 12px;
-  color: #666;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
 }
 
 .empty p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
+  color: var(--text);
 }
 
 /* Formulário */
 .artigo-form {
-  background: white;
+  background: var(--card);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.3s ease;
 }
 
 .form-row {
@@ -307,7 +418,8 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
+  transition: color 0.3s ease;
 }
 
 .form-group input,
@@ -315,16 +427,18 @@
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border);
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
+  background: var(--card);
+  color: var(--text);
 }
 
 .form-group textarea {
   resize: vertical;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   line-height: 1.6;
 }
 
@@ -332,14 +446,16 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #AA35B0;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(170, 53, 176, 0.1);
 }
 
 .form-group small {
   display: block;
   margin-top: 0.5rem;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.85rem;
+  transition: color 0.3s ease;
 }
 
 .text-danger {
@@ -369,7 +485,7 @@
 
 .upload-btn:hover {
   background: #5a6268;
-  border-color: #AA35B0;
+  border-color: var(--primary-color);
 }
 
 .upload-btn:active {
@@ -381,7 +497,7 @@
   max-width: 500px;
   border-radius: 12px;
   overflow: hidden;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border);
 }
 
 .image-preview img {
@@ -412,16 +528,21 @@
 
 /* Editor com Preview */
 .editor-wrapper {
-  border: 2px solid #ddd;
+  border: 2px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
 }
 
 .editor-tabs {
   display: flex;
   background: #f8f9fa;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--border);
+}
+
+.dark-theme .editor-tabs {
+  background: #3a3a3a;
 }
 
 .tab {
@@ -434,12 +555,13 @@
   font-size: 1rem;
   transition: all 0.3s;
   border-bottom: 3px solid transparent;
+  color: var(--text);
 }
 
 .tab.active {
-  background: white;
-  color: #AA35B0;
-  border-bottom-color: #AA35B0;
+  background: var(--card);
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
 }
 
 .tab:hover {
@@ -447,10 +569,11 @@
 }
 
 .editor-content {
-  background: white;
+  background: var(--card);
 }
 
-.editor-area, .preview-area {
+.editor-area,
+.preview-area {
   padding: 1.5rem;
   min-height: 400px;
 }
@@ -469,22 +592,22 @@
 
 .toolbar-btn {
   padding: 0.5rem 1rem;
-  background: white;
-  border: 2px solid #ddd;
+  background: var(--card);
+  border: 2px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s;
   font-size: 0.9rem;
-  color: #333;
+  color: var(--text);
   text-decoration: none;
   display: inline-block;
 }
 
 .toolbar-btn:hover {
-  background: #AA35B0;
+  background: var(--primary-color);
   color: white;
-  border-color: #AA35B0;
+  border-color: var(--primary-color);
 }
 
 .toolbar-btn:disabled {
@@ -496,6 +619,7 @@
   font-weight: 600;
   margin-bottom: 0.75rem;
   display: block;
+  color: var(--text);
 }
 
 .editor-area textarea {
@@ -504,6 +628,8 @@
   padding: 2.5px;
   font-size: 0.95rem;
   width: 100%;
+  background: var(--card);
+  color: var(--text);
 }
 
 .markdown-hints {
@@ -512,21 +638,27 @@
   flex-wrap: wrap;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
 }
 
 .markdown-hints code {
   padding: 0.25rem 0.5rem;
   background: #f8f9fa;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 4px;
   font-size: 0.85rem;
+  color: var(--text);
+}
+
+.dark-theme .markdown-hints code {
+  background: #3a3a3a;
 }
 
 .preview-area {
   line-height: 1.8;
   overflow-y: auto;
   max-height: 600px;
+  color: var(--text);
 }
 
 .preview-empty {
@@ -541,7 +673,7 @@
   gap: 1rem;
   justify-content: flex-end;
   padding-top: 2rem;
-  border-top: 2px solid #ddd;
+  border-top: 2px solid var(--border);
 }
 
 /* Responsive */
