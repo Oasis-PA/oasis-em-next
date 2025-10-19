@@ -21,7 +21,7 @@ export default function Footer() {
             <h1>Mapa do site</h1>
           </button>
           <div className={`accordion-content ${openAccordion === 'mapa' ? 'open' : ''}`}>
-            <h2><Link href="https://www.canva.com/design/DAGUDgD6xDA/bBIs_ChnovCCuLiIotu_JQ/edit">QUEM SOMOS?</Link></h2>
+            <h2><Link href="artigo/quem-somos">QUEM SOMOS?</Link></h2>
             <h2><Link href="/parcerias-empresas">PARCERIAS</Link></h2>
           </div>
         </div>
@@ -47,11 +47,10 @@ export default function Footer() {
           </button>
           <div className={`accordion-content ${openAccordion === 'suporte' ? 'open' : ''}`}>
             <h2><Link href="/central-ajuda">CENTRAL DE AJUDA</Link></h2>
-            <h2><Link href="/central-ajuda">POLÍTICA DE PRIVACIDADE</Link></h2>
-            <h2><Link href="/central-ajuda">TERMOS DE USO</Link></h2>
+            <h2><Link href="artigo/politica-de-privacidade">POLÍTICA DE PRIVACIDADE</Link></h2>
+            <h2><Link href="artigo/termos-de-uso">TERMOS DE USO</Link></h2>
           </div>
         </div>
-
       </div>
 
       <img src="images/logo2-footer.png" alt="Logo secundário da marca" className="footer-logo footer-logo--secondary" />

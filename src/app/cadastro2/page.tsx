@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ZodError } from "zod";
 import { cadastroEtapa2Schema } from "@/lib/validations";
+import Link from "next/link";
 import "@/styles/tela-de-cadastro.css";
 
 export default function TelaCadastroSenha() {
@@ -159,7 +160,7 @@ export default function TelaCadastroSenha() {
 
             <section id="section-checkbox-cadastro">
               <input type="checkbox" id="checkbox-cadastro" name="checkboxt" />
-              <span>aceito os termos de condição para criação da conta</span>
+              <span>aceito os <Link href='artigo/termos-de-uso'>termos de condição</Link> para criação da conta</span>
             </section>
           </form>
         </section>

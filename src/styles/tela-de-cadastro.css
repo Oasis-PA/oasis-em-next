@@ -184,6 +184,10 @@ a {
     font-size: 1rem;
 }
 
+#section-checkbox-cadastro span a {
+    color: #7D4AB3;
+}
+
 #checkbox-login {
     width: 18px; 
     height: 18px;
