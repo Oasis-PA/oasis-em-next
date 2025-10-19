@@ -141,11 +141,19 @@ main > article > ul {
 
 
 /* --- MEDIA QUERIES --- */
+
+@media (max-width: 1600px) { 
+    main > article { 
+        margin-top: -200px;
+        width: 90%;
+    }
+}
 /* Para telas menores (tablets e celulares grandes) */
 @media (max-width: 768px) {
     main > article {
-        margin-top: -100px; /* Reduz a sobreposição em telas menores */
+        margin-top: -200px; /* Reduz a sobreposição em telas menores */
         padding: 60px 5%; /* Ajusta o padding */
+        width: 90%;
     }
 
     main > article > ul {
@@ -160,8 +168,9 @@ main > article > ul {
     }
 
     main > article {
-        margin-top: -50px; /* Reduz ainda mais a sobreposição */
+        margin-top: -120px; /* Reduz ainda mais a sobreposição */
         padding: 40px 5%;
+        width: 90%;
     }
     
     /* Justificar texto pode ficar estranho em telas muito pequenas */
