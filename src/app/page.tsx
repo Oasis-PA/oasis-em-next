@@ -322,7 +322,7 @@ export default function OasisHomepage() {
               para inovar e arrasar no visual! Aposte também em 
               produtos que não danifiquem sua pele e preservem sua
               beleza natural.</p>
-              <button><Link href='/'>CONHEÇA</Link></button>
+              <button><Link href='/artigo/maquiagens'>CONHEÇA</Link></button>
             </div>
         </div>
 
