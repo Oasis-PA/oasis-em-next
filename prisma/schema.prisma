@@ -127,6 +127,7 @@ model Artigo {
   resumo         String?
   imagemHeader   String?
   status         String?          @default("rascunho")
+  themeDark      Boolean?         @default(false)
   ArtigoTag      ArtigoTag[]
   FavoritoArtigo FavoritoArtigo[]
 }

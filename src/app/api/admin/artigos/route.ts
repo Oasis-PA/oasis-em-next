@@ -53,7 +53,8 @@ export async function POST(request: NextRequest) {
       imagemHeader, 
       status, 
       dataPublicacao,
-      tagIds 
+      tagIds,
+      themeDark 
     } = body;
 
     // Verifica se o slug já existe
@@ -80,6 +81,7 @@ export async function POST(request: NextRequest) {
           imagemHeader,
           status: status || 'rascunho',
           dataPublicacao: dataPublicacao ? new Date(dataPublicacao) : null,
+          themeDark: themeDark || false 
         }
       });
 

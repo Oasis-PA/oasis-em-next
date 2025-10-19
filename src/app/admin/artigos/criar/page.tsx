@@ -18,7 +18,8 @@ export default function NovoArtigoPage() {
     status: 'rascunho',
     dataPublicacao: '',
     horaPublicacao: '',
-    tags: ''
+    tags: '',
+    themeDark: false
   });
   const [isLoading, setIsLoading] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
@@ -113,7 +114,8 @@ export default function NovoArtigoPage() {
         imagemHeader: formData.imagemHeader || null,
         status: formData.status,
         dataPublicacao: dataPublicacaoCompleta,
-        tags: tagsArray
+        tags: tagsArray,
+        themeDark: formData.themeDark  
       };
 
       const response = await fetch('/api/admin/artigos', {
@@ -237,6 +239,20 @@ export default function NovoArtigoPage() {
             placeholder="skincare, beleza, tutorial"
           />
           <small>Ex: skincare, beleza, rotina</small>
+        </div>
+
+        <div className="form-group">
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              name="themeDark"
+              checked={formData.themeDark}
+              onChange={(e) => setFormData(prev => ({ ...prev, themeDark: e.target.checked }))}
+              style={{ width: 'auto', cursor: 'pointer' }}
+            />
+            <span>Ativar tema escuro no header?</span>
+          </label>
+          <small>Se ativado, o header terá o tema dark</small>
         </div>
 
         <div className="form-group">

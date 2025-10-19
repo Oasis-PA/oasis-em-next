@@ -76,10 +76,18 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
 
   // Usa a imagem do header do banco de dados (Supabase Storage)
   const imagemHeader = artigo.imagemHeader;
+  const themeDark = artigo.themeDark;
 
   return (
     <>
-      {imagemHeader ? <Header backgroundImage={imagemHeader} /> : <Header />}
+      {imagemHeader ? (
+        <Header 
+          backgroundImage={imagemHeader} 
+          theme={themeDark ? "dark" : undefined}
+        />
+      ) : (
+        <Header theme={themeDark ? "dark" : undefined} />
+      )}
       <main>
         <article className="markdown-content">
           <ReactMarkdown
