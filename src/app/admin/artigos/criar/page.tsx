@@ -1,10 +1,9 @@
-// src/app/admin/artigos/criar/page.tsx
+// src/app/admin/artigos/novo/page.tsx
 "use client";
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
-import ThemeToggle from '@/components/ThemeToggle';
 import '@/styles/admin-artigos.css';
 import styles from "@/styles/artigo.module.css";
 
@@ -51,10 +50,9 @@ export default function NovoArtigoPage() {
 
     setUploadingImage(true);
 
-    const slug = formData.slug?.trim() || "";
+    const slug = formData.slug?.trim() || ""; // use o campo slug do state
     if (!slug) {
       alert("Você deve definir o slug antes de enviar a imagem do header.");
-      setUploadingImage(false);
       return;
     }
 
@@ -63,15 +61,15 @@ export default function NovoArtigoPage() {
     fd.append("tipo", tipo);
     fd.append("slug", slug);
 
-    try {
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-      if (!res.ok) {
-        const body = await res.text();
-        alert("Falha no upload: " + body);
-        return;
-      }
-      const data = await res.json();
+    const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+    if (!res.ok) {
+      const body = await res.text();
+      alert("Falha no upload: " + body);
+      return;
+    }
+    const data = await res.json();
 
+    try {
       if (tipo === 'header') {
         setFormData(prev => ({ ...prev, imagemHeader: data.url }));
         alert('Imagem do header enviada!');
@@ -150,12 +148,9 @@ export default function NovoArtigoPage() {
     <div className="admin-container">
       <header className="admin-header">
         <h1>Novo Artigo</h1>
-        <div className="header-actions">
-          <ThemeToggle />
-          <button onClick={() => router.back()} className="btn-secondary">
-            ← Voltar
-          </button>
-        </div>
+        <button onClick={() => router.back()} className="btn-secondary">
+          ← Voltar
+        </button>
       </header>
 
       <form onSubmit={handleSubmit} className="artigo-form">
