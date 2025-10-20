@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 main * {
     margin: 0;
     padding: 0;
@@ -55,6 +59,7 @@ main > div > p {
     font-weight: 400;
 }
 
+/* BOTÃO PRINCIPAL REFORMULADO */
 main > div > button {
     display: flex;
     width: 16.28188rem;
@@ -67,6 +72,40 @@ main > div > button {
     font-family: "The Next Font";
     font-size: clamp(1.35rem, 1.8vw, 1.8rem);
     margin-top: clamp(4rem, 8.5vw, 8.5rem);
+    /* ADIÇÕES PARA O EFEITO */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+main > div > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+main > div > button:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+main > div > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+main > div > button:active {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
 }
 
 #s1 {
@@ -98,6 +137,13 @@ main > div > button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 0.3s ease; /* ADICIONADO */
+}
+
+/* HOVER ADICIONADO para os blocos */
+.bloco:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
 }
 
 .bloco > h1 {
@@ -232,10 +278,53 @@ main > div > button {
     color: #FFF;
     font-size: clamp(1.125rem, 1.5vw, 1.5rem);
     cursor: pointer;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+#artigo1 > div > button::before, #artigo2 > div > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 #artigo1 > div > button {background: #F2A518;}
 #artigo2 > div > button {background: #722F53;}
+
+#artigo1 > div > button:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+#artigo2 > div > button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+#artigo1 > div > button:hover::before, #artigo2 > div > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#artigo1 > div > button:active {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
+}
+#artigo2 > div > button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
 
 .monte {
   display: flex;
@@ -256,6 +345,11 @@ main > div > button {
   margin-top: -10vw;
   margin-right: 13vw;
   cursor: pointer;
+  transition: transform 0.3s ease; /* ADICIONADO */
+}
+
+.conheca:hover {
+    transform: scale(1.05);
 }
 
 #s3 {
@@ -309,4 +403,37 @@ main > div > button {
     border: none;
     cursor: pointer;
     margin-top: clamp(2rem, 3vw, 3rem);
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 } 
+
+#s3 > div > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+#s3 > div > button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+#s3 > div > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#s3 > div > button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}

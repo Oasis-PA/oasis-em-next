@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 main * {
     margin: 0;
     padding: 0;
@@ -167,12 +171,7 @@ main {
     line-height: 1.4;
 }
 
-#artigo1 {
-    background-image: url('../../public/images/infantil/artigo1.png');
-    flex: 1;
-    min-width: 40vw;
-    max-width: 48vw; 
-    height: 25vw;
+#artigo1, #artigo2, #artigo3, #artigo4, #artigo5, #artigo6 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -180,82 +179,25 @@ main {
     display: flex;
     flex-direction: column;
     border-radius: 1.25rem;
+    flex: 1;
+    min-width: 40vw;
+    max-width: 48vw; 
+    height: 25vw;
+    transition: all 0.4s ease; /* ADICIONADO */
 }
 
-#artigo2 {
-    background-image: url('../../public/images/infantil/artigo2.png');
-    flex: 1;
-    min-width: 40vw;
-    max-width: 48vw; 
-    height: 25vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.25rem;
+#artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, #artigo5:hover, #artigo6:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-#artigo3 {
-    background-image: url('../../public/images/infantil/artigo3.png');
-    flex: 1;
-    min-width: 40vw;
-    max-width: 48vw; 
-    height: 25vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.25rem;
-}
+#artigo1 { background-image: url('../../public/images/infantil/artigo1.png'); }
+#artigo2 { background-image: url('../../public/images/infantil/artigo2.png'); }
+#artigo3 { background-image: url('../../public/images/infantil/artigo3.png'); }
+#artigo4 { background-image: url('../../public/images/infantil/artigo4.png'); }
+#artigo5 { background-image: url('../../public/images/infantil/artigo5.png'); }
+#artigo6 { background-image: url('../../public/images/infantil/artigo6.png'); }
 
-#artigo4 {
-    background-image: url('../../public/images/infantil/artigo4.png');
-    flex: 1;
-    min-width: 40vw;
-    max-width: 48vw; 
-    height: 25vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.25rem;
-}
-
-#artigo5 {
-    background-image: url('../../public/images/infantil/artigo5.png');
-    flex: 1;
-    min-width: 40vw;
-    max-width: 48vw; 
-    height: 25vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.25rem;
-}
-
-#artigo6 {
-    background-image: url('../../public/images/infantil/artigo6.png');
-    flex: 1;
-    min-width: 40vw;
-    max-width: 48vw; 
-    height: 25vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.25rem;
-}
 
 #s2 {
     display: flex;
@@ -308,6 +250,12 @@ main {
     height: auto;
     border: 0.12864583333333334vw solid #5F0B38;
     background: #FFF;
+    transition: all 0.3s ease; /* ADICIONADO */
+}
+
+.prod1:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 .prod1 > img {
@@ -329,6 +277,7 @@ main {
     margin-left: clamp(0.5rem, 2vw, 1.40rem);
 }
 
+/* BOTÃO DE PRODUTO REFORMULADO */
 .prod1 > button {
     align-self: center;
     margin-top: clamp(1rem, 3vw, 2.69rem);
@@ -342,6 +291,39 @@ main {
     font-family: "The Next Font";
     font-size: clamp(0.9rem, 1.5vw, 1.25rem);
     cursor: pointer;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.prod1 > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.prod1 > button:hover {
+    background: linear-gradient(135deg, #8d1154 0%, #5F0B38 100%);
+    box-shadow: 0px 10px 25px rgba(95, 11, 56, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.prod1 > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.prod1 > button:active {
+    background: #4d092e;
+    transform: translateY(-1px) scale(1.02);
 }
 
 #leao-bg, #zebra-bg, #girafa-bg {
@@ -395,6 +377,12 @@ main {
     display: flex;
     flex-direction: column;
     padding: clamp(1.5rem, 4vw, 3.13rem); 
+    transition: all 0.4s ease; /* ADICIONADO */
+}
+
+#dica1:hover, #dica2:hover, #dica3:hover, #dica4:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 #dica1, #dica2 {
@@ -409,21 +397,10 @@ main {
     height: 39.73vw;
 }
 
-#dica1 {
-    background-image: url('../../public/images/infantil/dica1.png');
-}
-
-#dica2 {
-    background-image: url('../../public/images/infantil/dica2.png');
-}
-
-#dica3 {
-    background-image: url('../../public/images/infantil/dica3.png');
-}
-
-#dica4 {
-    background-image: url('../../public/images/infantil/dica4.png');
-}
+#dica1 { background-image: url('../../public/images/infantil/dica1.png'); }
+#dica2 { background-image: url('../../public/images/infantil/dica2.png'); }
+#dica3 { background-image: url('../../public/images/infantil/dica3.png'); }
+#dica4 { background-image: url('../../public/images/infantil/dica4.png'); }
 
 
 .dicas h2 {

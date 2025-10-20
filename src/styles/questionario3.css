@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 main * {
     margin: 0;
     padding: 0;
@@ -6,12 +10,12 @@ main * {
 
 body {
     width: 100%;
-    min-height: 100vh; /* Alterado para min-height para melhor adaptação */
+    min-height: 100vh;
 }
 
 main {
     display: flex;
-    background: linear-gradient(90deg, #5B7352 550px, #FFF 160px); /* Ajustado para corresponder à estrutura do 2 */
+    background: linear-gradient(90deg, #5B7352 550px, #FFF 160px);
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -30,7 +34,7 @@ main {
 }
 
 .voltar {
-    position: absolute; /* Adicionado para consistência */
+    position: absolute;
     top: 2rem;
     left: 4rem;
     height: fit-content;
@@ -62,13 +66,13 @@ main {
     color: hsl(0, 0%, 100%);
     text-decoration: underline;
     text-underline-offset: 5%;
-    text-decoration-color: #F2A518; /* Mantendo uma cor de destaque ou pode ser alterada */
+    text-decoration-color: #F2A518;
     text-decoration-thickness: 0.1rem;
 }
 
 #img-principal {
     width: 100%;
-    max-width: 50rem; /* Usando max-width para responsividade */
+    max-width: 50rem;
     height: auto;
     object-fit: contain;
 }
@@ -131,8 +135,9 @@ main {
     margin-top: 2rem;
 }
 
+/* BOTÃO 'FINALIZAR' REFORMULADO */
 .conteudo button {
-    background: #5B7352; /* Cor principal do questionario3 */
+    background: #5B7352;
     width: 100%;
     padding: 1.2rem 2rem;
     border-style: none;
@@ -141,12 +146,40 @@ main {
     text-align: center;
     font-family: "The Next Font";
     font-size: clamp(1.2rem, 3vw, 1.5rem);
-    transition: background 0.3s ease, transform 0.3s ease;
+    /* ADIÇÕES PARA O EFEITO */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.conteudo button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .conteudo button:hover {
-    background: #4A5C43; /* Um tom mais escuro para o hover */
-    transform: scale(1.02);
+    background: linear-gradient(135deg, #79946e 0%, #5B7352 100%);
+    box-shadow: 0px 10px 25px rgba(91, 115, 82, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.conteudo button:hover::before {
+    width: 500px;
+    height: 500px;
+}
+
+.conteudo button:active {
+    background: #4A5C43;
+    transform: translateY(-1px) scale(1.02);
 }
 
 .beneficios {
@@ -158,7 +191,16 @@ main {
     align-items: center;
     border-radius: 1rem;
     gap: 1rem;
+    transition: all 0.3s ease; /* ADICIONADO */
 }
+
+/* HOVER ADICIONADO para a caixa de benefícios */
+.beneficios:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #4A5C43;
+}
+
 
 .beneficios h3 {
     color: #000;
@@ -168,7 +210,7 @@ main {
 }
 
 .textinhos {
-    display: grid; /* Usando grid para igualar ao questionario2 */
+    display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
     gap: 1rem 2rem;
@@ -189,7 +231,7 @@ main {
 @media (max-width: 1024px) {
     main {
         flex-direction: column;
-        background: linear-gradient(180deg, #5B7352 400px, #FFF 120px); /* Cor alterada */
+        background: linear-gradient(180deg, #5B7352 400px, #FFF 120px);
         padding: 1rem;
         gap: 1rem;
     }

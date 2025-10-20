@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 /* ================================== */
 /* CONFIGURAÇÕES GLOBAIS E TEMAS      */
 /* ================================== */
@@ -98,14 +102,13 @@ form {
     padding: 0 15px;
 }
 
-/* AJUSTE: Inputs e Textarea com padding interno */
 #caixas-texto {
   width: 100%;
   max-width: 656px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espaçamento consistente entre os inputs */
+  gap: 15px;
 }
 
 #caixas-texto input, 
@@ -117,10 +120,15 @@ form {
   width: 100%;
   font-family: "Louis George Cafe", sans-serif;
   font-size: clamp(16px, 2vw, 18px);
-  padding: 10px 12px; /* Espaçamento interno para o texto não colar */
+  padding: 10px 12px;
+  transition: border-bottom-color 0.3s ease; /* ADICIONADO */
 }
 
-/* AJUSTE: Focus states para melhor UX */
+/* HOVER ADICIONADO para inputs */
+#caixas-texto input:hover:not(:focus) {
+  border-bottom-color: #a36f8f;
+}
+
 #caixas-texto input:focus {
   outline: none;
   border-bottom-color: #722F53;
@@ -161,7 +169,6 @@ form {
   text-align: left;
 }
 
-/* AJUSTE: Textarea com padding adequado */
 #motivo {
   margin-bottom: 45px;
   width: 100%;
@@ -172,9 +179,15 @@ form {
   background: var(--body-back);
   font-family: "Louis George Cafe", sans-serif;
   font-size: 16px;
-  padding: 20px; /* Padding aumentado para não colar nas bordas */
+  padding: 20px;
   resize: vertical;
   line-height: 1.5;
+  transition: border-color 0.3s ease; /* ADICIONADO */
+}
+
+/* HOVER ADICIONADO para textarea */
+#motivo:hover:not(:focus) {
+  border-color: #a36f8f;
 }
 
 #motivo:focus {
@@ -251,7 +264,7 @@ form {
      
 .eusou {
   border: 2px solid #5F0B38;
-  background: #FFF8E9;
+  background: #FFEDC5;
 }
 
 .eusou2 {
@@ -266,7 +279,7 @@ form {
   }
 }
 
-/* Botão de Envio */
+/* BOTÃO DE ENVIO REFORMULADO */
 .conheça {
   display: flex;
   width: 294px;
@@ -283,10 +296,40 @@ form {
   margin-top: 15px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  /* ADIÇÕES PARA O EFEITO */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
 }
 
-.conheça:hover { background: #612647; }
+.conheça::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.conheça:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.conheça:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.conheça:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
 
 @media screen and (max-width: 480px) {
   .conheça {
@@ -354,7 +397,6 @@ aside > figure {
     font-family: "Louis George Cafe", sans-serif;
     font-weight: 600;
 }
-/* Adicione ao parcerias-empresas.css */
 
 .message {
   font-family: "Louis George Cafe", sans-serif;

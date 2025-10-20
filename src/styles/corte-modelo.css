@@ -19,13 +19,12 @@ main {
 
 .principal {
     width: 100%;
-    max-width: 1700px; /* Aumentei um pouco a largura máxima */
+    max-width: 1700px;
     margin: 4vh auto 8rem auto;
     display: flex;
-    gap: 3rem; /* Aumentei o espaço entre imagem e texto */
+    gap: 3rem;
 }
 
-/* Largura da imagem reduzida para dar mais espaço aos cards */
 #img-principal {
     flex: 0 0 40%; 
     width: 40%;
@@ -33,10 +32,16 @@ main {
     object-fit: cover;
     border-radius: 8px;
     margin-left: 0.5rem;
-    margin-left: 0.5rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+    cursor: pointer;
 }
 
-/* Largura da área direita aumentada */
+#img-principal:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    filter: brightness(1.05);
+}
+
 .direita {
     flex: 0 0 56%;
     width: 60%;
@@ -51,6 +56,12 @@ main {
     font-weight: 400;
     margin-bottom: 1.5rem;
     margin-top: 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#tit1:hover {
+    color: #420E45;
+    transform: translateX(8px);
 }
 
 #corpo-texto1 {
@@ -59,6 +70,11 @@ main {
     font-size: 1.25rem;
     line-height: 1.6;
     text-align: justify;
+    transition: transform 0.3s ease;
+}
+
+#corpo-texto1:hover {
+    transform: translateX(5px);
 }
 
 #corpo-tit {
@@ -69,25 +85,38 @@ main {
     text-decoration: underline solid #420E45;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* ALTERAÇÕES APLICADAS AQUI */
+#corpo-tit:hover {
+    transform: translateX(8px);
+    color: #722F53;
+}
+
 .parte-inferior {
     display: flex;
     gap: 1.5rem;
-    align-items: stretch; /* 1. FAZ OS CARDS TEREM A MESMA ALTURA */
-    margin-top: 3rem;     /* 2. SEPARA OS CARDS DO TEXTO ACIMA */
+    align-items: stretch;
+    margin-top: 3rem;
 }
 
 .quadradinhos {
-    flex: 1; /* 3. LARGURA AUMENTADA PELA REDISTRIBUIÇÃO DE ESPAÇO */
+    flex: 1;
     height: auto;
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
     background: #FFF;
-     box-shadow: 0 4px 22.9px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 22.9px 0 rgba(0, 0, 0, 0.25);
     border-radius: 12px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.quadradinhos:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(66, 14, 69, 0.3);
+    background-color: #FAFAFA;
 }
 
 #corpo-tit1 {
@@ -99,6 +128,13 @@ main {
     text-align: center;
     margin-top: 0;
     margin-bottom: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.quadradinhos:hover #corpo-tit1 {
+    color: #722F53;
+    transform: scale(1.05);
+    text-decoration-color: #722F53;
 }
 
 #corpo-texto2 {
@@ -107,8 +143,12 @@ main {
     font-size: 1.125rem;
     line-height: 1.6;
     text-align: justify;
+    transition: color 0.3s ease;
 }
 
+.quadradinhos:hover #corpo-texto2 {
+    color: #333;
+}
 
 /* =================================== */
 /* ========== MEDIA QUERIES ========== */
@@ -146,7 +186,7 @@ main {
 
     .parte-inferior {
         flex-direction: column;
-        align-items: center; /* No mobile, o alinhamento não precisa ser stretch */
+        align-items: center;
         gap: 2rem;
     }
 
