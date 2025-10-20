@@ -67,11 +67,11 @@ model Produto {
   id_tag         Int?
   id_tipo_pele   Int?
   id_tipo_cabelo Int?
-  composicao     String?         @db.VarChar
-  qualidades     String?         @db.VarChar
-  mais_detalhes  String?         @db.VarChar
-  url_imagem     String?         @db.VarChar(255)
-  url_loja       String?         @db.VarChar(255)
+  composicao     String?         // Sem @db.VarChar
+  qualidades     String?         // Sem @db.VarChar
+  mais_detalhes  String?         // Sem @db.VarChar
+  url_imagem     String?         @db.VarChar(500)
+  url_loja       String?         @db.VarChar(500)
   avaliacoes     Avaliacao[]
   favoritos      Favorito[]
   ImagemProduto  ImagemProduto[]
