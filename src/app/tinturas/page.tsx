@@ -59,9 +59,11 @@ export default function tinturas() {
     </section>
 
     <section id="s2">
-      <div id="artigo1">
-        <h1>10 TONS FANTÁSTICOS PARA SAIR DO BÁSICO</h1>
-      </div>
+      <Link href='artigo/10-tons-fantasticos'>
+        <div id="artigo1">
+          <h1>10 TONS FANTÁSTICOS PARA SAIR DO BÁSICO</h1>
+        </div>
+      </Link>
 
       <div id="artigo2">
         <p>Descubra como equilibrar tintura e tratamento no seu cronograma capilar. Devolva brilho, 
@@ -70,13 +72,17 @@ export default function tinturas() {
     </section>
 
     <section id="s3">
-      <div id="artigo3">
-        <h1>NAGÔ COLORIDA: <br></br>15 ESTILOS <br></br>DIFERENTES</h1>
-      </div>
+      <Link href='artigo/nago-colorida'>
+        <div id="artigo3">
+          <h1>NAGO COLORIDA: <br></br>15 ESTILOS <br></br>DIFERENTES</h1>
+        </div>
+      </Link>
 
-      <div id="artigo4">
-        <h1>PRODUTOS INDISPENSÁVEIS PARA CABELOS PINTADOS</h1>
-      </div>
+      <Link href='artigo/produtos-indispensaveis' id="artigo4a">
+        <div id="artigo4">
+          <h1>PRODUTOS INDISPENSÁVEIS PARA CABELOS PINTADOS</h1>
+        </div>
+      </Link>
     </section>
 
     <div id="linha"></div>
@@ -84,27 +90,37 @@ export default function tinturas() {
     <section id="s4">
       <h1>artigos em alta</h1>
       <div>
-        <div id="artigo5">
-          <h1>Coleção verão Farm 2025</h1>
-        </div>
+        <Link href='artigo/cuidados-noturnos'>
+          <div id="artigo5">
+            <h1>Cuidados noturnos para cabelo e pele</h1>
+          </div>
+        </Link>
 
-        <div id="artigo6">
-          <h1>Coleção verão Farm 2025</h1>
-        </div>
+        <Link href='artigo/transicao-capilar'>
+          <div id="artigo6">
+            <h1>Transição capilar: primeiros cuidados essenciais</h1>
+          </div>
+        </Link>
 
-        <div id="artigo7">
-          <h1>Coleção verão Farm 2025</h1>
-        </div>
+        <Link href='artigo/acidificacao-no-cabelo'>
+          <div id="artigo7">
+            <h1>Acidificação capilar</h1>
+          </div>
+        </Link>
 
-        <div id="artigo8">
-          <h1>Coleção verão Farm 2025</h1>
-        </div>
+        <Link href='artigo/protetor-solar-para-peles-retintas'>
+          <div id="artigo8">
+            <h1>Protetor solar para pele retinta</h1>
+          </div>
+        </Link>
 
-        <button>VER MAIS</button>
+        <button><Link href='/artigos-geral'>VER MAIS</Link></button>
 
-        <div id="artigo9">
-          <h1>Coleção verão Farm 2025</h1>
-        </div>
+        <Link href='artigo/como-fazer-waves'>
+          <div id="artigo9">
+            <h1>Como fazer waves?</h1>
+          </div>
+        </Link>
       </div>
     </section>
     <Footer/>
