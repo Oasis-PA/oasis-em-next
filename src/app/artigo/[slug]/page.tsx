@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import Header from "../../../components/header";
+import {Header, Footer} from "@/components";
 import '@/styles/artigoteste.css';
 
 interface ArtigoProps {
@@ -136,6 +136,7 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
           </ReactMarkdown>
         </article>
       </main>
+      <Footer/>
     </>
   );
 }
