@@ -5,18 +5,24 @@ import { prisma } from '@/lib/prisma';
 
 export async function POST(req: Request) {
   try {
+    const body = await req.json();
+    
     const {
       nome,
-      descricao,
+      composicao,
+      qualidades,
+      mais_detalhes,
       marca,
       preco,
       id_categoria,
       url_imagem,
       url_loja,
-      id_loja,
-      id_tag
-    } = await req.json();
+      id_tag,
+      id_tipo_cabelo,
+      id_tipo_pele
+    } = body;
 
+    // Validação de campos obrigatórios
     if (!nome || !marca || !preco || !id_categoria) {
       return NextResponse.json(
         { message: 'Campos obrigatórios faltando (nome, marca, preco, id_categoria).' },
@@ -50,20 +56,54 @@ export async function POST(req: Request) {
       }
     }
 
-    // Cria o produto com url_imagem e url_loja direto
+    // Verifica se o tipo de cabelo existe (se foi fornecido)
+    if (id_tipo_cabelo) {
+      const tipoCabeloExiste = await prisma.tipoCabelo.findUnique({
+        where: { id_tipo_cabelo: parseInt(id_tipo_cabelo, 10) }
+      });
+
+      if (!tipoCabeloExiste) {
+        return NextResponse.json(
+          { message: 'Tipo de cabelo não encontrado.' },
+          { status: 404 }
+        );
+      }
+    }
+
+    // Verifica se o tipo de pele existe (se foi fornecido)
+    if (id_tipo_pele) {
+      const tipoPeleExiste = await prisma.tipoPele.findUnique({
+        where: { id_tipo_pele: parseInt(id_tipo_pele, 10) }
+      });
+
+      if (!tipoPeleExiste) {
+        return NextResponse.json(
+          { message: 'Tipo de pele não encontrado.' },
+          { status: 404 }
+        );
+      }
+    }
+
+    // Cria o produto com todos os campos
     const novoProduto = await prisma.produto.create({
       data: {
         nome,
-        descricao,
+        composicao: composicao?.trim() || null,
+        qualidades: qualidades?.trim() || null,
+        mais_detalhes: mais_detalhes?.trim() || null,
         marca,
         preco: parseFloat(preco),
         id_categoria: parseInt(id_categoria, 10),
         id_tag: id_tag ? parseInt(id_tag, 10) : null,
-        url_imagem: url_imagem || null,
-        url_loja: url_loja || null,
+        id_tipo_cabelo: id_tipo_cabelo ? parseInt(id_tipo_cabelo, 10) : null,
+        id_tipo_pele: id_tipo_pele ? parseInt(id_tipo_pele, 10) : null,
+        url_imagem: url_imagem?.trim() || null,
+        url_loja: url_loja?.trim() || null,
       },
       include: {
         tag: true,
+        tipo_cabelo: true,
+        categoria: true,
       }
     });
 

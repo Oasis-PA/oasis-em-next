@@ -162,30 +162,12 @@
 
     transform: scale(1.1);
 }
-.bolinha > img {
-    
-    position: absolute;
-    right: 0;
-} 
-#sol{
-    margin-left: 10px;
-}
-#lua{
-    margin-left: 27.2px;
-    margin-top: 1px;
-    width: 26.9px;
-    height: 26.9px;
-}
 .imagem {
     width: 27.6px;
     height: 27.6px;
     position: absolute;
     top: 0;
     left: -9px;
-}
-.check:checked ~ .bolinha {
-    transform: translateX(3px);
-    margin-top: -30px; 
 }
 body
 {
@@ -242,6 +224,7 @@ main>h5
     margin-left: 130px;
     grid-area: 1 / 1 / 2 / 2;
 }
+
 .grupo-1 > svg
 {
     margin-left: 737px;
@@ -339,6 +322,7 @@ margin-top: 18px;
 
 
 }
+
 .grupo-2 > svg
 {
     transform: translatey(-323px);
@@ -466,6 +450,43 @@ margin-top: 18px;
     height: 21px;
     flex-shrink: 0;
     }
+}
+
+@media (max-width: 700px) {
+
+    main{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .grupo-1{
+        margin-left: 0;
+        margin-top: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 91px;
+
+    }
+    .grupo-2
+    {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        margin-bottom: 60%;
+        
+    }
+    
+    .grupo-2 > p, .grupo-3 >p{
+        width: 50%;
+    }
+    .grupo-3{
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        margin-bottom: 60%;
+    }
+    
 }
 .seção
 {
@@ -681,6 +702,16 @@ transform: translateY(-299px);
 
     margin-top: -350px;
     margin-left: 12px;
+}
+.save-icon{
+   
+    margin-left: 87%;
+    transform: translatey(-50%);
+    
+}
+#sorriso{
+    margin-left: 97%;
+    transform: translatey(100%);
 }
 .svg-linha
 {
@@ -932,11 +963,4 @@ margin-left: 12px;
     height: 422px;
  
 }
-footer {
-    display: flex;
-    margin-top: 200px;
-}
-footer iframe {
-    width: 1920px;
-    height: 400px;
-}
+

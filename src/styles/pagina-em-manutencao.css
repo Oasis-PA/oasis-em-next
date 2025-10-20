@@ -1,0 +1,106 @@
+/* Estilos gerais e para mobile (Mobile-First) */
+main * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    width: 100%;
+    background-color: #2A0D2C;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+main > h1 {
+  color: #D9D9D9;
+  font-family: "The Next Font", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+main > p {
+  color: #D9D9D9;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 40rem;
+  margin-top: 1.5rem;
+}
+
+main > a > button {
+  background-color: #8A2BE2; 
+  color: #FFFFFF;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin-top: 3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+main > a > button:hover {
+  background-color: #6A1B9A;
+  transform: scale(1.05);
+}
+
+.img1 {
+  margin-top: 2rem;
+  width: 120px; /* Aumentado de 80px para 120px */
+  height: auto;
+}
+
+.img2 {
+  margin-top: 4rem;
+  width: 220px; /* Aumentado de 150px para 220px */
+  height: auto;
+}
+
+/* --- Media Query para Telas Maiores (Tablets e Desktops) --- */
+@media (min-width: 768px) {
+  main > h1 {
+    font-size: 1rem;
+  }
+
+  main > p {
+    font-size: 1.25rem;
+  }
+  
+  main > a > button {
+    margin-top: 4rem;
+  }
+
+  .img1 {
+    margin-top: 0;
+  }
+
+  .img2 {
+    margin-top: 5rem;
+  }
+}

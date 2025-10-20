@@ -137,108 +137,94 @@ export default function OasisHomepage() {
           tendências e tire suas dúvidas.</h2>
         </div>
         <div className={styles.cards} ref={cardsContainerRef}>
-          <Link href="#">
+          <Link href="artigo/acidificacao-no-cabelo">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
+              <img src="/images/tela-principal/artigo-hot-1.jpg" alt="acidificacao-no-cabelo" />
               <p>Como fazer acidificação no cabelo? Confira dicas</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/serum-facial">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-2.png" alt="serum-facial" />
+              <p>Sérum Facial: o que é, como usar e para que serve</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/acido-hialuronico">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-3.jpg" alt="acido-hialuronico" />
+              <p>Ácido hialurônico nos cabelos? Entenda os benefícios.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/erros-cronograma-capilar">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-4.jpg" alt="erros-cronograma-capilar" />
+              <p>Seu cronograma capilar não dá certo? Evite estes erros.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/oleos-essenciais-para-cabelo">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-5.jpg" alt="oleos-essenciais-para-cabelo" />
+              <p>Quais óleos essenciais usar no cabelo? Veja 7 opções.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/5-receitas-naturais">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-6.jpg" alt="5-receitas-naturais" />
+              <p>Quer ter fios mais fortes? Confira 5 receitas caseiras.</p>
             </div>
           </Link>
 
-          <Link href="#">
+          <Link href="artigo/tons-de-cabelo-verao">
             <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
-            </div>
-          </Link>
-
-          <Link href="#">
-            <div className={styles.card}>
-              <img src="/images/tela-principal/artigo-hot-ex.png" alt="" />
-              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+              <img src="/images/tela-principal/artigo-hot-7.jpg" alt="tons-de-cabelo-verao" />
+              <p>Quer renovar o visual no verão? Inspire-se com os tons.</p>
             </div>
           </Link>
         </div>
       </section>
 
       <section className={styles.s2}>
-        <Link href='#'>
+        <Link href='/haircare'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-haircare.png" alt=""/>
             <h1>HAIR CARE</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/tendencias'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-tendencias.png" alt=""/>
             <h1>TENDÊNCIAS</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/skincare'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-skincare.png" alt=""/>
             <h1>SKINCARE</h1>
           </div>
         </Link>
 
-        <Link href='#'>
-          <div className={styles.s2links}>
-            <img src="/images/tela-principal/img-tinturas.png" alt=""/>
-            <h1>TINTURAS</h1>
-          </div>
-        </Link>
-
-        <Link href='#'>
+        <Link href='/produtos'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-produtos.png" alt=""/>
             <h1>PRODUTOS</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/alimentacao'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-alimentacao.png" alt=""/>
             <h1>ALIMENTAÇÃO</h1>
           </div>
         </Link>
 
-        <Link href='#'>
+        <Link href='/infantil'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-infantil.png" alt=""/>
             <h1>INFANTIL</h1>
@@ -287,6 +273,144 @@ export default function OasisHomepage() {
           ))}
         </div>
       </section>
+
+      <section className={styles.s4}>
+        <h1>Baseados no seu Perfil</h1>
+        <p>Uma lista de recomendações personalizadas baseadas <br></br>no seu perfil. Veja produtos que se foram feitos especialmente para você!</p>
+        <div className={styles.cardsperfil}>
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
+
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
+
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
+
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
+          
+        </div>
+        <div className={styles.arrow}>
+          <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link> <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
+        </div>
+      </section>
+
+      <section className={styles.s5}>
+        <div className={styles.artigos}>
+            <img className={styles.artigo1} src="images/skincare/artigo1.png" alt="" />
+            <div className={styles.contartigo}>
+              <h1>Aposte em Maquiagens ousadas!</h1>
+              <p>Está cansada das mesmas makes monótonas e sem
+              brilho em toda festa? Veja agora mesmo 10 maquiagens 
+              para inovar e arrasar no visual! Aposte também em 
+              produtos que não danifiquem sua pele e preservem sua
+              beleza natural.</p>
+              <button><Link href='/artigo/maquiagens'>CONHEÇA</Link></button>
+            </div>
+        </div>
+
+        <div className={styles.artigo2}>
+            <div className={styles.contartigo}>
+              <h1>Vai se casar? esteja incrível para seu amor!</h1>
+              <p>Está de casamento marcado mas ainda não tem certeza sobre
+              como deve se arrumar? Invista em você! Clique abaixo e 
+              descubra o kit de casamento perfeito, com looks, maquiagens
+              e penteados usados por famosos e feitos para você!
+              </p>
+              <button><Link href='artigo/vai-se-casar'>CONHEÇA</Link></button>
+            </div>
+            <img src="images/skincare/artigo2.png" alt="" />
+        </div>
+
+        <div className={styles.artigos}>
+            <img src="images/skincare/artigo3.png" alt="" />
+            <div className={styles.contartigo}>
+              <h1>autocuidado masculino</h1>
+              <p>Se importar com a própria beleza e querer se cuidar não
+                é mais algo irreal. Para quem dá aquele toque a mais na
+                aparência, recebe autoestima e felicidade renovadas! Leia 
+                agora por onde começar a ter uma rotina capilar e de 
+                skincare e dê uma repaginada total no visual!</p>
+              <button><Link href='artigo/autocuidado-masculino'>CONHEÇA</Link></button>
+            </div>
+        </div>
+      </section>
+
+      <section className={styles.s6}>
+        <div className={styles.h1novidades}>NOVIDADES</div>
+          <div className={styles.cardsnovidades}>
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade1}>
+                <h1>Creme de Pentear Phytomanga Efeito Pesado 500ml</h1>
+              </div>
+            </Link>
+
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade2}>
+                <h1>EFFACLAR REEQUILIBRANTE</h1>
+              </div>
+            </Link>
+
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade3}>
+                <h1>produto</h1>
+              </div>
+            </Link>
+
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade4}>
+                <h1>produto</h1>
+              </div>
+            </Link>
+          </div>
+      </section>
+
+      <section className={styles.s7}>
+        <div className={styles.s7div}>
+          <Link href='artigo/diferenca-de-geracoes'>
+            <div className={styles.artigo1footer}>
+              <h1>diferença de gerações</h1>
+              <p>Os 10 tratamentos de pele mais comuns em 1950 e 2024</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+          <Link href='/infantil'>
+            <div className={styles.artigo2footer}>
+              <h1>Cremes Infantis</h1>
+              <p>Veja os melhores produtos para suas crianças!</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+          <Link href='/tendencias'>
+            <div className={styles.artigo3}>
+              <h1>têndencias</h1>
+              <p>5 novos lançamentos que prometem abalar o mercado</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+        </div>
+      </section>
+      <Footer/>
     </>
   );
 }

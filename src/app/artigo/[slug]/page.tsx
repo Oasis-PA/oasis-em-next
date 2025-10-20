@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import Header from "../../../components/header";
+import {Header, Footer} from "@/components";
 import '@/styles/artigoteste.css';
 
 interface ArtigoProps {
@@ -76,10 +76,18 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
 
   // Usa a imagem do header do banco de dados (Supabase Storage)
   const imagemHeader = artigo.imagemHeader;
+  const themeDark = artigo.themeDark;
 
   return (
     <>
-      {imagemHeader ? <Header backgroundImage={imagemHeader} /> : <Header />}
+      {imagemHeader ? (
+        <Header 
+          backgroundImage={imagemHeader} 
+          theme={themeDark ? "dark" : undefined}
+        />
+      ) : (
+        <Header theme={themeDark ? "dark" : undefined} />
+      )}
       <main>
         <article className="markdown-content">
           <ReactMarkdown
@@ -128,6 +136,7 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
           </ReactMarkdown>
         </article>
       </main>
+      <Footer/>
     </>
   );
 }

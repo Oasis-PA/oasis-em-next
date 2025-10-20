@@ -1,12 +1,13 @@
 'use client';
 
-import {Footer} from "@/components";
+import {Header, Footer} from "@/components";
 import Image from "next/image";
 import "@/styles/corte-modelo.css";
 
 export default function cortemodelo() {
   return (
     <>
+    <Header/>
  <main>
         <section className="principal">
             <img id="img-principal" src="/images/corte-modelo/img-principal.png" alt="Imagem mulher com cabelo curto"/>
@@ -57,47 +58,7 @@ export default function cortemodelo() {
             </div>
           </div>
         </section>
-
-        <section className="secundario">
-          <h1 id="tit-3">Você também pode gostar</h1>
-          <div className="recs">
-            <div className="rec">
-              <img src="/images/corte-modelo/img-corte-1.png" alt="Corte 1"/>
-              <p id="tit-4">Corte XXXX</p>
-              <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
-                spray fixador para criar um efeito espetado...
-              </p>
-            </div>
-
-            <div className="rec">
-              <img src="/images/corte-modelo/img-corte-2.png" alt="Corte 1"/>
-              <p id="tit-4">Corte XXXX</p>
-              <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
-                spray fixador para criar um efeito espetado...
-              </p>
-            </div>
-
-            <div className="rec">
-              <img src="/images/corte-modelo/img-corte-3.png" alt="Corte 1"/>
-              <p id="tit-4">Corte XXXX</p>
-              <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
-                spray fixador para criar um efeito espetado...
-              </p>
-            </div>
-
-            <div className="rec">
-              <img src="/images/corte-modelo/img-corte-4.png" alt="Corte 1"/>
-              <p id="tit-4">Corte XXXX</p>
-              <p id="text-rec">
-                Para arrumar um corte pixie, pode-se utilizar produtos como gel e 
-                spray fixador para criar um efeito espetado...
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
+      <Footer/>
       </>
 )}

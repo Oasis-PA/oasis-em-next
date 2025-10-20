@@ -165,6 +165,7 @@ main > h5 {
     align-self: flex-end;
     margin-bottom: clamp(1.125rem, 1.5vw, 1.5rem);
     margin-left: clamp(1.5rem, 2.5vw, 2.5rem);
+    text-align: left;
 }
 
 #artigo2 {
@@ -235,6 +236,10 @@ main > h5 {
     margin-right: clamp(2rem, 3vw, 3rem);
 }
 
+#artigo4a {
+    align-self: end;
+}
+
 #artigo4 > h1 {
     color: #FFF;
     font-family: "THE NEXT FONT";
@@ -242,6 +247,7 @@ main > h5 {
     font-size: clamp(3rem, 8vw, 8rem);
     align-self: center;
     margin-left: clamp(2.5rem, 5vw, 5rem);
+    text-align: left;
 }
 
 #linha {
@@ -297,6 +303,16 @@ main > h5 {
     margin-left: clamp(1.25rem, 2vw, 2rem);
 }
 
+#s4 > div > a > div > h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    max-width: 30rem;
+    text-align: left;
+    margin-bottom: clamp(1.25rem, 2vw, 2rem);
+    margin-left: clamp(1.25rem, 2vw, 2rem);
+    color: #FFF;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
 #s4 > div > button {
     display: flex;
     width: 15.9375rem;
@@ -314,6 +330,11 @@ main > h5 {
     cursor: pointer;
 }
 
+#s4 > div > button > a {
+    color: #FFF;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+}
+
 #artigo5, #artigo6, #artigo7, #artigo8, #artigo9  {
     background-size: cover;
     background-repeat: no-repeat;
@@ -325,8 +346,8 @@ main > h5 {
     height: 18.5vw;
 }
 
-#artigo5 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
-#artigo6 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
-#artigo7 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
-#artigo8 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
-#artigo9 {background-image: url('../../public/images/tinturas/artigo5-bg.png');}
+#artigo5 {background-image: url('../../public/images/link-artigos/cuidados-noturnos.jpg');}
+#artigo6 {background-image: url('../../public/images/link-artigos/transicao-capilar.jpg');}
+#artigo7 {background-image: url('../../public/images/link-artigos/acidificacao-no-cabelo.jpg');}
+#artigo8 {background-image: url('../../public/images/link-artigos/protetor-solar-para-peles-retintas.jpg');}
+#artigo9 {background-image: url('../../public/images/link-artigos/como-fazer-waves.jpg');}

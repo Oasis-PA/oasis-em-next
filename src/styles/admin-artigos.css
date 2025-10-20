@@ -501,8 +501,9 @@
 .editor-area textarea {
   border: none;
   min-height: 400px;
-  padding: 0;
+  padding: 2.5px;
   font-size: 0.95rem;
+  width: 100%;
 }
 
 .markdown-hints {

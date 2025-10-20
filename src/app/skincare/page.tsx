@@ -10,10 +10,11 @@ import "@/styles/skincare.css";
 export default function skincare() {
   return (
     <>
-    <header>
+    <Header className="header-transparente"/>
+    <section className="section-header">
       <h1>SKIN</h1>
       <h2>CARE</h2>
-    </header>
+    </section>
     
     <main>
       <section id="s1">
@@ -55,41 +56,36 @@ export default function skincare() {
       
       <section id="s3">
         <div className="artigos">
-            <img id="artigo1" src="images/skincare/artigo1.png" alt="" />
+            <img id="artigo1" src="images/link-artigos/alimentacao-e-beleza.jpg" alt="" />
             <div className="cont-artigo">
-              <h1>Aposte em Maquiagens ousadas!</h1>
-              <p>Está cansada das mesmas makes monótonas e sem
-              brilho em toda festa? Veja agora mesmo 10 maquiagens 
-              para inovar e arrasar no visual! Aposte também em 
-              produtos que não danifiquem sua pele e preservem sua
-              beleza natural.</p>
-              <button>CONHEÇA</button>
+              <h1>Alimentação e beleza: nutrientes que fazem diferença</h1>
+              <p>Quer uma beleza que vem de dentro? Descubra quais nutrientes transformam 
+                sua pele, cabelo e unhas! A alimentação certa faz toda diferença. Clique 
+                e aprenda a se alimentar para brilhar de saúde e beleza!</p>
+              <button><Link href='artigo/alimentacao-e-beleza'>CONHEÇA</Link></button>
             </div>
         </div>
 
         <div id="artigo2">
             <div id="cont-artigo">
-              <h1>Vai se casar? esteja incrível para seu amor!</h1>
-              <p>Está de casamento marcado mas ainda não tem certeza sobre
-              como deve se arrumar? Invista em você! Clique abaixo e 
-              descubra o kit de casamento perfeito, com looks, maquiagens
-              e penteados usados por famosos e feitos para você!
+              <h1>Rotina de skincare para peles negras</h1>
+              <p>Quer uma pele radiante e saudável? Descubra a rotina de skincare 
+                perfeita para peles negras! Produtos e cuidados especiais que realçam 
+                sua beleza natural. Clique e transforme sua pele!
               </p>
-              <button>CONHEÇA</button>
+              <button><Link href='artigo/rotina-de-skincare-peles-negras'>CONHEÇA</Link></button>
             </div>
-            <img src="images/skincare/artigo2.png" alt="" />
+            <img src="images/link-artigos/rotina-de-skincare-peles-negras.jpg" alt="" />
         </div>
 
         <div className="artigos">
-            <img src="images/skincare/artigo3.png" alt="" />
+            <img src="images/link-artigos/oleos-vegetais-pele-seca.jpg" alt="" />
             <div className="cont-artigo">
-              <h1>autocuidado masculino</h1>
-              <p>Se importar com a própria beleza e querer se cuidar não
-                é mais algo irreal. Para quem dá aquele toque a mais na
-                aparência, recebe autoestima e felicidade renovadas! Leia 
-                agora por onde começar a ter uma rotina capilar e de 
-                skincare e dê uma repaginada total no visual!</p>
-              <button>CONHEÇA</button>
+              <h1>Melhores óleos vegetais para pele seca</h1>
+              <p>Sua pele está ressecada e sem vida? Descubra os melhores óleos vegetais que vão 
+                hidratar profundamente e deixar sua pele macia e radiante! Clique e conheça os segredos 
+                da hidratação natural!</p>
+              <button><Link href='artigo/oleos-vegetais-pele-seca'>CONHEÇA</Link></button>
             </div>
         </div>
       </section>
@@ -220,6 +216,7 @@ export default function skincare() {
     </section>
     <section id="imagem-perfume"></section>
     </main>
+    <Footer/>
     </>
   );
 }

@@ -1,11 +1,14 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link'; 
-
+import { Header, Footer } from "@/components";
 import '@/styles/meuperfil-before.css';
 
 const MeuAvatarPage: React.FC = () => {
   return (
     <>
+      <Header/>
       <section className="sec1">
         <div className="sec1-texto">
           <h1 className="titulo">Monte seu perfil único!</h1>
@@ -24,6 +27,7 @@ const MeuAvatarPage: React.FC = () => {
           <img src="/images/meuperfil-before/scorza.png" alt="Avatar" />
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

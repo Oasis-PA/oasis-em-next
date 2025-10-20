@@ -18,7 +18,8 @@ export default function EditarArtigoPage() {
     status: 'rascunho',
     dataPublicacao: '',
     horaPublicacao: '',
-    tags: ''
+    tags: '',
+    themeDark: false
   });
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -56,7 +57,8 @@ export default function EditarArtigoPage() {
           status: data.status,
           dataPublicacao: dataStr,
           horaPublicacao: horaStr,
-          tags: data.tags ? data.tags.join(', ') : ''
+          tags: data.tags ? data.tags.join(', ') : '',
+          themeDark: data.themeDark || false
         });
       } else {
         alert('Artigo não encontrado');
@@ -173,7 +175,8 @@ export default function EditarArtigoPage() {
         imagemHeader: formData.imagemHeader || null,
         status: formData.status,
         dataPublicacao: dataPublicacaoCompleta,
-        tags: tagsArray
+        tags: tagsArray,
+        themeDark: formData.themeDark
       };
 
       const response = await fetch(`/api/admin/artigos/${params.id}`, {
@@ -295,6 +298,20 @@ export default function EditarArtigoPage() {
             onChange={handleChange}
             placeholder="skincare, beleza, tutorial"
           />
+        </div>
+
+        <div className="form-group">
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              name="themeDark"
+              checked={formData.themeDark}
+              onChange={(e) => setFormData(prev => ({ ...prev, themeDark: e.target.checked }))}
+              style={{ width: 'auto', cursor: 'pointer' }}
+            />
+            <span>Ativar tema escuro no header?</span>
+          </label>
+          <small>Se ativado, o header terá o tema dark</small>
         </div>
 
         <div className="form-group">

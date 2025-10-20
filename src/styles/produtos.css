@@ -28,11 +28,16 @@ main {
     flex-direction: column;
 }
 
+.header-transparente {
+    background-color: transparent !important;
+}
+
 main > h1 {
     font-family: "The Next Font";
     font-size: clamp(2rem, 9vw, 4.96538rem);
     margin-left: clamp(1rem, 15vw, 9.3rem);
     line-height: normal;
+    margin-top: 3rem;
 }
 
 main > p {
@@ -45,20 +50,31 @@ main > p {
 #s1 {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     margin-top: clamp(1.5rem, 8vw, 4rem);
     gap: clamp(1rem, 5vw, 2.5rem);
     margin-bottom: clamp(2.5rem, 13vw, 6.85rem);
+    flex-wrap: wrap;
+    padding: 0 20px;
 }
 
 #s1 > img {
-    width: 15.20vw;
-    height: 19.79vw;
+    width: clamp(100px, 15.20vw, 220px);
+    height: auto;
+    object-fit: contain;
+}
+
+figure {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
 }
 
 figure > img {
-    width: 84vw;
-    height: 9vw;
-    cursor: pointer;
+    width: clamp(300px, 84vw, 1200px);
+    height: auto;
 }
 
 #s2 {
@@ -67,11 +83,12 @@ figure > img {
     width: 100%;
     justify-content: center;
     margin-top: clamp(1.5rem, 6vw, 3rem);
+    padding: 0 20px;
 }
 
 #s2 > div > h1 {
     font-family: "PLAYFUL RUNWAY";
-    font-size: clamp(2rem, 7vw, 3.75rem);
+    font-size: clamp(1.5rem, 7vw, 3.75rem);
     line-height: normal;
 }
 
@@ -85,30 +102,32 @@ figure > img {
 }
 
 #linha {
-    width: 60vw;
-    height: 0.1vw;
+    width: clamp(150px, 60vw, 800px);
+    height: 2px;
     background-color: black;
-    margin-left: clamp(1.2rem, 4vw, 2rem)
+    margin-left: clamp(1rem, 4vw, 2rem);
 }
 
 #linha2 {
-    width: 100%;
-    max-width: 60vw;
-    height: 0.1vw;
+    width: clamp(150px, 60vw, 800px);
+    height: 2px;
     background-color: black;
-    margin-right: clamp(1.2rem, 4vw, 2rem);
+    margin-right: clamp(1rem, 4vw, 2rem);
 }
 
 .imagens-s2 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: clamp(1.5rem, 6vw, 3rem);
+    align-items: center;
+    gap: clamp(1rem, 6vw, 3rem);
+    flex-wrap: wrap;
 }
 
 .imagens-s2 > img {
-    width: 20vw;
-    height: 21vw;
+    width: clamp(80px, 20vw, 280px);
+    height: auto;
+    object-fit: contain;
 }
 
 
@@ -126,7 +145,6 @@ figure > img {
     display: flex;
     justify-content: center; 
     gap: 7vw; 
-    
     margin: 0 auto; 
     padding: 0 20px;
     flex-wrap: wrap; 
@@ -134,13 +152,10 @@ figure > img {
 
 
 .filter-dropdown-container {
-    /* 🚩 NOVIDADE: Necessário para posicionar a lista suspensa (ul) */
     position: relative; 
-    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
     background-color: white;
     border-radius: 30px; 
     padding: 8px 15px 8px 20px; 
@@ -166,12 +181,10 @@ figure > img {
 
 
 .filter-content {
-    /* 🚩 MUDANÇA: Agora é um botão, garantindo que o clique funcione na área toda */
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    
     background: none;
     border: none;
     padding: 0;
@@ -184,7 +197,6 @@ figure > img {
     font-weight: 700;
     color: #343a40; 
     margin-right: 10px;
-    /* Para garantir que o texto não seja afetado pelo botão */
     line-height: 1.5; 
 }
 
@@ -203,9 +215,7 @@ figure > img {
     transition: transform 0.2s;
 }
 
-/* 🚩 NOVIDADE: Rotação da seta quando o dropdown está ativo */
 .filter-dropdown-container.active .filter-icon-circle {
-    /* Rotaciona a seta para cima */
     transform: rotate(180deg);
 }
 
@@ -214,30 +224,21 @@ figure > img {
     stroke-width: 2.5;
 }
 
-/* ----------------------------------------------------- */
-/* 🚩 NOVIDADE: Estilos da Lista Suspensa (Dropdown Options) */
-/* ----------------------------------------------------- */
-
 .dropdown-options-list {
-    /* 🚩 POSICIONAMENTO: Faz a lista aparecer sobre o conteúdo */
     position: absolute;
-    top: 100%; /* Começa logo abaixo do filtro */
+    top: 100%;
     left: 0;
-    
     width: 100%;
     min-width: 200px;
     z-index: 10;
-    
     background-color: white;
     border-radius: 10px;
     padding: 10px 0;
-    
     list-style: none;
     margin: 5px 0 0 0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border: 1px solid #f0f0f0;
-    
-    overflow: hidden; /* Garante que as bordas da lista fiquem arredondadas */
+    overflow: hidden;
 }
 
 .dropdown-options-list li {
@@ -254,7 +255,7 @@ figure > img {
 
 .dropdown-options-list li.selected {
     font-weight: 700;
-    background-color: #f7f3fa; /* Cor de fundo para a opção selecionada */
+    background-color: #f7f3fa;
     color: #5F0B38;
 }
 
@@ -278,7 +279,7 @@ figure > img {
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border: 2px solid #5F0B38; /* Borda da cor da marca */
+    border: 2px solid #5F0B38;
     padding: 10px;
 }
 
@@ -293,10 +294,13 @@ figure > img {
 }
 
 .produto-card-image {
-    width: 100%; 
-    max-height: 250px;
+    width: 100% !important; 
+    height: auto !important;
+    max-height: 300px;
     object-fit: contain; 
     margin-bottom: 15px;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .card-tag {
@@ -306,7 +310,7 @@ figure > img {
 }
 
 .card-title {
-     font-family: 'The Next Font', sans-serif;
+    font-family: 'The Next Font', sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     font-weight: bold; 
@@ -328,7 +332,6 @@ figure > img {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
-    
     margin-top: auto; 
 }
 
@@ -336,42 +339,10 @@ figure > img {
     background-color: #a56f96;
 }
 
-
-/* --- RESPONSIVIDADE (Ajuste a grade para telas menores) --- */
-@media (max-width: 1024px) {
-    .produtos-grid-wrapper {
-        /* 3 colunas em tablets */
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .produtos-grid-wrapper {
-        /* 2 colunas em telas menores */
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .filtros-barra-wrapper {
-        /* Reduz o gap do filtro em telas menores */
-        gap: 4vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .produtos-grid-wrapper {
-        /* 1 coluna em celulares */
-        grid-template-columns: 1fr;
-    }
-    
-    .filter-dropdown-container {
-        /* Faz os filtros ocuparem mais espaço em telas muito pequenas */
-        min-width: 40vw;
-    }
-}
-
 .load-more-container {
     width: 100%;
-    margin-top: 2vh;
+    margin-top: 1vh;
+    margin-bottom: 15vh;
     padding: 50px 0; 
     display: flex;
     justify-content: center; 
@@ -397,4 +368,309 @@ figure > img {
     border-color: #a0a0a0;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
+}
+
+.load-more-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.loading-message, .error-message {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+
+/* --- RESPONSIVIDADE --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .produtos-grid-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    main > h1 {
+        font-size: clamp(1.8rem, 8vw, 3.5rem);
+        margin-left: clamp(1rem, 10vw, 5rem);
+    }
+
+    main > p {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        margin-left: clamp(1rem, 10vw, 5rem);
+    }
+
+    .linha-texto {
+        margin-left: clamp(1rem, 10vw, 5rem);
+    }
+}
+
+/* Mobile - Tablets pequenos */
+@media (max-width: 768px) {
+    /* Header e textos principais */
+    main > h1 {
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+        margin-left: 1.5rem;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    main > p {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        margin-left: 1.5rem;
+        text-align: center;
+    }
+
+    /* Seção de marcas */
+    #s1 {
+        gap: clamp(0.8rem, 3vw, 1.5rem);
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    #s1 > img {
+        width: clamp(70px, 18vw, 150px);
+    }
+
+    /* Banner do quiz */
+    figure {
+        padding: 0 15px;
+    }
+
+    figure > img {
+        width: 90vw;
+        max-width: 500px;
+    }
+
+    /* Seção de tipos */
+    .linha-texto {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #linha, #linha2 {
+        display: none;
+    }
+
+    #s2 > div > h1 {
+        font-size: clamp(1.3rem, 6vw, 2rem);
+        text-align: center;
+        width: 100%;
+    }
+
+    .imagens-s2 {
+        gap: clamp(0.8rem, 4vw, 1.5rem);
+        padding: 0 15px;
+    }
+
+    .imagens-s2 > img {
+        width: clamp(70px, 22vw, 150px);
+    }
+
+    /* Layout em coluna para mobile */
+    .produtos-layout-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 25px;
+        max-width: 95vw;
+        margin: 0 auto;
+        padding: 0 15px;
+        margin-top: 30px;
+    }
+
+    /* Filtros no topo */
+    .filtros-barra-fundo {
+        width: 100%;
+        margin-top: 3rem;
+        padding: 0;
+    }
+
+    .filtros-barra-wrapper {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 10px;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filter-dropdown-container {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 140px;
+        max-width: 180px;
+    }
+
+    .filter-dropdown-container.active {
+        z-index: 20; 
+    }
+
+    /* Grid de Produtos */
+    #produtos-grid-section {
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .produtos-grid-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Botão Carregar Mais */
+    .load-more-container {
+        margin-top: 2vh;
+        margin-bottom: 8vh;
+        padding: 30px 0;
+    }
+
+    .load-more-button {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+    /* Header */
+    main > h1 {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    main > p {
+        font-size: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    /* Marcas */
+    #s1 {
+        gap: 0.5rem;
+    }
+
+    #s1 > img {
+        width: clamp(60px, 20vw, 100px);
+    }
+
+    /* Tipos de cabelo e pele */
+    .imagens-s2 > img {
+        width: clamp(65px, 24vw, 120px);
+    }
+
+    /* Ajustes para telas pequenas */
+    .produtos-grid-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .produtos-layout-wrapper {
+        gap: 20px;
+        padding: 0 10px;
+        margin-top: 20px;
+    }
+
+    .filtros-barra-wrapper {
+        gap: 8px;
+    }
+    
+    .filter-dropdown-container {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 130px;
+        padding: 6px 12px 6px 15px;
+    }
+
+    .filter-label {
+        font-size: 9px;
+    }
+
+    .filter-value {
+        font-size: 14px;
+    }
+
+    .filter-icon-circle {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Botão Carregar Mais */
+    .load-more-container {
+        margin-top: 1vh;
+        margin-bottom: 6vh;
+        padding: 20px 0;
+    }
+
+    .load-more-button {
+        padding: 10px 25px;
+        font-size: 0.85rem;
+    }
+
+    /* Cards de Produtos */
+    .produto-card {
+        padding: 8px;
+    }
+
+    .card-inner-wrapper {
+        padding: 10px;
+    }
+
+    .card-title {
+        font-size: 0.95rem;
+        margin-top: 1vh;
+        margin-bottom: 1.5vh;
+        height: 3.5em;
+    }
+
+    .card-button {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile muito pequeno */
+@media (max-width: 360px) {
+    main > h1 {
+        font-size: 1.3rem;
+    }
+
+    main > p {
+        font-size: 0.9rem;
+    }
+
+    #s1 > img {
+        width: 55px;
+    }
+
+    .imagens-s2 > img {
+        width: 60px;
+    }
+
+    .filter-dropdown-container {
+        min-width: 120px;
+        padding: 5px 10px 5px 12px;
+    }
+
+    .filter-label {
+        font-size: 8px;
+    }
+
+    .filter-value {
+        font-size: 12px;
+    }
+
+    .card-title {
+        font-size: 0.85rem;
+    }
+
+    .card-button {
+        padding: 7px 15px;
+        font-size: 0.8rem;
+    }
 }

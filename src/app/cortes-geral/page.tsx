@@ -1,11 +1,14 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link'; 
-
+import { Header, Footer } from "@/components";
 import '@/styles/cortes-geral.css';
 
 export default function cortegeral() {
   return (
     <>
+    <Header/>
     <section className='voce_procura'>
           <img src="/images/cortes-geral/temos.png" alt="" />
           <div className="texto-procura">
@@ -25,29 +28,26 @@ export default function cortegeral() {
         <section className="section-artigos">   
           <img src="/images/cortes-geral/imagem-artigo1.png" alt="imagem-artigo1" />
           <div className="div-artigo">
-            <h1 className="h1-tituloartigo">APOSTE EM MAQUIAGENS <br className="desktop-only" />OUSADAS!</h1>
+            <h1 className="h1-tituloartigo">Melhores tipos de <br className="desktop-only"/>finalização</h1>
             <p className="p2">
-              Está cansada das mesmas makes monótonas e sem
-              brilho em toda festa? Veja agora mesmo 10 maquiagens
-              para inovar e arrasar no visual! Aposte também em 
-              produtos que não danifiquem sua pele e preservem sua 
-              beleza natural.
+              Quer finalizar seus cachos como uma profissional? 
+              Invista em você! Clique abaixo e descubra as melhores 
+              técnicas de finalização que deixam os cabelos definidos, 
+              soltos e lindos por muito mais tempo!
             </p>
-            <button className="button1">DESCUBRA</button>
+            <button className="button1"><Link href='artigo/melhores-tipos-de-finalizacao'>DESCUBRA</Link></button>
           </div>
         </section>
         
         <section className="section-artigos">
           <div id="div-artigo2">
-            <h1 className="h1-tituloartigo">APOSTE EM MAQUIAGENS <br className="desktop-only" />OUSADAS!</h1>
+            <h1 className="h1-tituloartigo">Cabelos masculinos crespos: <br className="desktop-only" />guia completo de cuidados</h1>
             <p className="p2">
-              Está cansada das mesmas makes monótonas e sem
-              brilho em toda festa? Veja agora mesmo 10 maquiagens
-              para inovar e arrasar no visual! Aposte também em 
-              produtos que não danifiquem sua pele e preservem sua 
-              beleza natural.
+             Está cansado de cabelos ressecados e sem forma? Invista em você! 
+             Clique abaixo e descubra o guia completo para cabelos crespos 
+             masculinos, com cuidados, produtos e técnicas para fios impecáveis!
             </p>
-            <button className="button1">DESCUBRA</button>
+            <button className="button1"><Link href='artigo/cabelos-masculinos-crespos'>DESCUBRA</Link></button>
           </div>
           <img src="/images/cortes-geral/imagem-artigo2.png" alt="imagem-artigo2" />
         </section>
@@ -55,15 +55,13 @@ export default function cortegeral() {
         <section className="section-artigos">
           <img src="/images/cortes-geral/imagem-artigo3.png" alt="imagem-artigo3" />
           <div className="div-artigo">
-            <h1 className="h1-tituloartigo">APOSTE EM MAQUIAGENS <br className="desktop-only" />OUSADAS!</h1>
+            <h1 className="h1-tituloartigo">Cortes que valorizam <br className="desktop-only" />o rosto redondo</h1>
             <p className="p2">
-              Está cansada das mesmas makes monótonas e sem
-              brilho em toda festa? Veja agora mesmo 10 maquiagens
-              para inovar e arrasar no visual! Aposte também em
-              produtos que não danifiquem sua pele e preservem sua 
-              beleza natural.
+             Não sabe qual corte combina com seu rosto? Invista em você! Clique abaixo 
+             e descubra os cortes que valorizam o rosto redondo, alongam o visual e realçam 
+             sua beleza natural. Transformação garantida!
             </p>
-            <button className="button1">DESCUBRA</button>
+            <button className="button1"><Link href='artigo/cortes-que-valorizam-o-rosto-redondo'>DESCUBRA</Link></button>
           </div>
         </section>
       </main>
@@ -101,6 +99,7 @@ export default function cortegeral() {
           <button id="button2">VEJA MAIS</button>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

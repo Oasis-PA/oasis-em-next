@@ -1,41 +1,30 @@
+"use client";
+
 import Link from "next/link";
-import Header from "@/components/header";
+import "@/styles/pagina-em-manutencao.css";
 
 export default function PaginaEmManutencao() {
   return (
     <>
-      <Header />
-      <main style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "60vh",
-        padding: "2rem",
-        textAlign: "center",
-        gap: "1rem"
-      }}>
-        <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>🚧</h1>
-        <h2 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>Página em Manutenção</h2>
-        <p style={{ fontSize: "1.2rem", color: "#666", maxWidth: "600px" }}>
-          Esta página está temporariamente indisponível. Estamos trabalhando para trazer novidades em breve!
+      <main>
+        <img 
+          src="/images/pagina-em-manutencao/engrenagem.png" 
+          alt="Ícone de uma engrenagem" 
+          className="img1"
+        />
+        <h1>Página em manutenção!</h1>
+        <p>
+          Estamos temporariamente fora do ar para manutenção. Pedimos desculpas 
+          pelo inconveniente. Voltaremos a ficar online em breve.
         </p>
-        <Link
-          href="/"
-          style={{
-            marginTop: "2rem",
-            padding: "1rem 2rem",
-            backgroundColor: "#8B4789",
-            color: "white",
-            textDecoration: "none",
-            borderRadius: "8px",
-            fontSize: "1rem",
-            fontWeight: "bold",
-            transition: "background-color 0.3s"
-          }}
-        >
-          Voltar para a Página Inicial
+        <Link href="/">
+          <button>VOLTAR PARA A PÁGINA PRINCIPAL</button>
         </Link>
+        <img 
+          src="/images/pagina-em-manutencao/logo.png" 
+          alt="Logo da Oasis - Beleza e Autoestima" 
+          className="img2"
+        />
       </main>
     </>
   );

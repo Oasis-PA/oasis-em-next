@@ -13,15 +13,17 @@ export default function CadastrarProdutoPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
     nome: '',
-    descricao: '',
+    composicao: '',
+    qualidades: '',
+    mais_detalhes: '',
     marca: '',
     preco: '',
     id_categoria: '',
     url_imagem: '',
     url_loja: '',
-    id_tag: '', // Agora é ID ao invés de texto
-     id_tipo_cabelo: '',
-  id_tipo_pele: '',
+    id_tag: '',
+    id_tipo_cabelo: '',
+    id_tipo_pele: '',
   });
   const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(false);
@@ -84,7 +86,9 @@ export default function CadastrarProdutoPage() {
         setMensagem('Produto cadastrado com sucesso!');
         setFormData({
           nome: '',
-          descricao: '',
+          composicao: '',
+          qualidades: '',
+          mais_detalhes: '',
           marca: '',
           preco: '',
           id_categoria: '',
@@ -92,7 +96,7 @@ export default function CadastrarProdutoPage() {
           url_loja: '',
           id_tag: '',
           id_tipo_cabelo: '',
-  id_tipo_pele: '',
+          id_tipo_pele: '',
         });
       }
     } catch (err) {
@@ -132,7 +136,41 @@ export default function CadastrarProdutoPage() {
             />
           </div>
 
-        
+          <div className="form-group">
+            <label htmlFor="composicao">Composição:</label>
+            <textarea 
+              id="composicao" 
+              name="composicao" 
+              value={formData.composicao} 
+              onChange={handleChange}
+              rows={4}
+              placeholder="Ingredientes e componentes do produto"
+            ></textarea>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="qualidades">Qualidades:</label>
+            <textarea 
+              id="qualidades" 
+              name="qualidades" 
+              value={formData.qualidades} 
+              onChange={handleChange}
+              rows={4}
+              placeholder="Principais benefícios e qualidades do produto"
+            ></textarea>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="mais_detalhes">Mais Detalhes:</label>
+            <textarea 
+              id="mais_detalhes" 
+              name="mais_detalhes" 
+              value={formData.mais_detalhes} 
+              onChange={handleChange}
+              rows={4}
+              placeholder="Informações adicionais sobre o produto"
+            ></textarea>
+          </div>
 
           <div className="form-group">
             <label htmlFor="id_tag">Tag Principal:</label>
@@ -152,44 +190,46 @@ export default function CadastrarProdutoPage() {
             </select>
             {loadingTags && <small>Carregando tags...</small>}
           </div>
-  <div className="form-group">
-  <label htmlFor="id_tipo_cabelo">ID Tipo de Cabelo:</label>
-  <input 
-    type="number" 
-    id="id_tipo_cabelo" 
-    name="id_tipo_cabelo" 
-    value={formData.id_tipo_cabelo} 
-    onChange={handleChange} 
-    // Removi 'required' porque o campo é opcional no Prisma (Int?)
-  />
-</div>
-<div className="form-group">
-  <label htmlFor="id_tipo_pele">ID Tipo de Pele:</label>
-  <input 
-    type="number" 
-    id="id_tipo_pele" 
-    name="id_tipo_pele" 
-    value={formData.id_tipo_pele} 
-    onChange={handleChange} 
-    // Removi 'required' porque o campo é opcional no Prisma (Int?)
-  />
-</div>
+
           <div className="form-group">
-  <label htmlFor="preco">Preço:</label>
-  {/* 🚩 NOVIDADE: Adiciona uma classe wrapper para o CSS */}
-  <div className="input-with-currency">
-    <span className="currency-symbol">R$</span>
-    <input
-      type="number" 
-      id="preco" 
-      name="preco" 
-      value={formData.preco} 
-      onChange={handleChange} 
-      step="0.01"
-      required 
-    />
-  </div>
-</div>
+            <label htmlFor="id_tipo_cabelo">ID Tipo de Cabelo:</label>
+            <input 
+              type="number" 
+              id="id_tipo_cabelo" 
+              name="id_tipo_cabelo" 
+              value={formData.id_tipo_cabelo} 
+              onChange={handleChange}
+              placeholder="Deixe em branco se não aplicável"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="id_tipo_pele">ID Tipo de Pele:</label>
+            <input 
+              type="number" 
+              id="id_tipo_pele" 
+              name="id_tipo_pele" 
+              value={formData.id_tipo_pele} 
+              onChange={handleChange}
+              placeholder="Deixe em branco se não aplicável"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="preco">Preço:</label>
+            <div className="input-with-currency">
+              <span className="currency-symbol">R$</span>
+              <input
+                type="number" 
+                id="preco" 
+                name="preco" 
+                value={formData.preco} 
+                onChange={handleChange} 
+                step="0.01"
+                required 
+              />
+            </div>
+          </div>
 
           <div className="form-group">
             <label htmlFor="id_categoria">ID da Categoria:</label>
@@ -225,17 +265,6 @@ export default function CadastrarProdutoPage() {
               onChange={handleChange} 
               required 
             />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="descricao">Descrição (opcional):</label>
-            <textarea 
-              id="descricao" 
-              name="descricao" 
-              value={formData.descricao} 
-              onChange={handleChange}
-              rows={4}
-            ></textarea>
           </div>
 
           <button type="submit" disabled={loading} className="submit-button">

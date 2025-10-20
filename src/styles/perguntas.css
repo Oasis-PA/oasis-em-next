@@ -1,4 +1,5 @@
-main * {
+/* Estilos Globais e Melhorias */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,25 +7,26 @@ main * {
 
 body {
     background-color: #5E332C;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh; /* Permite que o corpo cresça se o conteúdo for maior */
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    font-family: "Louis George Cafe", sans-serif;
 }
 
 main {
     background-color: white;
-    border-radius: 2vw;
-    box-sizing: border-box;
+    border-radius: 1.5rem; /* Unidade mais estável que vw */
     width: 96vw;
-    height: 96%;
+    max-width: 1850px; /* Adiciona uma largura máxima para telas ultra-wide */
+    height: 96vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2vw;
     overflow: hidden;
+    padding: 1.5rem; /* Adiciona um padding geral */
 }
 
 .pergunta-header {
@@ -33,7 +35,6 @@ main {
 	gap: 0.625rem;
 	align-items: flex-start;
 	justify-content: flex-start;
-	height: 6rem;
 	min-height: 6rem;
 }
 
@@ -41,7 +42,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
-    width: 90%;
+    width: 100%;
 }
 
 .pergunta-subtitulo {
@@ -50,15 +51,15 @@ main {
     gap: 0.5rem;
 }
 
+/* --- Coluna Esquerda --- */
 .esquerda {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #5E332C;
-    width: 48vw;
-    height: 95%;
-    border-radius: 2vw 0 0 2vw;
-    margin-left: 1.5vw;
+    width: 48%; /* Usar porcentagem é mais flexível */
+    height: 100%;
+    border-radius: 1rem;
 }
 
 .content {
@@ -72,10 +73,10 @@ main {
 .seta {
     display: flex;
     align-items: center;
-    width: 22vw;
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0; /* Remove padding padrão de botões */
 }
 
 .seta img {
@@ -87,13 +88,10 @@ main {
     color: #AAA;
     font-family: "Louis George Cafe";
     font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    transition: text-decoration 1s ease, color 0.3s ease;
+    transition: text-decoration 0.3s ease, color 0.3s ease;
 }
 
-.seta p:hover {
+.seta:hover p {
     color: #e6e6e6;
     text-decoration: underline;
     text-underline-offset: 5%;
@@ -105,10 +103,7 @@ main {
     color: #F2A518;
     font-family: "The Next Font";
     font-size: 1.6rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
-    width: 20rem;
     margin-bottom: 1.5rem;
 }
 
@@ -116,10 +111,9 @@ main {
     color: #ffffff;
     font-family: "The Next Font";
     font-size: 2.5rem;
-    font-style: normal;
     font-weight: 500;
-    line-height: normal;
-    width: 90%;
+    line-height: 1.2; /* Melhor para quebra de linha */
+    width: 100%;
     word-break: break-word;
 }
 
@@ -127,34 +121,25 @@ main {
     color: #F2A518;
     font-family: "Louis George Cafe";
     font-size: 1rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
-    width: 11rem;
 }
 
 #logo {
     width: 100%;
-    height: 8rem;
+    height: auto;
     max-width: 9rem;
-    flex-shrink: 0;
-    flex-grow: 0;
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
 
-
-
-
-
-
+/* --- Coluna Direita --- */
 .direita {
     display: flex;
-    width: 48vw;
-    height: 95%;
+    width: 52%; /* Ajuste para preencher o espaço */
+    height: 100%;
     align-items: center;
     justify-content: flex-start;
-    overflow: auto;
-    box-sizing: border-box;
+    overflow-y: auto; /* Permite rolagem apenas vertical */
+    overflow-x: hidden;
 }
 
 .conteudo {
@@ -164,8 +149,7 @@ main {
     justify-content: center;
     width: 100%;
     height: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    padding-right: 1rem; /* Evita que a barra de rolagem cole no conteúdo */
 }
 
 .direita img {
@@ -181,35 +165,36 @@ main {
     flex: 1;
     flex-direction: column;
     gap: 1.5rem;
-    margin-bottom: 2vw;
-    flex-shrink: 1; 
-    flex-grow: 0; 
+    margin-bottom: 2rem;
+    width: 100%;
 }
 
 .direita label {
-    width: 45rem;
+    width: 100%; /* CORREÇÃO: Usa 100% da largura do pai */
+    max-width: 45rem; /* Mantém a largura máxima original */
     display: flex;
     align-items: center;
-    gap: 2rem;
-    padding: .5rem;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem;
     border: 0.19rem solid #F2A518;
     border-radius: 0.8rem;
     background: #fff;
-    box-sizing: border-box;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, border-color 0.2s;
+    height: 4rem;
 }
 
 input[type="radio"] {
     appearance: none;
     width: 1.4rem;
-    height: 1.3rem;
+    height: 1.4rem;
     border: 0.4rem solid transparent;
     border-radius: 50%;
     background-color: transparent;
     outline: 0.15rem solid #F2A518;
     transition: background-color 0.3s ease, border 0.3s ease;
-    margin-left: 2rem;
+    margin-left: 1rem;
+    flex-shrink: 0; /* Impede que o radio button encolha */
 }
 
 input[type="radio"]:checked {
@@ -218,20 +203,13 @@ input[type="radio"]:checked {
 }
 
 .direita label span {
-    width: 95%; 
+    width: 100%; 
     word-break: break-word;
-    padding: 0.5rem 0.5rem;
-    border-radius: 0.8rem;
-    transition: background 0.2s;
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 1.3rem);
-    font-style: normal;
+    font-size: 1.2rem;
     font-weight: 500;
-    line-height: normal;
 }
-
-
 
 .direita label.selected {
     background: #FFF3DD;
@@ -241,43 +219,137 @@ input[type="radio"]:checked {
 .botoes {
     display: flex;
     gap: 2rem;
-    margin-top: auto;
+    margin-top: auto; /* Empurra os botões para baixo */
+    padding-top: 1rem; /* Espaço para não colar nas respostas */
+}
+
+.botoes button {
+    display: flex;
+    width: 8rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-family: "The Next Font";
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 #number_one {
-    display: flex;
-    width: 8rem;
-    height: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
     color: #F2A518;
-    font-family: "The Next Font";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     border: 0.15rem solid #F2A518;
-    border-radius: 0.8rem;
     background-color: transparent;
-    cursor: pointer;
+}
+
+#number_one:hover {
+    background-color: #f2a6182a;
 }
 
 #number_two {
-    display: flex;
-    width: 8rem;
-    height: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
     color: #ffffff;
-    font-family: "The Next Font";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     border: none;
-    border-radius: 0.8rem;
     background-color: #F2A518;
-    cursor: pointer;
+}
+#number_two:hover {
+    background-color: #d28e16;
+}
+
+/* ========================================= */
+/* ===         MEDIA QUERIES             === */
+/* ========================================= */
+
+/* --- Para Tablets (até 1024px) --- */
+@media (max-width: 1024px) {
+    body {
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+        padding: 1rem 0; /* Adiciona espaço vertical */
+    }
+
+    main {
+        flex-direction: column; /* Empilha as seções */
+        height: auto;
+        width: 90vw;
+        overflow: visible; /* Remove o overflow hidden */
+        padding: 0; /* Remove padding para as seções ocuparem tudo */
+        gap: 0;
+    }
+
+    .esquerda, .direita {
+        width: 100%;
+        height: auto;
+    }
+
+    .esquerda {
+        border-radius: 1.5rem 1.5rem 0 0; /* Arredonda cantos superiores */
+        padding: 2rem;
+    }
+
+    .content {
+        height: auto;
+    }
+    
+    .pergunta-header {
+        margin: 2rem 0;
+    }
+    
+    .direita {
+        overflow-y: visible; /* Desativa a rolagem interna */
+        padding: 2rem;
+    }
+    
+    .conteudo {
+        padding-right: 0;
+    }
+}
+
+
+/* --- Para Celulares (até 768px) --- */
+@media (max-width: 768px) {
+    main {
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    .esquerda {
+        padding: 1.5rem;
+        border-radius: 0;
+    }
+    
+    .esquerda h1 {
+        font-size: 1.4rem;
+    }
+
+    .esquerda h2 {
+        font-size: 1.8rem;
+    }
+
+    .direita {
+        padding: 1.5rem;
+    }
+
+    .direita label {
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    input[type="radio"] {
+        margin-left: 0.5rem;
+    }
+
+    .direita label span {
+        font-size: 1rem;
+    }
+
+    .botoes {
+        flex-direction: column; /* Empilha os botões */
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .botoes button {
+        width: 100%; /* Botões ocupam toda a largura */
+    }
 }

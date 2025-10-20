@@ -6,16 +6,17 @@ main * {
 
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh; /* Alterado para min-height para melhor adaptação */
 }
 
 main {
     display: flex;
-    background: linear-gradient(90deg, #F2A518 32%, transparent 30%);
+    background: linear-gradient(90deg, #F2A518 550px, #FFF 160px); /* Ajustado para corresponder à estrutura e cor */
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    padding: 2rem;
     gap: 2rem;
 }
 
@@ -24,15 +25,15 @@ main {
     flex-direction: column;
     align-items: end;
     width: 40%;
-    height: 90%;
+    height: 100%;
     gap: 2rem;
 }
 
 .voltar {
-    align-self: flex-start;
-    align-items: center;
+    position: absolute; /* Adicionado para consistência */
+    top: 2rem;
+    left: 4rem;
     height: fit-content;
-    transform: translateX(-8%);
 }
 
 #voltando {
@@ -51,7 +52,6 @@ main {
     font-family: "Louis George Cafe";
     text-decoration: none;
     font-size: 1.2rem;
-    font-style: normal;
     font-weight: 700;
     line-height: normal;
     width: fit-content;
@@ -62,13 +62,15 @@ main {
     color: hsl(0, 0%, 100%);
     text-decoration: underline;
     text-underline-offset: 5%;
-    text-decoration-color: #5E332C;
+    text-decoration-color: #5E332C; /* Cor de destaque mantida */
     text-decoration-thickness: 0.1rem;
 }
 
 #img-principal {
-    width: 45rem;
+    width: 100%;
+    max-width: 50rem; /* Usando max-width para responsividade */
     height: auto;
+    object-fit: contain;
 }
 
 .direita {
@@ -77,7 +79,6 @@ main {
     justify-content: center;
     width: 100%;
     max-width: 42rem;
-    min-width: 0;
     align-items: center;
 }
 
@@ -85,10 +86,8 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90%;
-    max-width: 100%;
+    max-width: 40rem;
     justify-content: center;
-    padding: 0 1rem;
 }
 
 #quiz {
@@ -99,21 +98,17 @@ main {
     color: #FFF;
     font-family: "Louis George Cafe";
     font-size: 1.1rem;
-    font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding: 0.5rem 2rem 0.5rem 1rem;
+    padding: 0.4rem 1.5rem;
 }
 
 .conteudo h1 {
     color: #000;
     font-family: "The Next Font";
-    font-size: clamp(2rem, 7vw, 6rem);
-    font-style: normal;
+    font-size: clamp(3rem, 7vw, 6rem);
     font-weight: 400;
-    line-height: normal;
-    width: 100%;
-    max-width: 100%;
+    margin-top: 0.5rem;
 }
 
 .conteudo p {
@@ -121,116 +116,111 @@ main {
     color: #000;
     font-family: "Louis George Cafe";
     font-size: clamp(1rem, 3vw, 2rem);
-    font-style: normal;
     font-weight: 500;
     line-height: 1.1;
-    width: 95%;
+    width: 90%;
     max-width: 40rem;
-}
-
-.leia {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    width: fit-content;
-    margin-top: 1rem;
-}
-
-.leia h4 {
-    color: #000;
-    font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    width: fit-content;
-}
-
-.leia img {
-    width: .6rem;
-    height: 1rem;
 }
 
 .abaixo {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: fit-content;
-    max-width: 100%;
+    width: 100%;
+    max-width: 35rem;
     gap: 1.5rem;
     margin-top: 2rem;
 }
 
 .conteudo button {
-    background: #F2A518;
-    display: flex;
+    background: #F2A518; /* Cor principal do questionario1 */
     width: 100%;
-    padding: 1.3rem 12rem;
-    justify-content: center;
-    align-items: center;
+    padding: 1.2rem 2rem;
     border-style: none;
     border-radius: 3rem;
     color: #FFF;
     text-align: center;
     font-family: "The Next Font";
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .conteudo button:hover {
-    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
-    box-shadow: 0 0.5em 1em 0 #945414;
-}
-
-.conteudo button:active {
-    border: 0.1em solid #ECC46F;
-    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
-    box-shadow: 0 0.4em 0.4em 0 rgba(0, 0, 0, 0.48);
+    background: #d99416; /* Um tom mais escuro para o hover */
+    transform: scale(1.02);
 }
 
 .beneficios {
-    width: 38rem;
-    height: 70%;
-    border: .2rem solid #000;
-    padding: 1rem;
+    width: 100%;
+    border: .15rem solid #000;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 1rem;
+    gap: 1rem;
 }
 
 .beneficios h3 {
     color: #000;
     font-family: "PLAYFUL RUNWAY";
     font-size: 1.5rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
+}
+
+.textinhos {
+    display: grid; /* Usando grid para igualar à estrutura responsiva */
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1rem 2rem;
+    text-align: center;
 }
 
 .beneficios p {
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: 1.25rem;
-    font-style: normal;
+    font-size: 1.1rem;
     font-weight: 400;
-    line-height: normal;
-    width: fit-content;
-}
-
-.textinhos {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     width: 100%;
 }
 
-.em-cima, .em-baixo {
-    display: flex;
-    gap: 5rem;
-    height: fit-content;
-    justify-content: space-between;
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+        background: linear-gradient(180deg, #F2A518 400px, #FFF 120px); /* Cor alterada */
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .esquerda {
+        width: 100%;
+        padding-left: 0;
+        transform: translateX(0);
+        align-items: center;
+        padding-top: 120px;
+    }
+
+    .voltar {
+        top: 2rem;
+        left: 2rem;
+    }
+
+    .direita {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .conteudo {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .textinhos {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }

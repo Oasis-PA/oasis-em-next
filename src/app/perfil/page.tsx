@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Layout from "./layout";
 
+
 interface User {
   id_usuario?: number;
   nome: string;
@@ -85,6 +86,7 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
 
   return (
     <Layout>
+     
       <main>
         <div className="informa">
           <h4>EDITE SEU PERFIL</h4>
@@ -145,11 +147,14 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
           </div>
         </form>
 
+        {/* ============================================
+            ALTERAÇÃO NECESSÁRIA AQUI
+            ============================================ */}
         <footer>
-          <button type="button" onClick={handleReset}>
+          <button type="button" onClick={handleReset} className="btn btn-secondary">
             Redefinir
           </button>
-          <button id="salvs" type="button" onClick={handleSave}>
+          <button type="button" onClick={handleSave} className="btn btn-primary">
             Salvar
           </button>
         </footer>

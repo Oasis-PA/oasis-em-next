@@ -6,19 +6,19 @@ main * {
 
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh; /* MELHORIA: Garante que o corpo se estenda com o conteúdo */
     background: #5B7352;
 }
 
 main {
     display: flex;
     background: url('/images/quizzes/back-princip.png') right top/50% auto no-repeat, #5B7352;
-    background-repeat: no-repeat;
-    background-position: right top, right top;
-    background-size: 50% auto, 100% 100%;
     width: 100%;
     min-height: 100vh;
     align-items: center;
+    background-repeat: no-repeat;
+    background-position: right top, right top;
+    background-size: 50% auto, 100% 100%;
 }
 
 .content {
@@ -26,6 +26,7 @@ main {
     flex-direction: column;
     align-items: flex-start;
     width: 75%;
+    max-width: 1100px;
     height: 100%;
     position: relative;
     left: 7%;
@@ -67,8 +68,7 @@ main {
     flex-direction: column;
     align-items: center;
     padding: clamp(1rem, 3vw, 3rem);
-    width: fit-content;
-    max-width: 100vw;
+    width: 100%; /* MELHORIA: Alterado de fit-content para 100% para melhor controle */
 }
 
 .titulos {
@@ -88,11 +88,11 @@ main {
 
 .titulos h2 {
     color: #000;
-        font-family: "Louis George Cafe";
-        font-size: clamp(1.2rem, 2.5vw, 2rem);
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .tit-principal {
@@ -121,7 +121,7 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 90%;
+    width: 100%;
     margin-top: clamp(1rem, 2vw, 2rem);
 }
 
@@ -145,9 +145,9 @@ main {
 
 #quadrado {
     height: 7.5rem; 
-    width: 26.5rem;
+    width: 100%; /* MELHORIA: Largura flexível para se adaptar ao container */
     overflow: hidden;
-    transition: height 0.3s, overflow 0.3s, z-index 0s;
+    transition: height 0.3s ease, overflow 0.3s ease;
     z-index: 1;
     isolation: isolate;
     border-radius: 1.875rem;
@@ -160,7 +160,7 @@ main {
 }
 
 #quadrado:hover {
-  height: 26.5rem;
+  height: 28.5rem;
   overflow: visible;
   z-index: 10;
 }
@@ -172,10 +172,128 @@ main {
 .a, .b, .c, .d {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    /* CORREÇÃO: A largura agora considera o 'gap' do elemento pai para evitar quebra de linha */
+    width: calc(50% - 1rem); 
     align-items: center;
 }
 
+/* --- REGRAS DE RESPONSIVIDADE --- */
 
+@media (max-width: 1920px) {
+    main {
+        background-size: 50% 100%, 100% 100%;
+        background-position: right bottom, right top;
+    }
+}
 
+/* Para desktops menores e tablets grandes (em modo paisagem) */
+@media (max-width: 1200px) {
+    .content {
+        width: 85%;
+        left: 7.5%;
+    }
+        main {
+        background-size: 50% 100%, 100% 100%;
+        background-position: right bottom, right top;
+    }
+}
 
+/* Para tablets (em modo retrato) */
+@media (max-width: 1024px) {
+    main {
+        background-size: 50% 100%, 100% 100%;
+        background-position: right bottom, right top;
+    }
+    .content {
+        width: 90%;
+        left: 5%;
+    }
+}
+
+/* Para dispositivos móveis */
+@media (max-width: 768px) {
+    body, main {
+        height: auto; 
+        min-height: 100vh;
+    }
+
+    main {
+        background: url('/images/quizzes/back-princip.png') right bottom no-repeat, #5B7352;
+        background-size: auto 50%;
+        align-items: flex-start;
+        padding: 2rem 0;
+    }
+
+    .content {
+        position: static;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .acima {
+        margin-bottom: 3rem;
+    }
+    
+    .tit-principal {
+        text-align: center;
+    }
+
+    .sobe, .desce {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .a, .b, .c, .d {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .tipos {
+       gap: 3rem;
+    }
+    
+    #quadrado {
+        /* AJUSTE: Altura do card diminuída para ser mais compacto */
+        height: 23rem;
+        overflow: visible;
+        /* AJUSTE: Espaçamento interno e entre elementos reduzido */
+        padding: 1.2rem;
+        gap: 1.5rem;
+    }
+
+    #quadrado:hover {
+       /* Mantém a mesma altura para anular o efeito hover */
+       height: 23rem; 
+    }
+
+    /* AJUSTE: Diminui o tamanho da fonte do parágrafo nos cards */
+    .tipos p {
+        font-size: 0.95rem;
+    }
+
+    /* AJUSTE: Diminui o tamanho da fonte do título principal do card */
+    .tipos h3 {
+        font-size: clamp(1.1rem, 4vw, 1.8rem);
+        margin-top: 1rem;
+    }
+}
+
+/* Para dispositivos móveis menores */
+@media (max-width: 480px) {
+    .content {
+        width: 95%;
+    }
+
+    .abaixo {
+        padding: 1.5rem 1rem;
+    }
+    
+    /* AJUSTE OPCIONAL: Pode diminuir ainda mais em telas muito pequenas se necessário */
+    #quadrado {
+        height: 17em; /* Um pouco mais de altura para evitar quebra de texto */
+    }
+    #quadrado:hover {
+       height: 24rem; 
+    }
+}

@@ -33,10 +33,6 @@ const QuestionarioPage: React.FC = () => {
             <div id="quiz">Quiz</div>
             <h1>Questionário</h1>
             <p>Nesse tipo de cronograma, o primeiro passo é responder a uma série de perguntas sobre sua rotina, objetivos, tempo disponível e preferências. A partir dessas respostas, o sistema utiliza algoritmos para montar automaticamente um plano personalizado, ajustado às suas necessidades. Depois, você revisa o cronograma sugerido e pode fazer ajustes finos antes de começar a seguir.</p>
-            <div className="leia">
-              <h4>Leia mais</h4>
-              <Image src="/images/seta direita.png" alt="Seta para a esquerda" width={16} height={16} />
-            </div>
             <div className="abaixo">
               <Link href="/perguntas">
                 <button>Faça Agora</button>

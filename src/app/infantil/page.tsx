@@ -10,6 +10,7 @@ import "@/styles/infantil.css";
 export default function infantil() {
   return (
     <>
+    <Header/>
     <main>
         <div id="d1">
             <h1>Cuidados <span id="span1">infantis</span> com <span id="span2">carinho</span> e <span id="span3">identidade!</span></h1>
@@ -23,42 +24,58 @@ export default function infantil() {
 
         <div id="artigos">
             <div id="d2">
-                <div id="artigo1">
-                    <h4 className="hpreto">Como desembaraçar sem dor?</h4>
-                    <p className="ppreto">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
+                <Link href='artigo/como-desembaracar-sem-dor' id="artigo1">
+                    <div>
+                        <h4 className="hpreto">Como desembaraçar sem dor?</h4>
+                        <p className="ppreto">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
                         e produtos certos, a tarefa vira um momento de carinho, deixando os fios macios e felizes.</p>
-                </div>
-                <div id="artigo2">
-                    <h4 className="hpreto">Como desembaraçar sem dor?</h4>
-                    <p className="ppreto">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
-                        e produtos certos, a tarefa vira um momento de carinho, deixando os fios macios e felizes.</p>
-                </div>
+                    </div>
+                </Link>
+
+                <Link href='artigo/hidratacao-para-cabelos-infantis' id="artigo2">
+                    <div>
+                        <h4 className="hpreto">Hidratação natural para cabelos infantis</h4>
+                        <p className="ppreto">Cuide dos fios delicados do seu pequeno com hidratação natural e suave. 
+                        Ingredientes seguros transformam cabelos ressecados em fios macios, saudáveis e cheios de vida, 
+                        com todo carinho que eles merecem</p>
+                    </div>
+                </Link>
             </div>
 
               <div className="d2">
-                <div id="artigo3">
-                    <h4 className="hbranco">Como desembaraçar sem dor?</h4>
-                    <p className="pbranco">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
-                        e produtos certos, a tarefa vira um momento de carinho, deixando os fios macios e felizes.</p>
-                </div>
-                <div id="artigo4">
-                    <h4 className="hpreto">Como desembaraçar sem dor?</h4>
-                    <p className="ppreto">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
-                        e produtos certos, a tarefa vira um momento de carinho, deixando os fios macios e felizes.</p>
-                </div>   
+                <Link href='artigo/cuidados-com-a-pele-das-criancas' id="artigo3">
+                    <div>
+                        <h4 className="hbranco">Cuidados com a pele sensível das crianças</h4>
+                        <p className="pbranco">Proteja a pele delicada do seu filho com cuidados especiais e produtos suaves. 
+                            Previna irritações e mantenha a pele macia, saudável e protegida todos os dias, com carinho e segurança.</p>
+                    </div>
+                </Link>
+                
+                <Link href='artigo/cuidados-com-a-pele-das-criancas' id="artigo4">
+                    <div>
+                        <h4 className="hpreto">Rotina de skincare infantil: protegendo a pele diariamente</h4>
+                        <p className="ppreto">Crie uma rotina de cuidados simples e gostosa para proteger a pele do seu pequeno. Com 
+                            produtos certos e gestos carinhosos, a pele fica saudável, protegida e feliz todos os dias.</p>
+                    </div>
+                </Link>   
             </div>
 
               <div className="d2">
-                <div id="artigo5">
-                    <h4 className="hbranco">Como desembaraçar sem dor?</h4>
-                    <p className="pbranco">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
-                        e produtos certos, a tarefa vira um momento de carinho, deixando os fios macios e felizes.</p>
-                </div>
-                <div id="artigo6">
-                    <h4 className="hbranco">Como desembaraçar sem dor?</h4>
-                    <p className="pbranco">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
-                        e produtos certos, a tarefa vira um momento de carinho, deixando os fios macios e felizes.</p>
-                </div>   
+                <Link href='artigo/como-identificar-alergias' id="artigo5">
+                    <div>
+                        <h4 className="hbranco">Como identificar alergias e irritações na pele das crianças</h4>
+                        <p className="pbranco">Aprenda a reconhecer os sinais de alergias e irritações na pele delicada das crianças. Com 
+                        atenção e cuidado, você protege seu pequeno, evita desconfortos e garante uma pele sempre saudável.</p>
+                    </div>
+                </Link>
+
+                <Link href='artigo/dicas-para-hora-do-banho' id="artigo6">
+                    <div>
+                        <h4 className="hbranco">Dicas para hora do banho sem lágrimas</h4>
+                        <p className="pbranco">Transforme o banho em um momento especial e divertido, sem choro e sem estresse. Com as técnicas 
+                        certas e produtos suaves, seu pequeno vai amar esse momento de carinho, diversão e cuidado.</p>
+                    </div>
+                </Link> 
             </div>
         </div>
     </section>
@@ -179,6 +196,7 @@ export default function infantil() {
             </div>
         </div>
     </section>
+    <Footer/>
     </>
   );
 }

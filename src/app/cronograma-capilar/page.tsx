@@ -4,12 +4,14 @@
 
 import React from 'react';
 import Script from 'next/script'; // Componente otimizado do Next.js para carregar scripts
-
+import { Header, Footer } from "@/components";
 import '@/styles/cronograma-capilar.css'; 
+import Link from "next/link";
 
 const CronogramaCapilar: React.FC = () => {
   return (
     <>
+    <Header/>
       <section id="mulher">
           <p className="cornograma">Cronograma <br />Capilar</p>
           <p className="cornograma2">Descubra o tratamento ideal <br />para voce!</p>
@@ -103,28 +105,22 @@ const CronogramaCapilar: React.FC = () => {
       </section>
 
       <div className="apostas">
-        <section className="ousadas" id="ousadas1">
+        <section  className="ousadas" id='ousadas1'>
         <img src="/images/Cronograma-capilar/Aposte.png" alt="Aposte em maquiagens ousadas" />
         <div id="cansada1" >
-          <p className="texto-aposte">Aposte em Maquiagens ousadas!</p>
-          <p className="texto-cansada" >Está cansada das mesmas makes monótonas e sem
-            brilho em toda festa? Veja agora mesmo 10 maquiagens
-            para inovar e arrasar no visual! Aposte também em
-            produtos que não danifiquem sua pele e preservem sua
-            beleza natural.</p>
-          <button className="descubra">DESCUBRA</button>
+          <p className="texto-aposte">Erros comuns no cronograma capilar</p>
+          <p className="texto-cansada" >Sente que seu cabelo não responde ao cronograma? O problema pode ser mais simples do que parece! 
+            Listamos os erros que podem estar sabotando sua rotina e te ensinamos a corrigi-los.</p>
+          <button className="descubra"><Link href='artigo/erros-cronograma-capilar'>DESCUBRA</Link></button>
         </div>
         </section>
         <section className="ousadas" id='ousadas2'>
           <div id="cansada2">
-            <p className="texto-aposte">Vai se casar? esteja
-              incrível para seu amor!</p>
-              <p className="texto-cansada">Está de casamento marcado mas ainda não tem certeza sobre
-              como deve se arrumar? Invista em você! Clique abaixo e
-              descubra o kit de casamento perfeito, com looks, maquiagens
-              e penteados usados por famosos e feitos para você!
+            <p className="texto-aposte">Hidratação caseira para cabelos crespos</p>
+              <p className="texto-cansada">Revitalize seus fios crespos sem sair de casa. Ingredientes como abacate e babosa podem se transformar 
+                em máscaras poderosas para nutrir e definir seu cabelo. Convidamos você a ler o artigo completo em nosso site e aprender o passo a passo.
               </p>
-            <button className="descubra">DESCUBRA</button>
+            <button className="descubra"><Link href='artigo/hidratacao-caseira-crespos'>DESCUBRA</Link></button>
           </div>
         
           <img src="/images/Cronograma-capilar/incrivel.png" alt="Mulher incrível para casamento" />
@@ -132,13 +128,11 @@ const CronogramaCapilar: React.FC = () => {
         <section className="ousadas">
           <img src="/images/Cronograma-capilar/maquiagens.png" alt="Maquiagens" />
           <div id="cansada3">
-            <p className="texto-aposte">Aposte em Maquiagens ousadas!</p>
-            <p className="texto-cansada">Está cansada das mesmas makes monótonas e sem
-              brilho em toda festa? Veja agora mesmo 10 maquiagens
-              para inovar e arrasar no visual! Aposte também em
-              produtos que não danifiquem sua pele e preservem sua
-              beleza natural.</p>
-            <button className="descubra">DESCUBRA</button>
+            <p className="texto-aposte">5 receitas naturais para fortalecer os fios</p>
+            <p className="texto-cansada">Cuidar dos cabelos com ingredientes naturais é uma forma potente e acessível de devolver a força, o brilho e a vitalidade 
+              aos fios. Ingredientes ricos em vitaminas, proteínas e ácidos graxos podem ser combinados em máscaras e tratamentos caseiros para nutrir a fibra capilar 
+              desde a raiz até as pontas. Confira cinco receitas eficazes para incorporar à sua rotina de cuidados e fortalecer seus cabelos.</p>
+            <button className="descubra"><Link href='artigo/5-receitas-naturais'>DESCUBRA</Link></button>
           </div>
         </section>
       </div>
@@ -161,9 +155,11 @@ const CronogramaCapilar: React.FC = () => {
 
 
                 <div id="oleos_e_dicas">
-                        <div id="oleos">
-                          <p>óleos essenciais para cabelo: 7 opções poderosas</p>
-                        </div>
+                        <Link href='artigo/oleos-essenciais-para-cabelo'>
+                          <div id="oleos">
+                            <p>óleos essenciais para cabelo: 7 opções poderosas</p>
+                          </div>
+                        </Link>
                         <div id="dicas">
                           <div id="dicas_topo">
                             <p id="dicas_titulo">Dicas</p>
@@ -218,9 +214,11 @@ const CronogramaCapilar: React.FC = () => {
                               <img className="homem_garfo" src="/images/Cronograma-capilar/homem-garfo.png" alt="Homem com pente garfo" />
                             </div>
                   </div>
-                  <div id="shampoos">
-                    <p>shampoos em barra? veja os 5 mais populares</p>
-                  </div>
+                  <Link href='artigo/shampoos-em-barra'>
+                    <div id="shampoos">
+                      <p>shampoos em barra? veja os 5 mais populares</p>
+                    </div>
+                  </Link>
         </div>
       </section>
 
@@ -230,6 +228,7 @@ const CronogramaCapilar: React.FC = () => {
         src="/cronograma-capilar.js" 
         strategy="afterInteractive" 
       />
+      <Footer/>
     </>
   );
 };

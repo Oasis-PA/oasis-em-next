@@ -10,6 +10,7 @@ import "@/styles/favoritos.css";
 const Favoritos: React.FC = () => {
   return (
     <>
+      <Header/>
       <main>
         <figure id="imagens-artigos">
             <h1>Quais as tendências de 2025?</h1>
@@ -73,40 +74,52 @@ const Favoritos: React.FC = () => {
         <div>
             <h1>Ácido hialuronico</h1>
             <h4>DESCUBRA SOBRE O QUERIDINHO DA INTERNET</h4>
-            <button id="button-conheca">CONHEÇA</button>
+            <button id="button-conheca"><Link href='artigo/acido-hialuronico'>CONHEÇA</Link></button>
         </div>
     </section>
 
     <section id="section-artigos">
-        <div className="categ">
-            <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
-            <h2>ALIMENTAÇÃO</h2>
-          </div>
+          <Link href='/alimentacao'>
+              <div className="categ">
+                <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
+                <h2>ALIMENTAÇÃO</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
-            <h2>CRONOGRAMA</h2>
-          </div>
+          <Link href='/cronograma-capilar'>
+              <div className="categ">
+                <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
+                <h2>CRONOGRAMA</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
-            <h2>HAIR-CARE</h2>
-          </div>
+          <Link href='/haircare'>
+              <div className="categ">
+                <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
+                <h2>HAIR-CARE</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
-            <h2>PRODUTOS</h2>
-          </div>
+          <Link href='/produtos'>
+              <div className="categ">
+                <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
+                <h2>PRODUTOS</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ5.png" alt="INFANTIL" />
-            <h2>INFANTIL</h2>
-          </div>
+          <Link href='/infantil'>
+              <div className="categ">
+                <img src="/images/skincare/categ5.png" alt="INFANTIL" />
+                <h2>INFANTIL</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
-            <h2>TENDÊNCIAS</h2>
-          </div>
+          <Link href='/tendencias'>
+              <div className="categ">
+                <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
+                <h2>TENDÊNCIAS</h2>
+              </div>
+          </Link>
     </section>
 
     <section id="section-imagem-marrom">
@@ -233,26 +246,37 @@ const Favoritos: React.FC = () => {
     </section>
 
     <section id="section-artigos-s2">
-        <div id="artigo1-s2" className="artigo-s2-item">
-            <h1>COLEÇÃO VERÃO FARM 2025</h1>
-        </div>
+        <Link href='/artigo/10-tons-fantasticos'>
+            <div id="artigo1-s2" className="artigo-s2-item">
+                <h1>10 tons fantásticos para sair do básico</h1>
+            </div>
+        </Link>
 
-        <div id="artigo2-s2" className="artigo-s2-item">
-            <h1>COLEÇÃO VERÃO FARM 2025</h1>
-        </div>
+        <Link href='/artigo/nago-colorida'>
+            <div id="artigo2-s2" className="artigo-s2-item">
+                <h1>Nago colorida: 15 estilos diferentes</h1>
+            </div>
+        </Link>
 
-        <div id="artigo3-s2" className="artigo-s2-item">
-            <h1>COLEÇÃO VERÃO FARM 2025</h1>
-        </div>
-        <div id="artigo4-s2" className="artigo-s2-item">
-            <h1>COLEÇÃO VERÃO FARM 2025</h1>
-        </div>
+        <Link href='/artigo/produtos-indispensaveis'>
+            <div id="artigo3-s2" className="artigo-s2-item">
+                <h1>Produtos indispensáveis para cabelos pintados</h1>
+            </div>
+        </Link>
 
-        <div id="artigo5-s2" className="artigo-s2-item">
-            <h1>COLEÇÃO VERÃO FARM 2025</h1>
-        </div>
+        <Link href='/artigo/oleo-de-rosa-mosqueta'>
+            <div id="artigo4-s2" className="artigo-s2-item">
+                <h1>Benefícios do Óleo de Rosa Mosqueta</h1>
+            </div>
+        </Link>
+
+        <Link href='/artigo/diferenca-de-geracoes'>
+            <div id="artigo5-s2" className="artigo-s2-item">
+                <h1>Diferença de gerações</h1>
+            </div>
+        </Link>
     </section>
-
+    <Footer/>
     </>
   );
 }

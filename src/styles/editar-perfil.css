@@ -15,7 +15,7 @@ main * {
     --shadow: #f8f4f4;
     --label: #000000;
     --footer: #ffffff;
-    --linha: rgba(8, 8, 8, 0.6);
+    --linha: rgba(8, 8, 8, 0.2);
     --primary-color: #722F53;
     --primary-hover: #8a3a65;
     --accent-color: #7D4AB3;
@@ -57,12 +57,11 @@ p {
 /* ============================================
    SIDEBAR - Compartilhado
    ============================================ */
-#aside-lateral,
-aside {
+#aside-lateral {
     position: fixed;
     top: 0;
     left: 0;
-    width: 17%;
+    width: clamp(240px, 17%, 300px); 
     height: 100vh;
     background-color: var(--body-back);
     padding: 60px 30px 30px;
@@ -71,30 +70,34 @@ aside {
     transition: transform 0.3s ease;
 }
 
-.conte-navbar,
-aside {
+.conte-navbar {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.conte-navbar > a,
-.barra-lateral {
+.conte-navbar > a {
     font-family: "Louis George Cafe";
-    font-size: 28px;
+    font-size: clamp(18px, 1.5vw, 22px);
     font-weight: 400;
     padding: 12px 0;
     color: var(--corpo-texto);
     transition: opacity 0.2s;
+    word-wrap: break-word;
 }
 
-.conte-navbar > a:hover,
-.barra-lateral:hover {
+.conte-navbar > a:hover {
     opacity: 0.7;
 }
 
-#Editar-perfil,
-.barra-lateral.active {
+.barra-lateral.active,
+#Editar-perfil {
+    text-decoration-line: underline;
+    text-decoration-color: var(--accent-color);
+    text-decoration-thickness: 2px;
+}
+
+.conte-navbar > a.active {
     text-decoration-line: underline;
     text-decoration-color: var(--accent-color);
     text-decoration-thickness: 2px;
@@ -106,6 +109,7 @@ aside {
    ============================================ */
 .menu-toggle {
     display: none;
+    flex-direction: column;
     cursor: pointer;
     background: none;
     border: none;
@@ -126,7 +130,7 @@ aside {
 }
 
 .menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .menu-toggle.active .bar:nth-child(2) {
@@ -134,42 +138,46 @@ aside {
 }
 
 .menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ============================================
    MAIN CONTENT - Compartilhado
    ============================================ */
-.layout-content,
-.config-body > main {
+.layout-content {
     flex: 1;
-    margin-left: 280px;
+    margin-left: clamp(240px, 17%, 300px); 
     padding-bottom: 120px;
+    transition: margin-left 0.3s ease;
 }
 
 main {
     max-width: 900px;
     padding: 60px 40px;
-    margin-left: 3.2%;
+    margin: 0 auto;
 }
 
 /* ============================================
-   INFO SECTION - Editar Perfil
+   INFO SECTION & TÍTULOS
    ============================================ */
-.informa {
-    margin-bottom: 50px;
+.informa,
+main > section > form > h1,
+#faca-alteracoes {
+    margin-bottom: 40px;
 }
 
-.informa h4 {
-    font-size: clamp(32px, 4vw, 45px);
+.informa h4,
+main > section > form > h1 {
+    font-size: clamp(28px, 4vw, 40px);
     font-family: "The Next Font", sans-serif;
     font-weight: 400;
     color: var(--corpo-texto);
     margin-bottom: 16px;
 }
 
-.informa p {
-    font-size: clamp(16px, 1.8vw, 20px);
+.informa p,
+#faca-alteracoes {
+    font-size: clamp(16px, 1.8vw, 18px);
     font-weight: 400;
     line-height: 1.6;
     max-width: 600px;
@@ -177,28 +185,8 @@ main {
     opacity: 0.9;
 }
 
-/* ============================================
-   GERENCIAMENTO - Títulos e Seções
-   ============================================ */
-main > section > form > h1 {
-    font-size: clamp(32px, 4vw, 45px);
-    font-family: "The Next Font", sans-serif;
-    font-weight: 400;
-    color: var(--corpo-texto);
-    margin-bottom: 16px;
-}
-
-#faca-alteracoes {
-    font-size: clamp(16px, 1.8vw, 20px);
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--corpo-texto);
-    opacity: 0.9;
-    margin-bottom: 40px;
-}
-
 .section-title {
-    font-size: 24px;
+    font-size: clamp(20px, 3vw, 24px);
     font-weight: 600;
     color: var(--corpo-texto);
     margin: 40px 0 20px;
@@ -241,6 +229,9 @@ figcaption {
     font-weight: 600;
     color: var(--accent-color);
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
     transition: opacity 0.2s;
 }
 
@@ -269,14 +260,6 @@ form {
     color: var(--corpo-texto);
 }
 
-.sp {
-    display: none;
-    font-family: "Louis George Cafe";
-    font-size: 14px;
-    color: var(--danger-color);
-    margin-top: 8px;
-}
-
 .nome-sobre {
     display: flex;
     gap: 30px;
@@ -300,7 +283,7 @@ form {
 .form-group input,
 .form-group select {
     width: 100%;
-    height: 50px;
+    min-height: 50px;
     border: 2px solid var(--linha) ;
     border-radius: 8px;
     background-color: var(--body-back);
@@ -327,8 +310,14 @@ form {
 
 #caixa-sobre input {
     height: 170px;
-    width: 60%;
+    width: 100%;
     resize: vertical;
+}
+
+@media (min-width: 768px) {
+    #caixa-sobre input {
+        width: 60%;
+    }
 }
 
 ::placeholder {
@@ -348,11 +337,13 @@ form {
 .password-container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
 .password-container input {
     flex: 1;
+    min-width: 180px;
 }
 
 .alterar-link {
@@ -415,7 +406,7 @@ form {
 
 .modal-content {
     background-color: var(--body-back);
-    padding: 40px;
+    padding: clamp(25px, 5vw, 40px);
     border-radius: 12px;
     max-width: 500px;
     width: 100%;
@@ -423,7 +414,7 @@ form {
 }
 
 .modal-content h2 {
-    font-size: 28px;
+    font-size: clamp(22px, 4vw, 28px);
     font-weight: 600;
     color: var(--corpo-texto);
     margin-bottom: 25px;
@@ -441,8 +432,9 @@ form {
     border-radius: 4px;
 }
 
-.modal-warning p {
-    margin-bottom: 12px;
+.modal-warning p, .modal-warning li {
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--corpo-texto);
 }
 
 .modal-warning ul {
@@ -452,7 +444,6 @@ form {
 
 .modal-warning li {
     margin-bottom: 8px;
-    color: var(--corpo-texto);
 }
 
 /* ============================================
@@ -462,137 +453,86 @@ form {
     display: flex;
     gap: 15px;
     margin-top: 30px;
-}
-#salvs,
-   button[type="submit"] {
-    background-color: #8a3a65;
-    color: white;
+    flex-wrap: wrap;
 }
 
-#salvs:hover,
-button[type="submit"]:hover {
-    background-color: #a36b87 ;
-}
-
-
-button,
-.btn-salvar,
-.btn-cancelar,
-.btn-excluir-confirmar {
+.btn {
     min-width: 140px;
     height: 50px;
     border-radius: 26px;
     font-family: "Louis George Cafe";
     font-size: 20px;
     font-weight: 500;
-    border: none;
+    border: 2px solid transparent;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s, opacity 0.2s;
+    transition: background-color 0.2s, transform 0.1s, opacity 0.2s, color 0.2s;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button:hover,
-.btn-salvar:hover,
-.btn-cancelar:hover,
-.btn-excluir-confirmar:hover:not(:disabled) {
+.btn:hover {
     transform: scale(1.02);
 }
 
-button:active,
-.btn-salvar:active,
-.btn-cancelar:active,
-.btn-excluir-confirmar:active:not(:disabled) {
+.btn:active {
     transform: scale(0.98);
 }
 
-.btn-salvar,
-button[type="submit"] {
-    background-color: #8a3a65;
+.btn-primary {
+    background-color: var(--primary-color);
     color: white;
+    border-color: var(--primary-color);
 }
-
-.btn-salvar:hover,
-button[type="submit"]:hover {
+.btn-primary:hover {
     background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
 }
 
-.btn-cancelar,
-button[type="button"]:not(.btn-excluir-confirmar) {
+.btn-secondary {
     background-color: transparent;
-    border: 2px solid var(--primary-color);
     color: var(--primary-color);
+    border-color: var(--primary-color);
 }
-
-.btn-cancelar:hover,
-button[type="button"]:not(.btn-excluir-confirmar):hover {
+.btn-secondary:hover {
     background-color: rgba(114, 47, 83, 0.1);
 }
 
-.btn-excluir-confirmar {
+.btn-danger {
     background-color: var(--danger-color);
     color: white;
+    border-color: var(--danger-color);
 }
-
-.btn-excluir-confirmar:hover:not(:disabled) {
+.btn-danger:hover:not(:disabled) {
     background-color: var(--danger-hover);
+    border-color: var(--danger-hover);
 }
 
-.btn-excluir-confirmar:disabled {
+.btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
 }
 
 /* ============================================
-   FOOTER - Editar Perfil
+   FOOTER
    ============================================ */
-.layout-container footer,
-.config-body footer {
+footer {
     position: fixed;
     bottom: 0;
-    left: 7%;
+    left: clamp(240px, 17%, 300px);
     right: 0;
-    background-color: var(--footer);
-    width: 100%;
+    width: auto;
     height: 95px;
+    background-color: var(--footer);
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 20px;
-
+    padding: 0 40px;
     z-index: 100;
-}
-
-footer button {
-    min-width: 140px;
-    height: 50px;
-    border-radius: 26px;
-    background-color: var(--primary-color);
-    font-family: "Louis George Cafe";
-    font-size: 20px;
-    font-weight: 500;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-footer button:hover {
-    background-color: var(--primary-hover);
-}
-
-footer button:active {
-    transform: scale(0.98);
-}
-
-footer button:first-child {
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
-footer button:first-child:hover {
-    background-color: rgba(114, 47, 83, 0.1);
+    transition: left 0.3s ease;
 }
 
 /* ============================================
@@ -615,33 +555,26 @@ main > p:last-child {
    RESPONSIVIDADE
    ============================================ */
 @media screen and (max-width: 1024px) {
-    #aside-lateral,
-    aside {
+    #aside-lateral {
         transform: translateX(-100%);
     }
 
-    #aside-lateral.open,
-    aside.open {
+    #aside-lateral.open {
         transform: translateX(0);
         box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
     }
 
     .menu-toggle {
         display: flex;
-        flex-direction: column;
     }
 
-    .layout-content,
-    .config-body > main {
+    .layout-content, footer {
         margin-left: 0;
+        left: 0;
     }
 
     main {
         padding: 80px 30px 40px;
-    }
-
-    footer {
-        left: 0;
     }
 }
 
@@ -652,7 +585,7 @@ main > p:last-child {
     }
 
     main {
-        padding: 80px 20px 40px;
+        padding: 80px 20px 120px;
     }
 
     figure {
@@ -673,30 +606,26 @@ main > p:last-child {
         flex-direction: column;
     }
 
-    .form-actions button {
+    .form-actions .btn {
         width: 100%;
     }
 
-    .password-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .modal-content {
-        padding: 30px 20px;
+    footer {
+        justify-content: center;
     }
 }
 
 @media screen and (max-width: 480px) {
     footer {
         height: auto;
-        padding: 15px 20px;
-        gap: 15px;
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
     }
 
-    footer button {
-        min-width: 120px;
-        font-size: 16px;
+    footer .btn {
+        width: 100%;
+        font-size: 18px;
     }
 
     .section-title {
@@ -704,21 +633,24 @@ main > p:last-child {
     }
 }
 
+/* ============================================
+   FONTES
+   ============================================ */
 @font-face {
     font-family: "The Next Font";
     src: url('../../public/assets/fontes/TheNextFont.ttf') format('truetype') ;
-  font-weight: normal;
-  font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
     font-family: "Louis George Cafe";
     src: url('../../public/assets/fontes/Louis\ George\ Cafe.ttf') format('truetype');
     font-weight: normal;
-  font-style: normal;
+    font-style: normal;
 }
 @font-face {
     font-family: "PLAYFUL RUNWAY";
     src: url('../../public/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
     font-weight: normal;
-  font-style: normal;
+    font-style: normal;
 }
