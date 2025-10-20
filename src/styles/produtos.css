@@ -177,6 +177,7 @@ figure > img {
     color: #6c757d; 
     font-weight: 500;
     letter-spacing: 0.5px;
+    font-family: "The Next Font";
 }
 
 
@@ -197,7 +198,8 @@ figure > img {
     font-weight: 700;
     color: #343a40; 
     margin-right: 10px;
-    line-height: 1.5; 
+    line-height: 1.5;
+    font-family: "The Next Font";
 }
 
 
@@ -247,6 +249,7 @@ figure > img {
     color: #343a40;
     cursor: pointer;
     transition: background-color 0.2s;
+    font-family: "The Next Font";
 }
 
 .dropdown-options-list li:hover {
@@ -307,6 +310,7 @@ figure > img {
     font-size: 0.8rem;
     color: #888;
     margin-bottom: 5px;
+    font-family: "Louis George Cafe";
 }
 
 .card-title {
@@ -349,18 +353,20 @@ figure > img {
 }
 
 .load-more-button {
-    background-color: #f7f3fa; 
-    color: #495057; 
-    font-size: 1rem;
+    color: transparent; 
+    background-color: transparent;
+    font-size: 1.5rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border: 1px solid #dcdcdc; 
+    border: 1px solid #4A4A4A;
     border-radius: 40px; 
     padding: 15px 40px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
+    font-family: "The Next Font";
+    color: #4A4A4A;
 }
 
 .load-more-button:hover {

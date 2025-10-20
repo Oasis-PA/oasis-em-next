@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO E ATUALIZADO COM EFEITOS HOVER
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 /* ============================================
    BASE STYLES - Compartilhado entre páginas
    ============================================ */
@@ -294,6 +298,14 @@ form {
     transition: border-color 0.2s;
 }
 
+/* Efeito hover para campos de formulário */
+.campos-texto > input:not(:disabled):hover,
+.campos-texto > select:not(:disabled):hover,
+.form-group input:not(:disabled):hover,
+.form-group select:not(:disabled):hover {
+    border-color: var(--primary-hover);
+}
+
 .campos-texto > input:focus,
 .campos-texto > select:focus,
 .form-group input:focus,
@@ -384,7 +396,8 @@ form {
 }
 
 .excluir-link:hover {
-    opacity: 0.8;
+    opacity: 1;
+    text-decoration: underline;
 }
 
 /* ============================================
@@ -447,7 +460,7 @@ form {
 }
 
 /* ============================================
-   BUTTONS
+   BUTTONS (Reformulado com Efeitos Hover)
    ============================================ */
 .form-actions {
     display: flex;
@@ -462,57 +475,99 @@ form {
     border-radius: 26px;
     font-family: "Louis George Cafe";
     font-size: 20px;
-    font-weight: 500;
-    border: 2px solid transparent;
+    font-weight: 600; 
+    border: none;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s, opacity 0.2s, color 0.2s;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
-.btn:hover {
-    transform: scale(1.02);
+/* Efeito de preenchimento radial */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
 }
 
-.btn:active {
-    transform: scale(0.98);
+/* Animação genérica para todos os botões */
+.btn:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.05);
 }
 
+.btn:hover:not(:disabled)::before {
+    width: 350px; 
+    height: 350px;
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(-1px) scale(1.02);
+    transition: transform 0.1s;
+}
+
+/* Estilos específicos para cada tipo de botão */
 .btn-primary {
     background-color: var(--primary-color);
     color: white;
-    border-color: var(--primary-color);
 }
-.btn-primary:hover {
-    background-color: var(--primary-hover);
-    border-color: var(--primary-hover);
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 8px 20px rgba(114, 47, 83, 0.5);
+}
+.btn-primary:active:not(:disabled) {
+    background: var(--primary-hover);
 }
 
 .btn-secondary {
     background-color: transparent;
     color: var(--primary-color);
-    border-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
 }
-.btn-secondary:hover {
-    background-color: rgba(114, 47, 83, 0.1);
+.btn-secondary:hover:not(:disabled) {
+    color: white;
+    background-color: var(--primary-color);
+    box-shadow: 0px 8px 20px rgba(114, 47, 83, 0.4);
 }
 
 .btn-danger {
     background-color: var(--danger-color);
     color: white;
-    border-color: var(--danger-color);
 }
 .btn-danger:hover:not(:disabled) {
-    background-color: var(--danger-hover);
-    border-color: var(--danger-hover);
+    background: linear-gradient(135deg, #c82333 0%, #dc3545 100%);
+    box-shadow: 0px 8px 20px rgba(220, 53, 69, 0.4);
+}
+.btn-danger:active:not(:disabled) {
+    background: var(--danger-hover);
+}
+
+/* Garante que o texto do botão fique acima do efeito radial */
+.btn > * { 
+    position: relative;
+    z-index: 1;
 }
 
 .btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
     transform: none;
+    box-shadow: none;
 }
+
 
 /* ============================================
    FOOTER

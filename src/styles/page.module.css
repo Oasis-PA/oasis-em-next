@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 .mainContainer * {
     margin: 0;
     padding: 0;
@@ -54,6 +58,7 @@ html {
     text-align: center;
 }
 
+/* BOTÃO 'CONHEÇA' REFORMULADO */
 .conhecaButton {
     width: 15rem;
     height: 4rem;
@@ -72,8 +77,41 @@ html {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
+
+.conhecaButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.conhecaButton:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.conhecaButton:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.conhecaButton:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
+
 
 .dotsContainer {
     display: flex;
@@ -160,6 +198,13 @@ html {
    border-radius: 18px;
    flex-shrink: 0;
    overflow: hidden;
+   transition: all 0.3s ease; /* ADICIONADO */
+   cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255,255,255,0.1);
 }
 
 .card > img {
@@ -175,7 +220,7 @@ html {
     line-height: normal;
     text-align: left;
     padding: clamp(1.125rem, 1.5vw, 1.5rem);
-    flex-grow: 1; /* Ocupa o espaço restante */
+    flex-grow: 1;
 }
 
 /* Seção 2: Links de Categoria */
@@ -197,6 +242,7 @@ html {
     align-items: center;
     text-align: center;
     padding: 1rem; 
+    cursor: pointer;
 }
 
 .s2links > img {
@@ -214,6 +260,11 @@ html {
     font-size: 1.8rem;
     font-weight: 400;
     margin-top: 2rem;
+    transition: color 0.3s ease; /* ADICIONADO */
+}
+
+.s2links:hover > h1 {
+    color: #722F53;
 }
 
 /* Seção 3: Cortes em Alta */
@@ -273,6 +324,11 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease; /* ADICIONADO */
+}
+
+.cortecardconteiner:hover {
+    transform: translateY(-8px);
 }
 
 .cortecard {
@@ -324,6 +380,7 @@ html {
     border-bottom: 2px solid #5F0B38;
 }
 
+/* BOTÃO 'CONHEÇA O CORTE' REFORMULADO */
 .conhecaCorteButton {
     display: flex;
     width: 12.6rem;
@@ -341,10 +398,40 @@ html {
     cursor: pointer;
     border: none;
     text-decoration: none; 
-    transition: background-color 0.2s ease;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
-.conhecaCorteButton:hover { background: #8a3a65; }
+.conhecaCorteButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.conhecaCorteButton:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.conhecaCorteButton:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.conhecaCorteButton:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
 
 /* Seção 4: Baseados no seu Perfil */
 .s4 {
@@ -395,6 +482,13 @@ html {
     border: 3px solid #939191;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease; /* ADICIONADO */
+}
+
+.cardperfil:hover {
+    transform: translateY(-8px);
+    border-color: #722F53;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
 }
 
 .cardperfil > img {
@@ -422,6 +516,7 @@ html {
     flex-grow: 1; 
 }
 
+/* BOTÃO DO PERFIL REFORMULADO */
 .buttonPerfil {
     font-family: "The Next Font";
     font-size: 1.2rem;
@@ -435,11 +530,46 @@ html {
     border-radius: 1.6875rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
 .buttonPerfil a{
     color: #FFF;
     font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.buttonPerfil::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.buttonPerfil:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 8px 20px rgba(114, 47, 83, 0.5);
+    transform: scale(1.05);
+}
+
+.buttonPerfil:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.buttonPerfil:active {
+    background: #5E332C;
+    transform: scale(1.02);
 }
 
 .arrow {
@@ -495,6 +625,7 @@ html {
     margin-bottom: 1.5rem;
 }
 
+/* BOTÃO 'LEIA MAIS' REFORMULADO */
 .contartigo > button {
     width: 200px;
     height: 55px;
@@ -505,11 +636,46 @@ html {
     background: #722F53;
     border: none;
     cursor: pointer;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
 .contartigo > button a{
     color: #FFF;
     font-size: clamp(1rem, 1.5vw, 1.4rem);
+    position: relative;
+    z-index: 2;
+}
+
+.contartigo > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.contartigo > button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.contartigo > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.contartigo > button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
 }
 
 .s5 img {
@@ -517,6 +683,11 @@ html {
     max-width: 700px;
     height: auto;
     object-fit: cover;
+    transition: transform 0.4s ease; /* ADICIONADO */
+}
+
+.s5 img:hover {
+    transform: scale(1.03);
 }
 
 /* Seção 6: Novidades */
@@ -564,6 +735,11 @@ html {
     position: relative;
     padding: 1rem;
     box-sizing: border-box;
+    transition: transform 0.3s ease; /* ADICIONADO */
+}
+
+.cardnovidade1:hover, .cardnovidade2:hover, .cardnovidade3:hover, .cardnovidade4:hover {
+    transform: scale(1.04);
 }
 
 .cardnovidade1::before, .cardnovidade2::before, .cardnovidade3::before, .cardnovidade4::before {
@@ -574,6 +750,11 @@ html {
     right: 0;
     bottom: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    transition: background 0.3s ease; /* ADICIONADO */
+}
+
+.cardnovidade1:hover::before, .cardnovidade2:hover::before, .cardnovidade3:hover::before, .cardnovidade4:hover::before {
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
 }
 
 .cardnovidade1 > h1, .cardnovidade2 > h1, .cardnovidade3 > h1 , .cardnovidade4 > h1 {
@@ -641,6 +822,12 @@ html {
     flex-direction: column;
     min-height: 700px;
     justify-content: end;
+    transition: all 0.4s ease; /* ADICIONADO */
+}
+
+.artigo1footer:hover, .artigo2footer:hover, .artigo3:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .artigo1footer {background-image: url('../../public/images/tela-principal/img-artigo\(1\).png');}

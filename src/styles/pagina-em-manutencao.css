@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 /* Estilos gerais e para mobile (Mobile-First) */
 main * {
     margin: 0;
@@ -51,6 +55,7 @@ main > p {
   margin-top: 1.5rem;
 }
 
+/* BOTÃO DE VOLTAR REFORMULADO */
 main > a > button {
   background-color: #8A2BE2; 
   color: #FFFFFF;
@@ -62,23 +67,50 @@ main > a > button {
   padding: 12px 24px;
   margin-top: 3rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* ADIÇÕES PARA O EFEITO */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+main > a > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 main > a > button:hover {
-  background-color: #6A1B9A;
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #a450f2 0%, #6A1B9A 100%);
+  box-shadow: 0px 10px 25px rgba(138, 43, 226, 0.4);
+  transform: translateY(-3px) scale(1.05);
+}
+
+main > a > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+main > a > button:active {
+    background: #58157e;
+    transform: translateY(-1px) scale(1.02);
 }
 
 .img1 {
   margin-top: 2rem;
-  width: 120px; /* Aumentado de 80px para 120px */
+  width: 120px;
   height: auto;
 }
 
 .img2 {
   margin-top: 4rem;
-  width: 220px; /* Aumentado de 150px para 220px */
+  width: 220px;
   height: auto;
 }
 
