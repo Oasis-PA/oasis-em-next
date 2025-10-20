@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server';
 // Rotas que exigem login
 const protectedRoutes = [
   '/perfil',
-  '/favoritos',
+  
   // Adicione aqui outras rotas que devem ser protegidas
 ];
 

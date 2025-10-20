@@ -1,8 +1,22 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import {Header, Footer} from "@/components";
+import Header from "../../../components/header";
+import BotaoFavoritar from "@/components/BotaoFavoritar";
+import { getServerSession } from "next-auth/next";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route"; // Ajuste o caminho
 import '@/styles/artigoteste.css';
+
+// Extend the Session user type to include id_usuario
+import type { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session {
+    user?: DefaultSession["user"] & {
+      id_usuario?: string;
+    };
+  }
+}
 
 interface ArtigoProps {
   params: Promise<{ slug: string }>;
@@ -24,28 +38,22 @@ export async function generateStaticParams() {
 }
 
 export default async function ArtigoPage({ params }: ArtigoProps) {
-  // Await params antes de usar
   const { slug } = await params;
+  const session = await getServerSession(/* authOptions */);
 
   const artigo = await prisma.artigo.findUnique({
     where: { slug }
   });
 
-  // Se não existir, 404
   if (!artigo) return notFound();
-
-  // Bloquear rascunhos
   if (artigo.status === "rascunho") return notFound();
 
-  // Bloquear agendados antes da data
   if (artigo.status === "agendado") {
     const now = new Date();
     const pub = artigo.dataPublicacao ? new Date(artigo.dataPublicacao) : null;
-    // se data de publicação não definida ou maior que agora -> 404
     if (!pub || pub.getTime() > now.getTime()) return notFound();
   }
 
-  // Se estiver agendado e a data já passou, atualiza para publicado
   if (artigo.status === "agendado" && artigo.dataPublicacao) {
     const now = new Date();
     const pub = new Date(artigo.dataPublicacao);
@@ -54,11 +62,21 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
         where: { id: artigo.id },
         data: { status: "publicado" },
       });
-      // recarregar artigo atualizado
-      const atualizado = await prisma.artigo.findUnique({ where: { id: artigo.id } });
-      if (!atualizado) return notFound();
-      // use 'atualizado' daqui pra frente
     }
+  }
+
+  // Verifica se o artigo está favoritado pelo usuário
+  let isFavorito = false;
+  if (session?.user?.id_usuario) {
+    const favoritoExistente = await prisma.favoritoArtigo.findUnique({
+      where: {
+        id_usuario_id_artigo: {
+          id_usuario: Number(session.user.id_usuario),
+          id_artigo: artigo.id,
+        },
+      },
+    });
+    isFavorito = !!favoritoExistente;
   }
 
   if (!artigo.conteudo) {
@@ -74,34 +92,30 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     );
   }
 
-  // Usa a imagem do header do banco de dados (Supabase Storage)
   const imagemHeader = artigo.imagemHeader;
-  const themeDark = artigo.themeDark;
 
   return (
     <>
-      {imagemHeader ? (
-        <Header 
-          backgroundImage={imagemHeader} 
-          theme={themeDark ? "dark" : undefined}
-        />
-      ) : (
-        <Header theme={themeDark ? "dark" : undefined} />
-      )}
+      {imagemHeader ? <Header backgroundImage={imagemHeader} /> : <Header />}
       <main>
         <article className="markdown-content">
+          <div className="artigo-header-actions">
+            <BotaoFavoritar 
+              id_artigo={artigo.id} 
+              isFavoritoInicial={isFavorito} 
+            />
+          </div>
+          
           <ReactMarkdown
             components={{
               h1: ({ children }) => <h1>{children}</h1>,
               h2: ({ children }) => <h3>{children}</h3>,
               h3: ({ children }) => <h3>{children}</h3>,
               p: ({ children, node }) => {
-                // Verifica se o parágrafo contém apenas uma imagem
                 const hasOnlyImage = node?.children?.length === 1 && 
                                     node.children[0].type === 'element' && 
                                     node.children[0].tagName === 'img';
                 
-                // Se só tem imagem, não envolve em <p>
                 if (hasOnlyImage) {
                   return <>{children}</>;
                 }
@@ -114,7 +128,6 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
               ol: ({ children }) => <ol>{children}</ol>,
               li: ({ children }) => <li>{children}</li>,
               img: ({ src, alt, title }) => {
-                // Extrai classe customizada do alt text se houver
                 const match = alt?.match(/^(.*?)\s*\{([^}]+)\}$/);
                 const altText = match ? match[1].trim() : alt;
                 const customClass = match ? match[2].trim() : '';
@@ -136,7 +149,6 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
           </ReactMarkdown>
         </article>
       </main>
-      <Footer/>
     </>
   );
 }
