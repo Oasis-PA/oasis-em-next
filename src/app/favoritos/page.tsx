@@ -79,35 +79,47 @@ const Favoritos: React.FC = () => {
     </section>
 
     <section id="section-artigos">
-        <div className="categ">
-            <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
-            <h2>ALIMENTAÇÃO</h2>
-          </div>
+          <Link href='/alimentacao'>
+              <div className="categ">
+                <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
+                <h2>ALIMENTAÇÃO</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
-            <h2>CRONOGRAMA</h2>
-          </div>
+          <Link href='/cronograma-capilar'>
+              <div className="categ">
+                <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
+                <h2>CRONOGRAMA</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
-            <h2>HAIR-CARE</h2>
-          </div>
+          <Link href='/haircare'>
+              <div className="categ">
+                <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
+                <h2>HAIR-CARE</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
-            <h2>PRODUTOS</h2>
-          </div>
+          <Link href='/produtos'>
+              <div className="categ">
+                <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
+                <h2>PRODUTOS</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ5.png" alt="INFANTIL" />
-            <h2>INFANTIL</h2>
-          </div>
+          <Link href='/infantil'>
+              <div className="categ">
+                <img src="/images/skincare/categ5.png" alt="INFANTIL" />
+                <h2>INFANTIL</h2>
+              </div>
+          </Link>
 
-          <div className="categ">
-            <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
-            <h2>TENDÊNCIAS</h2>
-          </div>
+          <Link href='/tendencias'>
+              <div className="categ">
+                <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
+                <h2>TENDÊNCIAS</h2>
+              </div>
+          </Link>
     </section>
 
     <section id="section-imagem-marrom">
