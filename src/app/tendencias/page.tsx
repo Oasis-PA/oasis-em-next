@@ -3,7 +3,7 @@
 import {Header, Footer} from "@/components";
 import Image from "next/image";
 import "@/styles/tendencias.css";
-
+import Link from "next/link";
 
 
 export default function tendencias() {
@@ -22,23 +22,16 @@ export default function tendencias() {
           </p>
         </div>
 
-        <div className="banner-sec">
-          <p id="data-1">19 jun 2024</p>
-          <div className="butoes">
-            <button>Cabelo</button>
-            <button>Cremes e óleos</button>
-            <button>Produtos</button>
+        <Link href='/artigo/qual-creme-comprar'>
+          <div className="banner-sec">
+            <div className="butoes">
+              <button>Cabelo</button>
+              <button>Cremes e óleos</button>
+              <button>Produtos</button>
+            </div>
+            <p id="tit-2">Os dilemas do século XXI: Qual creme comprar?</p>
           </div>
-          <p id="tit-2">Os dilemas do século XXI: Qual creme comprar?</p>
-          <Image 
-          id="salvar" 
-          src="/images/tendencias/Salvar.png"
-          alt="imagem1"
-          width={30}
-          height={30}
-           />
-
-        </div>
+        </Link>
 
         <div className="meio">
           <p>
@@ -47,26 +40,16 @@ export default function tendencias() {
           <button>Conheça</button>
         </div>
 
-        <div className="banner-terc">
-          <p id="data-2">19 jun 2024</p>
-
-          <div className="butoes-2">
-            <button>Cabelo</button>
-            <button>Cremes e óleos</button>
-            <button>Produtos</button>
+        <Link href='/artigo/acido-hialuronico'>
+          <div className="banner-terc">
+            <div className="butoes-2">
+              <button>Cabelo</button>
+              <button>Cremes e óleos</button>
+              <button>Produtos</button>
+            </div>
+            <p id="tit-3">Ácido hialuronico: Descubra os seus principais benefícios!</p>
           </div>
-
-          <p id="tit-3">Os dilemas do século XXI: Qual creme comprar?</p>
-
-          <Image 
-          id="salvar-2" 
-          src="/images/tendencias/Salvar.png"
-          alt="imagem2" 
-          width={30}
-          height={30}
-           />
-
-        </div>
+        </Link>
       </section>
     
 
@@ -130,7 +113,9 @@ export default function tendencias() {
        height={300} 
        />
 
-      <p id="tit-5">Melhores tipos de finalização</p>
+      <Link href='/artigo/melhores-tipos-de-finalizacao'>
+        <p id="tit-5">Melhores tipos de finalização</p>
+      </Link>
 
       <p id="text-3">
         A finalização é a etapa-chave para realçar a beleza natural dos cachos. A fitagem tradicional é ideal para quem busca definição intensa e controle do frizz. Já a fitagem rápida oferece praticidade e um visual mais leve e volumoso. Para cachos duradouros, a combinação de creme e gel é imbatível. Escolha a técnica que melhor se adapta à sua rotina e ao resultado que deseja!
