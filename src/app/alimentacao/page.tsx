@@ -95,40 +95,48 @@ const AlimentacaoPage: React.FC = () => {
         <section className="partedebaixo">
           <div className="secao1">
             <article className="card">
-              <div className="conteudo">
-                <img className="ftcard" src="/images/Alimentacao/azul.png" alt="Imagem suplemento cabelo" />
-                <h1>Suplementos para cabelo: funcionam mesmo?</h1>
-                <p>Saiba quando os suplementos para cabelo são eficazes, quais usar e como garantir resultados seguros.</p>
-                <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
-              </div>
+              <Link href='artigo/suplementos-para-cabelo-funcionam-mesmo'>
+                <div className="conteudo">
+                  <img className="ftcard" src="/images/Alimentacao/azul.png" alt="Imagem suplemento cabelo" />
+                  <h1>Suplementos para cabelo: funcionam mesmo?</h1>
+                  <p>Saiba quando os suplementos para cabelo são eficazes, quais usar e como garantir resultados seguros.</p>
+                  <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
+                </div>
+              </Link>
             </article>
             <article className="card"><img src="/images/Alimentacao/sec5-salada1.png" alt="Imagem tigela saudavel" /></article>
             <article className="card">
-              <div className="conteudo">
-                <h1>Alimentos que sabotam a saúde capilar</h1>
-                <p>Nem so o que você come ajuda o cabelo — alguns alimentos podem prejudicar seus fios! Excesso de açucár, ultraprocessados e alimentos muito salgados podem enfraquecer os cabelos e aumentar a queda. Saiba quais alimentos evitar para manter os cabelos sempre bonitos e saudáveis.</p>
-                 <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
-              </div>
+              <Link href='artigo/alimentacao-e-beleza'>
+                <div className="conteudo">
+                  <h1>Alimentação e beleza: nutrientes que fazem diferença</h1>
+                  <p>Quer uma beleza que brilha de dentro para fora? Invista em você! Clique abaixo e descubra quais nutrientes transformam sua pele, cabelo e unhas. Alimentação certa é o segredo da beleza real!</p>
+                   <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
+                </div>
+              </Link>
             </article>
             <article className="card"><img src="/images/alimentacao/salada2-sec5.png" alt="Prato com salada saudavel" /></article>
           </div>
           <div className="secao2">
             <article className="card"><img src="/images/alimentacao/sec5-olho.png" alt="Prato com salada saudavel" /></article>
             <article className="card">
-              <div className="conteudo">
-                <h1>Receitas funcionais para cuidar dos cabelos de dentro para fora</h1>
-                <p>Cuidar dos cabelos pode ser saboroso e prático! Que tal apostar em receitas nutritivas que fortalecem os fios e ainda são deliciosas? Neste artigo, você encontra ideias de preparações simples e funcionais para incluir no seu dia a dia e dar aquele boost na saúde capilar.</p>
-               <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button> 
-              </div>
+              <Link href='artigo/5-receitas-naturais'>
+                <div className="conteudo">
+                  <h1>Receitas funcionais para cuidar dos cabelos de dentro para fora</h1>
+                  <p>Cuidar dos cabelos pode ser saboroso e prático! Que tal apostar em receitas nutritivas que fortalecem os fios e ainda são deliciosas? Neste artigo, você encontra ideias de preparações simples e funcionais para incluir no seu dia a dia e dar aquele boost na saúde capilar.</p>
+                 <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
+                </div>
+              </Link>
             </article>
             <article className="card"><img src="/images/alimentacao/sec2-mulher.png" alt="Prato com salada saudavel" /></article>
             <article className="card">
-                <div className="conteudo">
-                <img className="ftcard" src="/images/alimentacao/roxo.png" alt="Imagem suplemento cabelo" />
-                <h1>Mitos e verdades sobre alimentação e crescimento capilar</h1>
-                <p>Saiba quando os suplementos para cabelo são eficazes, quais usar e como garantir resultados seguros.</p>
-                <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
-                </div>
+                <Link href='artigo/hidratacao-caseira-crespos'>
+                  <div className="conteudo">
+                  <img className="ftcard" src="/images/alimentacao/roxo.png" alt="Imagem suplemento cabelo" />
+                  <h1>Hidratação caseira para cabelos crespos</h1>
+                  <p>Seus cachos estão ressecados e sem vida? Invista em você! Clique abaixo e descubra receitas caseiras de hidratação que transformam cabelos crespos, deixando os fios macios, definidos e cheios de brilho!</p>
+                  <button type="button" className="botao" onClick={() => window.location.href='#'}>SAIBA MAIS</button>
+                  </div>
+                </Link>
             </article>
           </div>
         </section>
