@@ -179,6 +179,12 @@ h3 {
     word-wrap: break-word;
 }
 
+.p2 a {
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 2.5vw, 1.875rem);
+    color: #AA35B0;
+}
+
 #s3 {
     display: flex;
     justify-content: center;
@@ -191,6 +197,7 @@ h3 {
     flex-direction: column;
     position: relative;
     box-sizing: border-box;
+    margin-bottom: clamp(2rem, 4vw, 4rem);
 }
 
 .d5 {
@@ -333,6 +340,10 @@ h3 {
         font-size: clamp(0.75rem, 3.5vw, 1.125rem);
         margin-left: clamp(0.5rem, 3vw, 1rem);
         margin-right: clamp(0.5rem, 3vw, 1rem);
+    }
+
+    .p2 > a {
+        font-size: clamp(0.75rem, 3.5vw, 1.125rem);
     }
     
     #d2 > p {

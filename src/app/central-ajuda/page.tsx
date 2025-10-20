@@ -34,13 +34,13 @@ export default function CentralDeAjuda() {
       <div id="d3">
         <h3>TERMOS DE USO</h3>
         <p className="p2">• É importante que você conheça nossas regras e condições. Acesse a página 
-          "Termos de Uso" para entender suas responsabilidades e direitos ao utilizar nossa plataforma.</p>
+          <Link href='artigo/termos-de-uso'> "Termos de Uso"</Link> para entender suas responsabilidades e direitos ao utilizar nossa plataforma.</p>
       </div>
 
       <div id="d4">
         <h3>POLÍTICA DE PRIVACIDADE</h3>
-        <p className="p2">• A segurança dos seus dados é nossa prioridade. Em nossa "Política de 
-          Privacidade", explicamos como suas informações são coletadas, armazenadas e protegidas.</p>
+        <p className="p2">• A segurança dos seus dados é nossa prioridade. Em nossa <Link href='artigo/politica-de-privacidade'>"Política de Privacidade" </Link>, 
+        explicamos como suas informações são coletadas, armazenadas e protegidas.</p>
       </div>
     </section>
 
@@ -68,7 +68,7 @@ export default function CentralDeAjuda() {
         <div id="d8">
           <h3>CONTATO</h3>
           <p className="p2">• Se precisar de ajuda adicional, envie uma mensagem através de nossa
-            página de contato ou pelo e-mail "oasis.beleza.autoestima@gmail.com”. Nossa equipe
+            página de contato ou pelo e-mail "projetctoasis@gmail.com”. Nossa equipe
             responderá o mais breve possível!</p>
         </div>
         <div id="d9">

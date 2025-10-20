@@ -73,7 +73,7 @@ main {
     gap: clamp(1.5rem, 7vw, 3.5rem);
 }
 
-#guia > div {
+#guia > a > div {
     display: flex;
     flex-direction: row;
     gap: clamp(0.75rem, 2.5vw, 1.25rem);
@@ -82,18 +82,18 @@ main {
     align-items: center;
 }
 
-#guia > div:hover {
+#guia > a > div:hover {
     transform: translateX(5px); 
     opacity: 0.8; 
 }
 
-#guia > div > h1 {
+#guia > a div > h1 {
     font-family: "PLAYFUL RUNWAY", sans-serif;
     font-size: clamp(1.4rem, 4.5vw, 2.25rem);
     font-weight: 400;
 }
 
-#guia > div > img {
+#guia > a div > img {
     height: clamp(20px, 4vw, 30px);
     width: auto;
 }
@@ -118,7 +118,18 @@ main {
     margin-top: 1rem;
 }
 
-/* Efeito restaurado para quando não há resultados (compatível com o TSX original) */
+#s2 > a {
+    text-decoration: none;
+    display: flex; 
+    transition: all 0.4s ease; 
+    max-width: 780px; 
+    width: 100%; 
+}
+
+#s2 > a:hover {
+    transform: scale(1.03); 
+}
+
 #s2:empty::after {
     content: "Nenhuma página encontrada para sua pesquisa.";
     display: block;
@@ -133,23 +144,11 @@ main {
 .pag {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    max-width: 780px;
+    width: 100%; 
     min-height: 14vw;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: all 0.4s ease; /* Transição para o filtro */
-}
-
-.pag.hidden {
-    opacity: 0;
-    transform: scale(0.8);
-    display: none; /* Garante que o item filtrado não ocupe espaço */
-}
-
-.pag:hover {
-    transform: scale(1.03);
 }
 
 .pag > img {
@@ -181,7 +180,6 @@ main {
     margin-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
-/* Barra de Pesquisa */
 #search-container {
     position: relative;
     width: 95%;
@@ -220,25 +218,27 @@ main {
     pointer-events: none;
 }
 
-/* ================================== */
-/* RESPONSIVIDADE COM MEDIA QUERIES   */
-/* ================================== */
-
 @media (max-width: 768px) {
-    .pag {
+    #s2 > a {
         flex-direction: column;
         max-width: 400px;
         width: 80%;
     }
+    
+    .pag {
+        flex-direction: column; 
+    }
+
     #s1{
-        
         align-items: center;
         text-align: center;
         margin-left: 0;
     }
-    .guia{
-        margin-left: -1.8rem;
+
+    #guia{
+        margin-left: 0; 
     }
+
     .pag > img {
         width: 100%;
         height: 180px;
