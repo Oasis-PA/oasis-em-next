@@ -338,9 +338,11 @@ export default function ProdutosPage() {
                 <Image src="/images/produtos/marca (5).png" alt="Principia" width={200} height={60} />
             </section>
 
-            <figure>
-                <Image src="/images/produtos/quiz.png" alt="quiz-cronograma-capilar" width={600} height={120} />
-            </figure>
+            <Link href='/cronograma-capilar'>
+                <figure>
+                    <Image src="/images/produtos/quiz.png" alt="quiz-cronograma-capilar" width={600} height={120} />
+                </figure>
+            </Link>
 
             <section id="s2">
                 <div className="linha-texto"><h1>TIPOS DE CABELO</h1><div id="linha"></div></div>

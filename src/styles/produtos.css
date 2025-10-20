@@ -75,7 +75,6 @@ figure {
 figure > img {
     width: clamp(300px, 84vw, 1200px);
     height: auto;
-    cursor: pointer;
 }
 
 #s2 {
