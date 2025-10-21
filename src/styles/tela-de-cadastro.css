@@ -9,8 +9,9 @@ main * {
 body {
     display: flex;
     width: 100%;
-    height: 100vh;
-    background-color: white;
+    min-height: 100vh; /* Alterado para min-height */
+    height: auto; /* Adicionado */
+    background-color: white; /* Mantido */
     align-items: center;
     justify-content: center;
     flex-direction: row;
@@ -65,6 +66,19 @@ form input {
     border: 1px solid #420E45;
     border-radius: 3px;
     margin: 9px 0px 0px 0px;
+    padding: 0 10px; /* Adicionado padding interno */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+/* HOVER ADICIONADO para inputs */
+form input:hover:not(:focus) {
+    border-color: #7a5a7d;
+}
+
+form input:focus {
+    outline: none; /* ADICIONADO */
+    border-color: #7D4AB3; /* ADICIONADO */
+    box-shadow: 0 0 0 3px rgba(125, 74, 179, 0.15); /* ADICIONADO */
 }
 
 a {
@@ -74,11 +88,19 @@ a {
     color: #7D4AB3;
     font-weight: 700;
     font-size: 1rem;
+    transition: color 0.3s ease; /* ADICIONADO */
 }
 
+a:hover {
+    color: #5a3680; /* ADICIONADO */
+    text-decoration: underline; /* ADICIONADO */
+}
+
+/* BOTÃO 'CONTINUE' REFORMULADO */
 .botaocontinue {
     color: white;
-    background-image: url(../../public/images/fundo-botao-continue.png);
+    /* background-image: url(../../public/images/fundo-botao-continue.png); REMOVIDO */
+    background-color: #722F53; /* ADICIONADO - Cor base */
     width: 100%;
     height: 58px;
     border: none;
@@ -87,7 +109,46 @@ a {
     font-family: "The Next Font";
     font-weight: 400;
     font-size: 1.2rem;
-    border-radius: 10px;
+    border-radius: 10px; /* Mantido raio original */
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.botaocontinue::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+.botaocontinue span { /* Adicione span ao redor do texto no HTML se necessário */
+    position: relative;
+    z-index: 1;
+}
+
+.botaocontinue:hover:not(:disabled) {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.5);
+    transform: translateY(-3px) scale(1.03); /* Scale menor devido ao raio menor */
+}
+
+.botaocontinue:hover:not(:disabled)::before {
+    width: 150%;
+    padding-top: 150%;
+    height: auto;
+}
+
+.botaocontinue:active:not(:disabled) {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.01);
 }
 
 .lin {
@@ -96,10 +157,11 @@ a {
     height: 1px;
 }
 
+/* BOTÃO GOOGLE COM HOVER SUTIL */
 .botaogoogle button {
     display: flex;
     background-color: transparent;
-    border: solid 1px #420E45; 
+    border: solid 1px #420E45;
     border-radius: 3px;
     width: 100%;
     height: 60px;
@@ -110,16 +172,25 @@ a {
     font-family: "The Next Font";
     font-weight: 200;
     font-size: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* ADICIONADO */
+}
+
+.botaogoogle button:hover:not(:disabled) {
+    background-color: rgba(66, 14, 69, 0.05); /* ADICIONADO */
+    border-color: #7D4AB3; /* ADICIONADO */
 }
 
 .botaogoogle {
     width: 100%;
-    max-width: 500px;
+    max-width: 500px; /* Alterado de 500px para alinhar com form */
     margin: 30px 0px 0px 0px;
+    align-self: center; /* ADICIONADO para centralizar */
 }
 
+/* BOTÃO 'JÁ TENHO CONTA' REFORMULADO */
 #botaojaconta {
     width: 100%;
+    max-width: 600px; /* Adicionado para alinhar com form */
     height: 60px;
     background-color: #722F53;
     border-radius: 50px;
@@ -130,10 +201,47 @@ a {
     font-family: "The Next Font";
     font-weight: 400;
     font-size: 1rem;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+#botaojaconta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+#botaojaconta span {
+    position: relative;
+    z-index: 1;
+}
+#botaojaconta:hover:not(:disabled) {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+#botaojaconta:hover:not(:disabled)::before {
+    width: 150%;
+    padding-top: 150%;
+    height: auto;
+}
+#botaojaconta:active:not(:disabled) {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
 }
 
+/* BOTÃO 'NÃO TENHO CONTA' REFORMULADO */
 #botaonaoconta {
     width: 100%;
+    max-width: 600px; /* Adicionado para alinhar com form */
     height: 60px;
     background-color: #F2A518;
     border-radius: 50px;
@@ -145,6 +253,41 @@ a {
     font-weight: 400;
     font-size: 1rem;
     align-self: center;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+#botaonaoconta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+#botaonaoconta span {
+    position: relative;
+    z-index: 1;
+}
+#botaonaoconta:hover:not(:disabled) {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+#botaonaoconta:hover:not(:disabled)::before {
+    width: 150%;
+    padding-top: 150%;
+    height: auto;
+}
+#botaonaoconta:active:not(:disabled) {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
 }
 
 #main-margin-login {
@@ -162,6 +305,7 @@ a {
     align-items: center;
 }
 
+/* HOVER para botão 'Esqueci a senha' */
 #section-checkbox-login button {
     border: none;
     background-color: transparent;
@@ -170,7 +314,13 @@ a {
     font-size: clamp(0.875rem, 1vw, 1rem);
     font-weight: 700;
     cursor: pointer;
+    transition: color 0.3s ease; /* ADICIONADO */
 }
+#section-checkbox-login button:hover {
+    color: #5a3680; /* ADICIONADO */
+    text-decoration: underline; /* ADICIONADO */
+}
+
 
 #section-checkbox-cadastro {
     display: flex;
@@ -179,8 +329,8 @@ a {
 }
 
 #section-checkbox-cadastro span {
-    font-family: "Louis George Cafe"; 
-    font-weight: 400; 
+    font-family: "Louis George Cafe";
+    font-weight: 400;
     font-size: 1rem;
 }
 
@@ -189,27 +339,28 @@ a {
 }
 
 #checkbox-login {
-    width: 18px; 
+    width: 18px;
     height: 18px;
     margin: 0px 12px 0px 2px;
     cursor: pointer;
 }
 
 #checkbox-cadastro {
-    width: 18px; 
+    width: 18px;
     margin: 0px 10px 0px 0px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 #section-checkbox-login label {
-    display: flex; 
+    display: flex;
     align-items: center;
     font-size: 1rem;
+    cursor: pointer; /* ADICIONADO */
 }
 
 #span-lembredemim-login {
-    font-family: "Louis George Cafe"; 
-    font-weight: 700; 
+    font-family: "Louis George Cafe";
+    font-weight: 700;
     font-size: 1rem;
     white-space: nowrap;
     margin-right: 10px;
@@ -220,27 +371,27 @@ a {
 }
 
 .div-linha-ou {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 500px; /* Alterado de 500px para alinhar */
     padding: 30px 0px 0px 0px;
     align-self: center;
 }
 
 .div-ou {
-    padding: 0px 15px; 
-    color: #7D4AB3; 
-    font-weight: 700; 
-    font-size: 1rem; 
+    padding: 0px 15px;
+    color: #7D4AB3;
+    font-weight: 700;
+    font-size: 1rem;
     font-family: "Louis George Cafe";
     margin: 0;
 }
 
 .span-button-continue-google {
-    flex-grow: 1; 
-    font-weight: bold; 
+    flex-grow: 1;
+    font-weight: bold;
     font-size: 1rem;
     text-align: center;
 }
@@ -262,9 +413,8 @@ a {
     }
 
 #figure-padding-login img {
-
-    width: auto;  /* Força o tamanho desejado */
-    height: 994px !important; /* Força o tamanho desejado */
+    width: auto;
+    height: 994px !important;
 }
 
 .figure-padding-cadastro {
@@ -275,10 +425,10 @@ a {
 }
 
 .figure-padding-cadastro img {
-    width: 100%;      /* Adicionado */
+    width: 100%;
     max-width: 100%;
     height: auto;
-    max-height: 1049px; /* Opcional, se quiser limitar a altura */
+    max-height: 1049px;
 }
 
 #main-margin-cadastro {
@@ -324,12 +474,13 @@ a {
 @media (max-width: 1200px) {
     main, #main-margin-cadastro, #main-margin-cadastro2 {
         width: 60%;
+        margin-left: 5vw; /* Reduzido margin */
     }
-    
+
     #figure-padding-login, .figure-padding-cadastro {
         width: 40%;
     }
-    
+
     h1 {
         font-size: 2.5rem;
     }
@@ -341,47 +492,52 @@ a {
         height: auto;
         padding: 20px 0;
     }
-    
+
     main, #main-margin-cadastro, #main-margin-cadastro2 {
         width: 90%;
         max-width: 600px;
         order: 2;
+        margin-left: auto; /* Centralizado */
+        margin-right: auto; /* Centralizado */
     }
-    
+
     #figure-padding-login, .figure-padding-cadastro {
         width: 90%;
         max-width: 500px;
         order: 1;
         margin-bottom: 20px;
+        margin-right: auto; /* Centralizado */
+        margin-left: auto; /* Centralizado */
     }
-    
+
     h1 {
         font-size: 2.2rem;
         margin-top: 20px;
     }
-    
+
     p {
         font-size: 1.1rem;
     }
-    
+
     .hide-on-mobile {
         display: none;
     }
-    
+
     #section-checkbox-cadastro {
         margin-top: 20px;
     }
 
-
     #main-margin-cadastro {
-        margin: 0;
-        width: 50%;
+        margin: 0 auto; /* Centralizado */
+        width: 90%;
+        max-width: 600px;
         padding: 20px;
     }
-    
+
     #main-margin-cadastro2 {
-        margin: 0;
-        width: 50%;
+        margin: 0 auto; /* Centralizado */
+        width: 90%;
+        max-width: 600px;
         padding: 20px;
     }
 
@@ -390,48 +546,52 @@ a {
         min-height: auto;
         padding: 20px 0;
     }
+    #botaojaconta, #botaonaoconta {
+        max-width: none; /* Removido max-width para ocupar espaço */
+    }
 }
 
 @media (max-width: 600px) {
     main, #main-margin-cadastro, #main-margin-cadastro2 {
         width: 95%;
     }
-    
+
     #figure-padding-login, .figure-padding-cadastro {
         width: 95%;
     }
-    
+
     h1 {
         font-size: 1.8rem;
     }
-    
+
     p {
         font-size: 1rem;
     }
-    
+
     form input, .botaogoogle button, #botaonaoconta, #botaojaconta {
         height: 50px;
     }
-    
+
     .botaocontinue {
         height: 50px;
         font-size: 1rem;
     }
-    
+
     #section-checkbox-login {
         flex-direction: column;
         align-items: flex-start;
+        gap: 10px; /* Adicionado espaço */
     }
-    
-    #section-checkbox-login a {
-        margin-left: 0;
-        margin-top: 10px;
+
+    #section-checkbox-login button { /* Estilizando o botão como link */
+        padding: 0; /* Removido padding */
+        text-align: left; /* Alinhado à esquerda */
     }
-    
+
     #section-checkbox-cadastro {
         flex-wrap: wrap;
     }
-    
+
     #section-checkbox-cadastro span {
         margin-top: 5px;
         font-size: 0.9rem;
@@ -442,19 +602,19 @@ a {
     h1 {
         font-size: 1.5rem;
     }
-    
+
     .div-ou {
         padding: 0 10px;
     }
-    
+
     .botaogoogle button img {
         width: 20px;
     }
-    
+
     #botaonaoconta, #botaojaconta {
         font-size: 0.9rem;
     }
-    #imagem-grande{
+    #imagem-grande{ /* Seletor parece não corresponder a nada no HTML, mantido por precaução */
         width: 300px;
         height: 300px;
     }
@@ -468,11 +628,11 @@ a {
     #main-margin-login {
         margin-left: 8rem;
     }
-    
+
     #gambiarra {
         margin-left: -2%;
     }
-    
+
     #figure-padding-login img {
         height: 900px !important;
     }
@@ -482,11 +642,11 @@ a {
     #main-margin-login {
         margin-left: 5rem;
     }
-    
+
     #figure-padding-login img {
         height: 800px !important;
     }
-    
+
     #gambiarra h1 {
         font-size: 2.8rem;
     }
@@ -501,7 +661,7 @@ a {
         padding: 30px 20px;
         align-items: center;
     }
-    
+
     #gambiarra {
         margin-top: 40px;
         margin-left: 0;
@@ -509,16 +669,16 @@ a {
         max-width: 600px;
         order: 2;
     }
-    
+
     #gambiarra h1 {
         font-size: 2.5rem;
         text-align: center;
     }
-    
+
     #gambiarra p {
         text-align: center;
     }
-    
+
     #figure-padding-login {
         order: 1;
         width: 100%;
@@ -527,14 +687,14 @@ a {
         margin-bottom: 0;
         justify-content: center;
     }
-    
+
     #figure-padding-login img {
         width: 100% !important;
         height: auto !important;
         max-height: 650px;
         object-fit: contain;
     }
-    
+
     .hide-on-mobile {
         display: none;
     }
@@ -545,53 +705,53 @@ a {
         width: 100%;
         padding: 20px 15px;
     }
-    
+
     #gambiarra {
         width: 100%;
         margin-top: 35px;
     }
-    
+
     #gambiarra h1 {
         font-size: 2rem;
     }
-    
+
     #gambiarra p {
         font-size: 1rem;
         margin-bottom: 25px;
     }
-    
+
     #gambiarra form input {
         height: 50px;
         font-size: 0.95rem;
     }
-    
+
     #gambiarra .botaocontinue {
         height: 50px;
         font-size: 1rem;
         margin-top: 20px;
     }
-    
+
     #section-checkbox-login {
         margin: 15px 0;
     }
-    
+
     #section-checkbox-login button {
         font-size: 0.9rem;
     }
-    
+
     #botaonaoconta {
         height: 55px;
         font-size: 0.9rem;
     }
-    
+
     #figure-padding-login {
         max-width: 550px;
     }
-    
+
     #figure-padding-login img {
         max-height: 550px;
     }
-    
+
     .div-linha-ou {
         padding: 25px 0;
     }
@@ -601,54 +761,71 @@ a {
     #main-margin-login {
         padding: 15px 10px;
     }
-    
+
     #gambiarra {
         margin-top: 30px;
     }
-    
+
     #gambiarra h1 {
         font-size: 1.6rem;
     }
-    
+
     #gambiarra p {
         font-size: 0.9rem;
         margin-bottom: 20px;
     }
-    
+
     #gambiarra form input {
         height: 45px;
         font-size: 0.9rem;
     }
-    
+
     #gambiarra .botaocontinue {
         height: 45px;
         font-size: 0.95rem;
         margin-top: 15px;
     }
-    
+
     #section-checkbox-login button {
         font-size: 0.85rem;
     }
-    
+
     #botaonaoconta {
         height: 50px;
         font-size: 0.85rem;
     }
-    
+
     #figure-padding-login {
         max-width: 420px;
     }
-    
+
     #figure-padding-login img {
         max-height: 420px;
     }
-    
+
     .div-linha-ou {
         padding: 20px 0;
     }
-    
+
     .div-ou {
         padding: 0 10px;
         font-size: 0.9rem;
     }
+}
+
+/* ADICIONAL: Estado :disabled para botões */
+.botaocontinue:disabled,
+#botaojaconta:disabled,
+#botaonaoconta:disabled,
+.botaogoogle button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-image: none; /* Remove gradiente ou imagem se desabilitado */
+    box-shadow: none;
+    transform: none;
+}
+.botaocontinue:disabled::before,
+#botaojaconta:disabled::before,
+#botaonaoconta:disabled::before {
+    display: none; /* Esconde efeito radial se desabilitado */
 }

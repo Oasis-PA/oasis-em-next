@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link'; 
+import Link from "next/link";
 import Script from 'next/script'; 
 import image from 'next/image'; 
 import { Header, Footer } from "@/components";
@@ -33,7 +33,7 @@ const HairCarePage: React.FC = () => {
           <img id="img350" src="/images/hair-care/Rectangle 350.png" alt="" />
           <aside className="img-com-botao">
             <img id="img352" src="/images/hair-care/Rectangle 352.png" alt="" />
-            <button id="bntRoxo">CONHEÇA</button>
+            <button id="bntRoxo"><Link href='/tinturas'>CONHEÇA</Link></button>
           </aside>
           <img id="img351" src="/images/hair-care/Rectangle 351.png" alt="" />
         </article>

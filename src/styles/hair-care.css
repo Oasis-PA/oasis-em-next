@@ -71,6 +71,7 @@ body, html {
     color: #070707;
     line-height: 1.1;
     max-width: 12ch;
+    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 .grupo-retangulos {
@@ -94,6 +95,7 @@ body, html {
     transition: all 0.3s ease;
 }
 
+/* --- HOVER EXISTENTE (INTOCADO CONFORME PEDIDO) --- */
 .retangulo-item:hover {
     background: #e0e0e0;
     transform: translateY(-3px);
@@ -249,6 +251,7 @@ body, html {
     max-width: 409px;
     object-fit: cover;
     border-radius: 15px;
+    transition: all 0.3s ease; /* --- ADICIONADO --- */
 }
 
 /* Container do botão + imagem central */
@@ -264,38 +267,83 @@ body, html {
 .img-com-botao img {
     height: 377px;
     max-width: 644px;
+     /* --- SEM HOVER AQUI PARA NÃO MOVER O BOTÃO --- */
 }
 
+/* --- BOTÃO ROXO MODIFICADO --- */
 #bntRoxo {
     position: absolute;
     margin-top: 65%;
-    width: 100%;
-    
-    
-    padding: 0.8rem 2.5rem;
+    width: clamp(120px, 15vw, 250px); /* --- LARGURA AJUSTADA --- */
+    height: clamp(40px, 3.5vw, 55px); /* --- ALTURA AJUSTADA --- */
+    /* padding: 0.8rem 2.5rem; --- REMOVIDO (usando flex) --- */
+    display: flex; /* --- ADICIONADO --- */
+    align-items: center; /* --- ADICIONADO --- */
+    justify-content: center; /* --- ADICIONADO --- */
     background-color: #722F53;
     color: white;
     border: none;
-    border-radius: 30px;
-    font-family: "The Next Font", sans-serif;
+    border-radius: 30px; /* --- RAIO ORIGINAL MANTIDO --- */
+    font-family: 'The Next Font';
     font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
     white-space: nowrap; /* Impede que o texto quebre */
-    font-family: 'The Next Font';
+    
+    /* --- EFEITOS ADICIONADOS --- */
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 
-#bntRoxo:hover {
-    scale: 1.1;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+#bntRoxo a {
+    color: white;
+    font-size: 1.2rem;
 }
+
+/* --- ADICIONADO --- */
+#bntRoxo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+/* --- HOVER MODIFICADO --- */
+#bntRoxo:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.08);
+    /* scale: 1.1; --- SUBSTITUÍDO --- */
+}
+
+/* --- ADICIONADO --- */
+#bntRoxo:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* --- ADICIONADO --- */
+#bntRoxo:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.05);
+}
+/* --- FIM DA MODIFICAÇÃO DO BOTÃO --- */
+
 
 /* Ajusta o botão em telas menores */
 @media (max-width: 768px) {
     #bntRoxo {
         bottom: 10px; /* Posição mais segura dentro da imagem */
-        padding: 0.6rem 2rem;
+        padding: 0; /* --- REMOVIDO (flex faz o trabalho) --- */
         font-size: 1rem;
+        margin-top: auto; /* --- Reseta o margin-top --- */
+        width: clamp(120px, 30vw, 200px); /* --- Clamp para mobile --- */
+        height: clamp(35px, 8vw, 45px); /* --- Clamp para mobile --- */
     }
     .grupo-img img, .img-com-botao img {
         height: auto; /* Altura automática em telas menores */
@@ -321,7 +369,7 @@ body, html {
     }
     #bntRoxo {
         font-size: 1rem;
-        padding: 0.6rem 1.5rem;
+        padding: 0; /* --- REMOVIDO (flex faz o trabalho) --- */
     }
 }
 /* ================================== */
@@ -334,6 +382,7 @@ body, html {
     font-size: clamp(3rem, 7vw, 6.4rem);
     text-align: center;
     margin: 4rem 0 2rem 0;
+    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 .container-retangulos {
@@ -356,6 +405,13 @@ body, html {
     align-items: center;
     padding: 2rem;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+/* --- ADICIONADO --- */
+.retangulo-roxo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .circulo-roxo {
@@ -414,6 +470,7 @@ p.lista-festivos { padding-left: 0; }
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 1.5rem;
     max-width: 650px;
+    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #osCortes {
@@ -436,6 +493,7 @@ p.lista-festivos { padding-left: 0; }
     width: clamp(150px, 20vw, 350px);
     height: 100%; /* Altura responsiva */
     border-radius: 10px;
+    transition: all 0.3s ease; /* --- ADICIONADO --- */
 }
 @media (max-width: 1200px) {
     .content {
@@ -527,6 +585,12 @@ p.lista-festivos { padding-left: 0; }
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease; /* --- ADICIONADO --- */
+}
+
+/* --- ADICIONADO --- */
+.item:hover .imagem {
+    transform: scale(1.1);
 }
 
 .item h1 {
@@ -539,27 +603,64 @@ p.lista-festivos { padding-left: 0; }
     text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
+/* --- BOTÃO MARROM MODIFICADO --- */
 .botao-marrom {
     position: absolute;
     bottom: 2rem;
     left: 50%;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); --- MOVIDO PARA BAIXO --- */
     width: 185px;
     height: 49px;
+    display: flex; /* --- ADICIONADO --- */
+    align-items: center; /* --- ADICIONADO --- */
+    justify-content: center; /* --- ADICIONADO --- */
     background-color: #5E332C;
     color: white;
     border: none;
-    border-radius: 27px;
+    border-radius: 27px; /* --- RAIO ORIGINAL MANTIDO --- */
     font-family: "The Next Font", sans-serif;
     font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    
+    /* --- EFEITOS ADICIONADOS --- */
+    transform: translateX(-50%); /* --- GARANTE O ESTADO INICIAL --- */
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 
-.botao-marrom:hover {
-    transform: translateX(-50%) scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+/* --- ADICIONADO --- */
+.botao-marrom::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
+
+/* --- HOVER MODIFICADO --- */
+.botao-marrom:hover {
+    background: linear-gradient(135deg, #8a5047 0%, #703f37 100%); /* --- GRADIENTE MARROM --- */
+    box-shadow: 0px 10px 25px rgba(94, 51, 44, 0.6); /* --- SOMBRA MARROM --- */
+    transform: translateX(-50%) translateY(-3px) scale(1.08);
+}
+
+/* --- ADICIONADO --- */
+.botao-marrom:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* --- ADICIONADO --- */
+.botao-marrom:active {
+    background: #4a2823; /* --- TOM MAIS ESCURO DE MARROM --- */
+    transform: translateX(-50%) translateY(-1px) scale(1.05);
+}
+/* --- FIM DA MODIFICAÇÃO DO BOTÃO --- */
 
 /* ================================== */
 /* ÓLEO DE ROSA MOSQUETA              */
@@ -589,6 +690,7 @@ p.lista-festivos { padding-left: 0; }
     position: absolute;
     width: clamp(250px, 30vw, 328px); /* Largura responsiva */
     height: auto;
+    transition: all 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #oleo {
@@ -607,29 +709,73 @@ p.lista-festivos { padding-left: 0; }
     max-width: 860px;
 }
 
+/* --- BOTÃO ROXO MODIFICADO --- */
 .botao-roxo {
     width: 185px;
     height: 49px;
+    display: flex; /* --- ADICIONADO --- */
+    align-items: center; /* --- ADICIONADO --- */
+    justify-content: center; /* --- ADICIONADO --- */
     background-color: #722F53;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px; /* --- RAIO ORIGINAL MANTIDO --- */
     font-family: "The Next Font", sans-serif;
     font-size: 1.2rem;
     cursor: pointer;
     margin-top: 1.5rem;
-    transition: all 0.3s ease;
+
+    /* --- EFEITOS ADICIONADOS --- */
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.botao-roxo:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.botao-roxo a {
+    color: white;
+    font-size: 1.2rem;
 }
+
+/* --- ADICIONADO --- */
+.botao-roxo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+/* --- HOVER MODIFICADO --- */
+.botao-roxo:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.08);
+}
+
+/* --- ADICIONADO --- */
+.botao-roxo:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* --- ADICIONADO --- */
+.botao-roxo:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.05);
+}
+/* --- FIM DA MODIFICAÇÃO DO BOTÃO --- */
+
 
 #th2 {
     font-family: "PLAYFUL RUNWAY", sans-serif;
     margin-bottom: 1.5rem;
     font-size: clamp(2rem, 4vw, 2.8rem);
+    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #tp {
@@ -655,4 +801,25 @@ p.lista-festivos { padding-left: 0; }
         width: 80%;
         max-width: 300px;
     }
+}
+
+
+/* --- NOVAS REGRAS DE HOVER ADICIONADAS --- */
+
+/* Hover para Títulos */
+#asM:hover, 
+#nossosTutoriais:hover, 
+#nossosCortes:hover, 
+#th2:hover {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Hover para Imagens (exceto a com botão) */
+.grupo-img img:hover, 
+.imagem11:hover, 
+#oleo:hover, 
+#creme:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 10;
 }
