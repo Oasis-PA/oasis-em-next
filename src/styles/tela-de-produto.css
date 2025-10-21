@@ -231,30 +231,68 @@ main {
 }
 
 .VaParaCompra {
-  color: rgb(255, 255, 255);
+  color: var(--corpo-texto); /* Cor ajustada */
   font-weight: bold;
+  font-family: "Louis George Cafe", sans-serif; /* Fonte adicionada */
+  font-size: 1rem; /* Tamanho ajustado */
 }
 
 .botaoAmarelo {
   cursor: pointer;
-  width: 80%;
+  width: 80%; /* Mantido */
   height: 48.75px;
   background-color: #F2A518;
   border: none;
   margin-bottom: 10px;
-  margin-top: 5vh;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  align-self: center;
+  margin-top: 0; /* Removido margin-top vh */
+  color: #FFF; /* Cor do texto adicionada */
+  font-family: "The Next Font", sans-serif; /* Fonte adicionada */
+  font-size: 1.1rem; /* Tamanho ajustado */
+  font-weight: 400; /* Peso adicionado */
+  /* EFEITO RADIAL */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border-radius: 4px; /* Adicionado leve raio */
 }
 
-.botaoAmarelo:hover {
-  background: radial-gradient(65% 65% at 51% 37%, rgba(242, 165, 24, 1) 0%, rgba(255, 239, 204, 1) 100%);
-  box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
+.botaoAmarelo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.botaoAmarelo:hover:not(:disabled) {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.botaoAmarelo:hover:not(:disabled)::before {
+    width: 350px;
+    height: 350px;
+}
+
+.botaoAmarelo:active:not(:disabled) {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
 }
 
 .botaoAmarelo:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.botaoAmarelo:disabled::before {
+  display: none;
 }
 
 /* Linha divisória */
@@ -423,6 +461,7 @@ main {
   max-width: 649px;
   text-align: center;
   margin-bottom: 30px;
+  color: var(--corpo-texto); /* Garante cor */
 }
 
 #caixaEmail {

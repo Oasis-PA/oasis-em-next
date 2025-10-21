@@ -69,6 +69,12 @@ main > h5 {
     margin-top: clamp(2rem, 8vw, 8rem);
     align-self: flex-start;
     margin-left: clamp(4rem, 12vw, 12.5rem);;
+    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+/* --- ADICIONADO --- */
+#s1 > h1:hover {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
 #tipos {
@@ -92,6 +98,7 @@ main > h5 {
 #card3 {background-image: url(../../public/images/tinturas/tintura3.png);}
 #card4 {background-image: url(../../public/images/tinturas/tintura4.png);}
 
+/* --- HOVER EXISTENTE (INTOCADO) --- */
 #card1:hover, #card2:hover, #card3:hover, #card4:hover {
     background-size: cover;
     background-repeat: no-repeat;
@@ -155,6 +162,7 @@ main > h5 {
     height: 57.1vw;
     width: 44vw;
     display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #artigo1 > h1 {
@@ -178,6 +186,7 @@ main > h5 {
     width: 42vw;
     display: flex;
     margin-right: clamp(3rem, 7.5vw, 7.5rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #artigo2 > p {
@@ -209,6 +218,7 @@ main > h5 {
     width: 70.6vw;
     display: flex;
     margin-left: clamp(2rem, 3vw, 3rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #artigo3 > h1 {
@@ -234,6 +244,7 @@ main > h5 {
     margin-top: clamp(3rem, 8vw, 8rem);
     align-self: flex-end;
     margin-right: clamp(2rem, 3vw, 3rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #artigo4a {
@@ -311,8 +322,10 @@ main > h5 {
     margin-left: clamp(1.25rem, 2vw, 2rem);
     color: #FFF;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    font-family: "THE NEXT FONT";
 }
 
+/* --- BOTÃO MODIFICADO (BASEADO NO SEU EXEMPLO) --- */
 #s4 > div > button {
     display: flex;
     width: 15.9375rem;
@@ -320,19 +333,56 @@ main > h5 {
     justify-content: center;
     align-items: center;
     align-self: end;
-    background: #722F53;
-    border-radius: 27px;
-    color: #FFF;
-    font-family: "THE NEXT FONT";
-    font-size: clamp(1rem, 1.25vw, 1.25rem);
     margin-left: 7.9rem;
     margin-right: 7.9rem;
+    
+    background-color: #722F53;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-family: "THE NEXT FONT"; /* Mantive sua fonte original */
     cursor: pointer;
+    font-size: clamp(0.875rem, 1vw, 1rem); /* Fonte do seu exemplo */
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
+
+/* --- ADICIONADO (EFEITOS DO SEU EXEMPLO) --- */
+#s4 > div > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+#s4 > div > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#s4 > div > button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.08);
+}
+
+#s4 > div > button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.05);
+}
+/* --- FIM DAS MODIFICAÇÕES DO BOTÃO --- */
+
 
 #s4 > div > button > a {
     color: #FFF;
-    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    font-size: clamp(0.875rem, 1vw, 1rem); /* --- MODIFICADO (para bater com o botão) --- */
+    text-decoration: none; /* --- ADICIONADO (pra garantir) --- */
 }
 
 #artigo5, #artigo6, #artigo7, #artigo8, #artigo9  {
@@ -344,6 +394,7 @@ main > h5 {
     align-items: end;
     width: 27.1vw;
     height: 18.5vw;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
 #artigo5 {background-image: url('../../public/images/link-artigos/cuidados-noturnos.jpg');}
@@ -351,3 +402,25 @@ main > h5 {
 #artigo7 {background-image: url('../../public/images/link-artigos/acidificacao-no-cabelo.jpg');}
 #artigo8 {background-image: url('../../public/images/link-artigos/protetor-solar-para-peles-retintas.jpg');}
 #artigo9 {background-image: url('../../public/images/link-artigos/como-fazer-waves.jpg');}
+
+/* --- ADICIONADO (HOVER PARA TODOS OS ARTIGOS) --- */
+#artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, 
+#artigo5:hover, #artigo6:hover, #artigo7:hover, #artigo8:hover, #artigo9:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- CORREÇÃO PARA LINKS (NEXT.JS) --- */
+/*
+  Isso força as tags <a> criadas pelo <Link>
+  a se comportarem como elementos de bloco.
+  Assim, elas passam a obedecer o layout Flexbox das seções 
+  e permitem que os divs (#artigo1, #artigo3, etc.) 
+  dentro delas tenham o tamanho correto.
+*/
+#s2 > a,
+#s3 > a,
+#s4 > div > a {
+    display: block;
+}
