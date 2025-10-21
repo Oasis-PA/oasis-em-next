@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 main * {
     margin: 0;
     padding: 0;
@@ -69,12 +73,14 @@ main {
 #user {
     width: 3.5rem;
     height: 3.5rem;
-    transition: width 0.3s, height 0.3s;
+    transition: width 0.3s, height 0.3s, transform 0.3s ease; /* Adicionado transform */
+    cursor: pointer;
 }
 
 #user:hover {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem; /* Reduzido um pouco para não ficar tão grande */
+    height: 4rem;
+    transform: scale(1.1); /* Adicionado scale */
 }
 
 .botoes-pgn-respostas {
@@ -86,6 +92,12 @@ main {
 .botoes-pgn-respostas img {
     width: 3rem;
     height: auto;
+    cursor: pointer; /* Adicionado */
+    transition: transform 0.3s ease; /* Adicionado */
+}
+
+.botoes-pgn-respostas img:hover {
+    transform: scale(1.1); /* Adicionado */
 }
 
 .titulos {
@@ -120,6 +132,12 @@ main {
     border-radius: 1.875rem;
     background: #FFF;
     box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.info-texto:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .img-info-texto {
@@ -222,6 +240,12 @@ main {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.quadradinho:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .quadradinho h1 {
@@ -286,7 +310,7 @@ main {
     margin-top: 1.3rem;
 }
 
-.conteudo {
+.conteudo { /* Contexto diferente do .content acima */
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -345,6 +369,7 @@ main {
     align-items: center;
 }
 
+/* BOTÕES DE NAVEGAÇÃO DO CALENDÁRIO REFORMULADOS */
 .aa button {
     background: none;
     border: none;
@@ -352,18 +377,48 @@ main {
     color: #5E332C;
     cursor: pointer;
     padding: 0 0.5rem;
-    transition: color 0.2s, transform 0.2s;
     line-height: 1;
+    /* ADIÇÕES PARA O EFEITO */
+    display: inline-flex; /* Necessário para centralizar conteúdo */
+    justify-content: center; /* Necessário para centralizar conteúdo */
+    align-items: center; /* Necessário para centralizar conteúdo */
+    width: 3rem; /* Tamanho fixo para efeito radial */
+    height: 3rem; /* Tamanho fixo para efeito radial */
+    border-radius: 50%; /* Torna redondo */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.aa button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(94, 51, 44, 0.15); /* Cor suave baseada no texto */
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .aa button:hover {
     color: #F2A518;
     transform: scale(1.1);
+    background-color: rgba(94, 51, 44, 0.05); /* Fundo suave no hover */
+}
+
+.aa button:hover::before {
+    width: 3rem; /* Preenche o botão */
+    height: 3rem;
 }
 
 .aa button:active {
     transform: scale(0.95);
+    color: #d18f15;
 }
+
 
 .diquinhas {
     display: flex;
@@ -385,6 +440,12 @@ main {
     align-items: center;
     padding: 2rem;
     gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.dicas:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .dicas p {
@@ -426,6 +487,12 @@ main {
     box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
     padding: 2rem;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.produtinho:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .img-produtinhos-1 {
@@ -481,6 +548,7 @@ main {
     line-height: 1.5;
 }
 
+/* BOTÃO DO PRODUTO REFORMULADO */
 .produtinho button {
     display: flex;
     width: 100%;
@@ -492,7 +560,7 @@ main {
     gap: 0.51375rem;
     flex-shrink: 0;
     border-style: none;
-    border-radius: 0.10275rem;
+    border-radius: 0.10275rem; /* Mantendo o border radius original */
     background: #F2A518;
     cursor: pointer;
     color: #FFF;
@@ -502,20 +570,39 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: background 0.3s, box-shadow 0.3s, border-radius 0.3s, transform 0.2s;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.produtinho button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .produtinho button:hover {
-    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
-    box-shadow: 0 5px 10.7px 0 #945414;
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.produtinho button:hover::before {
+    width: 200px;
+    height: 200px;
 }
 
 .produtinho button:active {
-    border: 1px solid #ECC46F;
-    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
-    transform: translateY(0);
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
 }
 
 .articles {
@@ -550,6 +637,7 @@ main {
     flex-wrap: wrap;
 }
 
+/* BOTÕES DE TAG REFORMULADOS */
 .butoes button {
     padding: 0.1rem 1.2rem 0.1rem 1.2rem;
     border: #000 0.1rem solid;
@@ -562,13 +650,41 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: background-color 0.3s, color 0.3s;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.butoes button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .butoes button:hover {
     background-color: #000;
     color: #FFF;
+    transform: scale(1.05);
 }
+
+.butoes button:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.butoes button:active {
+    background-color: #333;
+    transform: scale(1);
+}
+
 
 .artigo, .artigo1 {
     background-size: cover;
@@ -581,6 +697,13 @@ main {
     padding: 1.2rem;
     display: flex;
     border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+    cursor: pointer;
+}
+
+.artigo:hover, .artigo1:hover {
+    transform: scale(1.03); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .artigo img, .artigo1 img {
@@ -755,6 +878,7 @@ main {
     width: 100%;
 }
 
+/* BOTÕES DE NAVEGAÇÃO DO CALENDÁRIO (SETAS) REFORMULADOS */
 .calendario-seta {
     background: none;
     border: none;
@@ -762,18 +886,48 @@ main {
     color: #5E332C;
     cursor: pointer;
     padding: 0 0.5rem;
-    transition: color 0.2s, transform 0.2s;
     line-height: 1;
+    /* ADIÇÕES PARA O EFEITO */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.calendario-seta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(94, 51, 44, 0.15);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .calendario-seta:hover {
     color: #F2A518;
     transform: scale(1.1);
+    background-color: rgba(94, 51, 44, 0.05);
+}
+
+.calendario-seta:hover::before {
+    width: 3rem;
+    height: 3rem;
 }
 
 .calendario-seta:active {
     transform: scale(0.95);
+    color: #d18f15;
 }
+
 
 #resumo-semanal {
     color: #5E332C;
@@ -793,7 +947,7 @@ main {
         max-width: 95%;
     }
 
-    .conteudo {
+    .conteudo { /* Contexto diferente */
         gap: 1rem;
     }
 
@@ -844,7 +998,7 @@ main {
         padding: 0.8rem;
     }
 
-    .conteudo {
+    .conteudo { /* Contexto diferente */
         flex-wrap: wrap;
         justify-content: center;
         gap: 1.5rem;
@@ -1034,7 +1188,7 @@ main {
         min-height: auto;
     }
 
-    .content {
+    .content { /* Contexto diferente */
         padding: 0.8rem;
     }
 
@@ -1067,7 +1221,7 @@ main {
         margin-top: 0.5rem;
     }
 
-    .conteudo {
+    .conteudo { /* Contexto diferente */
         flex-direction: column;
         align-items: stretch;
         max-width: 100%;
@@ -1194,7 +1348,7 @@ main {
         max-width: 100%;
     }
 
-    .conteudo {
+    .conteudo { /* Contexto diferente */
         flex-direction: column;
     }
 
@@ -1273,7 +1427,7 @@ main {
         width: 80%;
     }
 
-    .content p {
+    .content p { /* Contexto diferente */
         font-size: 0.95rem;
     }
 
@@ -1345,6 +1499,8 @@ main {
 
     .aa button, .calendario-seta {
         font-size: 1.3rem;
+        width: 2.5rem;
+        height: 2.5rem;
     }
 
     .dicas {
@@ -1427,7 +1583,7 @@ main {
         overflow-y: auto;
     }
 
-    .conteudo {
+    .conteudo { /* Contexto diferente */
         flex-direction: row;
         overflow-x: auto;
         flex-wrap: nowrap;

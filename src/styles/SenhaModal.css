@@ -1,31 +1,77 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   SenhaModal.css REFORMULADO com CORES ALINHADAS AO SITE
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
+/* === VARIÁVEIS DE COR (Ajustadas para o site) === */
+:root {
+  --modal-overlay-bg: rgba(46, 21, 38, 0.85); /* Tom roxo escuro translúcido */
+  --modal-bg: #FFFFFF; /* Fundo branco como padrão nos forms */
+  --header-bg: #5E332C; /* Marrom escuro para o header, contrastante */
+  --accent-color: #F2A518; /* Dourado principal */
+  --accent-hover: #e69917; /* Dourado mais escuro para hover */
+  --text-primary-dark: #000000; /* Texto escuro principal */
+  --text-secondary-dark: #333333; /* Texto escuro secundário */
+  --text-primary-light: #FFFFFF; /* Texto claro principal */
+  --text-secondary-light: #f0f0f0; /* Texto claro secundário */
+  --border-color-light: #E0E0E0; /* Borda clara suave */
+  --border-color-focus: #722F53; /* Roxo primário para focus */
+  --input-bg: #FFFFFF;
+  --input-placeholder: #AAAAAA;
+  --button-primary-bg: #722F53;
+  --button-primary-hover-start: #8B3A62;
+  --button-primary-hover-end: #D946A6;
+  --button-secondary-border: #722F53;
+  --button-secondary-text: #722F53;
+  --button-secondary-hover-bg: rgba(114, 47, 83, 0.08);
+  --success-bg: #f0fff0; /* Verde bem claro */
+  --success-text: #28a745;
+  --success-border: #b8e6c3;
+  --error-bg: #fff5f5; /* Vermelho bem claro */
+  --error-text: #dc3545;
+  --error-border: #f5c6cb;
 }
+/* Adaptação para tema escuro, se houver */
+:root.dark {
+    --modal-bg: #1e1e1e;
+    --header-bg: #331a17; /* Marrom mais escuro */
+    --text-primary-dark: #e0e0e0;
+    --text-secondary-dark: #b0b0b0;
+    --border-color-light: #444444;
+    --input-bg: #2a2a2a;
+    --input-placeholder: #777777;
+    --button-secondary-border: #a36f8f;
+    --button-secondary-text: #e6dceb;
+    --button-secondary-hover-bg: rgba(114, 47, 83, 0.2);
+    --success-bg: rgba(40, 167, 69, 0.1);
+    --success-border: rgba(40, 167, 69, 0.3);
+    --error-bg: rgba(220, 53, 69, 0.1);
+    --error-border: rgba(220, 53, 69, 0.3);
+}
+
+/* === FONTES (Baseadas no site) === */
+.senha-modal-title,
+.senha-btn-primary {
+  font-family: "The Next Font", sans-serif;
+}
+
+.senha-modal-description,
+.senha-form-label,
+.senha-form-input,
+.senha-btn-secondary,
+.senha-message {
+  font-family: "Louis George Cafe", sans-serif;
+}
+
 
 /* Overlay do Modal */
 .senha-modal-overlay {
@@ -34,200 +80,240 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(136, 112, 139, 0.85);
-  backdrop-filter: blur(3px);
+  background: var(--modal-overlay-bg);
+  backdrop-filter: blur(4px);
   z-index: 1000;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.3s ease-out;
 }
 
 /* Container do Modal */
 .senha-modal-content {
-  background: linear-gradient(135deg, #4e1b52 0%, #4a1942 100%);
-  border-radius: 24px;
+  background: var(--modal-bg);
+  border-radius: 1.5rem; /* 24px */
   width: 90%;
-  max-width: 28rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  max-width: 28rem; /* 448px */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
   overflow: hidden;
-  animation: slideUp 0.4s ease;
-  border: 2px solid rgba(199, 145, 0, 0.3);
+  animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid var(--border-color-light); /* Borda clara */
   position: relative;
 }
 
 /* Header */
 .senha-modal-header {
-  background: linear-gradient(135deg, #6b1f5c 0%, #8b2472 100%);
-  padding: 1.75rem 2rem;
+  background: var(--header-bg);
+  padding: 1.5rem 2rem; /* 24px 32px */
   position: relative;
-  overflow: hidden;
-}
-
-.senha-modal-header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(199, 145, 0, 0.15) 0%, transparent 70%);
-  animation: pulse 3s ease-in-out infinite;
+  /* Removido border-bottom para um look mais clean */
 }
 
 .senha-modal-title {
-  color: #f4a942;
-  font-size: 1.5rem;
-  font-weight: 700;
+  color: var(--accent-color); /* Dourado */
+  font-size: 1.8rem;
+  font-weight: 400;
   margin: 0;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra mais sutil */
 }
 
 .senha-modal-close {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  top: 1rem; /* 16px */
+  right: 1rem; /* 16px */
+  width: 2.25rem; /* 36px */
+  height: 2.25rem; /* 36px */
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(244, 169, 66, 0.3);
-  color: #f4a942;
+  background: rgba(255, 255, 255, 0.1); /* Fundo sutil no header escuro */
+  border: 1px solid rgba(242, 165, 24, 0.5); /* Borda dourada mais visível */
+  color: var(--accent-color);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* 24px */
   line-height: 1;
   transition: all 0.3s ease;
   z-index: 2;
 }
 
 .senha-modal-close:hover {
-  background: rgba(244, 169, 66, 0.2);
-  border-color: #f4a942;
-  transform: rotate(90deg);
+  background: rgba(242, 165, 24, 0.2);
+  border-color: var(--accent-color);
+  transform: rotate(90deg) scale(1.1);
+  color: var(--accent-hover);
 }
 
 /* Body */
 .senha-modal-body {
-  padding: 1.5rem 2rem;
+  padding: 1.75rem 2rem; /* 28px 32px */
 }
 
 .senha-modal-description {
-  font-size: 1rem;
-  color: #e6dceb;
-  margin-bottom: 1.5rem;
+  font-size: 1rem; /* 16px */
+  color: var(--text-secondary-dark); /* Texto escuro secundário */
+  margin-bottom: 1.75rem; /* 28px */
   line-height: 1.6;
+  text-align: center;
 }
 
 /* Form */
 .senha-form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem; /* 20px */
 }
 
 .senha-form-label {
   display: block;
-  color: #f4a942;
+  color: var(--button-primary-bg); /* Roxo primário para label */
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-size: 0.75rem;
+  margin-bottom: 0.6rem; /* 10px */
+  font-size: 0.8rem; /* 13px */
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .senha-form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(244, 169, 66, 0.2);
-  border-radius: 0.75rem;
-  color: #fff;
-  font-size: 1rem;
+  padding: 0.8rem 1rem; /* 13px 16px */
+  background: var(--input-bg);
+  border: 1px solid var(--border-color-light); /* Borda clara */
+  border-radius: 0.6rem; /* 10px */
+  color: var(--text-primary-dark); /* Texto escuro */
+  font-size: 1rem; /* 16px */
   transition: all 0.3s ease;
 }
 
 .senha-form-input::placeholder {
-  color: rgba(212, 197, 220, 0.5);
+  color: var(--input-placeholder);
+}
+
+.senha-form-input:hover:not(:focus) {
+    border-color: #c4a9b6; /* Roxo claro no hover */
 }
 
 .senha-form-input:focus {
   outline: none;
-  border-color: #f4a942;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 4px rgba(244, 169, 66, 0.1);
+  border-color: var(--border-color-focus);
+  box-shadow: 0 0 0 3px rgba(114, 47, 83, 0.15); /* Sombra roxa suave */
 }
 
 .senha-form-input:disabled {
   opacity: 0.6;
+  background-color: #f5f5f5;
   cursor: not-allowed;
 }
-
-/* Botões */
-.senha-btn {
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.dark .senha-form-input:disabled {
+    background-color: #333;
 }
 
+/* === BOTÃO PRIMÁRIO (Estilo preferido do usuário) === */
 .senha-btn-primary {
-  background: linear-gradient(135deg, #c79100 0%, #f4a942 100%);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(199, 145, 0, 0.3);
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  background: var(--button-primary-bg);
+  color: var(--text-primary-light);
+  /* Efeito Radial */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin-top: 1rem;
+}
+
+.senha-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+
+.senha-btn-primary span {
+    position: relative;
+    z-index: 1;
 }
 
 .senha-btn-primary:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(199, 145, 0, 0.4);
+  background: linear-gradient(135deg, var(--button-primary-hover-start) 0%, var(--button-primary-hover-end) 100%);
+  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.5);
+  transform: translateY(-3px) scale(1.03);
+}
+
+.senha-btn-primary:hover:not(:disabled)::before {
+    width: 150%;
+    padding-top: 150%;
+    height: auto;
 }
 
 .senha-btn-primary:active:not(:disabled) {
-  transform: translateY(0);
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0px 5px 15px rgba(114, 47, 83, 0.4);
 }
 
 .senha-btn-primary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
+/* === BOTÃO SECUNDÁRIO === */
 .senha-btn-secondary {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--button-secondary-border); /* Borda roxa */
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin-top: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: #d4c5dc;
+  background: transparent;
+  color: var(--button-secondary-text); /* Texto roxo */
 }
 
 .senha-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: var(--button-secondary-hover-bg); /* Fundo roxo suave */
+  border-color: var(--button-secondary-border); /* Mantém borda roxa */
+  color: var(--button-secondary-text); /* Mantém texto roxo */
+}
+.dark .senha-btn-secondary:hover {
+    color: var(--text-primary); /* Texto clareia no tema escuro */
 }
 
 /* Mensagens */
 .senha-message {
-  margin-top: 1rem;
-  padding: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 0.8rem 1rem;
   border-radius: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 500;
+  text-align: center;
 }
 
 .senha-message-success {
-  background: rgba(34, 197, 94, 0.2);
-  color: #86efac;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid var(--success-border);
 }
 
 .senha-message-error {
-  background: rgba(239, 68, 68, 0.2);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
 }
 
 /* Responsividade */
@@ -235,17 +321,40 @@
   .senha-modal-content {
     width: 95%;
     margin: 1rem;
+    border-radius: 1rem; /* 16px */
   }
 
   .senha-modal-header {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1.5rem; /* 20px 24px */
   }
 
   .senha-modal-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem; /* 24px */
+  }
+
+   .senha-modal-close {
+    top: 0.75rem; /* 12px */
+    right: 0.75rem; /* 12px */
+    width: 2rem; /* 32px */
+    height: 2rem; /* 32px */
+    font-size: 1.25rem; /* 20px */
   }
 
   .senha-modal-body {
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem 1.5rem; /* 24px */
+  }
+
+  .senha-modal-description {
+    font-size: 0.9rem; /* 14px */
+    margin-bottom: 1.5rem; /* 24px */
+  }
+
+  .senha-btn-primary {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .senha-btn-secondary {
+    font-size: 0.8rem; /* 13px */
   }
 }

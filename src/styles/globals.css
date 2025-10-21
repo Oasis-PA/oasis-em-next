@@ -1,11 +1,9 @@
-/* src/styles/globals.css */
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-/* CORREÇÃO: Atualizar caminhos das fontes */
 @font-face {
   font-family: 'PLAYFUL RUNWAY';
   src: url('/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
@@ -17,4 +15,9 @@
 @font-face {
   font-family: 'Louis George Cafe';
   src: url('/assets/fontes/Louis George Cafe.ttf') format('truetype');
+}
+
+a {
+    color: black;
+    text-decoration: none;
 }
