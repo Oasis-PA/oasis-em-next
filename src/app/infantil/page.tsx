@@ -34,7 +34,7 @@ const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) =>
       <h5>{produto.tag_principal}</h5>
       <h4>{produto.nome.toUpperCase()}</h4>
       <Link href={`/produtos/${produto.id_produto}`}>
-        <button>Veja mais</button>
+        <button id="vejaMais">Veja mais</button>
       </Link>
     </div>
   );
