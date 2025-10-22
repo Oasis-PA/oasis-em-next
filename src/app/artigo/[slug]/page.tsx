@@ -4,7 +4,6 @@ import ReactMarkdown from "react-markdown";
 import Header from "../../../components/header";
 import BotaoFavoritar from "@/components/BotaoFavoritar";
 import { getServerSession } from "next-auth/next";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route"; // Ajuste o caminho
 import '@/styles/artigoteste.css';
 
 // Extend the Session user type to include id_usuario
