@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import "../../styles/editar-perfil.css";
+import "@/styles/editar-perfil.css";
 
 
 export default function Layout({ children }: React.PropsWithChildren<{}>) {
@@ -26,7 +26,7 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
             <a href="#" id="Editar-perfil">
               Editar Perfil
             </a>
-            <a href="/gerenciamento-conta">Gerenciamento de Conta</a>
+            <a href="gerenciamento">Gerenciamento de Conta</a>
           </div>
         </aside>
 
@@ -34,7 +34,7 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
       <div className="layout-content">{children}</div>
 
       {/* Footer fixo */}
-    
+
     </div>
   );
 }

@@ -1,21 +1,17 @@
-// app/api/usuarios/login/route.ts
+// src/app/api/usuarios/login/route.ts
 import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { ZodError } from "zod";
+import { loginSchema } from "@/lib/validations";
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, senha } = await req.json();
+    const body = await req.json();
 
-    if (!email || !senha) {
-      return NextResponse.json(
-        { message: "Email e senha são obrigatórios." },
-        { status: 400 }
-      );
-    }
+    const { email, senha } = loginSchema.parse(body);
 
-    // Busca usuário com todas as informações necessárias
     const user = await prisma.usuario.findUnique({ 
       where: { email },
       include: {
@@ -31,7 +27,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verifica senha com bcrypt
     const senhaValida = await bcrypt.compare(senha, user.senha);
     
     if (!senhaValida) {
@@ -41,7 +36,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Gera token JWT
     const token = jwt.sign(
       { 
         id: user.id_usuario, 
@@ -52,17 +46,16 @@ export async function POST(req: NextRequest) {
       { expiresIn: "7d" }
     );
 
-    // Remove senha do objeto de retorno
     const { senha: _, ...usuarioSemSenha } = user;
 
-    // Retorna com cookie e dados do usuário
     const res = NextResponse.json({ 
       message: "Login realizado com sucesso",
       success: true,
       usuario: usuarioSemSenha
     });
 
-    res.cookies.set("token", token, {
+    // CORREÇÃO AQUI: Mudar o nome do cookie para 'auth-token'
+    res.cookies.set("auth-token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       path: "/",
@@ -70,7 +63,21 @@ export async function POST(req: NextRequest) {
     });
 
     return res;
-  } catch (error) {
+    
+  } catch (error: unknown) {
+    if (error instanceof ZodError) {
+      return NextResponse.json(
+        { 
+          message: "Dados inválidos",
+          errors: error.errors.map(err => ({
+            campo: err.path.join('.'),
+            mensagem: err.message
+          }))
+        },
+        { status: 400 }
+      );
+    }
+
     console.error("Erro no login:", error);
     return NextResponse.json(
       { message: "Erro interno no servidor." },

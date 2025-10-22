@@ -95,6 +95,7 @@ main {
     top: 15.5vw;
     left: 1.5vw;
     width: 29vw;
+    text-align: left;
 }
 
 .butoes {
@@ -176,21 +177,41 @@ main {
     border-radius: 0.3vh;
     background: #F2A518;
     border-color: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.meio button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .meio button:hover {
-    border-radius: 0.5vw;
-    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
-    box-shadow: 0 5px 10.7px 0 #945414;
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%); /* Gradiente dourado */
+    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.meio button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .meio button:active {
-    border-radius: 2px;
-    border: 1px solid #ECC46F;
-    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
+    background: #d18f15; /* Cor original active */
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
 }
-
 
 
 .banner-terc {
@@ -243,6 +264,7 @@ main {
     top: 4vw;
     left: 1vw;
     width: 23vw;
+    text-align: left;
 }
 
 #data-2 {
@@ -377,7 +399,7 @@ main {
     width: 14vw;
 }
 
-#but-2 {
+#but-2, #but-4 {
     color: #FFF;
     text-align: center;
     font-family: "The Next Font";
@@ -385,7 +407,6 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: all 0.3s ease;
     display: flex;
     margin: 0 auto;
     height: 2vw;
@@ -396,10 +417,14 @@ main {
     flex-shrink: 0;
     border-radius: 0.16vw;
     background: #F2A518;
+    background: #F2A518; /* Cor original */
     border-color: transparent;
+    cursor: pointer;
     position: relative;
     top: 15.3vw;
     right: 1vw;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
 #but-4 {
@@ -410,7 +435,6 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: all 0.3s ease;
     display: flex;
     margin: 0 auto;
     height: 2vw;
@@ -420,24 +444,39 @@ main {
     gap: 1.04vw;
     flex-shrink: 0;
     border-radius: 0.16vw;
-    background: #F2A518;
-    border-color: transparent;
     position: relative;
     top: 13.9vw;
     right: 1vw;
 }
 
+#but-2::before, #but-4::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
 #but-2:hover, #but-4:hover {
-    border-radius: 0.1vw;
-    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
-    box-shadow: 0 0.26vw 0.56vw 0 #945414;
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%); /* Gradiente dourado */
+    box-shadow: 0px 8px 15px rgba(242, 165, 24, 0.4);
+    transform: translateY(-2px) scale(1.05);
+}
+
+#but-2:hover::before, #but-4:hover::before {
+    width: 200px;
+    height: 200px;
 }
 
 #but-2:active, #but-4:active {
-    border-radius: 0.1vw;
-    border: 0.05vw solid #ECC46F;
-    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
-    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
+    background: #d18f15; /* Cor original active */
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
 }
 
 #but-3 {
@@ -478,6 +517,8 @@ main {
     position: relative;
     left: 56vw;
     top: -44vw;
+    text-align: left;
+    text-decoration: underline;
 }
 
 #text-3 {
@@ -532,34 +573,48 @@ main {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: all 0.3s ease;
     display: flex;
     padding: 0.42vw 1.56vw;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
-    border-radius: 0.16vw;
-    background: #5E332C;
+    border-radius: 0.16vw; /* Mantido original */
+    background: #5E332C; /* Cor original */
     border-color: transparent;
     position: relative;
     top: -43vw;
     left: 64.5vw;
     width: 10vw;
+    min-height: 35px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
-
+#but-6::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
 #but-6:hover {
-    border-radius: 0.1vw;
-    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #704a04 0%, #e09146 100%);
-    box-shadow: 0 0.26vw 0.56vw 0 #945414;
+    background: linear-gradient(135deg, #7a4a42 0%, #5E332C 100%); /* Gradiente marrom */
+    box-shadow: 0px 8px 15px rgba(94, 51, 44, 0.4);
+    transform: translateY(-2px) scale(1.05);
 }
-
+#but-6:hover::before {
+    width: 200px;
+    height: 200px;
+}
 #but-6:active {
-    border-radius: 0.1vw;
-    border: 0.05vw solid #ECC46F;
-    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #c07109 0%, #da9c4b 100%);
-    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
+    background: #4a2822; /* Cor original active */
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
 }
-
 
 
 

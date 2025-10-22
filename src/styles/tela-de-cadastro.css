@@ -1,22 +1,4 @@
-@font-face {
-    font-family: "The Next Font";
-    src: url('../../public/assets/fontes/TheNextFont.ttf') format('truetype') ;
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "Louis George Cafe";
-    src: url('../../public/assets/fontes/Louis\ George\ Cafe.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: "PLAYFUL RUNWAY";
-    src: url('../../public/assets/fontes/PLAYFULRUNWAY-Regular.ttf') format('truetype');
-    font-weight: normal;
-  font-style: normal;
-}
-* {
+main * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -26,7 +8,8 @@
 body {
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     background-color: white;
     align-items: center;
     justify-content: center;
@@ -45,27 +28,29 @@ main {
     align-items: flex-start;
     flex-direction: column;
     width: 50%;
-    padding: 20px;
+    padding: clamp(15px, 3vw, 30px);
 }
 
 h1 {
     font-family: "The Next Font";
     font-weight: 400;
-    font-size: 3.75rem;
-    line-height: normal;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.2;
+    margin-bottom: clamp(10px, 2vh, 20px);
 }
 
 p {
     font-family: "Louis George Cafe";
     font-weight: 400;
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: clamp(20px, 3vh, 30px);
+    line-height: 1.5;
 }
 
 label {
     font-family: "Louis George Cafe";
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 form {
@@ -74,14 +59,26 @@ form {
 }
 
 form input {
-    height: 60px;
+    height: clamp(50px, 8vh, 60px);
     width: 100%;
     color: black;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     background-color: transparent;
     border: 1px solid #420E45;
     border-radius: 3px;
     margin: 9px 0px 0px 0px;
+    padding: 0 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:hover:not(:focus) {
+    border-color: #7a5a7d;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #7D4AB3;
+    box-shadow: 0 0 0 3px rgba(125, 74, 179, 0.15);
 }
 
 a {
@@ -90,21 +87,67 @@ a {
     font-family: "Louis George Cafe";
     color: #7D4AB3;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    transition: color 0.3s ease;
 }
 
+a:hover {
+    color: #5a3680;
+    text-decoration: underline;
+}
+
+/* BOTÃO 'CONTINUE' */
 .botaocontinue {
     color: white;
-    background-image: url(../../public/images/fundo-botao-continue.png);
+    background-color: #722F53;
     width: 100%;
-    height: 58px;
+    height: clamp(50px, 8vh, 58px);
     border: none;
-    margin: 30px 0px 0px 0px;
+    margin: clamp(20px, 4vh, 30px) 0px 0px 0px;
     cursor: pointer;
     font-family: "The Next Font";
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.botaocontinue::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+
+.botaocontinue span {
+    position: relative;
+    z-index: 1;
+}
+
+.botaocontinue:hover:not(:disabled) {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.5);
+    transform: translateY(-3px) scale(1.03);
+}
+
+.botaocontinue:hover:not(:disabled)::before {
+    width: 150%;
+    padding-top: 150%;
+    height: auto;
+}
+
+.botaocontinue:active:not(:disabled) {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.01);
 }
 
 .lin {
@@ -113,107 +156,227 @@ a {
     height: 1px;
 }
 
+/* BOTÃO GOOGLE */
 .botaogoogle button {
     display: flex;
     background-color: transparent;
-    border: solid 1px #420E45; 
+    border: solid 1px #420E45;
     border-radius: 3px;
     width: 100%;
-    height: 60px;
+    height: clamp(50px, 8vh, 60px);
     align-items: center;
     justify-content: flex-start;
     padding: 0 12px;
     cursor: pointer;
     font-family: "The Next Font";
     font-weight: 200;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.botaogoogle button:hover:not(:disabled) {
+    background-color: rgba(66, 14, 69, 0.05);
+    border-color: #7D4AB3;
 }
 
 .botaogoogle {
     width: 100%;
-    max-width: 500px;
-    margin: 30px 0px 0px 0px;
+    max-width: 600px;
+    margin: clamp(20px, 4vh, 30px) 0px 0px 0px;
+    align-self: center;
 }
 
+/* BOTÃO 'JÁ TENHO CONTA' */
 #botaojaconta {
     width: 100%;
-    height: 60px;
+    max-width: 600px;
+    height: clamp(50px, 8vh, 60px);
     background-color: #722F53;
     border-radius: 50px;
     color: white;
-    margin-top: 20px;
+    margin-top: clamp(15px, 3vh, 20px);
     cursor: pointer;
     border: none;
     font-family: "The Next Font";
     font-weight: 400;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
+#botaojaconta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+
+#botaojaconta span {
+    position: relative;
+    z-index: 1;
+}
+
+#botaojaconta:hover:not(:disabled) {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+#botaojaconta:hover:not(:disabled)::before {
+    width: 150%;
+    padding-top: 150%;
+    height: auto;
+}
+
+#botaojaconta:active:not(:disabled) {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* BOTÃO 'NÃO TENHO CONTA' */
 #botaonaoconta {
     width: 100%;
-    max-width: 500px;
-    height: 60px;
+    max-width: 600px;
+    height: clamp(50px, 8vh, 60px);
     background-color: #F2A518;
     border-radius: 50px;
     color: white;
-    margin: 20px 0px 0px 0px;
+    margin-top: clamp(15px, 3vh, 20px);
     cursor: pointer;
     border: none;
     font-family: "The Next Font";
     font-weight: 400;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    align-self: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+#botaonaoconta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+
+#botaonaoconta span {
+    position: relative;
+    z-index: 1;
+}
+
+#botaonaoconta:hover:not(:disabled) {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+#botaonaoconta:hover:not(:disabled)::before {
+    width: 150%;
+    padding-top: 150%;
+    height: auto;
+}
+
+#botaonaoconta:active:not(:disabled) {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
 }
 
 #main-margin-login {
-    flex-flow: row;
-    margin-left: 15dvw;
-    width: auto;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: clamp(2rem, 5vw, 5rem);
 }
 
 #section-checkbox-login {
-    margin: 20px 0px 20px 0px;
+    margin: clamp(15px, 3vh, 20px) 0px;
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+}
+
+#section-checkbox-login button {
+    border: none;
+    background-color: transparent;
+    color: #7D4AB3;
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+#section-checkbox-login button:hover {
+    color: #5a3680;
+    text-decoration: underline;
 }
 
 #section-checkbox-cadastro {
     display: flex;
-    margin: 20px 0px 0px 0px;
+    margin: clamp(15px, 3vh, 20px) 0px 0px 0px;
     align-items: center;
+    gap: 5px;
 }
 
 #section-checkbox-cadastro span {
-    font-family: "Louis George Cafe"; 
-    font-weight: 400; 
-    font-size: 1rem;
+    font-family: "Louis George Cafe";
+    font-weight: 400;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+#section-checkbox-cadastro span a {
+    color: #7D4AB3;
 }
 
 #checkbox-login {
-    width: 18px; 
+    width: 18px;
     height: 18px;
     margin: 0px 12px 0px 2px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 #checkbox-cadastro {
-    width: 18px; 
+    width: 18px;
     margin: 0px 10px 0px 0px;
-    cursor: pointer; 
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 #section-checkbox-login label {
-    display: flex; 
+    display: flex;
     align-items: center;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    cursor: pointer;
 }
 
 #span-lembredemim-login {
-    font-family: "Louis George Cafe"; 
-    font-weight: 700; 
-    font-size: 1rem;
+    font-family: "Louis George Cafe";
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     white-space: nowrap;
     margin-right: 10px;
 }
@@ -223,67 +386,78 @@ a {
 }
 
 .div-linha-ou {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 500px;
-    padding: 30px 0px 0px 0px;
+    max-width: 600px;
+    padding: clamp(20px, 4vh, 30px) 0px 0px 0px;
     align-self: center;
 }
 
 .div-ou {
-    padding: 0px 15px; 
-    color: #7D4AB3; 
-    font-weight: 700; 
-    font-size: 1rem; 
+    padding: 0px 15px;
+    color: #7D4AB3;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     font-family: "Louis George Cafe";
     margin: 0;
+    white-space: nowrap;
 }
 
 .span-button-continue-google {
-    flex-grow: 1; 
-    font-weight: bold; 
-    font-size: 1rem;
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     text-align: center;
 }
 
 #figure-padding-login {
-    width: 100%;
-    margin-right: -9%;
+    width: 50%;
+    max-width: 700px;
     display: flex;
-    justify-content: flex-end; /* Alinha à direita */
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
-#gambiarra{
-margin-top: 7%;
-margin-left: -4.5%;
+
+#gambiarra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    max-width: 650px;
+    padding: clamp(15px, 3vw, 30px);
 }
 
 #figure-padding-login img {
-
-    width: auto;  /* Força o tamanho desejado */
-    height: 994px !important; /* Força o tamanho desejado */
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
 }
 
 .figure-padding-cadastro {
     width: 50%;
+    max-width: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .figure-padding-cadastro img {
-    width: 100%;      /* Adicionado */
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    max-height: 1049px; /* Opcional, se quiser limitar a altura */
+    max-height: 90vh;
+    object-fit: contain;
 }
 
 #main-margin-cadastro {
-    margin-left: 15dvw;
+    margin-left: clamp(2rem, 10vw, 15vw);
     width: 50%;
-    padding: 20px;
+    max-width: 650px;
+    padding: clamp(15px, 3vw, 30px);
 }
 
 #main-margin-cadastro > section {
@@ -293,9 +467,10 @@ margin-left: -4.5%;
 }
 
 #main-margin-cadastro2 {
-    margin-left: 15dvw;
+    margin-left: clamp(2rem, 10vw, 15vw);
     width: 50%;
-    padding: 20px;
+    max-width: 650px;
+    padding: clamp(15px, 3vw, 30px);
 }
 
 #main-margin-cadastro2 > section {
@@ -319,143 +494,310 @@ margin-left: -4.5%;
     overflow-x: hidden;
 }
 
-/* Media Queries para responsividade */
-@media (max-width: 1200px) {
-    main, #main-margin-cadastro, #main-margin-cadastro2 {
-        width: 60%;
-    }
-    
-    #figure-padding-login, .figure-padding-cadastro {
-        width: 40%;
-    }
-    
-    h1 {
-        font-size: 2.5rem;
+/* ============================================
+   MEDIA QUERIES RESPONSIVAS
+   ============================================ */
+
+/* Large Desktop */
+@media (max-width: 1400px) {
+    #main-margin-login {
+        gap: clamp(1.5rem, 4vw, 4rem);
     }
 }
 
+/* Desktop Médio */
+@media (max-width: 1200px) {
+    main, #main-margin-cadastro, #main-margin-cadastro2 {
+        width: 55%;
+        margin-left: clamp(2rem, 5vw, 5rem);
+    }
+
+    #gambiarra {
+        width: 55%;
+    }
+
+    #figure-padding-login, .figure-padding-cadastro {
+        width: 45%;
+    }
+
+    #main-margin-login {
+        gap: clamp(1.5rem, 3vw, 3rem);
+    }
+}
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+    main, #main-margin-cadastro, #main-margin-cadastro2 {
+        width: 60%;
+        margin-left: clamp(1.5rem, 4vw, 4rem);
+    }
+
+    #gambiarra {
+        width: 60%;
+    }
+
+    #figure-padding-login, .figure-padding-cadastro {
+        width: 40%;
+    }
+
+    #main-margin-login {
+        gap: clamp(1rem, 2vw, 2rem);
+    }
+
+    form {
+        max-width: 100%;
+    }
+
+    .botaogoogle,
+    #botaojaconta,
+    #botaonaoconta {
+        max-width: 100%;
+    }
+}
+
+/* Tablet Portrait e Mobile Landscape */
 @media (max-width: 900px) {
     body {
         flex-direction: column;
         height: auto;
-        padding: 20px 0;
+        padding: 20px;
     }
-    
+
     main, #main-margin-cadastro, #main-margin-cadastro2 {
-        width: 90%;
+        width: 100%;
         max-width: 600px;
         order: 2;
+        margin: 0 auto;
+        padding: 20px;
     }
-    
+
+    #main-margin-login {
+        flex-direction: column;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    #gambiarra {
+        width: 100%;
+        max-width: 600px;
+        order: 2;
+        margin: 0;
+        padding: 20px;
+    }
+
     #figure-padding-login, .figure-padding-cadastro {
-        width: 90%;
-        max-width: 500px;
+        width: 100%;
+        max-width: 600px;
         order: 1;
-        margin-bottom: 20px;
+        margin: 0 auto 30px;
     }
-    
-    h1 {
-        font-size: 2.2rem;
-        margin-top: 20px;
+
+    #figure-padding-login img,
+    .figure-padding-cadastro img {
+        max-height: 70vh;
     }
-    
-    p {
-        font-size: 1.1rem;
-    }
-    
+
     .hide-on-mobile {
         display: none;
-    }
-    
-    #section-checkbox-cadastro {
-        margin-top: 20px;
-    }
-
-
-    #main-margin-cadastro {
-        margin: 0;
-        width: 50%;
-        padding: 20px;
-    }
-    
-    #main-margin-cadastro2 {
-        margin: 0;
-        width: 50%;
-        padding: 20px;
     }
 
     .tela-cadastro-container {
         flex-direction: column;
         min-height: auto;
-        padding: 20px 0;
+        padding: 20px;
+    }
+
+    #section-checkbox-login {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    #section-checkbox-login label {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #section-checkbox-login button {
+        width: 100%;
+        text-align: left;
+        padding-left: 30px;
     }
 }
 
+/* Mobile Grande */
 @media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
     main, #main-margin-cadastro, #main-margin-cadastro2 {
-        width: 95%;
+        width: 100%;
+        max-width: none;
+        padding: 15px;
     }
-    
+
+    #main-margin-login {
+        width: 100%;
+        max-width: none;
+        padding: 15px;
+        gap: 25px;
+    }
+
+    #gambiarra {
+        width: 100%;
+        max-width: none;
+        padding: 15px;
+    }
+
     #figure-padding-login, .figure-padding-cadastro {
-        width: 95%;
+        max-width: 100%;
+        margin-bottom: 25px;
     }
-    
-    h1 {
-        font-size: 1.8rem;
+
+    #figure-padding-login img,
+    .figure-padding-cadastro img {
+        max-height: 60vh;
     }
-    
-    p {
-        font-size: 1rem;
-    }
-    
-    form input, .botaogoogle button, #botaonaoconta, #botaojaconta {
-        height: 50px;
-    }
-    
-    .botaocontinue {
-        height: 50px;
-        font-size: 1rem;
-    }
-    
+
     #section-checkbox-login {
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
     }
-    
-    #section-checkbox-login a {
-        margin-left: 0;
-        margin-top: 10px;
+
+    #section-checkbox-login label {
+        width: 100%;
     }
-    
+
+    #section-checkbox-login button {
+        width: 100%;
+        text-align: left;
+        padding-left: 30px;
+    }
+
     #section-checkbox-cadastro {
         flex-wrap: wrap;
+        gap: 8px;
     }
-    
+
     #section-checkbox-cadastro span {
-        margin-top: 5px;
         font-size: 0.9rem;
+    }
+
+    .div-linha-ou {
+        padding: 20px 0;
+        max-width: 100%;
+    }
+
+    .div-ou {
+        padding: 0 12px;
     }
 }
 
+/* Mobile Pequeno */
 @media (max-width: 400px) {
+    body {
+        padding: 10px;
+    }
+
+    main, #main-margin-cadastro, #main-margin-cadastro2 {
+        padding: 10px;
+    }
+
+    #main-margin-login {
+        padding: 10px;
+        gap: 20px;
+    }
+
+    #gambiarra {
+        padding: 10px;
+    }
+
+    #figure-padding-login img,
+    .figure-padding-cadastro img {
+        max-height: 50vh;
+    }
+
+    .div-ou {
+        padding: 0 8px;
+    }
+
+    .botaogoogle button img {
+        width: 20px;
+        height: 20px;
+    }
+
+    #section-checkbox-cadastro span {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 320px) {
     h1 {
         font-size: 1.5rem;
     }
-    
-    .div-ou {
-        padding: 0 10px;
-    }
-    
-    .botaogoogle button img {
-        width: 20px;
-    }
-    
-    #botaonaoconta, #botaojaconta {
+
+    p {
         font-size: 0.9rem;
     }
-    #imagem-grande{
-        width: 300px;
-        height: 300px;
+
+    form input,
+    .botaogoogle button,
+    #botaonaoconta,
+    #botaojaconta,
+    .botaocontinue {
+        height: 45px;
+        font-size: 0.85rem;
     }
 }
 
+/* Estados desabilitados */
+.botaocontinue:disabled,
+#botaojaconta:disabled,
+#botaonaoconta:disabled,
+.botaogoogle button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-image: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.botaocontinue:disabled::before,
+#botaojaconta:disabled::before,
+#botaonaoconta:disabled::before {
+    display: none;
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    #figure-padding-login,
+    .figure-padding-cadastro {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    main, #main-margin-cadastro, #main-margin-cadastro2, #main-margin-login {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}

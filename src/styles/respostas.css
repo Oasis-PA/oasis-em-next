@@ -1,4 +1,8 @@
-* {
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+main * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,6 +18,7 @@ main {
     width: 100%;
     height: 100%;
     gap: 1rem;
+    padding: 2rem;
 }
 
 .de-ladinho {
@@ -21,7 +26,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    height: auto;
 }
 
 .em-ciminha {
@@ -31,23 +36,33 @@ main {
     gap: 2rem;
 }
 
+.conjunto-de-calendar {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
 .outro-ladinho {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    width: 80%;
+    align-self: center;
 }
 
 .abaixo {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-left: 3rem;
+    gap: 1rem;
 }
 
 .esquerda {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
 }
 
 #logo {
@@ -58,17 +73,31 @@ main {
 #user {
     width: 3.5rem;
     height: 3.5rem;
+    transition: width 0.3s, height 0.3s, transform 0.3s ease; /* Adicionado transform */
+    cursor: pointer;
 }
 
-.botoes {
+#user:hover {
+    width: 4rem; /* Reduzido um pouco para não ficar tão grande */
+    height: 4rem;
+    transform: scale(1.1); /* Adicionado scale */
+}
+
+.botoes-pgn-respostas {
     display: flex;
     flex-direction: column;
     gap: 3.5rem;
 }
 
-.botoes img {
+.botoes-pgn-respostas img {
     width: 3rem;
     height: auto;
+    cursor: pointer; /* Adicionado */
+    transition: transform 0.3s ease; /* Adicionado */
+}
+
+.botoes-pgn-respostas img:hover {
+    transform: scale(1.1); /* Adicionado */
 }
 
 .titulos {
@@ -79,8 +108,8 @@ main {
 
 .titulos h1 {
     color: #5E332C;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-2, 2.8125rem);
+    font-family: "The Next Font", serif;
+    font-size: clamp(1.8rem, 5vw, 2.8125rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -88,19 +117,39 @@ main {
 
 .titulos p {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 1.25rem);
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 3vw, 1.25rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
 .info-texto {
-    width: 23.625rem;
-    height: 37.3125rem;
+    width: 100%;
+    max-width: 23.625rem;
+    height: auto;
+    min-height: 37.3125rem;
     border-radius: 1.875rem;
     background: #FFF;
     box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.info-texto:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
+}
+
+.img-info-texto {
+    width: 100%;
+    height: auto;
+    min-height: 14rem;
+    background-image: url('/images/resposta/img-cabelo4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
 }
 
 .content {
@@ -113,11 +162,11 @@ main {
 
 .content p {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 1.25rem;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.5;
 } 
 
 .detalhes {
@@ -129,8 +178,8 @@ main {
 
 #texto {
     color: #5E332C;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -139,8 +188,8 @@ main {
 #explicacao {
     color: rgba(94, 51, 44, 0.67);
     text-align: right;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -149,6 +198,8 @@ main {
 .elementos {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .texto-e-img {
@@ -162,20 +213,24 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    width: 100%;
+    max-width: fit-content;
 }
 
 .calendar h1 {
     color: #5E332C;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-2, 2.8125rem);
+    font-family: "The Next Font", serif;
+    font-size: clamp(1.8rem, 5vw, 2.8125rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
 .quadradinho {
-    width: 23.625rem;
-    height: 11.375rem;
+    width: auto;
+    max-width: 23.625rem;
+    height: auto;
+    min-height: 11.375rem;
     flex-shrink: 0;
     border-radius: 1.25rem;
     background: #FFF;
@@ -184,13 +239,20 @@ main {
     gap: 1.5rem;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.quadradinho:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .quadradinho h1 {
     color: #F2A518;
     text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 2.8125rem;
+    font-family: "PLAYFUL RUNWAY", cursive;
+    font-size: clamp(1.8rem, 5vw, 2.8125rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -199,8 +261,8 @@ main {
 .quadradinho p {
     color: #000;
     text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 1.25rem;
+    font-family: "PLAYFUL RUNWAY", cursive;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -210,23 +272,25 @@ main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    width: fit-content;
+    width: 100%;
 }
 
 .direita h1 {
     color: #000;
     text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 2.8125rem);
+    font-family: "PLAYFUL RUNWAY", cursive;
+    font-size: clamp(1.8rem, 5vw, 2.8125rem);
     font-style: normal;
     font-weight: 400;
     line-height: 126%;
-    width: fit-content;
+    width: 100%;
 }
 
 .cronograma {
-    width: 68.5625rem;
-    height: 26.0625rem;
+    width: 100%;
+    max-width: 68.5625rem;
+    height: auto;
+    min-height: 26.0625rem;
     flex-shrink: 0;
     border-radius: 1.875rem;
     background: #FFF;
@@ -235,6 +299,8 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    gap: 0.4rem;
+    overflow-x: auto;
 }
 
 .dias-da-semana {
@@ -244,29 +310,127 @@ main {
     margin-top: 1.3rem;
 }
 
-.conteudo {
+.conteudo { /* Contexto diferente do .content acima */
     display: flex;
     justify-content: space-between;
-    width: 90%;}
+    width: 100%;
+    max-width: 90%;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 
 .dias-da-semana h1 {
     color: #000;
     text-align: center;
-    font-family: "The Next Font";
-    font-size: var(--CORPO-DE-TEXTO-1, 1.25rem);
+    font-family: "The Next Font", serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
+.dias-da-semana p {
+    color: #000;
+    text-align: center;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; 
+}
+
+.titulozinho {
+    width: 100%;
+    display: flex;
+}
+
+#data {
+    color: #000;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#domingo, #segunda, #terca, #quarta, #quinta, #sexta, #sabado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    min-width: 6rem;
+    max-width: 8rem;
+}
+
+.aa {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* BOTÕES DE NAVEGAÇÃO DO CALENDÁRIO REFORMULADOS */
+.aa button {
+    background: none;
+    border: none;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: #5E332C;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1;
+    /* ADIÇÕES PARA O EFEITO */
+    display: inline-flex; /* Necessário para centralizar conteúdo */
+    justify-content: center; /* Necessário para centralizar conteúdo */
+    align-items: center; /* Necessário para centralizar conteúdo */
+    width: 3rem; /* Tamanho fixo para efeito radial */
+    height: 3rem; /* Tamanho fixo para efeito radial */
+    border-radius: 50%; /* Torna redondo */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.aa button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(94, 51, 44, 0.15); /* Cor suave baseada no texto */
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.aa button:hover {
+    color: #F2A518;
+    transform: scale(1.1);
+    background-color: rgba(94, 51, 44, 0.05); /* Fundo suave no hover */
+}
+
+.aa button:hover::before {
+    width: 3rem; /* Preenche o botão */
+    height: 3rem;
+}
+
+.aa button:active {
+    transform: scale(0.95);
+    color: #d18f15;
+}
+
+
 .diquinhas {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .dicas {
-    width: 32.9375rem;
-    height: 26.0625rem;
+    width: 100%;
+    max-width: 32.9375rem;
+    height: auto;
     flex-shrink: 0;
     border-radius: 1.875rem;
     background: #FFF;
@@ -276,21 +440,27 @@ main {
     align-items: center;
     padding: 2rem;
     gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.dicas:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .dicas p {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 1.25rem;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.5;
 }
 
 .direita h2 {
     color: #5E332C;
-    font-family: "The Next Font";
-    font-size: 2.8125rem;
+    font-family: "The Next Font", serif;
+    font-size: clamp(1.8rem, 5vw, 2.8125rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -298,35 +468,91 @@ main {
 
 .produtos {
     display: flex;
-     justify-content: space-between;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .produtinho {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 20.6875rem;
-    height: 28.0625rem;
+    width: 100%;
+    max-width: 17rem;
+    height: auto;
+    min-height: 28.0625rem;
     flex-shrink: 0;
     border-radius: 1.875rem;
     background: #FFF;
     box-shadow: 0 1px 18.5px 0 rgba(0, 0, 0, 0.25);
     padding: 2rem;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+}
+
+.produtinho:hover {
+    transform: translateY(-8px); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
+}
+
+.img-produtinhos-1 {
+    width: 100%;
+    height: auto;
+    min-height: 10rem;
+    background-image: url('/images/resposta/prod-1.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-produtinhos-2 {
+    width: 100%;
+    height: auto;
+    min-height: 10rem;
+    background-image: url('/images/resposta/prod-2.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}   
+
+.img-produtinhos-3 {
+    width: 100%;
+    height: auto;
+    min-height: 10rem;
+    background-image: url('/images/resposta/prod-3.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-produtinhos-4 {
+    width: 100%;
+    height: auto;
+    min-height: 10rem;
+    background-image: url('/images/resposta/prod-4.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.produtinho-mobile {
+    display: none;
 }
 
 .produtinho p {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 1rem;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.5;
 }
 
+/* BOTÃO DO PRODUTO REFORMULADO */
 .produtinho button {
     display: flex;
-    width: 9.50425rem;
+    width: 100%;
+    max-width: 9.50425rem;
     height: 2.51731rem;
     padding: 0.411rem 2.00363rem;
     justify-content: center;
@@ -334,48 +560,71 @@ main {
     gap: 0.51375rem;
     flex-shrink: 0;
     border-style: none;
-    border-radius: 0.10275rem;
+    border-radius: 0.10275rem; /* Mantendo o border radius original */
     background: #F2A518;
-
+    cursor: pointer;
     color: #FFF;
     text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.0275rem;
+    font-family: "The Next Font", serif;
+    font-size: clamp(0.9rem, 2vw, 1.0275rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: background 0.3s, box-shadow 0.3s, border-radius 0.3s;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.produtinho button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .produtinho button:hover {
-    background: radial-gradient(165.26% 64.63% at 51.62% 92.86%, #F2A518 0%, #FFEFCC 100%);
-    box-shadow: 0 5px 10.7px 0 #945414;
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.produtinho button:hover::before {
+    width: 200px;
+    height: 200px;
 }
 
 .produtinho button:active {
-    border: 1px solid #ECC46F;
-    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
 }
 
 .articles {
     display: flex;
     justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .articles p {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.5;
 }
 
 .articles h1 {
     color: #000;
-    font-family: "The Next Font";
-    font-size: 2.25rem;
+    font-family: "The Next Font", serif;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -385,30 +634,76 @@ main {
 .butoes {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
+/* BOTÕES DE TAG REFORMULADOS */
 .butoes button {
-    padding: .1rem 1.2rem .1rem 1.2rem;
-    border: #000 .1rem solid;
+    padding: 0.1rem 1.2rem 0.1rem 1.2rem;
+    border: #000 0.1rem solid;
     border-radius: 1rem;
     background-color: transparent;
-
+    cursor: pointer;
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1rem);
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
+.butoes button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.butoes button:hover {
+    background-color: #000;
+    color: #FFF;
+    transform: scale(1.05);
+}
+
+.butoes button:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.butoes button:active {
+    background-color: #333;
+    transform: scale(1);
+}
+
+
 .artigo, .artigo1 {
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    width: 27.25rem;
+    width: 100%;
+    max-width: 27.25rem;
     height: 14rem;
     flex-shrink: 0;
     padding: 1.2rem;
     display: flex;
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+    cursor: pointer;
+}
+
+.artigo:hover, .artigo1:hover {
+    transform: scale(1.03); /* ADICIONADO */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* ADICIONADO */
 }
 
 .artigo img, .artigo1 img {
@@ -418,11 +713,11 @@ main {
 }
 
 .artigo {
-    background-image: url('/public/images/resposta/art-1.png');
+    background-image: url('/images/resposta/art-1.png');
 }
 
 .artigo1 {
-    background-image: url('/public/images/resposta/art-2.png');
+    background-image: url('/images/resposta/art-2.png');
 }
 
 #conteudinho {
@@ -434,46 +729,44 @@ main {
 .aaaa {
     display: flex;
     flex-direction: column;
-    gap: .2rem;
+    gap: 0.2rem;
 }
 
-
-
-
-
-
-#calendario-dinamico {
+.calenderio {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
 }
 
 #calendario-dinamico h2 {
     color: #5E332C;
     text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 2.8125rem);
+    font-family: "PLAYFUL RUNWAY", cursive;
+    font-size: clamp(1.5rem, 5vw, 2.8125rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 25rem;
+    width: 100%;
+    max-width: 25rem;
 }
 
 .tabela-calendario {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .tabela-calendario tr {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 1.25rem;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-style: normal;
     line-height: 250%;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     display: flex;
-    gap: 1.7rem;
+    gap: clamp(0.8rem, 3vw, 1.7rem);
 }
 
 .tabela-calendario tbody {
@@ -489,48 +782,48 @@ main {
 }
 
 .tabela-calendario th, .tabela-calendario td {
-  width: 2.2rem;
-  height: 2.6rem;
-  text-align: center;
-  font-size: 1rem;
-  position: relative;
-  vertical-align: middle;
+    width: clamp(2rem, 4vw, 2.2rem);
+    height: clamp(2.4rem, 5vw, 2.6rem);
+    text-align: center;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    position: relative;
+    vertical-align: middle;
 }
 
 .tabela-calendario td > .bolinha {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  pointer-events: none;
-  width: 0.875rem;
-  height: 0.875rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.7;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+    width: clamp(0.75rem, 2vw, 0.875rem);
+    height: clamp(0.75rem, 2vw, 0.875rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
 }
 
 .tabela-calendario td > div {
-  position: relative;
-  z-index: 2;
-  background: transparent;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #222;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    font-weight: 600;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    color: #222;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #calendario-mes-ano {
     color: #5E332C;
     text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 2.8125rem);
+    font-family: "PLAYFUL RUNWAY", cursive;
+    font-size: clamp(1.5rem, 5vw, 2.8125rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -538,111 +831,806 @@ main {
 
 .legenda-calendario {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 1.25rem;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.875rem, 1.5vw, 1.1rem);
     font-style: normal;
     font-weight: 400;
-    line-height: 250%; 
+    line-height: 150%; 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2rem);
+    flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
 .bolinha {
-  display: block;
-  margin: 0 auto 2px auto;
-  width: 0.875rem;
-  height: 0.875rem;
-  border-radius: 50%;
+    display: block;
+    margin: 0 auto 2px auto;
+    width: clamp(0.75rem, 2vw, 0.875rem);
+    height: clamp(0.75rem, 2vw, 0.875rem);
+    border-radius: 50%;
 }
 
 .bolinha.hidratacao {
-  background: #6B8E4E;
+    background: #6B8E4E;
 }
 
 .bolinha.nutricao {
-  background: #F2C94C;
+    background: #F2C94C;
 }
 
 .bolinha.reconstrucao {
-  background: #7B5B4B;
-}
-
-.tabela-calendario {
-  border-collapse: collapse;
-  margin: 0 auto;
-  font-family: inherit;
-}
-
-.tabela-calendario th, .tabela-calendario td {
-  width: 2.2rem;
-  height: 2.6rem;
-  text-align: center;
-  font-size: 1rem;
-  position: relative;
-  vertical-align: middle;
-}
-
-.tabela-calendario td > .bolinha {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  width: 1.7em;
-  height: 1.7em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.7;
-}
-
-.tabela-calendario td > div {
-  position: relative;
-  z-index: 2;
-  background: transparent;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #222;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.legenda-calendario {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 1rem;
-  font-size: 1rem;
-  align-items: center;
+    background: #7B5B4B;
 }
 
 .legenda-calendario .bolinha {
-  margin: 0 0.3rem 0 0;
-  width: 1.1rem;
-  height: 1.1rem;
-  display: inline-block;
+    margin: 0 0.3rem 0 0;
+    width: clamp(0.9rem, 2.5vw, 1.1rem);
+    height: clamp(0.9rem, 2.5vw, 1.1rem);
+    display: inline-block;
 }
 
 .calendario-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 100%;
 }
 
+/* BOTÕES DE NAVEGAÇÃO DO CALENDÁRIO (SETAS) REFORMULADOS */
 .calendario-seta {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #5E332C;
-  cursor: pointer;
-  padding: 0 0.5rem;
-  transition: color 0.2s;
-  line-height: 1;
+    background: none;
+    border: none;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: #5E332C;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1;
+    /* ADIÇÕES PARA O EFEITO */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.calendario-seta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(94, 51, 44, 0.15);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .calendario-seta:hover {
-  color: #F2A518;
+    color: #F2A518;
+    transform: scale(1.1);
+    background-color: rgba(94, 51, 44, 0.05);
+}
+
+.calendario-seta:hover::before {
+    width: 3rem;
+    height: 3rem;
+}
+
+.calendario-seta:active {
+    transform: scale(0.95);
+    color: #d18f15;
+}
+
+
+#resumo-semanal {
+    color: #5E332C;
+    font-family: "PLAYFUL RUNWAY", cursive;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: bold;
+    margin: 0.5rem 0 0.5rem 0;
+    text-align: center;
+    background: #FFF8E1;
+    border-radius: 0.7rem;
+    padding: 0.5rem 1.2rem;
+    box-shadow: 0 1px 8px 0 rgba(242, 165, 24, 0.10);
+}
+
+@media (max-width: 1200px) {
+    .cronograma {
+        max-width: 95%;
+    }
+
+    .conteudo { /* Contexto diferente */
+        gap: 1rem;
+    }
+
+    #domingo, #segunda, #terca, #quarta, #quinta, #sexta, #sabado {
+        min-width: 6rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+
+    .outro-ladinho {
+        width: 100%;
+        align-items: center;
+    }
+
+    .abaixo {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .esquerda {
+        width: 100%;
+        align-items: center;
+    }
+
+    .direita {
+        width: 100%;
+        align-items: center;
+    }
+
+    .conjunto-de-calendar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .calendar {
+        width: 45%;
+        min-width: 320px;
+    }
+
+    .cronograma {
+        max-width: 100%;
+        padding: 0.8rem;
+    }
+
+    .conteudo { /* Contexto diferente */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    #domingo, #segunda, #terca, #quarta, #quinta, #sexta, #sabado {
+        min-width: 5rem;
+    }
+
+    .produtos {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .produtinho-mobile {
+        display: flex;
+    }
+
+    .produtinho {
+        min-width: 240px;
+        max-width: 17rem;
+    }
+
+    .diquinhas {
+        justify-content: center;
+    }
+
+    .articles {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .de-ladinho {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        position: relative;
+    }
+
+    .em-ciminha {
+        flex-direction: row !important;
+        gap: 1rem;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .outro-ladinho {
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .abaixo {
+        align-items: center;
+    }
+
+    .esquerda {
+        width: 100%;
+        align-items: center;
+    }
+
+    .direita {
+        width: 100%;
+        align-items: center;
+    }
+
+    #logo {
+        width: 5rem;
+    }
+
+    #user {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #user:hover {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .botoes-pgn-respostas {
+        position: relative;
+    }
+
+    .botoes-pgn-respostas > *:not(:last-child) {
+        display: none;
+    }
+
+    .botoes-pgn-respostas img:last-child {
+        width: 2rem;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .menu-mobile {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background: #FFF;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        padding: 4rem 2rem 2rem;
+        gap: 2rem;
+    }
+
+    .menu-mobile.active {
+        right: 0;
+    }
+
+    .menu-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #5E332C;
+        cursor: pointer;
+        padding: 0.5rem;
+        line-height: 1;
+        transition: color 0.2s, transform 0.2s;
+    }
+
+    .menu-close:hover {
+        color: #F2A518;
+        transform: rotate(90deg);
+    }
+
+    .menu-mobile a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        transition: background 0.2s;
+        text-decoration: none;
+        color: #5E332C;
+        font-family: "Louis George Cafe", sans-serif;
+        font-size: 1.1rem;
+    }
+
+    .menu-mobile a:hover {
+        background: rgba(242, 165, 24, 0.1);
+    }
+
+    .menu-mobile img {
+        width: 2rem;
+        height: auto;
+    }
+
+    .menu-mobile span {
+        font-weight: 500;
+    }
+
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 999;
+    }
+
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .info-texto {
+        max-width: 100%;
+        min-height: auto;
+    }
+
+    .content { /* Contexto diferente */
+        padding: 0.8rem;
+    }
+
+    .conjunto-de-calendar {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .calendar {
+        width: 48%;
+        min-width: 280px;
+    }
+
+    .quadradinho {
+        max-width: 100%;
+        min-height: auto;
+        padding: 1.5rem 1rem;
+        gap: 0.8rem;
+    }
+
+    .cronograma {
+        border-radius: 1rem;
+        padding: 1rem 0.5rem;
+        overflow-x: visible;
+        height: auto;
+    }
+
+    .dias-da-semana {
+        margin-top: 0.5rem;
+    }
+
+    .conteudo { /* Contexto diferente */
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100%;
+        gap: 0.8rem;
+    }
+
+    #domingo, #segunda, #terca, #quarta, #quinta, #sexta, #sabado {
+        flex-direction: row;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem;
+        background: rgba(242, 165, 24, 0.05);
+        border-radius: 0.5rem;
+    }
+
+    #domingo h1, #segunda h1, #terca h1, #quarta h1, #quinta h1, #sexta h1, #sabado h1 {
+        min-width: 80px;
+        text-align: left;
+    }
+
+    #domingo p, #segunda p, #terca p, #quarta p, #quinta p, #sexta p, #sabado p {
+        flex: 1;
+        text-align: left;
+    }
+
+    .aa {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .aa h1 {
+        flex: 1;
+        text-align: center;
+    }
+
+    .diquinhas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dicas {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .produtos {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 1.5rem;
+        justify-content: center;
+    }
+
+    .produtinho-mobile {
+        display: flex;
+    }
+
+    .produtinho {
+        max-width: 17rem;
+        min-height: auto;
+        padding: 1.5rem;
+        flex-basis: calc(50% - 0.75rem);
+    }
+
+    .produtinho button {
+        max-width: 100%;
+    }
+
+    .articles {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .artigo, .artigo1 {
+        max-width: 48%;
+        min-width: 250px;
+        height: 12rem;
+        padding: 1rem;
+    }
+
+    .butoes {
+        flex-wrap: wrap;
+    }
+
+    .tabela-calendario {
+        overflow-x: auto;
+    }
+
+    .tabela-calendario tr {
+        gap: 0.5rem;
+    }
+
+    .legenda-calendario {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0 1rem;
+    }
+
+    #resumo-semanal {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .conjunto-de-calendar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calendar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .conteudo { /* Contexto diferente */
+        flex-direction: column;
+    }
+
+    .aa {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .aa h1 {
+        flex: 1;
+        text-align: center;
+    }
+
+    .produtinho {
+        max-width: 17rem;
+        flex-basis: calc(50% - 0.75rem);
+    }
+
+    .produtos {
+        justify-content: space-between;
+    }
+
+    #domingo, #segunda, #terca, #quarta, #quinta, #sexta, #sabado {
+        flex-direction: row;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem;
+        background: rgba(242, 165, 24, 0.05);
+        border-radius: 0.5rem;
+    }
+
+    #domingo h1, #segunda h1, #terca h1, #quarta h1, #quinta h1, #sexta h1, #sabado h1 {
+        min-width: 70px;
+        text-align: left;
+    }
+
+    #domingo p, #segunda p, #terca p, #quarta p, #quinta p, #sexta p, #sabado p {
+        flex: 1;
+        text-align: left;
+    }
+
+    .articles {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .artigo, .artigo1 {
+        max-width: 100%;
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulos h1 {
+        font-size: 1.5rem;
+    }
+
+    .titulos p {
+        font-size: 0.9rem;
+    }
+
+    #logo {
+        width: 4rem;
+    }
+
+    .de-ladinho {
+        padding: 0.5rem;
+    }
+
+    .menu-mobile {
+        width: 80%;
+    }
+
+    .content p { /* Contexto diferente */
+        font-size: 0.95rem;
+    }
+
+    .conjunto-de-calendar {
+        flex-direction: column;
+    }
+
+    .calendar {
+        width: 100%;
+    }
+
+    .quadradinho h1 {
+        font-size: 1.5rem;
+    }
+
+    .quadradinho p {
+        font-size: 0.95rem;
+    }
+
+    .cronograma {
+        padding: 0.8rem 0.3rem;
+    }
+
+    .aa {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .aa h1 {
+        flex: 1;
+        text-align: center;
+        font-size: 1.3rem;
+    }
+
+    .produtos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .produtinho {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    #domingo, #segunda, #terca, #quarta, #quinta, #sexta, #sabado {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem;
+        gap: 0.3rem;
+    }
+
+    #domingo h1, #segunda h1, #terca h1, #quarta h1, #quinta h1, #sexta h1, #sabado h1 {
+        min-width: auto;
+        font-size: 1rem;
+    }
+
+    #domingo p, #segunda p, #terca p, #quarta p, #quinta p, #sexta p, #sabado p {
+        font-size: 0.9rem;
+    }
+
+    .tabela-calendario th, .tabela-calendario td {
+        width: 1.8rem;
+        height: 2.2rem;
+        font-size: 0.8rem;
+    }
+
+    .aa button, .calendario-seta {
+        font-size: 1.3rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .dicas {
+        padding: 1rem;
+    }
+
+    .produtinho {
+        padding: 1rem;
+        max-width: 17rem;
+    }
+
+    .artigo, .artigo1 {
+        height: 10rem;
+        padding: 0.8rem;
+        max-width: 100%;
+    }
+
+    #calendario-dinamico h2 {
+        font-size: 1.5rem;
+    }
+
+    #calendario-mes-ano {
+        font-size: 1.5rem;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .aa button,
+    .calendario-seta,
+    .botoes-pgn-respostas img,
+    #user,
+    .produtinho button,
+    .butoes button {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .aa button:active,
+    .calendario-seta:active,
+    .botoes-pgn-respostas img:active {
+        opacity: 0.7;
+    }
+
+    .menu-mobile a {
+        min-height: 50px;
+    }
+
+    .menu-close {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .de-ladinho {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-mobile {
+        width: 50%;
+        max-width: 250px;
+    }
+
+    .conjunto-de-calendar {
+        flex-direction: row !important;
+        gap: 1rem;
+    }
+
+    .calendar {
+        width: 48%;
+        min-width: 250px;
+    }
+
+    .cronograma {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .conteudo { /* Contexto diferente */
+        flex-direction: row;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    #domingo, #segunda, #terca, #quarta, #quinta, #sexta, #sabado {
+        flex-direction: column;
+        min-width: 5rem;
+        max-width: 5rem;
+        width: auto;
+    }
+
+    #domingo h1, #segunda h1, #terca h1, #quarta h1, #quinta h1, #sexta h1, #sabado h1 {
+        text-align: center;
+    }
+
+    #domingo p, #segunda p, #terca p, #quarta p, #quinta p, #sexta p, #sabado p {
+        text-align: center;
+    }
+
+    .articles {
+        flex-direction: row;
+    }
+
+    .artigo, .artigo1 {
+        max-width: 48%;
+        min-width: 250px;
+    }
+}
+
+@media print {
+    .botoes-pgn-respostas,
+    .aa button,
+    .calendario-seta,
+    .produtinho button {
+        display: none;
+    }
+
+    main {
+        padding: 0;
+    }
+
+    .info-texto,
+    .cronograma,
+    .dicas,
+    .produtinho {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
 }

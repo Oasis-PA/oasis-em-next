@@ -33,12 +33,8 @@ const QuestionarioPage: React.FC = () => {
             <div id="quiz">Escolha</div>
             <h1>Pré-pronto</h1>
             <p>Se você prefere começar agora, sem precisar responder perguntas, o cronograma pré-pronto é ideal. Ele segue uma estrutura padrão testada e eficaz, combinando hidratação, nutrição e reconstrução em uma sequência equilibrada. É perfeito para quem quer praticidade com bons resultados.</p>
-            <div className="leia">
-              <h4>Leia mais</h4>
-              <Image src="/images/seta direita.png" alt="Seta para a esquerda" width={16} height={16} />
-            </div>
             <div className="abaixo">
-              <Link href="/perguntas">
+              <Link href="/">
                 <button>Veja cronogramas</button>
               </Link>
               <div className="beneficios">

@@ -1,4 +1,4 @@
-* {
+main * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
@@ -19,9 +19,408 @@ html {
 }
 
 main {
+    background-image: url(../../public/images/tinturas/header-bg.png);
     display: flex;
     width: 100%;
+    min-height: 52vw;
+    justify-content: end;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+}
+
+main > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(2rem, 8vw, 8rem);
+    line-height: 6.875rem;
+    max-width: 60rem;
+    margin-left: clamp(1rem, 5vw, 6rem);
+}
+
+main > h5 {
+    color: #FFF;
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    line-height: 2.5rem;
+    max-width: 50rem;
+    font-size: clamp(1rem, 1.5vw + 0.5rem, 1.5625rem);
+    margin-left: clamp(1rem, 5vw, 6rem);
+    margin-bottom: clamp(3rem, 8vw, 8rem);
+    margin-top: clamp(0.875rem, 1vw, 1rem);;
+}
+
+#s1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
     height: auto;
     justify-content: center;
     align-items: center;
+    background-color: black;
+}
+
+#s1 > h1 {
+    color: #FFF;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2rem, 5vw, 5rem);
+    margin-top: clamp(2rem, 8vw, 8rem);
+    align-self: flex-start;
+    margin-left: clamp(4rem, 12vw, 12.5rem);;
+    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+/* --- ADICIONADO --- */
+#s1 > h1:hover {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+#tipos {
+    display: flex;
+    flex-direction: row;
+    padding: clamp(2rem, 15vw, 9rem);
+    gap: clamp(0.75rem, 2.5vw, 1.25rem);
+}
+
+#card1, #card2, #card3, #card4 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    width: 18.41vw;
+    height: 29.66vw;
+}
+
+#card1 {background-image: url(../../public/images/tinturas/tintura1.png);}
+#card2 {background-image: url(../../public/images/tinturas/tintura2.png);} 
+#card3 {background-image: url(../../public/images/tinturas/tintura3.png);}
+#card4 {background-image: url(../../public/images/tinturas/tintura4.png);}
+
+/* --- HOVER EXISTENTE (INTOCADO) --- */
+#card1:hover, #card2:hover, #card3:hover, #card4:hover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    height: 29.66vw;
+    width: 25.66vw;
+}
+
+#card1:hover {background-image: url(../../public/images/tinturas/tipo-tintura1.png);}
+#card2:hover {background-image: url(../../public/images/tinturas/tipo-tintura2.png);} 
+#card3:hover {background-image: url(../../public/images/tinturas/tipo-tintura3.png);}
+#card4:hover {background-image: url(../../public/images/tinturas/tipo-tintura4.png);}
+
+
+.conteudo {
+    padding: 2.75rem;
+    opacity: 0;     
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    text-wrap: nowrap;
+}
+
+.conteudo > p {
+    color: #FFF;
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+    margin-top: clamp(1rem, 5vw, 2.56rem);
+    line-height: normal;
+    max-height: 23rem;
+}
+
+#card1:hover .conteudo, #card2:hover .conteudo, #card3:hover .conteudo, #card4:hover .conteudo {
+    opacity: 1;
+}
+
+#s2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#artigo1 {
+    background-image: url('../../public/images/tinturas/artigo1-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    height: 57.1vw;
+    width: 44vw;
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+#artigo1 > h1 {
+    color: #FFF;
+    font-family: "THE NEXT FONT";
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: normal;
+    align-self: flex-end;
+    margin-bottom: clamp(1.125rem, 1.5vw, 1.5rem);
+    margin-left: clamp(1.5rem, 2.5vw, 2.5rem);
+    text-align: left;
+}
+
+#artigo2 {
+    background-image: url('../../public/images/tinturas/artigo2-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    height: 42vw;
+    width: 42vw;
+    display: flex;
+    margin-right: clamp(3rem, 7.5vw, 7.5rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+#artigo2 > p {
+    text-align: justify;
+    font-family: "Louis George Cafe"; 
+    line-height: normal;
+    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+    align-self: flex-end;
+    padding: clamp(2rem, 3vw, 3rem);
+}
+
+#s3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    display: flex;
+    margin-top: clamp(4rem, 10vw, 10rem);
+}
+
+#artigo3 {
+    background-image: url('../../public/images/tinturas/artigo3-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    height: 28.6vw;
+    width: 70.6vw;
+    display: flex;
+    margin-left: clamp(2rem, 3vw, 3rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+#artigo3 > h1 {
+    color: #FFF;
+    text-align: right;
+    font-family: "THE NEXT FONT";
+    line-height: normal;
+    font-size: clamp(3rem, 8vw, 8rem);
+    align-self: center;
+    margin-left: auto;
+    margin-right: clamp(2rem, 4vw, 4rem);
+}
+
+#artigo4 {
+    background-image: url('../../public/images/tinturas/artigo4-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    height: 28.6vw;
+    width: 81.9vw;
+    display: flex;
+    margin-top: clamp(3rem, 8vw, 8rem);
+    align-self: flex-end;
+    margin-right: clamp(2rem, 3vw, 3rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+#artigo4a {
+    align-self: end;
+}
+
+#artigo4 > h1 {
+    color: #FFF;
+    font-family: "THE NEXT FONT";
+    line-height: normal;
+    font-size: clamp(3rem, 8vw, 8rem);
+    align-self: center;
+    margin-left: clamp(2.5rem, 5vw, 5rem);
+    text-align: left;
+}
+
+#linha {
+    display: flex;
+    justify-content: center;
+    height: 2px;
+    background-color: black;
+    width: 90%;
+    margin-top: clamp(3.5rem, 7vw, 7rem);
+}
+
+#s4 {
+    background-image: url('../../public/images/tinturas/s4-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100vw;
+    height: 69.41vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#s4 > h1 {
+    font-family: "The Next Font";
+    font-size: clamp(3rem, 8vw, 8rem);
+    margin-top: clamp(3.5rem, 7vw, 7rem);
+    margin-bottom: clamp(3.5rem, 7vw, 7rem);
+}
+
+#s4 > div > * {
+    box-sizing: border-box;
+    width: calc((100% - 2 * clamp(1.5rem, 2.5vw, 2.5rem)) / 3);
+}
+
+#s4 > div {
+    display: flex;
+    gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    flex-wrap: wrap;
+    padding-left: clamp(3rem, 8vw, 8rem);
+    padding-right: clamp(3rem, 8vw, 8rem);
+}
+
+#s4 > div > div > h1 {
+    font-family: "The Next Font";
+    line-height: normal;
+    font-size: clamp(2rem, 3vw, 3rem);
+    max-width: 30rem;
+    margin-bottom: clamp(1.25rem, 2vw, 2rem);
+    margin-left: clamp(1.25rem, 2vw, 2rem);
+}
+
+#s4 > div > a > div > h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    max-width: 30rem;
+    text-align: left;
+    margin-bottom: clamp(1.25rem, 2vw, 2rem);
+    margin-left: clamp(1.25rem, 2vw, 2rem);
+    color: #FFF;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    font-family: "THE NEXT FONT";
+}
+
+/* --- BOTÃO MODIFICADO (BASEADO NO SEU EXEMPLO) --- */
+#s4 > div > button {
+    display: flex;
+    width: 15.9375rem;
+    height: 3.0625rem;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    margin-left: 7.9rem;
+    margin-right: 7.9rem;
+    
+    background-color: #722F53;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-family: "THE NEXT FONT"; /* Mantive sua fonte original */
+    cursor: pointer;
+    font-size: clamp(0.875rem, 1vw, 1rem); /* Fonte do seu exemplo */
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+/* --- ADICIONADO (EFEITOS DO SEU EXEMPLO) --- */
+#s4 > div > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+#s4 > div > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#s4 > div > button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.08);
+}
+
+#s4 > div > button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.05);
+}
+/* --- FIM DAS MODIFICAÇÕES DO BOTÃO --- */
+
+
+#s4 > div > button > a {
+    color: #FFF;
+    font-size: clamp(0.875rem, 1vw, 1rem); /* --- MODIFICADO (para bater com o botão) --- */
+    text-decoration: none; /* --- ADICIONADO (pra garantir) --- */
+}
+
+#artigo5, #artigo6, #artigo7, #artigo8, #artigo9  {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: end;
+    width: 27.1vw;
+    height: 18.5vw;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+#artigo5 {background-image: url('../../public/images/link-artigos/cuidados-noturnos.jpg');}
+#artigo6 {background-image: url('../../public/images/link-artigos/transicao-capilar.jpg');}
+#artigo7 {background-image: url('../../public/images/link-artigos/acidificacao-no-cabelo.jpg');}
+#artigo8 {background-image: url('../../public/images/link-artigos/protetor-solar-para-peles-retintas.jpg');}
+#artigo9 {background-image: url('../../public/images/link-artigos/como-fazer-waves.jpg');}
+
+/* --- ADICIONADO (HOVER PARA TODOS OS ARTIGOS) --- */
+#artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, 
+#artigo5:hover, #artigo6:hover, #artigo7:hover, #artigo8:hover, #artigo9:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- CORREÇÃO PARA LINKS (NEXT.JS) --- */
+/*
+  Isso força as tags <a> criadas pelo <Link>
+  a se comportarem como elementos de bloco.
+  Assim, elas passam a obedecer o layout Flexbox das seções 
+  e permitem que os divs (#artigo1, #artigo3, etc.) 
+  dentro delas tenham o tamanho correto.
+*/
+#s2 > a,
+#s3 > a,
+#s4 > div > a {
+    display: block;
 }

@@ -1,550 +1,416 @@
 "use client";
 import { Header, Footer } from "@/components";
-import { useEffect, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import styles from '@/styles/page.module.css';
 
-import "@/styles/index.css";
+const slidesData = [
+  {
+    h2: "Tratamentos inovadores",
+    h1: "CUIDADO SEM LIMITES",
+    backgroundImage: "/images/tela-principal/banner1.png",
+    link: "/cronograma-capilar"
+  },
+  {
+    h2: "Descubra seu melhor visual",
+    h1: "REINVENTE SEU ESTILO",
+    backgroundImage: "/images/tela-principal/banner2.png",
+    link: "/haircare"
+  },
+  {
+    h2: "O melhor de uma pele renovada",
+    h1: "BELEZA QUE EMPODERA",
+    backgroundImage: "/images/tela-principal/banner3.png",
+    link: "/skincare"
+  }
+];
+
+const cortesData = {
+  feminino: [
+    { title: 'CORTE PIXIE', image: '/images/tela-principal/img-corte (1).png', link: '/corte-modelo' },
+    { title: 'WOLFCUT', image: '/images/tela-principal/img-corte (2).png', link: '/corte-modelo' },
+    { title: 'FRANJA', image: '/images/tela-principal/img-corte (3).png', link: '/corte-modelo' },
+    { title: 'CAMADAS', image: '/images/tela-principal/img-corte (4).png', link: '/corte-modelo' },
+  ],
+  masculino: [
+    { title: 'AMERICANO', image: '/images/tela-principal/img-corte (8).png', link: '/corte-modelo' },
+    { title: 'LOW FADE', image: '/images/tela-principal/img-corte (7).png', link: '/corte-modelo' },
+    { title: 'MULLET', image: '/images/tela-principal/img-corte (6).png', link: '/corte-modelo' },
+    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (5).png', link: '/corte-modelo' },
+  ],
+  mais50: [
+    { title: 'BORBOLETA', image: '/images/tela-principal/img-corte (12).png', link: '/corte-modelo' },
+    { title: 'CURTO', image: '/images/tela-principal/img-corte (11).png', link: '/corte-modelo' },
+    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (10).png', link: '/corte-modelo' },
+    { title: 'BOB ANGULAR', image: '/images/tela-principal/img-corte (9).png', link: '/corte-modelo' },
+  ]
+};
+
 
 export default function OasisHomepage() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const mountedRef = useRef(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [textOpacity, setTextOpacity] = useState(1);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
+
+  const [activeCategory, setActiveCategory] = useState<'feminino' | 'masculino' | 'mais50'>('feminino');
+
 
   useEffect(() => {
-    // Marca que o componente foi montado
-    mountedRef.current = true;
+    const timer = setInterval(() => {
+      setCurrentSlide(prevSlide => (prevSlide + 1) % slidesData.length);
+    }, 5000);
 
-    // Força uma re-renderização quando volta do cadastro
-    const handlePageShow = (event: PageTransitionEvent) => {
-      if (event.persisted && mountedRef.current) {
-        // Página foi carregada do cache do navegador
-        router.refresh();
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (cardsContainerRef.current) {
+        const scrollLeft = cardsContainerRef.current.scrollLeft;
+        const newOpacity = Math.max(0, 1 - (scrollLeft / 300));
+        setTextOpacity(newOpacity);
       }
     };
 
-    // Limpa estados problemáticos do sessionStorage
-    const cleanupStorage = () => {
-      try {
-        const voltandoDoCadastro = sessionStorage.getItem('voltandoDoCadastro');
-        if (voltandoDoCadastro === 'true') {
-          sessionStorage.removeItem('voltandoDoCadastro');
-          // Em vez de reload, força um refresh suave
-          router.refresh();
-        }
-      } catch (error) {
-        console.warn('Erro ao acessar sessionStorage:', error);
-      }
-    };
+    const cardsContainer = cardsContainerRef.current;
+    if (cardsContainer) {
+      cardsContainer.addEventListener('scroll', handleScroll);
+    }
 
-    cleanupStorage();
-
-    // Event listeners para controlar cache do navegador
-    window.addEventListener('pageshow', handlePageShow);
-    
-    // Cleanup
     return () => {
-      window.removeEventListener('pageshow', handlePageShow);
-      mountedRef.current = false;
+      if (cardsContainer) {
+        cardsContainer.removeEventListener('scroll', handleScroll);
+      }
     };
-  }, [router]);
+  }, []);
 
-  // Force re-render quando a rota muda
-  useEffect(() => {
-    // Este useEffect garante que a página seja re-renderizada corretamente
-  }, [pathname]);
+  const handleDotClick = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const currentCortes = cortesData[activeCategory];
 
   return (
-    <div id="bodyPaginaPrincipal" className="min-h-screen" key={pathname}>
-      {/* Page 1 */}
-      <div id="page1" className="relative">
-        <Header />
+    <>
+    <Header/>
+      <main 
+        className={styles.mainContainer} 
+        style={{ backgroundImage: `url(${slidesData[currentSlide].backgroundImage})` }}
+      >
+        <h2>{slidesData[currentSlide].h2}</h2>
+        <h1>{slidesData[currentSlide].h1}</h1>
 
-        <main id="page1Main" className="text-center py-20">
-          <p>Tratamentos inovadores</p>
-          <h1 className="text-4xl font-bold my-4">Cuidado sem limites</h1>
-          <button className="botoes bg-yellow-500 px-6 py-3 rounded">
-            <Link href="/pagina-em-manutencao">
-              <p>Conheça</p>
-            </Link>
-          </button>
-          <div id="page1-circulos" className="flex justify-center gap-2 mt-8">
-            <Image 
-              id="circulo1" 
-              src="/images/circulo-marcado.png" 
-              alt="circulo marcado" 
-              width={20} 
-              height={20}
-            />
-            <Image 
-              id="circulo2" 
-              src="/images/circulo.png" 
-              alt="circulo nao marcado" 
-              width={20} 
-              height={20}
-            />
-            <Image 
-              id="circulo3" 
-              src="/images/circulo.png" 
-              alt="circulo nao marcado" 
-              width={20} 
-              height={20}
-            />
-          </div>
-        </main>
-      </div>
+        <Link 
+          href={slidesData[currentSlide].link} 
+          className={styles.conhecaButton}
+        >
+          CONHEÇA
+        </Link>
 
-      {/* Page 2 */}
-      <div id="page2" className="py-20">
-        <h1 className="text-center text-3xl font-bold mb-10">HOT TOPICS</h1>
-        <section role="none" id="page2-slides-container" className="flex overflow-x-auto gap-6 px-6">
-          <figure className="page2-slide min-w-[300px]">
-            <Image 
-              draggable={false} 
-              src="/images/tela-principal/page2/slide-img1.png" 
-              alt="" 
-              width={300} 
-              height={200}
-            />
-            <figcaption>
-              <Link href="/artigo2" className="no-underline text-black">
-                <p>Como fazer acidificação no cabelo? Confira dicas</p>
-              </Link>
-            </figcaption>
-          </figure>
-          <figure className="page2-slide min-w-[300px]">
-            <Image 
-              draggable={false} 
-              src="/images/tela-principal/page2/slide-img2.png" 
-              alt="" 
-              width={300} 
-              height={200}
-            />
-            <figcaption>
-              <Link href="/artigo1" className="no-underline text-black">
-                <p>Sérum Facial: o que é, como usar e para que serve</p>
-              </Link>
-            </figcaption>
-          </figure>
-          <figure className="page2-slide min-w-[300px]">
-            <Image 
-              draggable={false} 
-              src="/images/tela-principal/page2/slide-img3.png" 
-              alt="" 
-              width={300} 
-              height={200}
-            />
-            <figcaption>
-              <p>tópico</p>
-            </figcaption>
-          </figure>
-          <figure className="page2-slide min-w-[300px]">
-            <Image 
-              draggable={false} 
-              src="/images/tela-principal/page2/slide-img4.png" 
-              alt="" 
-              width={300} 
-              height={200}
-            />
-            <figcaption>
-              <p>tópico</p>
-            </figcaption>
-          </figure>
-          <figure className="page2-slide min-w-[300px]">
-            <Image 
-              draggable={false} 
-              src="/images/tela-principal/page2/slide-img5.png" 
-              alt="" 
-              width={300} 
-              height={200}
-            />
-            <figcaption>
-              <p>tópico</p>
-            </figcaption>
-          </figure>
-        </section>
-      </div>
-
-      {/* Page 3 */}
-      <div id="page3" className="py-20">
-        <header>
-          <article>
-            <div className="setas">
+        <div className={styles.dotsContainer}>
+          {slidesData.map((_, index) => (
+            <button 
+              key={index} 
+              onClick={() => handleDotClick(index)}
+              className={styles.dotButton}
+            >
               <Image 
-                src="/images/seta-esquerda.png" 
-                id="page3-seta-esquerda" 
-                alt="seta-rolagem" 
-                width={30} 
-                height={30}
+                src={
+                  currentSlide === index 
+                    ? "/images/tela-principal/bolinha-marcada.svg" 
+                    : "/images/tela-principal/bolinha-naomarcada.svg"
+                } 
+                alt={`Ir para o slide ${index + 1}`}
+                width={20}
+                height={20}
               />
-            </div>
-            <figure className="text-center min-w-[150px]">
-              <Link href="/hair-care">
-                <Image 
-                  className="headerImg" 
-                  id="page3-imagens-article1" 
-                  src="/images/tela-principal/page3/img-figure1.png" 
-                  alt="" 
-                  width={150} 
-                  height={150}
-                />
-              </Link>
-              <figcaption className="page3-texto-cortes">Hair Care</figcaption>
-            </figure>
-            <figure className="text-center min-w-[150px]">
-              <Image 
-                className="headerImg" 
-                id="page3-imagens-article2" 
-                src="/images/tela-principal/page3/img-figure2.png" 
-                alt="" 
-                width={150} 
-                height={150}
-              />
-              <figcaption className="page3-texto-cortes">Tendências</figcaption>
-            </figure>
-            <figure className="text-center min-w-[150px]">
-              <Image 
-                className="headerImg" 
-                id="page3-imagens-article3" 
-                src="/images/tela-principal/page3/img-figure3.png" 
-                alt="" 
-                width={150} 
-                height={150}
-              />
-              <figcaption className="page3-texto-cortes">vestuário</figcaption>
-            </figure>
-            <figure className="text-center min-w-[150px]">
-              <Link href="/skincare">
-                <Image 
-                  className="headerImg" 
-                  id="page3-imagens-article4" 
-                  src="/images/tela-principal/page3/img-figure4.png" 
-                  alt="" 
-                  width={150} 
-                  height={150}
-                />
-              </Link>
-              <figcaption className="page3-texto-cortes">skincare</figcaption>
-            </figure>
-            <figure className="text-center min-w-[150px]">
-              <Image 
-                className="headerImg" 
-                id="page3-imagens-article5" 
-                src="/images/tela-principal/page3/img-figure5.png" 
-                alt="" 
-                width={150} 
-                height={150}
-              />
-              <figcaption className="page3-texto-cortes">tutoriais</figcaption>
-            </figure>
-            <figure className="text-center min-w-[150px]">
-              <Link href="/tela-de-produto">
-                <Image 
-                  className="headerImg" 
-                  id="page3-imagens-article6" 
-                  src="/images/tela-principal/page3/img-figure6.png" 
-                  alt="" 
-                  width={150} 
-                  height={150}
-                />
-              </Link>
-              <figcaption className="page3-texto-cortes">produtos</figcaption>
-            </figure>
-            <div className="setas">
-              <Image 
-                id="page3-seta-direita" 
-                src="/images/seta-direita.png" 
-                alt="seta-rolagem" 
-                width={30} 
-                height={30}
-              />
-            </div>
-          </article>
-          <section className="page3-circulos">
-            <Image 
-              id="circulo4" 
-              src="/images/circulo-marcado.png" 
-              alt="circle-checked" 
-              width={20} 
-              height={20}
-            />
-            <Image 
-              id="circulo5" 
-              src="/images/circulo.png" 
-              alt="circle-unchecked" 
-              width={20} 
-              height={20}
-            />
-          </section>
-        </header>
-        
-        <main className="text-center my-10">
-          <article>
-            <h1 className="text-3xl font-bold">Cortes em Alta</h1>
-            <p className="mt-4">As melhores recomendações de cortes de cabelos para todos os gêneros e idades</p>
-          </article>
-        </main>
-        
-        <footer>
-          <nav className="flex justify-center gap-8 mb-10">
-            <div className="cortes-em-alta-container">
-              <p className="cortes-em-alta-text">FEMININO</p>
-            </div>
-            <div className="cortes-em-alta-container">
-              <p className="cortes-em-alta-text">MASCULINO</p>
-            </div>
-            <div className="cortes-em-alta-container">
-              <p className="cortes-em-alta-text">PARA QUEM É 50+</p>
-            </div>
-            <div className="cortes-em-alta-container">
-              <p className="cortes-em-alta-text">NOVIDADES</p>
-            </div>
-          </nav>
-          
-          <article>
-            <figure className="text-center">
-              <div className="page3-cortes">
-                <h1>CORTE PIXIE</h1>
-                <Image 
-                  className="cortesImagens" 
-                  src="/images/tela-principal/page3/img-conheca1.png" 
-                  alt="" 
-                  width={200} 
-                  height={200}
-                />
-              </div>
-              <figcaption>
-                <button className="botoes bg-yellow-500 px-4 py-2 rounded mt-4">
-                  <Link href="/corte">CONHEÇA</Link>
-                </button>
-              </figcaption>
-            </figure>
-            <figure className="text-center">
-              <div className="page3-cortes">
-                <h1>WOLFCUT</h1>
-                <Image 
-                  className="cortesImagens" 
-                  src="/images/tela-principal/page3/img-conheca2.png" 
-                  alt="" 
-                  width={200} 
-                  height={200}
-                />
-              </div>
-              <figcaption>
-                <button className="botoes bg-yellow-500 px-4 py-2 rounded mt-4">
-                  <Link href="/pagina-em-manutencao">CONHEÇA</Link>
-                </button>
-              </figcaption>
-            </figure>
-            <figure className="text-center">
-              <div className="page3-cortes">
-                <h1>FRANJA</h1>
-                <Image 
-                  className="cortesImagens" 
-                  src="/images/tela-principal/page3/img-conheca3.png" 
-                  alt="" 
-                  width={200} 
-                  height={200}
-                />
-              </div>
-              <figcaption>
-                <button className="botoes bg-yellow-500 px-4 py-2 rounded mt-4">
-                  <Link href="/pagina-em-manutencao">CONHEÇA</Link>
-                </button>
-              </figcaption>
-            </figure>
-            <figure className="text-center">
-              <div className="page3-cortes">
-                <h1>CAMADA</h1>
-                <Image 
-                  className="cortesImagens" 
-                  src="/images/tela-principal/page3/img-conheca4.png" 
-                  alt="" 
-                  width={200} 
-                  height={200}
-                />
-              </div>
-              <figcaption>
-                <button className="botoes bg-yellow-500 px-4 py-2 rounded mt-4">
-                  <Link href="/pagina-em-manutencao">CONHEÇA</Link>
-                </button>
-              </figcaption>
-            </figure>
-          </article>
-        </footer>
-      </div>
-
-      {/* Page 4 */}
-      <div id="page4" className="py-20">
-        <header className="text-center mb-10">
-          <h1 className="text-3xl font-bold">Baseados no seu Perfil</h1>
-          <p className="mt-4">Uma lista de recomendações personalizadas baseadas no seu avatar. Veja produtos que se foram feitos especialmente para você!</p>
-        </header>
-        <main className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
-          {[...Array(4)].map((_, index) => (
-            <figure key={index} className="text-center">
-              <Image 
-                src="/images/tela-principal/page4/produto1.png" 
-                alt="produto" 
-                width={200} 
-                height={200}
-              />
-              <figcaption>
-                <p>Texto Ilustrativo</p>
-                <button className="botoes bg-yellow-500 px-4 py-2 rounded mt-2">
-                  <Link href="/pagina-em-manutencao">
-                    <p>ir para compra</p>
-                  </Link>
-                </button>
-              </figcaption>
-            </figure>
+            </button>
           ))}
-        </main>
-      </div>
+        </div>
+      </main>
 
-      {/* Page 5 */}
-      <div id="page5" className="flex items-center py-20 px-6">
-        <figure className="flex-1">
-          <Image 
-            src="/images/tela-principal/page5/picture1.png" 
-            alt="imagem de mulher" 
-            width={400} 
-            height={400}
-          />
-        </figure>
-        <article className="flex-1 pl-10">
-          <h1 className="text-3xl font-bold mb-4">Aposte em Maquiagens ousadas!</h1>
-          <p className="mb-6">Está cansada das mesmas makes monótonas e sem brilho em toda festa? Veja agora mesmo 10 maquiagens para inovar e arrasar no visual! Aposte também em produtos que não danifiquem sua pele e preservem sua beleza natural.</p>
-          <button className="botoes bg-yellow-500 px-6 py-3 rounded">
-            <Link href="/pagina-em-manutencao">Descubra</Link>
+      <section className={styles.s1}>
+        <div className={styles.texttopics} style={{ opacity: textOpacity }}>
+          <h1>HOT TOPICS</h1>
+          <h2>Fique por dentro dos assuntos mais quentes de beleza! Descubra dicas, 
+          tendências e tire suas dúvidas.</h2>
+        </div>
+        <div className={styles.cards} ref={cardsContainerRef}>
+          <Link href="artigo/acidificacao-no-cabelo">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-1.jpg" alt="acidificacao-no-cabelo" />
+              <p>Como fazer acidificação no cabelo? Confira dicas</p>
+            </div>
+          </Link>
+
+          <Link href="artigo/serum-facial">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-2.png" alt="serum-facial" />
+              <p>Sérum Facial: o que é, como usar e para que serve</p>
+            </div>
+          </Link>
+
+          <Link href="artigo/acido-hialuronico">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-3.jpg" alt="acido-hialuronico" />
+              <p>Ácido hialurônico nos cabelos? Entenda os benefícios.</p>
+            </div>
+          </Link>
+
+          <Link href="artigo/erros-cronograma-capilar">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-4.jpg" alt="erros-cronograma-capilar" />
+              <p>Seu cronograma capilar não dá certo? Evite estes erros.</p>
+            </div>
+          </Link>
+
+          <Link href="artigo/oleos-essenciais-para-cabelo">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-5.jpg" alt="oleos-essenciais-para-cabelo" />
+              <p>Quais óleos essenciais usar no cabelo? Veja 7 opções.</p>
+            </div>
+          </Link>
+
+          <Link href="artigo/5-receitas-naturais">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-6.jpg" alt="5-receitas-naturais" />
+              <p>Quer ter fios mais fortes? Confira 5 receitas caseiras.</p>
+            </div>
+          </Link>
+
+          <Link href="artigo/tons-de-cabelo-verao">
+            <div className={styles.card}>
+              <img src="/images/tela-principal/artigo-hot-7.jpg" alt="tons-de-cabelo-verao" />
+              <p>Quer renovar o visual no verão? Inspire-se com os tons.</p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      <section className={styles.s2}>
+        <Link href='/haircare'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-haircare.png" alt=""/>
+            <h1>HAIR CARE</h1>
+          </div>
+        </Link>
+
+        <Link href='/tendencias'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-tendencias.png" alt=""/>
+            <h1>TENDÊNCIAS</h1>
+          </div>
+        </Link>
+
+        <Link href='/skincare'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-skincare.png" alt=""/>
+            <h1>SKINCARE</h1>
+          </div>
+        </Link>
+
+        <Link href='/produtos'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-produtos.png" alt=""/>
+            <h1>PRODUTOS</h1>
+          </div>
+        </Link>
+
+        <Link href='/alimentacao'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-alimentacao.png" alt=""/>
+            <h1>ALIMENTAÇÃO</h1>
+          </div>
+        </Link>
+
+        <Link href='/infantil'>
+          <div className={styles.s2links}>
+            <img src="/images/tela-principal/img-infantil.png" alt=""/>
+            <h1>INFANTIL</h1>
+          </div>
+        </Link>
+      </section>
+
+      <section className={styles.s3}>
+        <h1>Cortes em Alta</h1>
+        <p>As melhores recomendações de cortes de cabelos para todos os gêneros e idades</p>
+        <div className={styles.linha}></div>
+        
+        <div className={styles.categ}>
+          <button
+            className={`${styles.categoryButton} ${activeCategory === 'feminino' ? styles.activeCategory : ''}`}
+            onClick={() => setActiveCategory('feminino')}
+          >
+            FEMININO
           </button>
-        </article>
-      </div>
-
-      {/* Page 6 */}
-      <div id="page6" className="flex items-center py-20 px-6">
-        <figure className="flex-1">
-          <Image 
-            src="/images/tela-principal/page6/picture1.png" 
-            alt="imagem de casamento" 
-            width={400} 
-            height={400}
-          />
-        </figure>
-        <article className="flex-1 pl-10">
-          <h1 className="text-3xl font-bold mb-4">Vai se casar? esteja incrível para seu amor!</h1>
-          <p className="mb-6">Está de casamento marcado mas ainda não tem certeza sobre como deve se arrumar? Invista em você! Clique abaixo e descubra o kit de casamento perfeito, com looks, maquiagens e penteados usados por famosos e feitos para você!</p>
-          <button className="botoes bg-yellow-500 px-6 py-3 rounded">
-            <Link href="/pagina-em-manutencao">Descubra</Link>
+          <button
+            className={`${styles.categoryButton} ${activeCategory === 'masculino' ? styles.activeCategory : ''}`}
+            onClick={() => setActiveCategory('masculino')}
+          >
+            MASCULINO
           </button>
-        </article>
-      </div>
-
-      {/* Page 7 */}
-      <div id="page7" className="flex items-center py-20 px-6">
-        <figure className="flex-1">
-          <Image 
-            src="/images/tela-principal/page7/picture1.png" 
-            alt="imagem de homem com bone" 
-            width={400} 
-            height={400}
-          />
-        </figure>
-        <article className="flex-1 pl-10">
-          <h1 className="text-3xl font-bold mb-4">autocuidado masculino</h1>
-          <p className="mb-6">Se importar com a própria beleza e querer se cuidar não é mais algo irreal. Para quem dá aquele toque a mais na aparência, recebe autoestima e felicidade renovadas! Leia agora por onde começar a ter uma rotina capilar e de skincare e dê uma repaginada total no visual</p>
-          <button className="botoes bg-yellow-500 px-6 py-3 rounded">
-            <Link href="/skincare" target="_blank">Descubra</Link>
+          <button
+            className={`${styles.categoryButton} ${activeCategory === 'mais50' ? styles.activeCategory : ''}`}
+            onClick={() => setActiveCategory('mais50')}
+          >
+            PARA QUEM É +50
           </button>
-        </article>
-      </div>
+        </div>
+        <div className={styles.linha2}></div>
+        
+        <div className={styles.cortes}>
+          {currentCortes.map((corte, index) => (
+            <div className={styles.cortecardconteiner} key={index}>
+              <div className={styles.cortecard}>
+                <h1>{corte.title}</h1>
+                <img src={corte.image} alt={`Imagem do ${corte.title}`} />
+              </div>
+              <Link href={corte.link} className={styles.conhecaCorteButton}>
+                CONHEÇA
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      {/* Page 8 */}
-      <div id="page8" className="py-20">
-        <header className="text-center mb-10">
-          <h1 className="text-3xl font-bold">NOVIDADES</h1>
-        </header>
-        <main className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
-          <Link href="/tela-de-produto">
-            <figure>
-              <Image 
-                src="/images/tela-principal/page8/produto1.png" 
-                alt="produtos" 
-                width={250} 
-                height={250}
-              />
-              <figcaption></figcaption>
-            </figure>
-          </Link>
-          <Link href="/tela-de-produto">
-            <figure>
-              <Image 
-                src="/images/tela-principal/page8/produto2.png" 
-                alt="produtos" 
-                width={250} 
-                height={250}
-              />
-              <figcaption></figcaption>
-            </figure>
-          </Link>
-          <Link href="/tela-de-produto">
-            <figure>
-              <Image 
-                src="/images/tela-principal/page8/produto3.png" 
-                alt="produtos" 
-                width={250} 
-                height={250}
-              />
-              <figcaption></figcaption>
-            </figure>
-          </Link>
-          <Link href="/tela-de-produto">
-            <figure>
-              <Image 
-                src="/images/tela-principal/page8/produto4.png" 
-                alt="produtos" 
-                width={250} 
-                height={250}
-              />
-              <figcaption></figcaption>
-            </figure>
-          </Link>
-        </main>
-      </div>
+      <section className={styles.s4}>
+        <h1>Baseados no seu Perfil</h1>
+        <p>Uma lista de recomendações personalizadas baseadas <br></br>no seu perfil. Veja produtos que se foram feitos especialmente para você!</p>
+        <div className={styles.cardsperfil}>
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
 
-      {/* Page 9 */}
-      <div id="page9" className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 py-20">
-        <figure>
-          <Image 
-            src="/images/tela-principal/page9/picture1.png" 
-            alt="" 
-            width={400} 
-            height={300}
-          />
-          <figcaption></figcaption>
-        </figure>
-        <figure>
-          <Image 
-            src="/images/tela-principal/page9/picture2.png" 
-            alt="" 
-            width={400} 
-            height={300}
-          />
-          <figcaption></figcaption>
-        </figure>
-        <figure>
-          <Image 
-            src="/images/tela-principal/page9/picture3.png" 
-            alt="" 
-            width={400} 
-            height={300}
-          />
-          <figcaption></figcaption>
-        </figure>
-      </div>
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
 
-      <Footer />
-    </div>
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
+
+          <div className={styles.cardperfil}>
+            <img src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
+            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+          </div>
+          
+        </div>
+        <div className={styles.arrow}>
+          <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link> <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
+        </div>
+      </section>
+
+      <section className={styles.s5}>
+        <div className={styles.artigos}>
+            <img className={styles.artigo1} src="images/skincare/artigo1.png" alt="" />
+            <div className={styles.contartigo}>
+              <h1>Aposte em Maquiagens ousadas!</h1>
+              <p>Está cansada das mesmas makes monótonas e sem
+              brilho em toda festa? Veja agora mesmo 10 maquiagens 
+              para inovar e arrasar no visual! Aposte também em 
+              produtos que não danifiquem sua pele e preservem sua
+              beleza natural.</p>
+              <button><Link href='/artigo/maquiagens'>CONHEÇA</Link></button>
+            </div>
+        </div>
+
+        <div className={styles.artigo2}>
+            <div className={styles.contartigo}>
+              <h1>Vai se casar? esteja incrível para seu amor!</h1>
+              <p>Está de casamento marcado mas ainda não tem certeza sobre
+              como deve se arrumar? Invista em você! Clique abaixo e 
+              descubra o kit de casamento perfeito, com looks, maquiagens
+              e penteados usados por famosos e feitos para você!
+              </p>
+              <button><Link href='artigo/vai-se-casar'>CONHEÇA</Link></button>
+            </div>
+            <img src="images/skincare/artigo2.png" alt="" />
+        </div>
+
+        <div className={styles.artigos}>
+            <img src="images/skincare/artigo3.png" alt="" />
+            <div className={styles.contartigo}>
+              <h1>autocuidado masculino</h1>
+              <p>Se importar com a própria beleza e querer se cuidar não
+                é mais algo irreal. Para quem dá aquele toque a mais na
+                aparência, recebe autoestima e felicidade renovadas! Leia 
+                agora por onde começar a ter uma rotina capilar e de 
+                skincare e dê uma repaginada total no visual!</p>
+              <button><Link href='artigo/autocuidado-masculino'>CONHEÇA</Link></button>
+            </div>
+        </div>
+      </section>
+
+      <section className={styles.s6}>
+        <div className={styles.h1novidades}>NOVIDADES</div>
+          <div className={styles.cardsnovidades}>
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade1}>
+                <h1>Creme de Pentear Phytomanga Efeito Pesado 500ml</h1>
+              </div>
+            </Link>
+
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade2}>
+                <h1>EFFACLAR REEQUILIBRANTE</h1>
+              </div>
+            </Link>
+
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade3}>
+                <h1>produto</h1>
+              </div>
+            </Link>
+
+            <Link href='/tela-produto'>
+              <div className={styles.cardnovidade4}>
+                <h1>produto</h1>
+              </div>
+            </Link>
+          </div>
+      </section>
+
+      <section className={styles.s7}>
+        <div className={styles.s7div}>
+          <Link href='artigo/diferenca-de-geracoes'>
+            <div className={styles.artigo1footer}>
+              <h1>diferença de gerações</h1>
+              <p>Os 10 tratamentos de pele mais comuns em 1950 e 2024</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+          <Link href='/infantil'>
+            <div className={styles.artigo2footer}>
+              <h1>Cremes Infantis</h1>
+              <p>Veja os melhores produtos para suas crianças!</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+          <Link href='/tendencias'>
+            <div className={styles.artigo3}>
+              <h1>têndencias</h1>
+              <p>5 novos lançamentos que prometem abalar o mercado</p>
+              <img src="images/tela-principal/seta-branca.svg" alt="" />
+            </div>
+          </Link>
+
+        </div>
+      </section>
+      <Footer/>
+    </>
   );
 }

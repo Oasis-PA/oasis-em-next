@@ -1,182 +1,183 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS CORRIGIDO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* ---- RESET E CONFIGURAÇÕES GLOBAIS ---- */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+main * {
     color: var(--corpo-texto);
-  
 }
 
 body {
     display: flex;
     width: 100%;
-    height: 100%;
-    background-color: var(--body-back);
-    align-items: center;
+    height: auto;
     flex-direction: column;
     justify-content: center;
 }
 
-html, body {
-    width: 100%;
+html {
     overflow-x: hidden;
+    font-size: 16px; /* Base para unidades rem */
 }
 
-:root {
-    --body-back: #ffffff;
-    --corpo-texto: #000000; 
-    --header-color: #000000; 
-    --back-header: #fff;
-    --shadow: #f8f4f4;
-    --label: #000000;
-    --footer: #ffffff;
-}
-.dark:root{
-    --body-back: #0e0e0e;
-    --header-color: #ffffff; 
-    --back-header: #000000;
-    --corpo-texto: #ffffff ; 
-    --footer: #000000;
-    --shadow: #161616;
-    --label: #f3c11e;
-}
-.check{
-    opacity: 0;
-    position: absolute;
-}
-.label{
-    margin-top: -158px;
-    margin-bottom: 120px;
-    margin-left: 92%;
-
-    background-color: var(--label);
-    border-radius: 29px;
-    border: 0.1px solid #000000;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-around;
-    width: 3%;
-    height: 29px;
-
-    transform: scale(1.1);
-}
-.bolinha > img {
-    
-    position: absolute;
-    right: 0;
-} 
-
-#sol{
-    margin-left: 10px;
-}
-
-#lua{
-    margin-left: 27.2px;
-    margin-top: 1px;
-    width: 26.9px;
-    height: 26.9px;
-}
-
-.imagem {
-    width: 27.6px;
-    height: 27.6px;
-    position: absolute;
-    top: 0;
-    left: -9px;
-}
-
-.check:checked ~ .bolinha {
-    transform: translateX(3px);
-    margin-top: -30px; 
-}
-
-iframe
-{
-    width:1920px;
-    height:200px;
-} 
-
-footer {
-    display: flex;
-}
-
-footer iframe {
-    width: 1920px;
-    height: 430px;
-}
-
+/* ---- SEÇÃO PRINCIPAL (MAIN) ---- */
 main {
     display: flex;
     width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+    max-width: 1800px; /* Limita a largura máxima para telas muito grandes */
+    height: auto;
+    align-items: flex-start; /* MODIFICADO: Alinha os itens ao topo para melhor alinhamento */
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
 }
 
 #imagens-artigos {
-    width: 599px;
-    height: 1189px;
-    float: left;
-    margin-right: 46px;
+    width: 100%;
+    max-width: 599px; /* Mantém a largura máxima do design original */
+    height: 100vh; /* MODIFICADO: Aumenta a altura para ocupar a tela inteira */
+    min-height: 400px;
+    margin-right: 0; /* Removido para centralizar em telas menores */
+    background-image: url(../../public/images/favoritos/imagem-principal.png);
+    display: flex;
+    align-items: end;
+    padding: clamp(0.875rem, 2vw, 1.5rem);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#imagens-artigos h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
 }
 
 #section-favoritos {
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    width: 100%;
+    max-width: 1129px;
+    padding: 0 1rem; /* Adicionado padding para não colar nas bordas */
 }
 
 #h1-favoritos {
     font-family: 'PLAYFUL RUNWAY';
     font-weight: 400;
-    font-size: 110px;
+    font-size: clamp(3.5rem, 10vw, 6.875rem); /* Fonte fluida */
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #p1 {
-    width: 1129px;
-    height: 46px;
+    width: 100%; /* Largura total para ser responsivo */
+    height: auto;
     font-family: 'Louis George Cafe';
     font-weight: 400;
-    font-size: 20px;
+    font-size: clamp(1rem, 2.5vw, 1.25rem); /* Fonte fluida */
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #h1-artigos {
     font-family: 'The Next Font';
     font-weight: 400;
-    font-size: 45px;
-    margin-top: 107px;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
 #section-imagens-artigos {
     display: flex;
     flex-wrap: wrap;
-    width: 1250px;
+    width: 100%; /* Largura total para responsividade */
+    justify-content: center; /* Centraliza os artigos */
+    gap: 2rem; /* Espaçamento entre os artigos */
 }
 
-#section-imagens-artigos img {
-    width: 327px;
+#section-imagens-artigos > a > div {
+    width: 327px; /* Mantém a largura mas permitirá quebra de linha */
     height: 215px;
-    margin: 44px 60px 0px 0px;
+    margin: 0; /* Margin agora é controlada pelo gap */
     object-fit: cover;
 }
 
-#p2 {
-    font-family: 'Louis George Cafe';
-    font-weight: 700;
-    font-size: 20px;
-    margin-left: 927px;
-    margin-top: 17px;
+#artigo1 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo2 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo3 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo4 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo5 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo6 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo7 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo8 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+#artigo9 {background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png);}
+
+#artigo1, #artigo2, #artigo3, #artigo4, #artigo5, #artigo6, #artigo7, #artigo8, #artigo9 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    padding: clamp(0.875rem, 1vw, 1rem);
+    transition: transform 0.3s ease;
+}
+#artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, #artigo5:hover, #artigo6:hover, #artigo7:hover, #artigo8:hover, #artigo9:hover {
+    transform: scale(1.05); /* Efeito de hover sutil */
 }
 
+#section-imagens-artigos div h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 2.8125rem;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+/* ---- SEÇÃO ARTIGO DESTAQUE ---- */
 #section-artigo {
     margin-top: 145px;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    min-height: 36.6vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../public/images/favoritos/imagem-artigo.png);
+    flex-direction: column;
+    padding: 2rem 0; /* Padding vertical para respiro */
 }
 
+#section-artigo div {
+    margin-top: 0;
+    margin-left: clamp(2rem, 11.5vw, 11.5rem);
+}
+
+#section-artigo h1 {
+    font-family: "The Next Font";
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 400;
+}
+
+#section-artigo h4 {
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* BOTÃO 'CONHEÇA' REFORMULADO */
 #button-conheca {
     background: #722F53;
-    border-radius: 2px;
+    border-radius: 2px; /* ESTRUTURA ORIGINAL MANTIDA */
     border: none;
     color: white;
     font-family: 'The Next Font';
@@ -184,108 +185,228 @@ main {
     font-size: 20px;
     width: 185px;
     height: 49px;
-    position: absolute;
-    left: 160px;
-    top: 2035px;
     cursor: pointer;
+    margin-top: clamp(2rem, 3vw, 3rem);
+    /* ADIÇÕES PARA O EFEITO */
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#button-conheca a {
+    color: white;
+    font-size: 20px;
+    position: relative; /* Para ficar acima do efeito */
+    z-index: 2;
+}
+
+#button-conheca::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 1;
 }
 
 #button-conheca:hover {
-    background-color: rgba(255, 255, 255, 1.0);
-    background: radial-gradient(
-        50% 50% at 51% 37%,
-        rgba(135, 19, 141, 1) 0%,
-        rgba(216, 89, 157, 0.18) 100%
-    );
-    box-shadow: 0px 5px 10.7px 0px rgba(158, 22, 93, 0.85);
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+#button-conheca:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 #button-conheca:active {
-    border: 1px solid #4D0626;
-    background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #51152D 0%, #BA59D8 100%);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
 }
 
+/* ---- SEÇÃO CATEGORIAS ---- */
 #section-artigos {
     display: flex;
-    margin-top: 145px;
-    gap: 53px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 3.3rem);
+    width: 100%;
+    padding: clamp(2rem, 8vw, 8rem) clamp(1rem, 5vw, 5rem);
 }
 
+.categ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.categ:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+.categ:hover > h2 {
+    color: #722F53;
+}
+
+.categ > img {
+    width: clamp(85px, 13vw, 220px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.categ > h2 {
+    font-family: 'The Next Font';
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+    white-space: nowrap;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+/* ---- SEÇÃO CARDS MARRONS ---- */
 #section-imagem-marrom {
     display: flex;
-    margin-top: 100px;
-    gap: 100px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 5.86rem);
+    width: 100%;
+    padding: 2rem 1rem;
 }
 
-#button-conheca1 {
+.card-marrom {
+    background: #5E332C;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    min-height: 17rem;
+    border-radius: 1.875rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+}
+
+.card-marrom:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+#img-marrom {
+    width: clamp(120px, 15vw, 216px);
+    height: auto;
+    padding: 1rem;
+}
+
+.card-marrom-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    padding: 0 1rem;
+}
+
+.card-marrom-content > img {
+    width: 1.75rem;
+    height: 1.75rem;
+    align-self: end;
+    cursor: pointer;
+}
+
+.card-marrom-content > h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+    align-self: start;
+}
+
+.card-marrom-content > p {
+    color: #FFF;
+    font-family: "Louis George Cafe Light";
+    font-size: 1.25rem;
+    font-weight: 100;
+    line-height: normal;
+    text-align: justify;
+    max-width: 100%;
+    align-self: start;
+}
+
+/* BOTÃO DO CARD MARROM REFORMULADO */
+.card-marrom-content > button {
     border: none;
     color: white;
     font-family: 'The Next Font';
     font-weight: 400;
     font-size: 15px;
-    position: absolute;
     width: 142px;
     height: 37.61px;
-    left: 375px;
-    top: 3025px;
     background: #F2A518;
-    border-radius: 2px;
+    border-radius: 2px; /* ESTRUTURA ORIGINAL MANTIDA */
     cursor: pointer;
+    margin-top: 1.75rem;
+    align-self: start;
+    /* ADIÇÕES PARA O EFEITO */
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-#button-conheca2 {
-    border: none;
-    color: white;
-    font-family: 'The Next Font';
-    font-weight: 400;
-    font-size: 15px;
+.card-marrom-content > button::before {
+    content: '';
     position: absolute;
-    width: 142px;
-    height: 37.61px;
-    left: 955px;
-    top: 3025px;
-    background: #F2A518;
-    border-radius: 2px;
-    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
-#button-conheca3 {
-    border: none;
-    color: white;
-    font-family: 'The Next Font';
-    font-weight: 400;
-    font-size: 15px;
-    position: absolute;
-    width: 142px;
-    height: 37.61px;
-    left: 1535px;
-    top: 3025px;
-    background: #F2A518;
-    border-radius: 2px;
-    cursor: pointer;
+#section-imagem-marrom > div > div > button:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
 }
 
-#button-conheca1:hover, #button-conheca2:hover, #button-conheca3:hover {
-    background-color: rgba(255, 255, 255, 1.0);
-    background: radial-gradient(
-        65% 65% at 51% 37%,
-        rgba(242, 165, 24, 1) 0%,   
-        rgba(255, 239, 204, 1) 100%
-    );
-    box-shadow: 0px 5px 10.7px 0px rgba(148, 84, 20, 1);
+#section-imagem-marrom > div > div > button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
-#button-conheca1:active, #button-conheca2:active, #button-conheca3:active {
-        border: 1px solid #4D0626;
-        background: linear-gradient(27deg, rgba(0, 0, 0, 0.00) 15.42%, rgba(0, 0, 0, 0.20) 83.22%), linear-gradient(90deg, #F2A518 0%, #ECC46F 100%);
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.48);
-    }
-    
+#section-imagem-marrom > div > div > button:active {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
+}
+
+#section-salvos-recen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+
 #h1-salvos {
     font-family: 'PLAYFUL RUNWAY';
     font-weight: 400;
-    font-size: 45px;
+    font-size: clamp(2rem, 5vw, 2.8rem);
     margin-top: 150px;
     text-align: center;
 }
@@ -295,8 +416,64 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 2rem;
     margin-top: 55px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: #939191 transparent;
+}
+
+.card-salvo {
+    display: flex;
+    flex-direction: column;
+    width: 250px; 
+    flex-shrink: 0;
+    height: auto;
+    border: 3px solid #939191;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-salvo:hover {
+    transform: translateY(-5px);
+    border-color: #722F53;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+#img-fav {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    align-self: end;
+    cursor: pointer;
+}
+
+#img-prod {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 1/1.03;
+    object-fit: cover;
+}
+
+.card-salvo > h1 {
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 1rem 1.1rem 0.5rem;
+    align-self: start;
+}
+
+.card-salvo > p {
+    font-family: "Louis George Cafe Light";
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: justify;
+    padding: 0 1.1rem 1.1rem;
+    align-self: start;
 }
 
 #p3 {
@@ -306,52 +483,333 @@ main {
     text-align: center;
     margin-top: 62px;
     margin-bottom: 90px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+#p3:hover {
+    color: #722F53;
 }
 
+#img-dourada {
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+/* ---- SEÇÃO MAIS PRODUTOS ---- */
 #section-maisprodutos {
-    width: 1920px;
-    height: 740px;
+    width: 100%;
+    height: auto;
     background-color: black;
-    margin-top: 90px;
+    padding: 5rem 0;
+    margin-top: clamp(3rem, 5.5vw, 5.5rem);
 }
 
 #h1-maisprodutos {
     font-family: 'The Next Font';
     font-weight: 400;
-    font-size: 110px;   
+    font-size: clamp(3rem, 10vw, 6.875rem);
     color: #FFFFFF;
     text-align: center;
-    margin-top: 106px;
+    padding: 0 1rem;
 }
 
-#section-maisprodutos div {
+#container-maisprodutos {
     display: flex;
-    gap: 87px;
+    align-items: stretch;
     justify-content: center;
-    margin-top: 80px;
+    gap: clamp(2rem, 4vw, 5.5rem);
+    margin: clamp(2.5rem, 5vw, 5rem) 0;
+    flex-wrap: wrap;
+    padding: 0 1rem;
 }
 
-#section-farm {
+.card-maisprodutos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    background-color: #FFF;
+    border-radius: 1.875rem;
+    transition: all 0.3s ease;
+}
+
+.card-maisprodutos:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.card-maisprodutos #img-produto {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 1.25rem 1.25rem 0 0;
+}
+
+.card-maisprodutos > h1 {
+    font-family: "The Next Font";
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 1rem;
+}
+
+.card-maisprodutos > p {
+    font-family: "Louis George Cafe";
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: justify;
+    padding: 0 1rem;
+    flex-grow: 1;
+}
+
+.card-maisprodutos > div {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+}
+
+.card-maisprodutos > div > h2 {
+    font-family: "The Next Font";
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 1.5rem 0.3rem 1.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.card-maisprodutos:hover > div > h2 {
+    color: #722F53;
+    text-decoration: underline;
+}
+
+
+/* ---- SEÇÃO ARTIGOS GRID FINAL (Layout Mosaico) ---- */
+#section-artigos-s2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 44px;
-    margin-top: 143px;
-    margin-bottom: 143px;
+    grid-template-rows: repeat(2, 250px);
+    gap: 20px;
+    margin: 143px auto;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 1400px;
 }
 
-#foto1 {
-    grid-column-start: 1;
-    grid-row-start: 2;
+.artigo-s2-item {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    transition: all 0.4s ease;
 }
 
-#foto2 {
-    grid-column-start: 2;
-    grid-row-start: 2;
+.artigo-s2-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    filter: brightness(1.1);
 }
 
-#foto3 {
-    grid-row: span 2 / span 2;
-    grid-column-start: 3;
-    grid-row-start: 1;
+
+#artigo1-s2 {background-image: url(../../public/images/link-artigos/10-tons-fantasticos.jpg);}
+#artigo2-s2 {background-image: url(../../public/images/link-artigos/nago-colorida.jpg);}
+#artigo3-s2 {background-image: url(../../public/images/link-artigos/produtos-indispensaveis.jpg);}
+#artigo4-s2 {background-image: url(../../public/images/link-artigos/oleo-de-rosa-mosqueta.jpg);}
+#artigo5-s2 {background-image: url(../../public/images/link-artigos/diferenca-de-geracoes.jpg);}
+
+.artigo-s2-item > h1 {
+    font-family: "The Next Font";
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 1.5rem;
+}
+
+#section-artigos-s2 a {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: start;
+}
+
+/* Posições específicas do Mosaico */
+#artigo1-s2 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#artigo2-s2 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#artigo3-s2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    height: 32.5rem;
+}
+
+#artigo4-s2 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#artigo5-s2 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+}
+
+
+/* ---- MEDIA QUERIES PARA AJUSTES FINOS ---- */
+@media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
+    
+    main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    #imagens-artigos {
+        margin-right: 0;
+        margin-bottom: 2rem;
+        height: 60vh;
+        width: 100%;
+        max-width: 100%;
+    }
+    #section-favoritos {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 900px) {
+     body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
+    #section-artigos-s2 {
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: auto;
+        height: auto;
+    }
+    .artigo-s2-item {
+        height: 350px; 
+    }
+    #artigo1-s2, #artigo2-s2, #artigo3-s2, #artigo4-s2 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    #artigo5-s2 {
+        grid-column: 1 / -1;
+    }
+    .card-marrom #img-marrom {
+        width: 250px;
+    }
+
+    #artigo3-s2 {
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
+    .card-marrom {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-marrom-content {
+        align-items: center;
+    }
+    .card-marrom-content > img {
+        align-self: flex-end; 
+    }
+    .card-marrom-content > h1, .card-marrom-content > p, .card-marrom-content > button {
+        align-self: center;
+    }
+    #section-salvos > a {
+        display: none;
+    }
+    #section-artigos-s2 {
+        margin: 70px auto;
+    }
+
+    .card-marrom #img-marrom {
+        width: 250px;
+    }
+    
+    #container-maisprodutos {
+        gap: 1rem;
+    }
+    .card-maisprodutos {
+        width: calc(50% - 0.5rem); 
+        max-width: none; 
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    
+    .card-marrom #img-marrom {
+        width: 250px;
+    }
+    #section-artigo div {
+        margin-left: clamp(1rem, 5vw, 2rem);
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
+    #section-imagens-artigos {
+        flex-wrap: nowrap; 
+        justify-content: flex-start;
+        overflow-x: auto; 
+        padding: 1rem; 
+        
+        scrollbar-width: thin;
+        scrollbar-color: #939191 transparent;
+    }
+    
+    #section-imagens-artigos > a > div {
+        flex-shrink: 0; 
+    }
+}
+
+@media (max-width: 1650px) {
+         body {
+        align-items: center;
+    }
+
+    main {
+        justify-content: center;
+    }
 }
