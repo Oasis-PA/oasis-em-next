@@ -1,21 +1,17 @@
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
-import ArtigoCard from "@/components/ArtigoCard";
 import '@/styles/artigo-geral.css';
 
 export const dynamic = 'force-dynamic';
 
 export default async function ArtigosListPage() {
   const now = new Date();
-  const session = await getServerSession(authOptions);
 
-  // Busca os artigos
   const artigos = await prisma.artigo.findMany({
     where: {
       OR: [
         { status: "publicado" },
-        { status: "agendado", dataPublicacao: { lte: now } },
+        { status: "agendado", dataPublicacao: { lte: now } }, // só inclui agendados já vencidos
       ],
     },
     select: {
@@ -30,27 +26,11 @@ export default async function ArtigosListPage() {
     orderBy: { criadoEm: "desc" },
   });
 
-  // Busca os favoritos do usuário (se logado)
-  let favoritosIds: number[] = [];
-  if (session?.user?.id_usuario) {
-    const favoritos = await prisma.favoritoArtigo.findMany({
-      where: {
-        id_usuario: session.user.id_usuario,
-      },
-      select: {
-        id_artigo: true,
-      },
-    });
-    favoritosIds = favoritos.map(f => f.id_artigo);
-  }
-
   return (
     <main className="artigos-container">
       <div className="artigos-header">
         <h1 className="artigos-titulo">Nossos Artigos</h1>
-        <p className="artigos-subtitulo">
-          Descubra dicas e conteúdos exclusivos sobre beleza e cuidados
-        </p>
+        <p className="artigos-subtitulo">Descubra dicas e conteúdos exclusivos sobre beleza e cuidados</p>
       </div>
 
       <div className="artigos-grid">
@@ -73,20 +53,15 @@ export default async function ArtigosListPage() {
                   year: 'numeric'
                 });
 
-            const isFavorito = favoritosIds.includes(artigo.id);
-
             return (
-              <ArtigoCard
-                key={artigo.id}
-                artigo={{
-                  id: artigo.id,
-                  titulo: artigo.titulo,
-                  slug: artigo.slug,
-                  preview,
-                  dataFormatada,
-                }}
-                isFavoritoInicial={isFavorito}
-              />
+              <Link href={`/artigo/${artigo.slug}`} key={artigo.id} className="artigo-card">
+                <div className="artigo-card-content">
+                  <span className="artigo-data">{dataFormatada}</span>
+                  <h2 className="artigo-card-titulo">{artigo.titulo}</h2>
+                  <p className="artigo-preview">{preview}</p>
+                  <span className="artigo-ler-mais">Ler artigo completo →</span>
+                </div>
+              </Link>
             );
           })}
       </div>
