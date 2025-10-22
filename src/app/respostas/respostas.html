@@ -237,81 +237,81 @@
 
     <script>
 
-const eventosPorMes = {
-  '2025-6': {
-    6: 'nutricao',
-    10: 'reconstrucao',
-    13: 'reconstrucao',
-    17: 'nutricao',
-    20: 'hidratacao',
-    27: 'hidratacao',
-  },
-};
+    const eventosPorMes = {
+    '2025-6': {
+        6: 'nutricao',
+        10: 'reconstrucao',
+        13: 'reconstrucao',
+        17: 'nutricao',
+        20: 'hidratacao',
+        27: 'hidratacao',
+    },
+    };
 
-const nomesEventos = {
-  hidratacao: 'Hidratação',
-  nutricao: 'Nutrição',
-  reconstrucao: 'Reconstrução',
-};
+    const nomesEventos = {
+    hidratacao: 'Hidratação',
+    nutricao: 'Nutrição',
+    reconstrucao: 'Reconstrução',
+    };
 
-const nomesMeses = [
-  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-];
+    const nomesMeses = [
+    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
 
-let mesAtual = 6; 
-let anoAtual = 2025;
+    let mesAtual = 6; 
+    let anoAtual = 2025;
 
-function gerarCalendario(mes, ano) {
-  const eventos = eventosPorMes[`${ano}-${mes}`] || {};
-  const diasSemana = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
-  const diasNoMes = new Date(ano, mes + 1, 0).getDate();
-  const primeiroDia = new Date(ano, mes, 1).getDay();
-  let html = `<table class='tabela-calendario'><thead><tr>`;
-  diasSemana.forEach(dia => html += `<th>${dia}</th>`);
-  html += `</tr></thead><tbody><tr>`;
-  for (let i = 0; i < primeiroDia; i++) html += '<td></td>';
-  for (let dia = 1; dia <= diasNoMes; dia++) {
-    const diaSemana = (primeiroDia + dia - 1) % 7;
-    let bolinha = '';
-    if (eventos[dia]) {
-      bolinha = `<span class='bolinha ${eventos[dia]}' title='${nomesEventos[eventos[dia]]}'></span>`;
+    function gerarCalendario(mes, ano) {
+    const eventos = eventosPorMes[`${ano}-${mes}`] || {};
+    const diasSemana = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+    const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+    const primeiroDia = new Date(ano, mes, 1).getDay();
+    let html = `<table class='tabela-calendario'><thead><tr>`;
+    diasSemana.forEach(dia => html += `<th>${dia}</th>`);
+    html += `</tr></thead><tbody><tr>`;
+    for (let i = 0; i < primeiroDia; i++) html += '<td></td>';
+    for (let dia = 1; dia <= diasNoMes; dia++) {
+        const diaSemana = (primeiroDia + dia - 1) % 7;
+        let bolinha = '';
+        if (eventos[dia]) {
+        bolinha = `<span class='bolinha ${eventos[dia]}' title='${nomesEventos[eventos[dia]]}'></span>`;
+        }
+        html += `<td>${bolinha}<div>${dia}</div></td>`;
+        if (diaSemana === 6 && dia !== diasNoMes) html += '</tr><tr>';
     }
-    html += `<td>${bolinha}<div>${dia}</div></td>`;
-    if (diaSemana === 6 && dia !== diasNoMes) html += '</tr><tr>';
-  }
-  html += '</tr></tbody></table>';
-  html += `<div class='legenda-calendario'>
-    <span><span class='bolinha hidratacao'></span> Hidratação</span>
-    <span><span class='bolinha nutricao'></span> Nutrição</span>
-    <span><span class='bolinha reconstrucao'></span> Reconstrução</span>
-  </div>`;
-  return html;
-}
+    html += '</tr></tbody></table>';
+    html += `<div class='legenda-calendario'>
+        <span><span class='bolinha hidratacao'></span> Hidratação</span>
+        <span><span class='bolinha nutricao'></span> Nutrição</span>
+        <span><span class='bolinha reconstrucao'></span> Reconstrução</span>
+    </div>`;
+    return html;
+    }
 
-function atualizarCalendario() {
-  document.getElementById('calendario-mes-ano').textContent = `${nomesMeses[mesAtual]} ${anoAtual}`;
-  document.getElementById('calendario-tabela').innerHTML = gerarCalendario(mesAtual, anoAtual);
-}
+    function atualizarCalendario() {
+    document.getElementById('calendario-mes-ano').textContent = `${nomesMeses[mesAtual]} ${anoAtual}`;
+    document.getElementById('calendario-tabela').innerHTML = gerarCalendario(mesAtual, anoAtual);
+    }
 
-document.getElementById('mes-anterior').onclick = function() {
-  mesAtual--;
-  if (mesAtual < 0) {
-    mesAtual = 11;
-    anoAtual--;
-  }
-  atualizarCalendario();
-};
-document.getElementById('mes-proximo').onclick = function() {
-  mesAtual++;
-  if (mesAtual > 11) {
-    mesAtual = 0;
-    anoAtual++;
-  }
-  atualizarCalendario();
-};
+    document.getElementById('mes-anterior').onclick = function() {
+    mesAtual--;
+    if (mesAtual < 0) {
+        mesAtual = 11;
+        anoAtual--;
+    }
+    atualizarCalendario();
+    };
+    document.getElementById('mes-proximo').onclick = function() {
+    mesAtual++;
+    if (mesAtual > 11) {
+        mesAtual = 0;
+        anoAtual++;
+    }
+    atualizarCalendario();
+    };
 
-atualizarCalendario();
+    atualizarCalendario();
 </script>
 
 </body>
