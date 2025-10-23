@@ -47,14 +47,49 @@ const cortesData = {
   ]
 };
 
+interface Produto {
+  id_produto: number;
+  nome: string;
+  url_loja: string | null;
+  url_imagem: string | null;
+  tag_principal: string;
+  id_tag: number | null;
+}
 
 export default function OasisHomepage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
-
   const [activeCategory, setActiveCategory] = useState<'feminino' | 'masculino' | 'mais50'>('feminino');
+  
+  // Estado para os produtos
+  const [produtos, setProdutos] = useState<Produto[]>([]);
+  const [loadingProdutos, setLoadingProdutos] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Buscar produtos do banco
+  useEffect(() => {
+    const fetchProdutos = async () => {
+      try {
+        const response = await fetch('/api/produtos?limit=8');
+        const data = await response.json();
+        
+        // A API retorna um objeto com { produtos: [...], pagination: {...} }
+        if (data.produtos) {
+          setProdutos(data.produtos);
+        } else {
+          setProdutos([]);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
+        setProdutos([]);
+      } finally {
+        setLoadingProdutos(false);
+      }
+    };
+
+    fetchProdutos();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -90,6 +125,17 @@ export default function OasisHomepage() {
   };
 
   const currentCortes = cortesData[activeCategory];
+
+  // Funções para navegação dos produtos
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => Math.min(produtos.length - 4, prev + 1));
+  };
+
+  const produtosVisiveis = produtos.slice(currentIndex, currentIndex + 4);
 
   return (
     <>
@@ -277,39 +323,62 @@ export default function OasisHomepage() {
       <section className={styles.s4}>
         <h1>Baseados no seu Perfil</h1>
         <p>Uma lista de recomendações personalizadas baseadas <br></br>no seu perfil. Veja produtos que se foram feitos especialmente para você!</p>
-        <div className={styles.cardsperfil}>
-          <div className={styles.cardperfil}>
-            <img src="/images/favoritos/imagem-produto.png" alt="" />
-            <h1>PRODUTO TAL</h1>
-            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+        
+        {loadingProdutos ? (
+          <div style={{ padding: '2rem', textAlign: 'center' }}>
+            <p>Carregando produtos...</p>
           </div>
-
-          <div className={styles.cardperfil}>
-            <img src="/images/favoritos/imagem-produto.png" alt="" />
-            <h1>PRODUTO TAL</h1>
-            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
+        ) : produtos.length === 0 ? (
+          <div style={{ padding: '2rem', textAlign: 'center' }}>
+            <p>Nenhum produto encontrado.</p>
           </div>
-
-          <div className={styles.cardperfil}>
-            <img src="/images/favoritos/imagem-produto.png" alt="" />
-            <h1>PRODUTO TAL</h1>
-            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
-          </div>
-
-          <div className={styles.cardperfil}>
-            <img src="/images/favoritos/imagem-produto.png" alt="" />
-            <h1>PRODUTO TAL</h1>
-            <h2>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</h2>
-            <button className={styles.buttonPerfil}><Link href='/tela-produto'>IR PARA COMPRA</Link></button>
-          </div>
-          
-        </div>
-        <div className={styles.arrow}>
-          <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link> <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
-        </div>
+        ) : (
+          <>
+            <div className={styles.cardsperfil}>
+              {produtosVisiveis.map((produto) => (
+                <div className={styles.cardperfil} key={produto.id_produto}>
+                  <img 
+                    src={produto.url_imagem || "/images/favoritos/imagem-produto.png"} 
+                    alt={produto.nome} 
+                  />
+                  <h1>{produto.nome}</h1>
+                  <h2>{produto.tag_principal ? `Categoria: ${produto.tag_principal}` : 'Produto de qualidade para cuidados especiais.'}</h2>
+                  <button className={styles.buttonPerfil}>
+                    <Link href={`/produtos/${produto.id_produto}`}>
+                      IR PARA COMPRA
+                    </Link>
+                  </button>
+                </div>
+              ))}
+            </div>
+            <div className={styles.arrow}>
+              <button 
+                onClick={handlePrevious} 
+                disabled={currentIndex === 0}
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
+                  opacity: currentIndex === 0 ? 0.3 : 1
+                }}
+              >
+                <img src="/images/favoritos/seta-esquerda.svg" alt="seta esquerda" width="16px" height="30px" />
+              </button>
+              <button 
+                onClick={handleNext} 
+                disabled={currentIndex >= produtos.length - 4}
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  cursor: currentIndex >= produtos.length - 4 ? 'not-allowed' : 'pointer',
+                  opacity: currentIndex >= produtos.length - 4 ? 0.3 : 1
+                }}
+              >
+                <img src="/images/favoritos/seta-direita.svg" alt="seta direita" width="16px" height="30px" />
+              </button>
+            </div>
+          </>
+        )}
       </section>
 
       <section className={styles.s5}>
@@ -402,7 +471,7 @@ export default function OasisHomepage() {
 
           <Link href='/tendencias'>
             <div className={styles.artigo3}>
-              <h1>têndencias</h1>
+              <h1>tÊndencias</h1>
               <p>5 novos lançamentos que prometem abalar o mercado</p>
               <img src="images/tela-principal/seta-branca.svg" alt="" />
             </div>
