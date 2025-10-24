@@ -129,14 +129,12 @@ const Respostas: React.FC = () => {
 const [mesAtual, setMesAtual] = useState(6);
 const [anoAtual, setAnoAtual] = useState(2025);
 const [semanaAtual, setSemanaAtual] = useState(0);
-const [menuOpen, setMenuOpen] = useState(false); // Adicionado
+const [menuOpen, setMenuOpen] = useState(false);
 
-// Adicionado
 const toggleMenu = () => {
   setMenuOpen(!menuOpen);
 };
 
-// Adicionado
 const closeMenu = () => {
   setMenuOpen(false);
 };
@@ -145,7 +143,6 @@ useEffect(() => {
   setSemanaAtual(0);
 }, [mesAtual, anoAtual]);
 
-// Adicionado
 useEffect(() => {
   if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -256,7 +253,6 @@ return (
               </Link>
               <img id="user" src="/images/resposta/user.png" alt="" />
           </div>
-          {/* Classe e img com onClick aplicados */}
           <div className="botoes-pgn-respostas">
               <Link href="/guia">
                   <img src="/images/lupa.png" alt="Ir para Guia" style={{ cursor: 'pointer' }} />
@@ -273,11 +269,8 @@ return (
           </div>
           <div></div>
       </section>
-      
-      {/* Menu Mobile e Overlay Adicionados */}
       <div className={`menu-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
-
-      <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}>
+      <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}> 
           <button className="menu-close" onClick={closeMenu}>✕</button>
           <Link href="/guia" onClick={closeMenu}>
               <img src="/images/lupa.png" alt="Guia" />
@@ -288,20 +281,16 @@ return (
               <span>Favoritos</span>
           </Link>
       </div>
-
       <section className="outro-ladinho">
           <div className="titulos">
-              {/* Conteúdo do "Cabelo Danificado" mantido */}
               <h1>Cabelo Danificado</h1>
               <p>45/60 pontos</p>
           </div>
           <div className="abaixo">
               <section className="esquerda">
                   <div className="info-texto">
-                      {/* Estrutura de 'div' aplicada */}
                       <div className="img-info-texto-info3"></div>
                       <div className="content">
-                          {/* Conteúdo do "Cabelo Danificado" mantido */}
                           <p>Cabelos com ressecamento acentuado, frizz visível, quebra moderada, uso frequente de química, porosidade alta, fios opacos e ásperos, couro cabeludo com oleosidade irregular.</p>
                           <section className="detalhes">
                               <div className="elementos">
@@ -328,8 +317,6 @@ return (
                           </section>
                       </div>
                   </div>
-
-                  {/* Estrutura 'conjunto-de-calendar' aplicada */}
                   <section className="conjunto-de-calendar">
                       <div className="calendar">
                           <h1>Semanal</h1>
@@ -339,7 +326,6 @@ return (
                                   <p>Lavagens</p>
                               </div>
                               <div id="text">
-                                  {/* Conteúdo do "Cabelo Danificado" mantido */}
                                   <h1>03</h1>
                                   <p>Tratamentos intensos</p>
                               </div>
@@ -349,7 +335,6 @@ return (
                           <h1>Mensal</h1>
                           <div className="quadradinho">
                               <div id="text">
-                                  {/* Conteúdo do "Cabelo Danificado" mantido */}
                                   <h1>02</h1>
                                   <p>Reconstrução</p>
                               </div>
@@ -358,14 +343,12 @@ return (
                                   <p>Umectações</p>
                               </div>
                               <div id="text">
-                                  {/* Conteúdo do "Cabelo Danificado" mantido */}
                                   <h1>02</h1>
                                   <p>Acidificações</p>
                               </div>
                           </div>
                       </div>
                   </section>
-
                   <div className="calenderio">
                       <div className="calendario-nav">
                           <button className="calendario-seta" onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
@@ -393,7 +376,6 @@ return (
                   <section className="diquinhas">
                       <div className="dicas">
                           <h1>Dicas</h1>
-                          {/* Conteúdo do "Cabelo Danificado" mantido */}
                           <p><b>Antes de Aplicar:</b> Lave com shampoo detox suave 1x a cada 15 dias, use água morna e retire o excesso de água antes da máscara.<br />
                               <b>Durante:</b> Aplique do comprimento às pontas, deixe agir 30-40min, use touca térmica e massageie bem.<br />
                               <b>Finalização:</b> Enxágue com água fria, use leave-in reparador, evite água quente e durma com touca de cetim.<br />
@@ -416,25 +398,19 @@ return (
                   <section className="produtos">
                       <div className="produtinho">
                           <h1>Hidratação</h1>
-                          {/* Estrutura de 'div' aplicada */}
                           <div className="img-produtinhos-1"></div>
-                          {/* Conteúdo do "Cabelo Danificado" mantido */}
                           <p>Yenzah Hydrate Máscara - hidratação intensa com aloe vera e pantenol para cabelos ressecados.</p>
                           <button>Conheça</button>
                       </div>
                       <div className="produtinho">
                           <h1>Nutrição</h1>
-                          {/* Estrutura de 'div' aplicada */}
                           <div className="img-produtinhos-2"></div>
-                          {/* Conteúdo do "Cabelo Danificado" mantido */}
                           <p>Skala Expert Manteiga de Karité - nutrição intensiva rica em manteigas para reparação profunda.</p>
                           <button>Conheça</button>
                       </div>
                       <div className="produtinho">
                           <h1>Reconstrução</h1>
-                          {/* Estrutura de 'div' aplicada */}
                           <div className="img-produtinhos-3"></div>
-                          {/* Conteúdo do "Cabelo Danificado" mantido */}
                           <p>Forever Liss Power Reconstruction - queratina, colágeno e aminoácidos para força e resistência.</p>
                           <button>Conheça</button>
                       </div>
