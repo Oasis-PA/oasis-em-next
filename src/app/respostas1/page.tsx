@@ -129,10 +129,30 @@ const Respostas: React.FC = () => {
     const [mesAtual, setMesAtual] = useState(6);
     const [anoAtual, setAnoAtual] = useState(2025);
     const [semanaAtual, setSemanaAtual] = useState(0);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
 
     useEffect(() => {
         setSemanaAtual(0);
     }, [mesAtual, anoAtual]);
+
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [menuOpen]);
 
     function handleSemanaAnterior() {
         if (semanaAtual === 0) {
@@ -232,17 +252,37 @@ const Respostas: React.FC = () => {
                     </Link>
                     <img id="user" src="/images/resposta/user.png" alt="" />
                 </div>
-                <div className="botoes">
+                <div className="botoes-pgn-respostas">
                     <Link href="/guia">
                         <img src="/images/lupa.png" alt="Ir para Guia" style={{ cursor: 'pointer' }} />
                     </Link>
                     <Link href="/favoritos">
                         <img src="/images/coracao.svg" alt="Ir para Favoritos" style={{ cursor: 'pointer' }} />
                     </Link>
-                    <img src="/images/tres-barras.svg" alt="" />
+                    <img
+                        src="/images/tres-barras.svg"
+                        alt="Menu"
+                        onClick={toggleMenu}
+                        style={{ cursor: 'pointer' }}
+                    />
                 </div>
                 <div></div>
             </section>
+
+            <div className={`menu-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
+
+            <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}>
+                <button className="menu-close" onClick={closeMenu}>✕</button>
+                <Link href="/guia" onClick={closeMenu}>
+                    <img src="/images/lupa.png" alt="Guia" />
+                    <span>Guia</span>
+                </Link>
+                <Link href="/favoritos" onClick={closeMenu}>
+                    <img src="/images/coracao.svg" alt="Favoritos" />
+                    <span>Favoritos</span>
+                </Link>
+            </div>
+
             <section className="outro-ladinho">
                 <div className="titulos">
                     <h1>Cabelo Saudável</h1>
@@ -251,7 +291,7 @@ const Respostas: React.FC = () => {
                 <div className="abaixo">
                     <section className="esquerda">
                         <div className="info-texto">
-                            <img src="/images/resposta/img-cabelo.png" alt="" />
+                            <div className="img-info-texto-info1"></div>
                             <div className="content">
                                 <p>Cabelo com brilho natural, pouco frizz, boa resistência, sem ou com pouca química, couro cabeludo saudável e rotina de lavagem equilibrada.</p>
                                 <section className="detalhes">
@@ -279,36 +319,40 @@ const Respostas: React.FC = () => {
                                 </section>
                             </div>
                         </div>
-                        <div className="calendar">
-                            <h1>Semanal</h1>
-                            <div className="quadradinho">
-                                <div id="text">
-                                    <h1>02-03</h1>
-                                    <p>Lavagens</p>
-                                </div>
-                                <div id="text">
-                                    <h1>03</h1>
-                                    <p>Tratamentos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="calendar">
-                            <h1>Mensal</h1>
-                            <div className="quadradinho">
-                                <div id="text">
-                                    <h1>00</h1>
-                                    <p>Reconstrução</p>
-                                </div>
-                                <div id="text">
-                                    <h1>00</h1>
-                                    <p>Umectações</p>
-                                </div>
-                                <div id="text">
-                                    <h1>01</h1>
-                                    <p>Acidificações</p>
+
+                        <section className="conjunto-de-calendar">
+                            <div className="calendar">
+                                <h1>Semanal</h1>
+                                <div className="quadradinho">
+                                    <div id="text">
+                                        <h1>02-03</h1>
+                                        <p>Lavagens</p>
+                                    </div>
+                                    <div id="text">
+                                        <h1>03</h1>
+                                        <p>Tratamentos</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div className="calendar">
+                                <h1>Mensal</h1>
+                                <div className="quadradinho">
+                                    <div id="text">
+                                        <h1>00</h1>
+                                        <p>Reconstrução</p>
+                                    </div>
+                                    <div id="text">
+                                        <h1>00</h1>
+                                        <p>Umectações</p>
+                                    </div>
+                                    <div id="text">
+                                        <h1>01</h1>
+                                        <p>Acidificações</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
                         <div className="calenderio">
                             <div className="calendario-nav">
                                 <button className="calendario-seta" onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
@@ -358,19 +402,19 @@ const Respostas: React.FC = () => {
                         <section className="produtos">
                             <div className="produtinho">
                                 <h1>Hidratação</h1>
-                                <img src="/images/resposta/prod-1.png" alt="" />
+                                <div className="img-produtinhos-1"></div>
                                 <p>Be Younger Repair Hair Mask - hidratação profunda com ácido hialurônico e pantenol para manter a saúde.</p>
                                 <button>Conheça</button>
                             </div>
                             <div className="produtinho">
                                 <h1>Nutrição</h1>
-                                <img src="/images/resposta/prod-2.png" alt="" />
+                                <div className="img-produtinhos-2"></div>
                                 <p>Braé Fiber Mask - nutrição com óleo de linhaça e manteigas para brilho e maciez natural.</p>
                                 <button>Conheça</button>
                             </div>
                             <div className="produtinho">
                                 <h1>Leave-in</h1>
-                                <img src="/images/resposta/prod-3.png" alt="" />
+                                <div className="img-produtinhos-3"></div>
                                 <p>Elseve Cicatri Renov Leave-In - proteção térmica e finalização para manter cabelos saudáveis.</p>
                                 <button>Conheça</button>
                             </div>

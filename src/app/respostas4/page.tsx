@@ -245,20 +245,6 @@ const Respostas: React.FC = () => {
 
   return (
     <main>
-      <div className={`menu-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
-      
-      <nav className={`menu-mobile ${menuOpen ? 'active' : ''}`}>
-        <button className="menu-close" onClick={closeMenu}>✕</button>
-        <Link href="/guia" onClick={closeMenu}>
-          <img src="/images/lupa.png" alt="Guia" />
-          <span>Guia</span>
-        </Link>
-        <Link href="/favoritos" onClick={closeMenu}>
-          <img src="/images/coracao.svg" alt="Favoritos" />
-          <span>Favoritos</span>
-        </Link>
-      </nav>
-
       <section className="de-ladinho">
         <div className="em-ciminha">
           <Link href="/">
@@ -282,6 +268,20 @@ const Respostas: React.FC = () => {
         </div>
         <div></div>
       </section>
+
+      <div className={`menu-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
+      
+      <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}>
+        <button className="menu-close" onClick={closeMenu}>✕</button>
+        <Link href="/guia" onClick={closeMenu}>
+          <img src="/images/lupa.png" alt="Guia" />
+          <span>Guia</span>
+        </Link>
+        <Link href="/favoritos" onClick={closeMenu}>
+          <img src="/images/coracao.svg" alt="Favoritos" />
+          <span>Favoritos</span>
+        </Link>
+      </div>
       <section className="outro-ladinho">
         <div className="titulos">
           <h1>Cabelo Muito Danificado</h1>
@@ -290,7 +290,7 @@ const Respostas: React.FC = () => {
         <div className="abaixo">
           <section className="esquerda">
             <div className="info-texto">
-              <div className="img-info-texto"></div>
+              <div className="img-info-texto-info4"></div>
               <div className="content">
                 <p>Cabelos muito ressecados, com muita quebra e frizz, quimicamente tratados frequentemente, porosidade muito alta, fios opacos, ásperos e elásticos, couro cabeludo sensível.</p>
                 <section className="detalhes">
