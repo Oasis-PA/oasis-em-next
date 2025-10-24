@@ -6,6 +6,8 @@ import Script from 'next/script';
 import image from 'next/image'; 
 import { Header, Footer } from "@/components";
 import '@/styles/hair-care.css';
+import { useState } from "react";
+
 
 const HairCarePage: React.FC = () => {
   return (
@@ -89,7 +91,9 @@ const HairCarePage: React.FC = () => {
             <img src="/images/hair-care/imagecach.png" alt="imagem" className="imagem11" />
             <img src="/images/hair-care/imageamrcn.png" alt="imagem" className="imagem11" />
             <img src="/images/hair-care/imagemld.png" alt="imagem" className="imagem11" />
+            <img src="/images/hair-care/imagem4.png" alt="imagem" className= "imagem11" />
           </aside>
+         
         </div>
       </section>
 
@@ -132,10 +136,10 @@ const HairCarePage: React.FC = () => {
             Benefícios do Óleo de Rosa Mosqueta: <br />
             Aliado para a pele, cabelo e unhas
           </h2>
-          <p id="tp">
-            O óleo de rosa mosqueta oferece propriedades antioxidantes e ajuda a evitar o envelhecimento precoce. "Além disso, também age na manutenção da integridade e na regeneração da pele". Dessa forma, o ativo pode ser um grande aliado para a cicatrização e para a melhora de inflamações.
-            “Todos podem usar e sentir os benefícios do óleo de rosa mosqueta. Pode ser que pessoas com a pele oleosa não se sintam tão confortáveis com o sensorial do produto, porém ele não aumenta a oleosidade ou piora a acne, então, pode ser usado tranquilamente, mas é claro que sem excessos”.
-          </p>
+            <p id="tp">
+            O óleo de rosa mosqueta oferece propriedades antioxidantes e ajuda a evitar o envelhecimento precoce. "Além disso, também age na manutenção da integridade e na regeneração da pele". <br /> Dessa forma, o ativo pode ser um grande aliado para a cicatrização e para a <u>melhora de inflamações</u>. <br />
+            “Todos podem usar e sentir os benefícios do óleo de rosa mosqueta. Pode ser que pessoas com a <u>pele oleosa</u> não se sintam tão confortáveis com o sensorial do produto, porém ele não aumenta a oleosidade ou piora a acne, então, pode ser usado tranquilamente, mas é claro que sem excessos”.
+            </p>
           <button className="botao-roxo"><Link href='/artigo/oleo-de-rosa-mosqueta'>CONHEÇA</Link></button>
         </article>
       </section>
@@ -143,6 +147,7 @@ const HairCarePage: React.FC = () => {
       {/* Carrega o script da pasta /public de forma otimizada */}
       <Script src="/Hair-care.js" strategy="lazyOnload" />
     </main>
+    
     <Footer/>
   </>
   );
