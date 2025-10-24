@@ -446,6 +446,49 @@ p.lista-festivos { padding-left: 0; }
 /* ================================== */
 /* CORTES MAIS ACESSADOS (#barra2)    */
 /* ================================== */
+/* ================================== */
+/* ESTILOS PARA O CARROSSEL SIMPLES   */
+/* ================================== */
+
+.imgBarra2-carousel-container {
+    flex: 1 1 500px; 
+    width: 100%; 
+    max-width: 600px; /* Limita a largura do carrossel */
+    margin: 0 auto; 
+    padding: 0 1rem; /* Adiciona um respiro lateral */
+}
+
+.simpleHairCareSwiper {
+    width: 100%;
+    /* Adiciona espaço abaixo para a paginação não sobrepor outros elementos */
+    padding-bottom: 40px; 
+}
+
+.simpleHairCareSwiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee; /* Cor de fundo opcional para ver o slide */
+    border-radius: 10px; /* Arredonda os cantos do slide */
+}
+
+.simple-carousel-image {
+    display: block;
+    width: 100%;
+    height: 300px; /* Altura fixa para o carrossel simples */
+    object-fit: cover; /* Garante que a imagem cubra o espaço */
+    border-radius: 10px; /* Arredonda os cantos da imagem */
+}
+
+/* Estilos básicos para navegação e paginação (pode personalizar mais) */
+.simpleHairCareSwiper .swiper-button-next,
+.simpleHairCareSwiper .swiper-button-prev {
+    color: #722F53; /* Cor roxa para as setas */
+}
+
+.simpleHairCareSwiper .swiper-pagination-bullet-active {
+    background: #722F53; /* Cor roxa para a bolinha ativa */
+}
 
 #barra2 {
     width: 100%;
