@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link'; 
+import Link from "next/link";
 import Script from 'next/script'; 
 import image from 'next/image'; 
 import { Header, Footer } from "@/components";
@@ -13,17 +13,19 @@ const HairCarePage: React.FC = () => {
     <Header/>
     <main>
       <section className="retangulo" id="barra">
-        <article id='as-melhores-dicas'>
-          <h1 id="asM">AS MELHORES DICAS PARA SEU CABELO</h1>
-          <img src="/images/hair-care/image 47.png" alt="" id="img47" />
+        <div className="aaa">
+          <article id='as-melhores-dicas'>
+            <h1 id="asM">AS MELHORES DICAS PARA SEU CABELO</h1>
           
-        </article>
-        <aside className="grupo-retangulos">
-          <div className="retangulo-item">cortes</div>
-          <div className="retangulo-item">penteados</div>
-          <div className="retangulo-item">tratamentos</div>
-          <div className="retangulo-item">pinturas</div>
-        </aside>
+          </article>
+          <aside className="grupo-retangulos">
+            <div className="retangulo-item">cortes</div>
+            <div className="retangulo-item">penteados</div>
+            <div className="retangulo-item">tratamentos</div>
+            <div className="retangulo-item">pinturas</div>
+          </aside>
+        </div>
+        <img src="/images/hair-care/image_47-removebg-preview.png" alt="" id="img47" />
       </section>
 
       <section className="container-imagens">
@@ -31,7 +33,7 @@ const HairCarePage: React.FC = () => {
           <img id="img350" src="/images/hair-care/Rectangle 350.png" alt="" />
           <aside className="img-com-botao">
             <img id="img352" src="/images/hair-care/Rectangle 352.png" alt="" />
-            <button id="bntRoxo">CONHEÇA</button>
+            <button id="bntRoxo"><Link href='/tinturas'>CONHEÇA</Link></button>
           </aside>
           <img id="img351" src="/images/hair-care/Rectangle 351.png" alt="" />
         </article>
@@ -75,7 +77,7 @@ const HairCarePage: React.FC = () => {
               tendências! Com opções que valorizam o volume e o movimento
               natural dos fios, esses estilos são pura expressão de personalidade e
               autenticidade. Dos mais clássicos aos ousados, há um visual perfeito
-              para cada estilo.
+              para cada estilo. <br />
               Quer dar um upgrade no look e descobrir os cortes que estão em
               alta? Aqui, você encontra inspirações incríveis e dicas essenciais
               para manter o cabelo sempre impecável. Prontos para se jogar
@@ -87,7 +89,6 @@ const HairCarePage: React.FC = () => {
             <img src="/images/hair-care/imagecach.png" alt="imagem" className="imagem11" />
             <img src="/images/hair-care/imageamrcn.png" alt="imagem" className="imagem11" />
             <img src="/images/hair-care/imagemld.png" alt="imagem" className="imagem11" />
-            <img src="/images/hair-care/Rectangle 361.png" alt="imagem" className="imagem11" />
           </aside>
         </div>
       </section>

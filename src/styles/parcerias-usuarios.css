@@ -1,3 +1,7 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 /* ================================== */
 /* CONFIGURAÇÕES GLOBAIS E TEMAS      */
 /* ================================== */
@@ -102,7 +106,6 @@ form {
     padding: 0 15px;
 }
 
-/* AJUSTE: Container dos campos de entrada */
 #caixas-texto {
     width: 100%;
     max-width: 656px;
@@ -113,7 +116,6 @@ form {
     gap: 15px;
 }
 
-/* AJUSTE: Regra base para inputs e selects com padding interno */
 #caixas-texto > input,
 #caixas-texto > select,
 #telefone {
@@ -124,23 +126,27 @@ form {
     font-family: "Louis George Cafe", sans-serif;
     font-size: clamp(16px, 2vw, 20px);
     width: 100%;
-    padding: 10px 12px; /* Espaçamento interno */
+    padding: 10px 12px;
+    transition: border-bottom-color 0.3s ease; /* ADICIONADO */
 }
 
-/* AJUSTE: Remove o margin-bottom dos inputs individuais */
+/* HOVER ADICIONADO para inputs e selects */
+#caixas-texto > input:hover:not(:focus),
+#caixas-texto > select:hover:not(:focus) {
+    border-bottom-color: #a36f8f;
+}
+
 #caixas-texto > input,
 #caixas-texto > select {
     margin-bottom: 0;
 }
 
-/* AJUSTE: Campos que ficam lado a lado */
 #caixas-texto > select[name="estado"],
 #caixas-texto > select[name="cidade"],
 #caixas-texto > input[name="nicho"] {
     width: calc(48% - 7.5px);
 }
 
-/* Container do telefone */
 #telefone {
     display: flex;
     flex-flow: row nowrap;
@@ -171,7 +177,6 @@ form {
     outline: none;
 }
 
-/* AJUSTE: Focus states para melhor UX */
 #caixas-texto > input:focus,
 #caixas-texto > select:focus {
     outline: none;
@@ -188,7 +193,6 @@ form {
     max-width: 656px;
 }
 
-/* AJUSTE: Textarea com padding adequado */
 #motivo {
     margin-bottom: 45px;
     width: 100%;
@@ -199,9 +203,14 @@ form {
     background: var(--body-back);
     font-family: "Louis George Cafe", sans-serif;
     font-size: 16px;
-    padding: 20px; /* Padding aumentado */
+    padding: 20px;
     resize: vertical;
     line-height: 1.5;
+    transition: border-color 0.3s ease; /* ADICIONADO */
+}
+
+#motivo:hover:not(:focus) {
+    border-color: #a36f8f;
 }
 
 #motivo:focus {
@@ -216,7 +225,6 @@ form {
     }
 }
 
-/* Cards de opção (usuário/empresa) */
 .eu {
     display: flex;
     flex-flow: row wrap;
@@ -233,7 +241,6 @@ form {
     }
 }
 
-/* Media query para garantir que os campos lado a lado voltem a 100% em telas pequenas */
 @media screen and (max-width: 600px) {
     #caixas-texto > select[name="estado"],
     #caixas-texto > select[name="cidade"],
@@ -286,8 +293,6 @@ form {
     text-align: justify;
     font-family: "Louis George Cafe", sans-serif;
     font-size: 17px;
-
-
 }
 
 .eusou2 {
@@ -297,7 +302,7 @@ form {
 
 .eusou {
     border: 2px solid #5F0B38;
-    background: #FFF8E9;
+    background: #FFEDC5;
 }
 
 @media screen and (max-width: 480px) {
@@ -308,7 +313,7 @@ form {
     }
 }
 
-/* Botão de Envio */
+/* BOTÃO DE ENVIO REFORMULADO */
 #conheça {
     display: flex;
     width: 294px;
@@ -325,12 +330,41 @@ form {
     margin-top: 15px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    /* ADIÇÕES PARA O EFEITO */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+#conheça::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 #conheça:hover {
-    background: #612647;
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
 }
+
+#conheça:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+#conheça:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
+
 
 @media screen and (max-width: 480px) {
     #conheça {

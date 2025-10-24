@@ -1,12 +1,10 @@
-/* NOTA: Este CSS usa as fontes personalizadas "The Next Font" e "Louis George Cafe"
-  que você está utilizando na sua página principal. Certifique-se de que elas 
-  estejam sendo importadas globalmente no seu projeto (ex: no seu layout.tsx ou 
-  globals.css) para que o estilo seja aplicado corretamente.
-*/
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* Estilos Globais */
 body {
-  background-color: #fdfaf7; /* Um fundo levemente off-white para combinar com a paleta quente */
+  background-color: #fdfaf7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -35,7 +33,7 @@ body {
 /* Título */
 .reset-card h1 {
   font-family: "The Next Font", sans-serif;
-  color: #5F0B38; /* Tom de vinho escuro dos títulos do seu site */
+  color: #5F0B38;
   font-size: 2.5rem;
   font-weight: 400;
   text-align: center;
@@ -59,32 +57,65 @@ body {
   color: #aaa;
 }
 
+/* HOVER ADICIONADO para o input */
+.reset-form input[type="password"]:hover:not(:focus) {
+  border-color: #c4a9b6;
+}
+
 .reset-form input[type="password"]:focus {
   outline: none;
   border-color: #722F53;
   box-shadow: 0 0 0 3px rgba(114, 47, 83, 0.15);
 }
 
-/* Botão */
+/* BOTÃO REFORMULADO */
 .submit-btn {
   font-family: "The Next Font", sans-serif;
   width: 100%;
   padding: 0.9rem 1rem;
-  background-color: #722F53; /* Cor primária dos botões do seu site */
+  background-color: #722F53;
   color: #FFFFFF;
   border: none;
-  border-radius: 2rem; /* Mesmo estilo "pill-shape" do .conhecaButton */
+  border-radius: 2rem;
   font-size: 1.5rem;
   font-weight: 400;
   cursor: pointer;
   margin-top: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* ADIÇÕES PARA O EFEITO */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .submit-btn:hover {
-  background-color: #5F0B38; /* Cor mais escura para o hover */
-  transform: scale(1.02);
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+  transform: translateY(-3px) scale(1.03);
 }
+
+.submit-btn:hover::before {
+    width: 450px; /* Largura suficiente para cobrir o botão */
+    height: 450px;
+}
+
+.submit-btn:active {
+    background: #5F0B38;
+    transform: translateY(-1px) scale(1.01);
+}
+
 
 /* Mensagem de feedback (sucesso ou erro) */
 .feedback-message {

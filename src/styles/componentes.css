@@ -15,6 +15,11 @@ header {
     padding: 2rem;
     position: relative;
     z-index: 999;
+    transition: box-shadow 0.3s ease;
+}
+
+header:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .em_ciminha {
@@ -30,6 +35,12 @@ header {
     background-repeat: no-repeat;
     width: 10rem;
     height: 6rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#imagi:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .emoticus {
@@ -46,6 +57,12 @@ header {
     width: 3rem;
     height: 2.6rem;
     cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#algo:hover {
+    transform: translateY(-4px) scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 #coracao {
@@ -55,6 +72,16 @@ header {
     width: 3.5rem;
     height: 4rem;
     cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#coracao:hover {
+    transform: translateY(-4px) scale(1.15);
+    filter: drop-shadow(0 4px 8px rgba(170, 53, 176, 0.4));
+}
+
+#coracao:active {
+    transform: scale(0.95);
 }
 
 #user {
@@ -63,7 +90,13 @@ header {
     background-repeat: no-repeat;
     width: 3.5rem;
     height: 4rem;
-    cursor: pointer; 
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#user:hover {
+    transform: translateY(-4px) scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 .em_baixinho {
@@ -90,16 +123,49 @@ header {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: color 0.4s;
-    white-space: nowrap; 
+    transition: color 0.4s, transform 0.3s ease;
+    white-space: nowrap;
+    position: relative;
 }
 
-#redirecionavel:hover { color: #AA35B0; }
-#redirecionavel:active { color: #47164A; }
-#redirecionavel2:hover { color: #F2A518; }
-#redirecionavel2:active { color: #b08c16; }
+#redirecionavel::after, #redirecionavel2::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+#redirecionavel:hover::after, #redirecionavel2:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+#redirecionavel:hover { 
+    color: #AA35B0;
+    transform: translateY(-2px);
+}
+
+#redirecionavel:active { 
+    color: #47164A;
+    transform: translateY(0);
+}
+
+#redirecionavel2:hover { 
+    color: #F2A518;
+    transform: translateY(-2px);
+}
+
+#redirecionavel2:active { 
+    color: #b08c16;
+    transform: translateY(0);
+}
 
 .user-menu-container { position: relative; }
+
 .user-popup {
   position: absolute;
   top: calc(100% + 10px);
@@ -113,9 +179,32 @@ header {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 180px; 
+  width: 180px;
+  animation: slideDown 0.3s ease;
 }
-.user-popup p { font-weight: bold; margin: 0 0 0.5rem 0; color: #333; }
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-popup p { 
+    font-weight: bold; 
+    margin: 0 0 0.5rem 0; 
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.user-popup:hover p {
+    color: #5E332C;
+}
+
 .user-popup a, .user-popup button {
   text-decoration: none;
   color: #333;
@@ -127,8 +216,14 @@ header {
   width: 100%;
   border-radius: 4px;
   font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
-.user-popup a:hover, .user-popup button:hover { background-color: #f0f0f0; }
+
+.user-popup a:hover, .user-popup button:hover { 
+    background-color: #AA35B0;
+    color: white;
+    transform: translateX(5px);
+}
 
 /* =================================== */
 /* Estilos do Menu Hambúrguer e Lateral */
@@ -145,6 +240,11 @@ header {
     cursor: pointer;
     padding: 0;
     z-index: 2000;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    transform: scale(1.1);
 }
 
 .hamburger-menu .bar {
@@ -155,8 +255,16 @@ header {
     transition: all 0.3s linear;
 }
 
+.hamburger-menu:hover .bar {
+    background-color: #AA35B0;
+}
+
 .dark .hamburger-menu .bar {
     background-color: #FFF;
+}
+
+.dark .hamburger-menu:hover .bar {
+    background-color: #F2A518;
 }
 
 .mobile-menu {
@@ -187,14 +295,16 @@ header {
     font-size: 1.4rem;
     padding: 1rem 2rem;
     text-align: left;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s ease, transform 0.3s ease, padding-left 0.3s ease;
 }
 
 .mobile-menu a:hover {
-    background-color: #e0e0e0;
+    background-color: #AA35B0;
+    color: white;
+    transform: translateX(8px);
+    padding-left: 2.5rem;
 }
 
-/* NOVO: Estilo para o botão de fechar */
 .close-menu-btn {
     position: absolute;
     top: 1rem;
@@ -205,8 +315,13 @@ header {
     color: #333;
     cursor: pointer;
     line-height: 1;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
+.close-menu-btn:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: #AA35B0;
+}
 
 /* =================================== */
 /* Estilos do Footer (Base para Desktop) */
@@ -243,6 +358,12 @@ footer {
     line-height: normal;
     color: #F2A518;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-column h1:hover {
+    transform: translateX(5px);
+    color: #AA35B0;
 }
 
 .footer-column h2 {
@@ -261,15 +382,21 @@ footer {
 }
 
 .footer-column h2:hover {
-    color: #7D4AB3;
+    color: #AA35B0;
     cursor: pointer; 
-    transform: scale(1.05);
+    transform: translateX(8px) scale(1.05);
 }
 
 .footer-logo {
   max-width: 160px;
   height: auto;
   object-fit: contain;
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.1) rotate(2deg);
+    filter: brightness(1.2);
 }
 
 .accordion-header {
@@ -302,11 +429,10 @@ footer {
         width: 100%; 
     }
     
-    /* NOVO: Estilo para o container da esquerda */
     .header-left {
         display: flex;
         align-items: center;
-        gap: 1rem; /* Espaçamento entre o menu e a logo */
+        gap: 1rem;
     }
 
     .hamburger-menu {
@@ -363,6 +489,11 @@ footer {
         width: 100%;
         cursor: pointer;
         position: relative;
+        transition: background-color 0.3s ease;
+    }
+
+    .accordion-header:hover {
+        background-color: #424242;
     }
 
     .footer-column > h1 {
@@ -384,7 +515,12 @@ footer {
         font-size: 2rem;
         font-weight: 200;
         color: #F2A518;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .accordion-header:hover::after {
+        color: #AA35B0;
+        transform: translateY(-50%) scale(1.2);
     }
     
     .accordion-content.open ~ .accordion-header::after {
@@ -407,6 +543,12 @@ footer {
         display: block;
         font-size: 1rem;
         padding: 0.5rem 1rem;
+        transition: background-color 0.3s ease, padding-left 0.3s ease;
+    }
+
+    .accordion-content h2:hover {
+        background-color: #555;
+        padding-left: 1.5rem;
     }
 }
 
