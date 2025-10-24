@@ -186,7 +186,7 @@ const ParceriasUsuariosPage: React.FC = () => {
             <div className="eu">
               <Link className="eusou" href="/parcerias-influenciadores">
                 <img src="/images/atendimento-usuario/usuario.png" alt="Ícone de usuário" />
-                <p className="eusoua">Eu sou um usuário</p>
+                <p className="eusoua">Eu sou um influenciador</p>
                 <p className="eusoub">Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
               </Link>
               <Link className="eusou2" href="/parcerias-empresas">
