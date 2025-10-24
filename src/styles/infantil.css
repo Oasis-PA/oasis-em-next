@@ -275,6 +275,7 @@ main {
     font-size: clamp(0.8rem, 1.5vw, 1.25rem);
     margin-left: clamp(0.5rem, 2vw, 1.40rem);
     color: #666;
+    margin-bottom: 1vh;
 }
 
 .prod1 > h4 {

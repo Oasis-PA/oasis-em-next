@@ -342,7 +342,7 @@ export default function OasisHomepage() {
                     alt={produto.nome} 
                   />
                   <h1>{produto.nome}</h1>
-                  <h2>{produto.tag_principal ? `Categoria: ${produto.tag_principal}` : 'Produto de qualidade para cuidados especiais.'}</h2>
+                  <h2>{produto.tag_principal ? `${produto.tag_principal}` : 'Produto de qualidade para cuidados especiais.'}</h2>
                   <button className={styles.buttonPerfil}>
                     <Link href={`/produtos/${produto.id_produto}`}>
                       IR PARA COMPRA
