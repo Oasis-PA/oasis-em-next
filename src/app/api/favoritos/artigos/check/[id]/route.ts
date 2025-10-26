@@ -31,15 +31,17 @@ function verifyToken(request: NextRequest): JWTPayload | null {
 // GET - Verifica se o artigo está favoritado pelo usuário
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Await params no Next.js 15
+    const params = await context.params;
     const id_artigo = parseInt(params.id);
 
     // Validação
     if (isNaN(id_artigo)) {
       return NextResponse.json(
-        { error: 'ID do artigo inválido' },
+        { error: 'ID do artigo inválido', isFavorited: false },
         { status: 400 }
       );
     }
@@ -75,8 +77,14 @@ export async function GET(
   } catch (error) {
     console.error('Erro ao verificar favorito:', error);
     return NextResponse.json(
-      { error: 'Erro interno do servidor' },
+      { 
+        error: 'Erro interno do servidor',
+        isFavorited: false,
+        details: error instanceof Error ? error.message : 'Erro desconhecido'
+      },
       { status: 500 }
     );
+  } finally {
+    await prisma.$disconnect();
   }
 }
