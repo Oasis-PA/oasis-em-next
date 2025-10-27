@@ -84,7 +84,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       if (response.ok) {
         console.log('✅ Sucesso! Alternando estado...');
         setIsFavorited(!isFavorited);
-        setTimeout(() => setIsAnimating(false), 300);
+        setTimeout(() => setIsAnimating(false), 400);
       } else {
         // Tenta ler o erro como JSON, senão usa texto
         let errorMessage = 'Erro ao processar favorito';
@@ -117,14 +117,14 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
     <button
       onClick={handleToggleFavorite}
       disabled={isLoading}
-      className={`favorite-button favorite-button--${size} ${isAnimating ? 'favorite-button--animating' : ''}`}
+      className={`favorite-button favorite-button--${size} ${isFavorited ? 'favorited' : ''} ${isAnimating ? 'favorite-button--animating' : ''}`}
       aria-label={isFavorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
       title={isFavorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
     >
       <svg
-        className={`favorite-icon ${isFavorited ? 'favorite-icon--filled' : ''}`}
+        className="favorite-icon"
         viewBox="0 0 24 24"
-        fill={isFavorited ? 'currentColor' : 'none'}
+        fill="none"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"

@@ -19,10 +19,12 @@ import 'swiper/css/pagination';
 const HairCarePage: React.FC = () => {
 
   const carouselImages = [
-    "/images/hair-care/imagecach.png",
-    "/images/hair-care/imageamrcn.png",
-    "/images/hair-care/imagemld.png",
-    "/images/hair-care/Rectangle361.png"
+    "/images/hair-care/corte-pixie.png",
+    "/images/hair-care/wolfcut.png",
+    "/images/hair-care/social.png",
+    "/images/hair-care/camadas-borboleta.png",
+    "/images/hair-care/americano.png",
+    "images/hair-care/low-fade.png"
   ];
 
   return (
@@ -126,33 +128,47 @@ const HairCarePage: React.FC = () => {
         </section>
 
       <section className="container">
-        <article className="item">
-          <img src="/images/hair-care/image.png" alt="Imagem 1" className="imagem" id="img1" />
-          <h1>SKINCARE</h1>
-          <button className="botao-marrom" id="b1">conheça</button>
-        </article>
-        
-        <article className="item">
-          <img src="/images/hair-care/image (1).png" alt="Imagem 2" className="imagem" id="img2" />
-          <h1>TINTURAS</h1>
-          <button className="botao-marrom" id="b2">conheça</button>
-        </article>
+        <div className="dupla">
+          <div className='dupla2'>
+            <article className="item">
+              <img src="/images/hair-care/image.png" alt="Imagem 1" className="imagem" id="img1" />
+            </article>
+            <h1>SKINCARE</h1>
+              <button className="botao-marrom" id="b1">conheça</button>
+          </div>
+          
+          <div className="dupla2">
+            <article className="item">
+              <img src="/images/hair-care/image (1).png" alt="Imagem 2" className="imagem" id="img2" />
+            
+            </article>
+                  <h1>TINTURAS</h1>
+              <button className="botao-marrom" id="b2">conheça</button>
+          </div>
+        </div>
 
-        <article className="item">
-          <img src="/images/hair-care/image (2).png" alt="Imagem 3" className="imagem" id="img3" />
-          <h1>CORTES</h1>
-          <Link href="/corteS">
-            <button className="botao-marrom" id="b3">conheça</button>
-          </Link>
-        </article>
+        <div className="dupla">
+          <div className="dupla2">
+            <article className="item">
+              <img src="/images/hair-care/image (2).png" alt="Imagem 3" className="imagem" id="img3" />
+            
+            </article>
+            <h1>CORTES</h1>
+              <Link href="/corteS">
+                <button className="botao-marrom" id="b3">conheça</button>
+              </Link>
+          </div>
 
-        <article className="item">
-          <img src="/images/hair-care/image (3).png" alt="Imagem 4" className="imagem" id="img4" />
-          <h1>CRONOGRAMA CAPILAR</h1>
-          <button className="botao-marrom" id="b4">conheça</button>
-        </article>
+          <div className="dupla2">
+            <article className="item">
+              <img src="/images/hair-care/image (3).png" alt="Imagem 4" className="imagem" id="img4" />
+            
+            </article>
+            <h1>CRONOGRAMA CAPILAR</h1>
+              <button className="botao-marrom" id="b4">conheça</button>
+          </div>
+        </div>
       </section>
-
       <section className="container2">
         <aside className="dimg">
           <img src="/images/hair-care/image (4).png" alt="Imagem do óleo de rosa mosqueta" className="imagem2" id="oleo" />
