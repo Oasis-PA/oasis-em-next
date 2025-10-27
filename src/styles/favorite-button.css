@@ -1,0 +1,163 @@
+/* favorite-button.css */
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  border: 2px solid #E5E5E5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.favorite-button:hover {
+  border-color: #5F0B38;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(95, 11, 56, 0.15);
+}
+.favorite-button:active {
+  transform: scale(0.95);
+}
+.favorite-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+/* Estado favoritado */
+.favorite-button.favorited {
+  background: #FAF5FF;
+  border-color: #5F0B38;
+}
+/* Tamanhos */
+.favorite-button--small {
+  padding: 0.4rem;
+  width: 36px;
+  height: 36px;
+}
+.favorite-button--small .favorite-icon {
+  width: 18px;
+  height: 18px;
+}
+.favorite-button--medium {
+  padding: 0.5rem;
+  width: 44px;
+  height: 44px;
+}
+.favorite-button--medium .favorite-icon {
+  width: 24px;
+  height: 24px;
+}
+.favorite-button--large {
+  padding: 0.75rem;
+  width: 56px;
+  height: 56px;
+}
+.favorite-button--large .favorite-icon {
+  width: 32px;
+  height: 32px;
+}
+/* Ícone de coração */
+.favorite-icon {
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  color: #9CA3AF;
+  stroke: #9CA3AF;
+  stroke-width: 2;
+  fill: none;
+}
+/* Hover no coração quando não favoritado */
+.favorite-button:not(.favorited):hover .favorite-icon {
+  color: #5F0B38;
+  stroke: #5F0B38;
+}
+/* Coração favoritado */
+.favorite-button.favorited .favorite-icon {
+  fill: #5F0B38;
+  stroke: #5F0B38;
+  color: #5F0B38;
+}
+/* Animação ao clicar */
+.favorite-button--animating .favorite-icon {
+  animation: heartPop 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Label opcional */
+.favorite-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #5F0B38;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+/* Estado hover com label */
+.favorite-button:hover .favorite-label {
+  text-decoration: underline;
+}
+/* Responsividade */
+@media (max-width: 768px) {
+  .favorite-button--medium {
+    width: 40px;
+    height: 40px;
+    padding: 0.4rem;
+  }
+  
+  .favorite-button--medium .favorite-icon {
+    width: 22px;
+    height: 22px;
+  }
+  .favorite-button--large {
+    width: 48px;
+    height: 48px;
+    padding: 0.65rem;
+  }
+  .favorite-button--large .favorite-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .favorite-label {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .favorite-button--small {
+    width: 32px;
+    height: 32px;
+  }
+  .favorite-button--medium {
+    width: 36px;
+    height: 36px;
+  }
+  .favorite-button--large {
+    width: 44px;
+    height: 44px;
+  }
+}

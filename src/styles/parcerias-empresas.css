@@ -71,7 +71,7 @@ form {
   width: 100%;
   max-width: 764px;
   border-radius: 50px;
-  border: 1px solid var(--border-form);
+  border: 1px solid #000;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -114,7 +114,7 @@ form {
 #caixas-texto input, 
 #telefone {
   border: none;
-  border-bottom: 2px solid var(--border-linhas);
+  border-bottom: 1px solid #000;
   height: 60px;
   background-color: var(--body-back);
   width: 100%;
@@ -137,7 +137,7 @@ form {
 #telefone {
   display: flex;
   align-items: center;
-  padding-left: 0;
+  padding-left: 10px;
 }
 
 #telefone > img {
@@ -153,7 +153,8 @@ form {
   background-color: transparent;
   flex: 1;
   font-size: inherit;
-  padding: 10px 12px 10px 0;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
 }
 
 #telefone > input:focus {
@@ -175,7 +176,7 @@ form {
   max-width: 656px;
   height: 183px;
   border-radius: 20px;
-  border: 1px solid var(--border-linhas);
+  border: 1px solid #000;
   background: var(--body-back);
   font-family: "Louis George Cafe", sans-serif;
   font-size: 16px;

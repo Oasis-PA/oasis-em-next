@@ -129,10 +129,30 @@ const Respostas: React.FC = () => {
     const [mesAtual, setMesAtual] = useState(6);
     const [anoAtual, setAnoAtual] = useState(2025);
     const [semanaAtual, setSemanaAtual] = useState(0);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
 
     useEffect(() => {
         setSemanaAtual(0);
     }, [mesAtual, anoAtual]);
+
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [menuOpen]);
 
     function handleSemanaAnterior() {
         if (semanaAtual === 0) {
@@ -223,191 +243,210 @@ const Respostas: React.FC = () => {
         });
     }
 
-  return (
-    <main>
-      <section className="de-ladinho">
-        <div className="em-ciminha">
-          <Link href="/">
-            <img id="logo" src="/images/logo-reduzida.png" alt="Logo" style={{ cursor: 'pointer' }} />
-          </Link>
-          <img id="user" src="/images/resposta/user.png" alt="" />
-        </div>
-        <div className="botoes">
-          <Link href="/guia">
-            <img src="/images/lupa.png" alt="Ir para Guia" style={{ cursor: 'pointer' }} />
-          </Link>
-          <Link href="/favoritos">
-            <img src="/images/coracao.svg" alt="Ir para Favoritos" style={{ cursor: 'pointer' }} />
-          </Link>
-          <img src="/images/tres-barras.svg" alt="" />
-        </div>
-        <div></div>
-      </section>
-      <section className="outro-ladinho">
-        <div className="titulos">
-          <h1>Cabelo Levemente Danificado</h1>
-          <p>30/60 pontos</p>
-        </div>
-        <div className="abaixo">
-          <section className="esquerda">
-            <div className="info-texto">
-              <img src="/images/resposta/img-cabelo2.png" alt="" />
-              <div className="content">
-                <p>Cabelos com sinais leves de ressecamento, frizz moderado, pequena quebra, uso moderado de química/chapinha, porosidade alta leve, couro cabeludo com oleosidade leve.</p>
-                <section className="detalhes">
-                  <div className="elementos">
-                    <div className="texto-e-img">
-                      <img src="/images/resposta/calendario.png" alt="" />
-                      <p id="texto">Tratamento</p>
-                    </div>
-                    <p id="explicacao">Médio</p>
-                  </div>
-                  <div className="elementos">
-                    <div className="texto-e-img">
-                      <img src="/images/resposta/relogio.png" alt="" />
-                      <p id="texto">Duração</p>
-                    </div>
-                    <p id="explicacao">6 Meses</p>
-                  </div>
-                  <div className="elementos">
-                    <div className="texto-e-img">
-                      <img src="/images/resposta/secador.png" alt="" />
-                      <p id="texto">Danos</p>
-                    </div>
-                    <p id="explicacao">Leve</p>
-                  </div>
-                </section>
-              </div>
-            </div>
-            <div className="calendar">
-              <h1>Semanal</h1>
-              <div className="quadradinho">
-                <div id="text">
-                  <h1>03</h1>
-                  <p>Lavagens</p>
+    return (
+        <main>
+            <section className="de-ladinho">
+                <div className="em-ciminha">
+                    <Link href="/">
+                        <img id="logo" src="/images/logo-reduzida.png" alt="Logo" style={{ cursor: 'pointer' }} />
+                    </Link>
+                    <img id="user" src="/images/resposta/user.png" alt="" />
                 </div>
-                <div id="text">
-                  <h1>02</h1>
-                  <p>Outros produtos</p>
+                <div className="botoes-pgn-respostas"> 
+                    <Link href="/guia">
+                        <img src="/images/lupa.png" alt="Ir para Guia" style={{ cursor: 'pointer' }} />
+                    </Link>
+                    <Link href="/favoritos">
+                        <img src="/images/coracao.svg" alt="Ir para Favoritos" style={{ cursor: 'pointer' }} />
+                    </Link>
+                    <img
+                        src="/images/tres-barras.svg"
+                        alt="Menu"
+                        onClick={toggleMenu}
+                        style={{ cursor: 'pointer' }}
+                    />
                 </div>
-              </div>
-            </div>
-            <div className="calendar">
-              <h1>Mensal</h1>
-              <div className="quadradinho">
-                <div id="text">
-                  <h1>01</h1>
-                  <p>Reconstrução</p>
-                </div>
-                <div id="text">
-                  <h1>04</h1>
-                  <p>Umectações</p>
-                </div>
-                <div id="text">
-                  <h1>01</h1>
-                  <p>Acidificações</p>
-                </div>
-              </div>
-            </div>
-            <div className="calenderio">
-              <div className="calendario-nav">
-                <button className="calendario-seta" onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
-                <h2 id="calendario-mes-ano">{nomesMeses[mesAtual]} {anoAtual}</h2>
-                <button className="calendario-seta" onClick={handleMesProximo} aria-label="Próximo mês">&#8594;</button>
-              </div>
-              <div id="calendario-tabela">{gerarCalendario(mesAtual, anoAtual)}</div>
-            </div>
-          </section>
-          <section className="direita">
-            <h1>Informativo</h1>
-            <div className="cronograma">
-              <div className="aa">
-                <button id="semana-anterior" onClick={handleSemanaAnterior}>←</button>
-                <h1>Cronograma Semanal</h1>
-                <button id="semana-proxima" onClick={handleSemanaProxima}>→</button>
-              </div>
-              <p id="data">{getSemanaLabel()}</p>
-              <div className="dias-da-semana">
-                <div className="conteudo">
-                  {getCronogramaSemana()}
-                </div>
-              </div>
-            </div>
-            <section className="diquinhas">
-              <div className="dicas">
-                <h1>Dicas</h1>
-                <p><b>Antes de Aplicar:</b> Lave com shampoo anti-resíduos 1x/semana, use água morna e retire o excesso de água antes da máscara.<br />
-                  <b>Durante:</b> Aplique do comprimento às pontas, deixe agir 20-30min, use touca térmica e massageie.<br />
-                  <b>Finalização:</b> Enxágue com água fria, use leave-in, evite água quente e durma com cabelo seco ou touca de cetim.<br />
-                  <b>Sinais de Atenção:</b> Cabelo elástico: aumente reconstrução. Cabelo duro: aumente hidratação. Cabelo pesado: reduza óleos.</p>
-              </div>
-              <div className="dicas">
-                <h1>Alimentação</h1>
-                <p><b>Proteínas:</b> ovos, carnes, leguminosas.<br />
-                  <b>Vitaminas B:</b> ovos, nozes, vegetais verdes.<br />
-                  <b>Ferro:</b> carnes, feijão, vegetais escuros.<br />
-                  <b>Ômega 3:</b> peixes, sementes.<br />
-                  <b>Zinco:</b> frutos do mar, sementes.<br />
-                  <b>Vitamina A:</b> cenoura, manga.<br />
-                  <b>Vitamina C:</b> laranja, brócolis.<br />
-                  <b>Vitamina E:</b> castanhas, azeite.<br />
-                  <b>Dica:</b> Inclua proteína em todas as refeições, varie frutas e legumes, beba 2L de água/dia. Evite dietas restritivas e ultraprocessados.</p>
-              </div>
+                <div></div>
             </section>
-            <h2>Produtos recomendados</h2>
-            <section className="produtos">
-              <div className="produtinho">
-                <h1>Hidratação</h1>
-                <img src="/images/resposta/prod-1.png" alt="" />
-                <p>Máscara 2 em 1 MITZIE, tratamento intenso para cabelos ressecados e sem brilho-</p>
-                <button>Conheça</button>
-              </div>
-              <div className="produtinho">
-                <h1>Nutrição</h1>
-                <img src="/images/resposta/prod-2.png" alt="" />
-                <p>Óleo de Argan, hidratação perfeita, nutrição profunda para cabelos secos e danificados.</p>
-                <button>Conheça</button>
-              </div>
-              <div className="produtinho">
-                <h1>Reconstrução</h1>
-                <img src="/images/resposta/prod-3.png" alt="" />
-                <p>Máscara de Reconstrução, força e proteção para cabelos fragilizados e quebradiços.</p>
-                <button>Conheça</button>
-              </div>
-            </section>
-            <section className="articles">
-              <div className="artigo">
-                <div id="conteudinho">
-                  <p>13 jan 2025</p>
-                  <div className="aaaa">
-                    <div className="butoes">
-                      <button>Moda</button>
-                      <button>Marcas</button>
-                    </div>
-                    <h1>Os 10 melhores óleos essenciais</h1>
-                  </div>
+            <div className={`menu-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
+            <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}> 
+                <button className="menu-close" onClick={closeMenu}>✕</button>
+                <Link href="/guia" onClick={closeMenu}>
+                    <img src="/images/lupa.png" alt="Guia" />
+                    <span>Guia</span>
+                </Link>
+                <Link href="/favoritos" onClick={closeMenu}>
+                    <img src="/images/coracao.svg" alt="Favoritos" />
+                    <span>Favoritos</span>
+                </Link>
+            </div>
+            <section className="outro-ladinho">
+                <div className="titulos">
+                    <h1>Cabelo Levemente Danificado</h1>
+                    <p>30/60 pontos</p>
                 </div>
-                <img src="/images/resposta/Vector.png" alt="" />
-              </div>
-              <div className="artigo1">
-                <div id="conteudinho">
-                  <p>13 jan 2025</p>
-                  <div className="aaaa">
-                    <div className="butoes">
-                      <button>Moda</button>
-                      <button>Marcas</button>
-                    </div>
-                    <h1>Os 10 melhores óleos essenciais</h1>
-                  </div>
+                <div className="abaixo">
+                    <section className="esquerda">
+                        <div className="info-texto">
+                            <div className="img-info-texto-info2"></div>
+                            <div className="content">
+                                <p>Cabelos com sinais leves de ressecamento, frizz moderado, pequena quebra, uso moderado de química/chapinha, porosidade alta leve, couro cabeludo com oleosidade leve.</p>
+                                <section className="detalhes">
+                                    <div className="elementos">
+                                        <div className="texto-e-img">
+                                            <img src="/images/resposta/calendario.png" alt="" />
+                                            <p id="texto">Tratamento</p>
+                                        </div>
+                                        <p id="explicacao">Médio</p>
+                                    </div>
+                                    <div className="elementos">
+                                        <div className="texto-e-img">
+                                            <img src="/images/resposta/relogio.png" alt="" />
+                                            <p id="texto">Duração</p>
+                                        </div>
+                                        <p id="explicacao">6 Meses</p>
+                                    </div>
+                                    <div className="elementos">
+                                        <div className="texto-e-img">
+                                            <img src="/images/resposta/secador.png" alt="" />
+                                            <p id="texto">Danos</p>
+                                        </div>
+                                        <p id="explicacao">Leve</p>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <section className="conjunto-de-calendar">
+                            <div className="calendar">
+                                <h1>Semanal</h1>
+                                <div className="quadradinho">
+                                    <div id="text">
+                                        <h1>03</h1>
+                                        <p>Lavagens</p>
+                                    </div>
+                                    <div id="text">
+                                        <h1>02</h1>
+                                        <p>Outros produtos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="calendar">
+                                <h1>Mensal</h1>
+                                <div className="quadradinho">
+                                    <div id="text">
+                                        <h1>01</h1>
+                                        <p>Reconstrução</p>
+                                    </div>
+                                    <div id="text">
+                                        <h1>04</h1>
+                                        <p>Umectações</p>
+                                    </div>
+                                    <div id="text">
+                                        <h1>01</h1>
+                                        <p>Acidificações</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div className="calenderio">
+                            <div className="calendario-nav">
+                                <button className="calendario-seta" onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
+                                <h2 id="calendario-mes-ano">{nomesMeses[mesAtual]} {anoAtual}</h2>
+                                <button className="calendario-seta" onClick={handleMesProximo} aria-label="Próximo mês">&#8594;</button>
+                            </div>
+                            <div id="calendario-tabela">{gerarCalendario(mesAtual, anoAtual)}</div>
+                        </div>
+                    </section>
+                    <section className="direita">
+                        <h1>Informativo</h1>
+                        <div className="cronograma">
+                            <div className="aa">
+                                <button id="semana-anterior" onClick={handleSemanaAnterior}>←</button>
+                                <h1>Cronograma Semanal</h1>
+                                <button id="semana-proxima" onClick={handleSemanaProxima}>→</button>
+                            </div>
+                            <p id="data">{getSemanaLabel()}</p>
+                            <div className="dias-da-semana">
+                                <div className="conteudo">
+                                    {getCronogramaSemana()}
+                                </div>
+                            </div>
+                        </div>
+                        <section className="diquinhas">
+                            <div className="dicas">
+                                <h1>Dicas</h1>
+                                <p><b>Antes de Aplicar:</b> Lave com shampoo anti-resíduos 1x/semana, use água morna e retire o excesso de água antes da máscara.<br />
+                                    <b>Durante:</b> Aplique do comprimento às pontas, deixe agir 20-30min, use touca térmica e massageie.<br />
+                                    <b>Finalização:</b> Enxágue com água fria, use leave-in, evite água quente e durma com cabelo seco ou touca de cetim.<br />
+                                    <b>Sinais de Atenção:</b> Cabelo elástico: aumente reconstrução. Cabelo duro: aumente hidratação. Cabelo pesado: reduza óleos.</p>
+                            </div>
+                            <div className="dicas">
+                                <h1>Alimentação</h1>
+                                <p><b>Proteínas:</b> ovos, carnes, leguminosas.<br />
+                                    <b>Vitaminas B:</b> ovos, nozes, vegetais verdes.<br />
+                                    <b>Ferro:</b> carnes, feijão, vegetais escuros.<br />
+                                    <b>Ômega 3:</b> peixes, sementes.<br />
+                                    <b>Zinco:</b> frutos do mar, sementes.<br />
+                                    <b>Vitamina A:</b> cenoura, manga.<br />
+                                    <b>Vitamina C:</b> laranja, brócolis.<br />
+                                    <b>Vitamina E:</b> castanhas, azeite.<br />
+                                    <b>Dica:</b> Inclua proteína em todas as refeições, varie frutas e legumes, beba 2L de água/dia. Evite dietas restritivas e ultraprocessados.</p>
+                            </div>
+                        </section>
+                        <h2>Produtos recomendados</h2>
+                        <section className="produtos">
+                            <div className="produtinho">
+                                <h1>Hidratação</h1>
+                                <div className="img-produtinhos-1"></div>
+                                <p>Máscara 2 em 1 MITZIE, tratamento intenso para cabelos ressecados e sem brilho-</p>
+                                <button>Conheça</button>
+                            </div>
+                            <div className="produtinho">
+                                <h1>Nutrição</h1>
+                                <div className="img-produtinhos-2"></div>
+                                <p>Óleo de Argan, hidratação perfeita, nutrição profunda para cabelos secos e danificados.</p>
+                                <button>Conheça</button>
+                            </div>
+                            <div className="produtinho">
+                                <h1>Reconstrução</h1>
+                                <div className="img-produtinhos-3"></div>
+                                <p>Máscara de Reconstrução, força e proteção para cabelos fragilizados e quebradiços.</p>
+                                <button>Conheça</button>
+                            </div>
+                        </section>
+                        <section className="articles">
+                            <div className="artigo">
+                                <div id="conteudinho">
+                                    <p>13 jan 2025</p>
+                                    <div className="aaaa">
+                                        <div className="butoes">
+                                            <button>Moda</button>
+                                            <button>Marcas</button>
+                                        </div>
+                                        <h1>Os 10 melhores óleos essenciais</h1>
+                                    </div>
+                                </div>
+                                <img src="/images/resposta/Vector.png" alt="" />
+                            </div>
+                            <div className="artigo1">
+                                <div id="conteudinho">
+                                    <p>13 jan 2025</p>
+                                    <div className="aaaa">
+                                        <div className="butoes">
+                                            <button>Moda</button>
+                                            <button>Marcas</button>
+                                        </div>
+                                        <h1>Os 10 melhores óleos essenciais</h1>
+                                    </div>
+                                </div>
+                                <img src="/images/resposta/Vector.png" alt="" />
+                            </div>
+                        </section>
+                    </section>
                 </div>
-                <img src="/images/resposta/Vector.png" alt="" />
-              </div>
             </section>
-          </section>
-        </div>
-      </section>
-    </main>
-  );
+        </main>
+    );
 };
 
 export default Respostas;

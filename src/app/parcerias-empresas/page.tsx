@@ -168,7 +168,7 @@ const ParceriasEmpresasPage: React.FC = () => {
                         <section className="cliente">
                             <Link className="eusou2" href="../parcerias-influenciadores">
                                 <img src="/images/parcerias-empresas/usuario.png" alt="Ícone de usuário" />
-                                <p className="eusoua">Eu sou um usuário</p>
+                                <p className="eusoua">Eu sou um influenciador</p>
                                 <p className="eusoub">Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
                             </Link>
                             <Link className="eusou" href="../parcerias-empresas">

@@ -3,11 +3,30 @@
 import React from 'react';
 import Link from "next/link";
 import Script from 'next/script'; 
-import image from 'next/image'; 
 import { Header, Footer } from "@/components";
 import '@/styles/hair-care.css';
+import { useState } from "react";
+// --- IMPORTAÇÕES PARA O SWIPER ---
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+
+// Importar os estilos do Swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+// --- FIM DAS IMPORTAÇÕES ---
 
 const HairCarePage: React.FC = () => {
+
+  const carouselImages = [
+    "/images/hair-care/corte-pixie.png",
+    "/images/hair-care/wolfcut.png",
+    "/images/hair-care/social.png",
+    "/images/hair-care/camadas-borboleta.png",
+    "/images/hair-care/americano.png",
+    "images/hair-care/low-fade.png"
+  ];
+
   return (
     <>
     <Header/>
@@ -68,59 +87,88 @@ const HairCarePage: React.FC = () => {
         </article>
       </section>
 
-      <section id="barra2">
-        <div className="content">
-          <article className="texto">
-            <h1 id="nossosCortes">NOSSOS CORTES MAIS ACESSADOS</h1>
-            <p id="osCortes">
-              Os cortes para cabelos cacheados estão dominando as
-              tendências! Com opções que valorizam o volume e o movimento
-              natural dos fios, esses estilos são pura expressão de personalidade e
-              autenticidade. Dos mais clássicos aos ousados, há um visual perfeito
-              para cada estilo. <br />
-              Quer dar um upgrade no look e descobrir os cortes que estão em
-              alta? Aqui, você encontra inspirações incríveis e dicas essenciais
-              para manter o cabelo sempre impecável. Prontos para se jogar
-              nessa? Vamos explorar!
-            </p>
-          </article>
+      {/* --- Seção #barra2 COM CARROSSEL SIMPLES --- */}
+        <section id="barra2">
+          <div className="content">
+            <article className="texto">
+              <h1 id="nossosCortes">NOSSOS CORTES MAIS ACESSADOS</h1>
+              <p id="osCortes">
+                Os cortes para cabelos cacheados estão dominando as
+                tendências! Com opções que valorizam o volume e o movimento
+                natural dos fios, esses estilos são pura expressão de personalidade e
+                autenticidade. Dos mais clássicos aos ousados, há um visual perfeito
+                para cada estilo. <br />
+                Quer dar um upgrade no look e descobrir os cortes que estão em
+                alta? Aqui, você encontra inspirações incríveis e dicas essenciais
+                para manter o cabelo sempre impecável. Prontos para se jogar
+                nessa? Vamos explorar!
+              </p>
+            </article>
 
-          <aside className="imgBarra2">
-            <img src="/images/hair-care/imagecach.png" alt="imagem" className="imagem11" />
-            <img src="/images/hair-care/imageamrcn.png" alt="imagem" className="imagem11" />
-            <img src="/images/hair-care/imagemld.png" alt="imagem" className="imagem11" />
-          </aside>
-        </div>
-      </section>
+            {/* --- CARROSSEL SWIPER SIMPLES --- */}
+            <div className="imgBarra2-carousel-container">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={10} // Espaço pequeno entre slides (relevante se houver mais de 1 visível)
+                slidesPerView={1} // MOSTRAR APENAS 1 SLIDE POR VEZ
+                navigation // Habilita setas
+                pagination={{ clickable: true }} // Habilita bolinhas
+                loop={true} // Habilita loop
+                className="simpleHairCareSwiper" // Nova classe para estilização
+              >
+                {carouselImages.map((src, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={src} alt={`Imagem do carrossel ${index + 1}`} className="simple-carousel-image" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            {/* --- FIM DO CARROSSEL --- */}
+          </div>
+        </section>
 
       <section className="container">
-        <article className="item">
-          <img src="/images/hair-care/image.png" alt="Imagem 1" className="imagem" id="img1" />
-          <h1>SKINCARE</h1>
-          <button className="botao-marrom" id="b1">conheça</button>
-        </article>
-        
-        <article className="item">
-          <img src="/images/hair-care/image (1).png" alt="Imagem 2" className="imagem" id="img2" />
-          <h1>TINTURAS</h1>
-          <button className="botao-marrom" id="b2">conheça</button>
-        </article>
+        <div className="dupla">
+          <div className='dupla2'>
+            <article className="item">
+              <img src="/images/hair-care/image.png" alt="Imagem 1" className="imagem" id="img1" />
+            </article>
+            <h1>SKINCARE</h1>
+              <button className="botao-marrom" id="b1">conheça</button>
+          </div>
+          
+          <div className="dupla2">
+            <article className="item">
+              <img src="/images/hair-care/image (1).png" alt="Imagem 2" className="imagem" id="img2" />
+            
+            </article>
+                  <h1>TINTURAS</h1>
+              <button className="botao-marrom" id="b2">conheça</button>
+          </div>
+        </div>
 
-        <article className="item">
-          <img src="/images/hair-care/image (2).png" alt="Imagem 3" className="imagem" id="img3" />
-          <h1>CORTES</h1>
-          <Link href="/corteS">
-            <button className="botao-marrom" id="b3">conheça</button>
-          </Link>
-        </article>
+        <div className="dupla">
+          <div className="dupla2">
+            <article className="item">
+              <img src="/images/hair-care/image (2).png" alt="Imagem 3" className="imagem" id="img3" />
+            
+            </article>
+            <h1>CORTES</h1>
+              <Link href="/corteS">
+                <button className="botao-marrom" id="b3">conheça</button>
+              </Link>
+          </div>
 
-        <article className="item">
-          <img src="/images/hair-care/image (3).png" alt="Imagem 4" className="imagem" id="img4" />
-          <h1>CRONOGRAMA CAPILAR</h1>
-          <button className="botao-marrom" id="b4">conheça</button>
-        </article>
+          <div className="dupla2">
+            <article className="item">
+              <img src="/images/hair-care/image (3).png" alt="Imagem 4" className="imagem" id="img4" />
+            
+            </article>
+            <h1>CRONOGRAMA CAPILAR</h1>
+              <button className="botao-marrom" id="b4">conheça</button>
+          </div>
+        </div>
       </section>
-
       <section className="container2">
         <aside className="dimg">
           <img src="/images/hair-care/image (4).png" alt="Imagem do óleo de rosa mosqueta" className="imagem2" id="oleo" />
@@ -132,10 +180,10 @@ const HairCarePage: React.FC = () => {
             Benefícios do Óleo de Rosa Mosqueta: <br />
             Aliado para a pele, cabelo e unhas
           </h2>
-          <p id="tp">
-            O óleo de rosa mosqueta oferece propriedades antioxidantes e ajuda a evitar o envelhecimento precoce. "Além disso, também age na manutenção da integridade e na regeneração da pele". Dessa forma, o ativo pode ser um grande aliado para a cicatrização e para a melhora de inflamações.
-            “Todos podem usar e sentir os benefícios do óleo de rosa mosqueta. Pode ser que pessoas com a pele oleosa não se sintam tão confortáveis com o sensorial do produto, porém ele não aumenta a oleosidade ou piora a acne, então, pode ser usado tranquilamente, mas é claro que sem excessos”.
-          </p>
+            <p id="tp">
+            O óleo de rosa mosqueta oferece propriedades antioxidantes e ajuda a evitar o envelhecimento precoce. "Além disso, também age na manutenção da integridade e na regeneração da pele". <br /> Dessa forma, o ativo pode ser um grande aliado para a cicatrização e para a <u>melhora de inflamações</u>. <br />
+            “Todos podem usar e sentir os benefícios do óleo de rosa mosqueta. Pode ser que pessoas com a <u>pele oleosa</u> não se sintam tão confortáveis com o sensorial do produto, porém ele não aumenta a oleosidade ou piora a acne, então, pode ser usado tranquilamente, mas é claro que sem excessos”.
+            </p>
           <button className="botao-roxo"><Link href='/artigo/oleo-de-rosa-mosqueta'>CONHEÇA</Link></button>
         </article>
       </section>
@@ -143,6 +191,7 @@ const HairCarePage: React.FC = () => {
       {/* Carrega o script da pasta /public de forma otimizada */}
       <Script src="/Hair-care.js" strategy="lazyOnload" />
     </main>
+    
     <Footer/>
   </>
   );

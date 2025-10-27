@@ -1,69 +1,129 @@
-import { prisma } from "@/lib/prisma";
-import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+// app/api/favoritos/artigos/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
+import jwt from 'jsonwebtoken';
 
-export async function POST(req: NextRequest) {
+const prisma = new PrismaClient();
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+
+interface JWTPayload {
+  userId?: number;
+  id?: number;
+  id_usuario?: number;
+  email: string;
+}
+
+// Função para verificar o token JWT
+function verifyToken(request: NextRequest): { userId: number; email: string } | null {
   try {
-    const token = req.cookies.get("auth-token")?.value;
-
+    const token = request.cookies.get('auth-token')?.value;
+    
     if (!token) {
+      return null;
+    }
+
+    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
+    
+    // Tenta diferentes possíveis nomes do campo ID
+    const userId = decoded.userId || decoded.id || decoded.id_usuario;
+    
+    if (!userId) {
+      console.error('❌ Token JWT não contém userId. Payload:', decoded);
+      return null;
+    }
+    
+    return {
+      userId: userId,
+      email: decoded.email
+    };
+  } catch (error) {
+    console.error('Erro ao verificar token:', error);
+    return null;
+  }
+}
+
+// POST - Adicionar artigo aos favoritos
+export async function POST(request: NextRequest) {
+  try {
+    console.log('🔹 Iniciando POST /api/favoritos/artigos');
+    
+    // Verifica autenticação
+    const userData = verifyToken(request);
+    console.log('🔹 userData:', userData ? `userId: ${userData.userId}` : 'null');
+    
+    if (!userData) {
       return NextResponse.json(
-        { error: "Não autenticado" },
+        { error: 'Usuário não autenticado' },
         { status: 401 }
       );
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
-
-    const { id_artigo } = await req.json();
-
-    if (!id_artigo) {
+    // Tenta ler o body
+    let body;
+    try {
+      body = await request.json();
+      console.log('🔹 body recebido:', body);
+    } catch (error) {
+      console.error('❌ Erro ao ler body:', error);
       return NextResponse.json(
-        { error: "id_artigo é obrigatório" },
+        { error: 'Body inválido ou vazio' },
         { status: 400 }
       );
     }
 
-    // Converte para número se vier como string
-    const artigoId = typeof id_artigo === 'string' ? parseInt(id_artigo) : id_artigo;
+    const { id_artigo } = body;
+    console.log('🔹 id_artigo:', id_artigo, 'tipo:', typeof id_artigo);
 
+    // Validação
+    if (!id_artigo || typeof id_artigo !== 'number') {
+      return NextResponse.json(
+        { error: 'ID do artigo é obrigatório e deve ser um número' },
+        { status: 400 }
+      );
+    }
+
+    console.log('🔹 Verificando se artigo existe...');
     // Verifica se o artigo existe
     const artigo = await prisma.artigo.findUnique({
-      where: { id: artigoId },
+      where: { id: id_artigo },
     });
+    console.log('🔹 Artigo encontrado:', artigo ? `id: ${artigo.id}` : 'null');
 
     if (!artigo) {
       return NextResponse.json(
-        { error: "Artigo não encontrado" },
+        { error: 'Artigo não encontrado' },
         { status: 404 }
       );
     }
 
+    console.log('🔹 Verificando se já está favoritado...');
+    console.log('🔹 Buscando com:', { id_usuario: userData.userId, id_artigo: id_artigo });
+    
     // Verifica se já está favoritado
-    const existente = await prisma.favoritoArtigo.findUnique({
+    const favoritoExistente = await prisma.favoritoArtigo.findFirst({
       where: {
-        id_usuario_id_artigo: {
-          id_usuario: decoded.id,
-          id_artigo: artigoId,
-        },
+        id_usuario: userData.userId,
+        id_artigo: id_artigo,
       },
     });
+    console.log('🔹 Favorito existente:', favoritoExistente ? 'sim' : 'não');
 
-    if (existente) {
+    if (favoritoExistente) {
       return NextResponse.json(
         { 
-          message: "Artigo já está nos favoritos",
-          favorito: existente 
+          message: 'Artigo já está nos favoritos',
+          favorito: favoritoExistente
         },
         { status: 200 }
       );
     }
 
+    console.log('🔹 Criando favorito...');
     // Cria o favorito
-    const favorito = await prisma.favoritoArtigo.create({
+    const novoFavorito = await prisma.favoritoArtigo.create({
       data: {
-        id_usuario: decoded.id,
-        id_artigo: artigoId,
+        id_usuario: userData.userId,
+        id_artigo: id_artigo,
       },
       include: {
         Artigo: {
@@ -72,99 +132,53 @@ export async function POST(req: NextRequest) {
             titulo: true,
             slug: true,
             imagemHeader: true,
+            resumo: true,
           },
         },
       },
     });
+    console.log('✅ Favorito criado com sucesso:', novoFavorito.id_favorito_artigo);
 
     return NextResponse.json(
-      { 
-        message: "Artigo adicionado aos favoritos", 
-        favorito 
+      {
+        message: 'Artigo adicionado aos favoritos com sucesso',
+        favorito: novoFavorito,
       },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Erro ao adicionar favorito:", error);
+    console.error('❌ ERRO COMPLETO:', error);
+    console.error('❌ Stack:', error instanceof Error ? error.stack : 'no stack');
     return NextResponse.json(
-      { error: "Erro interno do servidor" },
-      { status: 500 }
-    );
-  }
-}
-
-export async function DELETE(req: NextRequest) {
-  try {
-    const token = req.cookies.get("auth-token")?.value;
-
-    if (!token) {
-      return NextResponse.json(
-        { error: "Não autenticado" },
-        { status: 401 }
-      );
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
-
-    const { searchParams } = new URL(req.url);
-    const id_artigo = searchParams.get("id_artigo");
-
-    if (!id_artigo) {
-      return NextResponse.json(
-        { error: "id_artigo é obrigatório" },
-        { status: 400 }
-      );
-    }
-
-    const artigoId = parseInt(id_artigo);
-
-    // Remove o favorito
-    await prisma.favoritoArtigo.delete({
-      where: {
-        id_usuario_id_artigo: {
-          id_usuario: decoded.id,
-          id_artigo: artigoId,
-        },
+      { 
+        error: 'Erro interno do servidor',
+        details: error instanceof Error ? error.message : 'Erro desconhecido',
+        stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined
       },
-    });
-
-    return NextResponse.json(
-      { message: "Artigo removido dos favoritos" },
-      { status: 200 }
-    );
-  } catch (error: any) {
-    // Se o favorito não existir
-    if (error.code === 'P2025') {
-      return NextResponse.json(
-        { error: "Favorito não encontrado" },
-        { status: 404 }
-      );
-    }
-    
-    console.error("Erro ao remover favorito:", error);
-    return NextResponse.json(
-      { error: "Erro interno do servidor" },
       { status: 500 }
     );
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
-export async function GET(req: NextRequest) {
+// GET - Listar todos os artigos favoritos do usuário
+export async function GET(request: NextRequest) {
   try {
-    const token = req.cookies.get("auth-token")?.value;
-
-    if (!token) {
+    // Verifica autenticação
+    const userData = verifyToken(request);
+    
+    if (!userData) {
       return NextResponse.json(
-        { error: "Não autenticado" },
+        { error: 'Usuário não autenticado' },
         { status: 401 }
       );
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
-
+    // Busca todos os favoritos do usuário
     const favoritos = await prisma.favoritoArtigo.findMany({
       where: {
-        id_usuario: decoded.id,
+        id_usuario: userData.userId,
       },
       include: {
         Artigo: {
@@ -180,21 +194,27 @@ export async function GET(req: NextRequest) {
         },
       },
       orderBy: {
-        data_favoritado: "desc",
+        data_favoritado: 'desc',
       },
     });
 
-    // Filtra apenas artigos publicados
-    const favoritosFiltrados = favoritos.filter(
-      fav => fav.Artigo.status === "publicado"
-    );
-
-    return NextResponse.json({ favoritos: favoritosFiltrados }, { status: 200 });
-  } catch (error) {
-    console.error("Erro ao buscar favoritos:", error);
     return NextResponse.json(
-      { error: "Erro interno do servidor" },
+      {
+        favoritos,
+        total: favoritos.length,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Erro ao buscar favoritos:', error);
+    return NextResponse.json(
+      { 
+        error: 'Erro interno do servidor',
+        details: error instanceof Error ? error.message : 'Erro desconhecido'
+      },
       { status: 500 }
     );
+  } finally {
+    await prisma.$disconnect();
   }
 }
