@@ -1,8 +1,9 @@
-
 import '@/styles/artigo-geral.css';
-export default function artigosMain (){
-  // Componente para o ícone de salvar (SVG) para reutilização
- interface SaveIconProps extends React.SVGProps<SVGSVGElement> {
+import { Header, Footer } from "@/components";
+import Image from "next/image";
+import Link from "next/link";
+
+interface SaveIconProps extends React.SVGProps<SVGSVGElement> {
   fill?: string;
 }
 
@@ -22,8 +23,12 @@ const SaveIcon = ({ fill, ...props }: SaveIconProps) => (
   </svg>
 );
 
+export default function ArtigosMain (){
+
   return (
     <>
+
+    <Header />
      
       <h5>Por dentro das notícias</h5>
       <p>Veja aqui os melhores artigos sobre cuidados, beleza e dicas. Salve os seus favoritos e leia sempre que quiser!</p> 
@@ -282,10 +287,10 @@ const SaveIcon = ({ fill, ...props }: SaveIconProps) => (
                 </div>
             </div>
         </section>
+
       </main>
 
-     
+      <Footer />
     </>
   );
 };
-
