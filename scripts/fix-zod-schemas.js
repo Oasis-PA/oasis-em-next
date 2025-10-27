@@ -18,6 +18,23 @@ const files = [
   'src/lib/zod-schemas/schemas/findManyArtigo.schema.ts',
 ];
 
+const decimalFiles = [
+  'src/lib/zod-schemas/schemas/objects/DecimalFieldUpdateOperationsInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/NestedDecimalWithAggregatesFilter.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/NestedDecimalFilter.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/DecimalWithAggregatesFilter.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/DecimalFilter.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasUncheckedUpdateManyInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasUpdateManyMutationInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasCreateManyInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasUncheckedUpdateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasUpdateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasUncheckedCreateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasCreateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasScalarWhereWithAggregatesInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/EmpresasWhereInput.schema.ts',
+];
+
 const rootDir = join(__dirname, '..');
 
 files.forEach(file => {
@@ -28,6 +45,25 @@ files.forEach(file => {
 
     // Remove empty include fields: "include: ,"
     content = content.replace(/include:\s*,/g, '');
+
+    if (content !== originalContent) {
+      writeFileSync(filePath, content, 'utf8');
+      console.log(`✓ Fixed ${file}`);
+    }
+  } catch (error) {
+    console.warn(`⚠ Could not process ${file}: ${error.message}`);
+  }
+});
+
+// Fix decimal refine issues
+decimalFiles.forEach(file => {
+  const filePath = join(rootDir, file);
+  try {
+    let content = readFileSync(filePath, 'utf8');
+    const originalContent = content;
+
+    // Remove problematic refine with isValidDecimalInput
+    content = content.replace(/\.refine\(\(v\) => isValidDecimalInput\(v\), \{[^}]+\}\)/g, '');
 
     if (content !== originalContent) {
       writeFileSync(filePath, content, 'utf8');
