@@ -839,16 +839,16 @@ p.lista-festivos { padding-left: 0; }
     align-items: center;
 }
 .dupla2 h1{
-
-    font-family: "PLAYFUL RUNWAY", sans-serif;
+    padding: 0.6rem;
+    font-weight: 400;
+    font-family: 'The Next Font', sans-serif;
     font-size: clamp(1.8rem, 4.5vw, 4.5rem);
     color: rgb(0, 0, 0);
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 /* --- ADICIONADO --- */
 .botao-marrom::before {
     content: '';
-    
+    position: absolute;
     width: 0;
     height: 0;
     border-radius: 50%;
@@ -861,7 +861,7 @@ p.lista-festivos { padding-left: 0; }
 .botao-marrom:hover {
     background: linear-gradient(135deg, #8a5047 0%, #703f37 100%); /* --- GRADIENTE MARROM --- */
     box-shadow: 0px 10px 25px rgba(94, 51, 44, 0.6); /* --- SOMBRA MARROM --- */
-    transform: translateX(-50%) translateY(-3px) scale(1.08);
+    transform:  scale(1.08);
 }
 
 /* --- ADICIONADO --- */
