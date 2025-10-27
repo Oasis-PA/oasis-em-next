@@ -49,6 +49,8 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
 
     if (isLoading) return;
 
+    console.log('🔹 Clicou no favorito. artigoId:', artigoId, 'isFavorited:', isFavorited);
+
     setIsLoading(true);
     setIsAnimating(true);
 
@@ -56,6 +58,9 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       const endpoint = isFavorited 
         ? `/api/favoritos/artigos/${artigoId}`
         : '/api/favoritos/artigos';
+
+      console.log('🔹 Endpoint:', endpoint);
+      console.log('🔹 Method:', isFavorited ? 'DELETE' : 'POST');
 
       const response = await fetch(endpoint, {
         method: isFavorited ? 'DELETE' : 'POST',
@@ -66,32 +71,42 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
         body: isFavorited ? undefined : JSON.stringify({ id_artigo: artigoId }),
       });
 
+      console.log('🔹 Response status:', response.status);
+      console.log('🔹 Response ok:', response.ok);
+
       if (response.status === 401) {
         // Usuário não autenticado, redireciona para login
+        console.log('⚠️ Não autenticado, redirecionando para /login');
         router.push('/login');
         return;
       }
 
       if (response.ok) {
+        console.log('✅ Sucesso! Alternando estado...');
         setIsFavorited(!isFavorited);
         setTimeout(() => setIsAnimating(false), 300);
       } else {
         // Tenta ler o erro como JSON, senão usa texto
         let errorMessage = 'Erro ao processar favorito';
+        let errorDetails = {};
         try {
           const errorData = await response.json();
+          console.log('❌ Erro JSON:', errorData);
           errorMessage = errorData.error || errorData.message || errorMessage;
+          errorDetails = errorData;
         } catch {
           const errorText = await response.text();
+          console.log('❌ Erro Text:', errorText);
           errorMessage = errorText || errorMessage;
         }
-        console.error('Erro ao favoritar:', errorMessage);
-        alert(`Erro: ${errorMessage}`);
+        console.error('❌ Erro ao favoritar:', errorMessage);
+        console.error('❌ Detalhes completos:', errorDetails);
+        alert(`Erro: ${errorMessage}\n\nVeja o console para mais detalhes.`);
         setIsAnimating(false);
       }
     } catch (error) {
-      console.error('Erro ao processar favorito:', error);
-      alert('Erro de conexão. Tente novamente.');
+      console.error('❌ Erro ao processar favorito:', error);
+      alert('Erro de conexão. Tente novamente.\n\nVeja o console para mais detalhes.');
       setIsAnimating(false);
     } finally {
       setIsLoading(false);
