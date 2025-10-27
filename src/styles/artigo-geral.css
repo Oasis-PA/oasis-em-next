@@ -454,39 +454,334 @@ margin-top: 18px;
 
 @media (max-width: 700px) {
 
+    body > h5 {
+        font-size: 48px;
+    }
+    body > p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
     main{
         display: flex;
         flex-direction: column;
-
+        width: 100%;
+        padding: 0 1rem;
     }
+
+    main > h5 {
+        position: static;
+        margin-top: 1rem;
+        margin-left: 0;
+        font-size: 32px;
+    }
+
     .grupo-1{
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+        height: auto;
+    }
+    .grupo-1 > img {
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+        object-fit: cover;
+    }
+     .grupo-1 > p, .grupo-1 > h4 {
+        position: static;
+        transform: none;
+        line-height: normal;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+    .grupo-1 > h4 {
+        font-size: 24px;
+        color: var(--text-color);
+    }
+    .grupo-1 > svg {
+        position: static;
+        transform: none;
+        margin-left: auto;
+        display: block;
+        margin-top: 0.5rem;
+    }
+    .Cartegorias {
+        position: static;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    .grupo-2, .grupo-3 {
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        margin-bottom: 2rem;
+        height: auto;
+    }
+    .grupo-2 > img, .grupo-3 > img {
+        width: 100%;
+        height: auto;
+    }
+    .grupo-2 > p, .grupo-3 > p {
+        width: 100%;
+    }
+    .grupo-2 > h4, .grupo-3 > h4,
+    .grupo-2 > .data, .grupo-3 > .data,
+    .grupo-2 > .descrição, .grupo-3 > .descrição,
+    .grupo-2 > .Cartegorias-ladodireito, .grupo-3 > .Cartegorias-ladodireito,
+    .grupo-2 > svg, .grupo-3 > svg {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+    }
+    .Cartegorias-ladodireito {
+        margin-left: 0;
+    }
+    
+    .seção {
+        width: 100%;
+        height: 30vh;
+        margin-left: 0;
+        margin-top: 2rem;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    #data {
+        position: static;
+        transform: none;
+        width: auto;
+        height: auto;
+        margin: 1rem;
+    }
+    #texto {
+        position: static;
+        transform: none;
+        width: calc(100% - 2rem);
+        height: auto;
+        margin: 1rem;
+    }
+    #texto h5 {
+        font-size: 32px;
+        line-height: 1.2;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+    #carte-seção {
+        position: static;
+        transform: none;
+        margin: 1rem;
+    }
+    #sorriso {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        margin-left: 0;
+        transform: none;
+    }
+    
+    .seção2 {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+        height: auto;
+    }
+    .grupo-4 {
+        width: 50%;
+        padding: 0 0.5rem;
+        height: auto;
+    }
+    .grupo-4 > img {
+        width: 100%;
+        height: auto;
+    }
+    .grupo-4 > h4, .grupo-4 > .data, .grupo-4 > .descrição-s2, .grupo-4 > .Cartegorias-ladodireito, .grupo-4 > svg {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+    }
+    .descrição-s2 {
+        width: 100%;
+    }
+    #mulher-gloss {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+    .grupo-5 {
+        width: 100%;
+        order: 3;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 2rem;
+        height: auto;
+    }
+    .grupo-5 > img {
+        width: 100%;
+        height: auto;
+    }
+    .grupo-5 > h4, .grupo-5 > .data, .grupo-5 > #descri, .grupo-5 > .Cartegorias-grupo5, .grupo-5 > svg {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+    }
+    #descri {
+        width: 100%;
+    }
+    .grupo-5 > h4 {
+        color: var(--text-color);
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    .Cartegorias-grupo5 {
+        margin-left: 0;
+    }
+
+    #linha {
+        display: none;
+    }
+    
+    .grupos-linha1, .grupos-linha2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+    }
+    .grupos-linha1 > div, .grupos-linha2 > div {
+        width: 100%;
+    }
+    .grupos-linha1 > div > img, .grupos-linha2 > div > img {
+        width: 100%;
+        height: auto;
+    }
+    .data-linha, .save-icon, .h4-linha, .descrição-linha, .Cartegorias-linha {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+        height: auto;
+    }
+    .data-linha {
+        color: var(--text-color);
+    }
+    .save-icon {
+        margin-left: auto;
+        width: 16px;
+    }
+    .descrição-linha {
+        width: 100%;
+    }
+    .Cartegorias-linha p {
+        color: var(--text-color);
+        border-color: #000;
+    }
+
+    .cronograma-capilar {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+        height: auto;
+    }
+    .cronograma-capilar > img {
+        width: 100%;
+        height: auto;
+    }
+    .cronograma-capilar > h5 {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 1rem;
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    .cronograma-capilar > button {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 1rem;
+    }
+
+    .seção3 {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+    }
+    .grupo-6, .linha1, .linha2 {
+        position: static;
+        transform: none;
         margin-left: 0;
         margin-top: 0;
         width: 100%;
         height: auto;
-        margin-top: 91px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .grupo-6 > img, .grupo-7 > img {
+        width: 100%;
+        height: auto;
+    }
+    .grupo-6 > h4, .grupo-6 > .data, .grupo-6 > .Cartegorias-g6, .grupo-6 > svg {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+    }
+    .Cartegorias-g6 {
+        margin-left: 0;
+    }
+    .grupo-6 > h4 {
+        width: 100%;
+    }
+    .grupo-7 > h4, .grupo-7 > .datag7, .grupo-7 > .Cartegorias-g7, .grupo-7 > svg {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+    }
+    .datag7, .grupo-7 > h4 {
+        color: var(--text-color);
+    }
+    .Cartegorias-g7 {
+        margin-left: 0;
+    }
+    .Cartegorias-g7 p {
+        color: var(--text-color);
+        border-color: #000;
+    }
 
-    }
-    .grupo-2
-    {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 90%;
-        margin-bottom: 60%;
-        
-    }
-    
-    .grupo-2 > p, .grupo-3 >p{
-        width: 50%;
-    }
-    .grupo-3{
-        margin-left: auto;
-        margin-right: auto;
-        width: 90%;
-        margin-bottom: 60%;
-    }
-    
 }
 .seção
 {
@@ -963,4 +1258,3 @@ margin-left: 12px;
     height: 422px;
  
 }
-

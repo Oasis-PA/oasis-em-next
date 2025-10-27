@@ -8,6 +8,9 @@ module.exports = {
 
   testMatch: ['**/__tests__/**/*.test.ts', '**/*.test.ts'],
 
+  // Excluir testes de integração por padrão (usar npm run test:integration para rodá-los)
+  testPathIgnorePatterns: ['/node_modules/', '/tests/integration/'],
+
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     'lib/**/*.{ts,tsx}',
