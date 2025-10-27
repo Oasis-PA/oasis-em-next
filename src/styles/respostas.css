@@ -945,13 +945,11 @@ main {
     box-shadow: 0 1px 8px 0 rgba(242, 165, 24, 0.10);
 }
 
-/* --- ESTILOS DO MENU OVERLAY --- */
-
 .menu-mobile {
     display: none;
 }
 .menu-overlay {
-    display: none; /* Escondido por padrão (desktop) */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -968,8 +966,6 @@ main {
     opacity: 1;
     visibility: visible;
 }
-/* --- FIM DOS ESTILOS DO MENU OVERLAY --- */
-
 
 @media (max-width: 1200px) {
     .articles {
@@ -1232,7 +1228,7 @@ main {
     }
 
     .menu-overlay {
-        display: block; /* Traz o overlay de volta (mobile) */
+        display: block;
     }
 
     .info-texto {

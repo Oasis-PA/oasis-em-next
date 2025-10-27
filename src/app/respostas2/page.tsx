@@ -129,14 +129,12 @@ const Respostas: React.FC = () => {
     const [mesAtual, setMesAtual] = useState(6);
     const [anoAtual, setAnoAtual] = useState(2025);
     const [semanaAtual, setSemanaAtual] = useState(0);
-    const [menuOpen, setMenuOpen] = useState(false); // Mantido
+    const [menuOpen, setMenuOpen] = useState(false);
 
-    // Mantido
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
-    // Mantido
     const closeMenu = () => {
         setMenuOpen(false);
     };
@@ -145,7 +143,6 @@ const Respostas: React.FC = () => {
         setSemanaAtual(0);
     }, [mesAtual, anoAtual]);
 
-    // Mantido
     useEffect(() => {
         if (menuOpen) {
             document.body.style.overflow = 'hidden';
@@ -255,7 +252,6 @@ const Respostas: React.FC = () => {
                     </Link>
                     <img id="user" src="/images/resposta/user.png" alt="" />
                 </div>
-                {/* Mantida classe e img com onClick */}
                 <div className="botoes-pgn-respostas"> 
                     <Link href="/guia">
                         <img src="/images/lupa.png" alt="Ir para Guia" style={{ cursor: 'pointer' }} />
@@ -272,11 +268,8 @@ const Respostas: React.FC = () => {
                 </div>
                 <div></div>
             </section>
-
-            {/* Mantido Menu Mobile e Overlay */}
             <div className={`menu-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
-
-            <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}>
+            <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}> 
                 <button className="menu-close" onClick={closeMenu}>✕</button>
                 <Link href="/guia" onClick={closeMenu}>
                     <img src="/images/lupa.png" alt="Guia" />
@@ -287,24 +280,16 @@ const Respostas: React.FC = () => {
                     <span>Favoritos</span>
                 </Link>
             </div>
-            
             <section className="outro-ladinho">
                 <div className="titulos">
-                    {/* Conteúdo Revertido */}
                     <h1>Cabelo Levemente Danificado</h1>
                     <p>30/60 pontos</p>
                 </div>
                 <div className="abaixo">
                     <section className="esquerda">
                         <div className="info-texto">
-                            {/* Estrutura Mantida (div), mas o conteúdo de texto é do original */}
-                            {/* Se você quiser a tag <img> original, troque a linha abaixo por:
-                                <img src="/images/resposta/img-cabelo2.png" alt="" /> 
-                            */
-                            }
                             <div className="img-info-texto-info2"></div>
                             <div className="content">
-                                {/* Conteúdo Revertido */}
                                 <p>Cabelos com sinais leves de ressecamento, frizz moderado, pequena quebra, uso moderado de química/chapinha, porosidade alta leve, couro cabeludo com oleosidade leve.</p>
                                 <section className="detalhes">
                                     <div className="elementos">
@@ -312,7 +297,6 @@ const Respostas: React.FC = () => {
                                             <img src="/images/resposta/calendario.png" alt="" />
                                             <p id="texto">Tratamento</p>
                                         </div>
-                                        {/* Conteúdo Revertido */}
                                         <p id="explicacao">Médio</p>
                                     </div>
                                     <div className="elementos">
@@ -320,7 +304,6 @@ const Respostas: React.FC = () => {
                                             <img src="/images/resposta/relogio.png" alt="" />
                                             <p id="texto">Duração</p>
                                         </div>
-                                        {/* Conteúdo Revertido */}
                                         <p id="explicacao">6 Meses</p>
                                     </div>
                                     <div className="elementos">
@@ -328,14 +311,11 @@ const Respostas: React.FC = () => {
                                             <img src="/images/resposta/secador.png" alt="" />
                                             <p id="texto">Danos</p>
                                         </div>
-                                        {/* Conteúdo Revertido */}
                                         <p id="explicacao">Leve</p>
                                     </div>
                                 </section>
                             </div>
                         </div>
-
-                        {/* Estrutura Mantida (conjunto-de-calendar) */}
                         <section className="conjunto-de-calendar">
                             <div className="calendar">
                                 <h1>Semanal</h1>
@@ -345,7 +325,6 @@ const Respostas: React.FC = () => {
                                         <p>Lavagens</p>
                                     </div>
                                     <div id="text">
-                                        {/* Conteúdo Revertido */}
                                         <h1>02</h1>
                                         <p>Outros produtos</p>
                                     </div>
@@ -355,24 +334,20 @@ const Respostas: React.FC = () => {
                                 <h1>Mensal</h1>
                                 <div className="quadradinho">
                                     <div id="text">
-                                        {/* Conteúdo Revertido */}
                                         <h1>01</h1>
                                         <p>Reconstrução</p>
                                     </div>
                                     <div id="text">
-                                        {/* Conteúdo Revertido */}
                                         <h1>04</h1>
                                         <p>Umectações</p>
                                     </div>
                                     <div id="text">
-                                        {/* Conteúdo Revertido */}
                                         <h1>01</h1>
                                         <p>Acidificações</p>
                                     </div>
                                 </div>
                             </div>
                         </section>
-
                         <div className="calenderio">
                             <div className="calendario-nav">
                                 <button className="calendario-seta" onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
@@ -400,7 +375,6 @@ const Respostas: React.FC = () => {
                         <section className="diquinhas">
                             <div className="dicas">
                                 <h1>Dicas</h1>
-                                {/* Conteúdo Revertido */}
                                 <p><b>Antes de Aplicar:</b> Lave com shampoo anti-resíduos 1x/semana, use água morna e retire o excesso de água antes da máscara.<br />
                                     <b>Durante:</b> Aplique do comprimento às pontas, deixe agir 20-30min, use touca térmica e massageie.<br />
                                     <b>Finalização:</b> Enxágue com água fria, use leave-in, evite água quente e durma com cabelo seco ou touca de cetim.<br />
@@ -408,7 +382,6 @@ const Respostas: React.FC = () => {
                             </div>
                             <div className="dicas">
                                 <h1>Alimentação</h1>
-                                {/* Conteúdo Revertido (idêntico nos dois, mas por via das dúvidas) */}
                                 <p><b>Proteínas:</b> ovos, carnes, leguminosas.<br />
                                     <b>Vitaminas B:</b> ovos, nozes, vegetais verdes.<br />
                                     <b>Ferro:</b> carnes, feijão, vegetais escuros.<br />
@@ -424,25 +397,19 @@ const Respostas: React.FC = () => {
                         <section className="produtos">
                             <div className="produtinho">
                                 <h1>Hidratação</h1>
-                                {/* Estrutura Mantida (div) */}
                                 <div className="img-produtinhos-1"></div>
-                                {/* Conteúdo Revertido */}
                                 <p>Máscara 2 em 1 MITZIE, tratamento intenso para cabelos ressecados e sem brilho-</p>
                                 <button>Conheça</button>
                             </div>
                             <div className="produtinho">
                                 <h1>Nutrição</h1>
-                                {/* Estrutura Mantida (div) */}
                                 <div className="img-produtinhos-2"></div>
-                                {/* Conteúdo Revertido */}
                                 <p>Óleo de Argan, hidratação perfeita, nutrição profunda para cabelos secos e danificados.</p>
                                 <button>Conheça</button>
                             </div>
                             <div className="produtinho">
                                 <h1>Reconstrução</h1>
-                                {/* Estrutura Mantida (div) */}
                                 <div className="img-produtinhos-3"></div>
-                                {/* Conteúdo Revertido */}
                                 <p>Máscara de Reconstrução, força e proteção para cabelos fragilizados e quebradiços.</p>
                                 <button>Conheça</button>
                             </div>
