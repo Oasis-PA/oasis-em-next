@@ -164,7 +164,7 @@ const HairCarePage: React.FC = () => {
               <img src="/images/hair-care/image (3).png" alt="Imagem 4" className="imagem" id="img4" />
             
             </article>
-            <h1>CRONOGRAMA CAPILAR</h1>
+            <h1>CRONOGRAMA</h1>
               <button className="botao-marrom" id="b4">conheça</button>
           </div>
         </div>
