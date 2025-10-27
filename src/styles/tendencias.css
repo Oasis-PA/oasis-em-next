@@ -1,594 +1,54 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 16px;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-.primeiro {
-    margin-top: 5vw;
-    width: 85vw;
-    height: 65vw;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.banner-principal {
-    background-image: url('../../public/images/tendencias/img-principal2.png');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    height: 43.5vw;
-    width: auto;
-    z-index: 1;
-}
-
-#tit-1 {
-    position: relative;
-    color: #FFF;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-1, 6vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 6vw;
-    left: 5vw;
-}
-
-#text-1 {
-    position: relative;
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 1.5vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 7vw;
-    left: 5.2vw;
-    width: 60vw;
-}
-
-
-
-.banner-sec {
-    z-index: 2;
-    position: relative;
-    bottom: 14vw;
-    background-image: url('../../public/images/tendencias/img-2.png');
-    background-repeat: no-repeat;
-    background-size: 35.9vw 30vw;
-    width: 36vw;
-    height: 30vw;
-}
-
-#data-1 {
-    width: 8vw;
-    position: relative;
-    color: #000;
-    text-align: center;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1.3vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 5vw;
-    left: 1.7vw;
-
-}
-
-#tit-2 {
-    position: relative;
-    color: #ffffff;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-2, 2.5vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    z-index: 2;
-    top: 15.5vw;
-    left: 1.5vw;
-    width: 29vw;
-    text-align: left;
-}
-
-.butoes {
-    position: relative;
-    display: flex;
-    z-index: 3;
-    top: 15vw;
-    gap: 1vw;
-    left: 1.7vw;
-    width: 24vw;
-}
-
-.banner-sec button {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 20vw;
-    padding: 0.02vw 1vw;
-    white-space: nowrap;
-    border-color: #ffffff;
-    border-width: 0.1vw;
-    border-style: solid;
-    background-color: rgba(192, 192, 192, 0.288);
-    box-shadow: 0vw 0.2vw 0.5vw #00000044;
-}
-
-#salvar {
-    position: relative;
-    top: -7vw;
-    left: 29vw;
-    width: 1.8vw;
-}
-
-
-
-
-
-
-.meio {
-    position: relative;
-    justify-self: center;
-    top: -29vw; 
-    width: 20vw; 
-    left: 4vw;
-}
-
-.meio p {
-    color: #000;
-    text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 3vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: auto;
-    margin-bottom: 2vw;
-}
-
-.meio button {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.6vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    transition: all 0.3s ease;
-    display: flex;
-    margin: 0 auto;
-    height: 3vw;
-    padding: 1.5vw 3vw;
-    justify-content: center;
-    align-items: center;
-    gap: 2vw;
-    flex-shrink: 0;
-    border-radius: 0.3vh;
-    background: #F2A518;
-    border-color: transparent;
+button {
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
 }
 
-.meio button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.meio button:hover {
-    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%); /* Gradiente dourado */
-    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
-    transform: translateY(-3px) scale(1.05);
-}
-
-.meio button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.meio button:active {
-    background: #d18f15; /* Cor original active */
-    transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
-}
-
-
-.banner-terc {
-    background-image: url('/images/tendencias/img-3.png');
-    background-repeat: no-repeat;
-    position: relative;
-    float: right;
-    bottom: 45vw;
-    width: 25vw;
-    height: 17vw;
-    background-size: 25vw 16vw;
-}
-
-.butoes-2 {
-    position: relative;
-    display: flex;
-    z-index: 3;
-    top: 3.5vw;
-    gap: 1vw;
-    left: 1vw;
-    width: 18vw;
-}
-
-.banner-terc button {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 20vw;
-    padding: 0.02vw 1vw;
-    white-space: nowrap;
-    border-color: #ffffff;
-    border-width: 0.1vw;
-    border-style: solid;
-    background-color: rgba(192, 192, 192, 0.288);
-    box-shadow: 0vw 0.2vw 0.5vw #00000044;
-}
-
-#tit-3 {
-    color: #ffffff;
-    position: relative;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-2, 2vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    z-index: 2;
-    top: 4vw;
-    left: 1vw;
-    width: 23vw;
-    text-align: left;
-}
-
-#data-2 {
-    position: relative;
-    color: #000000;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 1.3vw;
-    left: 1vw;
-    width: 5vw;
-}
-
-#salvar-2 {
-    position: relative;
-    top: -8.2vw;
-    right: -22vw;
-    width: 1.2vw;
-}
-
-
-
-
-
-
-
-
-.segundo {
-   background-image: url('/images/tendencias/group465.png');
-   background-size: 100% auto;
-   background-repeat: no-repeat;
-   width: 85vw;
-   height: 56vw;
-   position: relative;
-   top: 3vw;
-}
-
-#tit-4 {
-    color: #FFF;
+/* --- ESTILOS DE FONTE E BOTÕES (MANTIDOS) --- */
+#tit-1, #tit-4, #tit-5, #tit-6, #outro-titulo {
     font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 3vw);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 30vw;
-    position: relative;
-    left: 3vw;
-    top: 3vw;
 }
 
-#text-2 {
-    color: #FFF;
+#text-1, #data-1, .banner-sec button, .banner-terc button, #data-2, #text-2, #text-3, #uno p {
     font-family: "Louis George Cafe";
-    font-size: 1.2vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 28vw;
-    text-align: justify;
-    position: relative;
-    top: 5vw;
-    left: 3vw;
 }
 
-.produtss {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    width: 49vw;
-    height: 15vw;
-    top: 17vw;
-    gap: 1vw;
-    left: 1.56vw;
-}
-
-.produt1 {
-    width: 17vw;
-    height: 22vw;
-    background-repeat: no-repeat;
-    background-image: url('/images/tendencias/produ-1.png');
-    background-size: 14vw;
-    z-index: 1;
-    position: relative;
-}
-
-.produt2 {
-    width: 17vw;
-    height: 22vw;
-    background-repeat: no-repeat;
-    background-image: url('/images/tendencias/produ-2.png');
-    background-size: 14vw;
-    z-index: 1;
-    position: relative;
-}
-
-.produt3 {
-    width: 17vw;
-    height: 22vw;
-    background-repeat: no-repeat;
-    background-image: url('/images/tendencias/produ-3.png');
-    background-size: 14vw;
-    z-index: 1;
-    position: relative;
-}
-
-.produt1 p, .produt3 p {
-    color: #FFF;
-    text-align: center;
+#tit-2, #tit-3, .meio button, .produt1 p, .produt2 p, .produt3 p, #but-2, #but-4, #divi p, #but-6, .esq p {
     font-family: "The Next Font";
-    font-size: 1.2vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    position: relative;
-    bottom: 2.4vw;
-    width: 14vw;
 }
 
-.produt2 p {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.2vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    bottom: 3.2vw;
-    width: 14vw;
-}
-
-#but-2, #but-4 {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-    margin: 0 auto;
-    height: 2vw;
-    padding: 1vw 2vw;
-    justify-content: center;
-    align-items: center;
-    gap: 1.04vw;
-    flex-shrink: 0;
-    border-radius: 0.16vw;
-    background: #F2A518;
-    background: #F2A518; /* Cor original */
-    border-color: transparent;
-    cursor: pointer;
-    position: relative;
-    top: 15.3vw;
-    right: 1vw;
-    overflow: hidden;
-    transition: all 0.4s ease;
-}
-
-#but-4 {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-    margin: 0 auto;
-    height: 2vw;
-    padding: 1vw 2vw;
-    justify-content: center;
-    align-items: center;
-    gap: 1.04vw;
-    flex-shrink: 0;
-    border-radius: 0.16vw;
-    position: relative;
-    top: 13.9vw;
-    right: 1vw;
-}
-
-#but-2::before, #but-4::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-#but-2:hover, #but-4:hover {
-    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%); /* Gradiente dourado */
-    box-shadow: 0px 8px 15px rgba(242, 165, 24, 0.4);
-    transform: translateY(-2px) scale(1.05);
-}
-
-#but-2:hover::before, #but-4:hover::before {
-    width: 200px;
-    height: 200px;
-}
-
-#but-2:active, #but-4:active {
-    background: #d18f15; /* Cor original active */
-    transform: translateY(0) scale(1.02);
-    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
-}
-
-#but-3 {
-    position: relative;
-    left: 10.3vw;
-    bottom: 3vw;
-    border-color: transparent;
-    background-color: transparent;
-}
-
-#but-5 {
-    position: relative;
-    left: 10.3vw;
-    bottom: 4.2vw;
-    width: 1.04vw;
-    border-color: transparent;
-    background-color: transparent;
-}
-
-
-
-
-#img-direita {
-    position: relative;
-    top: -28vw;
-    left: 37.5vw;
-    width: 17vw;
-}
-
-#tit-5 {
-    color: #000000;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 3vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 20vw;
-    position: relative;
-    left: 56vw;
-    top: -44vw;
-    text-align: left;
-    text-decoration: underline;
-}
-
-#text-3 {
-    color: #000000;
-    font-family: "Louis George Cafe";
-    font-size: 1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 25vw;
-    text-align: justify;
-    position: relative;
-    top: -43vw;
-    left: 56vw;
-}
-
-#divi {
-    background-color: #FFF;
-    width: 25vw;
-    padding: 0.36vw;
-    border-radius: 1.04vw;
-    position: relative;
-    bottom: 41vw;
-    left: 56.5vw;
-    display: flex;
-    justify-content: center;
-}
-
-#divi p {
-    color: #000;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 20vw;
-}
-
-#img-produt-1 {
-    position: relative;
-    bottom: 38vw;
-    left: 57vw;
-    width: 25vw;
-}
-
-#but-6 {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.2vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-    padding: 0.42vw 1.56vw;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.16vw; /* Mantido original */
-    background: #5E332C; /* Cor original */
-    border-color: transparent;
-    position: relative;
-    top: -43vw;
-    left: 64.5vw;
-    width: 10vw;
-    min-height: 35px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.4s ease;
-}
+.meio button::before,
+#but-2::before, #but-4::before,
 #but-6::before {
     content: '';
     position: absolute;
@@ -597,91 +57,470 @@ main {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
     transform: translate(-50%, -50%);
     transition: width 0.6s ease, height 0.6s ease;
 }
+
+.meio button::before,
+#but-2::before, #but-4::before {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+#but-6::before {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.meio button:hover,
+#but-2:hover, #but-4:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+}
+
+.meio button:hover {
+    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+#but-2:hover, #but-4:hover {
+    box-shadow: 0px 8px 15px rgba(242, 165, 24, 0.4);
+    transform: translateY(-2px) scale(1.05);
+}
+
 #but-6:hover {
-    background: linear-gradient(135deg, #7a4a42 0%, #5E332C 100%); /* Gradiente marrom */
+    background: linear-gradient(135deg, #7a4a42 0%, #5E332C 100%);
     box-shadow: 0px 8px 15px rgba(94, 51, 44, 0.4);
     transform: translateY(-2px) scale(1.05);
 }
+
+.meio button:active,
+#but-2:active, #but-4:active {
+    background: #d18f15;
+}
+
+.meio button:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
+}
+
+#but-2:active, #but-4:active {
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
+}
+
+#but-6:active {
+    background: #4a2822;
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
+}
+
+.meio button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#but-2:hover::before, #but-4:hover::before,
 #but-6:hover::before {
     width: 200px;
     height: 200px;
 }
-#but-6:active {
-    background: #4a2822; /* Cor original active */
-    transform: translateY(0) scale(1.02);
-    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
+/* --- FIM DOS ESTILOS MANTIDOS --- */
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* --- SEÇÃO 1: LAYOUT NOVO COM GRID --- */
+.primeiro {
+    margin-top: 5vw;
+    width: 100%; /* Ocupa 100% e o conteúdo interno é 85vw */
+    position: relative; /* Necessário para a sobreposição */
+    margin-bottom: -5vw; /* Compensa a sobreposição para a próxima seção */
+}
+
+.banner-principal {
+    /* Caminho da imagem corrigido */
+    background-image: url('/images/tendencias/img-principal2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 43.5vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6vw 7.5vw; /* 7.5vw = (100-85)/2 */
+}
+
+#tit-1 {
+    color: #FFF;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+#text-1 {
+    color: #FFF;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    margin-top: 1vw;
+    width: 50vw; /* Reduzido para caber melhor */
+}
+
+/* Novo grupo de sobreposição */
+.primeiro-overlap-group {
+    display: grid;
+    /* Proporções: 36vw, 20vw, 25vw -> aprox 1.2fr auto 1fr */
+    grid-template-columns: 1.2fr 0.8fr 1fr; 
+    gap: 2vw;
+    width: 85vw;
+    margin: 0 auto; /* Centraliza */
+    transform: translateY(-10vw); /* Puxa para cima */
+}
+
+/* Links precisam preencher a área do grid */
+.banner-sec-link, .banner-terc-link {
+    display: block;
+    height: 100%;
+}
+
+.banner-sec {
+    /* Caminho da imagem corrigido */
+    background-image: url('/images/tendencias/img-2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 30vw;
+    position: relative; /* Para posicionar botões e texto */
+    padding: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#tit-2 {
+    color: #ffffff;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    width: 90%;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.butoes {
+    display: flex;
+    gap: 1vw;
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+}
+
+.banner-sec button,
+.banner-terc button {
+    color: #FFF;
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    border-radius: 20vw;
+    padding: 0.2vw 1.2vw;
+    white-space: nowrap;
+    border: 0.1vw solid #ffffff;
+    background-color: rgba(192, 192, 192, 0.288);
+    box-shadow: 0vw 0.2vw 0.5vw #00000044;
+}
+
+.meio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2vw; /* Alinha melhor com os cards */
+}
+
+.meio p {
+    color: #000;
+    text-align: center;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    margin-bottom: 2vw;
+}
+
+.meio button {
+    color: #FFF;
+    text-align: center;
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    display: flex;
+    padding: 1vw 2.5vw;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3vh;
+    background: #F2A518;
+    border-color: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    height: auto; /* Altura automática */
+}
+
+.banner-terc {
+    /* Caminho da imagem corrigido */
+    background-image: url('/images/tendencias/img-3.png');
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 17vw;
+    background-size: cover;
+    background-position: center;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo */
+}
+
+.butoes-2 {
+    display: flex;
+    gap: 1vw;
+    flex-wrap: wrap;
+}
+
+#tit-3 {
+    color: #ffffff;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    width: 95%;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+/* --- SEÇÃO 2: LAYOUT NOVO COM GRID --- */
+.segundo {
+    /* Caminho da imagem corrigido */
+    background-image: url('/images/tendencias/group465.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 85vw;
+    padding: 3vw;
+    margin-top: 8vw; /* Espaçamento após a sobreposição */
+    
+    /* Layout principal da seção */
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Coluna da esquerda maior */
+    gap: 3vw;
+}
+
+/* Coluna da Esquerda */
+.segundo-col-esq {
+    display: flex;
+    flex-direction: column;
+}
+
+#tit-4 {
+    color: #FFF;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    width: 100%;
+}
+
+#text-2 {
+    color: #FFF;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    width: 100%;
+    max-width: 28vw; /* Limita a largura do texto */
+    text-align: justify;
+    margin-top: 1.5vw;
+}
+
+.produtss {
+    display: grid; /* Grid para os produtos */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5vw;
+    margin-top: 2vw;
+}
+
+.produt1,
+.produt2,
+.produt3 {
+    width: 100%;
+    height: 22vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 20px;
+}
+
+/* Caminhos das imagens corrigidos */
+.produt1 { background-image: url('/images/tendencias/produ-1.png'); }
+.produt2 { background-image: url('/images/tendencias/produ-2.png'); }
+.produt3 { background-image: url('/images/tendencias/produ-3.png'); }
+
+.produt1 p, .produt2 p, .produt3 p {
+    color: #FFF;
+    text-align: center;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    position: absolute;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 1rem;
+}
+
+#but-2, #but-4 {
+    color: #FFF;
+    text-align: center;
+    font-size: clamp(0.85rem, 1.1vw, 1.1rem);
+    display: flex;
+    height: auto;
+    padding: 0.5rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.16vw;
+    background: #F2A518;
+    border-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+#but-3, #but-5 {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border-color: transparent;
+    background-color: transparent;
+    z-index: 10;
+}
+
+/* Coluna da Direita */
+.segundo-col-dir {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza itens como o botão */
+    background-color: #fff; /* Fundo branco como na imagem */
+    border-radius: 20px;
+    padding: 2vw;
+    transform: translateY(-8vw); /* Efeito de "subir" */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+#img-direita {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+#tit-5 {
+    color: #000000;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    width: 100%;
+    text-align: left;
+    text-decoration: underline;
+    margin-top: 1.5vw;
+}
+
+#text-3 {
+    color: #000000;
+    font-size: clamp(1rem, 1vw, 1.1rem);
+    width: 100%;
+    text-align: justify;
+    margin-top: 1vw;
+}
+
+#divi {
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    width: 100%;
+    padding: 0.5vw 1vw;
+    border-radius: 1.04vw;
+    margin-top: 1.5vw;
+}
+
+#divi p {
+    color: #000;
+    text-align: center;
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    width: 100%;
+}
+
+#img-produt-1 {
+    width: 100%;
+    height: auto;
+    margin-top: 1.5vw;
+}
+
+#but-6 {
+    color: #FFF;
+    text-align: center;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    display: flex;
+    padding: 0.6rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.16vw;
+    background: #5E332C;
+    border-color: transparent;
+    width: 60%;
+    min-height: 35px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    margin-top: 1.5vw;
 }
 
 
-
+/* --- SEÇÃO 3: LAYOUT NOVO COM GRID --- */
 .terceiro {
-    display: flex;
-    justify-content: space-between;
+    display: grid; /* Grid de 2 colunas */
+    grid-template-columns: 1fr 1fr;
     padding-top: 8vw;
     width: 100%;
     height: auto;
+    align-items: stretch; /* Estica colunas para mesma altura */
 }
 
 .esq {
+    /* Caminho da imagem corrigido */
     background-image: url('/images/tendencias/princip-3.png');
-    width: 49%;
-    height: auto;
+    width: 100%;
+    min-height: 40vw;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding: 2vw;
 }
-
 
 .esq p {
     color: #FFF;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-1, 6vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 40vw;
-
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    width: 100%;
+    max-width: 40vw;
 }
 
 .dir {
-    width: 48%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.6vw;
+    padding: 2vw 4vw; /* Adiciona padding */
 }
 
 #tit-6 {
     color: #000;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 4vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-size: clamp(2rem, 4vw, 3.5rem);
 }
 
 #uno {
     display: flex;
     align-items: center;
     padding-bottom: 1.6vw;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #727272;
 }
 
 #uno p {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 2.4vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    left: 2vw;
+    font-size: clamp(1.2rem, 2.4vw, 2rem);
+    margin-left: 2vw;
     display: flex;
     align-items: center;
 }
@@ -689,18 +528,13 @@ main {
 #uno img {
     width: 4vw;
     height: 4vw;
-}
-
-#linha {
-    background-color: #727272;
-    height: 100%;
-    width: 100%;
+    min-width: 40px; /* Tamanho mínimo */
+    min-height: 40px;
 }
 
 
-
-
-
+/* --- SEÇÃO 4: ESTILOS (SEU CSS ORIGINAL) --- */
+/* (Mantive os estilos da seção "quarto" caso você a adicione no TSX) */
 .quarto{
     display: flex;
     flex-direction: column;
@@ -712,206 +546,147 @@ main {
 
 #outro-titulo {
     color: #000;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 5.73vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-size: clamp(2.2rem, 5.73vw, 4.5rem);
     display: flex;
     justify-content: center;
 }
+/* ... (restante dos estilos .quarto) ... */
 
-.imagenszinas {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-top: 3vw;
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1024px) {
+    .primeiro-overlap-group {
+        width: 90vw;
+        gap: 1.5vw;
+    }
+    .segundo {
+        width: 90vw;
+    }
+    #text-2 {
+        max-width: 100%;
+    }
+    .produtss {
+        grid-template-columns: 1fr 1fr; /* 2 colunas no tablet */
+    }
+    .produt3 {
+        grid-column: 1 / -1; /* Produto 3 centralizado */
+        justify-self: center;
+        width: 50%;
+    }
+    .produt1, .produt2, .produt3 {
+        height: 30vw;
+    }
 }
 
-.esqui{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
-.sec-1{
-    display: flex;
-    gap: 2vw;
-}
+@media (max-width: 768px) {
+    /* Seção 1 no Mobile */
+    .primeiro {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
 
-.sec-2{
-    display: flex;
-    justify-content: space-between;
-}
+    .banner-principal {
+        height: auto;
+        padding: 2rem 1.5rem 5rem 1.5rem;
+        /* Imagem de fundo mobile opcional */
+        /* background-image: url('/images/tendencias/img-principal3.png'); */
+    }
 
-.deitada{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    #tit-1 {
+        font-size: 1.8rem;
+    }
+    #text-1 {
+        font-size: 0.9rem;
+        width: 100%;
+        margin-top: 1rem;
+    }
     
-}
+    .primeiro-overlap-group {
+        grid-template-columns: 1fr; /* Coluna única */
+        width: 90vw;
+        gap: 1.5rem;
+        transform: translateY(-3rem); /* Sobreposição menor */
+    }
 
-.diri{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1.5vw;
-    margin-left: 2vw;
-}
-.diri-baixo{
-    display: flex;
-    justify-content: space-between;
-}
-.sec-1 div, .deitada div, .diri-baixo div, .diri-topo div, .empé {
-    background-size: cover;
-    background-position: center;
-}
+    .banner-sec, .banner-terc {
+        height: 45vw; /* Altura fixa para mobile */
+    }
+    #tit-2, #tit-3 {
+        font-size: 1.2rem;
+    }
+    .banner-sec button, .banner-terc button {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+    }
 
-.img-2 {
-    width: 35.625dvw;
-    height: 12.55dvw;
-    background-image: url('/images/tendencias/imagem-2.png');
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+    .meio {
+        padding-top: 0;
+    }
+    .meio button {
+        padding: 0.8rem 1.5rem;
+    }
 
 
-.elementos {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
+    /* Seção 2 no Mobile */
+    .segundo {
+        grid-template-columns: 1fr; /* Coluna única */
+        width: 100vw;
+        margin-top: 1rem;
+        padding: 1.5rem 1rem;
+        background-image: none; /* Remove imagem de fundo */
+        background-color: #5E332C;
+    }
 
-.cima {
-    display: flex;
-    justify-content: space-between;
-    margin: 4% 4% 0% 4%;
-}
+    .segundo-col-dir {
+        transform: translateY(0); /* Remove efeito "subir" */
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
 
-.centro {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-left: 3%;
-    margin-bottom: 3%;
-}
+    .produtss {
+        grid-template-columns: 1fr 1fr;
+    }
+    .produt3 {
+        width: 100%; /* Ocupa espaço normal */
+    }
+    .produt1, .produt2, .produt3 {
+        height: 50vw; /* Mais altura no mobile */
+    }
+    #but-6 {
+        width: 80%;
+    }
 
-.butaos {
-    display: flex;
-    gap: 1vw;
-    margin-bottom: 2%;
-}
+    /* Seção 3 no Mobile */
+    .terceiro {
+        grid-template-columns: 1fr; /* Coluna única */
+        padding-top: 2rem;
+    }
 
-.butaos button {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 20vw;
-    padding: 0.02vw 1vw;
-    white-space: nowrap;
-    border-color: #ffffff;
-    border-width: 0.1vw;
-    border-style: solid;
-    background-color: rgba(192, 192, 192, 0.288);
-    box-shadow: 0vw 0.2vw 0.5vw #00000044;
-}
-
-#tit-7 {
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: 2vw; 
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 90%;
-}
-
-#tit-8 {
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: 1.6vw; 
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 90%;
-}
-
-#data-3 {
-    color: #FFF;
-    text-align: center;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-#salvar-3 {
-    width: 1.26vw;
-    height: 1.69vw;
-}
-
-
-
-.img-3 {
-    width: 16.15dvw;
-    height: 12.55dvw;
-    background-image: url('/images/tendencias/imagem-3.png');
-}
-
-.empé {
-    width: 25.57dvw;
-    height: 31.20dvw;
-    background-image: url('/images/tendencias/imagem-1.png');
-}
-
-.img-4 {
-    width: 25.57dvw;
-    height: 14.32dvw;
-    background-image: url('/images/tendencias/imagem-4.png');
-}
-
-.img-5 {
-    width: 25.57dvw;
-    height: 14.32dvw;
-    background-image: url('/images/tendencias/imagem-5.png');
-}
-
-.img-6 {
-    width: 28.91dvw;
-    height: 34.69dvw;
-    background-image: url('/images/tendencias/imagem-6.png');
-}
-
-.img-7 {
-    width: 16.09dvw;
-    height: 10.19dvw;
-    background-image: url('/images/tendencias/imagem-7.png');
-}
-
-.img-8 {
-    width: 11.56dvw;
-    height: 10.19dvw;
-    background-image: url('/images/tendencias/imagem-8.png');
-}
-
-
-
-footer {
-    margin-top: 7vw;
-    background-color: #343434;
-    width: 100%;
-    height: 17vw;
-}
-
-footer p {
-    color: white;
-    display: flex;
-    justify-content: center;
-    font-size: 2vw;
+    .esq {
+        height: 60vw;
+        justify-content: flex-start;
+        padding: 1.5rem;
+    }
+    .esq p {
+        font-size: 2.5rem;
+    }
+    .dir {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    #uno {
+        padding-bottom: 1rem;
+    }
+    #uno img {
+        width: 12vw;
+        height: 12vw;
+        max-width: 50px;
+        max-height: 50px;
+    }
+    #uno p {
+        margin-left: 1rem;
+        font-size: 1.2rem;
+    }
 }
