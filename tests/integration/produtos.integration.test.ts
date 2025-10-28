@@ -16,12 +16,12 @@ describe('Testes de Integração - Produtos', () => {
         },
       });
 
-      expect(produto).toHaveProperty('id');
+      expect(produto).toHaveProperty('id_produto');
       expect(produto.nome).toBe('Condicionador Nutritivo');
       expect(produto.marca).toBe('Dove');
       expect(produto.preco).toBe(25.90);
       expect(produto.id_categoria).toBe(1);
-      expect(produto.createdAt).toBeInstanceOf(Date);
+      expect(produto.data_cadastro).toBeInstanceOf(Date);
     });
 
     it('deve criar produto com relacionamentos (categoria, tag, tipo de cabelo)', async () => {
@@ -38,7 +38,7 @@ describe('Testes de Integração - Produtos', () => {
 
       // Buscar com relacionamentos
       const produtoComRelacionamentos = await prisma.produto.findUnique({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
         include: {
           categoria: true,
           tag: true,
@@ -48,7 +48,7 @@ describe('Testes de Integração - Produtos', () => {
 
       expect(produtoComRelacionamentos?.categoria?.nome).toBe('Shampoo');
       expect(produtoComRelacionamentos?.tag?.nome).toBe('Hidratação');
-      expect(produtoComRelacionamentos?.tipo_cabelo?.tipo).toBe('Cacheado');
+      expect(produtoComRelacionamentos?.tipo_cabelo?.nome).toBe('Cacheado');
     });
 
     it('deve criar produto com múltiplas imagens', async () => {
@@ -58,22 +58,22 @@ describe('Testes de Integração - Produtos', () => {
           marca: 'Lola Cosmetics',
           preco: 45.00,
           id_categoria: 3,
-          imagens: {
+          ImagemProduto: {
             create: [
-              { url: 'https://exemplo.com/imagem1.jpg', ordem: 1 },
-              { url: 'https://exemplo.com/imagem2.jpg', ordem: 2 },
-              { url: 'https://exemplo.com/imagem3.jpg', ordem: 3 },
+              { url_imagem: 'https://exemplo.com/imagem1.jpg', ordem: 1 },
+              { url_imagem: 'https://exemplo.com/imagem2.jpg', ordem: 2 },
+              { url_imagem: 'https://exemplo.com/imagem3.jpg', ordem: 3 },
             ],
           },
         },
         include: {
-          imagens: true,
+          ImagemProduto: true,
         },
       });
 
-      expect(produto.imagens.length).toBe(3);
-      expect(produto.imagens[0].url).toBe('https://exemplo.com/imagem1.jpg');
-      expect(produto.imagens[1].ordem).toBe(2);
+      expect(produto.ImagemProduto.length).toBe(3);
+      expect(produto.ImagemProduto[0].url_imagem).toBe('https://exemplo.com/imagem1.jpg');
+      expect(produto.ImagemProduto[1].ordem).toBe(2);
     });
 
     it('deve rejeitar criação de produto sem categoria (constraint NOT NULL)', async () => {
@@ -108,14 +108,14 @@ describe('Testes de Integração - Produtos', () => {
       const primeiraPagina = await prisma.produto.findMany({
         take: 12,
         skip: 0,
-        orderBy: { createdAt: 'desc' },
+        orderBy: { data_cadastro: 'desc' },
       });
 
       // Buscar segunda página (3 produtos restantes)
       const segundaPagina = await prisma.produto.findMany({
         take: 12,
         skip: 12,
-        orderBy: { createdAt: 'desc' },
+        orderBy: { data_cadastro: 'desc' },
       });
 
       expect(primeiraPagina.length).toBe(12);
@@ -231,7 +231,7 @@ describe('Testes de Integração - Produtos', () => {
       });
 
       const produtoAtualizado = await prisma.produto.update({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
         data: {
           nome: 'Produto Atualizado',
           preco: 25.00,
@@ -256,7 +256,7 @@ describe('Testes de Integração - Produtos', () => {
       });
 
       const produtoAtualizado = await prisma.produto.update({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
         data: { preco: 35.00 },
       });
 
@@ -277,11 +277,11 @@ describe('Testes de Integração - Produtos', () => {
       });
 
       await prisma.produto.delete({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       const produtoDeletado = await prisma.produto.findUnique({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       expect(produtoDeletado).toBeNull();
@@ -294,10 +294,10 @@ describe('Testes de Integração - Produtos', () => {
           marca: 'Marca Teste',
           preco: 30.00,
           id_categoria: 1,
-          imagens: {
+          ImagemProduto: {
             create: [
-              { url: 'https://exemplo.com/img1.jpg', ordem: 1 },
-              { url: 'https://exemplo.com/img2.jpg', ordem: 2 },
+              { url_imagem: 'https://exemplo.com/img1.jpg', ordem: 1 },
+              { url_imagem: 'https://exemplo.com/img2.jpg', ordem: 2 },
             ],
           },
         },
@@ -305,12 +305,12 @@ describe('Testes de Integração - Produtos', () => {
 
       // Deletar produto
       await prisma.produto.delete({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       // Verificar que imagens foram deletadas em cascade
       const imagens = await prisma.imagemProduto.findMany({
-        where: { id_produto: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       expect(imagens.length).toBe(0);
@@ -340,19 +340,19 @@ describe('Testes de Integração - Produtos', () => {
       // Adicionar aos favoritos
       await prisma.favorito.create({
         data: {
-          id_usuario: usuario.id,
-          id_produto: produto.id,
+          id_usuario: usuario.id_usuario,
+          id_produto: produto.id_produto,
         },
       });
 
       // Deletar produto
       await prisma.produto.delete({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       // Verificar que favoritos foram deletados em cascade
       const favoritos = await prisma.favorito.findMany({
-        where: { id_produto: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       expect(favoritos.length).toBe(0);
@@ -380,7 +380,7 @@ describe('Testes de Integração - Produtos', () => {
           id_categoria: 1,
           avaliacoes: {
             create: {
-              id_usuario: usuario.id,
+              id_usuario: usuario.id_usuario,
               nota: 5,
               comentario: 'Produto excelente!',
             },
@@ -419,14 +419,14 @@ describe('Testes de Integração - Produtos', () => {
       // Criar avaliações
       await prisma.avaliacao.createMany({
         data: [
-          { id_produto: produto.id, id_usuario: usuario1.id, nota: 5, comentario: 'Ótimo!' },
-          { id_produto: produto.id, id_usuario: usuario2.id, nota: 4, comentario: 'Muito bom!' },
+          { id_produto: produto.id_produto, id_usuario: usuario1.id_usuario, nota: 5, comentario: 'Ótimo!' },
+          { id_produto: produto.id_produto, id_usuario: usuario2.id_usuario, nota: 4, comentario: 'Muito bom!' },
         ],
       });
 
       // Calcular média
       const avaliacoes = await prisma.avaliacao.findMany({
-        where: { id_produto: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       const media = avaliacoes.reduce((acc, av) => acc + av.nota, 0) / avaliacoes.length;

@@ -20,7 +20,7 @@ describe('Testes de Integração - Artigos', () => {
       expect(artigo.titulo).toBe('Como cuidar da pele no verão');
       expect(artigo.slug).toBe('como-cuidar-da-pele-no-verao');
       expect(artigo.status).toBe('publicado');
-      expect(artigo.createdAt).toBeInstanceOf(Date);
+      expect(artigo.criadoEm).toBeInstanceOf(Date);
     });
 
     it('deve criar artigo com todas as propriedades opcionais', async () => {
@@ -49,25 +49,25 @@ describe('Testes de Integração - Artigos', () => {
           slug: 'hidratacao-capilar-profunda',
           conteudo: 'Conteúdo sobre hidratação...',
           status: 'publicado',
-          tags: {
+          ArtigoTag: {
             create: [
-              { id_tag: 1 }, // Hidratação
-              { id_tag: 2 }, // Nutrição
+              { tagId: 1 }, // Hidratação
+              { tagId: 2 }, // Nutrição
             ],
           },
         },
         include: {
-          tags: {
+          ArtigoTag: {
             include: {
-              tag: true,
+              Tag: true,
             },
           },
         },
       });
 
-      expect(artigo.tags.length).toBe(2);
-      expect(artigo.tags[0].tag.nome).toBe('Hidratação');
-      expect(artigo.tags[1].tag.nome).toBe('Nutrição');
+      expect(artigo.ArtigoTag.length).toBe(2);
+      expect(artigo.ArtigoTag[0].Tag.nome).toBe('Hidratação');
+      expect(artigo.ArtigoTag[1].Tag.nome).toBe('Nutrição');
     });
 
     it('deve rejeitar criação de artigo com slug duplicado (constraint de unicidade)', async () => {
@@ -144,10 +144,10 @@ describe('Testes de Integração - Artigos', () => {
           slug: 'cabelos-cacheados',
           conteudo: 'Dicas para cabelos cacheados...',
           status: 'publicado',
-          tags: {
+          ArtigoTag: {
             create: [
-              { id_tag: 1 }, // Hidratação
-              { id_tag: 4 }, // Vegano
+              { tagId: 1 }, // Hidratação
+              { tagId: 4 }, // Vegano
             ],
           },
         },
@@ -156,16 +156,16 @@ describe('Testes de Integração - Artigos', () => {
       const artigoComTags = await prisma.artigo.findUnique({
         where: { id: artigo.id },
         include: {
-          tags: {
+          ArtigoTag: {
             include: {
-              tag: true,
+              Tag: true,
             },
           },
         },
       });
 
-      expect(artigoComTags?.tags.length).toBe(2);
-      expect(artigoComTags?.tags[0].tag.nome).toBe('Hidratação');
+      expect(artigoComTags?.ArtigoTag.length).toBe(2);
+      expect(artigoComTags?.ArtigoTag[0].Tag.nome).toBe('Hidratação');
     });
 
     it('deve listar artigos ordenados por data de publicação', async () => {
@@ -262,10 +262,10 @@ describe('Testes de Integração - Artigos', () => {
       await prisma.artigo.update({
         where: { id: artigo.id },
         data: {
-          tags: {
+          ArtigoTag: {
             create: [
-              { id_tag: 1 },
-              { id_tag: 2 },
+              { tagId: 1 },
+              { tagId: 2 },
             ],
           },
         },
@@ -273,10 +273,10 @@ describe('Testes de Integração - Artigos', () => {
 
       const artigoComTags = await prisma.artigo.findUnique({
         where: { id: artigo.id },
-        include: { tags: true },
+        include: { ArtigoTag: true },
       });
 
-      expect(artigoComTags?.tags.length).toBe(2);
+      expect(artigoComTags?.ArtigoTag.length).toBe(2);
     });
   });
 
@@ -309,10 +309,10 @@ describe('Testes de Integração - Artigos', () => {
           slug: 'artigo-com-tags',
           conteudo: 'Conteúdo...',
           status: 'publicado',
-          tags: {
+          ArtigoTag: {
             create: [
-              { id_tag: 1 },
-              { id_tag: 2 },
+              { tagId: 1 },
+              { tagId: 2 },
             ],
           },
         },
@@ -325,7 +325,7 @@ describe('Testes de Integração - Artigos', () => {
 
       // Verificar que tags foram deletadas em cascade
       const tags = await prisma.artigoTag.findMany({
-        where: { id_artigo: artigo.id },
+        where: { artigoId: artigo.id },
       });
 
       expect(tags.length).toBe(0);
@@ -355,7 +355,7 @@ describe('Testes de Integração - Artigos', () => {
       // Adicionar aos favoritos
       await prisma.favoritoArtigo.create({
         data: {
-          id_usuario: usuario.id,
+          id_usuario: usuario.id_usuario,
           id_artigo: artigo.id,
         },
       });
@@ -396,13 +396,13 @@ describe('Testes de Integração - Artigos', () => {
 
       const favorito = await prisma.favoritoArtigo.create({
         data: {
-          id_usuario: usuario.id,
+          id_usuario: usuario.id_usuario,
           id_artigo: artigo.id,
         },
       });
 
-      expect(favorito).toHaveProperty('id');
-      expect(favorito.id_usuario).toBe(usuario.id);
+      expect(favorito).toHaveProperty('id_favorito_artigo');
+      expect(favorito.id_usuario).toBe(usuario.id_usuario);
       expect(favorito.id_artigo).toBe(artigo.id);
     });
 
@@ -428,7 +428,7 @@ describe('Testes de Integração - Artigos', () => {
       // Adicionar aos favoritos
       await prisma.favoritoArtigo.create({
         data: {
-          id_usuario: usuario.id,
+          id_usuario: usuario.id_usuario,
           id_artigo: artigo.id,
         },
       });
@@ -437,7 +437,7 @@ describe('Testes de Integração - Artigos', () => {
       await expect(
         prisma.favoritoArtigo.create({
           data: {
-            id_usuario: usuario.id,
+            id_usuario: usuario.id_usuario,
             id_artigo: artigo.id,
           },
         })
@@ -466,20 +466,20 @@ describe('Testes de Integração - Artigos', () => {
       // Adicionar aos favoritos
       await prisma.favoritoArtigo.createMany({
         data: [
-          { id_usuario: usuario.id, id_artigo: artigo1.id },
-          { id_usuario: usuario.id, id_artigo: artigo2.id },
+          { id_usuario: usuario.id_usuario, id_artigo: artigo1.id },
+          { id_usuario: usuario.id_usuario, id_artigo: artigo2.id },
         ],
       });
 
       // Buscar favoritos
       const favoritos = await prisma.favoritoArtigo.findMany({
-        where: { id_usuario: usuario.id },
-        include: { artigo: true },
+        where: { id_usuario: usuario.id_usuario },
+        include: { Artigo: true },
       });
 
       expect(favoritos.length).toBe(2);
-      expect(favoritos[0].artigo.titulo).toBe('Artigo 1');
-      expect(favoritos[1].artigo.titulo).toBe('Artigo 2');
+      expect(favoritos[0].Artigo.titulo).toBe('Artigo 1');
+      expect(favoritos[1].Artigo.titulo).toBe('Artigo 2');
     });
   });
 });

@@ -84,12 +84,12 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           avaliacoes: {
             create: [
               {
-                id_usuario: usuario1.id,
+                id_usuario: usuario1.id_usuario,
                 nota: 5,
                 comentario: 'Produto excelente!',
               },
               {
-                id_usuario: usuario2.id,
+                id_usuario: usuario2.id_usuario,
                 nota: 4,
                 comentario: 'Muito bom, recomendo!',
               },
@@ -117,25 +117,25 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           marca: 'Neutrogena',
           preco: 35.00,
           id_categoria: 4,
-          imagens: {
+          ImagemProduto: {
             create: [
-              { url: 'https://exemplo.com/frente.jpg', ordem: 1 },
-              { url: 'https://exemplo.com/verso.jpg', ordem: 2 },
-              { url: 'https://exemplo.com/lateral.jpg', ordem: 3 },
-              { url: 'https://exemplo.com/detalhe.jpg', ordem: 4 },
+              { url_imagem: 'https://exemplo.com/frente.jpg', ordem: 1 },
+              { url_imagem: 'https://exemplo.com/verso.jpg', ordem: 2 },
+              { url_imagem: 'https://exemplo.com/lateral.jpg', ordem: 3 },
+              { url_imagem: 'https://exemplo.com/detalhe.jpg', ordem: 4 },
             ],
           },
         },
         include: {
-          imagens: {
+          ImagemProduto: {
             orderBy: { ordem: 'asc' },
           },
         },
       });
 
-      expect(produto.imagens.length).toBe(4);
-      expect(produto.imagens[0].ordem).toBe(1);
-      expect(produto.imagens[3].ordem).toBe(4);
+      expect(produto.ImagemProduto.length).toBe(4);
+      expect(produto.ImagemProduto[0].ordem).toBe(1);
+      expect(produto.ImagemProduto[3].ordem).toBe(4);
     });
   });
 
@@ -147,26 +147,26 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           slug: 'guia-hidratacao',
           conteudo: 'Conteúdo detalhado...',
           status: 'publicado',
-          tags: {
+          ArtigoTag: {
             create: [
-              { id_tag: 1 }, // Hidratação
-              { id_tag: 2 }, // Nutrição
-              { id_tag: 4 }, // Vegano
-              { id_tag: 5 }, // Orgânico
+              { tagId: 1 }, // Hidratação
+              { tagId: 2 }, // Nutrição
+              { tagId: 4 }, // Vegano
+              { tagId: 5 }, // Orgânico
             ],
           },
         },
         include: {
-          tags: {
+          ArtigoTag: {
             include: {
-              tag: true,
+              Tag: true,
             },
           },
         },
       });
 
-      expect(artigo.tags.length).toBe(4);
-      const nomesTag = artigo.tags.map(at => at.tag.nome);
+      expect(artigo.ArtigoTag.length).toBe(4);
+      const nomesTag = artigo.ArtigoTag.map(at => at.Tag.nome);
       expect(nomesTag).toContain('Hidratação');
       expect(nomesTag).toContain('Vegano');
     });
@@ -179,8 +179,8 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           slug: 'hidratacao-capilar',
           conteudo: '...',
           status: 'publicado',
-          tags: {
-            create: [{ id_tag: 1 }], // Hidratação
+          ArtigoTag: {
+            create: [{ tagId: 1 }], // Hidratação
           },
         },
       });
@@ -191,8 +191,8 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           slug: 'hidratacao-pele',
           conteudo: '...',
           status: 'publicado',
-          tags: {
-            create: [{ id_tag: 1 }], // Hidratação
+          ArtigoTag: {
+            create: [{ tagId: 1 }], // Hidratação
           },
         },
       });
@@ -200,9 +200,9 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
       // Buscar artigos com tag de Hidratação
       const artigosComHidratacao = await prisma.artigo.findMany({
         where: {
-          tags: {
+          ArtigoTag: {
             some: {
-              id_tag: 1,
+              tagId: 1,
             },
           },
         },
@@ -220,8 +220,8 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
             slug: `artigo-${i}`,
             conteudo: '...',
             status: 'publicado',
-            tags: {
-              create: [{ id_tag: 1 }], // Hidratação
+            ArtigoTag: {
+              create: [{ tagId: 1 }], // Hidratação
             },
           },
         });
@@ -229,7 +229,7 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
 
       // Contar artigos com tag "Hidratação"
       const count = await prisma.artigoTag.count({
-        where: { id_tag: 1 },
+        where: { tagId: 1 },
       });
 
       expect(count).toBe(3);
@@ -262,19 +262,19 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
       // Adicionar aos favoritos
       await prisma.favorito.createMany({
         data: [
-          { id_usuario: usuario.id, id_produto: produto1.id },
-          { id_usuario: usuario.id, id_produto: produto2.id },
+          { id_usuario: usuario.id_usuario, id_produto: produto1.id_produto },
+          { id_usuario: usuario.id_usuario, id_produto: produto2.id_produto },
         ],
       });
 
       // Deletar usuário
       await prisma.usuario.delete({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       // Verificar que favoritos foram deletados em cascade
       const favoritos = await prisma.favorito.findMany({
-        where: { id_usuario: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       expect(favoritos.length).toBe(0);
@@ -282,8 +282,8 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
       // Verificar que produtos NÃO foram deletados
       const produtos = await prisma.produto.findMany({
         where: {
-          id: {
-            in: [produto1.id, produto2.id],
+          id_produto: {
+            in: [produto1.id_produto, produto2.id_produto],
           },
         },
       });
@@ -310,19 +310,19 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
       // Criar avaliações
       await prisma.avaliacao.createMany({
         data: [
-          { id_usuario: usuario.id, id_produto: produto.id, nota: 5, comentario: 'Ótimo!' },
-          { id_usuario: usuario.id, id_produto: produto.id, nota: 4, comentario: 'Bom!' },
+          { id_usuario: usuario.id_usuario, id_produto: produto.id_produto, nota: 5, comentario: 'Ótimo!' },
+          { id_usuario: usuario.id_usuario, id_produto: produto.id_produto, nota: 4, comentario: 'Bom!' },
         ],
       });
 
       // Deletar usuário
       await prisma.usuario.delete({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       // Verificar que avaliações foram deletadas
       const avaliacoes = await prisma.avaliacao.findMany({
-        where: { id_usuario: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       expect(avaliacoes.length).toBe(0);
@@ -335,11 +335,11 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           marca: 'Marca',
           preco: 40.00,
           id_categoria: 1,
-          imagens: {
+          ImagemProduto: {
             create: [
-              { url: 'https://exemplo.com/img1.jpg', ordem: 1 },
-              { url: 'https://exemplo.com/img2.jpg', ordem: 2 },
-              { url: 'https://exemplo.com/img3.jpg', ordem: 3 },
+              { url_imagem: 'https://exemplo.com/img1.jpg', ordem: 1 },
+              { url_imagem: 'https://exemplo.com/img2.jpg', ordem: 2 },
+              { url_imagem: 'https://exemplo.com/img3.jpg', ordem: 3 },
             ],
           },
         },
@@ -347,12 +347,12 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
 
       // Deletar produto
       await prisma.produto.delete({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       // Verificar que imagens foram deletadas
       const imagens = await prisma.imagemProduto.findMany({
-        where: { id_produto: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       expect(imagens.length).toBe(0);
@@ -376,7 +376,7 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           id_categoria: 1,
           avaliacoes: {
             create: [
-              { id_usuario: usuario.id, nota: 5, comentario: 'Excelente!' },
+              { id_usuario: usuario.id_usuario, nota: 5, comentario: 'Excelente!' },
             ],
           },
         },
@@ -384,12 +384,12 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
 
       // Deletar produto
       await prisma.produto.delete({
-        where: { id: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       // Verificar que avaliações foram deletadas
       const avaliacoes = await prisma.avaliacao.findMany({
-        where: { id_produto: produto.id },
+        where: { id_produto: produto.id_produto },
       });
 
       expect(avaliacoes.length).toBe(0);
@@ -402,11 +402,11 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
           slug: 'artigo-tags',
           conteudo: '...',
           status: 'publicado',
-          tags: {
+          ArtigoTag: {
             create: [
-              { id_tag: 1 },
-              { id_tag: 2 },
-              { id_tag: 3 },
+              { tagId: 1 },
+              { tagId: 2 },
+              { tagId: 3 },
             ],
           },
         },
@@ -419,7 +419,7 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
 
       // Verificar que relacionamentos ArtigoTag foram deletados
       const artigoTags = await prisma.artigoTag.findMany({
-        where: { id_artigo: artigo.id },
+        where: { artigoId: artigo.id },
       });
 
       expect(artigoTags.length).toBe(0);
@@ -427,7 +427,7 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
       // Verificar que as Tags em si NÃO foram deletadas
       const tags = await prisma.tag.findMany({
         where: {
-          id: {
+          id_tag: {
             in: [1, 2, 3],
           },
         },
@@ -478,7 +478,7 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
         prisma.favorito.create({
           data: {
             id_usuario: 999999, // Usuário inexistente
-            id_produto: produto.id,
+            id_produto: produto.id_produto,
           },
         })
       ).rejects.toThrow();
@@ -497,7 +497,7 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
       await expect(
         prisma.avaliacao.create({
           data: {
-            id_usuario: usuario.id,
+            id_usuario: usuario.id_usuario,
             id_produto: 999999, // Produto inexistente
             nota: 5,
             comentario: 'Ótimo!',
@@ -535,8 +535,8 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
         // Adicionar aos favoritos
         const favorito = await tx.favorito.create({
           data: {
-            id_usuario: usuario.id,
-            id_produto: produto.id,
+            id_usuario: usuario.id_usuario,
+            id_produto: produto.id_produto,
           },
         });
 
@@ -545,8 +545,8 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
 
       expect(resultado.usuario.nome).toBe('João Silva');
       expect(resultado.produto.nome).toBe('Shampoo Especial');
-      expect(resultado.favorito.id_usuario).toBe(resultado.usuario.id);
-      expect(resultado.favorito.id_produto).toBe(resultado.produto.id);
+      expect(resultado.favorito.id_usuario).toBe(resultado.usuario.id_usuario);
+      expect(resultado.favorito.id_produto).toBe(resultado.produto.id_produto);
     });
 
     it('deve fazer rollback completo ao falhar em transação complexa', async () => {
@@ -625,31 +625,31 @@ describe('Testes de Integração - Relacionamentos e Cascades', () => {
         // Adicionar imagens
         await tx.imagemProduto.createMany({
           data: [
-            { id_produto: novoProduto.id, url: 'https://exemplo.com/img1.jpg', ordem: 1 },
-            { id_produto: novoProduto.id, url: 'https://exemplo.com/img2.jpg', ordem: 2 },
+            { id_produto: novoProduto.id_produto, url_imagem: 'https://exemplo.com/img1.jpg', ordem: 1 },
+            { id_produto: novoProduto.id_produto, url_imagem: 'https://exemplo.com/img2.jpg', ordem: 2 },
           ],
         });
 
         // Adicionar avaliação
         await tx.avaliacao.create({
           data: {
-            id_produto: novoProduto.id,
-            id_usuario: usuario.id,
+            id_produto: novoProduto.id_produto,
+            id_usuario: usuario.id_usuario,
             nota: 5,
             comentario: 'Produto maravilhoso!',
           },
         });
 
         return tx.produto.findUnique({
-          where: { id: novoProduto.id },
+          where: { id_produto: novoProduto.id_produto },
           include: {
-            imagens: true,
+            ImagemProduto: true,
             avaliacoes: true,
           },
         });
       });
 
-      expect(produto?.imagens.length).toBe(2);
+      expect(produto?.ImagemProduto.length).toBe(2);
       expect(produto?.avaliacoes.length).toBe(1);
       expect(produto?.avaliacoes[0].nota).toBe(5);
     });

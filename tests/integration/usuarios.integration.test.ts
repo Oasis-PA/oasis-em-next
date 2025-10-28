@@ -18,11 +18,11 @@ describe('Testes de Integração - Usuários', () => {
         },
       });
 
-      expect(usuario).toHaveProperty('id');
+      expect(usuario).toHaveProperty('id_usuario');
       expect(usuario.nome).toBe('João Silva');
       expect(usuario.email).toBe('joao@teste.com');
       expect(usuario.id_genero).toBe(1);
-      expect(usuario.createdAt).toBeInstanceOf(Date);
+      expect(usuario.data_cadastro).toBeInstanceOf(Date);
     });
 
     it('deve rejeitar criação de usuário com email duplicado (constraint de unicidade)', async () => {
@@ -115,7 +115,7 @@ describe('Testes de Integração - Usuários', () => {
 
       // Buscar com relacionamentos
       const usuarioComRelacionamentos = await prisma.usuario.findUnique({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
         include: {
           genero: true,
           tipo_cabelo: true,
@@ -123,7 +123,7 @@ describe('Testes de Integração - Usuários', () => {
       });
 
       expect(usuarioComRelacionamentos?.genero?.nome).toBe('Feminino');
-      expect(usuarioComRelacionamentos?.tipo_cabelo?.tipo).toBe('Cacheado');
+      expect(usuarioComRelacionamentos?.tipo_cabelo?.nome).toBe('Ondulado');
     });
 
     it('deve retornar null ao buscar usuário inexistente', async () => {
@@ -150,7 +150,7 @@ describe('Testes de Integração - Usuários', () => {
 
       // Atualizar usuário
       const usuarioAtualizado = await prisma.usuario.update({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
         data: {
           nome: 'João Silva',
           sobrenome: 'Santos',
@@ -180,7 +180,7 @@ describe('Testes de Integração - Usuários', () => {
       // Alterar senha
       const novaSenhaHash = await bcrypt.hash('NovaSenha456@', 10);
       const usuarioAtualizado = await prisma.usuario.update({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
         data: { senha: novaSenhaHash },
       });
 
@@ -214,7 +214,7 @@ describe('Testes de Integração - Usuários', () => {
       // Tentar atualizar email do segundo usuário para o email do primeiro
       await expect(
         prisma.usuario.update({
-          where: { id: usuario2.id },
+          where: { id_usuario: usuario2.id_usuario },
           data: { email: 'joao@teste.com' }, // Email já existe
         })
       ).rejects.toThrow();
@@ -236,12 +236,12 @@ describe('Testes de Integração - Usuários', () => {
 
       // Deletar usuário
       await prisma.usuario.delete({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       // Verificar que não existe mais
       const usuarioDeletado = await prisma.usuario.findUnique({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       expect(usuarioDeletado).toBeNull();
@@ -262,20 +262,20 @@ describe('Testes de Integração - Usuários', () => {
       // Criar token de reset
       await prisma.passwordReset.create({
         data: {
-          email: usuario.email,
+          id_usuario: usuario.id_usuario,
           token: 'token-teste-123',
-          expira_em: new Date(Date.now() + 3600000),
+          expiresAt: new Date(Date.now() + 3600000),
         },
       });
 
       // Deletar usuário (deve deletar tokens em cascade)
       await prisma.usuario.delete({
-        where: { id: usuario.id },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       // Verificar que tokens também foram deletados
       const tokens = await prisma.passwordReset.findMany({
-        where: { email: usuario.email },
+        where: { id_usuario: usuario.id_usuario },
       });
 
       expect(tokens.length).toBe(0);
@@ -336,7 +336,7 @@ describe('Testes de Integração - Usuários', () => {
 
         // Atualizar perfil
         const usuarioAtualizado = await tx.usuario.update({
-          where: { id: usuario.id },
+          where: { id_usuario: usuario.id_usuario },
           data: {
             sobre: 'Perfil criado em transação',
             id_tipo_cabelo: 2,

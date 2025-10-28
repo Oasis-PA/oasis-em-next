@@ -67,17 +67,18 @@ model Produto {
   id_tag         Int?
   id_tipo_pele   Int?
   id_tipo_cabelo Int?
-  composicao     String?         // Sem @db.VarChar
-  qualidades     String?         // Sem @db.VarChar
-  mais_detalhes  String?         // Sem @db.VarChar
   url_imagem     String?         @db.VarChar(500)
   url_loja       String?         @db.VarChar(500)
+  composicao     String?
+  qualidades     String?
+  mais_detalhes  String?
   avaliacoes     Avaliacao[]
   favoritos      Favorito[]
   ImagemProduto  ImagemProduto[]
   categoria      Categoria       @relation(fields: [id_categoria], references: [id_categoria])
   tag            Tag?            @relation(fields: [id_tag], references: [id_tag], onDelete: NoAction, onUpdate: NoAction)
   tipo_cabelo    TipoCabelo?     @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo], onDelete: NoAction, onUpdate: NoAction)
+  TipoPele       TipoPele?       @relation(fields: [id_tipo_pele], references: [id_tipo_pele], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model Avaliacao {
@@ -113,7 +114,7 @@ model PasswordReset {
   id_usuario Int
   expiresAt  DateTime
   createdAt  DateTime @default(now())
-  usuario    Usuario  @relation(fields: [id_usuario], references: [id_usuario])
+  usuario    Usuario  @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction)
 }
 
 model Artigo {
@@ -133,9 +134,10 @@ model Artigo {
 }
 
 model TipoPele {
-  id_tipo_pele Int      @id @default(autoincrement())
-  created_at   DateTime @default(now()) @db.Timestamptz(6)
+  id_tipo_pele Int       @id @default(autoincrement())
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
   nome         String?
+  Produto      Produto[]
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.

@@ -48,7 +48,9 @@
       "Bash(if [ -f package-lock.json ])",
       "Bash(then echo \"package-lock.json existe\")",
       "Bash(else echo \"package-lock.json NÃO existe\")",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(dotenv -e .env.test -- npx prisma db push:*)",
+      "Bash(npx jest:*)"
     ],
     "deny": [],
     "ask": []
