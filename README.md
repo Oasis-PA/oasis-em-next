@@ -163,18 +163,32 @@ GET /api/tags: Listar tags.
 POST /api/tags: Criar uma nova tag.
 
 🧪 Testes
-O projeto utiliza Jest para testes unitários e de integração.
+O projeto possui uma suíte completa de **~177 testes** cobrindo 6 níveis:
 
-Bash
-
+```bash
 # Executar todos os testes
-npm run test
+npm test
 
-# Executar testes em modo "watch"
-npm run test:watch
-
-# Executar apenas os testes da API
+# Testes unitários e validações (50 testes)
+npm run test:validations
 npm run test:api
+
+# Testes de integração (68 testes)
+npm run test:integration
+
+# Testes avançados (59 testes)
+npm run test:performance    # Performance de queries
+npm run test:concurrency    # Concorrência e race conditions
+npm run test:migration      # Migrações e integridade
+npm run test:backup         # Backup e restore
+npm run test:advanced       # Todos os avançados
+
+# Outros
+npm run test:watch          # Modo watch
+npm run test:coverage       # Cobertura de código
+```
+
+📖 **Para documentação completa de testes, consulte:** [`tests/README.md`](./tests/README.md)
 
 🏛️ Arquitetura e Documentação Técnica
 Para uma análise aprofundada da arquitetura do projeto, das decisões técnicas e dos fluxos de trabalho detalhados, consulte a nossa documentação completa na pasta docs/.
