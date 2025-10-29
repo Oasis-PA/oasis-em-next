@@ -123,21 +123,6 @@
     gap: 1rem;
 }
 
-@media (max-width: 768px) {
-    .artigos-container {
-        padding: 2rem 1rem;
-    }
-
-    .artigos-titulo {
-        font-size: 2.5rem;
-    }
-
-    .artigos-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-}
-
 .check{
     opacity: 0;
     position: absolute;
@@ -172,12 +157,13 @@
 body
 {
     background-color: var(--body-back);
+    overflow-x: hidden;
 }
 body > h5
 {
 text-align: center;
 font-family: "PLAYFUL RUNWAY";
-font-size: 96px;
+font-size: clamp(2.5rem, 6vw, 96px);
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -186,11 +172,15 @@ body > p
 {
 text-align: center;
 font-family: "PLAYFUL RUNWAY";
-font-size: var(--Subttulo, 24px);
+font-size: clamp(1rem, 2vw, 24px);
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 margin-bottom: 10rem;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+padding: 0 1rem;
 }
 
 main
@@ -198,15 +188,15 @@ main
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
     
     margin-top: 91px;
 }
 main>h5
 {
     font-family: "The Next Font";
-    font-size: var(--TTULO-2, 45px);
+    font-size: clamp(2rem, 3vw, 45px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -223,12 +213,20 @@ main>h5
     margin-top: 40px;
     margin-left: 130px;
     grid-area: 1 / 1 / 2 / 2;
+    position: relative;
 }
 
 .grupo-1 > svg
 {
-    margin-left: 737px;
-    transform: translateY(16px);
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin-left: 0;
+    transform: none;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
+    z-index: 1;
 }
 .grupo-1 > img
 {
@@ -245,7 +243,7 @@ main>h5
 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: var(--TTULO-2, 45px);
+    font-size: clamp(1.8rem, 3vw, 45px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -255,7 +253,7 @@ main>h5
 .grupo-1 > p
 {
 font-family: "Louis George Cafe";
-font-size: var(--CORPO-DE-TEXTO-2, 16px);
+font-size: clamp(0.9rem, 1vw, 16px);
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -305,7 +303,7 @@ margin-top: 18px;
 {
     color: #ffffff;
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;  
@@ -327,6 +325,9 @@ margin-top: 18px;
 {
     transform: translatey(-323px);
     margin-left: 780px;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
 }
 .Cartegorias-ladodireito
 {
@@ -337,7 +338,7 @@ margin-top: 18px;
 
     p{
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -354,7 +355,7 @@ margin-top: 18px;
 .grupo-2 > h4
 {
     font-family: "The Next Font";
-    font-size: var(--Subttulo, 24px);
+    font-size: clamp(1.25rem, 2vw, 24px);
     font-weight: 400;
     line-height: normal;
 
@@ -371,7 +372,7 @@ margin-top: 18px;
 .descrição
 {
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 20px);
+    font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -380,7 +381,7 @@ margin-top: 18px;
 .data 
 {
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -398,7 +399,7 @@ margin-top: 18px;
 .grupo-3 >h4
 {
     font-family: "The Next Font";
-    font-size: var(--Subttulo, 24px);
+    font-size: clamp(1.25rem, 2vw, 24px);
     font-weight: 400;
     line-height: normal;
 
@@ -412,377 +413,15 @@ margin-top: 18px;
     height: 97px;
     flex-shrink: 0;
 }
-.descrição
-{
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    transform: translatey(-248px);
-}
 .grupo-3 > svg
 {
     transform: translatey(-323px);
     margin-left: 780px;
-}
-.Cartegorias-ladodireito
-{
-    display: flex;
-    gap: 19px;
-    margin-left: 380px;
-    transform: translateY(-246px);
-
-
-
-    p{
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
-
-    border-radius: 30px;
-    border: 1px solid #585858;
-    background: #FFF;
-    width: 81px;
-    height: 21px;
+    width: 16px;
+    height: 22px;
     flex-shrink: 0;
-    }
 }
 
-@media (max-width: 700px) {
-
-    body > h5 {
-        font-size: 48px;
-    }
-    body > p {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    main{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 0 1rem;
-    }
-
-    main > h5 {
-        position: static;
-        margin-top: 1rem;
-        margin-left: 0;
-        font-size: 32px;
-    }
-
-    .grupo-1{
-        margin-left: 0;
-        margin-top: 1rem;
-        width: 100%;
-        height: auto;
-    }
-    .grupo-1 > img {
-        width: 100%;
-        height: auto;
-        margin-top: 0;
-        object-fit: cover;
-    }
-     .grupo-1 > p, .grupo-1 > h4 {
-        position: static;
-        transform: none;
-        line-height: normal;
-        margin-left: 0;
-        margin-top: 0.5rem;
-        width: 100%;
-    }
-    .grupo-1 > h4 {
-        font-size: 24px;
-        color: var(--text-color);
-    }
-    .grupo-1 > svg {
-        position: static;
-        transform: none;
-        margin-left: auto;
-        display: block;
-        margin-top: 0.5rem;
-    }
-    .Cartegorias {
-        position: static;
-        margin-left: 0;
-        margin-top: 0.5rem;
-    }
-    
-    .grupo-2, .grupo-3 {
-        margin-top: 2rem;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        margin-bottom: 2rem;
-        height: auto;
-    }
-    .grupo-2 > img, .grupo-3 > img {
-        width: 100%;
-        height: auto;
-    }
-    .grupo-2 > p, .grupo-3 > p {
-        width: 100%;
-    }
-    .grupo-2 > h4, .grupo-3 > h4,
-    .grupo-2 > .data, .grupo-3 > .data,
-    .grupo-2 > .descrição, .grupo-3 > .descrição,
-    .grupo-2 > .Cartegorias-ladodireito, .grupo-3 > .Cartegorias-ladodireito,
-    .grupo-2 > svg, .grupo-3 > svg {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-    }
-    .Cartegorias-ladodireito {
-        margin-left: 0;
-    }
-    
-    .seção {
-        width: 100%;
-        height: 30vh;
-        margin-left: 0;
-        margin-top: 2rem;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-    }
-    #data {
-        position: static;
-        transform: none;
-        width: auto;
-        height: auto;
-        margin: 1rem;
-    }
-    #texto {
-        position: static;
-        transform: none;
-        width: calc(100% - 2rem);
-        height: auto;
-        margin: 1rem;
-    }
-    #texto h5 {
-        font-size: 32px;
-        line-height: 1.2;
-        width: 100%;
-        height: auto;
-        margin-left: 0;
-    }
-    #carte-seção {
-        position: static;
-        transform: none;
-        margin: 1rem;
-    }
-    #sorriso {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        margin-left: 0;
-        transform: none;
-    }
-    
-    .seção2 {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        margin-left: 0;
-        margin-top: 2rem;
-        width: 100%;
-        height: auto;
-    }
-    .grupo-4 {
-        width: 50%;
-        padding: 0 0.5rem;
-        height: auto;
-    }
-    .grupo-4 > img {
-        width: 100%;
-        height: auto;
-    }
-    .grupo-4 > h4, .grupo-4 > .data, .grupo-4 > .descrição-s2, .grupo-4 > .Cartegorias-ladodireito, .grupo-4 > svg {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-    }
-    .descrição-s2 {
-        width: 100%;
-    }
-    #mulher-gloss {
-        margin-left: 0;
-        margin-top: 0.5rem;
-        width: 100%;
-    }
-    .grupo-5 {
-        width: 100%;
-        order: 3;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 2rem;
-        height: auto;
-    }
-    .grupo-5 > img {
-        width: 100%;
-        height: auto;
-    }
-    .grupo-5 > h4, .grupo-5 > .data, .grupo-5 > #descri, .grupo-5 > .Cartegorias-grupo5, .grupo-5 > svg {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-    }
-    #descri {
-        width: 100%;
-    }
-    .grupo-5 > h4 {
-        color: var(--text-color);
-        font-size: 32px;
-        line-height: 1.2;
-    }
-    .Cartegorias-grupo5 {
-        margin-left: 0;
-    }
-
-    #linha {
-        display: none;
-    }
-    
-    .grupos-linha1, .grupos-linha2 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-left: 0;
-        margin-top: 2rem;
-        width: 100%;
-    }
-    .grupos-linha1 > div, .grupos-linha2 > div {
-        width: 100%;
-    }
-    .grupos-linha1 > div > img, .grupos-linha2 > div > img {
-        width: 100%;
-        height: auto;
-    }
-    .data-linha, .save-icon, .h4-linha, .descrição-linha, .Cartegorias-linha {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0.5rem;
-        width: 100%;
-        height: auto;
-    }
-    .data-linha {
-        color: var(--text-color);
-    }
-    .save-icon {
-        margin-left: auto;
-        width: 16px;
-    }
-    .descrição-linha {
-        width: 100%;
-    }
-    .Cartegorias-linha p {
-        color: var(--text-color);
-        border-color: #000;
-    }
-
-    .cronograma-capilar {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0;
-        margin-top: 2rem;
-        width: 100%;
-        height: auto;
-    }
-    .cronograma-capilar > img {
-        width: 100%;
-        height: auto;
-    }
-    .cronograma-capilar > h5 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 1rem;
-        font-size: 32px;
-        line-height: 1.2;
-    }
-    .cronograma-capilar > button {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 1rem;
-    }
-
-    .seção3 {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0;
-        margin-top: 2rem;
-        width: 100%;
-    }
-    .grupo-6, .linha1, .linha2 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0;
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-    .grupo-6 > img, .grupo-7 > img {
-        width: 100%;
-        height: auto;
-    }
-    .grupo-6 > h4, .grupo-6 > .data, .grupo-6 > .Cartegorias-g6, .grupo-6 > svg {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-    }
-    .Cartegorias-g6 {
-        margin-left: 0;
-    }
-    .grupo-6 > h4 {
-        width: 100%;
-    }
-    .grupo-7 > h4, .grupo-7 > .datag7, .grupo-7 > .Cartegorias-g7, .grupo-7 > svg {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-    }
-    .datag7, .grupo-7 > h4 {
-        color: var(--text-color);
-    }
-    .Cartegorias-g7 {
-        margin-left: 0;
-    }
-    .Cartegorias-g7 p {
-        color: var(--text-color);
-        border-color: #000;
-    }
-
-}
 .seção
 {
     background-image: url(/images/artigo-geral/mulher-pedra.png);
@@ -792,7 +431,20 @@ margin-top: 18px;
 
     margin-top: -300px;
     margin-left: 130px;
+    position: relative;
 }
+#sorriso{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin: 0;
+    transform: none;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
 .seção2
 {
     display: flex;
@@ -817,7 +469,7 @@ margin-top: 18px;
     p{
     text-align: center;
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -838,7 +490,7 @@ margin-top: 18px;
    
     h5{
     font-family: "The Next Font";
-    font-size: 64px;
+    font-size: clamp(2.5rem, 5vw, 64px);
     font-style: normal;
     font-weight: 400;
     line-height: 65px;
@@ -872,7 +524,7 @@ margin-top: 18px;
 .grupo-4 > h4
 {
     font-family: "The Next Font";
-    font-size: var(--Subttulo, 24px);
+    font-size: clamp(1.25rem, 2vw, 24px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -881,7 +533,7 @@ margin-top: 18px;
 .descrição-s2
 {
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 20px);
+    font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -899,59 +551,36 @@ margin-top: 18px;
 {
     margin-left: 95%;
     margin-top: -5px;
-}
-#descri
-{
-    width: 718px;
-    height: 97px;
+    width: 16px;
+    height: 22px;
     flex-shrink: 0;
-    margin-bottom: 110px;
-
-    color: #000;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }
 .grupo-5
 {
     margin-right: 57px;
     margin-left: 57px;
+    position: relative;
+    padding-top: 0; /* Removed padding-top */
+    height: auto;
 }
-.grupo-5 > h4
+.grupo-5 > #descri
 {
-    color: #ffffff;
-font-family: "The Next Font";
-font-size: var(--TTULO-1, 110px);
-font-style: normal;
-font-weight: 400;
-line-height: 111px;
-
-display: flex;
-width: 714px;
-height: 163px;
-flex-direction: column;
-justify-content: center;
-flex-shrink: 0;
-transform: translateY(-299px);
+    width: 718px;
+    flex-shrink: 0;
+    margin-bottom: 1.5rem;
+    color: #000;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 1.5vw, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
-#data5
-{
-  transform: translateY(-460px);
-  margin-left: 19px;
-}
-.grupo-5 > svg
-{
-    transform: translateY(-479px);
-    margin-left: 688px;
-}
-.Cartegorias-grupo5 
+.grupo-5 > .Cartegorias-grupo5 
 {
     display: flex;
     gap: 19px;
-    margin-left: 535px;
-    transform: translateY(-7px);
+    margin: 0 0 1.5rem 0;
+    transform: none;
     
    
     p{
@@ -965,13 +594,60 @@ transform: translateY(-299px);
 
     color: #000;
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     }
     
 }
+.grupo-5 > img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    position: relative;
+}
+
+.grupo-5 > #data5
+{
+  position: absolute;
+  top: 1rem; /* Position from top of .grupo-5 */
+  left: 1rem;
+  transform: none;
+  margin: 0;
+  z-index: 1;
+  color: #FFF;
+}
+.grupo-5 > svg
+{
+    position: absolute;
+    top: 1rem; /* Position from top of .grupo-5 */
+    right: 1rem;
+    transform: none;
+    margin: 0;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.grupo-5 > h4
+{
+    position: absolute;
+    top: 4rem; /* Position from top of .grupo-5 */
+    left: 1rem;
+    transform: none;
+    color: #ffffff;
+    font-family: "The Next Font";
+    font-size: clamp(3.5rem, 8vw, 90px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    width: 90%;
+    height: auto;
+    margin: 0;
+    z-index: 1;
+}
+
 #linha
 {
     margin-left: 135px;
@@ -990,7 +666,7 @@ transform: translateY(-299px);
 {
     color: #ffffff;
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -999,15 +675,17 @@ transform: translateY(-299px);
     margin-left: 12px;
 }
 .save-icon{
-   
-    margin-left: 87%;
-    transform: translatey(-50%);
-    
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin: 0;
+    transform: none;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
+    z-index: 1;
 }
-#sorriso{
-    margin-left: 97%;
-    transform: translatey(100%);
-}
+
 .svg-linha
 {
     margin-left: 343px;
@@ -1016,7 +694,7 @@ transform: translateY(-299px);
 .h4-linha
 {
     font-family: "The Next Font";
-    font-size: var(--Subttulo, 24px);
+    font-size: clamp(1.25rem, 2vw, 24px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1027,7 +705,7 @@ transform: translateY(-299px);
 .descrição-linha
 {
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 20px);
+    font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1054,7 +732,7 @@ transform: translateY(-299px);
 
     font-family: "Louis George Cafe";
     color: #FFF;
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1089,7 +767,7 @@ transform: translateY(-299px);
     h5{
     width: 906px;
     font-family: "The Next Font";
-    font-size: var(--TTULO-1, 110px);
+    font-size: clamp(3.5rem, 8vw, 110px);
     font-style: normal;
     font-weight: 400;
     line-height: 115px;
@@ -1119,7 +797,7 @@ transform: translateY(-299px);
     color: #f3f3f3;
     text-align: center;
     font-family: "The Next Font";
-    font-size: 20px;
+    font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1131,63 +809,98 @@ transform: translateY(-299px);
 {
     margin-left: 126px;
     margin-top: 13%;
+    display: grid;
+    grid-template-columns: 464px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 60px;
+}
+.grupo-6
+{
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 500px;
+    background-image: url(/images/artigo-geral/img1.png);
+    background-size: cover;
+    background-position: center;
+    padding: 1rem;
+}
+.grupo-6 > img { display: none; }
+
+.grupo-6 > #datas3
+{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    margin: 0;
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.9rem, 1vw, 16px);
 }
 .grupo-6 > svg
 {
-transform: translateY(-210px);
-margin-left: 12px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+    margin: 0;
+    transform: none;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
+}
+.grupo-6 > h4
+{
+    position: absolute;
+    bottom: 4rem;
+    left: 1rem;
+    z-index: 1;
+    margin: 0;
+    max-width: 90%;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(2rem, 3vw, 45px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: auto;
 }
 .Cartegorias-g6
 {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1;
+    margin: 0;
+    transform: none;
     display: flex;
-    gap: 19px;
-    transform: translateY(-270px);
-    margin-left: 320px;
+    gap: 10px;
 
     p{ 
     width: 81px;
     height: 21px;
     flex-shrink: 0;
     border-radius: 30px;
-    border: 1px solid #000000;
-    background: rgba(255, 255, 255, 0.00);
+    border: 1px solid #FFF;
+    background: rgba(255, 255, 255, 0.1);
 
     font-family: "Louis George Cafe";
-    color: #000000;
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    color: #FFF;
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-align: center;
     }
 }
-.grupo-6 > h4
-{
-    color: #000;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-2, 45px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 460px;
-
-    display: flex;
-    width: 464px;
-    height: 160px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-}
-#datas3
-{
-    margin-top: -660px;
-    margin-left: 12px;
-}
 .grupo-7 > h4
 {
     color: #ffffff;
     font-family: "The Next Font";
-    font-size: var(--TTULO-2, 45px);
+    font-size: clamp(2rem, 3vw, 45px);
     font-style: normal;
     font-weight: 400;
     line-height: 46px;
@@ -1206,7 +919,7 @@ margin-left: 12px;
     margin-left: 16px;
     color: #FFF;
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 16px);
+    font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1215,6 +928,9 @@ margin-left: 12px;
 {
     transform: translatey(-24px);
     margin-left: 445px;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
 }
 .Cartegorias-g7
 {
@@ -1233,7 +949,7 @@ margin-left: 12px;
     
         font-family: "Louis George Cafe";
         color: #FFF;
-        font-size: var(--CORPO-DE-TEXTO-2, 16px);
+        font-size: clamp(0.9rem, 1vw, 16px);
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -1242,19 +958,665 @@ margin-left: 12px;
 }
 .linha1
 {  
-   margin-left: 600px;
+   grid-column: 2 / 3;
+   grid-row: 1 / 2;
+   margin: 0;
    display: flex;
    gap: 60px;
-   margin-top: -19.3%;
-
 }
 .linha2
 {
-    
-    margin-left: 600px;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    margin: 0;
     display: flex;
     gap: 60px;
-    margin-top: 11.5%;
     height: 422px;
- 
+}
+
+
+
+
+@media (max-width: 768px) {
+    .artigos-container {
+        padding: 2rem 1rem;
+    }
+
+    .artigos-titulo {
+        font-size: 2.5rem;
+    }
+
+    .artigos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 700px) {
+
+    body > h5 {
+        font-size: 48px;
+    }
+    body > p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+        margin-top: 2rem;
+    }
+
+    main > h5 {
+        position: static;
+        margin-top: 1rem;
+        margin-left: 0;
+        font-size: 32px;
+    }
+    
+    .grupo-1{
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+        height: auto;
+        position: relative;
+        aspect-ratio: 775 / 500;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .grupo-1 > img {
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+     .grupo-1 > p {
+        position: absolute;
+        transform: none;
+        line-height: normal;
+        margin-left: 0;
+        margin-top: 0;
+        width: auto;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 1;
+        color: #FFF;
+    }
+    .grupo-1 > h4 {
+        position: absolute;
+        transform: none;
+        line-height: 1.1;
+        margin-left: 0;
+        margin-top: 0;
+        width: 80%;
+        top: 4rem;
+        left: 1.5rem;
+        z-index: 1;
+        font-size: 24px;
+        color: #FFF;
+    }
+    .grupo-1 > svg {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 2;
+        width: 16px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+    .Cartegorias {
+        position: absolute;
+        margin-left: 0;
+        margin-top: 0;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 1;
+        flex-wrap: wrap;
+    }
+    .Cartegorias p {
+        padding: 2px 0;
+    }
+    
+    .grupo-2, .grupo-3, .grupo-4 {
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        margin-bottom: 0;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 10px 20px;
+    }
+    .grupo-2 > img, .grupo-3 > img, .grupo-4 > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        min-height: 150px;
+        grid-area: 1 / 1 / 5 / 2;
+    }
+    .grupo-2 > p, .grupo-3 > p, .grupo-4 > p {
+        width: 100%;
+        margin-left: 0;
+    }
+    .grupo-2 > h4, .grupo-3 > h4, .grupo-4 > h4 {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+        grid-area: 2 / 2 / 3 / 3;
+    }
+    .grupo-2 > .data, .grupo-3 > .data, .grupo-4 > .data {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    .grupo-2 > .descrição, .grupo-3 > .descrição, .grupo-4 > .descrição-s2 {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+        grid-area: 3 / 2 / 4 / 3;
+    }
+    .grupo-2 > .Cartegorias-ladodireito, .grupo-3 > .Cartegorias-ladodireito, .grupo-4 > .Cartegorias-ladodireito {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+        grid-area: 4 / 2 / 5 / 3;
+        align-self: end;
+    }
+    .grupo-2 > svg, .grupo-3 > svg, .grupo-4 > svg {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        grid-area: 1 / 2 / 2 / 3;
+        justify-self: end;
+        width: 16px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+    .Cartegorias-ladodireito {
+        margin-left: 0;
+        transform: none;
+    }
+    .Cartegorias-ladodireito p {
+        padding-top: 2px;
+    }
+    .descrição-s2 { width: 100%;}
+    #mulher-gloss { margin-left: 0; margin-top: 0; width: 100%;}
+    
+    .seção {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        margin-left: 0;
+        margin-top: 2rem;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    #data {
+        position: static;
+        transform: none;
+        width: fit-content;
+        height: auto;
+        margin: 0;
+        padding: 0.5rem 1rem;
+    }
+    #data p {
+        margin-top: 0;
+    }
+
+    #texto {
+        position: static;
+        transform: none;
+        width: 100%;
+        height: auto;
+        margin: 1rem 0 0 0;
+        padding: 1rem;
+    }
+    #texto h5 {
+        font-size: 32px;
+        line-height: 1.2;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-top: 0;
+    }
+    #carte-seção {
+        position: static;
+        transform: none;
+        margin: 1rem 0 0 0;
+    }
+    #carte-seção p {
+        padding-top: 2px;
+    }
+    #sorriso {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        margin-left: 0;
+        transform: none;
+        width: 16px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+    
+    .seção2 {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+        height: auto;
+    }
+   
+    .grupo-5 {
+        width: 100%;
+        grid-column: auto;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        height: fit-content; /* Changed to fit-content */
+        position: relative;
+        padding-top: 0; /* Reset padding */
+    }
+    /* Static content first */
+    .grupo-5 > #descri { order: 1; margin-bottom: 0.5rem; }
+    .grupo-5 > #cartegoria-grupo5 { order: 2; margin-bottom: 0.5rem;}
+    /* Image */
+    .grupo-5 > img { order: 3; width: 100%; height: auto; border-radius: 8px; margin-top: 0; }
+    /* Absolute content over image */
+    .grupo-5 > .data { order: 4; }
+    .grupo-5 > svg { order: 5; }
+    .grupo-5 > h4 { order: 6; }
+
+    .grupo-5 > h4 {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        width: 80%;
+        height: auto;
+        margin-top: 0;
+        color: #FFF;
+        font-size: 32px;
+        line-height: 1.2;
+        bottom: 3rem; /* Adjusted positioning relative to image bottom */
+        left: 1.5rem;
+        top: auto; /* Remove top positioning */
+        z-index: 1;
+    }
+    .grupo-5 > .data {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        width: auto;
+        height: auto;
+        margin-top: 0;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 1;
+        color: #FFF;
+    }
+    .grupo-5 > #descri {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+    .grupo-5 > .Cartegorias-grupo5 {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+    }
+    .grupo-5 > svg {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 1;
+        width: 16px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+    #descri {
+        width: 100%;
+    }
+    .Cartegorias-grupo5 {
+        margin-left: 0;
+        transform: none;
+    }
+     .Cartegorias-grupo5 p {
+        padding-top: 2px;
+     }
+
+    #linha {
+        display: none;
+    }
+    
+    .grupos-linha1, .grupos-linha2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+    }
+    .grupos-linha1 > div, .grupos-linha2 > div {
+        width: 100%;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .grupos-linha1 > div > img, .grupos-linha2 > div > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 9 / 11;
+    }
+    .data-linha {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        width: auto;
+        height: auto;
+        color: #FFF;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1;
+    }
+    .save-icon {
+        position: absolute;
+        transform: none;
+        margin-left: auto;
+        margin-top: 0;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1;
+        width: 16px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+    .h4-linha {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        width: 80%;
+        height: auto;
+        color: #FFF;
+        bottom: 3.5rem;
+        left: 1rem;
+        z-index: 1;
+    }
+    .descrição-linha {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        width: 80%;
+        height: auto;
+        color: #FFF;
+        bottom: 2.5rem;
+        left: 1rem;
+        z-index: 1;
+        display: none;
+    }
+    .Cartegorias-linha {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        width: auto;
+        height: auto;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 1;
+        flex-wrap: nowrap;
+        gap: 5px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .Cartegorias-linha::-webkit-scrollbar { display: none; }
+
+    .Cartegorias-linha p {
+        color: #FFF;
+        border-color: #FFF;
+        padding: 2px 8px;
+        flex-shrink: 0;
+        width: auto;
+        max-width: fit-content;
+    }
+
+    .cronograma-capilar {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+        height: auto;
+    }
+    .cronograma-capilar > img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .cronograma-capilar > h5 {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 1rem;
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    .cronograma-capilar > button {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: 49px;
+        margin-top: 1rem;
+    }
+
+    .seção3 {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+    }
+    .grupo-6, .linha1, .linha2 {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .linha1, .linha2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .grupo-6 > img, .grupo-7 > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .grupo-6 > img {
+        aspect-ratio: 1 / 1;
+    }
+    .grupo-7 > img {
+        aspect-ratio: 1 / 1;
+    }
+    
+    .grupo-6 > h4 {
+        position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+        order: 3;
+    }
+    .grupo-6 > .data {
+         position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+        order: 1;
+    }
+    .grupo-6 > .Cartegorias-g6 {
+         position: static;
+        transform: none;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+         order: 4;
+    }
+    .grupo-6 > svg {
+         position: static;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        align-self: flex-end;
+        width: 16px;
+        height: 22px;
+        flex-shrink: 0;
+        order: 2;
+    }
+    .grupo-6 > img { order: 5; }
+
+    .Cartegorias-g6 {
+        margin-left: 0;
+        transform: none;
+    }
+     .Cartegorias-g6 p {
+        padding-top: 2px;
+     }
+    .grupo-6 > h4 {
+        width: 100%;
+    }
+    .grupo-7 {
+        position: relative;
+    }
+    .grupo-7 > h4 {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        width: 80%;
+        height: auto;
+        margin-top: 0;
+        color: #FFF;
+        bottom: 3rem;
+        left: 1rem;
+        z-index: 1;
+        font-size: clamp(1.25rem, 4vw, 1.5rem);
+        line-height: 1.2;
+    }
+    .grupo-7 > .datag7 {
+        position: absolute;
+        transform: none;
+        margin-left: 0;
+        width: auto;
+        height: auto;
+        margin-top: 0;
+        color: #FFF;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1;
+    }
+    .grupo-7 > .Cartegorias-g7 {
+         position: absolute;
+        transform: none;
+        margin-left: 0;
+        width: auto;
+        height: auto;
+        margin-top: 0;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 1;
+        gap: 5px;
+        flex-wrap: nowrap;
+         overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+     .grupo-7 > .Cartegorias-g7::-webkit-scrollbar { display: none; }
+
+    .grupo-7 > svg {
+         position: absolute;
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1;
+        width: 16px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+    .datag7, .grupo-7 > h4 {
+        color: #FFF;
+    }
+    .Cartegorias-g7 {
+        margin-left: 0;
+        transform: none;
+        margin-top: 0;
+    }
+    .Cartegorias-g7 p {
+        color: #FFF;
+        border-color: #FFF;
+        padding: 2px 8px;
+        flex-shrink: 0;
+        width: auto;
+        max-width: fit-content;
+    }
 }

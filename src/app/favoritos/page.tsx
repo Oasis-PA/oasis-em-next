@@ -73,7 +73,7 @@ const Favoritos: React.FC = () => {
             faremos a seleção das lojas com os preços mais em conta para o seu bolso.
           </p>
           
-          <h1 id="h1-artigos">ARTIGOS FAVORITADOS</h1>
+          <h1 id="h1-artigos">ARTIGOS </h1>
           
           {isLoading ? (
             <div className="loading-container">
@@ -178,6 +178,127 @@ const Favoritos: React.FC = () => {
         </Link>
       </section>
 
+       <section id="section-imagem-marrom">
+        <div className="card-marrom">
+            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+            <div className="card-marrom-content">
+                <img src="/images/favoritos/fav.svg" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+                <button>CONHEÇA</button>
+            </div>
+        </div>
+
+        <div className="card-marrom">
+            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+            <div className="card-marrom-content">
+                <img src="/images/favoritos/fav.svg" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+                <button>CONHEÇA</button>
+            </div>
+        </div>
+
+        <div className="card-marrom">
+            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+            <div className="card-marrom-content">
+                <img src="/images/favoritos/fav.svg" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+                <button>CONHEÇA</button>
+            </div>
+        </div>
+    </section>
+    <section id="section-salvos-recen">
+        <h1 id="h1-salvos">Salvos Recentemente</h1>
+        <div id="section-salvos">
+            <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
+            <div className="card-salvo">
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+
+            <div className="card-salvo">
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+
+            <div className="card-salvo">
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+
+            <div className="card-salvo">
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+            <div className="card-salvo">
+                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+                <h1>PRODUTO TAL</h1>
+                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            </div>
+            <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
+        </div>
+        <Link href="#">
+            <p id="p3">Veja lista completa</p>
+        </Link>
+          <img id="img-dourada" src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
+      </section>
+
+      <section id="section-maisprodutos">
+        <h1 id="h1-maisprodutos">MAIS PRODUTOS</h1>
+        <div id="container-maisprodutos">
+           <div className="card-maisprodutos">
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
+
+            <div className="card-maisprodutos">
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
+
+            <div className="card-maisprodutos">
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
+
+             <div className="card-maisprodutos">
+               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+               <h1>PRODUTO TAL</h1>
+               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+               <div>
+                <h2>Vá para compra</h2>
+                <img src="/images/favoritos/seta.svg" alt="" />
+               </div>
+           </div>
+        </div>
+     </section>
+
       <section id="section-artigos-s2">
         <Link href='/artigo/10-tons-fantasticos'>
           <div id="artigo1-s2" className="artigo-s2-item">
@@ -209,6 +330,8 @@ const Favoritos: React.FC = () => {
           </div>
         </Link>
       </section>
+
+
       
       <Footer />
     </>
