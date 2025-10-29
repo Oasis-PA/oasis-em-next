@@ -18,39 +18,70 @@ html {
     overflow-x: hidden;
 }
 
-main {
+.representam{
     background-image: url(../../public/images/tinturas/header-bg.png);
+    padding: 0 0 0 clamp(2.5rem, 3vw, 3rem) ;
     display: flex;
-    width: 100%;
+    width: 100vw;
+    max-width: 2000px;
     min-height: 52vw;
     justify-content: end;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
-main > h1 {
+.representam > h1 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: clamp(2rem, 8vw, 8rem);
-    line-height: 6.875rem;
+    font-size: clamp(1.2rem, 8vw, 8rem);
+    line-height: normal;
     max-width: 60rem;
     margin-left: clamp(1rem, 5vw, 6rem);
 }
 
-main > h5 {
+.representam > h5 {
     color: #FFF;
     text-align: justify;
     font-family: "Louis George Cafe";
-    line-height: 2.5rem;
+    line-height: normal;
     max-width: 50rem;
     font-size: clamp(1rem, 1.5vw + 0.5rem, 1.5625rem);
     margin-left: clamp(1rem, 5vw, 6rem);
     margin-bottom: clamp(3rem, 8vw, 8rem);
     margin-top: clamp(0.875rem, 1vw, 1rem);;
 }
+@media (max-width: 900px) {
+    .representam > h1 {
+        font-size: clamp(1.2rem, 12vw, 4rem);
+        margin-left: clamp(0.5rem, 3vw, 2rem);
+    }
+    .representam > h5 {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        margin-left: clamp(0.5rem, 3vw, 2rem);
+       
+    }
+}
 
+@media (max-width: 600px) {
+    .representam {
+        
+    
+    }
+    .representam > h1 {
+        font-size: clamp(1.2rem, 17vw, 2.5rem);
+        max-width: 98vw;
+        margin-left: 1vw;
+    }
+    .representam > h5 {
+        font-size: clamp(0.5rem, 3vw, 1rem);
+        max-width: 60vw;
+        margin-left: 1vw;
+        margin-bottom: clamp(1.5rem, 4vw, 5rem);
+    }
+}
 #s1 {
     display: flex;
     flex-direction: column;

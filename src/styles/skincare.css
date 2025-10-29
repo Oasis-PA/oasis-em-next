@@ -62,7 +62,11 @@ main {
     padding: clamp(1rem, 5vw, 3rem) clamp(2rem, 10vw, 14rem);
     max-width: 2200px;
 }
-
+@media (max-width: 900px) {
+    .section-header {
+        min-height: 600px;
+    }
+}   
 .section-header > h1, .section-header > h2 {
     color: white;
     font-family: "The Next Font", sans-serif;
