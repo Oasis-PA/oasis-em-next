@@ -187,3 +187,21 @@ model FavoritoArtigo {
   @@index([data_favoritado], map: "idx_favorito_artigo_data")
   @@index([id_usuario], map: "idx_favorito_artigo_usuario")
 }
+
+model influenciadores {
+  id                Int       @id @default(autoincrement()) @db.SmallInt
+  nome_contato      String    @db.VarChar(255)
+  email             String    @unique @default("") @db.VarChar(255)
+  telefone          Decimal   @db.Decimal
+  estado            String    @db.VarChar(255)
+  cidade            String    @db.VarChar(255)
+  perfil_principal  String    @db.VarChar(255)
+  numero_seguidores String    @db.VarChar(50)
+  proposta          String
+  data_solicitacao  DateTime? @default(now()) @db.Timestamptz(6)
+  status            String?   @default("pendente") @db.VarChar(50)
+
+  @@index([data_solicitacao(sort: Desc)], map: "idx_influenciadores_data")
+  @@index([email], map: "idx_influenciadores_email")
+  @@index([status], map: "idx_influenciadores_status")
+}
