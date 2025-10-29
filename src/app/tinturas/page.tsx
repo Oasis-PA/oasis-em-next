@@ -12,9 +12,11 @@ export default function tinturas() {
     <>
     <Header/>
       <main>
-        <h1>Cores que Representam</h1>
-        <h5>Tinturas pensadas para realçar a sua beleza única — com tons vibrantes, profundos e que respeitam sua identidade.</h5>
-      </main>
+        <section className="representam">
+          <h1>Cores que Representam</h1>
+          <h5>Tinturas pensadas para realçar a sua beleza única — com tons vibrantes, profundos e que respeitam sua identidade.</h5>
+        </section>
+     
 
       <section id="s1">
         <h1>Tipos de Tintura para Cabelos</h1>
@@ -123,6 +125,7 @@ export default function tinturas() {
         </Link>
       </div>
     </section>
+     </main>
     <Footer/>
    </>
   );
