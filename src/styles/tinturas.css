@@ -1,21 +1,8 @@
 main * {
     margin: 0;
     padding: 0;
-    color: var(--corpo-texto);
-}
-
-body {
-    display: flex;
     width: 100%;
-    height: auto;
-    background-color: var(--body-back);
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-}
-
-html {
-    overflow-x: hidden;
+   
 }
 
 .representam{
@@ -23,7 +10,6 @@ html {
     padding: 0 0 0 clamp(2.5rem, 3vw, 3rem) ;
     display: flex;
     width: 100vw;
-    max-width: 2000px;
     min-height: 52vw;
     justify-content: end;
     background-position: center;
@@ -61,15 +47,13 @@ html {
     .representam > h5 {
         font-size: clamp(1rem, 3vw, 1.2rem);
         margin-left: clamp(0.5rem, 3vw, 2rem);
-       
+        max-width: 60vw;
+        
     }
 }
 
 @media (max-width: 600px) {
-    .representam {
-        
     
-    }
     .representam > h1 {
         font-size: clamp(1.2rem, 17vw, 2.5rem);
         max-width: 98vw;
@@ -168,12 +152,75 @@ html {
     margin-top: clamp(1rem, 5vw, 2.56rem);
     line-height: normal;
     max-height: 23rem;
+    
 }
 
-#card1:hover .conteudo, #card2:hover .conteudo, #card3:hover .conteudo, #card4:hover .conteudo {
+
+@media (max-width: 900px) {
+    #card1:hover .conteudo, #card2:hover .conteudo, #card3:hover .conteudo, #card4:hover .conteudo {
     opacity: 1;
 }
+    #s1 {
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-bottom: 4vw;
+    }
+    #s1 > h1 {
+        font-size: clamp(1.2rem, 6vw, 3rem);
+        margin-left: clamp(1rem, 5vw, 4rem);
+        margin-top: clamp(1rem, 5vw, 4rem);
+    }
+    #tipos {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+    }
+    #card1, #card2, #card3, #card4 {
+        background-size: 70%;
+        width: 40vw;
+        height: 48vw;
+    }
+    #card1:hover, #card2:hover, #card3:hover, #card4:hover{
+        background-size: 90%;
+        width: 50vw;
+        height: 60vw;
+    }
+    #card1, #card2 {
+        margin-bottom: 2vw;
+    }
+    .conteudo > h1{
+        max-width: 30%;
+        font-size: clamp(0.8rem, 3.5vw, 1.5rem);
+    }
+    .conteudo > p{
+        font-size: clamp(0.6rem, 3vw, 1.2rem);
+    }
+}
 
+@media (max-width: 600px) {
+    .conteudo{
+        background: none;
+        opacity: 1;
+    }
+    #card1 {background-image: url(../../public/images/tinturas/tipo-tintura1.png);}
+    #card2 {background-image: url(../../public/images/tinturas/tipo-tintura2.png);} 
+    #card3 {background-image: url(../../public/images/tinturas/tipo-tintura3.png);}
+    #card4 {background-image: url(../../public/images/tinturas/tipo-tintura4.png);}
+    #card1, #card2, #card3, #card4 {
+        background-size: 90%;
+        width: 80vw;
+        height: 96vw;
+    }
+    #s1 {
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+    #s1 > h1 {
+        font-size: clamp(1.2rem, 8vw, 2rem);
+        margin-left: 1vw;
+        margin-top: clamp(0.5rem, 4vw, 2rem);
+    }
+}
 #s2 {
     display: flex;
     flex-direction: row;

@@ -11,7 +11,12 @@ export default function tinturas() {
   return (
     <>
     <Header/>
+    
+    
+    
+        
       <main>
+        
         <section className="representam">
           <h1>Cores que Representam</h1>
           <h5>Tinturas pensadas para realçar a sua beleza única — com tons vibrantes, profundos e que respeitam sua identidade.</h5>
@@ -125,7 +130,9 @@ export default function tinturas() {
         </Link>
       </div>
     </section>
+    
      </main>
+     
     <Footer/>
    </>
   );
