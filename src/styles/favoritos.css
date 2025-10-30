@@ -813,3 +813,85 @@ main {
         justify-content: center;
     }
 }
+/* Adicione ao seu favoritos.css existente */
+
+/* ========== BOTÃO DE FAVORITO DENTRO DO CARD ========== */
+.favorite-btn-original {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+}
+
+/* Garante que o card com favorito tenha position relative */
+#section-imagens-artigos > a > div {
+  position: relative;
+}
+
+/* Loading e erro */
+.loading-favoritos,
+.error-favoritos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-favoritos p {
+  font-size: 1.2rem;
+  color: #666;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.error-favoritos p {
+  font-size: 1.1rem;
+  color: #e74c3c;
+  margin-bottom: 1.5rem;
+}
+
+.btn-login-fav {
+  background-color: #5F0B38;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login-fav:hover {
+  background-color: #7a0e48;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(95, 11, 56, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Responsividade para o botão */
+@media (max-width: 768px) {
+  .favorite-btn-original {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-favoritos,
+  .error-favoritos {
+    min-height: 200px;
+    padding: 1rem;
+  }
+
+  .loading-favoritos p,
+  .error-favoritos p {
+    font-size: 1rem;
+  }
+}

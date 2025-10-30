@@ -53,10 +53,12 @@ const Favoritos: React.FC = () => {
     }
   };
 
-  const handleRemoveFavorito = () => {
-    // Recarrega a lista após remover um favorito
-    carregarFavoritos();
-  };
+  // Remove o array artigosGrid, não é mais necessário
+
+  // Cria array de 9 posições mesclando favoritos com cards vazios
+  const artigosGrid = Array.from({ length: 9 }, (_, index) => 
+    favoritos[index] || null
+  );
 
   return (
     <>
@@ -73,51 +75,53 @@ const Favoritos: React.FC = () => {
             faremos a seleção das lojas com os preços mais em conta para o seu bolso.
           </p>
           
-          <h1 id="h1-artigos">ARTIGOS </h1>
+          <h1 id="h1-artigos">ARTIGOS</h1>
           
           {isLoading ? (
-            <div className="loading-container">
+            <div className="loading-favoritos">
               <p>Carregando seus favoritos...</p>
             </div>
           ) : error ? (
-            <div className="error-container">
+            <div className="error-favoritos">
               <p>{error}</p>
               <Link href="/login">
-                <button className="btn-login">Fazer Login</button>
-              </Link>
-            </div>
-          ) : favoritos.length === 0 ? (
-            <div className="empty-container">
-              <p>Você ainda não tem artigos favoritos.</p>
-              <p>Explore nosso conteúdo e adicione seus artigos preferidos!</p>
-              <Link href="/">
-                <button className="btn-explorar">Explorar Artigos</button>
+                <button className="btn-login-fav">Fazer Login</button>
               </Link>
             </div>
           ) : (
             <section id="section-imagens-artigos">
-              {favoritos.map((favorito) => (
-                <div key={favorito.id_favorito_artigo} className="artigo-favorito">
-                  <Link href={`/artigo/${favorito.Artigo.slug}`}>
+              {artigosGrid.map((favorito, index) => (
+                favorito ? (
+                  // Card com artigo favoritado - MESMA estrutura
+                  <Link key={index} href={`/artigo/${favorito.Artigo.slug}`}>
                     <div 
-                      className="artigo-card"
+                      id={`artigo${index + 1}`}
                       style={{
                         backgroundImage: favorito.Artigo.imagemHeader 
                           ? `url(${favorito.Artigo.imagemHeader})` 
-                          : 'url(/images/default-article.jpg)'
+                          : 'none',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
                       }}
                     >
                       <h1>{favorito.Artigo.titulo}</h1>
+                      <div className="favorite-btn-original">
+                        <FavoriteButton 
+                          artigoId={favorito.Artigo.id}
+                          initialIsFavorited={true}
+                          size="medium"
+                        />
+                      </div>
                     </div>
                   </Link>
-                  <div className="favorite-button-wrapper" onClick={(e) => e.stopPropagation()}>
-                    <FavoriteButton 
-                      artigoId={favorito.Artigo.id}
-                      initialIsFavorited={true}
-                      size="medium"
-                    />
-                  </div>
-                </div>
+                ) : (
+                  // Card vazio - estrutura IDÊNTICA ao original
+                  <Link key={index} href="#">
+                    <div id={`artigo${index + 1}`}>
+                      <h1>ARTIGO AQUI</h1>
+                    </div>
+                  </Link>
+                )
               ))}
             </section>
           )}
@@ -178,126 +182,127 @@ const Favoritos: React.FC = () => {
         </Link>
       </section>
 
-       <section id="section-imagem-marrom">
+      <section id="section-imagem-marrom">
         <div className="card-marrom">
-            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div className="card-marrom-content">
-                <img src="/images/favoritos/fav.svg" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-                <button>CONHEÇA</button>
-            </div>
+          <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+          <div className="card-marrom-content">
+            <img src="/images/favoritos/fav.svg" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            <button>CONHEÇA</button>
+          </div>
         </div>
 
         <div className="card-marrom">
-            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div className="card-marrom-content">
-                <img src="/images/favoritos/fav.svg" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-                <button>CONHEÇA</button>
-            </div>
+          <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+          <div className="card-marrom-content">
+            <img src="/images/favoritos/fav.svg" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            <button>CONHEÇA</button>
+          </div>
         </div>
 
         <div className="card-marrom">
-            <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div className="card-marrom-content">
-                <img src="/images/favoritos/fav.svg" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-                <button>CONHEÇA</button>
-            </div>
+          <img id="img-marrom" src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+          <div className="card-marrom-content">
+            <img src="/images/favoritos/fav.svg" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            <button>CONHEÇA</button>
+          </div>
         </div>
-    </section>
-    <section id="section-salvos-recen">
+      </section>
+
+      <section id="section-salvos-recen">
         <h1 id="h1-salvos">Salvos Recentemente</h1>
         <div id="section-salvos">
-            <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
-            <div className="card-salvo">
-                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
-                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
+          <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
+          <div className="card-salvo">
+            <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+            <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+          </div>
 
-            <div className="card-salvo">
-                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
-                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
+          <div className="card-salvo">
+            <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+            <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+          </div>
 
-            <div className="card-salvo">
-                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
-                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
+          <div className="card-salvo">
+            <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+            <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+          </div>
 
-            <div className="card-salvo">
-                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
-                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
-            <div className="card-salvo">
-                <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
-                <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
-                <h1>PRODUTO TAL</h1>
-                <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
-            <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
+          <div className="card-salvo">
+            <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+            <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+          </div>
+          <div className="card-salvo">
+            <img id="img-fav" src="/images/favoritos/fav2.svg" alt="" />
+            <img id="img-prod" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+          </div>
+          <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
         </div>
         <Link href="#">
-            <p id="p3">Veja lista completa</p>
+          <p id="p3">Veja lista completa</p>
         </Link>
-          <img id="img-dourada" src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
+        <img id="img-dourada" src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
       </section>
 
       <section id="section-maisprodutos">
         <h1 id="h1-maisprodutos">MAIS PRODUTOS</h1>
         <div id="container-maisprodutos">
-           <div className="card-maisprodutos">
-               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
-               <h1>PRODUTO TAL</h1>
-               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-               <div>
-                <h2>Vá para compra</h2>
-                <img src="/images/favoritos/seta.svg" alt="" />
-               </div>
-           </div>
+          <div className="card-maisprodutos">
+            <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            <div>
+              <h2>Vá para compra</h2>
+              <img src="/images/favoritos/seta.svg" alt="" />
+            </div>
+          </div>
 
-            <div className="card-maisprodutos">
-               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
-               <h1>PRODUTO TAL</h1>
-               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-               <div>
-                <h2>Vá para compra</h2>
-                <img src="/images/favoritos/seta.svg" alt="" />
-               </div>
-           </div>
+          <div className="card-maisprodutos">
+            <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            <div>
+              <h2>Vá para compra</h2>
+              <img src="/images/favoritos/seta.svg" alt="" />
+            </div>
+          </div>
 
-            <div className="card-maisprodutos">
-               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
-               <h1>PRODUTO TAL</h1>
-               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-               <div>
-                <h2>Vá para compra</h2>
-                <img src="/images/favoritos/seta.svg" alt="" />
-               </div>
-           </div>
+          <div className="card-maisprodutos">
+            <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            <div>
+              <h2>Vá para compra</h2>
+              <img src="/images/favoritos/seta.svg" alt="" />
+            </div>
+          </div>
 
-             <div className="card-maisprodutos">
-               <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
-               <h1>PRODUTO TAL</h1>
-               <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-               <div>
-                <h2>Vá para compra</h2>
-                <img src="/images/favoritos/seta.svg" alt="" />
-               </div>
-           </div>
+          <div className="card-maisprodutos">
+            <img id="img-produto" src="/images/favoritos/imagem-produto.png" alt="" />
+            <h1>PRODUTO TAL</h1>
+            <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+            <div>
+              <h2>Vá para compra</h2>
+              <img src="/images/favoritos/seta.svg" alt="" />
+            </div>
+          </div>
         </div>
-     </section>
+      </section>
 
       <section id="section-artigos-s2">
         <Link href='/artigo/10-tons-fantasticos'>
@@ -331,8 +336,6 @@ const Favoritos: React.FC = () => {
         </Link>
       </section>
 
-
-      
       <Footer />
     </>
   );
