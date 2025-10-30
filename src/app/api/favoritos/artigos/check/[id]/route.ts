@@ -7,12 +7,14 @@ const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 interface JWTPayload {
-  userId: number;
+  userId?: number;
+  id?: number;
+  id_usuario?: number;
   email: string;
 }
 
 // Função para verificar o token JWT
-function verifyToken(request: NextRequest): JWTPayload | null {
+function verifyToken(request: NextRequest): { userId: number; email: string } | null {
   try {
     const token = request.cookies.get('auth-token')?.value;
     
@@ -21,7 +23,19 @@ function verifyToken(request: NextRequest): JWTPayload | null {
     }
 
     const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
-    return decoded;
+    
+    // Tenta diferentes possíveis nomes do campo ID
+    const userId = decoded.userId || decoded.id || decoded.id_usuario;
+    
+    if (!userId) {
+      console.error('❌ Token JWT não contém userId. Payload:', decoded);
+      return null;
+    }
+    
+    return {
+      userId: userId,
+      email: decoded.email
+    };
   } catch (error) {
     console.error('Erro ao verificar token:', error);
     return null;
@@ -58,12 +72,10 @@ export async function GET(
     }
 
     // Verifica se o favorito existe
-    const favorito = await prisma.favoritoArtigo.findUnique({
+    const favorito = await prisma.favoritoArtigo.findFirst({
       where: {
-        id_usuario_id_artigo: {
-          id_usuario: userData.userId,
-          id_artigo: id_artigo,
-        },
+        id_usuario: userData.userId,
+        id_artigo: id_artigo,
       },
     });
 
