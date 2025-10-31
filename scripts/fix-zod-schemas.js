@@ -63,7 +63,7 @@ decimalFiles.forEach(file => {
     const originalContent = content;
 
     // Remove problematic refine with isValidDecimalInput
-    content = content.replace(/\.refine\(\(v\) => isValidDecimalInput\(v\), \{[^}]+\}\)/g, '');
+    content = content.replace(/\.refine\(\(v\) => isValidDecimalInput\(v\), \{[^}]*message:[^}]*\}\)/g, '');
 
     if (content !== originalContent) {
       writeFileSync(filePath, content, 'utf8');
@@ -73,5 +73,54 @@ decimalFiles.forEach(file => {
     console.warn(`⚠ Could not process ${file}: ${error.message}`);
   }
 });
+
+// Fix all influenciadores Decimal fields
+const influenciadoresObjFiles = [
+  'src/lib/zod-schemas/schemas/objects/influenciadoresCreateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresUncheckedCreateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresUpdateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresUncheckedUpdateInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresUpdateManyMutationInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresUncheckedUpdateManyInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresCreateManyInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresWhereInput.schema.ts',
+  'src/lib/zod-schemas/schemas/objects/influenciadoresScalarWhereWithAggregatesInput.schema.ts',
+];
+
+influenciadoresObjFiles.forEach(file => {
+  const filePath = join(rootDir, file);
+  try {
+    let content = readFileSync(filePath, 'utf8');
+    const originalContent = content;
+
+    // Remove problematic refine with isValidDecimalInput for Decimal fields
+    content = content.replace(/\.refine\(\(v\) => isValidDecimalInput\(v\), \{[^}]*\}\)/g, '');
+
+    if (content !== originalContent) {
+      writeFileSync(filePath, content, 'utf8');
+      console.log(`✓ Fixed ${file}`);
+    }
+  } catch (error) {
+    // Silent fail for missing files
+  }
+});
+
+// Fix influenciadores schema casing issue
+const influenciadoresFile = 'src/lib/zod-schemas/schemas/aggregateinfluenciadores.schema.ts';
+try {
+  const filePath = join(rootDir, influenciadoresFile);
+  let content = readFileSync(filePath, 'utf8');
+  const originalContent = content;
+
+  // Fix lowercase influenciadores to PascalCase Influenciadores in Prisma types
+  content = content.replace(/Prisma\.influenciadores([A-Z])/g, 'Prisma.Influenciadores$1');
+
+  if (content !== originalContent) {
+    writeFileSync(filePath, content, 'utf8');
+    console.log(`✓ Fixed ${influenciadoresFile}`);
+  }
+} catch (error) {
+  console.warn(`⚠ Could not process ${influenciadoresFile}: ${error.message}`);
+}
 
 console.log('✓ Zod schema fixes applied');
