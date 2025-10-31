@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import jwt from 'jsonwebtoken';
+
+// Não usar jsonwebtoken no middleware (Edge Runtime)
+// Apenas verificar se o token existe (validação completa na API)
 
 const protectedRoutes = ['/perfil'];
 const authRoutes = ['/login', '/cadastro', '/cadastro2'];
@@ -27,27 +29,18 @@ export function middleware(request: NextRequest) {
   // ========== PROTEÇÃO DE USUÁRIO COMUM ==========
   const userToken = request.cookies.get('auth-token')?.value;
 
-  // VALIDAR SE O TOKEN É VÁLIDO (NOVO)
-  let isValidToken = false;
-  if (userToken) {
-    try {
-      jwt.verify(userToken, process.env.JWT_SECRET!);
-      isValidToken = true;
-    } catch (error) {
-      // Token inválido ou expirado - limpar cookie
-      const response = NextResponse.next();
-      response.cookies.delete('auth-token');
-      isValidToken = false;
-    }
-  }
+  // NOTA: Edge Runtime não suporta jsonwebtoken
+  // Apenas checamos se o token existe
+  // Validação completa é feita no lado do servidor/API
+  const hasUserToken = !!userToken;
 
-  // Se o usuário está REALMENTE logado (token válido) e tenta acessar login/cadastro
-  if (isValidToken && authRoutes.includes(pathname)) {
+  // Se o usuário tem token e tenta acessar login/cadastro, redireciona para home
+  if (hasUserToken && authRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Se o usuário não está logado e tenta acessar rota protegida
-  if (!isValidToken && protectedRoutes.includes(pathname)) {
+  // Se o usuário NÃO tem token e tenta acessar rota protegida, redireciona para login
+  if (!hasUserToken && protectedRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
