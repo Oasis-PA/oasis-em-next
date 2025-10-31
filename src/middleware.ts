@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import jwt from 'jsonwebtoken';
+import { jwtVerify } from 'jose';
 
 const protectedRoutes = ['/perfil'];
 const authRoutes = ['/login', '/cadastro', '/cadastro2'];
 const adminRoutes = ['/admin'];
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // ========== PROTEÇÃO DO ADMIN ==========
@@ -27,13 +27,23 @@ export function middleware(request: NextRequest) {
   // ========== PROTEÇÃO DE USUÁRIO COMUM ==========
   const userToken = request.cookies.get('auth-token')?.value;
 
+  console.log('🔍 [MIDDLEWARE DEBUG]', {
+    pathname,
+    hasToken: !!userToken,
+    token: userToken ? `${userToken.substring(0, 20)}...` : 'none',
+    jwtSecret: process.env.JWT_SECRET ? 'exists' : 'missing'
+  });
+
   // VALIDAR SE O TOKEN É VÁLIDO (NOVO)
   let isValidToken = false;
   if (userToken) {
     try {
-      jwt.verify(userToken, process.env.JWT_SECRET!);
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+      await jwtVerify(userToken, secret);
       isValidToken = true;
+      console.log('✅ Token válido');
     } catch (error) {
+      console.log('❌ Token inválido:', error instanceof Error ? error.message : 'unknown error');
       // Token inválido ou expirado - limpar cookie
       const response = NextResponse.next();
       response.cookies.delete('auth-token');
@@ -43,11 +53,13 @@ export function middleware(request: NextRequest) {
 
   // Se o usuário está REALMENTE logado (token válido) e tenta acessar login/cadastro
   if (isValidToken && authRoutes.includes(pathname)) {
+    console.log('🔄 Redirecionando usuário logado de', pathname, 'para /');
     return NextResponse.redirect(new URL('/', request.url));
   }
 
   // Se o usuário não está logado e tenta acessar rota protegida
   if (!isValidToken && protectedRoutes.includes(pathname)) {
+    console.log('🔒 Redirecionando usuário não autenticado de', pathname, 'para /login');
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
