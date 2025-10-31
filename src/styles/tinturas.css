@@ -94,44 +94,36 @@ main * {
 
 #tipos {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     padding: clamp(2rem, 15vw, 9rem);
     gap: clamp(0.75rem, 2.5vw, 1.25rem);
 }
 
 #card1, #card2, #card3, #card4 {
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;
-    width: 18.41vw;
-    height: 29.66vw;
+    height: 34vw;
+    width: 34vw;
 }
 
-#card1 {background-image: url(../../public/images/tinturas/tintura1.png);}
-#card2 {background-image: url(../../public/images/tinturas/tintura2.png);} 
-#card3 {background-image: url(../../public/images/tinturas/tintura3.png);}
-#card4 {background-image: url(../../public/images/tinturas/tintura4.png);}
+#card1 {background-image: url(../../public/images/tinturas/tipo-tintura1.png); background-size: 100%;}
+#card2 {background-image: url(../../public/images/tinturas/tipo-tintura2.png); background-size: 100%;}
+#card3 {background-image: url(../../public/images/tinturas/tipo-tintura3.png); background-size: 100%;}
+#card4 {background-image: url(../../public/images/tinturas/tipo-tintura4.png); background-size: 100%;}
 
 /* --- HOVER EXISTENTE (INTOCADO) --- */
 #card1:hover, #card2:hover, #card3:hover, #card4:hover {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: border-box;
-    height: 29.66vw;
-    width: 25.66vw;
+    background-size: 100%;
+    height: 40vw;
+    width: 35vw;
 }
 
-#card1:hover {background-image: url(../../public/images/tinturas/tipo-tintura1.png);}
-#card2:hover {background-image: url(../../public/images/tinturas/tipo-tintura2.png);} 
-#card3:hover {background-image: url(../../public/images/tinturas/tipo-tintura3.png);}
-#card4:hover {background-image: url(../../public/images/tinturas/tipo-tintura4.png);}
-
-
 .conteudo {
-    padding: 2.75rem;
-    opacity: 0;     
+    padding: 5rem 2.75rem 2.75rem 2.75rem;
+    opacity: 1;     
     height: 100%;
     display: flex;
     flex-direction: column;
