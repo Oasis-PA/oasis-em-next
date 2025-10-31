@@ -28,7 +28,7 @@ export default function tinturas() {
         <div id="tipos">
           <div id="card1">
             <div className="conteudo">
-                <h1>TINTURA TEMPORÁRIA</h1>
+                <h1>TINTURA <br />TEMPORÁRIA</h1>
                 <p>É uma coloração que age só na parte externa do fio e sai com poucas lavagens 
                   (1 a 3). Ideal para mudanças rápidas, como em festas ou testes de cor. 
                   Não contém amônia e não danifica o cabelo. Funciona melhor em cabelos claros 
@@ -38,7 +38,7 @@ export default function tinturas() {
 
           <div id="card2">
             <div className="conteudo">
-                <h1>Tingimento Natural</h1>
+                <h1>Tingimento <br />Natural</h1>
                 <p>Usa ingredientes naturais, como henna, chá preto ou casca de noz. É menos 
                   agressivo e mais ecológico, mas tem cores limitadas e resultados que variam 
                   conforme o tom natural do cabelo. Pode durar algumas semanas.</p>
@@ -47,7 +47,7 @@ export default function tinturas() {
 
           <div id="card3">
             <div className="conteudo">
-                <h1>Tintura Semi-Permanente</h1>
+                <h1>Tintura Semi-<br />Permanente</h1>
                 <p>Penetra levemente no fio e dura entre 6 a 12 lavagens. Não tem amônia, não 
                   clareia os fios e é boa para realçar tons, escurecer ou dar brilho. Ideal 
                   para quem quer mudar a cor sem danificar muito o cabelo.</p>
@@ -56,7 +56,7 @@ export default function tinturas() {
 
           <div id="card4">
             <div className="conteudo">
-                <h1> Tintura Permanente</h1>
+                <h1> Tintura <br />Permanente</h1>
                 <p>Altera a estrutura do fio com amônia e oxidantes, permitindo uma mudança duradoura. 
                   Pode clarear, escurecer e cobre 100% dos fios brancos. Exige retoque da raiz a cada 
                   poucas semanas. É a mais eficaz, mas também a mais agressiva.</p>
