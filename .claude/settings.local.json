@@ -1,14 +1,10 @@
 {
   "permissions": {
     "allow": [
-<<<<<<< Updated upstream
       "Bash(npm test)",
       "Bash(npx prisma generate:*)",
       "Bash(ls -la \"C:\\Users\\stefano\\Documents\\GitHub\\oasis-em-next\\readmes\"\" && echo \"---\" && ls -la \"C:UsersstefanoDocumentsGitHuboasis-em-nextdocs\"\")",
       "Bash(npx tsc:*)",
-=======
-      "Bash(npm run dev:*)",
->>>>>>> Stashed changes
       "Bash(npm run build:*)"
     ],
     "deny": [],

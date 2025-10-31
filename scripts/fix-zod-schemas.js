@@ -33,19 +33,6 @@ const decimalFiles = [
   'src/lib/zod-schemas/schemas/objects/EmpresasCreateInput.schema.ts',
   'src/lib/zod-schemas/schemas/objects/EmpresasScalarWhereWithAggregatesInput.schema.ts',
   'src/lib/zod-schemas/schemas/objects/EmpresasWhereInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresUncheckedUpdateManyInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresUpdateManyMutationInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresCreateManyInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresUncheckedUpdateInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresUpdateInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresUncheckedCreateInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresCreateInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresScalarWhereWithAggregatesInput.schema.ts',
-  'src/lib/zod-schemas/schemas/objects/influenciadoresWhereInput.schema.ts',
-];
-
-const aggregateFiles = [
-  'src/lib/zod-schemas/schemas/aggregateinfluenciadores.schema.ts',
 ];
 
 const rootDir = join(__dirname, '..');
@@ -87,7 +74,6 @@ decimalFiles.forEach(file => {
   }
 });
 
-<<<<<<< Updated upstream
 // Fix all influenciadores Decimal fields
 const influenciadoresObjFiles = [
   'src/lib/zod-schemas/schemas/objects/influenciadoresCreateInput.schema.ts',
@@ -102,29 +88,19 @@ const influenciadoresObjFiles = [
 ];
 
 influenciadoresObjFiles.forEach(file => {
-=======
-// Fix aggregate type case issues
-aggregateFiles.forEach(file => {
->>>>>>> Stashed changes
   const filePath = join(rootDir, file);
   try {
     let content = readFileSync(filePath, 'utf8');
     const originalContent = content;
 
-<<<<<<< Updated upstream
     // Remove problematic refine with isValidDecimalInput for Decimal fields
     content = content.replace(/\.refine\(\(v\) => isValidDecimalInput\(v\), \{[^}]*\}\)/g, '');
-=======
-    // Fix influenciadoresAggregateArgs to InfluenciadoresAggregateArgs
-    content = content.replace(/Prisma\.influenciadoresAggregateArgs/g, 'Prisma.InfluenciadoresAggregateArgs');
->>>>>>> Stashed changes
 
     if (content !== originalContent) {
       writeFileSync(filePath, content, 'utf8');
       console.log(`✓ Fixed ${file}`);
     }
   } catch (error) {
-<<<<<<< Updated upstream
     // Silent fail for missing files
   }
 });
@@ -147,10 +123,4 @@ try {
   console.warn(`⚠ Could not process ${influenciadoresFile}: ${error.message}`);
 }
 
-=======
-    console.warn(`⚠ Could not process ${file}: ${error.message}`);
-  }
-});
-
->>>>>>> Stashed changes
 console.log('✓ Zod schema fixes applied');
