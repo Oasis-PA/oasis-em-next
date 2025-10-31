@@ -106,7 +106,7 @@ main * {
     background-position: center;
     box-sizing: border-box;
     height: 34vw;
-    width: 30vw;
+    width: 34vw;
 }
 
 #card1 {background-image: url(../../public/images/tinturas/tipo-tintura1.png); background-size: 100%;}
@@ -117,8 +117,8 @@ main * {
 /* --- HOVER EXISTENTE (INTOCADO) --- */
 #card1:hover, #card2:hover, #card3:hover, #card4:hover {
     background-size: 100%;
-    height: 30vw;
-    width: 26vw;
+    height: 40vw;
+    width: 35vw;
 }
 
 .conteudo {
