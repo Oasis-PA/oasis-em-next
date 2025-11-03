@@ -26,40 +26,47 @@ export default function tinturas() {
       <section id="s1">
         <h1>Tipos de Tintura para Cabelos</h1>
         <div id="tipos">
-          <div id="card1">
+          <div id="card1" className="card-item">
             <div className="conteudo">
                 <h1>TINTURA <br />TEMPORÁRIA</h1>
                 <p>É uma coloração que age só na parte externa do fio e sai com poucas lavagens 
                   (1 a 3). Ideal para mudanças rápidas, como em festas ou testes de cor. 
                   Não contém amônia e não danifica o cabelo. Funciona melhor em cabelos claros 
                   ou descoloridos.</p>
+                  <img className="numeros" src="/images/tinturas/1.png" alt="" />
             </div>
           </div>
 
-          <div id="card2">
+          <div id="card2" className="card-item">
             <div className="conteudo">
                 <h1>Tingimento <br />Natural</h1>
                 <p>Usa ingredientes naturais, como henna, chá preto ou casca de noz. É menos 
                   agressivo e mais ecológico, mas tem cores limitadas e resultados que variam 
                   conforme o tom natural do cabelo. Pode durar algumas semanas.</p>
+                  <img className="numeros" src="/images/tinturas/2.png" alt="" />
+                  
+                  
+                  
             </div>
           </div>
 
-          <div id="card3">
-            <div className="conteudo">
+          <div id="card3" className="card-item">
+            <div className="conteudo" >
                 <h1>Tintura Semi-<br />Permanente</h1>
                 <p>Penetra levemente no fio e dura entre 6 a 12 lavagens. Não tem amônia, não 
                   clareia os fios e é boa para realçar tons, escurecer ou dar brilho. Ideal 
                   para quem quer mudar a cor sem danificar muito o cabelo.</p>
+                  <img className="numeros" src="/images/tinturas/3.png" alt="" />
             </div>
           </div>
-
-          <div id="card4">
+ 
+          <div id="card4" className="card-item">
             <div className="conteudo">
                 <h1> Tintura <br />Permanente</h1>
                 <p>Altera a estrutura do fio com amônia e oxidantes, permitindo uma mudança duradoura. 
                   Pode clarear, escurecer e cobre 100% dos fios brancos. Exige retoque da raiz a cada 
                   poucas semanas. É a mais eficaz, mas também a mais agressiva.</p>
+                  <img className="numeros" src="/images/tinturas/4.png" alt="" />
             </div>
           </div>
         </div>

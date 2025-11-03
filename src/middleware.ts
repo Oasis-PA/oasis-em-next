@@ -8,19 +8,39 @@ const protectedRoutes = ['/perfil'];
 const authRoutes = ['/login', '/cadastro', '/cadastro2'];
 const adminRoutes = ['/admin'];
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // ========== PROTEÇÃO DO ADMIN ==========
   if (pathname.startsWith('/admin')) {
     const adminToken = request.cookies.get('admin-auth-token')?.value;
 
+    // Se não tem token e não está na página de login, redireciona
     if (!adminToken && pathname !== '/admin/login') {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
 
-    if (adminToken && pathname === '/admin/login') {
-      return NextResponse.redirect(new URL('/admin/artigos', request.url));
+    // Se tem token, valida JWT
+    if (adminToken) {
+      try {
+        const secret = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET!);
+        await jwtVerify(adminToken, secret, {
+          issuer: 'oasis-admin',
+          audience: 'oasis-admin-panel',
+        });
+
+        // Token válido - se está no login, redireciona para dashboard
+        if (pathname === '/admin/login') {
+          return NextResponse.redirect(new URL('/admin/artigos', request.url));
+        }
+
+        return NextResponse.next();
+      } catch (error) {
+        // Token inválido ou expirado - limpa cookie e redireciona para login
+        const response = NextResponse.redirect(new URL('/admin/login', request.url));
+        response.cookies.delete('admin-auth-token');
+        return response;
+      }
     }
 
     return NextResponse.next();

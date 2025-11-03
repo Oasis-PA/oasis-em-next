@@ -1,7 +1,3 @@
-/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
-   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-
 main * {
     margin: 0;
     padding: 0;
@@ -46,12 +42,12 @@ main {
 #d1 > h1 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: clamp(1.2rem, 6vw, 6.25rem);
+    font-size: clamp(2rem, 1.5rem + 3vw, 5.5rem);
     font-weight: 400;
     width: 100%;
-    max-width: 80%;
+    max-width: 90%;
     margin-top: clamp(1rem, 5vw, 6.98rem);
-    line-height: 1.0;
+    line-height: 1.1;
 }
 
 #span1, #span2, #span3 {
@@ -69,9 +65,9 @@ main {
     color: #FFF;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(0.9rem, 2.2vw, 2.34rem);
+    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
     font-weight: 400;
-    line-height: clamp(1rem, 3vw, 2.08rem);
+    line-height: clamp(1.4, 1.2 + 0.5vw, 1.6);
     width: 100%;
     max-width: 57%;
     margin-top: clamp(0.8rem, 2vw, 1rem);
@@ -88,7 +84,7 @@ main {
 
 #s1 > h1 {
     font-family: "PLAYFUL RUNWAY";
-    font-size: clamp(2rem, 6.25vw, 6.25rem);
+    font-size: clamp(2rem, 1.5rem + 3.5vw, 6.25rem);
     font-weight: 400;
     padding-left: clamp(1rem, 7vw, 8rem);
 }
@@ -96,7 +92,7 @@ main {
 #s1 > p {
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 2.19vw, 2.1875rem);
+    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.25rem);
     font-weight: 400;
     width: 100%;
     max-width: min(95%, 50.81rem);
@@ -126,9 +122,9 @@ main {
     max-width: 24.6875rem;
     text-align: left;
     font-family: "The Next Font";
-    font-size: clamp(1.2rem, 2.19vw, 2.1875rem);
+    font-size: clamp(1.2rem, 1rem + 0.8vw, 2.1875rem);
     font-weight: 400;
-    line-height: clamp(1.4rem, 2.5vw, 2.5rem); 
+    line-height: clamp(1.4, 1.2 + 0.2vw, 1.6); 
     margin-left: clamp(0.5rem, 2vw, 3.12rem);
     margin-top: clamp(1rem, 2vw, 3.12rem);
     margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
@@ -139,7 +135,7 @@ main {
     max-width: min(60%, 25.0625rem);
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(0.9rem, 1.25vw, 1.25rem);
+    font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.1rem);
     font-weight: 400;
     margin-left: clamp(0.5rem, 2vw, 3.12rem);
     line-height: 1.4;
@@ -151,9 +147,9 @@ main {
     max-width: 24.6875rem;
     text-align: left;
     font-family: "The Next Font";
-    font-size: clamp(1.2rem, 2.19vw, 2.1875rem);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.9rem);
     font-weight: 400;
-    line-height: clamp(1.4rem, 2.5vw, 2.5rem); 
+    line-height: clamp(1.4, 1.2 + 0.2vw, 1.6); 
     margin-left: clamp(0.5rem, 2vw, 3.12rem);
     margin-top: clamp(1rem, 2vw, 3.12rem);
     margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
@@ -165,7 +161,7 @@ main {
     max-width: 25.0625rem;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(0.9rem, 1.25vw, 1.25rem);
+    font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.1rem);
     font-weight: 400;
     margin-left: clamp(0.5rem, 2vw, 3.12rem);
     line-height: 1.4;
@@ -183,7 +179,7 @@ main {
     min-width: 40vw;
     max-width: 48vw; 
     height: 25vw;
-    transition: all 0.4s ease; /* ADICIONADO */
+    transition: all 0.4s ease;
 }
 
 #artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, #artigo5:hover, #artigo6:hover {
@@ -209,7 +205,7 @@ main {
 
 #s2 > div > h1 {
     font-family: "PLAYFUL RUNWAY";
-    font-size: clamp(2rem, 6vw, 4.6875rem);
+    font-size: clamp(1.8rem, 1.2rem + 3vw, 4.6875rem);
     font-weight: 400;
     padding-left: clamp(1rem, 7vw, 8rem);
     align-self: center;
@@ -250,7 +246,7 @@ main {
     height: 28.333vw;
     border: 0.12864583333333334vw solid #5F0B38;
     background: #FFF;
-    transition: all 0.3s ease; /* ADICIONADO */
+    transition: all 0.3s ease;
 }
 
 .prod1 > a {
@@ -272,7 +268,7 @@ main {
 
 .prod1 > h5 {
     font-family: "Louis George Cafe";
-    font-size: clamp(0.8rem, 1.5vw, 1.25rem);
+    font-size: clamp(0.8rem, 0.7rem + 0.3vw, 1rem);
     margin-left: clamp(0.5rem, 2vw, 1.40rem);
     color: #666;
     margin-bottom: 1vh;
@@ -280,11 +276,10 @@ main {
 
 .prod1 > h4 {
     font-family: "The Next Font";
-    font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+    font-size: clamp(0.9rem, 0.8rem + 0.4vw, 1.25rem);
     margin-left: clamp(0.5rem, 2vw, 1.40rem);
 }
 
-/* BOTÃO DE PRODUTO REFORMULADO */
 #vejaMais {
     max-width: 12rem;
     margin-top: clamp(1rem, 3vw, 2.69rem);
@@ -294,7 +289,7 @@ main {
     color: white;
     border: none;
     padding: 10px 25px;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 0.7rem + 0.2vw, 0.9rem);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -352,11 +347,11 @@ main {
     color: #FFF;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: "The Next Font";
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-size: clamp(1rem, 0.5rem + 2.5vw, 3.5rem);
     font-weight: 400;
     line-height: normal;
-    margin-top: clamp(3.5rem, 5vw + 3rem, 8rem);
-    margin-left: clamp(3.5rem, 5vw + 3rem, 8rem);
+    margin-top: clamp(1rem, 0.5rem + 2.5vw, 8rem);
+    margin-left: clamp(1rem, 0.5rem + 2.5vw, 8rem);
 }
 
 #leao-bg {background-image: url(../../public/images/infantil/produtos1.png);}
@@ -389,7 +384,7 @@ main {
     display: flex;
     flex-direction: column;
     padding: clamp(1.5rem, 4vw, 3.13rem); 
-    transition: all 0.4s ease; /* ADICIONADO */
+    transition: all 0.4s ease;
     border-radius: 1.5625rem;
 }
 
@@ -418,14 +413,14 @@ main {
 
 .dicas h2 {
     font-family: "The Next Font";
-    font-size: clamp(2rem, 4.2vw, 3.125rem);
+    font-size: clamp(1.5rem, 1rem + 2vw, 3.125rem);
     line-height: normal;
 } 
 
 .dicas p {
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(1.2rem, 2.5vw, 1.875rem);
+    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
     line-height: normal;
     margin-top: clamp(0.5rem, 2.5vw, 1rem);
 }
@@ -442,3 +437,40 @@ main {
 #dica4 > h2, #dica4 > p { color: #420E45; }
 #dica4 > p { max-width: 32rem; }
 #dica4 > h2 { max-width: 33.75rem; }
+
+.loading-state, .error-state, .no-products-state {
+    text-align: center;
+    padding: 3rem;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.25rem);
+}
+
+.error-state {
+    color: red;
+}
+
+@media (max-width: 768px) {
+    #d1 > p {
+        display: none;
+    }
+
+    .pbranco {
+        display: none;
+    }
+    
+    .ppreto {
+        display: none;
+    }
+
+    .dicas p {
+        display: none;
+    }
+
+    .dicas h2 {
+        font-size: clamp(1.2rem, 4vw, 1.7rem);
+    }
+
+    #dica1, #dica2, #dica3, #dica4 {
+        padding: clamp(1rem, 3vw, 1.5rem);
+    }
+}

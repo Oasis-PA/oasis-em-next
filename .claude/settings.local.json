@@ -5,7 +5,15 @@
       "Bash(npx prisma generate:*)",
       "Bash(ls -la \"C:\\Users\\stefano\\Documents\\GitHub\\oasis-em-next\\readmes\"\" && echo \"---\" && ls -la \"C:UsersstefanoDocumentsGitHuboasis-em-nextdocs\"\")",
       "Bash(npx tsc:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(cat:*)",
+      "Bash(npm install:*)",
+      "Bash(npm test:*)",
+      "Bash(npm update:*)",
+      "Bash(npx prisma:*)",
+      "Bash(npm show:*)",
+      "Bash(git log:*)",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []

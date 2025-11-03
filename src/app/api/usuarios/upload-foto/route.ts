@@ -1,13 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import jwt from "jsonwebtoken";
 import { prisma } from "@/lib/prisma";
-
-// Inicializa o Supabase Client
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-);
+import { supabaseAdmin } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
   try {
@@ -83,7 +77,7 @@ export async function POST(req: NextRequest) {
         
         if (bucketIndex !== -1) {
           const filePath = pathParts.slice(bucketIndex + 1).join("/");
-          await supabase.storage.from("perfil-fotos").remove([filePath]);
+          await supabaseAdmin.storage.from("perfil-fotos").remove([filePath]);
         }
       } catch (err) {
         console.warn("Erro ao deletar foto antiga:", err);
@@ -100,7 +94,7 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(arrayBuffer);
 
     // 7. Upload para Supabase Storage
-    const { error: uploadError } = await supabase.storage
+    const { error: uploadError } = await supabaseAdmin.storage
       .from("perfil-fotos")
       .upload(filePath, buffer, {
         contentType: file.type,
@@ -117,7 +111,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 8. Gera URL pública
-    const { data: urlData } = supabase.storage
+    const { data: urlData } = supabaseAdmin.storage
       .from("perfil-fotos")
       .getPublicUrl(filePath);
 

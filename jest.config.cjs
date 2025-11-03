@@ -43,6 +43,9 @@ module.exports = {
   resolver: undefined,
 
   // Configurações de performance
-  maxWorkers: 2, // Limita workers para evitar OOM
+  maxWorkers: 1, // Usa apenas 1 worker para evitar race conditions do Prisma
   workerIdleMemoryLimit: '512MB', // Limita memória dos workers
+
+  // Força execução sequencial para evitar problemas com prepared statements
+  testRunner: 'jest-circus/runner',
 };

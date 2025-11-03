@@ -66,153 +66,162 @@ main * {
         margin-bottom: clamp(1.5rem, 4vw, 5rem);
     }
 }
+/* ================================== */
+/* SEÇÃO S1 - TIPOS DE TINTURA        */
+/* ================================== */
+
 #s1 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 100vw;
     height: auto;
     justify-content: center;
     align-items: center;
     background-color: black;
+    padding: clamp(2rem, 8vw, 8rem) 0;
 }
 
 #s1 > h1 {
     color: #FFF;
-    font-family: "PLAYFUL RUNWAY";
+    font-family: "PLAYFUL RUNWAY", sans-serif;
     font-size: clamp(2rem, 5vw, 5rem);
-    margin-top: clamp(2rem, 8vw, 8rem);
     align-self: flex-start;
-    margin-left: clamp(4rem, 12vw, 12.5rem);;
-    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
+    margin-left: clamp(1rem, 7vw, 12.5rem);
+    margin-bottom: clamp(2rem, 5vw, 5rem);
+    transition: text-shadow 0.3s ease;
 }
 
-/* --- ADICIONADO --- */
 #s1 > h1:hover {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
+/* Container dos Cards */
 #tipos {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    padding: clamp(2rem, 15vw, 9rem);
-    gap: clamp(0.75rem, 2.5vw, 1.25rem);
+    display: grid;
+    /* 4 colunas em desktop */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: clamp(1rem, 2.5vw, 2rem);
+    width: 100%;
+    max-width: 1800px;
+    padding: 0 clamp(1rem, 5vw, 4rem);
 }
 
-#card1, #card2, #card3, #card4 {
-    background-size: 100%;
+/* Classe unificada para os cards */
+.card-item {
+    background-size: cover; /* Cover preenche melhor que 100% */
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;
-    height: 34vw;
-    width: 34vw;
+    height: clamp(400px, 35vw, 600px); /* Altura fluida */
+    min-width: 250px; /* Largura mínima do card */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
 }
 
-#card1 {background-image: url(../../public/images/tinturas/tipo-tintura1.png); background-size: 100%;}
-#card2 {background-image: url(../../public/images/tinturas/tipo-tintura2.png); background-size: 100%;}
-#card3 {background-image: url(../../public/images/tinturas/tipo-tintura3.png); background-size: 100%;}
-#card4 {background-image: url(../../public/images/tinturas/tipo-tintura4.png); background-size: 100%;}
-
-/* --- HOVER EXISTENTE (INTOCADO) --- */
-#card1:hover, #card2:hover, #card3:hover, #card4:hover {
-    background-size: 100%;
-    height: 40vw;
-    width: 35vw;
+.card-item:hover {
+    transform: scale(1.02);
 }
 
+/* Imagens de fundo (mantidas pelos IDs) */
+#card1 { background-image: url(../../public/images/tinturas/retangulo-vermelho.png); }
+#card2 { background-image: url(../../public/images/tinturas/retangulo-verde.png); }
+#card3 { background-image: url(../../public/images/tinturas/retangulo-roxo.png); }
+#card4 { background-image: url(../../public/images/tinturas/retangulo-azul.png); }
+
+/* Conteúdo interno do card */
 .conteudo {
-    padding: 5rem 2.75rem 2.75rem 2.75rem;
+    padding: clamp(1.5rem, 4vw, 2.75rem);
     opacity: 1;     
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1; /* Faz o conteúdo preencher o card */
+    box-sizing: border-box;
+    min-height: 0;
+    min-width: 0;
 }
 
 .conteudo > h1 {
     color: #FFF;
-    font-family: "The Next Font";
-    font-size: clamp(1.2rem, 4vw, 2rem);
-    text-wrap: nowrap;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-wrap: initial; /* Permite quebra de linha se necessário */
 }
 
 .conteudo > p {
     color: #FFF;
     text-align: justify;
-    font-family: "Louis George Cafe";
-    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-    margin-top: clamp(1rem, 5vw, 2.56rem);
-    line-height: normal;
-    max-height: 23rem;
-    
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    margin-top: clamp(1rem, 3vw, 2.56rem);
+    line-height: 1.5; /* Melhor para legibilidade */
 }
 
-
-@media (max-width: 900px) {
-    #card1:hover .conteudo, #card2:hover .conteudo, #card3:hover .conteudo, #card4:hover .conteudo {
-    opacity: 1;
+.numeros {
+    position: absolute;
+    bottom: clamp(1rem, 3vw, 2rem);
+    right: clamp(1rem, 3vw, 2rem);
+    width: clamp(2rem, 4vw, 3rem);
+    height: auto;
 }
+
+/* ================================== */
+/* RESPONSIVIDADE DA SEÇÃO S1         */
+/* ================================== */
+
+/* Tablets (quebra para 2 colunas) */
+@media (max-width: 1200px) {
     #s1 {
-        padding-left: 2vw;
-        padding-right: 2vw;
-        padding-bottom: 4vw;
+        padding: clamp(3rem, 6vw, 6rem) 0;
     }
     #s1 > h1 {
-        font-size: clamp(1.2rem, 6vw, 3rem);
         margin-left: clamp(1rem, 5vw, 4rem);
-        margin-top: clamp(1rem, 5vw, 4rem);
+        margin-bottom: clamp(1.5rem, 4vw, 4rem);
     }
     #tipos {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0;
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+        padding: 0 clamp(1rem, 5vw, 3rem);
+        gap: clamp(1rem, 3vw, 2rem);
     }
-    #card1, #card2, #card3, #card4 {
-        background-size: 70%;
-        width: 40vw;
-        height: 48vw;
+    .card-item {
+        height: clamp(350px, 50vw, 550px); /* Ajusta a altura para o layout 2x2 */
+        min-width: unset;
     }
-    #card1:hover, #card2:hover, #card3:hover, #card4:hover{
-        background-size: 90%;
-        width: 50vw;
-        height: 60vw;
+    .conteudo > h1 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
     }
-    #card1, #card2 {
-        margin-bottom: 2vw;
-    }
-    .conteudo > h1{
-        max-width: 30%;
-        font-size: clamp(0.8rem, 3.5vw, 1.5rem);
-    }
-    .conteudo > p{
-        font-size: clamp(0.6rem, 3vw, 1.2rem);
+    .conteudo > p {
+        font-size: clamp(1rem, 2vw, 1.3rem);
     }
 }
 
+/* Celulares (quebra para 1 coluna) */
 @media (max-width: 600px) {
-    .conteudo{
-        background: none;
-        opacity: 1;
-    }
-    #card1 {background-image: url(../../public/images/tinturas/tipo-tintura1.png);}
-    #card2 {background-image: url(../../public/images/tinturas/tipo-tintura2.png);} 
-    #card3 {background-image: url(../../public/images/tinturas/tipo-tintura3.png);}
-    #card4 {background-image: url(../../public/images/tinturas/tipo-tintura4.png);}
-    #card1, #card2, #card3, #card4 {
-        background-size: 90%;
-        width: 80vw;
-        height: 96vw;
-    }
-    #s1 {
-        padding-left: 1vw;
-        padding-right: 1vw;
-    }
     #s1 > h1 {
-        font-size: clamp(1.2rem, 8vw, 2rem);
-        margin-left: 1vw;
-        margin-top: clamp(0.5rem, 4vw, 2rem);
+        margin-left: 1.5rem;
+    }
+    #tipos {
+        grid-template-columns: 1fr; /* 1 coluna */
+        padding: 0 1.5rem;
+    }
+    .card-item {
+        height: clamp(400px, 100vw, 500px); /* Cards mais altos no celular */
+    }
+    .conteudo > h1 {
+        font-size: 2rem;
+    }
+    .conteudo > p {
+        font-size: 1.1rem;
     }
 }
+/* ================================== */
 #s2 {
     display: flex;
     flex-direction: row;
