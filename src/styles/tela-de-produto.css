@@ -244,7 +244,7 @@ main {
   background-color: #F2A518;
   border: none;
   margin-bottom: 10px;
-  margin-top: 0; /* Removido margin-top vh */
+  margin-top: 30vh; 
   color: #FFF; /* Cor do texto adicionada */
   font-family: "The Next Font", sans-serif; /* Fonte adicionada */
   font-size: 1.1rem; /* Tamanho ajustado */
