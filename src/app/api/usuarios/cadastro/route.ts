@@ -1,15 +1,37 @@
 // src/app/api/usuarios/cadastro/route.ts
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { ZodError } from "zod";
 import { cadastroSchema } from "@/lib/validations";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  // Rate Limiting: 3 cadastros a cada 1 hora por IP (previne spam)
+  const clientIp = getClientIp(req);
+  const rateLimitResult = rateLimit(clientIp, {
+    id: 'cadastro',
+    limit: 3,
+    window: 3600, // 1 hora
+  });
+
+  if (!rateLimitResult.success) {
+    const waitMinutes = Math.ceil((rateLimitResult.resetTime - Date.now()) / 60000);
+    return NextResponse.json(
+      {
+        error: 'Muitos cadastros. Tente novamente em ' + waitMinutes + ' minutos.',
+        retryAfter: rateLimitResult.resetTime,
+      },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await req.json();
-    
-    console.log("📥 Dados recebidos:", body); // Debug
+
+    if (process.env.NODE_ENV === 'development') {
+      console.log("📥 Dados recebidos:", body);
+    }
 
     // Validação com Zod
     const validatedData = cadastroSchema.parse(body);

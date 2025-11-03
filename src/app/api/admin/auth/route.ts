@@ -1,25 +1,70 @@
 // src/app/api/admin/auth/route.ts
 import { NextRequest, NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
 
-// Credenciais do admin (use .env em produção!)
-const ADMIN_USER = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'admin123';
+// Validação de variáveis de ambiente obrigatórias
+if (!process.env.ADMIN_USERNAME) {
+  throw new Error('ADMIN_USERNAME must be set in environment variables');
+}
+if (!process.env.ADMIN_PASSWORD) {
+  throw new Error('ADMIN_PASSWORD must be set in environment variables');
+}
+if (!process.env.ADMIN_JWT_SECRET) {
+  throw new Error('ADMIN_JWT_SECRET must be set in environment variables');
+}
+
+const ADMIN_USER = process.env.ADMIN_USERNAME;
+const ADMIN_PASS = process.env.ADMIN_PASSWORD;
+const JWT_SECRET = process.env.ADMIN_JWT_SECRET;
 
 // POST = Login
 export async function POST(request: NextRequest) {
+  // Rate Limiting: 3 tentativas a cada 15 minutos por IP
+  const clientIp = getClientIp(request);
+  const rateLimitResult = rateLimit(clientIp, {
+    id: 'admin-login',
+    limit: 3,
+    window: 900, // 15 minutos
+  });
+
+  if (!rateLimitResult.success) {
+    const waitMinutes = Math.ceil((rateLimitResult.resetTime - Date.now()) / 60000);
+    return NextResponse.json(
+      {
+        error: 'Muitas tentativas de login admin. Tente novamente em ' + waitMinutes + ' minutos.',
+        retryAfter: rateLimitResult.resetTime,
+      },
+      { status: 429 }
+    );
+  }
+
   try {
     const { username, password } = await request.json();
 
     // Valida credenciais
     if (username === ADMIN_USER && password === ADMIN_PASS) {
-      const token = Buffer.from(`${username}:${Date.now()}`).toString('base64');
-      
+      // Gera JWT assinado (não apenas Base64!)
+      const token = jwt.sign(
+        {
+          username,
+          role: 'admin',
+          iat: Math.floor(Date.now() / 1000),
+        },
+        JWT_SECRET,
+        {
+          expiresIn: '7d', // 7 dias
+          issuer: 'oasis-admin',
+          audience: 'oasis-admin-panel',
+        }
+      );
+
       const response = NextResponse.json(
         { message: 'Login realizado com sucesso' },
         { status: 200 }
       );
 
-      // Define o cookie de autenticação
+      // Define o cookie de autenticação com JWT
       response.cookies.set('admin-auth-token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
@@ -36,7 +81,10 @@ export async function POST(request: NextRequest) {
       { status: 401 }
     );
   } catch (error) {
-    console.error('Erro no login:', error);
+    // Não loga detalhes do erro em produção
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Erro no login:', error);
+    }
     return NextResponse.json(
       { error: 'Erro ao processar login' },
       { status: 500 }

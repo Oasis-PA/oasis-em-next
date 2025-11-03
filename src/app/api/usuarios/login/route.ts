@@ -5,8 +5,28 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { ZodError } from "zod";
 import { loginSchema } from "@/lib/validations";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
+  // Rate Limiting: 5 tentativas a cada 15 minutos por IP
+  const clientIp = getClientIp(req);
+  const rateLimitResult = rateLimit(clientIp, {
+    id: 'login',
+    limit: 5,
+    window: 900, // 15 minutos
+  });
+
+  if (!rateLimitResult.success) {
+    const waitMinutes = Math.ceil((rateLimitResult.resetTime - Date.now()) / 60000);
+    return NextResponse.json(
+      {
+        error: 'Muitas tentativas de login. Tente novamente em ' + waitMinutes + ' minutos.',
+        retryAfter: rateLimitResult.resetTime,
+      },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await req.json();
 
