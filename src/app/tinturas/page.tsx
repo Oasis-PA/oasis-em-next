@@ -33,6 +33,7 @@ export default function tinturas() {
                   (1 a 3). Ideal para mudanças rápidas, como em festas ou testes de cor. 
                   Não contém amônia e não danifica o cabelo. Funciona melhor em cabelos claros 
                   ou descoloridos.</p>
+                  <img className="numeros" src="/images/tinturas/1.png" alt="" />
             </div>
           </div>
 
@@ -42,6 +43,10 @@ export default function tinturas() {
                 <p>Usa ingredientes naturais, como henna, chá preto ou casca de noz. É menos 
                   agressivo e mais ecológico, mas tem cores limitadas e resultados que variam 
                   conforme o tom natural do cabelo. Pode durar algumas semanas.</p>
+                  <img className="numeros" src="/images/tinturas/2.png" alt="" />
+                  
+                  
+                  
             </div>
           </div>
 
@@ -51,6 +56,7 @@ export default function tinturas() {
                 <p>Penetra levemente no fio e dura entre 6 a 12 lavagens. Não tem amônia, não 
                   clareia os fios e é boa para realçar tons, escurecer ou dar brilho. Ideal 
                   para quem quer mudar a cor sem danificar muito o cabelo.</p>
+                  <img className="numeros" src="/images/tinturas/3.png" alt="" />
             </div>
           </div>
 
@@ -60,6 +66,7 @@ export default function tinturas() {
                 <p>Altera a estrutura do fio com amônia e oxidantes, permitindo uma mudança duradoura. 
                   Pode clarear, escurecer e cobre 100% dos fios brancos. Exige retoque da raiz a cada 
                   poucas semanas. É a mais eficaz, mas também a mais agressiva.</p>
+                  <img className="numeros" src="/images/tinturas/4.png" alt="" />
             </div>
           </div>
         </div>

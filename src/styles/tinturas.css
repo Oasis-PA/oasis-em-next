@@ -105,23 +105,18 @@ main * {
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;
-    height: 34vw;
-    width: 34vw;
+    height: clamp(28rem, 35vw, 38rem);
+    width: 30vw;
 }
 
-#card1 {background-image: url(../../public/images/tinturas/tipo-tintura1.png); background-size: 100%;}
-#card2 {background-image: url(../../public/images/tinturas/tipo-tintura2.png); background-size: 100%;}
-#card3 {background-image: url(../../public/images/tinturas/tipo-tintura3.png); background-size: 100%;}
-#card4 {background-image: url(../../public/images/tinturas/tipo-tintura4.png); background-size: 100%;}
+#card1 {background-image: url(../../public/images/tinturas/retangulo-vermelho.png); background-size: 100%;}
+#card2 {background-image: url(../../public/images/tinturas/retangulo-verde.png); background-size: 100%;}
+#card3 {background-image: url(../../public/images/tinturas/retangulo-roxo.png); background-size: 100%;}
+#card4 {background-image: url(../../public/images/tinturas/retangulo-azul.png); background-size: 100%;}
 
 /* --- HOVER EXISTENTE (INTOCADO) --- */
-#card1:hover, #card2:hover, #card3:hover, #card4:hover {
-    background-size: 100%;
-    height: 40vw;
-    width: 35vw;
-}
-
 .conteudo {
+    position: relative;
     padding: 5rem 2.75rem 2.75rem 2.75rem;
     opacity: 1;     
     height: 100%;
@@ -140,18 +135,72 @@ main * {
     color: #FFF;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+    font-size: clamp(0.9rem, 3.1vw, 1.3rem);
     margin-top: clamp(1rem, 5vw, 2.56rem);
     line-height: normal;
     max-height: 23rem;
     
 }
+.numeros{
+position: absolute;
+bottom: clamp(1.5rem, 4vw, 3rem);
+width: clamp(1.5rem, 4vw, 3rem);
+right: clamp(1.5rem, 4vw, 3rem);
+}
+#tipos {
+    flex-wrap: wrap;
+    align-items: stretch;
+}
 
+#card1, #card2, #card3, #card4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    min-width: 280px;
+    min-height: 380px;
+    flex: 1 1 30vw;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.conteudo {
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
 
 @media (max-width: 900px) {
-    #card1:hover .conteudo, #card2:hover .conteudo, #card3:hover .conteudo, #card4:hover .conteudo {
-    opacity: 1;
+    #tipos {
+        flex-direction: column;
+        align-items: center;
+    }
+    #card1, #card2, #card3, #card4 {
+        width: 80vw;
+        min-width: 220px;
+        min-height: 260px;
+        height: auto;
+        margin-bottom: 2vw;
+    }
 }
+
+@media (max-width: 600px) {
+    #tipos {
+        flex-direction: column;
+        align-items: center;
+    }
+    #card1, #card2, #card3, #card4 {
+        width: 98vw;
+        min-width: 160px;
+        min-height: 180px;
+        height: auto;
+        margin-bottom: 3vw;
+    }
+}
+@media (max-width: 900px) {
     #s1 {
         padding-left: 2vw;
         padding-right: 2vw;
@@ -168,14 +217,9 @@ main * {
         padding: 0;
     }
     #card1, #card2, #card3, #card4 {
-        background-size: 70%;
+        background-size: 80%;
         width: 40vw;
         height: 48vw;
-    }
-    #card1:hover, #card2:hover, #card3:hover, #card4:hover{
-        background-size: 90%;
-        width: 50vw;
-        height: 60vw;
     }
     #card1, #card2 {
         margin-bottom: 2vw;
@@ -190,16 +234,8 @@ main * {
 }
 
 @media (max-width: 600px) {
-    .conteudo{
-        background: none;
-        opacity: 1;
-    }
-    #card1 {background-image: url(../../public/images/tinturas/tipo-tintura1.png);}
-    #card2 {background-image: url(../../public/images/tinturas/tipo-tintura2.png);} 
-    #card3 {background-image: url(../../public/images/tinturas/tipo-tintura3.png);}
-    #card4 {background-image: url(../../public/images/tinturas/tipo-tintura4.png);}
     #card1, #card2, #card3, #card4 {
-        background-size: 90%;
+        background-size: 86%;
         width: 80vw;
         height: 96vw;
     }
