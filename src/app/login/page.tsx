@@ -95,7 +95,7 @@ export default function Login() {
                 setErros(rest);
               }
             }}
-            required
+            
             autoComplete="email"
             className="padding-form"
           />
@@ -113,7 +113,7 @@ export default function Login() {
                 setErros(rest);
               }
             }}
-            required
+           
             autoComplete="current-password"
             className="padding-form"
           />

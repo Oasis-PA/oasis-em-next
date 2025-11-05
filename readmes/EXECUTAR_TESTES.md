@@ -2,16 +2,17 @@
 
 ## 📊 Visão Geral dos Testes
 
-O sistema Oasis possui **213 testes automatizados** com **100% de aprovação**:
+O sistema Oasis possui **múltiplos níveis de testes automatizados**:
 
 ```
 ┌─────────────────────────────────────────────────────┐
 │  📊 TESTES DO SISTEMA OASIS                        │
 ├─────────────────────────────────────────────────────┤
 │                                                     │
-│  ✅ Testes Unitários/API:       145 testes (~15s)  │
+│  ✅ Testes Unitários/API:       121 testes (~9s)   │
 │     - Validação de dados        41 testes          │
-│     - Endpoints de API          104 testes         │
+│     - Endpoints de API          80 testes          │
+│     - Cache e Rate Limiting     18 testes          │
 │                                                     │
 │  ✅ Testes de Integração:       68 testes (~45s)   │
 │     - Usuários (DB Real)        19 testes          │
@@ -19,8 +20,12 @@ O sistema Oasis possui **213 testes automatizados** com **100% de aprovação**:
 │     - Artigos (DB Real)         16 testes          │
 │     - Relacionamentos/Cascades  15 testes          │
 │                                                     │
-│  📈 TOTAL:                      213 testes (~60s)  │
-│  🎯 Taxa de Aprovação:          100%               │
+│  ✅ Testes E2E (Cypress):       ~10 testes (~30s)  │
+│     - Autenticação              5 testes           │
+│     - Fluxos de usuário         5 testes           │
+│                                                     │
+│  📈 TOTAL:                      ~199 testes        │
+│  🎯 Taxa de Aprovação:          100% (exceto E2E)  │
 │                                                     │
 └─────────────────────────────────────────────────────┘
 ```
@@ -92,6 +97,42 @@ npm run test:integration -- produtos.integration.test.ts
 npm run test:integration -- artigos.integration.test.ts
 npm run test:integration -- relacionamentos.integration.test.ts
 ```
+
+### Testes E2E (Cypress)
+
+**⚠️ Pré-requisito**: Criar usuário de teste antes de executar os testes E2E
+
+```bash
+# Opção 1: Criar usuário via interface (Recomendado)
+# 1. Iniciar servidor: npm run dev:test
+# 2. Acessar: http://localhost:3001/cadastro
+# 3. Criar conta com:
+#    Email: cypress@test.com
+#    Senha: Senha123!@#
+
+# Opção 2: Criar via seed script (se banco acessível)
+npm run test:seed
+```
+
+**Executar testes Cypress:**
+
+```bash
+# Modo interativo (interface gráfica)
+npm run test:functional:open
+
+# Modo headless (linha de comando)
+npm run test:functional
+
+# Executar no Chrome
+npm run test:functional:chrome
+
+# Teste específico
+npm run cypress:run -- --spec "cypress/e2e/01-auth.cy.ts"
+```
+
+**Resultado esperado:** ~10 testes aprovados em ~30 segundos
+
+📄 **Documentação completa**: [cypress/README.md](../cypress/README.md)
 
 ### Outros Comandos Úteis
 

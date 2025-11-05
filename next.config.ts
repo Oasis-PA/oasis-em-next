@@ -71,15 +71,25 @@ const nextConfig: NextConfig = {
           // Content Security Policy (CSP) - proteção contra XSS
           {
             key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
-              "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https:",
-              "font-src 'self' data:",
-              "connect-src 'self' https://yyvjzgxyxgalnnwcjfqh.supabase.co",
-              "frame-ancestors 'none'",
-            ].join('; '),
+            value: process.env.NODE_ENV === 'development'
+              ? [
+                  "default-src 'self'",
+                  "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+                  "style-src 'self' 'unsafe-inline'",
+                  "img-src 'self' data: https:",
+                  "font-src 'self' data:",
+                  "connect-src 'self' https://yyvjzgxyxgalnnwcjfqh.supabase.co ws://localhost:* http://localhost:*",
+                  "frame-ancestors 'self'",
+                ].join('; ')
+              : [
+                  "default-src 'self'",
+                  "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+                  "style-src 'self' 'unsafe-inline'",
+                  "img-src 'self' data: https:",
+                  "font-src 'self' data:",
+                  "connect-src 'self' https://yyvjzgxyxgalnnwcjfqh.supabase.co",
+                  "frame-ancestors 'none'",
+                ].join('; '),
           },
           // Força HTTPS em produção
           {
