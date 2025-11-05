@@ -42,10 +42,10 @@ main {
 #d1 > h1 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: clamp(2rem, 1.5rem + 3vw, 5.5rem);
+    font-size: clamp(2.5rem, 2rem + 3.5vw, 6.5rem);
     font-weight: 400;
     width: 100%;
-    max-width: 90%;
+    max-width: 70%;
     margin-top: clamp(1rem, 5vw, 6.98rem);
     line-height: 1.1;
 }
@@ -65,9 +65,9 @@ main {
     color: #FFF;
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 5.5rem);
     font-weight: 400;
-    line-height: clamp(1.4, 1.2 + 0.5vw, 1.6);
+    line-height: clamp(1.6, 1.4 + 0.6vw, 1.9);
     width: 100%;
     max-width: 57%;
     margin-top: clamp(0.8rem, 2vw, 1rem);
@@ -102,7 +102,7 @@ main {
 #d2, .d2 {
     display: flex;
     flex-direction: row;
-    gap: clamp(1rem, 3.12vw, 3.12rem); 
+    gap: clamp(1.5rem, 4vw, 4rem); 
     width: 100%;
     max-width: 100rem;
     justify-content: center;
@@ -147,7 +147,7 @@ main {
     max-width: 24.6875rem;
     text-align: left;
     font-family: "The Next Font";
-    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.9rem);
+    font-size: clamp(1.3rem, 1.1rem + 0.6vw, 2.2rem);
     font-weight: 400;
     line-height: clamp(1.4, 1.2 + 0.2vw, 1.6); 
     margin-left: clamp(0.5rem, 2vw, 3.12rem);
@@ -180,6 +180,11 @@ main {
     max-width: 48vw; 
     height: 25vw;
     transition: all 0.4s ease;
+    padding: clamp(1.8rem, 3.5vw, 3rem); 
+}
+
+#artigo1, #artigo2 {
+    max-width: 45vw;
 }
 
 #artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, #artigo5:hover, #artigo6:hover {
@@ -193,7 +198,6 @@ main {
 #artigo4 { background-image: url('../../public/images/infantil/artigo4.png'); }
 #artigo5 { background-image: url('../../public/images/infantil/artigo5.png'); }
 #artigo6 { background-image: url('../../public/images/infantil/artigo6.png'); }
-
 
 #s2 {
     display: flex;
@@ -343,6 +347,7 @@ main {
     background-position: center;
     box-sizing: border-box;
 }
+
 #leao-bg > h1, #zebra-bg > h1, #girafa-bg > h1 {
     color: #FFF;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -410,17 +415,16 @@ main {
 #dica3 { background-image: url('../../public/images/infantil/dica3.png'); }
 #dica4 { background-image: url('../../public/images/infantil/dica4.png'); }
 
-
 .dicas h2 {
     font-family: "The Next Font";
-    font-size: clamp(1.5rem, 1rem + 2vw, 3.125rem);
+    font-size: clamp(1.3rem, 0.9rem + 1.8vw, 2.8rem);
     line-height: normal;
 } 
 
 .dicas p {
     text-align: justify;
     font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
+    font-size: clamp(1.3rem, 1.1rem + 0.7vw, 2rem);
     line-height: normal;
     margin-top: clamp(0.5rem, 2.5vw, 1rem);
 }
@@ -449,28 +453,144 @@ main {
     color: red;
 }
 
-@media (max-width: 768px) {
-    #d1 > p {
-        display: none;
-    }
 
-    .pbranco {
-        display: none;
+@media (max-width: 768px) {
+    /* 1. Banner/Header */
+    #d1 {
+        height: 80vw;
+        padding-left: 5vw;
     }
     
-    .ppreto {
-        display: none;
+    #d1 > h1 {
+        max-width: 90%;
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    
+    /* 2. Layout Artigos */
+    #d2, .d2 {
+        flex-direction: column; /* Empilha as linhas de artigo */
+        gap: 1.5rem;
+        align-items: center;
     }
 
-    .dicas p {
-        display: none;
+    #artigos {
+        gap: 1.5rem;
+        margin-top: 5rem;
+    }
+    
+    #artigo1, #artigo2, #artigo3, #artigo4, #artigo5, #artigo6 {
+        min-width: 90vw; /* Artigos em largura total */
+        max-width: 90vw;
+        height: 40vw; 
+        padding: 1.5rem; 
+    }
+    
+    #artigo1, #artigo2 {
+        max-width: 90vw;
     }
 
-    .dicas h2 {
-        font-size: clamp(1.2rem, 4vw, 1.7rem);
+    .hpreto, .hbranco {
+        margin-left: 0; 
+        max-width: 100%; 
+        margin-top: 1rem; 
+    }
+    
+    .ppreto, .pbranco {
+        margin-left: 0; 
+        max-width: 100%; 
+    }
+    
+    /* 3. Layout Dicas */
+    #s3 {
+        padding-left: 5vw; 
+        padding-right: 5vw;
+    }
+
+    .dicas {
+        flex-direction: column; /* Empilha as dicas */
+        gap: 1.5rem;
     }
 
     #dica1, #dica2, #dica3, #dica4 {
-        padding: clamp(1rem, 3vw, 1.5rem);
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        min-height: 40vw;
+        padding: clamp(1.5rem, 5vw, 2rem); 
+        justify-content: center; 
+    }
+    
+    .dicas h2, .dicas p {
+        margin-left: 0; 
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    #dica2 > p {
+        color: #FFF;
+    }
+    
+    /* 4. Visibilidade e Fonte do Conteúdo */
+    #d1 > p,
+    .pbranco,
+    .ppreto,
+    .dicas p {
+        display: block; 
+    }
+
+    #d1 > p {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+    
+    .ppreto, .pbranco {
+        font-size: 0.9rem;
+    }
+    
+    .dicas p {
+        font-size: 0.9rem;
+    }
+    
+    .dicas h2 {
+        font-size: clamp(1.2rem, 4vw, 1.7rem);
+    }
+    
+    /* 5. Layout Produtos */
+    .produtos {
+        flex-wrap: wrap; 
+        gap: 1.5rem; /* Espaço entre os itens */
+        padding-left: 5vw; 
+        padding-right: 5vw; 
+        justify-content: space-around; /* Distribui 2 itens uniformemente, centralizando-os */
+    }
+
+    .prod1 {
+        max-width: 42vw; /* CORREÇÃO: Reduzido para garantir 2 itens lado a lado com o padding do container */
+        height: auto;
+    }
+
+    .prod1 > h5, .prod1 > h4 {
+        margin-left: 0.5rem; 
+    }
+    
+    #leao-bg, #zebra-bg, #girafa-bg {
+        max-width: 90vw; 
+        height: 45vw;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem; 
+    }
+
+    #leao-bg > h1, #zebra-bg > h1, #girafa-bg > h1 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        margin-left: 1.5rem; 
+    }
+
+    #s2 > div > h1 {
+        padding-left: 5vw;
+    }
+    
+    .linha {
+        display: none; 
     }
 }
