@@ -47,9 +47,8 @@ button {
     line-height: normal;
 }
 
-.meio button::before,
-#but-2::before, #but-4::before,
-#but-6::before {
+/* Efeitos de Botão (mantidos) */
+.meio button::before, #but-2::before, #but-4::before, #but-6::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -61,8 +60,7 @@ button {
     transition: width 0.6s ease, height 0.6s ease;
 }
 
-.meio button::before,
-#but-2::before, #but-4::before {
+.meio button::before, #but-2::before, #but-4::before {
     background: rgba(255, 255, 255, 0.4);
 }
 
@@ -70,8 +68,7 @@ button {
     background: rgba(255, 255, 255, 0.25);
 }
 
-.meio button:hover,
-#but-2:hover, #but-4:hover {
+.meio button:hover, #but-2:hover, #but-4:hover {
     background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
 }
 
@@ -91,8 +88,7 @@ button {
     transform: translateY(-2px) scale(1.05);
 }
 
-.meio button:active,
-#but-2:active, #but-4:active {
+.meio button:active, #but-2:active, #but-4:active {
     background: #d18f15;
 }
 
@@ -117,8 +113,7 @@ button {
     height: 300px;
 }
 
-#but-2:hover::before, #but-4:hover::before,
-#but-6:hover::before {
+#but-2:hover::before, #but-4:hover::before, #but-6:hover::before {
     width: 200px;
     height: 200px;
 }
@@ -132,26 +127,36 @@ main {
     width: 100%;
 }
 
-/* --- SEÇÃO 1: LAYOUT NOVO COM GRID --- */
+/* CONTAINER PRINCIPAL: Define a largura máxima do conteúdo */
+.content-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 5vw; /* Padding lateral consistente */
+    margin: 0 auto;
+}
+
+/* --- SEÇÃO 1: BANNER E DESTAQUES COM GRID --- */
 .primeiro {
-    margin-top: 5vw;
-    width: 100%; /* Ocupa 100% e o conteúdo interno é 85vw */
-    position: relative; /* Necessário para a sobreposição */
-    margin-bottom: -5vw; /* Compensa a sobreposição para a próxima seção */
+    width: 100%;
+    position: relative;
+    /* Remove margin-top fixo, usa padding/margin mais suave */
+    padding-top: clamp(2rem, 5vw, 5rem); 
 }
 
 .banner-principal {
-    /* Caminho da imagem corrigido */
-    background-image: url('/images/tendencias/img-principal2.png');
+    background-image: url('/images/tendencias/img-principal3.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 43.5vw;
+    height: clamp(20rem, 40vw, 45rem); 
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 6vw 7.5vw; /* 7.5vw = (100-85)/2 */
+    padding-left: clamp(1.5rem, 5vw, 6rem);
+    padding-right: clamp(1.5rem, 5vw, 6rem);
+    /* NOVO: Ajusta o espaçamento abaixo para o efeito visual de sobreposição */
+    margin-bottom: clamp(-5rem, -10vw, -12rem);
 }
 
 #tit-1 {
@@ -162,37 +167,38 @@ main {
 #text-1 {
     color: #FFF;
     font-size: clamp(1rem, 1.5vw, 1.25rem);
-    margin-top: 1vw;
-    width: 50vw; /* Reduzido para caber melhor */
+    margin-top: clamp(0.5rem, 1vw, 1.5rem);
+    width: 100%; 
+    max-width: 500px; 
 }
 
-/* Novo grupo de sobreposição */
+/* GRID DE SOBREPOSIÇÃO */
 .primeiro-overlap-group {
     display: grid;
-    /* Proporções: 36vw, 20vw, 25vw -> aprox 1.2fr auto 1fr */
+    /* Três colunas com proporções variadas */
     grid-template-columns: 1.2fr 0.8fr 1fr; 
-    gap: 2vw;
-    width: 85vw;
-    margin: 0 auto; /* Centraliza */
-    transform: translateY(-10vw); /* Puxa para cima */
+    gap: clamp(1rem, 2vw, 2rem);
+    width: 90vw; /* Largura para ocupar a área central */
+    max-width: 1280px;
+    margin: 0 auto;
+    /* Remove transform: translateY */
+    padding-top: clamp(5rem, 10vw, 12rem); 
 }
 
-/* Links precisam preencher a área do grid */
 .banner-sec-link, .banner-terc-link {
     display: block;
     height: 100%;
 }
 
 .banner-sec {
-    /* Caminho da imagem corrigido */
     background-image: url('/images/tendencias/img-2.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 30vw;
-    position: relative; /* Para posicionar botões e texto */
-    padding: 1.5vw;
+    height: clamp(15rem, 30vw, 35rem); 
+    position: relative; 
+    padding: clamp(1rem, 1.5vw, 1.5rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -201,22 +207,22 @@ main {
 #tit-2 {
     color: #ffffff;
     font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-    width: 90%;
+    width: 100%;
     text-align: left;
     margin-top: 1rem;
 }
 
 .butoes {
     display: flex;
-    gap: 1vw;
-    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    gap: clamp(0.5rem, 1vw, 1rem);
+    flex-wrap: wrap; 
 }
 
 .banner-sec button,
 .banner-terc button {
     color: #FFF;
     font-size: clamp(0.75rem, 1vw, 1rem);
-    border-radius: 20vw;
+    border-radius: 9999px; /* Usando valor grande para ser um "pill" */
     padding: 0.2vw 1.2vw;
     white-space: nowrap;
     border: 0.1vw solid #ffffff;
@@ -229,14 +235,14 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 2vw; /* Alinha melhor com os cards */
+    padding: clamp(1rem, 2vw, 2rem) 0; 
 }
 
 .meio p {
     color: #000;
     text-align: center;
     font-size: clamp(1.8rem, 3vw, 2.8rem);
-    margin-bottom: 2vw;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
 }
 
 .meio button {
@@ -244,63 +250,63 @@ main {
     text-align: center;
     font-size: clamp(1rem, 1.6vw, 1.4rem);
     display: flex;
-    padding: 1vw 2.5vw;
+    padding: clamp(0.8rem, 1vw, 1.2rem) clamp(2rem, 2.5vw, 3rem);
     justify-content: center;
     align-items: center;
-    border-radius: 0.3vh;
+    border-radius: 0.3rem;
     background: #F2A518;
     border-color: transparent;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    height: auto; /* Altura automática */
+    height: auto; 
 }
 
 .banner-terc {
-    /* Caminho da imagem corrigido */
     background-image: url('/images/tendencias/img-3.png');
     background-repeat: no-repeat;
     position: relative;
     width: 100%;
-    height: 17vw;
+    height: clamp(10rem, 17vw, 20rem); 
     background-size: cover;
     background-position: center;
-    padding: 1vw;
+    padding: clamp(1rem, 1.5vw, 1.5rem);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza o conteúdo */
+    justify-content: center; 
 }
 
 .butoes-2 {
     display: flex;
-    gap: 1vw;
+    gap: clamp(0.5rem, 1vw, 1rem);
     flex-wrap: wrap;
 }
 
 #tit-3 {
     color: #ffffff;
     font-size: clamp(1.2rem, 2vw, 1.8rem);
-    width: 95%;
+    width: 100%;
     text-align: left;
     margin-top: 0.5rem;
 }
 
-/* --- SEÇÃO 2: LAYOUT NOVO COM GRID --- */
+/* --- SEÇÃO 2: GRID DE DESTAQUE --- */
 .segundo {
-    /* Caminho da imagem corrigido */
     background-image: url('/images/tendencias/group465.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 85vw;
-    padding: 3vw;
-    margin-top: 8vw; /* Espaçamento após a sobreposição */
+    width: 90vw;
+    max-width: 1280px;
+    padding: clamp(2rem, 3vw, 3rem);
+    margin-top: clamp(2rem, 8vw, 8rem); 
+    border-radius: 20px;
     
-    /* Layout principal da seção */
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* Coluna da esquerda maior */
-    gap: 3vw;
+    /* Duas colunas */
+    grid-template-columns: 1.5fr 1fr; 
+    gap: clamp(2rem, 3vw, 3rem);
 }
 
 /* Coluna da Esquerda */
@@ -319,44 +325,49 @@ main {
     color: #FFF;
     font-size: clamp(1rem, 1.2vw, 1.2rem);
     width: 100%;
-    max-width: 28vw; /* Limita a largura do texto */
+    max-width: 500px;
     text-align: justify;
-    margin-top: 1.5vw;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 .produtss {
-    display: grid; /* Grid para os produtos */
+    display: grid; 
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5vw;
-    margin-top: 2vw;
+    gap: clamp(1rem, 1.5vw, 1.5rem);
+    margin-top: clamp(1rem, 2vw, 2rem);
 }
 
-.produt1,
-.produt2,
-.produt3 {
+.produt1, .produt2, .produt3 {
     width: 100%;
-    height: 22vw;
+    height: clamp(12rem, 22vw, 25rem);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
     border-radius: 20px;
+    
+    /* Novo: Usa Flex para posicionar texto e botão */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: clamp(1rem, 1.5vw, 1.5rem); 
+    padding-top: 1rem;
 }
 
-/* Caminhos das imagens corrigidos */
 .produt1 { background-image: url('/images/tendencias/produ-1.png'); }
 .produt2 { background-image: url('/images/tendencias/produ-2.png'); }
 .produt3 { background-image: url('/images/tendencias/produ-3.png'); }
 
+/* NOVO: Alinhamento do texto sem position:absolute e transform */
 .produt1 p, .produt2 p, .produt3 p {
     color: #FFF;
     text-align: center;
     font-size: clamp(0.9rem, 1.2vw, 1.2rem);
-    position: absolute;
     width: 100%;
-    bottom: 100%;
-    left: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem; /* Espaçamento acima do botão */
+    padding: 0 0.5rem;
+    /* Removido position, bottom e transform */
 }
 
 #but-2, #but-4 {
@@ -368,16 +379,14 @@ main {
     padding: 0.5rem 1.5rem;
     justify-content: center;
     align-items: center;
-    border-radius: 0.16vw;
+    border-radius: 0.16rem;
     background: #F2A518;
     border-color: transparent;
     cursor: pointer;
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative; /* Para o efeito hover */
     overflow: hidden;
     transition: all 0.4s ease;
+    /* Removido position: absolute */
 }
 
 #but-3, #but-5 {
@@ -393,11 +402,11 @@ main {
 .segundo-col-dir {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza itens como o botão */
-    background-color: #fff; /* Fundo branco como na imagem */
+    align-items: center;
+    background-color: #fff;
     border-radius: 20px;
-    padding: 2vw;
-    transform: translateY(-8vw); /* Efeito de "subir" */
+    padding: clamp(1.5rem, 2vw, 2rem);
+    /* Removido transform: translateY */
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
@@ -414,7 +423,7 @@ main {
     width: 100%;
     text-align: left;
     text-decoration: underline;
-    margin-top: 1.5vw;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 #text-3 {
@@ -422,15 +431,15 @@ main {
     font-size: clamp(1rem, 1vw, 1.1rem);
     width: 100%;
     text-align: justify;
-    margin-top: 1vw;
+    margin-top: clamp(0.5rem, 1vw, 1rem);
 }
 
 #divi {
-    background-color: #f4f4f4; /* Cor de fundo suave */
+    background-color: #f4f4f4; 
     width: 100%;
-    padding: 0.5vw 1vw;
-    border-radius: 1.04vw;
-    margin-top: 1.5vw;
+    padding: clamp(0.5rem, 0.7vw, 0.7rem) clamp(1rem, 1vw, 1rem);
+    border-radius: 10px;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 #divi p {
@@ -443,7 +452,7 @@ main {
 #img-produt-1 {
     width: 100%;
     height: auto;
-    margin-top: 1.5vw;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 #but-6 {
@@ -454,7 +463,7 @@ main {
     padding: 0.6rem 1.5rem;
     justify-content: center;
     align-items: center;
-    border-radius: 0.16vw;
+    border-radius: 0.16rem;
     background: #5E332C;
     border-color: transparent;
     width: 60%;
@@ -462,47 +471,48 @@ main {
     cursor: pointer;
     overflow: hidden;
     transition: all 0.4s ease;
-    margin-top: 1.5vw;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 
-/* --- SEÇÃO 3: LAYOUT NOVO COM GRID --- */
+/* --- SEÇÃO 3: LAYOUT DE DUAS COLUNAS COM GRID --- */
 .terceiro {
-    display: grid; /* Grid de 2 colunas */
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 8vw;
     width: 100%;
     height: auto;
-    align-items: stretch; /* Estica colunas para mesma altura */
+    align-items: stretch;
+    /* Garante que o conteúdo fique centralizado e com padding lateral */
+    margin: clamp(2rem, 5vw, 5rem) 0;
+    padding: 0 5vw; 
 }
 
 .esq {
-    /* Caminho da imagem corrigido */
     background-image: url('/images/tendencias/princip-3.png');
     width: 100%;
-    min-height: 40vw;
+    min-height: clamp(30rem, 40vw, 45rem);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding: 2vw;
+    padding: clamp(1.5rem, 2vw, 2rem);
 }
 
 .esq p {
     color: #FFF;
     font-size: clamp(2.5rem, 6vw, 5rem);
     width: 100%;
-    max-width: 40vw;
+    max-width: 500px;
 }
 
 .dir {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.6vw;
-    padding: 2vw 4vw; /* Adiciona padding */
+    gap: clamp(1rem, 1.6vw, 1.6rem);
+    padding: clamp(1.5rem, 2vw, 2rem) clamp(2rem, 4vw, 4rem); 
 }
 
 #tit-6 {
@@ -513,29 +523,30 @@ main {
 #uno {
     display: flex;
     align-items: center;
-    padding-bottom: 1.6vw;
+    padding-bottom: clamp(1rem, 1.6vw, 1.6rem);
     border-bottom: 1px solid #727272;
 }
 
 #uno p {
     color: #000;
     font-size: clamp(1.2rem, 2.4vw, 2rem);
-    margin-left: 2vw;
+    margin-left: clamp(1rem, 2vw, 2rem);
     display: flex;
     align-items: center;
 }
 
 #uno img {
-    width: 4vw;
-    height: 4vw;
-    min-width: 40px; /* Tamanho mínimo */
+    width: clamp(2rem, 4vw, 4rem);
+    height: clamp(2rem, 4vw, 4rem);
+    min-width: 40px; 
     min-height: 40px;
 }
 
 
-/* --- SEÇÃO 4: ESTILOS (SEU CSS ORIGINAL) --- */
-/* (Mantive os estilos da seção "quarto" caso você a adicione no TSX) */
-.quarto{
+/* --- SEÇÃO 4: ESTILOS --- */
+/* --- SEÇÃO 4: ESTILOS TENDÊNCIAS DA SEMANA (.quarto) --- */
+
+.quarto {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -546,101 +557,430 @@ main {
 
 #outro-titulo {
     color: #000;
-    font-size: clamp(2.2rem, 5.73vw, 4.5rem);
+    font-family: "PLAYFUL RUNWAY";
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(2.5rem, 5.73vw, 5rem); 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     display: flex;
     justify-content: center;
 }
-/* ... (restante dos estilos .quarto) ... */
 
+.imagenszinas {
+    display: flex;
+    width: 90vw; /* Limita a largura do container principal */
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: center;
+    margin-top: 3vw;
+    gap: 2vw; /* Adicionado gap para espaçamento */
+}
 
-/* --- RESPONSIVIDADE --- */
+/* Coluna Esquerda */
+.esqui {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1.5; /* Prioridade de tamanho para a esquerda */
+    gap: 2vw; /* Espaçamento vertical entre sec-1 e sec-2 */
+}
+
+.sec-1 {
+    display: flex;
+    gap: 2vw;
+}
+
+.sec-2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 2vw;
+}
+
+.deitada {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1vw; /* Espaçamento menor para imagens empilhadas */
+}
+
+/* Coluna Direita */
+.diri {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5vw;
+    margin-left: 2vw;
+    flex-grow: 1; /* Prioridade de tamanho menor para a direita */
+}
+
+.diri-baixo {
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+}
+
+/* --- ESTILOS GERAIS DOS CARDS DE TENDÊNCIA --- */
+
+.sec-1 a, .sec-2 a, .diri-topo a, .diri-baixo a, .empé {
+    /* Faz com que os links ocupem o espaço dos contêineres Flex/Grid */
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    min-height: 10vw; /* Altura mínima base */
+}
+
+.sec-1 a, .deitada a, .diri-baixo a, .diri-topo a, .empé {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0.5rem; /* Borda arredondada */
+    position: relative;
+}
+
+/* Tamanhos de Imagem */
+/* d-dvw substituído por vw para maior compatibilidade e fluidez */
+
+.img-2 {
+    width: 35.625vw;
+    height: 12.55vw;
+    background-image: url('/images/tendencias/imagem-2.png');
+}
+
+.img-3 {
+    width: 16.15vw;
+    height: 12.55vw;
+    background-image: url('/images/tendencias/imagem-3.png');
+}
+
+.empé {
+    width: 25.57vw;
+    height: 31.20vw;
+    background-image: url('/images/tendencias/imagem-1.png');
+}
+
+.img-4 {
+    width: 25.57vw;
+    height: 14.32vw;
+    background-image: url('/images/tendencias/imagem-4.png');
+}
+
+.img-5 {
+    width: 25.57vw;
+    height: 14.32vw;
+    background-image: url('/images/tendencias/imagem-5.png');
+}
+
+.img-6 {
+    width: 28.91vw;
+    height: 34.69vw;
+    background-image: url('/images/tendencias/imagem-6.png');
+}
+
+.img-7 {
+    width: 16.09vw;
+    height: 10.19vw;
+    background-image: url('/images/tendencias/imagem-7.png');
+}
+
+.img-8 {
+    width: 11.56vw;
+    height: 10.19vw;
+    background-image: url('/images/tendencias/imagem-8.png');
+}
+
+/* --- ELEMENTOS INTERNOS DO CARD --- */
+
+.elementos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.cima {
+    display: flex;
+    justify-content: space-between;
+    margin: 4% 4% 0% 4%; /* Margens relativas para posicionamento */
+}
+
+#data-3 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(0.7rem, 1vw, 1rem); 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#salvar-3 {
+    width: clamp(1rem, 1.26vw, 1.5rem);
+    height: clamp(1rem, 1.69vw, 2rem);
+}
+
+.centro {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    padding-right: 3%; /* Adiciona padding para não colar na borda */
+}
+
+.butaos {
+    display: flex;
+    gap: 1vw;
+    margin-bottom: 2%;
+    flex-wrap: wrap; /* Permite quebras em telas menores */
+}
+
+.butaos button {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(0.7rem, 1vw, 1rem); 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 20vw;
+    padding: 0.02vw 1vw;
+    white-space: nowrap;
+    border-color: #ffffff;
+    border-width: 0.1vw;
+    border-style: solid;
+    background-color: rgba(192, 192, 192, 0.288);
+    box-shadow: 0vw 0.2vw 0.5vw #00000044;
+}
+
+#tit-7 {
+    color: #FFF;
+    font-family: "The Next Font";
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(1.2rem, 2vw, 2rem); 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+}
+
+#tit-8 {
+    color: #FFF;
+    font-family: "The Next Font";
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(1rem, 1.6vw, 1.6rem); 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+}
+
+/* --- RESPONSIVIDADE PARA FLEXBOX (MEDIA QUERY) --- */
 
 @media (max-width: 1024px) {
+    .imagenszinas {
+        flex-direction: column; /* Empilha as colunas esqui e diri */
+        gap: 4vw;
+    }
+
+    .esqui {
+        gap: 4vw;
+    }
+
+    .sec-1, .sec-2 {
+        gap: 3vw;
+    }
+
+    /* Ajuste de tamanho para caberem em uma linha completa */
+    .img-2, .img-3, .empé, .img-4, .img-5, .img-6, .img-7, .img-8 {
+        /* Largura base ajustada para Flexbox para preencher o espaço */
+        width: 100%; 
+        height: 25vw; /* Altura fixa no tablet */
+    }
+
+    .sec-1 a, .sec-2 a {
+        flex-grow: 1;
+    }
+
+    .img-2 {
+        height: 25vw;
+    }
+    .img-3 {
+        height: 25vw;
+    }
+    
+    .empé {
+        width: 50%; /* Ocupa metade da linha */
+        height: 40vw;
+    }
+    
+    .deitada {
+        width: 50%;
+        gap: 3vw;
+    }
+
+    .img-4, .img-5 {
+        width: 100%;
+        height: 18.5vw;
+    }
+    
+    .diri {
+        flex-direction: row; /* Colunas diri-topo e diri-baixo lado a lado */
+        gap: 3vw;
+        margin-left: 0;
+    }
+
+    .diri-topo, .diri-baixo {
+        flex-grow: 1;
+        width: 50%;
+    }
+
+    .img-6 {
+        height: 40vw;
+    }
+
+    .diri-baixo {
+        flex-direction: column; /* Imagens 7 e 8 empilhadas */
+        gap: 3vw;
+    }
+
+    .img-7, .img-8 {
+        width: 100%;
+        height: 18.5vw;
+    }
+
+}
+
+@media (max-width: 600px) {
+    /* Mobile: Tudo em coluna única */
+    .sec-1, .sec-2, .diri {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .sec-1, .sec-2 {
+        gap: 1.5rem;
+    }
+
+    .empé {
+        width: 100%;
+        height: 60vw;
+    }
+
+    .deitada {
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    .diri {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 1.5rem;
+    }
+
+    .diri-topo, .diri-baixo {
+        width: 100%;
+    }
+
+    .diri-baixo {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .img-2, .img-3, .img-6, .img-7, .img-8 {
+        height: 40vw;
+    }
+    
+    .img-4, .img-5 {
+        height: 30vw;
+    }
+    
+    #tit-7 {
+        font-size: 1.2rem;
+    }
+
+    #tit-8 {
+        font-size: 1rem;
+    }
+}
+/* ... (restante dos estilos .quarto se houver) ... */
+
+
+/* --- RESPONSIVIDADE (Ajustes de Grid e Fontes) --- */
+
+@media (max-width: 1024px) {
+    /* TABLET: Coluna 3 do overlap (Meio) fica abaixo */
     .primeiro-overlap-group {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto; /* Permite que o novo elemento se acomode */
         width: 90vw;
-        gap: 1.5vw;
+        max-width: none;
+    }
+    .meio {
+        grid-column: 1 / span 2; /* Ocupa as duas colunas */
+        order: 3; /* Coloca no final */
+    }
+    .banner-sec {
+        height: 35vw;
+    }
+    .banner-terc {
+        height: 20vw;
     }
     .segundo {
         width: 90vw;
     }
-    #text-2 {
-        max-width: 100%;
-    }
     .produtss {
         grid-template-columns: 1fr 1fr; /* 2 colunas no tablet */
     }
-    .produt3 {
-        grid-column: 1 / -1; /* Produto 3 centralizado */
-        justify-self: center;
-        width: 50%;
-    }
     .produt1, .produt2, .produt3 {
         height: 30vw;
+    }
+    .produt3 {
+        grid-column: 1 / span 2; /* Produto 3 centralizado */
+        width: 60%;
+        justify-self: center;
     }
 }
 
 
 @media (max-width: 768px) {
-    /* Seção 1 no Mobile */
-    .primeiro {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .banner-principal {
-        height: auto;
-        padding: 2rem 1.5rem 5rem 1.5rem;
-        /* Imagem de fundo mobile opcional */
-        /* background-image: url('/images/tendencias/img-principal3.png'); */
-    }
-
-    #tit-1 {
-        font-size: 1.8rem;
-    }
-    #text-1 {
-        font-size: 0.9rem;
-        width: 100%;
-        margin-top: 1rem;
-    }
+    /* MOBILE: Layout de coluna única */
     
+    /* Seção 1 */
+    .banner-principal {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        margin-bottom: -3rem; /* Efeito de overlap mais suave */
+    }
     .primeiro-overlap-group {
         grid-template-columns: 1fr; /* Coluna única */
-        width: 90vw;
         gap: 1.5rem;
-        transform: translateY(-3rem); /* Sobreposição menor */
+        padding-top: 3rem; 
+        width: 90vw;
     }
-
     .banner-sec, .banner-terc {
-        height: 45vw; /* Altura fixa para mobile */
+        height: 50vw; /* Altura fixa para mobile */
     }
     #tit-2, #tit-3 {
         font-size: 1.2rem;
     }
-    .banner-sec button, .banner-terc button {
-        padding: 0.3rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
     .meio {
-        padding-top: 0;
+        order: 3;
     }
-    .meio button {
-        padding: 0.8rem 1.5rem;
-    }
-
-
-    /* Seção 2 no Mobile */
+    
+    /* Seção 2 */
     .segundo {
         grid-template-columns: 1fr; /* Coluna única */
-        width: 100vw;
-        margin-top: 1rem;
-        padding: 1.5rem 1rem;
-        background-image: none; /* Remove imagem de fundo */
+        width: 100%;
+        margin-top: 2rem;
+        padding: 1.5rem 5vw;
+        background-image: none;
         background-color: #5E332C;
+        border-radius: 0;
     }
-
     .segundo-col-dir {
-        transform: translateY(0); /* Remove efeito "subir" */
         padding: 1.5rem;
         margin-top: 2rem;
     }
@@ -648,45 +988,40 @@ main {
     .produtss {
         grid-template-columns: 1fr 1fr;
     }
-    .produt3 {
-        width: 100%; /* Ocupa espaço normal */
-    }
     .produt1, .produt2, .produt3 {
-        height: 50vw; /* Mais altura no mobile */
+        height: 50vw; 
+    }
+    .produt3 {
+        grid-column: auto; /* Remove centralização */
+        width: 100%; 
     }
     #but-6 {
         width: 80%;
     }
 
-    /* Seção 3 no Mobile */
+    /* Seção 3 */
     .terceiro {
         grid-template-columns: 1fr; /* Coluna única */
-        padding-top: 2rem;
+        padding: 0 5vw;
+        margin: 2rem 0;
     }
 
     .esq {
-        height: 60vw;
+        min-height: 50vw;
         justify-content: flex-start;
         padding: 1.5rem;
     }
     .esq p {
         font-size: 2.5rem;
+        max-width: 100%;
     }
     .dir {
-        padding: 1.5rem;
-        gap: 1.5rem;
+        padding: 1.5rem 0;
     }
-    #uno {
-        padding-bottom: 1rem;
-    }
-    #uno img {
-        width: 12vw;
-        height: 12vw;
-        max-width: 50px;
-        max-height: 50px;
+    #tit-6 {
+        font-size: 2rem;
     }
     #uno p {
-        margin-left: 1rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }
