@@ -411,6 +411,6 @@ A aplicação está **pronta para produção** com testes de qualidade.
 
 ---
 
-**Prepared by**: Claude Code Assistant
+
 **Date**: 04/11/2025
 **Version**: 1.0.0
