@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import { SignJWT, jwtVerify } from "jose";
 import { prisma } from "@/lib/prisma";
 import { supabaseAdmin } from "@/lib/supabase";
 
@@ -19,7 +19,9 @@ export async function POST(req: NextRequest) {
     
     let decoded: any;
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET!);
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+      const result = await jwtVerify(token, secret);
+      decoded = result.payload;
     } catch (error) {
       return NextResponse.json(
         { error: "Token inválido ou expirado" },

@@ -8,10 +8,8 @@ import * as path from 'path';
 const execAsync = promisify(exec);
 const prisma = new PrismaClient();
 
-// FIXME: Suite desabilitada temporariamente devido a bug do Prisma Client v6.18
-// com prepared statements. Queries sequenciais causam conflitos.
-// Issue: https://github.com/prisma/prisma/issues/XXXXX
-describe.skip('Testes de Backup e Restore', () => {
+// Suite reativada - testando com Prisma Client v6.19+
+describe('Testes de Backup e Restore', () => {
   const backupDir = path.join(process.cwd(), 'temp-backups');
 
   beforeAll(async () => {
@@ -174,7 +172,7 @@ describe.skip('Testes de Backup e Restore', () => {
     });
 
     // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve restaurar múltiplos registros em lote', async () => {
+    it('deve restaurar múltiplos registros em lote', async () => {
       const timestamp = Date.now();
 
       // Criar múltiplas tags

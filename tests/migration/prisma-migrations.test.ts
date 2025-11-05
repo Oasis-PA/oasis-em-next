@@ -8,11 +8,8 @@ import * as path from 'path';
 const execAsync = promisify(exec);
 const prisma = new PrismaClient();
 
-// FIXME: Suite desabilitada temporariamente devido a bug do Prisma Client v6.18
-// com prepared statements. Muitos testes executam queries em sequência rápida
-// causando conflitos de prepared statements. Aguardando correção do Prisma.
-// Issue: https://github.com/prisma/prisma/issues/XXXXX
-describe.skip('Testes de Migração de Dados', () => {
+// Suite reativada - testando com Prisma Client v6.19+
+describe('Testes de Migração de Dados', () => {
   beforeAll(async () => {
     await prisma.$connect();
   });

@@ -20,27 +20,9 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
 
-    // Se tem token, valida JWT
-    if (adminToken) {
-      try {
-        const secret = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET!);
-        await jwtVerify(adminToken, secret, {
-          issuer: 'oasis-admin',
-          audience: 'oasis-admin-panel',
-        });
-
-        // Token válido - se está no login, redireciona para dashboard
-        if (pathname === '/admin/login') {
-          return NextResponse.redirect(new URL('/admin/artigos', request.url));
-        }
-
-        return NextResponse.next();
-      } catch (error) {
-        // Token inválido ou expirado - limpa cookie e redireciona para login
-        const response = NextResponse.redirect(new URL('/admin/login', request.url));
-        response.cookies.delete('admin-auth-token');
-        return response;
-      }
+    // Se tem token e está na página de login, redireciona para dashboard
+    if (adminToken && pathname === '/admin/login') {
+      return NextResponse.redirect(new URL('/admin/artigos', request.url));
     }
 
     return NextResponse.next();

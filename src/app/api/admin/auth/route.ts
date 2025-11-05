@@ -1,6 +1,6 @@
 // src/app/api/admin/auth/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
+import { SignJWT } from 'jose';
 import { rateLimit, getClientIp } from '@/lib/rate-limit';
 
 // Validação de variáveis de ambiente obrigatórias
@@ -44,20 +44,18 @@ export async function POST(request: NextRequest) {
 
     // Valida credenciais
     if (username === ADMIN_USER && password === ADMIN_PASS) {
-      // Gera JWT assinado (não apenas Base64!)
-      const token = jwt.sign(
-        {
-          username,
-          role: 'admin',
-          iat: Math.floor(Date.now() / 1000),
-        },
-        JWT_SECRET,
-        {
-          expiresIn: '7d', // 7 dias
-          issuer: 'oasis-admin',
-          audience: 'oasis-admin-panel',
-        }
-      );
+      // Gera JWT assinado com jose
+      const secret = new TextEncoder().encode(JWT_SECRET);
+      const token = await new SignJWT({
+        username,
+        role: 'admin',
+      })
+        .setProtectedHeader({ alg: 'HS256' })
+        .setIssuedAt()
+        .setExpirationTime('7d')
+        .setIssuer('oasis-admin')
+        .setAudience('oasis-admin-panel')
+        .sign(secret);
 
       const response = NextResponse.json(
         { message: 'Login realizado com sucesso' },

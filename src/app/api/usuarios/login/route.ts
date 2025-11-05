@@ -1,6 +1,6 @@
 // src/app/api/usuarios/login/route.ts
 import { NextResponse, NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
+import { SignJWT } from "jose";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { ZodError } from "zod";
@@ -56,15 +56,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const token = jwt.sign(
-      { 
-        id: user.id_usuario, 
-        email: user.email, 
-        hasProfile: !!user.nome,
-      },
-      process.env.JWT_SECRET!,
-      { expiresIn: "7d" }
-    );
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+    const token = await new SignJWT({
+      id: user.id_usuario,
+      email: user.email,
+      hasProfile: !!user.nome,
+    })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('7d')
+      .sign(secret);
 
     const { senha: _, ...usuarioSemSenha } = user;
 

@@ -1,7 +1,7 @@
 // app/api/favoritos/artigos/check/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import jwt from 'jsonwebtoken';
+import { SignJWT, jwtVerify } from "jose";
 
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
@@ -14,7 +14,7 @@ interface JWTPayload {
 }
 
 // Função para verificar o token JWT
-function verifyToken(request: NextRequest): { userId: number; email: string } | null {
+async function verifyToken (request: NextRequest): Promise<{ userId: number; email: string } | null> {
   try {
     const token = request.cookies.get('auth-token')?.value;
     
@@ -22,7 +22,9 @@ function verifyToken(request: NextRequest): { userId: number; email: string } | 
       return null;
     }
 
-    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
+    const secret = new TextEncoder().encode(JWT_SECRET);
+    const { payload } = await jwtVerify(token, secret);
+    const decoded = payload as unknown as JWTPayload;
     
     // Tenta diferentes possíveis nomes do campo ID
     const userId = decoded.userId || decoded.id || decoded.id_usuario;
@@ -61,7 +63,7 @@ export async function GET(
     }
 
     // Verifica autenticação
-    const userData = verifyToken(request);
+    const userData = await verifyToken(request);
     
     // Se não estiver autenticado, retorna false
     if (!userData) {

@@ -1,11 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 import { jest } from '@jest/globals';
 
-// FIXME: Suite desabilitada temporariamente devido a bug do Prisma Client v6.18
-// com prepared statements. Testes de concorrência usam Promise.all() extensivamente
-// causando conflitos de prepared statements. Aguardando correção do Prisma.
-// Issue: https://github.com/prisma/prisma/issues/XXXXX
-describe.skip('Testes de Concorrência e Race Conditions', () => {
+// Suite reativada - testando com Prisma Client v6.19+
+describe('Testes de Concorrência e Race Conditions', () => {
   let prisma: PrismaClient;
 
   beforeAll(() => {
@@ -17,10 +14,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
   });
 
   describe('Race Conditions em Criação', () => {
-    // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    // com prepared statements em operações concorrentes
-    // Issue: https://github.com/prisma/prisma/issues/XXXXX
-    it.skip('deve criar múltiplos usuários simultaneamente sem conflitos', async () => {
+    it('deve criar múltiplos usuários simultaneamente sem conflitos', async () => {
       const timestamp = Date.now();
       const promises = Array.from({ length: 10 }, (_, i) =>
         prisma.usuario.create({
@@ -83,8 +77,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
   });
 
   describe('Race Conditions em Atualização', () => {
-    // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve lidar com múltiplas atualizações simultâneas no mesmo registro', async () => {
+    it('deve lidar com múltiplas atualizações simultâneas no mesmo registro', async () => {
       // Criar usuário
       const usuario = await prisma.usuario.create({
         data: {
@@ -128,7 +121,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
     });
 
     // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve garantir integridade em incrementos/decrementos simultâneos', async () => {
+    it('deve garantir integridade em incrementos/decrementos simultâneos', async () => {
       // Criar produto
       const produto = await prisma.produto.create({
         data: {
@@ -223,7 +216,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
 
   describe('Múltiplos Usuários Simultâneos', () => {
     // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve suportar 20 usuários lendo produtos simultaneamente', async () => {
+    it('deve suportar 20 usuários lendo produtos simultaneamente', async () => {
       const startTime = performance.now();
 
       const promises = Array.from({ length: 20 }, () =>
@@ -250,7 +243,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
     });
 
     // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve suportar 10 usuários criando avaliações simultaneamente', async () => {
+    it('deve suportar 10 usuários criando avaliações simultaneamente', async () => {
       // Criar produto e usuários
       const produto = await prisma.produto.create({
         data: {
@@ -316,7 +309,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
 
   describe('Transações e Isolamento', () => {
     // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve garantir isolamento em transações concorrentes', async () => {
+    it('deve garantir isolamento em transações concorrentes', async () => {
       const timestamp = Date.now();
 
       // Transações que criam usuário e favorito atomicamente
@@ -355,8 +348,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
       console.log(`✅ 5 transações concorrentes completadas com isolamento`);
     });
 
-    // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve reverter transações que falham parcialmente', async () => {
+    it('deve reverter transações que falham parcialmente', async () => {
       const timestamp = Date.now();
       const email = `transacao-fail-${timestamp}@test.com`;
 
@@ -397,7 +389,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
 
   describe('Deadlock Prevention', () => {
     // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve evitar deadlocks em atualizações cruzadas', async () => {
+    it('deve evitar deadlocks em atualizações cruzadas', async () => {
       // Criar 2 produtos
       const produto1 = await prisma.produto.create({
         data: {
@@ -469,7 +461,7 @@ describe.skip('Testes de Concorrência e Race Conditions', () => {
 
   describe('Connection Pool Stress Test', () => {
     // FIXME: Desabilitado temporariamente devido a bug do Prisma Client v6.18
-    it.skip('deve lidar com 50 conexões simultâneas', async () => {
+    it('deve lidar com 50 conexões simultâneas', async () => {
       const startTime = performance.now();
 
       const promises = Array.from({ length: 50 }, (_, i) =>
