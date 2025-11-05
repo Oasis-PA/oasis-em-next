@@ -453,64 +453,50 @@ main {
     color: red;
 }
 
-
 @media (max-width: 768px) {
-    /* 1. Banner/Header */
     #d1 {
         height: 80vw;
         padding-left: 5vw;
     }
-    
     #d1 > h1 {
         max-width: 90%;
         font-size: clamp(2rem, 6vw, 3rem);
     }
-    
-    /* 2. Layout Artigos */
     #d2, .d2 {
-        flex-direction: column; /* Empilha as linhas de artigo */
+        flex-direction: column;
         gap: 1.5rem;
         align-items: center;
     }
-
     #artigos {
         gap: 1.5rem;
         margin-top: 5rem;
     }
-    
     #artigo1, #artigo2, #artigo3, #artigo4, #artigo5, #artigo6 {
-        min-width: 90vw; /* Artigos em largura total */
+        min-width: 90vw;
         max-width: 90vw;
         height: 40vw; 
         padding: 1.5rem; 
     }
-    
     #artigo1, #artigo2 {
         max-width: 90vw;
     }
-
     .hpreto, .hbranco {
         margin-left: 0; 
         max-width: 100%; 
         margin-top: 1rem; 
     }
-    
     .ppreto, .pbranco {
         margin-left: 0; 
         max-width: 100%; 
     }
-    
-    /* 3. Layout Dicas */
     #s3 {
         padding-left: 5vw; 
         padding-right: 5vw;
     }
-
     .dicas {
-        flex-direction: column; /* Empilha as dicas */
+        flex-direction: column;
         gap: 1.5rem;
     }
-
     #dica1, #dica2, #dica3, #dica4 {
         max-width: 100%;
         width: 100%;
@@ -519,77 +505,61 @@ main {
         padding: clamp(1.5rem, 5vw, 2rem); 
         justify-content: center; 
     }
-    
     .dicas h2, .dicas p {
         margin-left: 0; 
         margin-right: 0;
         max-width: 100%;
     }
-
     #dica2 > p {
         color: #FFF;
     }
-    
-    /* 4. Visibilidade e Fonte do Conteúdo */
     #d1 > p,
     .pbranco,
     .ppreto,
     .dicas p {
         display: block; 
     }
-
     #d1 > p {
         font-size: 1rem;
         max-width: 90%;
     }
-    
     .ppreto, .pbranco {
         font-size: 0.9rem;
     }
-    
     .dicas p {
         font-size: 0.9rem;
     }
-    
     .dicas h2 {
         font-size: clamp(1.2rem, 4vw, 1.7rem);
     }
-    
-    /* 5. Layout Produtos */
     .produtos {
         flex-wrap: wrap; 
-        gap: 1.5rem; /* Espaço entre os itens */
+        gap: 1.5rem;
         padding-left: 5vw; 
         padding-right: 5vw; 
-        justify-content: space-around; /* Distribui 2 itens uniformemente, centralizando-os */
+        justify-content: space-around;
     }
-
     .prod1 {
-        max-width: 42vw; /* CORREÇÃO: Reduzido para garantir 2 itens lado a lado com o padding do container */
+        max-width: 42vw;
         height: auto;
     }
-
     .prod1 > h5, .prod1 > h4 {
         margin-left: 0.5rem; 
     }
-    
     #leao-bg, #zebra-bg, #girafa-bg {
         max-width: 90vw; 
         height: 45vw;
         margin-top: 1.5rem;
         margin-bottom: 1rem; 
     }
-
     #leao-bg > h1, #zebra-bg > h1, #girafa-bg > h1 {
         font-size: 1.5rem;
         margin-top: 1.5rem;
         margin-left: 1.5rem; 
     }
-
     #s2 > div > h1 {
         padding-left: 5vw;
     }
-    
     .linha {
         display: none; 
     }
