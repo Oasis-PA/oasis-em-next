@@ -21,7 +21,10 @@ Cypress.Commands.add('logout', () => {
     .first()
     .click();
 
-  cy.url().should('include', '/login').or(cy.url().should('equal', 'http://localhost:3000/'));
+  // Verifica se redirecionou para login ou homepage
+  cy.url().then(url => {
+    expect(url === 'http://localhost:3000/' || url.includes('/login')).to.be.true;
+  });
 });
 
 // Declarar tipos dos comandos customizados

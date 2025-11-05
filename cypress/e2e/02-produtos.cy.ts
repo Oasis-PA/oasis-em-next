@@ -190,7 +190,12 @@ describe('Catálogo de Produtos', () => {
 
       cy.get('button:contains("Avaliar")').first().click();
 
-      cy.url().should('include', '/login').or(cy.contains(/faça login|entre/i).should('exist'));
+      // Verifica se redirecionou para login ou mostra mensagem
+      cy.url().then(url => {
+        if (!url.includes('/login')) {
+          cy.contains(/faça login|entre/i).should('exist');
+        }
+      });
     });
   });
 });

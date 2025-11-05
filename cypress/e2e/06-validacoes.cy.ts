@@ -43,7 +43,13 @@ describe('Validações de Entrada', () => {
     it('Deve aceitar senha forte', () => {
       cy.get('input[type="password"]').type('Senha123!@#');
 
-      cy.contains(/força|ok|forte/i).should('exist').or(cy.get('button[type="submit"]').should('be.enabled'));
+      // Verifica se mostra força ou se botão fica habilitado
+      cy.get('body').then($body => {
+        const hasStrengthText = $body.text().match(/força|ok|forte/i);
+        if (!hasStrengthText) {
+          cy.get('button[type="submit"]').should('be.enabled');
+        }
+      });
     });
 
     it('Deve validar comprimento mínimo da senha', () => {

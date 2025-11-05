@@ -3,7 +3,6 @@
 
 import { NextResponse, NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { categoriaUpdateSchema } from '@/lib/validations/categoria';
 
 /**
  * GET /api/categorias/[id]

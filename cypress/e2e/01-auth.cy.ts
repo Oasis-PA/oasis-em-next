@@ -76,7 +76,11 @@ describe('Autenticação de Usuários', () => {
       cy.get('button[type="submit"]').click();
 
       // Aguarda redirecionamento ou mensagem de sucesso
-      cy.url().should('include', '/').or(cy.contains(/sucesso|cadastrado/i).should('exist'));
+      cy.url().then(url => {
+        if (!url.includes('/')) {
+          cy.contains(/sucesso|cadastrado/i).should('exist');
+        }
+      });
     });
   });
 
@@ -129,7 +133,10 @@ describe('Autenticação de Usuários', () => {
         .first()
         .click();
 
-      cy.url().should('include', '/login').or(cy.url().should('equal', 'http://localhost:3000/'));
+      // Verifica se voltou para login ou homepage
+      cy.url().then(url => {
+        expect(url === 'http://localhost:3000/' || url.includes('/login')).to.be.true;
+      });
       cy.contains(/bem-vindo|login|registre-se/i).should('be.visible');
     });
   });

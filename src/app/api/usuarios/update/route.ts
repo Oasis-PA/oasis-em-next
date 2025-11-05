@@ -17,7 +17,8 @@ async function extractAndValidateToken(req: Request) {
     throw new Error("Token inválido");
   }
 
-  return (payload as any).id;
+  const userId = (payload as any).id;
+  return typeof userId === 'string' ? parseInt(userId, 10) : userId;
 }
 
 // PUT - Substituição completa (mantido por compatibilidade)
@@ -57,7 +58,7 @@ export async function PUT(req: Request) {
 // PATCH - Atualização parcial (mais eficiente)
 export async function PATCH(req: Request) {
   try {
-    const userId = extractAndValidateToken(req);
+    const userId = await extractAndValidateToken(req);
     const body = await req.json();
 
     // Campos permitidos para atualização

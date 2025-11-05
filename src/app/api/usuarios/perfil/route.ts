@@ -52,9 +52,9 @@ export async function GET(req: NextRequest) {
     // 4. Retornar os dados do usuário com sucesso
     return NextResponse.json(usuario);
 
-  } catch (error) {
+  } catch (error: any) {
     // Trata erros específicos de JWT (token expirado, malformado)
-    if (error instanceof jwt.JsonWebTokenError) {
+    if (error?.message?.includes('signature') || error?.message?.includes('verify')) {
       return NextResponse.json({ error: `Não autorizado: ${error.message}` }, { status: 401 });
     }
 

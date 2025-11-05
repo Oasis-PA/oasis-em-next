@@ -29,8 +29,6 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  // Captura screenshot em caso de falha
-  cy.visit('/').catch(() => {
-    // ignora erros de navegação
-  });
+  // Limpa após cada teste
+  // (screenshots são capturados automaticamente pelo Cypress em falhas)
 });

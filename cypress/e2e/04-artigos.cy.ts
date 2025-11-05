@@ -244,7 +244,12 @@ describe('Sistema de Artigos', () => {
         .first()
         .click();
 
-      cy.get('body').should('have.class', 'dark').or(cy.get('html').should('have.attr', 'data-theme', 'dark'));
+      // Verifica se tema escuro foi aplicado
+      cy.get('body').then($body => {
+        const hasDarkClass = $body.hasClass('dark');
+        const isDarkAttr = $body.parent().attr('data-theme') === 'dark';
+        expect(hasDarkClass || isDarkAttr).to.be.true;
+      });
     });
 
     it('Deve salvar preferência de tema', () => {
@@ -257,7 +262,11 @@ describe('Sistema de Artigos', () => {
       cy.reload();
 
       // Verifica se o tema foi mantido
-      cy.get('body').should('have.class', 'dark').or(cy.get('html').should('have.attr', 'data-theme', 'dark'));
+      cy.get('body').then($body => {
+        const hasDarkClass = $body.hasClass('dark');
+        const isDarkAttr = $body.parent().attr('data-theme') === 'dark';
+        expect(hasDarkClass || isDarkAttr).to.be.true;
+      });
     });
   });
 });
