@@ -54,7 +54,9 @@
       "Bash(done)",
       "Bash(node scripts/fix-jwt.js:*)",
       "Bash(for file in src/app/api/favoritos/artigos/check/[id]/route.ts src/app/api/favoritos/artigos/route.ts)",
-      "Bash(for file in src/app/api/usuarios/credenciais/route.ts src/app/api/usuarios/excluir/route.ts src/app/api/usuarios/pessoais/route.ts src/app/api/usuarios/perfil/route.ts)"
+      "Bash(for file in src/app/api/usuarios/credenciais/route.ts src/app/api/usuarios/excluir/route.ts src/app/api/usuarios/pessoais/route.ts src/app/api/usuarios/perfil/route.ts)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
