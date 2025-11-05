@@ -27,7 +27,7 @@ export default function PaginaDeProduto() {
 
   // Estados
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [activeDetalhe, setActiveDetalhe] = useState('');
+  const [activeDetalhe, setActiveDetalhe] = useState('composicao');
   const [isSetaLeft, setIsSetaLeft] = useState(false);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
