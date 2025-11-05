@@ -56,7 +56,13 @@
       "Bash(for file in src/app/api/favoritos/artigos/check/[id]/route.ts src/app/api/favoritos/artigos/route.ts)",
       "Bash(for file in src/app/api/usuarios/credenciais/route.ts src/app/api/usuarios/excluir/route.ts src/app/api/usuarios/pessoais/route.ts src/app/api/usuarios/perfil/route.ts)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npm run cypress:run:*)",
+      "Bash(curl -I http://localhost:3001)",
+      "Bash(npm run test:seed:*)",
+      "Bash(ping:*)",
+      "Bash(nslookup:*)",
+      "Bash(.env.example)"
     ],
     "deny": [],
     "ask": []
