@@ -420,9 +420,20 @@ const Respostas: React.FC = () => {
                             </div>
                         </section>
                         <section className="articles">
-                            <div className="artigo">
+                            <Link href='/' className="artigo">
                                 <div id="conteudinho">
-                                    <p>13 jan 2025</p>
+                                    <div className="aaaa">
+                                        <div className="butoes">
+                                            <button>Cortes</button>
+                                            <button>Marcas</button>
+                                        </div>
+                                        <h1>Como escolher o corte ideal para o formato do rosto</h1>
+                                    </div>
+                                </div>
+                                <img src="/images/resposta/Vector.png" alt="" />
+                            </Link>
+                            <Link href='/' className="artigo1">
+                                <div id="conteudinho">
                                     <div className="aaaa">
                                         <div className="butoes">
                                             <button>Moda</button>
@@ -432,20 +443,7 @@ const Respostas: React.FC = () => {
                                     </div>
                                 </div>
                                 <img src="/images/resposta/Vector.png" alt="" />
-                            </div>
-                            <div className="artigo1">
-                                <div id="conteudinho">
-                                    <p>13 jan 2025</p>
-                                    <div className="aaaa">
-                                        <div className="butoes">
-                                            <button>Moda</button>
-                                            <button>Marcas</button>
-                                        </div>
-                                        <h1>Os 10 melhores óleos essenciais</h1>
-                                    </div>
-                                </div>
-                                <img src="/images/resposta/Vector.png" alt="" />
-                            </div>
+                            </Link>
                         </section>
                     </section>
                 </div>
