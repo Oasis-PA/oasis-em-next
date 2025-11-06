@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { atualizarAvaliacaoSchema } from '@/lib/validations/avaliacao';
 import { ZodError } from 'zod';
-import jwt from 'jsonwebtoken';
+import { SignJWT, jwtVerify } from "jose";
 
 // GET - Buscar avaliação específica
 export async function GET(
@@ -86,7 +86,9 @@ export async function PUT(
     const token = authHeader.substring(7);
     let decoded: any;
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET!);
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+      const result = await jwtVerify(token, secret);
+      decoded = result.payload;
     } catch (error) {
       return NextResponse.json(
         { error: 'Token inválido ou expirado' },
@@ -202,7 +204,9 @@ export async function DELETE(
     const token = authHeader.substring(7);
     let decoded: any;
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET!);
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+      const result = await jwtVerify(token, secret);
+      decoded = result.payload;
     } catch (error) {
       return NextResponse.json(
         { error: 'Token inválido ou expirado' },

@@ -2,27 +2,29 @@
 
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import jwt from "jsonwebtoken";
+import { SignJWT, jwtVerify } from "jose";
 
 // Helper para extrair e validar token
-function extractAndValidateToken(req: Request) {
+async function extractAndValidateToken(req: Request) {
   const token = req.headers.get("cookie")?.split("token=")[1]?.split(";")[0];
   if (!token) {
     throw new Error("Token não fornecido");
   }
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET!);
-  if (!decoded || typeof decoded !== "object" || !decoded.id) {
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+  const { payload } = await jwtVerify(token, secret);
+  if (!payload || typeof payload !== "object" || !(payload as any).id) {
     throw new Error("Token inválido");
   }
 
-  return decoded.id;
+  const userId = (payload as any).id;
+  return typeof userId === 'string' ? parseInt(userId, 10) : userId;
 }
 
 // PUT - Substituição completa (mantido por compatibilidade)
 export async function PUT(req: Request) {
   try {
-    const userId = extractAndValidateToken(req);
+    const userId = await extractAndValidateToken(req);
     const { nome, sobrenome, sobre } = await req.json();
 
     const usuarioAtualizado = await prisma.usuario.update({
@@ -56,7 +58,7 @@ export async function PUT(req: Request) {
 // PATCH - Atualização parcial (mais eficiente)
 export async function PATCH(req: Request) {
   try {
-    const userId = extractAndValidateToken(req);
+    const userId = await extractAndValidateToken(req);
     const body = await req.json();
 
     // Campos permitidos para atualização

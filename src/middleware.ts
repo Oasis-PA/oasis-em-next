@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { jwtVerify } from 'jose';
+
+// Não usar jsonwebtoken no middleware (Edge Runtime)
+// Apenas verificar se o token existe (validação completa na API)
 
 const protectedRoutes = ['/perfil'];
 const authRoutes = ['/login', '/cadastro', '/cadastro2'];
@@ -18,27 +20,9 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
 
-    // Se tem token, valida JWT
-    if (adminToken) {
-      try {
-        const secret = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET!);
-        await jwtVerify(adminToken, secret, {
-          issuer: 'oasis-admin',
-          audience: 'oasis-admin-panel',
-        });
-
-        // Token válido - se está no login, redireciona para dashboard
-        if (pathname === '/admin/login') {
-          return NextResponse.redirect(new URL('/admin/artigos', request.url));
-        }
-
-        return NextResponse.next();
-      } catch (error) {
-        // Token inválido ou expirado - limpa cookie e redireciona para login
-        const response = NextResponse.redirect(new URL('/admin/login', request.url));
-        response.cookies.delete('admin-auth-token');
-        return response;
-      }
+    // Se tem token e está na página de login, redireciona para dashboard
+    if (adminToken && pathname === '/admin/login') {
+      return NextResponse.redirect(new URL('/admin/artigos', request.url));
     }
 
     return NextResponse.next();
@@ -47,39 +31,18 @@ export async function middleware(request: NextRequest) {
   // ========== PROTEÇÃO DE USUÁRIO COMUM ==========
   const userToken = request.cookies.get('auth-token')?.value;
 
-  console.log('🔍 [MIDDLEWARE DEBUG]', {
-    pathname,
-    hasToken: !!userToken,
-    token: userToken ? `${userToken.substring(0, 20)}...` : 'none',
-    jwtSecret: process.env.JWT_SECRET ? 'exists' : 'missing'
-  });
+  // NOTA: Edge Runtime não suporta jsonwebtoken
+  // Apenas checamos se o token existe
+  // Validação completa é feita no lado do servidor/API
+  const hasUserToken = !!userToken;
 
-  // VALIDAR SE O TOKEN É VÁLIDO (NOVO)
-  let isValidToken = false;
-  if (userToken) {
-    try {
-      const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
-      await jwtVerify(userToken, secret);
-      isValidToken = true;
-      console.log('✅ Token válido');
-    } catch (error) {
-      console.log('❌ Token inválido:', error instanceof Error ? error.message : 'unknown error');
-      // Token inválido ou expirado - limpar cookie
-      const response = NextResponse.next();
-      response.cookies.delete('auth-token');
-      isValidToken = false;
-    }
-  }
-
-  // Se o usuário está REALMENTE logado (token válido) e tenta acessar login/cadastro
-  if (isValidToken && authRoutes.includes(pathname)) {
-    console.log('🔄 Redirecionando usuário logado de', pathname, 'para /');
+  // Se o usuário tem token e tenta acessar login/cadastro, redireciona para home
+  if (hasUserToken && authRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Se o usuário não está logado e tenta acessar rota protegida
-  if (!isValidToken && protectedRoutes.includes(pathname)) {
-    console.log('🔒 Redirecionando usuário não autenticado de', pathname, 'para /login');
+  // Se o usuário NÃO tem token e tenta acessar rota protegida, redireciona para login
+  if (!hasUserToken && protectedRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 

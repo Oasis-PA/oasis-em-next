@@ -5,12 +5,56 @@ import Image from "next/image";
 import "@/styles/tendencias.css";
 import Link from "next/link";
 
+interface TrendCardProps {
+  imageClass: string;
+  title: string;
+  tags: string[];
+  link: string;
+  titId: string;
+}
+
+// Componente para renderizar os cards de tendência
+const TrendCard: React.FC<TrendCardProps> = ({ imageClass, title, tags, link, titId }) => {
+  // Caminho da imagem de salvar ajustado para convenções do Next.js
+  const saveIconSrc = '/images/tendencias/Salvar.png'; 
+
+  return (
+    // O link envolve todo o card (div com a classe da imagem de fundo)
+    <Link href={link} className={imageClass}> 
+      <div className="elementos">
+        <div className="cima">
+          <p id="data-3">19 jun 2024</p>
+          {/* Componente Image para o ícone de salvar */}
+          <Image 
+            id="salvar-3" 
+            src={saveIconSrc} 
+            alt="Salvar" 
+            width={20} // Tamanho base será sobrescrito pelo CSS
+            height={27} // Tamanho base será sobrescrito pelo CSS
+            unoptimized // Imagens de ícone pequenas podem ser unoptimized
+          />
+        </div>
+
+        <div className="centro">
+          <div className="butaos">
+            {tags.map((tag, index) => (
+              <button key={index}>{tag}</button>
+            ))}
+          </div>
+          <p id={titId}>{title}</p>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
 export default function tendencias() {
 
   return (
     <>
       <Header />
       <main>
+        {/* ... Seções anteriores (primeiro, segundo, terceiro) ... */}
         <section className="primeiro">
           <div className="banner-principal">
             <p id="tit-1">
@@ -36,103 +80,84 @@ export default function tendencias() {
 
             <div className="meio">
               <p>
-                Preparamos <br /> tudo que você <br /> quer ver
+                O essencial <br /> para o seu estilo
               </p>
-              <button>Conheça</button>
+              <button>Ver todos</button>
             </div>
 
-            <Link href='/artigo/acido-hialuronico' className="banner-terc-link">
+            <Link href='/artigo/qual-creme-comprar' className="banner-terc-link">
               <div className="banner-terc">
                 <div className="butoes-2">
                   <button>Cabelo</button>
                   <button>Cremes e óleos</button>
                   <button>Produtos</button>
                 </div>
-                <p id="tit-3">Ácido hialuronico: Descubra os seus principais benefícios!</p>
+                <p id="tit-3">Acessórios para pele e cabelo</p>
               </div>
             </Link>
           </div>
         </section>
-
-
+        
         <section className="segundo">
-          {/* NOVA COLUNA DA ESQUERDA */}
           <div className="segundo-col-esq">
-            <p id="tit-4">Coleção inverno - Cachos dos sonhos</p>
+            <p id="tit-4">Cabelo perfeito em 3 passos</p>
             <p id="text-2">
-              Neste inverno, abrace seus cachos como nunca antes. A coleção Cachos dos Sonhos foi criada especialmente para cuidar, nutrir e proteger seus fios nos dias frios, quando o ressecamento e o frizz tentam roubar a cena.
+              Os produtos essenciais para o seu cronograma capilar estão aqui, descubra a importância do cuidado diário.
             </p>
             <div className="produtss">
               <div className="produt1">
-                <p>Spray Umidificador</p>
-                <button id="but-2">Conheça</button>
+                <p>Óleo Essencial</p>
+                <button id="but-2">Ver produto</button>
                 <button id="but-3">
-                  <Image
-                    src="/images/tendencias/Favorito.png"
-                    alt="Favorito"
-                    width={24}
-                    height={24}
-                  />
+                  <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
               </div>
               <div className="produt2">
-                <p>Máscara Nutri-Reparadora</p>
-                <button id="but-4">Conheça</button>
+                <p>Óleo de Coco</p>
+                <button id="but-4">Ver produto</button>
                 <button id="but-5">
-                  <Image
-                    src="/images/tendencias/Favorito.png"
-                    alt="Favorito"
-                    width={24}
-                    height={24}
-                  />
+                  <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
               </div>
               <div className="produt3">
-                <p>Protetor Térmico</p>
-                <button id="but-2">Conheça</button>
+                <p>Creme capilar</p>
+                <button id="but-2">Ver produto</button>
                 <button id="but-3">
-                  <Image
-                    src="/images/tendencias/Favorito.png"
-                    alt="Favorito"
-                    width={24}
-                    height={24} />
+                  <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
               </div>
             </div>
           </div>
 
-          {/* NOVA COLUNA DA DIREITA */}
           <div className="segundo-col-dir">
-            <Image
-              id="img-direita"
-              src="/images/tendencias/img-4.png"
-              alt="Imagem lateral"
-              width={400}
-              height={300}
+            <Image 
+              id="img-direita" 
+              src="/images/tendencias/imagem-direita.png" 
+              alt="Modelo sorrindo com a mão no cabelo" 
+              width={400} 
+              height={400} 
             />
-            <Link href='/artigo/melhores-tipos-de-finalizacao'>
-              <p id="tit-5">Melhores tipos de finalização</p>
-            </Link>
+            <p id="tit-5">Maquiagens</p>
             <p id="text-3">
-              A finalização é a etapa-chave para realçar a beleza natural dos cachos. A fitagem tradicional é ideal para quem busca definição intensa e controle do frizz. Já a fitagem rápida oferece praticidade e um visual mais leve e volumoso. Para cachos duradouros, a combinação de creme e gel é imbatível. Escolha a técnica que melhor se adapta à sua rotina e ao resultado que deseja!
+              O que você precisa saber sobre a nova linha de maquiagens da Makeup Star!
             </p>
             <div id="divi">
-              <p>Linha Produtos Tropicais - Hidratação Intensa</p>
+              <p>Produtos essenciais</p>
             </div>
-            <Image
-              id="img-produt-1"
-              src="/images/tendencias/produ-4.png"
-              alt="Produto tropical"
-              width={300}
-              height={300}
+            <Image 
+              id="img-produt-1" 
+              src="/images/tendencias/imagem-maquiagem.png" 
+              alt="Foto de maquiagem" 
+              width={300} 
+              height={100} 
             />
-            <button id="but-6">Veja Mais</button>
+            <button id="but-6">Ver produtos</button>
           </div>
         </section>
 
         <section className="terceiro">
           <div className="esq">
-            <p>O que usar no inverno</p>
+            <p>Os itens que você deve usar no inverno</p>
           </div>
           <div className="dir">
             <p id="tit-6">Esteja sempre no estilo</p>
@@ -175,11 +200,100 @@ export default function tendencias() {
           </div>
         </section>
 
-        {/* O restante da página (seção "quarto") não estava no seu .tsx, 
-            mas o CSS para ela estava. Se precisar, é só adicionar aqui. */}
+        {/* ======================================================= */}
+        {/* NOVA SEÇÃO: QUARTO - TENDÊNCIAS DA SEMANA */}
+        {/* ======================================================= */}
+        <section className="quarto">
+          <div id="outro-titulo">
+            <p>Tendencias da Semana</p>
+          </div>
 
+          <section className="imagenszinas">
+            <div className="esqui">
+              <div className="sec-1">
+                {/* Imagem 2 */}
+                <TrendCard
+                  imageClass="img-2"
+                  title="Os dilemas do século XXI: Qual creme comprar?"
+                  tags={["Cabelo", "Cremes e óleos", "Produtos"]}
+                  link="/artigo/creme-comprar"
+                  titId="tit-7"
+                />
+                {/* Imagem 3 */}
+                <TrendCard
+                  imageClass="img-3"
+                  title="skincare - 4 produtos"
+                  tags={["Cabelo", "Cremes e óleos"]}
+                  link="/artigo/skincare-4"
+                  titId="tit-7"
+                />
+              </div>
+
+              <div className="sec-2">
+                {/* Imagem empé */}
+                <TrendCard
+                  imageClass="empé"
+                  title="Os dilemas do século XXI: Qual creme comprar?"
+                  tags={["Cabelo", "Cremes e óleos", "Produtos"]}
+                  link="/artigo/creme-comprar-2"
+                  titId="tit-7"
+                />
+                <div className="deitada">
+                  {/* Imagem 4 */}
+                  <TrendCard
+                    imageClass="img-4"
+                    title="Os dilemas do século XXI: Qual creme comprar?"
+                    tags={["Cabelo", "Cremes e óleos", "Produtos"]}
+                    link="/artigo/creme-comprar-3"
+                    titId="tit-7"
+                  />
+                  {/* Imagem 5 */}
+                  <TrendCard
+                    imageClass="img-5"
+                    title="Os dilemas do século XXI: Qual creme comprar?"
+                    tags={["Cabelo", "Cremes e óleos", "Produtos"]}
+                    link="/artigo/creme-comprar-4"
+                    titId="tit-7"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="diri">
+              <div className="diri-topo">
+                {/* Imagem 6 */}
+                <TrendCard
+                  imageClass="img-6"
+                  title="Os dilemas do século XXI: Qual creme comprar?"
+                  tags={["Cabelo", "Cremes e óleos", "Produtos"]}
+                  link="/artigo/creme-comprar-5"
+                  titId="tit-7"
+                />
+              </div>
+
+              <div className="diri-baixo">
+                {/* Imagem 7 */}
+                <TrendCard
+                  imageClass="img-7"
+                  title="Grillz em 2025"
+                  tags={["Cabelo", "Cremes e óleos"]}
+                  link="/artigo/grillz-2025"
+                  titId="tit-7"
+                />
+                {/* Imagem 8 */}
+                <TrendCard
+                  imageClass="img-8"
+                  title="como fazer waves"
+                  tags={["Cabelo"]}
+                  link="/artigo/waves"
+                  titId="tit-8"
+                />
+              </div>
+            </div>
+          </section>
+        </section>
       </main>
       <Footer />
     </>
-  )
+  );
 }

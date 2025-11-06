@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { supabaseAdmin } from '@/lib/supabase';
-import jwt from 'jsonwebtoken';
+import { SignJWT, jwtVerify } from "jose";
 import { z } from 'zod';
 
 const atualizarImagemSchema = z.object({
@@ -36,7 +36,8 @@ export async function PATCH(
     }
 
     try {
-      jwt.verify(adminToken, process.env.ADMIN_JWT_SECRET!);
+      const secret = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET!);
+      await jwtVerify(adminToken, secret);
     } catch (error) {
       return NextResponse.json(
         { error: 'Token admin inválido' },
@@ -123,7 +124,8 @@ export async function DELETE(
     }
 
     try {
-      jwt.verify(adminToken, process.env.ADMIN_JWT_SECRET!);
+      const secret = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET!);
+      await jwtVerify(adminToken, secret);
     } catch (error) {
       return NextResponse.json(
         { error: 'Token admin inválido' },

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import { SignJWT, jwtVerify } from "jose";
 import { prisma } from "@/lib/prisma";
 
 export async function PATCH(req: NextRequest) {
@@ -7,7 +7,9 @@ export async function PATCH(req: NextRequest) {
   if (!token) return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+  const { payload } = await jwtVerify(token, secret);
+    const decoded = payload as unknown as { id: number };
     const body = await req.json();
     const dataToUpdate: any = {};
 

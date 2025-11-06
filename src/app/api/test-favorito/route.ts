@@ -2,7 +2,7 @@
 // ROTA DE TESTE - Remover depois de resolver o problema
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import jwt from 'jsonwebtoken';
+import { SignJWT, jwtVerify } from "jose";
 
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
@@ -12,11 +12,13 @@ interface JWTPayload {
   email: string;
 }
 
-function verifyToken(request: NextRequest): JWTPayload | null {
+async function verifyToken (request: NextRequest): Promise<JWTPayload | null> {
   try {
     const token = request.cookies.get('auth-token')?.value;
     if (!token) return null;
-    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
+    const secret = new TextEncoder().encode(JWT_SECRET);
+    const { payload } = await jwtVerify(token, secret);
+    const decoded = payload as unknown as JWTPayload;
     return decoded;
   } catch (error) {
     return null;
@@ -38,7 +40,7 @@ export async function GET(request: NextRequest) {
     results.step2_cookie = cookie ? 'Cookie encontrado' : 'Cookie não encontrado';
     
     // Teste 2: Autenticação
-    const userData = verifyToken(request);
+    const userData = await verifyToken(request);
     results.step1_auth = userData 
       ? { userId: userData.userId, email: userData.email }
       : 'Não autenticado';
