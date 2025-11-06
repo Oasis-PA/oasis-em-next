@@ -1,157 +1,19 @@
+/* artigo-geral.css - ATUALIZADO PARA NEXT.JS */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.artigos-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
+/* WRAPPER PRINCIPAL (substitui body) */
+.artigos-page-wrapper {
     background-color: var(--bg-color);
+    overflow-x: hidden;
     min-height: 100vh;
 }
 
-.artigos-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding-bottom: 2rem;
-    border-bottom: 3px solid var(--primary-color);
-}
-
-.artigos-titulo {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.artigos-subtitulo {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: 1.25rem;
-    color: var(--text-color);
-    opacity: 0.8;
-}
-
-.artigos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
-}
-
-.artigo-card {
-    display: block;
-    background: var(--card-bg);
-    border-radius: 16px;
-    overflow: hidden;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px var(--shadow);
-    border: 2px solid transparent;
-    height: 100%;
-}
-
-/* --- HOVER EXISTENTE (INTOCADO CONFORME PEDIDO) --- */
-.artigo-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(170, 53, 176, 0.2);
-    border-color: var(--primary-color);
-}
-
-.artigo-card-content {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    height: 100%;
-}
-
-.artigo-data {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: 0.875rem;
-    color: var(--secondary-color);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.artigo-card-titulo {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin: 0;
-    line-height: 1.3;
-}
-
-.artigo-preview {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: 1rem;
-    color: var(--text-color);
-    opacity: 0.7;
-    line-height: 1.6;
-    flex-grow: 1;
-}
-
-.artigo-ler-mais {
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: 1rem;
-    color: var(--primary-color);
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: gap 0.3s ease;
-}
-
-.artigo-card:hover .artigo-ler-mais {
-    gap: 1rem;
-}
-
-.check{
-    opacity: 0;
-    position: absolute;
-}
-.label{
-    margin-top: 18px;
-    margin-bottom: -10px;
-    margin-left: 92%;
-
-    background-color: var(--label);
-    border-radius: 29px;
-    border: 0.1px solid #000000;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-around;
-    width: 3%;
-    height: 29px;
-
-    transform: scale(1.1);
-}
-.imagem {
-    width: 27.6px;
-    height: 27.6px;
-    position: absolute;
-    top: 0;
-    left: -9px;
-}
-body
-{
-    background-color: var(--body-back);
-    overflow-x: hidden;
-}
-body > h5
-{
+.artigos-page-wrapper > h5 {
     text-align: center;
     font-family: "PLAYFUL RUNWAY";
     font-size: clamp(2.5rem, 6vw, 96px);
@@ -159,16 +21,14 @@ body > h5
     font-weight: 400;
     line-height: normal;
     margin-top: 2rem;
-    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
+    transition: text-shadow 0.3s ease;
 }
 
-/* --- ADICIONADO --- */
-body > h5:hover {
+.artigos-page-wrapper > h5:hover {
     text-shadow: 0 2px 8px var(--shadow);
 }
 
-body > p
-{
+.artigos-page-wrapper > p {
     text-align: center;
     font-family: "PLAYFUL RUNWAY";
     font-size: clamp(1rem, 2vw, 24px);
@@ -182,8 +42,7 @@ body > p
     padding: 0 1rem;
 }
 
-main
-{
+main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
@@ -192,8 +51,8 @@ main
     padding: 0 20px;
     width: 100%;
 }
-main>h5
-{
+
+main>h5 {
     grid-column: 1 / -1;
     font-family: "The Next Font";
     font-size: clamp(2rem, 3vw, 45px);
@@ -201,16 +60,15 @@ main>h5
     font-weight: 400;
     line-height: normal;
     margin-bottom: 1rem;
-    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
+    transition: text-shadow 0.3s ease;
 }
 
-/* --- ADICIONADO --- */
 main > h5:hover {
     text-shadow: 0 2px 8px var(--shadow);
 }
 
-.grupo-1 
-{
+/* GRUPO 1 - Hero Principal */
+.grupo-1 {
     grid-column: 1 / span 7;
     grid-row: 1 / span 2;
     position: relative;
@@ -219,17 +77,17 @@ main > h5:hover {
     aspect-ratio: 775 / 600;
     border-radius: 8px;
     overflow: hidden;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
+    transition: all 0.3s ease;
+    display: block;
+    text-decoration: none;
 }
 
-/* --- ADICIONADO --- */
 .grupo-1:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo-1 > svg
-{
+.grupo-1 > svg {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -238,8 +96,8 @@ main > h5:hover {
     height: 22px;
     flex-shrink: 0;
 }
-.grupo-1 > img
-{
+
+.grupo-1 > img {
     position: absolute;
     top: 0;
     left: 0;
@@ -247,8 +105,8 @@ main > h5:hover {
     height: 100%;
     object-fit: cover;
 }
-.grupo-1 > p
-{
+
+.grupo-1 > p {
     position: absolute;
     z-index: 1;
     line-height: normal;
@@ -261,8 +119,8 @@ main > h5:hover {
     left: 1.5rem;
     color: #FFF;
 }
-.grupo-1 > h4
-{
+
+.grupo-1 > h4 {
     position: absolute;
     z-index: 1;
     margin: 0;
@@ -276,8 +134,9 @@ main > h5:hover {
     top: 4rem;
     left: 1.5rem;
 }
-.Cartegorias 
-{
+
+/* CATEGORIAS */
+.Cartegorias {
     position: absolute;
     z-index: 1;
     display: flex;
@@ -286,37 +145,18 @@ main > h5:hover {
     bottom: 1.5rem;
     right: 1.5rem;
     flex-wrap: wrap;
-
-    #c1{
-    border-radius: 30px;
-    border: 1px solid #FFF;
-    background: rgba(245, 238, 238, 0.15);
-    width: 81px;
-    height: 21px;
-    flex-shrink: 0;
-    }
-
-    #c2{
-    border-radius: 30px;
-    border: 1px solid #FFF;
-    background: rgba(245, 238, 238, 0.15);
-    width: 136px;
-    height: 21px;
-    flex-shrink: 0;
-    }
-
-    #c3{
-    border-radius: 30px;
-    border: 1px solid #FFF;
-    background: rgba(245, 238, 238, 0.15);
-    width: 84px;
-    height: 21px;
-    flex-shrink: 0;
-    }
-
 }
-.Cartegorias > p
-{
+
+.Cartegorias > div {
+    border-radius: 30px;
+    border: 1px solid #FFF;
+    background: rgba(245, 238, 238, 0.15);
+    padding: 2px 12px;
+    height: 21px;
+    flex-shrink: 0;
+}
+
+.Cartegorias > div > p {
     color: #ffffff;
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
@@ -324,32 +164,31 @@ main > h5:hover {
     font-weight: 400;
     line-height: normal;  
     text-align: center;
-    padding: 2px 0;
+    margin: 0;
 }
-.grupo-2, .grupo-3
-{
+
+/* GRUPOS 2 e 3 - Cards Laterais */
+.grupo-2, .grupo-3 {
     grid-column: 8 / span 5;
     display: grid;
     grid-template-columns: minmax(150px, 1fr) 1fr;
     grid-template-rows: auto auto 1fr auto;
     gap: 10px 20px;
     width: 100%;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
-    border-radius: 8px; /* --- ADICIONADO (para sombra) --- */
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    text-decoration: none;
 }
 
-/* --- ADICIONADO --- */
+.grupo-2 { grid-row: 1 / 2; }
+.grupo-3 { grid-row: 2 / 3; }
+
 .grupo-2:hover, .grupo-3:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-
-.grupo-2 { grid-row: 1 / 2; }
-.grupo-3 { grid-row: 2 / 3; }
-
-.grupo-2 > img, .grupo-3 > img
-{
+.grupo-2 > img, .grupo-3 > img {
     grid-area: 1 / 1 / 5 / 2;
     width: 100%;
     height: 100%;
@@ -358,8 +197,7 @@ main > h5:hover {
     min-height: 230px;
 }
 
-.grupo-2 > svg, .grupo-3 > svg
-{
+.grupo-2 > svg, .grupo-3 > svg {
     grid-area: 1 / 2 / 2 / 3;
     justify-self: end;
     margin: 0.5rem 0.5rem 0 0;
@@ -367,16 +205,55 @@ main > h5:hover {
     height: 22px;
     flex-shrink: 0;
 }
-.Cartegorias-ladodireito
-{
+
+.grupo-2 > h4, .grupo-3 > h4 {
+    grid-area: 2 / 2 / 3 / 3;
+    font-family: "The Next Font";
+    font-size: clamp(1.25rem, 2vw, 24px);
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.grupo-2 > p, .grupo-3 > p {
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
+
+.descrição {
+    grid-area: 3 / 2 / 4 / 3;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 1.5vw, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-color);
+}
+
+.data {
+    grid-area: 1 / 2 / 2 / 3;
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.9rem, 1vw, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 0.5rem;
+    color: var(--text-color);
+}
+
+/* CATEGORIAS LADO DIREITO */
+.Cartegorias-ladodireito {
     grid-area: 4 / 2 / 5 / 3;
     display: flex;
     gap: 19px;
     margin: 0;
     align-items: center;
     flex-wrap: wrap;
+}
 
-    p{
+.Cartegorias-ladodireito p {
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
@@ -386,49 +263,15 @@ main > h5:hover {
     padding-top: 2px;
     border-radius: 30px;
     border: 1px solid var(--border, #585858);
-    color: #000000;
-    width: 81px;
+    color: var(--text-color);
+    padding: 2px 12px;
     height: 21px;
     flex-shrink: 0;
-    }
-}
-.grupo-2 > h4, .grupo-3 > h4
-{
-    grid-area: 2 / 2 / 3 / 3;
-    font-family: "The Next Font";
-    font-size: clamp(1.25rem, 2vw, 24px);
-    font-weight: 400;
-    line-height: normal;
     margin: 0;
-}
-.grupo-2 > p, .grupo-3 > p
-{
-    margin: 0;
-    width: 100%;
-    height: auto;
-}
-.descrição
-{
-    grid-area: 3 / 2 / 4 / 3;
-    font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 1.5vw, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.data 
-{
-    grid-area: 1 / 2 / 2 / 3;
-    font-family: "Louis George Cafe";
-    font-size: clamp(0.9rem, 1vw, 16px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    padding-top: 0.5rem;
 }
 
-.seção
-{
+/* SEÇÃO DESTAQUE */
+.seção {
     grid-column: 1 / -1;
     background-image: url(/images/artigo-geral/mulher-pedra.png);
     width: 100%;
@@ -442,18 +285,17 @@ main > h5:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
-    overflow: hidden; /* --- ADICIONADO (para scale) --- */
+    transition: all 0.3s ease;
+    overflow: hidden;
+    text-decoration: none;
 }
 
-/* --- ADICIONADO --- */
 .seção:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-
-#sorriso{
+#sorriso {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -463,24 +305,16 @@ main > h5:hover {
     flex-shrink: 0;
 }
 
-.seção2
-{
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 24px;
-    width: 100%;
-}
-#data 
-{
+#data {
     border-radius: 30px;
     background: #FFF;
     width: fit-content;
     height: auto;
     padding: 0.5rem 1rem;
     margin: 0;
-    
-    p{
+}
+
+#data p {
     text-align: center;
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
@@ -488,10 +322,10 @@ main > h5:hover {
     font-weight: 400;
     line-height: normal;
     margin: 0;
- }
+    color: #000;
 }
-#texto
-{
+
+#texto {
     border-radius: 30px;
     background: #FFF;   
     width: 100%;
@@ -499,8 +333,9 @@ main > h5:hover {
     height: auto;
     margin: 1rem 0 0 0;
     padding: 1.5rem;
-   
-    h5{
+}
+
+#texto h5 {
     font-family: "The Next Font";
     font-size: clamp(2.5rem, 5vw, 64px);
     font-style: normal;
@@ -509,50 +344,57 @@ main > h5:hover {
     width: 100%;
     height: auto;
     margin: 0;
-    }
+    color: #000;
 }
-#carte-seção
-{
+
+#carte-seção {
     margin: 1rem 0 0 0;
 }
-#mulher-gloss
-{
-   width: 100%;
-   margin: 0.5rem 0 0 0;
+
+/* SEÇÃO 2 - Grid de 3 cards */
+.seção2 {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    width: 100%;
+    margin: 2rem 0;
 }
-.grupo-4
-{  
+
+.grupo-4, .grupo-5, .grupo-6 {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-/* --- ADICIONADO --- */
-.grupo-4:hover {
+.grupo-4:hover, .grupo-5:hover, .grupo-6:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo-4 > img {
+.grupo-4 > img, .grupo-5 > img, .grupo-6 > img {
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 8px;
     aspect-ratio: 3 / 4;
 }
-.grupo-4 > h4
-{
+
+.grupo-4 > h4, .grupo-5 > h4, .grupo-6 > h4 {
     font-family: "The Next Font";
     font-size: clamp(1.25rem, 2vw, 24px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     margin: 0.5rem 0 0 0;
+    color: var(--text-color);
 }
-.descrição-s2
-{
+
+.descrição-s2 {
     font-family: "Louis George Cafe";
     font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
@@ -561,129 +403,36 @@ main > h5:hover {
     width: 100%;
     height: auto;
     margin: 0.5rem 0 0 0;
+    color: var(--text-color);
 }
-#data4
-{
+
+#data4 {
     margin: 0.5rem 0 0 0;
+    color: var(--text-color);
 }
-.grupo-4 > svg
-{
+
+.grupo-4 > svg, .grupo-5 > svg, .grupo-6 > svg {
     margin: 0.5rem 0 0 0;
     align-self: flex-end;
     width: 16px;
     height: 22px;
     flex-shrink: 0;
 }
-.grupo-5
-{
-    position: relative;
-    height: auto;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
-    border-radius: 8px; /* --- ADICIONADO (para sombra) --- */
-    overflow: hidden; /* --- ADICIONADO (para scale) --- */
-}
 
-/* --- ADICIONADO --- */
-.grupo-5:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px var(--shadow);
-}
-
-.grupo-5 > #descri
-{
-    width: 100%;
-    height: auto;
-    color: #000;
-    font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 1.5vw, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-bottom: 1.5rem;
-}
-.grupo-5 > .Cartegorias-grupo5 
-{
-    display: flex;
-    gap: 19px;
-    margin: 0 0 1.5rem 0;
-   
-    p{
-    border-radius: 30px;
-    border: 1px solid #585858;
-    background: #FFF;
-    width: 83.303px;
-    height: 21px;
-    flex-shrink: 0;
-    text-align: center;
-    color: #000;
-    font-family: "Louis George Cafe";
-    font-size: clamp(0.9rem, 1vw, 16px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    padding-top: 2px;
-    }
-}
-.grupo-5 > img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    position: relative;
-}
-.grupo-5 > h4
-{
-    color: #ffffff;
-    font-family: "The Next Font";
-    font-size: clamp(3.5rem, 8vw, 90px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.1;
-    width: 90%;
-    height: auto;
-    position: absolute;
-    bottom: 3rem;
-    left: 1.5rem;
-    z-index: 1;
-}
-.grupo-5 > #data5
-{
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    z-index: 1;
-    color: #FFF;
-}
-.grupo-5 > svg
-{
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 1;
-    width: 16px;
-    height: 22px;
-    flex-shrink: 0;
-}
-#linha
-{
-    grid-column: 1 / -1;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin: 2rem 0;
-}
-.grupos-linha1, .grupos-linha2
-{
+/* LINHAS DE ARTIGOS */
+.grupos-linha1, .grupos-linha2 {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     width: 100%;
 }
+
 .grupos-linha1 {
     margin-bottom: 24px;
 }
 
-.grupos-linha1 > div, .grupos-linha2 > div {
+.grupos-linha1 > a, .grupos-linha2 > a {
     position: relative;
     width: 100%;
     border-radius: 8px;
@@ -693,17 +442,16 @@ main > h5:hover {
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-/* --- ADICIONADO --- */
-.grupos-linha1 > div:hover, .grupos-linha2 > div:hover {
+.grupos-linha1 > a:hover, .grupos-linha2 > a:hover {
     transform: scale(1.04);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-
-.grupos-linha1 > div > img, .grupos-linha2 > div > img {
+.grupos-linha1 > a > img, .grupos-linha2 > a > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -712,8 +460,8 @@ main > h5:hover {
     left: 0;
     z-index: 0;
 }
-.data-linha
-{
+
+.data-linha {
     position: static;
     z-index: 1;
     color: #ffffff;
@@ -723,7 +471,8 @@ main > h5:hover {
     font-weight: 400;
     line-height: normal;
 }
-.save-icon{
+
+.save-icon {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -732,8 +481,8 @@ main > h5:hover {
     height: 22px;
     flex-shrink: 0;
 }
-.h4-linha
-{
+
+.h4-linha {
     position: static;
     z-index: 1;
     color: #FFF;
@@ -746,8 +495,8 @@ main > h5:hover {
     margin-top: auto;
     margin-bottom: 0.5rem;
 }
-.descrição-linha
-{
+
+.descrição-linha {
     position: static;
     z-index: 1;
     color: #FFF;
@@ -760,16 +509,18 @@ main > h5:hover {
     line-height: normal;
     margin-bottom: 0.5rem;
 }
-.Cartegorias-linha
-{
+
+.Cartegorias-linha {
     position: static;
     z-index: 1;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+}
 
-    p{ 
-    width: 81px;
+.Cartegorias-linha p {
+    width: auto;
+    min-width: 81px;
     height: 21px;
     flex-shrink: 0;
     border-radius: 30px;
@@ -782,131 +533,12 @@ main > h5:hover {
     font-weight: 400;
     line-height: normal;
     text-align: center;
-    padding-top: 2px;
-    }
-}
-.cronograma-capilar
-{
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 0 24px;
-    align-items: start;
-    width: 100%;
-    margin: 3rem 0;
-}
-
-.cronograma-capilar > img{
-    grid-row: 1 / 3;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px var(--shadow);
-}
-
-.cronograma-capilar > h5{
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    align-self: end;
-    width: 100%;
-    font-family: "The Next Font";
-    font-size: clamp(3.5rem, 8vw, 110px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.1;
+    padding: 2px 12px;
     margin: 0;
-    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
-/* --- ADICIONADO --- */
-.cronograma-capilar > h5:hover {
-    text-shadow: 0 2px 8px var(--shadow);
-}
-
-/* --- BOTÃO MODIFICADO --- */
-.cronograma-capilar > button{
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    align-self: start;
-    border-radius: 27px;
-    background: #722F53;
-    border-style: none;
-    margin-top: 1.5rem;
-    display: flex;
-    width: fit-content;
-    height: 49px;
-    padding: 8px 39px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    cursor: pointer;
-    
-    /* --- Efeitos adicionados --- */
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-    z-index: 1;
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button:hover {
-    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
-    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
-    transform: translateY(-3px) scale(1.08);
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button:active {
-    background: #5E332C;
-    transform: translateY(-1px) scale(1.05);
-}
-
-/* --- MODIFICADO (para ficar sobre o efeito) --- */
-.cronograma-capilar > button p { 
-    color: #f3f3f3;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: clamp(1rem, 1.5vw, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative; /* --- ADICIONADO --- */
-    z-index: 2; /* --- ADICIONADO --- */
-}
-/* --- FIM DAS MODIFICAÇÕES DO BOTÃO --- */
-
-
-.seção3
-{
+/* SEÇÃO 3 - Layout Especial */
+.seção3 {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -915,8 +547,8 @@ main > h5:hover {
     width: 100%;
     margin: 2rem 0;
 }
-.grupo-6
-{
+
+.grupo-6 {
     grid-row: 1 / 3;
     grid-column: 1 / 2;
     position: relative;
@@ -927,19 +559,20 @@ main > h5:hover {
     background-size: cover;
     background-position: center;
     padding: 1rem;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-/* --- ADICIONADO --- */
 .grupo-6:hover {
     transform: scale(1.04);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo-6 > img { display: none; }
+.grupo-6 > img {
+    display: none;
+}
 
-.grupo-6 > #datas3
-{
+.grupo-6 > #datas3 {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -949,8 +582,8 @@ main > h5:hover {
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
 }
-.grupo-6 > svg
-{
+
+.grupo-6 > svg {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -961,8 +594,8 @@ main > h5:hover {
     height: 22px;
     flex-shrink: 0;
 }
-.grupo-6 > h4
-{
+
+.grupo-6 > h4 {
     position: absolute;
     bottom: 4rem;
     left: 1rem;
@@ -977,8 +610,8 @@ main > h5:hover {
     line-height: normal;
     height: auto;
 }
-.Cartegorias-g6
-{
+
+.Cartegorias-g6 {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
@@ -987,15 +620,16 @@ main > h5:hover {
     transform: none;
     display: flex;
     gap: 10px;
+}
 
-    p{ 
-    width: 81px;
+.Cartegorias-g6 p {
+    width: auto;
+    min-width: 81px;
     height: 21px;
     flex-shrink: 0;
     border-radius: 30px;
     border: 1px solid #FFF;
     background: rgba(255, 255, 255, 0.1);
-
     font-family: "Louis George Cafe";
     color: #FFF;
     font-size: clamp(0.9rem, 1vw, 16px);
@@ -1003,18 +637,29 @@ main > h5:hover {
     font-weight: 400;
     line-height: normal;
     text-align: center;
-    }
+    padding: 2px 12px;
+    margin: 0;
 }
-.grupo-7
-{
+
+.linha1, .linha2 {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.linha1 { grid-row: 1 / 2; }
+.linha2 { grid-row: 2 / 3; }
+
+.grupo-7 {
     position: relative;
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-/* --- ADICIONADO --- */
 .grupo-7:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 20px var(--shadow);
@@ -1027,8 +672,7 @@ main > h5:hover {
     aspect-ratio: 1 / 1;
 }
 
-.grupo-7 > h4
-{
+.grupo-7 > h4 {
     color: #ffffff;
     font-family: "The Next Font";
     font-size: clamp(2rem, 3vw, 45px);
@@ -1042,8 +686,8 @@ main > h5:hover {
     width: 90%;
     height: auto;
 }
-.datag7
-{
+
+.datag7 {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -1055,8 +699,8 @@ main > h5:hover {
     font-weight: 400;
     line-height: normal;
 }
-.grupo-7 > svg
-{
+
+.grupo-7 > svg {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -1065,8 +709,8 @@ main > h5:hover {
     height: 22px;
     flex-shrink: 0;
 }
-.Cartegorias-g7
-{
+
+.Cartegorias-g7 {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
@@ -1074,70 +718,49 @@ main > h5:hover {
     display: flex;
     gap: 19px;
     flex-wrap: wrap;
-
-    p{
-        width: 81px;
-        height: 21px;
-        flex-shrink: 0;
-        border-radius: 30px;
-        border: 1px solid #ffffff;
-        background: rgba(255, 255, 255, 0.00);
-    
-        font-family: "Louis George Cafe";
-        color: #FFF;
-        font-size: clamp(0.9rem, 1vw, 16px);
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-align: center;   
-     }
-}
-.linha1
-{  
-   grid-column: 2 / 3;
-   grid-row: 1 / 2;
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 24px;
-}
-.linha2
-{
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
 }
 
+.Cartegorias-g7 p {
+    width: auto;
+    min-width: 81px;
+    height: 21px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 1px solid #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    font-family: "Louis George Cafe";
+    color: #FFF;
+    font-size: clamp(0.9rem, 1vw, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    padding: 2px 12px;
+    margin: 0;
+}
 
-
-
+/* RESPONSIVO */
 @media (max-width: 768px) {
-    .artigos-container {
-        padding: 2rem 1rem;
-    }
-
-    .artigos-titulo {
-        font-size: 2.5rem;
-    }
-
-    .artigos-grid {
+    .seção2 {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+    }
+    
+    .grupos-linha1, .grupos-linha2 {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 700px) {
-
-    body > h5 {
+    .artigos-page-wrapper > h5 {
         font-size: 48px;
     }
-    body > p {
+    
+    .artigos-page-wrapper > p {
         font-size: 1rem;
         margin-bottom: 2rem;
     }
 
-    main{
+    main {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -1152,586 +775,53 @@ main > h5:hover {
         font-size: 32px;
     }
     
-    .grupo-1{
+    .grupo-1 {
         margin-left: 0;
         margin-top: 1rem;
         width: 100%;
         height: auto;
-        position: relative;
         aspect-ratio: 775 / 500;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    .grupo-1 > img {
-        width: 100%;
-        height: 100%;
-        margin-top: 0;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-     .grupo-1 > p {
-        position: absolute;
-        transform: none;
-        line-height: normal;
-        margin-left: 0;
-        margin-top: 0;
-        width: auto;
-        top: 1.5rem;
-        left: 1.5rem;
-        z-index: 1;
-        color: #FFF;
-    }
-    .grupo-1 > h4 {
-        position: absolute;
-        transform: none;
-        line-height: 1.1;
-        margin-left: 0;
-        margin-top: 0;
-        width: 80%;
-        top: 4rem;
-        left: 1.5rem;
-        z-index: 1;
-        font-size: 24px;
-        color: #FFF;
-    }
-    .grupo-1 > svg {
-        position: absolute;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0;
-        top: 1.5rem;
-        right: 1.5rem;
-        z-index: 2;
-        width: 16px;
-        height: 22px;
-        flex-shrink: 0;
-    }
-    .Cartegorias {
-        position: absolute;
-        margin-left: 0;
-        margin-top: 0;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 1;
-        flex-wrap: wrap;
-    }
-    .Cartegorias p {
-        padding: 2px 0;
     }
     
-    .grupo-2, .grupo-3, .grupo-4 {
+    .grupo-2, .grupo-3, .grupo-4, .grupo-5, .grupo-6 {
         margin-top: 2rem;
-        margin-left: auto;
-        margin-right: auto;
         width: 100%;
-        margin-bottom: 0;
-        height: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto 1fr auto;
         gap: 10px 20px;
     }
-    .grupo-2 > img, .grupo-3 > img, .grupo-4 > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-        min-height: 150px;
-        grid-area: 1 / 1 / 5 / 2;
-    }
-    .grupo-2 > p, .grupo-3 > p, .grupo-4 > p {
-        width: 100%;
-        margin-left: 0;
-    }
-    .grupo-2 > h4, .grupo-3 > h4, .grupo-4 > h4 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-        grid-area: 2 / 2 / 3 / 3;
-    }
-    .grupo-2 > .data, .grupo-3 > .data, .grupo-4 > .data {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-        grid-area: 1 / 2 / 2 / 3;
-    }
-    .grupo-2 > .descrição, .grupo-3 > .descrição, .grupo-4 > .descrição-s2 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-        grid-area: 3 / 2 / 4 / 3;
-    }
-    .grupo-2 > .Cartegorias-ladodireito, .grupo-3 > .Cartegorias-ladodireito, .grupo-4 > .Cartegorias-ladodireito {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-        grid-area: 4 / 2 / 5 / 3;
-        align-self: end;
-    }
-    .grupo-2 > svg, .grupo-3 > svg, .grupo-4 > svg {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0.5rem;
-        grid-area: 1 / 2 / 2 / 3;
-        justify-self: end;
-        width: 16px;
-        height: 22px;
-        flex-shrink: 0;
-    }
-    .Cartegorias-ladodireito {
-        margin-left: 0;
-        transform: none;
-    }
-    .Cartegorias-ladodireito p {
-        padding-top: 2px;
-    }
-    .descrição-s2 { width: 100%;}
-    #mulher-gloss { margin-left: 0; margin-top: 0; width: 100%;}
     
     .seção {
         width: 100%;
-        height: auto;
         aspect-ratio: 4 / 3;
-        margin-left: 0;
         margin-top: 2rem;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
-    #data {
-        position: static;
-        transform: none;
-        width: fit-content;
-        height: auto;
-        margin: 0;
-        padding: 0.5rem 1rem;
-    }
-    #data p {
-        margin-top: 0;
-    }
-    #texto {
-        position: static;
-        transform: none;
-        width: 100%;
-        height: auto;
-        margin: 1rem 0 0 0;
-        padding: 1rem;
-    }
-    #texto h5 {
-        font-size: 32px;
-        line-height: 1.2;
-        width: 100%;
-        height: auto;
-        margin-left: 0;
-        margin-top: 0;
-    }
-    #carte-seção {
-        position: static;
-        transform: none;
-        margin: 1rem 0 0 0;
-    }
-    #carte-seção p {
-        padding-top: 2px;
-    }
-    #sorriso {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        margin-left: 0;
-        transform: none;
-        width: 16px;
-        height: 22px;
-        flex-shrink: 0;
     }
     
     .seção2 {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        margin-left: 0;
         margin-top: 2rem;
-        width: 100%;
-        height: auto;
-    }
-   
-    .grupo-5 {
-        width: 100%;
-        grid-column: auto;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 0;
-        height: fit-content;
-        position: relative;
-        padding-top: 0;
-    }
-    .grupo-5 > #descri { order: 1; margin-bottom: 0.5rem; }
-    .grupo-5 > #cartegoria-grupo5 { order: 2; margin-bottom: 0.5rem;}
-    .grupo-5 > img { order: 3; width: 100%; height: auto; border-radius: 8px; margin-top: 0; }
-    .grupo-5 > .data { order: 4; }
-    .grupo-5 > svg { order: 5; }
-    .grupo-5 > h4 { order: 6; }
-
-    .grupo-5 > h4 {
-        position: absolute;
-        transform: none;
-        margin-left: 0;
-        width: 80%;
-        height: auto;
-        margin-top: 0;
-        color: #FFF;
-        font-size: 32px;
-        line-height: 1.2;
-        bottom: 3rem;
-        left: 1.5rem;
-        top: auto;
-        z-index: 1;
-    }
-    .grupo-5 > .data {
-        position: absolute;
-        transform: none;
-        margin-left: 0;
-        width: auto;
-        height: auto;
-        margin-top: 0;
-        top: 1.5rem;
-        left: 1.5rem;
-        z-index: 1;
-        color: #FFF;
-    }
-    .grupo-5 > #descri {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0;
-    }
-    .grupo-5 > .Cartegorias-grupo5 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-    }
-    .grupo-5 > svg {
-        position: absolute;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0;
-        top: 1.5rem;
-        right: 1.5rem;
-        z-index: 1;
-        width: 16px;
-        height: 22px;
-        flex-shrink: 0;
-    }
-    #descri {
-        width: 100%;
-    }
-    .Cartegorias-grupo5 {
-        margin-left: 0;
-        transform: none;
-    }
-     .Cartegorias-grupo5 p {
-        padding-top: 2px;
-     }
-
-    #linha {
-        display: none;
     }
     
     .grupos-linha1, .grupos-linha2 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-        margin-left: 0;
         margin-top: 2rem;
-        width: 100%;
     }
-    .grupos-linha1 > div, .grupos-linha2 > div {
-        width: 100%;
-        position: relative;
-        border-radius: 8px;
-        overflow: hidden;
-        aspect-ratio: 9 / 11;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 1rem;
-    }
-    .grupos-linha1 > div > img, .grupos-linha2 > div > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-    }
-    .data-linha {
-        position: static;
-        z-index: 1;
-        color: #FFF;
-    }
-    .save-icon {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        z-index: 2;
-        width: 16px;
-        height: 22px;
-        flex-shrink: 0;
-    }
-    .h4-linha {
-        position: static;
-        z-index: 1;
-        color: #FFF;
-        width: 90%;
-        margin: 0 0 0.5rem 0;
-        margin-top: auto;
-    }
-    .descrição-linha {
-        position: static;
-        z-index: 1;
-        color: #FFF;
-        width: 85%;
-        height: auto;
-        margin: 0 0 0.5rem 0;
-        display: none;
-    }
-    .Cartegorias-linha {
-        position: static;
-        z-index: 1;
-        display: flex;
-        gap: 5px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    .Cartegorias-linha::-webkit-scrollbar { display: none; }
-
-    .Cartegorias-linha p {
-        color: #FFF;
-        border-color: #FFF;
-        padding: 2px 8px;
-        flex-shrink: 0;
-        width: auto;
-        max-width: fit-content;
-    }
-
-    .cronograma-capilar {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0;
-        margin-top: 2rem;
-        width: 100%;
-        height: auto;
-    }
-    .cronograma-capilar > img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-    .cronograma-capilar > h5 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 1rem;
-        font-size: 32px;
-        line-height: 1.2;
-    }
-    .cronograma-capilar > button {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: 49px;
-        margin-top: 1rem;
-    }
-
+    
     .seção3 {
         display: flex;
         flex-direction: column;
-        margin-left: 0;
         margin-top: 2rem;
-        width: 100%;
     }
-    .grupo-6, .linha1, .linha2 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0;
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
+    
     .linha1, .linha2 {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
-    }
-    .grupo-6 > img, .grupo-7 > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-    }
-    .grupo-6 > img {
-        aspect-ratio: 1 / 1;
-    }
-    .grupo-7 > img {
-        aspect-ratio: 1 / 1;
-    }
-    
-    .grupo-6 > h4 {
-        position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-        order: 3;
-    }
-    .grupo-6 > .data {
-         position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-        order: 1;
-    }
-    .grupo-6 > .Cartegorias-g6 {
-         position: static;
-        transform: none;
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-        margin-top: 0.5rem;
-         order: 4;
-    }
-    .grupo-6 > svg {
-         position: static;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0.5rem;
-        align-self: flex-end;
-        width: 16px;
-        height: 22px;
-        flex-shrink: 0;
-        order: 2;
-    }
-    .grupo-6 > img { order: 5; }
-
-    .Cartegorias-g6 {
-        margin-left: 0;
-        transform: none;
-    }
-     .Cartegorias-g6 p {
-        padding-top: 2px;
-     }
-    .grupo-6 > h4 {
-        width: 100%;
-    }
-    .grupo-7 {
-        position: relative;
-    }
-    .grupo-7 > h4 {
-        position: absolute;
-        transform: none;
-        margin-left: 0;
-        width: 80%;
-        height: auto;
-        margin-top: 0;
-        color: #FFF;
-        bottom: 3rem;
-        left: 1rem;
-        z-index: 1;
-        font-size: clamp(1.25rem, 4vw, 1.5rem);
-        line-height: 1.2;
-    }
-    .grupo-7 > .datag7 {
-        position: absolute;
-        transform: none;
-        margin-left: 0;
-        width: auto;
-        height: auto;
-        margin-top: 0;
-        color: #FFF;
-        top: 1rem;
-        left: 1rem;
-        z-index: 1;
-    }
-    .grupo-7 > .Cartegorias-g7 {
-         position: absolute;
-        transform: none;
-        margin-left: 0;
-        width: auto;
-        height: auto;
-        margin-top: 0;
-        bottom: 1rem;
-        left: 1rem;
-        z-index: 1;
-        gap: 5px;
-        flex-wrap: nowrap;
-         overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-     .grupo-7 > .Cartegorias-g7::-webkit-scrollbar { display: none; }
-
-    .grupo-7 > svg {
-         position: absolute;
-        transform: none;
-        margin-left: 0;
-        margin-top: 0;
-        top: 1rem;
-        right: 1rem;
-        z-index: 1;
-        width: 16px;
-        height: 22px;
-        flex-shrink: 0;
-    }
-    .datag7, .grupo-7 > h4 {
-        color: #FFF;
-    }
-    .Cartegorias-g7 {
-        margin-left: 0;
-        transform: none;
-        margin-top: 0;
-    }
-    .Cartegorias-g7 p {
-        color: #FFF;
-        border-color: #FFF;
-        padding: 2px 8px;
-        flex-shrink: 0;
-        width: auto;
-        max-width: fit-content;
+        margin-top: 1rem;
     }
 }
