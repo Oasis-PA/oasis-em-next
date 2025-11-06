@@ -62,7 +62,8 @@
       "Bash(npm run test:seed:*)",
       "Bash(ping:*)",
       "Bash(nslookup:*)",
-      "Bash(.env.example)"
+      "Bash(.env.example)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
