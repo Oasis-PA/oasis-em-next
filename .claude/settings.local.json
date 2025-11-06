@@ -63,7 +63,8 @@
       "Bash(ping:*)",
       "Bash(nslookup:*)",
       "Bash(.env.example)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(nul)"
     ],
     "deny": [],
     "ask": []
