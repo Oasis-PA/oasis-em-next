@@ -31,6 +31,7 @@ button {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    width: fit-content;
 }
 
 #text-1, #data-1, .banner-sec button, .banner-terc button, #data-2, #text-2, #text-3, #uno p {
@@ -138,14 +139,16 @@ main {
 /* --- SEÇÃO 1: BANNER E DESTAQUES COM GRID --- */
 .primeiro {
     width: 100%;
-    position: relative;
-    /* Remove margin-top fixo, usa padding/margin mais suave */
-    padding-top: clamp(2rem, 5vw, 5rem); 
+    margin-top: clamp(2rem, 5vw, 5rem); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
 }
 
 .banner-principal {
     background-image: url('/images/tendencias/img-principal3.png');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     height: clamp(20rem, 40vw, 45rem); 
@@ -153,10 +156,9 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: clamp(1.5rem, 5vw, 6rem);
-    padding-right: clamp(1.5rem, 5vw, 6rem);
-    /* NOVO: Ajusta o espaçamento abaixo para o efeito visual de sobreposição */
-    margin-bottom: clamp(-5rem, -10vw, -12rem);
+    align-self: center;
+    padding: clamp(1rem, 2vw, 2rem);
+    padding-left: clamp(10rem, 12vw, 12rem);
 }
 
 #tit-1 {
@@ -175,14 +177,11 @@ main {
 /* GRID DE SOBREPOSIÇÃO */
 .primeiro-overlap-group {
     display: grid;
-    /* Três colunas com proporções variadas */
-    grid-template-columns: 1.2fr 0.8fr 1fr; 
+    grid-template-columns: 1.4fr 0.8fr 1.4fr; 
     gap: clamp(1rem, 2vw, 2rem);
-    width: 90vw; /* Largura para ocupar a área central */
+    width: 90vw;
     max-width: 1280px;
     margin: 0 auto;
-    /* Remove transform: translateY */
-    padding-top: clamp(5rem, 10vw, 12rem); 
 }
 
 .banner-sec-link, .banner-terc-link {
@@ -196,7 +195,7 @@ main {
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: clamp(15rem, 30vw, 35rem); 
+    height: clamp(20rem, 38vw, 42rem); 
     position: relative; 
     padding: clamp(1rem, 1.5vw, 1.5rem);
     display: flex;
@@ -241,6 +240,7 @@ main {
 .meio p {
     color: #000;
     text-align: center;
+    font-family: "PLAYFUL RUNWAY";
     font-size: clamp(1.8rem, 3vw, 2.8rem);
     margin-bottom: clamp(1rem, 2vw, 2rem);
 }
@@ -268,7 +268,7 @@ main {
     background-repeat: no-repeat;
     position: relative;
     width: 100%;
-    height: clamp(10rem, 17vw, 20rem); 
+    height: clamp(20rem, 38vw, 42rem); 
     background-size: cover;
     background-position: center;
     padding: clamp(1rem, 1.5vw, 1.5rem);
@@ -911,34 +911,41 @@ main {
 /* --- RESPONSIVIDADE (Ajustes de Grid e Fontes) --- */
 
 @media (max-width: 1024px) {
-    /* TABLET: Coluna 3 do overlap (Meio) fica abaixo */
+    .banner-principal {
+        height: clamp(25rem, 50vw, 55rem);
+        margin-bottom: clamp(-8rem, -15vw, -18rem);
+    }
     .primeiro-overlap-group {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto; /* Permite que o novo elemento se acomode */
+        grid-template-columns: 1.3fr 0.7fr 1.3fr;
+        grid-template-rows: auto auto;
         width: 90vw;
         max-width: none;
+        gap: clamp(1.5rem, 3vw, 3rem);
     }
     .meio {
-        grid-column: 1 / span 2; /* Ocupa as duas colunas */
-        order: 3; /* Coloca no final */
+        grid-column: 1 / span 3;
+        order: 3;
+    }
+    .meio p {
+        font-family: "PLAYFUL RUNWAY";
     }
     .banner-sec {
-        height: 35vw;
+        height: 40vw;
     }
     .banner-terc {
-        height: 20vw;
+        height: 40vw;
     }
     .segundo {
         width: 90vw;
     }
     .produtss {
-        grid-template-columns: 1fr 1fr; /* 2 colunas no tablet */
+        grid-template-columns: 1fr 1fr;
     }
     .produt1, .produt2, .produt3 {
         height: 30vw;
     }
     .produt3 {
-        grid-column: 1 / span 2; /* Produto 3 centralizado */
+        grid-column: 1 / span 2;
         width: 60%;
         justify-self: center;
     }
