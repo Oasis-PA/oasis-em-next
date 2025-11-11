@@ -16,9 +16,19 @@ function truncateTag(tag: string, maxLength: number = 15): string {
   return tag.substring(0, maxLength).trim() + '...';
 }
 
-function formatDate(date: Date | null): string {
-  if (!date) return 'Data não disponível';
-  return new Date(date).toLocaleDateString('pt-BR', {
+function formatDate(criadoEm: Date, atualizadoEm: Date): string {
+  // Se foi atualizado mais de 1 dia depois da criação, mostrar "Atualizado em"
+  const diffInDays = Math.abs(new Date(atualizadoEm).getTime() - new Date(criadoEm).getTime()) / (1000 * 60 * 60 * 24);
+  
+  if (diffInDays > 1) {
+    return 'Atualizado em ' + new Date(atualizadoEm).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+  
+  return new Date(criadoEm).toLocaleDateString('pt-BR', {
     day: '2-digit',
     month: 'long',
     year: 'numeric'
@@ -87,7 +97,7 @@ export default async function ArtigosPage() {
               {artigoMaisRecente.imagemHeader && (
                 <img src={artigoMaisRecente.imagemHeader} alt={artigoMaisRecente.titulo} />
               )}
-              <p>{formatDate(artigoMaisRecente.dataPublicacao)}</p>
+              <p>{formatDate(artigoMaisRecente.criadoEm, artigoMaisRecente.atualizadoEm)}</p>
               <h4>{truncateText(artigoMaisRecente.titulo, DISPLAY_LIMITS.titulo.hero)}</h4>
               <div className="Cartegorias">
                 {artigoMaisRecente.ArtigoTag.slice(0, DISPLAY_LIMITS.tags.max).map((at) => (
@@ -112,7 +122,7 @@ export default async function ArtigosPage() {
               {artigo.imagemHeader && (
                 <img src={artigo.imagemHeader} alt={artigo.titulo} />
               )}
-              <p className="data">{formatDate(artigo.dataPublicacao)}</p>
+              <p className="data">{formatDate(artigo.criadoEm, artigo.atualizadoEm)}</p>
               <h4>{truncateText(artigo.titulo, DISPLAY_LIMITS.titulo.card)}</h4>
               <p className="descrição">
                 {truncateText(artigo.resumo || '', DISPLAY_LIMITS.resumo.card)}
@@ -132,7 +142,7 @@ export default async function ArtigosPage() {
                 <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
               </svg>
               <div id="data">
-                <p>{formatDate(secaoDestaque.dataPublicacao)}</p>
+                <p>{formatDate(secaoDestaque.criadoEm, secaoDestaque.atualizadoEm)}</p>
               </div>
               <div id="texto">
                 <h5>{truncateText(secaoDestaque.titulo, DISPLAY_LIMITS.titulo.destaque)}</h5>
@@ -149,34 +159,63 @@ export default async function ArtigosPage() {
 
           {/* SEÇÃO 2 - Grade de 3 Artigos */}
           <div className="seção2">
-            {quartoQuinto.concat(artigoGrande ? [artigoGrande] : []).slice(0, 3).map((artigo, index) => (
-              <Link 
-                href={`/artigo/${artigo.slug}`} 
-                key={artigo.id}
-                className={`grupo-${index + 4}`}
-              >
-                {artigo.imagemHeader && (
-                  <img src={artigo.imagemHeader} alt={artigo.titulo} />
+            {/* GRUPO 4 */}
+            {quartoQuinto[0] && (
+              <Link href={`/artigo/${quartoQuinto[0].slug}`} key={quartoQuinto[0].id} className="grupo-4">
+                {quartoQuinto[0].imagemHeader && (
+                  <img src={quartoQuinto[0].imagemHeader} alt={quartoQuinto[0].titulo} />
                 )}
+                <h4>{truncateText(quartoQuinto[0].titulo, DISPLAY_LIMITS.titulo.card)}</h4>
+                <p className="descrição-s2">
+                  {truncateText(quartoQuinto[0].resumo || '', DISPLAY_LIMITS.resumo.card)}
+                </p>
+                <p className="data" id="data4">{formatDate(quartoQuinto[0].criadoEm, quartoQuinto[0].atualizadoEm)}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                   <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinejoin="round"/>
                 </svg>
-                <p className={index < 2 ? "data" : "data"} id={index === 2 ? "data4" : ""}>
-                  {formatDate(artigo.dataPublicacao)}
-                </p>
-                <h4>{truncateText(artigo.titulo, DISPLAY_LIMITS.titulo.card)}</h4>
-                <p className={index < 2 ? "descrição-s2" : "descrição-s2"}>
-                  {truncateText(artigo.resumo || '', DISPLAY_LIMITS.resumo.card)}
-                </p>
-                {index < 2 && (
-                  <div className="Cartegorias-ladodireito">
-                    {artigo.ArtigoTag.slice(0, DISPLAY_LIMITS.tags.max).map((at) => (
-                      <p key={at.tagId}>{truncateTag(at.Tag.nome, DISPLAY_LIMITS.tags.maxLength)}</p>
-                    ))}
-                  </div>
-                )}
               </Link>
-            ))}
+            )}
+
+            {/* GRUPO 5 */}
+            {quartoQuinto[1] && (
+              <Link href={`/artigo/${quartoQuinto[1].slug}`} key={quartoQuinto[1].id} className="grupo-5">
+                <p id="descri" className="descrição-s2">
+                  {truncateText(quartoQuinto[1].resumo || '', DISPLAY_LIMITS.resumo.card)}
+                </p>
+                <div className="Cartegorias-grupo5">
+                  {quartoQuinto[1].ArtigoTag.slice(0, DISPLAY_LIMITS.tags.max).map((at) => (
+                    <p key={at.tagId}>{truncateTag(at.Tag.nome, DISPLAY_LIMITS.tags.maxLength)}</p>
+                  ))}
+                </div>
+                {quartoQuinto[1].imagemHeader && (
+                  <img src={quartoQuinto[1].imagemHeader} alt={quartoQuinto[1].titulo} />
+                )}
+                <p className="data" id="data5">{formatDate(quartoQuinto[1].criadoEm, quartoQuinto[1].atualizadoEm)}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
+                  <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
+                </svg>
+                <h4>{truncateText(quartoQuinto[1].titulo, DISPLAY_LIMITS.titulo.destaque)}</h4>
+              </Link>
+            )}
+
+            {/* GRUPO 6 (se houver um terceiro artigo na seção2) */}
+            {artigoGrande && (
+              <Link href={`/artigo/${artigoGrande.slug}`} key={artigoGrande.id} className="grupo-4">
+                {artigoGrande.imagemHeader && (
+                  <img src={artigoGrande.imagemHeader} alt={artigoGrande.titulo} />
+                )}
+                <h4>{truncateText(artigoGrande.titulo, DISPLAY_LIMITS.titulo.card)}</h4>
+                <p className="descrição-s2">
+                  {truncateText(artigoGrande.resumo || '', DISPLAY_LIMITS.resumo.card)}
+                </p>
+                <p className="data" id="data4">{formatDate(artigoGrande.criadoEm, artigoGrande.atualizadoEm)}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
+                  <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            )}
+            
+            <img src="/images/artigo-geral/gloss.png" alt="Gloss" id="mulher-gloss" />
           </div>
 
           {/* LINHAS DE ARTIGOS QUADRUPLOS */}
@@ -188,7 +227,7 @@ export default async function ArtigosPage() {
                     {artigo.imagemHeader && (
                       <img src={artigo.imagemHeader} alt={artigo.titulo} />
                     )}
-                    <p className="data-linha">{formatDate(artigo.dataPublicacao)}</p>
+                    <p className="data-linha">{formatDate(artigo.criadoEm, artigo.atualizadoEm)}</p>
                     <svg className="save-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                       <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
                     </svg>
@@ -214,7 +253,7 @@ export default async function ArtigosPage() {
                       {artigo.imagemHeader && (
                         <img src={artigo.imagemHeader} alt={artigo.titulo} />
                       )}
-                      <p className="data-linha">{formatDate(artigo.dataPublicacao)}</p>
+                      <p className="data-linha">{formatDate(artigo.criadoEm, artigo.atualizadoEm)}</p>
                       <svg className="save-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                         <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
                       </svg>
@@ -240,7 +279,7 @@ export default async function ArtigosPage() {
           {ultimosArtigos.length > 0 && (
             <div className="seção3">
               <Link href={`/artigo/${ultimosArtigos[0]?.slug}`} className="grupo-6">
-                <p id="datas3">{formatDate(ultimosArtigos[0]?.dataPublicacao)}</p>
+                <p id="datas3">{formatDate(ultimosArtigos[0]?.criadoEm, ultimosArtigos[0]?.atualizadoEm)}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                   <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
                 </svg>
@@ -258,7 +297,7 @@ export default async function ArtigosPage() {
                     {artigo.imagemHeader && (
                       <img src={artigo.imagemHeader} alt={artigo.titulo} />
                     )}
-                    <p className="datag7">{formatDate(artigo.dataPublicacao)}</p>
+                    <p className="datag7">{formatDate(artigo.criadoEm, artigo.atualizadoEm)}</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                       <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
                     </svg>
@@ -279,7 +318,7 @@ export default async function ArtigosPage() {
                       {artigo.imagemHeader && (
                         <img src={artigo.imagemHeader} alt={artigo.titulo} />
                       )}
-                      <p className="datag7">{formatDate(artigo.dataPublicacao)}</p>
+                      <p className="datag7">{formatDate(artigo.criadoEm, artigo.atualizadoEm)}</p>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                         <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
                       </svg>
@@ -297,6 +336,5 @@ export default async function ArtigosPage() {
           )}
         </main>
       </div>
-    
   );
 }
