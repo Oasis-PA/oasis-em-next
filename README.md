@@ -96,6 +96,12 @@ npm run prisma:migrate
 🚀 Validação de Dados com Zod
 Este projeto utiliza o prisma-zod-generator para garantir que as validações de dados estejam sempre sincronizadas com o schema.prisma.
 
+**Estratégia de Validação:** O projeto usa **validação exclusivamente via Zod**, sem HTML5 validation (`required`, `type="email"`, etc.). Isso garante:
+- Mensagens de erro consistentes e customizadas
+- Validação unificada no cliente e servidor
+- Melhor testabilidade (E2E tests com Cypress)
+- Controle total sobre a experiência do usuário
+
 O Fluxo de Trabalho
 Modifique o schema.prisma: Qualquer alteração na estrutura do banco é feita aqui.
 

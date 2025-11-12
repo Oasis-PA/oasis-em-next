@@ -94,7 +94,8 @@ export default function TelaCadastroSenha() {
   };
 
   return (
-    <div className="tela-cadastro-container">
+    <div className="page-login-cadastro-wrapper">
+      <div className="tela-cadastro-container">
       <figure className="figure-padding-cadastro">
         <Image
           src="/images/tela-de-cadastro/imagem-tela-login-roxo.png"
@@ -129,7 +130,6 @@ export default function TelaCadastroSenha() {
                   setErros(rest);
                 }
               }}
-              required
             />
             {erros.senha && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.senha}</p>}
 
@@ -148,7 +148,6 @@ export default function TelaCadastroSenha() {
                   setErros(rest);
                 }
               }}
-              required
             />
             {erros.confirmaSenha && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.confirmaSenha}</p>}
 
@@ -165,6 +164,7 @@ export default function TelaCadastroSenha() {
           </form>
         </section>
       </main>
+      </div>
     </div>
   );
 }

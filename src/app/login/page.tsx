@@ -86,7 +86,7 @@ export default function Login() {
         <form onSubmit={handleLogin}>
           <label htmlFor="email">E-mail</label>
           <input
-            type="email"
+            type="text"
             id="email"
             value={email}
             onChange={(e) => {
@@ -96,7 +96,7 @@ export default function Login() {
                 setErros(rest);
               }
             }}
-            
+
             autoComplete="email"
             className="padding-form"
           />

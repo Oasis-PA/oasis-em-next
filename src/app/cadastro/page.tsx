@@ -94,13 +94,12 @@ export default function TelaCadastro() {
                   setErros(rest);
                 }
               }}
-              required
             />
             {erros.nome && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.nome}</p>}
 
             <label htmlFor="email">E-mail</label>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               autoComplete="email"
@@ -113,7 +112,6 @@ export default function TelaCadastro() {
                   setErros(rest);
                 }
               }}
-              required
             />
             {erros.email && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.email}</p>}
 

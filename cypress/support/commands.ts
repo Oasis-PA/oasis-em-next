@@ -7,7 +7,7 @@
 Cypress.Commands.add('login', (email: string, password: string) => {
   cy.visit('/login');
 
-  cy.get('input[type="email"]').type(email);
+  cy.get('input#email').type(email);
   cy.get('input[type="password"]').type(password);
 
   // Intercepta a requisição de login para verificar o resultado

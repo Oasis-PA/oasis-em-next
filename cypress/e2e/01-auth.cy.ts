@@ -21,7 +21,7 @@ describe('Autenticação de Usuários', () => {
     it('Deve exibir formulário de login', () => {
       cy.visit('/login');
       cy.contains(/entrar|login/i).should('be.visible');
-      cy.get('input[type="email"]').should('exist');
+      cy.get('input#email').should('exist');
       cy.get('input[type="password"]').should('exist');
     });
 
@@ -33,14 +33,14 @@ describe('Autenticação de Usuários', () => {
 
     it('Deve exibir erro ao submeter senha vazia', () => {
       cy.visit('/login');
-      cy.get('input[type="email"]').type(testUser.email);
+      cy.get('input#email').type(testUser.email);
       cy.get('button[type="submit"]').click();
       cy.contains(/senha|obrigatório/i).should('be.visible');
     });
 
     it('Deve exibir erro com formato de email inválido', () => {
       cy.visit('/login');
-      cy.get('input[type="email"]').type('email-invalido');
+      cy.get('input#email').type('email-invalido');
       cy.get('input[type="password"]').type(testUser.senha);
       cy.get('button[type="submit"]').click();
       cy.contains(/email inválido|formato/i).should('be.visible');
@@ -51,7 +51,7 @@ describe('Autenticação de Usuários', () => {
     it('Deve exibir formulário de registro', () => {
       cy.visit('/cadastro');
       cy.contains(/cadastre-se|cadastro|registre-se|criar conta/i).should('be.visible');
-      cy.get('input[type="email"]').should('exist');
+      cy.get('input#email').should('exist');
       cy.get('input[type="password"]').should('exist');
     });
 
@@ -81,7 +81,7 @@ describe('Autenticação de Usuários', () => {
       // Os testes de login usam um usuário pré-existente criado pelo seed
       cy.visit('/cadastro');
       cy.get('input[name="snome"]').type(testUser.nome);
-      cy.get('input[type="email"]').type('novo' + Date.now() + '@example.com');
+      cy.get('input#email').type('novo' + Date.now() + '@example.com');
       cy.get('button[type="submit"]').click();
 
       // Deve redirecionar para cadastro2
@@ -92,7 +92,7 @@ describe('Autenticação de Usuários', () => {
   describe('Fluxo de Login e Logout', () => {
     it('Deve fazer login com credenciais válidas', () => {
       cy.visit('/login');
-      cy.get('input[type="email"]').type(testUser.email);
+      cy.get('input#email').type(testUser.email);
       cy.get('input[type="password"]').type(testUser.senha);
       cy.get('button[type="submit"]').click();
 
@@ -103,7 +103,7 @@ describe('Autenticação de Usuários', () => {
 
     it('Deve exibir erro com credenciais inválidas', () => {
       cy.visit('/login');
-      cy.get('input[type="email"]').type('naoexiste@example.com');
+      cy.get('input#email').type('naoexiste@example.com');
       cy.get('input[type="password"]').type('SenhaErrada123!');
       cy.get('button[type="submit"]').click();
 
@@ -117,7 +117,7 @@ describe('Autenticação de Usuários', () => {
       cy.visit('/perfil');
 
       cy.contains(/perfil|dados pessoais|informações/i).should('be.visible');
-      cy.get('input[type="email"]').should('have.value', testUser.email);
+      cy.get('input#email').should('have.value', testUser.email);
     });
 
     it('Deve permitir editar dados do perfil', () => {

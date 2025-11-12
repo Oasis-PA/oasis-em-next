@@ -64,7 +64,9 @@
       "Bash(nslookup:*)",
       "Bash(.env.example)",
       "Bash(rm:*)",
-      "Bash(nul)"
+      "Bash(nul)",
+      "Bash(git push)",
+      "Bash(node scripts/fix-zod-schemas.js:*)"
     ],
     "deny": [],
     "ask": []
