@@ -1,12 +1,14 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-produtos-wrapper * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
 }
 
-body {
+.page-produtos-wrapper {
     display: flex;
     width: 100%;
+    min-height: 100vh;
     height: auto;
     align-items: center;
     flex-direction: column;
@@ -21,7 +23,7 @@ html {
     overflow-x: hidden;
 }
 
-main {
+.page-produtos-wrapper main {
     display: flex;
     width: 100%;
     height: auto;

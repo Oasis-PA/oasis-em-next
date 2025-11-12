@@ -3,9 +3,11 @@
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* ============================================
-   BASE STYLES - Compartilhado entre páginas
+   BASE STYLES - Isolados para perfil/gerenciamento
    ============================================ */
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-perfil-wrapper main *,
+.page-gerenciamento-wrapper main * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -35,7 +37,8 @@ main * {
     --linha: rgba(94, 92, 92, 0.6);
 }
 
-body {
+.page-perfil-wrapper,
+.page-gerenciamento-wrapper {
     width: 100%;
     min-height: 100vh;
     background-color: var(--body-back);
@@ -43,7 +46,8 @@ body {
     overflow-x: hidden;
 }
 
-p {
+.page-perfil-wrapper p,
+.page-gerenciamento-wrapper p {
     font-family: "Louis George Cafe";
     color: var(--corpo-texto);
 }

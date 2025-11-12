@@ -132,9 +132,10 @@ export default function GerenciamentoConta() {
 
 
   return (
-    <Layout>
+    <div className="page-gerenciamento-wrapper">
+      <Layout>
 
-      <main>
+        <main>
         <section>
           {/* MELHORIA: Adicionado id ao form e removido o onClick do botão salvar */}
           <form id="gerenciamento-form" onSubmit={handleSave}>
@@ -255,6 +256,7 @@ export default function GerenciamentoConta() {
         </div>
       )}
 
-    </Layout>
+      </Layout>
+    </div>
   );
 }

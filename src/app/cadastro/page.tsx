@@ -58,7 +58,8 @@ export default function TelaCadastro() {
   };
 
   return (
-    <div className="tela-cadastro-container">
+    <div className="page-login-cadastro-wrapper">
+      <div className="tela-cadastro-container">
       <figure className="figure-padding-cadastro">
         <Image
           src="/images/tela-de-cadastro/imagem-tela-login-roxo.png"
@@ -136,6 +137,7 @@ export default function TelaCadastro() {
           </Link>
         </section>
       </main>
+      </div>
     </div>
   );
 }

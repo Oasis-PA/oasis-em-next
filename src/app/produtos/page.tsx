@@ -323,7 +323,7 @@ export default function ProdutosPage() {
     };
 
     return (
-        <>
+        <div className="page-produtos-wrapper">
             <Header className="header-transparente"/>
             <main>
                 <h1>PRODUTOS RECOMENDADOS</h1>
@@ -382,6 +382,6 @@ export default function ProdutosPage() {
             {/* ▲▲▲ FIM DA MUDANÇA ▲▲▲ */}
 
             <Footer />
-        </>
+        </div>
     );
 }

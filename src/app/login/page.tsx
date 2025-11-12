@@ -74,8 +74,9 @@ export default function Login() {
   }
 
   return (
-    <main id="main-margin-login">
-      <section id="gambiarra">
+    <div className="page-login-cadastro-wrapper">
+      <main id="main-margin-login">
+        <section id="gambiarra">
         <h1>Olá, seja bem vindo(a)!</h1>
         <p>
           Insira suas informações de registro ou{" "}
@@ -166,8 +167,9 @@ export default function Login() {
           style={{ objectFit: "contain" }}
         />
       </figure>
+      </main>
 
       <SenhaModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-    </main>
+    </div>
   );
 }

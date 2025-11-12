@@ -85,7 +85,8 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <Layout>
+    <div className="page-perfil-wrapper">
+      <Layout>
      
       <main>
         <div className="informa">
@@ -161,6 +162,7 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
 
         {mensagem && <p>{mensagem}</p>}
       </main>
-    </Layout>
+      </Layout>
+    </div>
   );
 }
