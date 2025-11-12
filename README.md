@@ -190,7 +190,92 @@ npm run test:coverage       # Cobertura de código
 
 📖 **Para documentação completa de testes, consulte:** [`tests/README.md`](./tests/README.md)
 
-🏛️ Arquitetura e Documentação Técnica
+---
+
+## 🎨 Isolamento de CSS e Arquitetura de Estilos
+
+O projeto implementa uma **estratégia de isolamento de CSS** para evitar conflitos entre páginas ao navegar pela aplicação.
+
+### Problema Resolvido
+Em aplicações Next.js, imports de CSS são globais por padrão. Isso causava conflitos quando:
+- Navegando entre páginas diferentes
+- Usando o botão "voltar" do navegador
+- Estilos de uma página "vazavam" para outras
+
+### Solução Implementada
+Cada página/grupo de páginas possui um **wrapper CSS único**:
+
+| Wrapper | Páginas Afetadas | Arquivo CSS |
+|---------|------------------|-------------|
+| `.page-produtos-wrapper` | `/produtos` | `produtos.css` |
+| `.page-login-cadastro-wrapper` | `/login`, `/cadastro`, `/cadastro2` | `tela-de-cadastro.css` |
+| `.page-perfil-wrapper` | `/perfil` | `editar-perfil.css` |
+| `.page-gerenciamento-wrapper` | `/gerenciamento` | `editar-perfil.css` |
+
+### Exemplo de Implementação
+
+**Antes (CSS global - causava conflitos):**
+```css
+main * { margin: 0; padding: 0; }
+body { display: flex; }
+```
+
+**Depois (CSS isolado):**
+```css
+.page-produtos-wrapper * { margin: 0; padding: 0; }
+.page-produtos-wrapper { display: flex; }
+```
+
+**Uso no componente:**
+```tsx
+export default function ProdutosPage() {
+  return (
+    <div className="page-produtos-wrapper">
+      {/* Conteúdo da página */}
+    </div>
+  );
+}
+```
+
+### Benefícios
+- ✅ Navegação entre páginas sem conflitos de estilo
+- ✅ Botão "voltar" funciona corretamente
+- ✅ Cada página mantém seus estilos isolados
+- ✅ Fácil manutenção e debugging
+
+---
+
+## ⚠️ Notas Importantes para Ambiente de Desenvolvimento
+
+### Conexão com Banco de Dados
+O projeto utiliza **Supabase** hospedado externamente. Em ambientes com **firewall restritivo** (como redes corporativas ou SENAI), a conexão pode falhar:
+
+```
+Can't reach database server at `db.yyvjzgxyxgalnnwcjfqh.supabase.co:5432`
+```
+
+**Soluções:**
+1. **Rede doméstica/aberta**: Funciona normalmente
+2. **Hotspot móvel**: Conexão alternativa recomendada
+3. **VPN corporativa**: Pode resolver bloqueios de firewall
+4. **Banco local (desenvolvimento)**: Configurar PostgreSQL local
+
+### Interface Funcional Sem Banco
+Mesmo sem conexão com o banco, você pode:
+- ✅ Navegar por todas as páginas
+- ✅ Visualizar o design e layout responsivo
+- ✅ Testar navegação e CSS isolado
+- ✅ Ver componentes React funcionando
+- ❌ Login/cadastro (requer banco)
+- ❌ Listagem de produtos (requer banco)
+- ❌ Salvar dados (requer banco)
+
+### Testes Cypress
+Os testes E2E falharão **sem conexão com banco**, mas isso é esperado. A suíte completa funciona em ambiente com conectividade adequada.
+
+---
+
+## 🏛️ Arquitetura e Documentação Técnica
 Para uma análise aprofundada da arquitetura do projeto, das decisões técnicas e dos fluxos de trabalho detalhados, consulte a nossa documentação completa na pasta docs/.
 
 01 - Visão Geral da Arquitetura
