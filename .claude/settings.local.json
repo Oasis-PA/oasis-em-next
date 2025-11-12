@@ -66,8 +66,7 @@
       "Bash(rm:*)",
       "Bash(nul)",
       "Bash(git push)",
-      "Bash(node scripts/fix-zod-schemas.js:*)",
-      "Bash(git push:*)"
+      "Bash(node scripts/fix-zod-schemas.js:*)"
     ],
     "deny": [],
     "ask": []
