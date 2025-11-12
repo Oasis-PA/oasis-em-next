@@ -56,6 +56,13 @@ function fixZodSchemaFile(filePath) {
     let content = readFileSync(filePath, 'utf8');
     const originalContent = content;
 
+    // Fix 0: Fix single quotes inside single-quoted strings (must come FIRST)
+    // Replace message: 'Field 'name' must be...' with message: "Field 'name' must be..."
+    content = content.replace(
+      /message:\s*'([^']*)'([^']*)'([^']*)'/g,
+      'message: "$1\'$2\'$3"'
+    );
+
     // Fix 1: Remove empty include fields
     content = content.replace(/include:\s*,/g, '');
 
