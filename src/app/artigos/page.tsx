@@ -156,7 +156,6 @@ export default async function ArtigosPage() {
               </div>
             </Link>
           )}
-
           {/* SEÇÃO 2 - Grade de 3 Artigos */}
           <div className="seção2">
             {/* GRUPO 4 */}
@@ -217,6 +216,7 @@ export default async function ArtigosPage() {
             
             <img src="/images/artigo-geral/gloss.png" alt="Gloss" id="mulher-gloss" />
           </div>
+ <img id="linha" src="/images/artigo-geral/linha.png" alt="" />
 
           {/* LINHAS DE ARTIGOS QUADRUPLOS */}
           {gruposQuadruplos.length > 0 && (
@@ -274,6 +274,14 @@ export default async function ArtigosPage() {
               )}
             </>
           )}
+
+       <section className="cronograma-capilar">
+            <img src="/images/artigo-geral/img cronograma capilar.png" alt="Mulher com cabelo cacheado" />
+            <h5> Voce já fez o seu cronograma capilar?</h5>
+            <button>
+                <p>CRONOGRAMA</p>
+            </button>
+        </section>
 
           {/* SEÇÃO 3 - Últimos Artigos em Layout Especial */}
           {ultimosArtigos.length > 0 && (

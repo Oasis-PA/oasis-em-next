@@ -830,3 +830,131 @@ main > h5:hover {
         margin-top: 1rem;
     }
 }
+
+.cronograma-capilar
+{
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 24px;
+    align-items: start;
+    width: 100%;
+    margin: 3rem 0;
+}
+
+.cronograma-capilar > img{
+    grid-row: 1 / 3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all 0.3s ease; /* --- ADICIONADO --- */
+}
+
+/* --- ADICIONADO --- */
+.cronograma-capilar > img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+.cronograma-capilar > h5{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    align-self: end;
+    width: 100%;
+    font-family: "The Next Font";
+    font-size: clamp(3.5rem, 8vw, 110px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    padding: 2px 12px;
+    margin: 0;
+    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
+}
+
+/* --- ADICIONADO --- */
+.cronograma-capilar > h5:hover {
+    text-shadow: 0 2px 8px var(--shadow);
+}
+
+/* --- BOTÃO MODIFICADO --- */
+.cronograma-capilar > button{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    align-self: start;
+    border-radius: 27px;
+    background: #722F53;
+    border-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    width: fit-content;
+    height: 49px;
+    padding: 8px 39px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+    
+    /* --- Efeitos adicionados --- */
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- ADICIONADO --- */
+.cronograma-capilar > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 1;
+}
+
+/* --- ADICIONADO --- */
+.cronograma-capilar > button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.08);
+}
+
+/* --- ADICIONADO --- */
+.cronograma-capilar > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* --- ADICIONADO --- */
+.cronograma-capilar > button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.05);
+}
+
+/* --- MODIFICADO (para ficar sobre o efeito) --- */
+.cronograma-capilar > button p { 
+    color: #f3f3f3;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: clamp(1rem, 1.5vw, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative; /* --- ADICIONADO --- */
+    z-index: 2; /* --- ADICIONADO --- */
+}
+
+#linha
+{
+    grid-column: 1 / -1;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 2rem 0;
+}
