@@ -23,13 +23,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
       - name: Setup test database
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
-        run: npx prisma migrate deploy --skip-generate
+        run: npx prisma migrate deploy
 
       - name: Run tests
         env:
