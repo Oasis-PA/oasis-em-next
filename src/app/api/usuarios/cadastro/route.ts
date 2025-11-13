@@ -30,13 +30,11 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     if (process.env.NODE_ENV === 'development') {
-      console.log("📥 Dados recebidos:", body);
     }
 
     // Validação com Zod
     const validatedData = cadastroSchema.parse(body);
     
-    console.log("✅ Dados validados:", validatedData); // Debug
 
     // Verifica se o email já existe
     const usuarioExistente = await prisma.usuario.findUnique({ 
@@ -69,7 +67,6 @@ export async function POST(req: NextRequest) {
       }
     });
     
-    console.log("🎉 Usuário criado:", novoUsuario); // Debug
 
     return NextResponse.json({ 
       message: "Conta criada com sucesso!", 
@@ -77,11 +74,9 @@ export async function POST(req: NextRequest) {
     });
     
   } catch (error: unknown) {
-    console.error("❌ Erro completo:", error); // Debug
     
     // Tratamento de erros de validação Zod
     if (error instanceof ZodError) {
-      console.error("❌ Erros de validação:", error.errors); // Debug
       return NextResponse.json(
         { 
           message: "Dados inválidos",

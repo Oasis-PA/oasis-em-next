@@ -48,7 +48,6 @@ export default function CadastrarTagPage() {
         setNomeTag('');
       }
     } catch (err) {
-      console.error(err);
       setErro('Erro de conexão com o servidor.');
     } finally {
       setLoading(false);

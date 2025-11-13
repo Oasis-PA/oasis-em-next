@@ -82,7 +82,6 @@ export async function POST(req: NextRequest) {
           await supabaseAdmin.storage.from("perfil-fotos").remove([filePath]);
         }
       } catch (err) {
-        console.warn("Erro ao deletar foto antiga:", err);
       }
     }
 
@@ -105,7 +104,6 @@ export async function POST(req: NextRequest) {
       });
 
     if (uploadError) {
-      console.error("Erro no upload:", uploadError);
       return NextResponse.json(
         { error: "Erro ao fazer upload da imagem" },
         { status: 500 }
@@ -135,7 +133,6 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error("Erro no upload:", error);
     return NextResponse.json(
       { error: "Erro ao processar upload" },
       { status: 500 }

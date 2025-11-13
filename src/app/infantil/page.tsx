@@ -66,7 +66,6 @@ export default function Infantil() {
         
         setProdutos(produtosArray);
       } catch (e) {
-        console.error('Erro ao carregar produtos infantis:', e);
         setErro('Não foi possível carregar os produtos infantis');
       } finally {
         setLoading(false);

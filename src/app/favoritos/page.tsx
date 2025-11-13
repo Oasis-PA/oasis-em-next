@@ -46,7 +46,6 @@ const Favoritos: React.FC = () => {
         setError('Erro ao carregar favoritos');
       }
     } catch (err) {
-      console.error('Erro ao carregar favoritos:', err);
       setError('Erro ao carregar favoritos');
     } finally {
       setIsLoading(false);

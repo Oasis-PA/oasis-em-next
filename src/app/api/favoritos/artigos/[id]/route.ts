@@ -30,7 +30,6 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
     const userId = decoded.userId || decoded.id || decoded.id_usuario;
     
     if (!userId) {
-      console.error('❌ Token JWT não contém userId. Payload:', decoded);
       return null;
     }
     
@@ -39,7 +38,6 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
       email: decoded.email
     };
   } catch (error) {
-    console.error('Erro ao verificar token:', error);
     return null;
   }
 }
@@ -50,15 +48,12 @@ export async function DELETE(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
-    console.log('🔹 Iniciando DELETE /api/favoritos/artigos/[id]');
     
     // Await params no Next.js 15
     const params = await context.params;
-    console.log('🔹 params:', params);
     
     // Verifica autenticação
     const userData = await verifyToken(request);
-    console.log('🔹 userData:', userData ? `userId: ${userData.userId}` : 'null');
     
     if (!userData) {
       return NextResponse.json(
@@ -68,7 +63,6 @@ export async function DELETE(
     }
 
     const id_artigo = parseInt(params.id);
-    console.log('🔹 id_artigo:', id_artigo);
 
     // Validação
     if (isNaN(id_artigo)) {
@@ -78,8 +72,6 @@ export async function DELETE(
       );
     }
 
-    console.log('🔹 Buscando favorito para deletar...');
-    console.log('🔹 Busca com:', { id_usuario: userData.userId, id_artigo: id_artigo });
 
     // Verifica se o favorito existe
     const favorito = await prisma.favoritoArtigo.findFirst({
@@ -89,7 +81,6 @@ export async function DELETE(
       },
     });
 
-    console.log('🔹 Favorito encontrado:', favorito ? `id: ${favorito.id_favorito_artigo}` : 'null');
 
     if (!favorito) {
       return NextResponse.json(
@@ -98,7 +89,6 @@ export async function DELETE(
       );
     }
 
-    console.log('🔹 Deletando favorito...');
     // Remove o favorito
     await prisma.favoritoArtigo.delete({
       where: {
@@ -106,7 +96,6 @@ export async function DELETE(
       },
     });
 
-    console.log('✅ Favorito removido com sucesso!');
 
     return NextResponse.json(
       {
@@ -115,8 +104,6 @@ export async function DELETE(
       { status: 200 }
     );
   } catch (error) {
-    console.error('❌ ERRO ao remover favorito:', error);
-    console.error('❌ Stack:', error instanceof Error ? error.stack : 'no stack');
     return NextResponse.json(
       { 
         error: 'Erro interno do servidor',

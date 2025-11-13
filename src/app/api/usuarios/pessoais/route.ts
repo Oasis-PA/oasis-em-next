@@ -28,7 +28,6 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json(updatedUser);
   } catch (err) {
-    console.error(err);
     return NextResponse.json({ error: "Erro ao atualizar dados pessoais" }, { status: 500 });
   }
 }

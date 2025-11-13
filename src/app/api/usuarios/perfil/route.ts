@@ -59,7 +59,6 @@ export async function GET(req: NextRequest) {
     }
 
     // Trata outros erros inesperados do servidor
-    console.error("Erro ao buscar perfil do usuário:", error);
     return NextResponse.json({ error: "Erro interno no servidor." }, { status: 500 });
   }
 }

@@ -33,7 +33,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(artigosFormatados);
   } catch (error) {
-    console.error('Erro ao buscar artigos:', error);
     return NextResponse.json(
       { error: 'Erro ao buscar artigos' },
       { status: 500 }
@@ -116,7 +115,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(resultado, { status: 201 });
   } catch (error) {
-    console.error('Erro ao criar artigo:', error);
     return NextResponse.json(
       { error: 'Erro ao criar artigo' },
       { status: 500 }

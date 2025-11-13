@@ -46,13 +46,11 @@ export default function GerenciamentoConta() {
           setInitialData(fetchedData); // Guarda o estado inicial
         }
       })
-      .catch(err => console.error(err));
 
     // Busca lista de gêneros
     fetch("/api/usuarios/generos")
       .then(res => res.ok ? res.json() : [])
       .then(lista => setGeneros(lista))
-      .catch(err => console.error(err));
   }, []);
 
   const handleSave = async (e: React.FormEvent) => {

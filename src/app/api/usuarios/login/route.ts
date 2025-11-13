@@ -99,7 +99,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.error("Erro no login:", error);
     return NextResponse.json(
       { message: "Erro interno no servidor." },
       { status: 500 }

@@ -30,7 +30,6 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
     const userId = decoded.userId || decoded.id || decoded.id_usuario;
     
     if (!userId) {
-      console.error('❌ Token JWT não contém userId. Payload:', decoded);
       return null;
     }
     
@@ -39,7 +38,6 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
       email: decoded.email
     };
   } catch (error) {
-    console.error('Erro ao verificar token:', error);
     return null;
   }
 }
@@ -89,7 +87,6 @@ export async function GET(
       { status: 200 }
     );
   } catch (error) {
-    console.error('Erro ao verificar favorito:', error);
     return NextResponse.json(
       { 
         error: 'Erro interno do servidor',

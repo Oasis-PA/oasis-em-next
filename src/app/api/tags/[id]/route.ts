@@ -36,7 +36,6 @@ export async function GET(
 
     return NextResponse.json(tag);
   } catch (error: any) {
-    console.error('Erro ao buscar tag:', error);
     return NextResponse.json(
       { error: 'Erro ao buscar tag' },
       { status: 500 }
@@ -143,7 +142,6 @@ export async function PATCH(
       { status: 200 }
     );
   } catch (error: any) {
-    console.error('Erro ao atualizar tag:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar tag' },
       { status: 500 }
@@ -215,7 +213,6 @@ export async function DELETE(
       { status: 200 }
     );
   } catch (error: any) {
-    console.error('Erro ao deletar tag:', error);
     return NextResponse.json(
       { error: 'Erro ao deletar tag' },
       { status: 500 }

@@ -22,7 +22,6 @@ export async function GET() {
 
         return NextResponse.json(data);
     } catch (error) {
-        console.error('Erro ao buscar Tipos de Pele:', error);
         return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
     }
 }

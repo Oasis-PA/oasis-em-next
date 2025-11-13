@@ -76,7 +76,6 @@ export default async function ArtigosPage() {
     });
   } catch (error) {
     // Se o banco não estiver acessível, retornar página vazia/fallback
-    console.warn("⚠️ Banco de dados indisponível. Página de artigos carregando sem dados.");
     artigos = [];
   }
 

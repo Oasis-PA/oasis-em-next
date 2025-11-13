@@ -46,7 +46,6 @@ export async function GET(
 
     return NextResponse.json({ imagens });
   } catch (error) {
-    console.error('Erro ao buscar imagens:', error);
     return NextResponse.json(
       { error: 'Erro ao buscar imagens do produto' },
       { status: 500 }
@@ -150,7 +149,6 @@ export async function POST(
       });
 
     if (uploadError) {
-      console.error('Erro no upload:', uploadError);
       return NextResponse.json(
         { error: 'Erro ao fazer upload da imagem' },
         { status: 500 }
@@ -183,7 +181,6 @@ export async function POST(
       { status: 201 }
     );
   } catch (error) {
-    console.error('Erro ao adicionar imagem:', error);
     return NextResponse.json(
       { error: 'Erro ao adicionar imagem ao produto' },
       { status: 500 }

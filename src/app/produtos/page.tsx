@@ -126,7 +126,6 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
             }));
             setter([{ id: null, nome: allLabel }, ...formattedData]); 
         } catch (e) {
-            console.error(e);
             setter([{ id: null, nome: allLabel }]);
         }
     }, []);

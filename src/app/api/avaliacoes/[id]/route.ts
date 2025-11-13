@@ -50,7 +50,6 @@ export async function GET(
 
     return NextResponse.json(avaliacao);
   } catch (error) {
-    console.error('Erro ao buscar avaliação:', error);
     return NextResponse.json(
       { error: 'Erro ao buscar avaliação' },
       { status: 500 }
@@ -168,7 +167,6 @@ export async function PUT(
       );
     }
 
-    console.error('Erro ao atualizar avaliação:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar avaliação' },
       { status: 500 }
@@ -251,7 +249,6 @@ export async function DELETE(
       message: 'Avaliação deletada com sucesso',
     });
   } catch (error) {
-    console.error('Erro ao deletar avaliação:', error);
     return NextResponse.json(
       { error: 'Erro ao deletar avaliação' },
       { status: 500 }

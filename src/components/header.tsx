@@ -32,7 +32,6 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
           setUser(null);
         }
       } catch (error) {
-        console.error("Falha ao buscar perfil do usuário:", error);
         setUser(null);
       } finally {
         setIsLoading(false);

@@ -26,7 +26,6 @@ export async function generateStaticParams() {
   } catch (error) {
     // Se o banco não estiver acessível durante o build, retorna array vazio
     // As páginas serão geradas sob demanda (ISR/dynamic rendering)
-    console.warn("⚠️ Banco de dados indisponível durante build. Artigos serão carregados sob demanda.");
     return [];
   }
 }

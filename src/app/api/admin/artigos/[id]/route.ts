@@ -6,7 +6,6 @@ import { prisma } from "@/lib/prisma";
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
-    console.log("API GET artigo id =", id);
 
     // Se id for só dígitos, trata como number; caso contrário, trata como slug/string
     const isNumeric = /^\d+$/.test(id);
@@ -44,7 +43,6 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     return NextResponse.json(resultado);
   } catch (error) {
-    console.error("Erro GET artigo:", error);
     return NextResponse.json({ message: "Erro interno" }, { status: 500 });
   }
 }
@@ -151,7 +149,6 @@ export async function PUT(
 
     return NextResponse.json(resultado);
   } catch (error) {
-    console.error('Erro ao atualizar artigo:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar artigo' },
       { status: 500 }
@@ -175,7 +172,6 @@ export async function DELETE(
 
     return NextResponse.json({ message: 'Artigo excluído com sucesso' });
   } catch (error) {
-    console.error('Erro ao excluir artigo:', error);
     return NextResponse.json(
       { error: 'Erro ao excluir artigo' },
       { status: 500 }

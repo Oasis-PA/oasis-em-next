@@ -78,7 +78,6 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error: any) {
-    console.error('Erro ao processar solicitação:', error);
 
     // Verificar se é erro de email duplicado
     if (error.code === 'P2002' && error.meta?.target?.includes('email')) {
@@ -117,7 +116,6 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Erro ao buscar influenciadores:', error);
     return NextResponse.json(
       { error: 'Erro ao buscar dados.' },
       { status: 500 }

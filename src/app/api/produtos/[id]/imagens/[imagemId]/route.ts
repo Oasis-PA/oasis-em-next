@@ -89,7 +89,6 @@ export async function PATCH(
       );
     }
 
-    console.error('Erro ao atualizar imagem:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar imagem' },
       { status: 500 }
@@ -166,7 +165,6 @@ export async function DELETE(
         await supabaseAdmin.storage.from(bucketName).remove([filePath]);
       }
     } catch (err) {
-      console.warn('Erro ao deletar imagem do storage:', err);
       // Continua mesmo se falhar, para não bloquear a exclusão do DB
     }
 
@@ -179,7 +177,6 @@ export async function DELETE(
       message: 'Imagem deletada com sucesso',
     });
   } catch (error) {
-    console.error('Erro ao deletar imagem:', error);
     return NextResponse.json(
       { error: 'Erro ao deletar imagem' },
       { status: 500 }

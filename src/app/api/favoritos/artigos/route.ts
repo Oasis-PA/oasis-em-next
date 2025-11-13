@@ -30,7 +30,6 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
     const userId = decoded.userId || decoded.id || decoded.id_usuario;
     
     if (!userId) {
-      console.error('❌ Token JWT não contém userId. Payload:', decoded);
       return null;
     }
     
@@ -39,7 +38,6 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
       email: decoded.email
     };
   } catch (error) {
-    console.error('Erro ao verificar token:', error);
     return null;
   }
 }
@@ -47,11 +45,9 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
 // POST - Adicionar artigo aos favoritos
 export async function POST(request: NextRequest) {
   try {
-    console.log('🔹 Iniciando POST /api/favoritos/artigos');
     
     // Verifica autenticação
     const userData = await verifyToken(request);
-    console.log('🔹 userData:', userData ? `userId: ${userData.userId}` : 'null');
     
     if (!userData) {
       return NextResponse.json(
@@ -64,9 +60,7 @@ export async function POST(request: NextRequest) {
     let body;
     try {
       body = await request.json();
-      console.log('🔹 body recebido:', body);
     } catch (error) {
-      console.error('❌ Erro ao ler body:', error);
       return NextResponse.json(
         { error: 'Body inválido ou vazio' },
         { status: 400 }
@@ -74,7 +68,6 @@ export async function POST(request: NextRequest) {
     }
 
     const { id_artigo } = body;
-    console.log('🔹 id_artigo:', id_artigo, 'tipo:', typeof id_artigo);
 
     // Validação
     if (!id_artigo || typeof id_artigo !== 'number') {
@@ -84,12 +77,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('🔹 Verificando se artigo existe...');
     // Verifica se o artigo existe
     const artigo = await prisma.artigo.findUnique({
       where: { id: id_artigo },
     });
-    console.log('🔹 Artigo encontrado:', artigo ? `id: ${artigo.id}` : 'null');
 
     if (!artigo) {
       return NextResponse.json(
@@ -98,8 +89,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('🔹 Verificando se já está favoritado...');
-    console.log('🔹 Buscando com:', { id_usuario: userData.userId, id_artigo: id_artigo });
     
     // Verifica se já está favoritado
     const favoritoExistente = await prisma.favoritoArtigo.findFirst({
@@ -108,7 +97,6 @@ export async function POST(request: NextRequest) {
         id_artigo: id_artigo,
       },
     });
-    console.log('🔹 Favorito existente:', favoritoExistente ? 'sim' : 'não');
 
     if (favoritoExistente) {
       return NextResponse.json(
@@ -120,7 +108,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('🔹 Criando favorito...');
     // Cria o favorito
     const novoFavorito = await prisma.favoritoArtigo.create({
       data: {
@@ -139,7 +126,6 @@ export async function POST(request: NextRequest) {
         },
       },
     });
-    console.log('✅ Favorito criado com sucesso:', novoFavorito.id_favorito_artigo);
 
     return NextResponse.json(
       {
@@ -149,8 +135,6 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    console.error('❌ ERRO COMPLETO:', error);
-    console.error('❌ Stack:', error instanceof Error ? error.stack : 'no stack');
     return NextResponse.json(
       { 
         error: 'Erro interno do servidor',
@@ -208,7 +192,6 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('Erro ao buscar favoritos:', error);
     return NextResponse.json(
       { 
         error: 'Erro interno do servidor',

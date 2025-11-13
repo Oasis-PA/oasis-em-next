@@ -65,7 +65,6 @@ export default function EditarArtigoPage() {
         router.push('/admin/artigos');
       }
     } catch (error) {
-      console.error('Erro ao carregar artigo:', error);
       alert('Erro ao carregar artigo');
     } finally {
       setIsLoading(false);
@@ -144,7 +143,6 @@ export default function EditarArtigoPage() {
         alert(errBody || 'Erro ao fazer upload');
       }
     } catch (error) {
-      console.error('Erro:', error);
       alert('Erro ao fazer upload');
     } finally {
       setUploadingImage(false);
@@ -193,7 +191,6 @@ export default function EditarArtigoPage() {
         alert(data.error || 'Erro ao atualizar artigo');
       }
     } catch (error) {
-      console.error('Erro:', error);
       alert('Erro ao atualizar artigo');
     } finally {
       setIsSaving(false);

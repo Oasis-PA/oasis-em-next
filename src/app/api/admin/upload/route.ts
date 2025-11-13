@@ -71,7 +71,6 @@ export async function POST(request: NextRequest) {
       });
 
     if (uploadError) {
-      console.error('Erro no upload do Supabase:', uploadError);
       return NextResponse.json(
         { error: 'Erro ao fazer upload da imagem' },
         { status: 500 }
@@ -87,7 +86,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ url }, { status: 200 });
   } catch (error) {
-    console.error('Erro ao fazer upload:', error);
     return NextResponse.json(
       { error: 'Erro ao fazer upload da imagem' },
       { status: 500 }

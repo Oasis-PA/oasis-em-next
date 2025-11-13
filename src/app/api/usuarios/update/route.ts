@@ -50,7 +50,6 @@ export async function PUT(req: Request) {
         return NextResponse.json({ error: error.message }, { status: 401 });
       }
     }
-    console.error("Erro ao atualizar usuário:", error);
     return NextResponse.json({ error: "Erro ao atualizar usuário" }, { status: 500 });
   }
 }
@@ -106,7 +105,6 @@ export async function PATCH(req: Request) {
         return NextResponse.json({ error: error.message }, { status: 401 });
       }
     }
-    console.error("Erro ao atualizar usuário:", error);
     return NextResponse.json({ error: "Erro ao atualizar usuário" }, { status: 500 });
   }
 }

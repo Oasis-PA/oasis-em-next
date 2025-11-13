@@ -81,7 +81,6 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     // Não loga detalhes do erro em produção
     if (process.env.NODE_ENV === 'development') {
-      console.error('Erro no login:', error);
     }
     return NextResponse.json(
       { error: 'Erro ao processar login' },

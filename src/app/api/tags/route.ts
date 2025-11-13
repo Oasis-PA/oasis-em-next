@@ -24,7 +24,6 @@ export async function GET() {
         // Retorna o formato esperado: [{ id_tag: 1, nome: 'condicionador' }, ...]
         return NextResponse.json(data);
     } catch (error) {
-        console.error('Erro ao buscar Tags:', error);
         return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
     }
 }

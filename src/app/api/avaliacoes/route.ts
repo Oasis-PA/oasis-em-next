@@ -60,7 +60,6 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('Erro ao buscar avaliações:', error);
     return NextResponse.json(
       { error: 'Erro ao buscar avaliações' },
       { status: 500 }
@@ -196,7 +195,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.error('Erro ao criar avaliação:', error);
     return NextResponse.json(
       { error: 'Erro ao criar avaliação' },
       { status: 500 }

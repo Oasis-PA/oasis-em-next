@@ -66,7 +66,6 @@ const ParceriasEmpresasPage: React.FC = () => {
                 });
             }
         } catch (error) {
-            console.error('Erro:', error);
             setMessage({
                 type: 'error',
                 text: 'Erro ao enviar solicitação. Tente novamente.'

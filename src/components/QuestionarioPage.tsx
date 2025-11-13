@@ -125,7 +125,11 @@ const diasSemana = [
     { id: 'sabado', nome: 'Sábado', dia: 6 },
 ];
 
-const Respostas: React.FC = () => {
+interface QuestionarioPageProps {
+    step: number;
+}
+
+const QuestionarioPage: React.FC<QuestionarioPageProps> = ({ step }) => {
     const [mesAtual, setMesAtual] = useState(6);
     const [anoAtual, setAnoAtual] = useState(2025);
     const [semanaAtual, setSemanaAtual] = useState(0);
@@ -452,4 +456,4 @@ const Respostas: React.FC = () => {
     );
 };
 
-export default Respostas;
+export default QuestionarioPage;

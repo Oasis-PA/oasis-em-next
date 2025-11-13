@@ -19,7 +19,6 @@ export async function DELETE(req: NextRequest) {
     response.cookies.set("auth-token", "", { maxAge: -1 });
     return response;
   } catch (err) {
-    console.error(err);
     return NextResponse.json({ error: "Erro ao excluir conta" }, { status: 500 });
   }
 }

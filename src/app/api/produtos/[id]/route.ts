@@ -29,7 +29,6 @@ export async function GET(
             .single();
 
         if (error) {
-            console.error('Erro ao buscar produto:', error);
             return NextResponse.json(
                 { error: 'Produto não encontrado', details: error.message }, 
                 { status: 404 }
@@ -82,12 +81,10 @@ export async function GET(
             id_tag: produto.id_tag
         };
 
-        console.log('Produto formatado:', formattedProduct); // Debug
 
         return NextResponse.json(formattedProduct);
 
     } catch (error: any) {
-        console.error('Erro inesperado:', error);
         return NextResponse.json(
             { error: 'Erro interno do servidor' },
             { status: 500 }
@@ -184,7 +181,6 @@ export async function PATCH(
       produto: produtoAtualizado,
     });
   } catch (error: any) {
-    console.error('Erro ao atualizar produto:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar produto' },
       { status: 500 }

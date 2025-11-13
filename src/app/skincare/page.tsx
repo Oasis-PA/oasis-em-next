@@ -33,7 +33,6 @@ export default function Skincare() {
           setProdutos([]);
         }
       } catch (error) {
-        console.error('Erro ao buscar produtos:', error);
         setProdutos([]);
       } finally {
         setLoadingProdutos(false);

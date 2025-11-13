@@ -66,10 +66,8 @@ export default function PaginaDeProduto() {
         }
 
         const data = await res.json();
-        console.log('Dados recebidos da API:', data); // Debug
         setProdutoData(data);
       } catch (e: any) {
-        console.error('Erro ao carregar produto:', e);
         setErro(e.message || 'Erro ao carregar produto');
       } finally {
         setLoading(false);
@@ -128,12 +126,10 @@ export default function PaginaDeProduto() {
 
   // Debug: Monitorar mudanças no activeDetalhe
   useEffect(() => {
-    console.log('activeDetalhe mudou para:', activeDetalhe);
   }, [activeDetalhe]);
 
   // Debug: Monitorar dados do produto
   useEffect(() => {
-    console.log('Dados do produto:', {
       composicao: produtoData.composicao,
       qualidades: produtoData.qualidades,
       mais_detalhes: produtoData.mais_detalhes
@@ -149,8 +145,6 @@ export default function PaginaDeProduto() {
 
   // Função para lidar com o clique nos detalhes
   const handleDetalheClick = (detalhe: string) => {
-    console.log('Clicou em:', detalhe); // Debug
-    console.log('Estado atual:', activeDetalhe); // Debug
     
     if (activeDetalhe === detalhe) {
       setActiveDetalhe('');

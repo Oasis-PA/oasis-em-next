@@ -36,7 +36,6 @@ export async function GET(
 
     return NextResponse.json(categoria);
   } catch (error: any) {
-    console.error('Erro ao buscar categoria:', error);
     return NextResponse.json(
       { error: 'Erro ao buscar categoria' },
       { status: 500 }
@@ -152,7 +151,6 @@ export async function PATCH(
       { status: 200 }
     );
   } catch (error: any) {
-    console.error('Erro ao atualizar categoria:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar categoria' },
       { status: 500 }
@@ -224,7 +222,6 @@ export async function DELETE(
       { status: 200 }
     );
   } catch (error: any) {
-    console.error('Erro ao deletar categoria:', error);
     return NextResponse.json(
       { error: 'Erro ao deletar categoria' },
       { status: 500 }

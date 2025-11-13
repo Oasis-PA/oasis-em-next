@@ -264,8 +264,6 @@ const PerguntaPage = () => {
 		}
 		const totalScore = calculateTotalScore();
 		const redirectPage = getRedirectPage(Number(totalScore));
-		console.log("Pontuação total:", totalScore);
-		console.log("Redirecionando para:", redirectPage);
 		window.location.href = redirectPage;
 	};
 

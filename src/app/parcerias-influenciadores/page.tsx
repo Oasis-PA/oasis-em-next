@@ -47,7 +47,6 @@ const ParceriasUsuariosPage: React.FC = () => {
         setEstados(data);
       })
       .catch(err => {
-        console.error("Erro na busca de estados:", err);
         setError("Não foi possível carregar a lista de estados.");
       });
   }, []);
@@ -74,7 +73,6 @@ const ParceriasUsuariosPage: React.FC = () => {
           setIsLoadingCidades(false);
         })
         .catch(err => {
-          console.error("Erro na busca de cidades:", err);
           setError("Não foi possível carregar as cidades deste estado.");
           setIsLoadingCidades(false);
         });
@@ -152,7 +150,6 @@ const ParceriasUsuariosPage: React.FC = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (err: any) {
-      console.error('Erro ao enviar formulário:', err);
       setError(err.message || 'Erro ao enviar proposta. Tente novamente.');
     } finally {
       setIsSubmitting(false);

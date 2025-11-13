@@ -72,7 +72,6 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Erro ao criar solicitação de parceria:', error);
     
     return NextResponse.json(
       { error: 'Erro ao processar solicitação. Tente novamente mais tarde.' },
