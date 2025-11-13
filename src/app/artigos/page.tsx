@@ -1,6 +1,7 @@
 // src/app/artigos/page.tsx
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import { Artigo, Tag, ArtigoTag } from '@prisma/client';
 import '@/styles/artigo-geral.css';
 
 // ===== FUNÇÕES DE TRUNCAMENTO PARA PROTEGER O LAYOUT =====
@@ -54,22 +55,30 @@ const DISPLAY_LIMITS = {
 
 export default async function ArtigosPage() {
   // Buscar artigos publicados ordenados por data de publicação
-  const artigos = await prisma.artigo.findMany({
-    where: {
-      status: 'publicado'
-    },
-    include: {
-      ArtigoTag: {
-        include: {
-          Tag: true
-        },
-        take: DISPLAY_LIMITS.tags.max // Limitar tags na query
+  let artigos: (Artigo & { ArtigoTag: (ArtigoTag & { Tag: Tag })[] })[] = [];
+
+  try {
+    artigos = await prisma.artigo.findMany({
+      where: {
+        status: 'publicado'
+      },
+      include: {
+        ArtigoTag: {
+          include: {
+            Tag: true
+          },
+          take: DISPLAY_LIMITS.tags.max // Limitar tags na query
+        }
+      },
+      orderBy: {
+        dataPublicacao: 'desc'
       }
-    },
-    orderBy: {
-      dataPublicacao: 'desc'
-    }
-  });
+    });
+  } catch (error) {
+    // Se o banco não estiver acessível, retornar página vazia/fallback
+    console.warn("⚠️ Banco de dados indisponível. Página de artigos carregando sem dados.");
+    artigos = [];
+  }
 
   // Separar artigos por seção
   const artigoMaisRecente = artigos[0];

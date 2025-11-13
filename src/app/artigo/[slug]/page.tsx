@@ -10,18 +10,25 @@ interface ArtigoProps {
 }
 
 export async function generateStaticParams() {
-  const now = new Date();
-  const artigos: { slug: string }[] = await prisma.artigo.findMany({
-    where: {
-      OR: [
-        { status: "publicado" },
-        { status: "agendado", dataPublicacao: { lte: now } },
-      ],
-    },
-    select: { slug: true },
-  });
+  try {
+    const now = new Date();
+    const artigos: { slug: string }[] = await prisma.artigo.findMany({
+      where: {
+        OR: [
+          { status: "publicado" },
+          { status: "agendado", dataPublicacao: { lte: now } },
+        ],
+      },
+      select: { slug: true },
+    });
 
-  return artigos.filter((a) => a.slug).map((a) => ({ slug: a.slug }));
+    return artigos.filter((a) => a.slug).map((a) => ({ slug: a.slug }));
+  } catch (error) {
+    // Se o banco não estiver acessível durante o build, retorna array vazio
+    // As páginas serão geradas sob demanda (ISR/dynamic rendering)
+    console.warn("⚠️ Banco de dados indisponível durante build. Artigos serão carregados sob demanda.");
+    return [];
+  }
 }
 
 // Função auxiliar para formatar datas
