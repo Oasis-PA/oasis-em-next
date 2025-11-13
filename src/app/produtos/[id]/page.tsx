@@ -124,18 +124,6 @@ export default function PaginaDeProduto() {
     };
   }, [activeDetalhe]);
 
-  // Debug: Monitorar mudanças no activeDetalhe
-  useEffect(() => {
-  }, [activeDetalhe]);
-
-  // Debug: Monitorar dados do produto
-  useEffect(() => {
-      composicao: produtoData.composicao,
-      qualidades: produtoData.qualidades,
-      mais_detalhes: produtoData.mais_detalhes
-    });
-  }, [produtoData]);
-
   // Função para lidar com o clique no botão amarelo
   const handleBotaoAmareloClick = () => {
     if (produtoData.url_loja) {
