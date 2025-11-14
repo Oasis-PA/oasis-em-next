@@ -1,7 +1,8 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* ================================== */
 /* CONFIGURAÇÕES GLOBAIS E TEMAS      */
 /* ================================== */
-* {
+.page-haircare-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;

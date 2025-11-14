@@ -21,6 +21,7 @@ const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) =>
   const imageSrc = produto.url_imagem || '/images/infantil/produto.png';
   
   return (
+    <div className="page-infantil-wrapper">
     <div className="prod1">
       <Image 
         src={imageSrc} 
@@ -34,8 +35,9 @@ const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) =>
       <Link href={`/produtos/${produto.id_produto}`}>
         <button id="vejaMais">Veja mais</button>
       </Link>
-    </div>
+    </div>    </div>
   );
+
 };
 
 export default function Infantil() {

@@ -1,15 +1,16 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
-main * {
+.page-skincare-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: var(--corpo-texto);
 }
 
-body {
+.page-skincare-wrapper > div {
     display: flex;
     width: 100%;
     height: auto;
@@ -22,11 +23,11 @@ body {
     justify-self: center;
 }
 
-html {
+.page-skincare-wrapper {
     overflow-x: hidden;
 }
 
-main {
+.page-skincare-wrapper main {
     display: flex;
     width: 100%;
     height: auto;

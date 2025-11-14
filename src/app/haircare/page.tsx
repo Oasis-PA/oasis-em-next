@@ -28,7 +28,8 @@ const HairCarePage: React.FC = () => {
   ];
 
   return (
-    <>
+    <div className="page-haircare-wrapper">
+
     <Header/>
     <main>
       <section className="retangulo" id="barra">
@@ -192,8 +193,9 @@ const HairCarePage: React.FC = () => {
       <Script src="/Hair-care.js" strategy="lazyOnload" />
     </main>
     
-    <Footer/>
-  </>
+    <Footer/>    </div>
+  );
+
   );
 };
 

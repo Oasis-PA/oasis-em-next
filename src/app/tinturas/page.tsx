@@ -9,7 +9,8 @@ import "@/styles/tinturas.css";
 
 export default function tinturas() {
   return (
-    <>
+    <div className="page-tinturas-wrapper">
+
     <Header/>
     
     
@@ -140,7 +141,8 @@ export default function tinturas() {
     
      </main>
      
-    <Footer/>
-   </>
+    <Footer/>    </div>
+  );
+
   );
 }
