@@ -164,6 +164,7 @@ export default async function ArtigosPage() {
               </div>
             </Link>
           )}
+          
           {/* SEÇÃO 2 - Grade de 3 Artigos */}
           <div className="seção2">
             {/* GRUPO 4 */}
@@ -222,7 +223,6 @@ export default async function ArtigosPage() {
               </Link>
             )}
             
-            <img src="/images/artigo-geral/gloss.png" alt="Gloss" id="mulher-gloss" />
           </div>
  <img id="linha" src="/images/artigo-geral/linha.png" alt="" />
 
