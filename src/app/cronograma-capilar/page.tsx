@@ -231,8 +231,6 @@ const CronogramaCapilar: React.FC = () => {
       />
       <Footer/>    </div>
   );
-
-  );
 };
 
 export default CronogramaCapilar;

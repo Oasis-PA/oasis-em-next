@@ -48,5 +48,6 @@ export default function ResetarPage() {
         {mensagem && <p className="feedback-message">{mensagem}</p>}
       </div>
     </main>
+    </div>
   );
 }

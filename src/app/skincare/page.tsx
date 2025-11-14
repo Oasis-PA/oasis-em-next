@@ -210,9 +210,8 @@ export default function Skincare() {
               <div className="imagem_produto" id="prod3-bg">
                 <h1>natural/<br></br>vegano</h1>
               </div>
-            </div>    </div>
-  );
-
+            </div>
+          </>
         )}
 
         <div id="linhatexto2">
@@ -262,6 +261,6 @@ export default function Skincare() {
     <section id="imagem-perfume"></section>
     </main>
     <Footer/>
-    </>
+    </div>
   );
 }

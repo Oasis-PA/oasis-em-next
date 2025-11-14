@@ -16,6 +16,7 @@ export default async function Page({ params }: QuestionarioProps) {
         <h1>Questionário não encontrado</h1>
         <p>Acesse um dos questionários disponíveis: /questionario/1, /questionario/2, /questionario/3 ou /questionario/4</p>
       </div>
+    </div>
     );
   }
 

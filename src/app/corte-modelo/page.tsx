@@ -61,5 +61,6 @@ export default function cortemodelo() {
         </section>
       </main>
       <Footer/>
-      </>
-)}
+    </div>
+  );
+}

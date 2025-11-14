@@ -143,6 +143,4 @@ export default function tinturas() {
      
     <Footer/>    </div>
   );
-
-  );
 }

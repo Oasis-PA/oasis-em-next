@@ -258,7 +258,7 @@ const PerguntaPage = () => {
 		const totalAnswered = Object.keys(answers).length;
 		if (totalAnswered < quizData.length) {
 			alert(
-				`Por favor, responda todas as perguntas. Você respondeu ${totalAnswered} de ${quizData.length}.`    </div>
+				`Por favor, responda todas as perguntas. Você respondeu ${totalAnswered} de ${quizData.length}.`
   );
 
 			return;
@@ -346,6 +346,7 @@ const PerguntaPage = () => {
 				</div>
 			</section>
 		</main>
+	</div>
 	);
 };
 

@@ -56,7 +56,7 @@ const Favoritos: React.FC = () => {
 
   // Cria array de 9 posições mesclando favoritos com cards vazios
   const artigosGrid = Array.from({ length: 9 }, (_, index) => 
-    favoritos[index] || null    </div>
+    favoritos[index] || null
   );
 
 
@@ -338,7 +338,7 @@ const Favoritos: React.FC = () => {
       </section>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -195,8 +195,6 @@ const HairCarePage: React.FC = () => {
     
     <Footer/>    </div>
   );
-
-  );
 };
 
 export default HairCarePage;
