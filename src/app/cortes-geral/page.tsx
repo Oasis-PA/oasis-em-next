@@ -7,7 +7,7 @@ import '@/styles/cortes-geral.css';
 
 export default function cortegeral() {
   return (
-    <>
+    <div className="page-cortes-wrapper">
     <Header/>
     <section className='voce_procura'>
           <img src="/images/cortes-geral/temos.png" alt="" />
@@ -100,6 +100,6 @@ export default function cortegeral() {
         </div>
       </section>
       <Footer/>
-    </>
+    </div>
   );
 };

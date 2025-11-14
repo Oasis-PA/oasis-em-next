@@ -1,17 +1,18 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-respostas-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+.page-respostas-wrapper {
     width: 100%;
     min-height: 100vh;
     display: flex;
     justify-content: space-between;
 }
 
-main {
+.page-respostas-wrapper main {
     display: flex;
     width: 100%;
     height: 100%;
@@ -1015,7 +1016,7 @@ main {
     .botoes-pgn-respostas > *:not(:last-child) { display: none; }
     .botoes-pgn-respostas img:last-child { width: 2rem; }
 
-    main {
+    .page-respostas-wrapper main {
         flex-direction: column;
         padding: 2rem 1rem;
     }
@@ -1092,7 +1093,7 @@ main {
 }
 
 @media (max-width: 768px) {
-    main {
+    .page-respostas-wrapper main {
         padding: 0.5rem;
         gap: 0.5rem;
     }
@@ -1694,7 +1695,7 @@ main {
         display: none;
     }
 
-    main {
+    .page-respostas-wrapper main {
         padding: 0;
     }
 

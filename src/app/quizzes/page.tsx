@@ -6,6 +6,7 @@ import "@/styles/quizzes.css";
 
 export default function Page() {
   return (
+    <div className="page-quizzes-wrapper">
     <main>
       <div className="content">
         <section className="acima">
@@ -68,6 +69,7 @@ export default function Page() {
           </div>
         </section>
       </div>
-    </main>
+    </main>    </div>
   );
+
 }

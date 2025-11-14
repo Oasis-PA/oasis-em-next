@@ -149,14 +149,15 @@ export default function PaginaDeProduto() {
   // Loading e erro
   if (loading) {
     return (
-      <>
+    <div className="page-produto-wrapper">
+
         <Header />
         <main style={{ padding: '2rem', textAlign: 'center' }}>
           <p>Carregando produto...</p>
         </main>
-        <Footer />
-      </>
-    );
+        <Footer />    </div>
+  );
+
   }
 
   if (erro) {

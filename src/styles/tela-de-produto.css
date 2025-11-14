@@ -1,10 +1,11 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-produto-wrapper * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+.page-produto-wrapper {
   width: 100%;
   font-family: "Louis George Cafe", Arial, sans-serif;
   background-color: var(--body-back);
@@ -12,7 +13,7 @@ html, body {
   overflow-x: hidden;
 }
 
-main {
+.page-produto-wrapper main {
   width: 100%;
   max-width: 1920px;
   padding: 0 20px;

@@ -1,3 +1,4 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* ================================== */
 /* CONFIGURAÇÕES GLOBAIS E RESET      */
 /* ================================== */
@@ -20,7 +21,7 @@
   --butao-width: 9vw;
 }
 
-html, body {
+.page-cronograma-wrapper {
   height: 100%;
   width: 100%;
   margin: 0;

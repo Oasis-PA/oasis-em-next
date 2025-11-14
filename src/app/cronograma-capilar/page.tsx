@@ -10,7 +10,8 @@ import Link from "next/link";
 
 const CronogramaCapilar: React.FC = () => {
   return (
-    <>
+    <div className="page-cronograma-wrapper">
+
     <Header/>
       <section id="mulher">
           <p className="cornograma">Cronograma <br />Capilar</p>
@@ -228,8 +229,7 @@ const CronogramaCapilar: React.FC = () => {
         src="/cronograma-capilar.js" 
         strategy="afterInteractive" 
       />
-      <Footer/>
-    </>
+      <Footer/>    </div>
   );
 };
 

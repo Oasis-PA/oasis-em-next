@@ -19,7 +19,8 @@ const QuestionarioPage: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="page-questionario1-wrapper">
+
       <main>
         <section className="esquerda">
           <div className="voltar">
@@ -53,9 +54,9 @@ const QuestionarioPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </main>
-    </>
+      </main>    </div>
   );
+
 };
 
 export default QuestionarioPage;

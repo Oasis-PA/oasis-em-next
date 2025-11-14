@@ -59,8 +59,10 @@ const Favoritos: React.FC = () => {
     favoritos[index] || null
   );
 
+
   return (
-    <>
+    <div className="page-favoritos-wrapper">
+
       <Header />
       <main>
         <figure id="imagens-artigos">
@@ -336,7 +338,7 @@ const Favoritos: React.FC = () => {
       </section>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

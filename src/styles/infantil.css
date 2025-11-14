@@ -1,10 +1,11 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-infantil-wrapper * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
 }
 
-body {
+.page-infantil-wrapper > div {
     display: flex;
     width: 100%;
     height: auto;
@@ -14,11 +15,11 @@ body {
     justify-content: center;
 }
 
-html {
+.page-infantil-wrapper {
     overflow-x: hidden;
 }
 
-main {
+.page-infantil-wrapper main {
     display: flex;
     width: 100%;
     height: auto;
