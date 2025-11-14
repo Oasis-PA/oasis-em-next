@@ -26,6 +26,7 @@ export default function ResetarPage() {
   }
 
   return (
+    <div className="page-resetar-wrapper">
     <main className="main-container">
       <div className="reset-card">
         <h1>Redefinir Senha</h1>

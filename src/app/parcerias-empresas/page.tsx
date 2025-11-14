@@ -76,7 +76,8 @@ const ParceriasEmpresasPage: React.FC = () => {
     };
 
     return (
-        <>
+    <div className="page-parcerias-empresas-wrapper">
+
         <Header/>
             <main>
                 <article id="container">
@@ -195,9 +196,9 @@ const ParceriasEmpresasPage: React.FC = () => {
             </main>
 
             <Script src="/parcerias.js" strategy="afterInteractive" />
-        <Footer/>
-        </>
-    );
+        <Footer/>    </div>
+  );
+
 };
 
 export default ParceriasEmpresasPage;

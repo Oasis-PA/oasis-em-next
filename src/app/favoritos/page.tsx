@@ -56,11 +56,13 @@ const Favoritos: React.FC = () => {
 
   // Cria array de 9 posições mesclando favoritos com cards vazios
   const artigosGrid = Array.from({ length: 9 }, (_, index) => 
-    favoritos[index] || null
+    favoritos[index] || null    </div>
   );
 
+
   return (
-    <>
+    <div className="page-favoritos-wrapper">
+
       <Header />
       <main>
         <figure id="imagens-artigos">

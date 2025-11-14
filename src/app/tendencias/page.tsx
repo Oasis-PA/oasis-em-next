@@ -19,6 +19,7 @@ const TrendCard: React.FC<TrendCardProps> = ({ imageClass, title, tags, link, ti
   const saveIconSrc = '/images/tendencias/Salvar.png'; 
 
   return (
+    <div className="page-tendencias-wrapper">
     // O link envolve todo o card (div com a classe da imagem de fundo)
     <Link href={link} className={imageClass}> 
       <div className="elementos">
@@ -44,8 +45,9 @@ const TrendCard: React.FC<TrendCardProps> = ({ imageClass, title, tags, link, ti
           <p id={titId}>{title}</p>
         </div>
       </div>
-    </Link>
+    </Link>    </div>
   );
+
 };
 
 export default function tendencias() {

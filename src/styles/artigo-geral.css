@@ -1,6 +1,7 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* artigo-geral.css - ATUALIZADO PARA NEXT.JS */
 
-* {
+.page-artigo-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -42,7 +43,7 @@
     padding: 0 1rem;
 }
 
-main {
+.page-artigo-wrapper main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
@@ -765,7 +766,7 @@ main > h5:hover {
         margin-bottom: 2rem;
     }
 
-    main {
+    .page-artigo-wrapper main {
         display: flex;
         flex-direction: column;
         width: 100%;

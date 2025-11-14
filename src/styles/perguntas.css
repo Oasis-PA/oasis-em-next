@@ -1,15 +1,16 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* Estilos Globais e Melhorias */
-* {
+.page-perguntas-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+.page-perguntas-wrapper {
     background-color: #5E332C;
     width: 100%;
     min-height: 100vh;
@@ -19,7 +20,7 @@ body {
     font-family: "Louis George Cafe", sans-serif;
 }
 
-main {
+.page-perguntas-wrapper main {
     background-color: white;
     border-radius: 1.5rem;
     width: 96vw;
@@ -311,12 +312,12 @@ input[type="radio"]:checked {
 /* ========================================= */
 
 @media (max-width: 1024px) {
-    body {
+    .page-perguntas-wrapper {
         height: auto;
         padding: 1rem 0;
     }
 
-    main {
+    .page-perguntas-wrapper main {
         flex-direction: column;
         height: auto;
         width: 90vw;
@@ -354,7 +355,7 @@ input[type="radio"]:checked {
 }
 
 @media (max-width: 768px) {
-    main {
+    .page-perguntas-wrapper main {
         width: 100%;
         border-radius: 0;
     }

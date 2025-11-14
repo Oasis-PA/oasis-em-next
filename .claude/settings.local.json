@@ -69,7 +69,9 @@
       "Bash(node scripts/fix-zod-schemas.js:*)",
       "Bash(__NEW_LINE__ rm -rf \"C:\\Users\\023.919373\\Documents\\GitHub\\oasis-em-next\\src\\app\\respostas1\")",
       "Bash(node test-db.js:*)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(git push:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,16 +1,17 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-quizzes-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+.page-quizzes-wrapper {
     width: 100%;
     min-height: 100vh; /* MELHORIA: Garante que o corpo se estenda com o conteúdo */
     background: #5B7352;
 }
 
-main {
+.page-quizzes-wrapper main {
     display: flex;
     background: url('/images/quizzes/back-princip.png') right top/50% auto no-repeat, #5B7352;
     width: 100%;
@@ -180,7 +181,7 @@ main {
 /* --- REGRAS DE RESPONSIVIDADE --- */
 
 @media (max-width: 1920px) {
-    main {
+    .page-quizzes-wrapper main {
         background-size: 50% 100%, 100% 100%;
         background-position: right bottom, right top;
     }
@@ -192,7 +193,7 @@ main {
         width: 85%;
         left: 7.5%;
     }
-        main {
+        .page-quizzes-wrapper main {
         background-size: 50% 100%, 100% 100%;
         background-position: right bottom, right top;
     }
@@ -200,7 +201,7 @@ main {
 
 /* Para tablets (em modo retrato) */
 @media (max-width: 1024px) {
-    main {
+    .page-quizzes-wrapper main {
         background-size: 50% 100%, 100% 100%;
         background-position: right bottom, right top;
     }
@@ -217,7 +218,7 @@ main {
         min-height: 100vh;
     }
 
-    main {
+    .page-quizzes-wrapper main {
         background: url('/images/quizzes/back-princip.png') right bottom no-repeat, #5B7352;
         background-size: auto 50%;
         align-items: flex-start;

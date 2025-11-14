@@ -10,7 +10,8 @@ import '@/styles/alimentacao.css';
 
 const AlimentacaoPage: React.FC = () => {
   return (
-    <>
+    <div className="page-alimentacao-wrapper">
+
      <Header/> 
       <section id="banner">
         <div className="texto-banner">
@@ -141,9 +142,9 @@ const AlimentacaoPage: React.FC = () => {
           </div>
         </section>
       </section>
-      <Footer/>
-    </>
+      <Footer/>    </div>
   );
+
 };
 
 export default AlimentacaoPage;

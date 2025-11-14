@@ -1,11 +1,12 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-guia-wrapper * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
     box-sizing: border-box;
 }
 
-body {
+.page-guia-wrapper {
     display: flex;
     width: 100%;
     height: auto;
@@ -14,11 +15,11 @@ body {
     justify-content: center;
 }
 
-html {
+.page-guia-wrapper {
     overflow-x: hidden;
 }
 
-main {
+.page-guia-wrapper main {
     display: flex;
     width: 100%;
     height: auto;

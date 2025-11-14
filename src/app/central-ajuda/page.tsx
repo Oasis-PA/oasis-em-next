@@ -9,7 +9,8 @@ import "@/styles/central-de-ajuda.css";
 
 export default function CentralDeAjuda() {
   return (
-    <>
+    <div className="page-ajuda-wrapper">
+
     <Header backgroundImage="/images/central-ajuda/central-ajuda-banner.png" theme="dark" className="header-ajuda"/>
     <section id="s1"> 
       <p id="p1">Aqui você encontra todas as informações necessárias para utilizar nosso site da 
@@ -77,8 +78,8 @@ export default function CentralDeAjuda() {
             sugestões, elogios ou críticas conosco. Agradecemos sua participação!</p>
         </div>
       </section> 
-      <Footer/>
-    </>
+      <Footer/>    </div>
   );
+
 }
 

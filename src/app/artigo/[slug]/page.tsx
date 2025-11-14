@@ -79,15 +79,16 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
 
   if (!artigo.conteudo) {
     return (
-      <>
+    <div className="page-artigo-wrapper">
+
         <Header />
         <main>
           <article>
             <p>Artigo não encontrado ou sem conteúdo.</p>
           </article>
-        </main>
-      </>
-    );
+        </main>    </div>
+  );
+
   }
 
   // Usa a imagem do header do banco de dados (Supabase Storage)

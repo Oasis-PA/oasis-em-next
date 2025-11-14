@@ -1,3 +1,4 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -6,7 +7,7 @@
 /* CONFIGURAÇÕES GLOBAIS E TEMAS      */
 /* ================================== */
 
-main * {
+.page-parcerias-empresas-wrapper * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -17,7 +18,7 @@ main * {
 /* LAYOUT PRINCIPAL                   */
 /* ================================== */
 
-body {
+.page-parcerias-empresas-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -25,7 +26,7 @@ body {
   overflow-x: hidden;
 }
 
-main {
+.page-parcerias-empresas-wrapper main {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
@@ -37,7 +38,7 @@ main {
 
 /* Em telas menores, o layout vira uma coluna única */
 @media screen and (max-width: 1200px) {
-  main {
+  .page-parcerias-empresas-wrapper main {
     flex-direction: column;
     padding: 0;
     gap: 0;

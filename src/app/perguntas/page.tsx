@@ -258,8 +258,9 @@ const PerguntaPage = () => {
 		const totalAnswered = Object.keys(answers).length;
 		if (totalAnswered < quizData.length) {
 			alert(
-				`Por favor, responda todas as perguntas. Você respondeu ${totalAnswered} de ${quizData.length}.`
-			);
+				`Por favor, responda todas as perguntas. Você respondeu ${totalAnswered} de ${quizData.length}.`    </div>
+  );
+
 			return;
 		}
 		const totalScore = calculateTotalScore();
@@ -275,6 +276,7 @@ const PerguntaPage = () => {
 	const isFirstQuestion = currentQuestion === 1;
 
 	return (
+    <div className="page-perguntas-wrapper">
 		<main>
 			<section className="esquerda">
 				<div className="content">
