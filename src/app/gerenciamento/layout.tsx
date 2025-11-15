@@ -9,9 +9,10 @@ interface LayoutProps {
   children: React.ReactNode;
   onCancel?: () => void;
   onSave?: () => void;
+  isLoading?: boolean;
 }
 
-export default function Layout({ children, onCancel, onSave }: LayoutProps) {
+export default function Layout({ children, onCancel, onSave, isLoading }: LayoutProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname(); // 2. Obtenha o caminho da URL atual
 
@@ -51,11 +52,13 @@ export default function Layout({ children, onCancel, onSave }: LayoutProps) {
         {children}
       </div>
 
-      {/* Footer fixo */}
-      <footer>
-        <button type="button" onClick={onCancel} className="btn btn-secondary">Cancelar</button>
-        <button type="button" onClick={onSave} className="btn btn-primary">Salvar</button>
-      </footer>
+      {/* Footer fixo - Oculto durante carregamento */}
+      {!isLoading && (
+        <footer>
+          <button type="button" onClick={onCancel} className="btn btn-secondary">Cancelar</button>
+          <button type="button" onClick={onSave} className="btn btn-primary">Salvar</button>
+        </footer>
+      )}
     </div>
   );
 }

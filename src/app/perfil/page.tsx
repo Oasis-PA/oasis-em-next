@@ -83,23 +83,30 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
     setMensagem("");
   };
 
-  if (loading) return <p>Carregando...</p>;
-
   return (
     <div className="page-perfil-wrapper">
-      <Layout onCancel={handleReset} onSave={handleSave}>
+      <Layout onCancel={handleReset} onSave={handleSave} isLoading={loading}>
 
       <main>
         <Link href="/" className="btn-voltar" style={{ display: 'inline-block', marginBottom: '30px', color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}>
           ← Voltar
         </Link>
-        <div className="informa">
-          <h4>EDITE SEU PERFIL</h4>
-          <p>
-            Mantenha seus dados pessoais privados. As informações que você
-            adiciona aqui ficam visíveis apenas para você.
-          </p>
-        </div>
+
+        {loading && (
+          <div style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
+            <p>Carregando suas informações...</p>
+          </div>
+        )}
+
+        {!loading && (
+          <>
+            <div className="informa">
+              <h4>EDITE SEU PERFIL</h4>
+              <p>
+                Mantenha seus dados pessoais privados. As informações que você
+                adiciona aqui ficam visíveis apenas para você.
+              </p>
+            </div>
 
         <figure id="perf">
           <Image
@@ -152,7 +159,9 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
           </div>
         </form>
 
-        {mensagem && <p>{mensagem}</p>}
+            {mensagem && <p>{mensagem}</p>}
+          </>
+        )}
       </main>
       </Layout>
     </div>

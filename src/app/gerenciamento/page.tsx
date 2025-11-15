@@ -18,6 +18,7 @@ export default function GerenciamentoConta() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [confirmacaoTexto, setConfirmacaoTexto] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [loading, setLoading] = useState(true);
 
   // Estados para a função Redefinir
   const [initialData, setInitialData] = useState({
@@ -52,6 +53,7 @@ export default function GerenciamentoConta() {
     fetch("/api/usuarios/generos")
       .then(res => res.ok ? res.json() : [])
       .then(lista => setGeneros(lista))
+      .finally(() => setLoading(false));
   }, []);
 
   const handleSave = async (e: React.FormEvent) => {
@@ -136,12 +138,20 @@ export default function GerenciamentoConta() {
         // Trigger form submit
         const form = document.getElementById('gerenciamento-form') as HTMLFormElement;
         form?.requestSubmit();
-      }}>
+      }} isLoading={loading}>
 
         <main>
         <Link href="/" className="btn-voltar" style={{ display: 'inline-block', marginBottom: '30px', color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}>
           ← Voltar
         </Link>
+
+        {loading && (
+          <div style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
+            <p>Carregando suas informações...</p>
+          </div>
+        )}
+
+        {!loading && (
         <section>
           {/* MELHORIA: Adicionado id ao form e removido o onClick do botão salvar */}
           <form id="gerenciamento-form" onSubmit={handleSave}>
@@ -192,6 +202,7 @@ export default function GerenciamentoConta() {
             </div>
           </form>
         </section>
+        )}
 
         {mensagem && <p className="feedback-message">{mensagem}</p>}
       </main>
