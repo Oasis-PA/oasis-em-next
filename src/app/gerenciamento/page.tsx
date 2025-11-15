@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Layout from "./layout";
 
 
@@ -138,6 +139,9 @@ export default function GerenciamentoConta() {
       }}>
 
         <main>
+        <Link href="/" className="btn-voltar" style={{ display: 'inline-block', marginBottom: '30px', color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}>
+          ← Voltar
+        </Link>
         <section>
           {/* MELHORIA: Adicionado id ao form e removido o onClick do botão salvar */}
           <form id="gerenciamento-form" onSubmit={handleSave}>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Layout from "./layout";
 
 
@@ -89,6 +90,9 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
       <Layout onCancel={handleReset} onSave={handleSave}>
 
       <main>
+        <Link href="/" className="btn-voltar" style={{ display: 'inline-block', marginBottom: '30px', color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}>
+          ← Voltar
+        </Link>
         <div className="informa">
           <h4>EDITE SEU PERFIL</h4>
           <p>
