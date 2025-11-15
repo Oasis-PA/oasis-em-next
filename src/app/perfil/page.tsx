@@ -86,8 +86,8 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
 
   return (
     <div className="page-perfil-wrapper">
-      <Layout>
-     
+      <Layout onCancel={handleReset} onSave={handleSave}>
+
       <main>
         <div className="informa">
           <h4>EDITE SEU PERFIL</h4>
@@ -147,18 +147,6 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
             />
           </div>
         </form>
-
-        {/* ============================================
-            ALTERAÇÃO NECESSÁRIA AQUI
-            ============================================ */}
-        <footer>
-          <button type="button" onClick={handleReset} className="btn btn-secondary">
-            Redefinir
-          </button>
-          <button type="button" onClick={handleSave} className="btn btn-primary">
-            Salvar
-          </button>
-        </footer>
 
         {mensagem && <p>{mensagem}</p>}
       </main>

@@ -5,7 +5,13 @@ import React, { useState } from "react";
 import "@/styles/editar-perfil.css";
 
 
-export default function Layout({ children }: React.PropsWithChildren<{}>) {
+interface LayoutProps {
+  children: React.ReactNode;
+  onCancel?: () => void;
+  onSave?: () => void;
+}
+
+export default function Layout({ children, onCancel, onSave }: LayoutProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
    return (
@@ -31,10 +37,15 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
         </aside>
 
       {/* Conteúdo principal */}
-      <div className="layout-content">{children}</div>
+      <div className="layout-content">
+        {children}
+      </div>
 
       {/* Footer fixo */}
-
+      <footer>
+        <button type="button" onClick={onCancel} className="btn btn-secondary">Cancelar</button>
+        <button type="button" onClick={onSave} className="btn btn-primary">Salvar</button>
+      </footer>
     </div>
   );
 }

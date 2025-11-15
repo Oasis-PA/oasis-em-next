@@ -131,7 +131,11 @@ export default function GerenciamentoConta() {
 
   return (
     <div className="page-gerenciamento-wrapper">
-      <Layout>
+      <Layout onCancel={handleReset} onSave={(e?: React.FormEvent) => {
+        // Trigger form submit
+        const form = document.getElementById('gerenciamento-form') as HTMLFormElement;
+        form?.requestSubmit();
+      }}>
 
         <main>
         <section>
@@ -184,18 +188,6 @@ export default function GerenciamentoConta() {
             </div>
           </form>
         </section>
-
-        {/* ============================================
-            BOTÕES DO FOOTER CORRIGIDOS
-            ============================================ */}
-        <footer>
-          <button type="button" onClick={handleReset} className="btn btn-secondary">
-            Redefinir
-          </button>
-          <button type="submit" form="gerenciamento-form" className="btn btn-primary">
-            Salvar
-          </button>
-        </footer>
 
         {mensagem && <p className="feedback-message">{mensagem}</p>}
       </main>
