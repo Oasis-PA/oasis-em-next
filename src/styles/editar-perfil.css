@@ -582,9 +582,10 @@ figcaption {
 
 
 /* ============================================
-   FOOTER
+   FOOTER - Isolado para /perfil e /gerenciamento
    ============================================ */
-footer {
+.page-perfil-wrapper footer,
+.page-gerenciamento-wrapper footer {
     position: fixed;
     bottom: 0;
     left: clamp(240px, 17%, 300px);
