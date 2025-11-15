@@ -177,14 +177,13 @@ const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
     return (
         <div className="produto-card">
             <div className="card-inner-wrapper">
-                <Image 
-                    src={imageSrc} 
-                    width={150} 
-                    height={150} 
-                    alt={produto.nome} 
-                    className="produto-card-image" 
-                    unoptimized={true} 
-                    priority={true} 
+                <Image
+                    src={imageSrc}
+                    width={150}
+                    height={150}
+                    alt={produto.nome}
+                    className="produto-card-image"
+                    loading="lazy"
                 />
                 <div className="card-text">
                     <p className="card-tag">{produto.tag_principal}</p>

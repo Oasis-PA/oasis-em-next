@@ -30,29 +30,35 @@ export default function GerenciamentoConta() {
 
 
   useEffect(() => {
-    // Busca dados do perfil
-    fetch("/api/usuarios/perfil")
-      .then(res => res.ok ? res.json() : null)
-      .then(data => {
-        if (data) {
+    // Paraleliza ambas as requisições de uma vez
+    Promise.all([
+      fetch("/api/usuarios/perfil").then(res => res.ok ? res.json() : null),
+      fetch("/api/usuarios/generos").then(res => res.ok ? res.json() : [])
+    ])
+      .then(([userData, generosList]) => {
+        // Processa dados do usuário
+        if (userData) {
           const fetchedData = {
-            email: data.email || "",
-            telefone: data.telefone || "",
-            dataNascimento: data.data_nascimento?.split("T")[0] || "",
-            genero: data.id_genero || null,
+            email: userData.email || "",
+            telefone: userData.telefone || "",
+            dataNascimento: userData.data_nascimento?.split("T")[0] || "",
+            genero: userData.id_genero || null,
           };
           setEmail(fetchedData.email);
           setTelefone(fetchedData.telefone);
           setDataNascimento(fetchedData.dataNascimento);
           setGenero(fetchedData.genero);
-          setInitialData(fetchedData); // Guarda o estado inicial
+          setInitialData(fetchedData);
+        }
+
+        // Processa lista de gêneros
+        if (generosList && Array.isArray(generosList)) {
+          setGeneros(generosList);
         }
       })
-
-    // Busca lista de gêneros
-    fetch("/api/usuarios/generos")
-      .then(res => res.ok ? res.json() : [])
-      .then(lista => setGeneros(lista))
+      .catch(error => {
+        console.error("Erro ao carregar dados:", error);
+      })
       .finally(() => setLoading(false));
   }, []);
 

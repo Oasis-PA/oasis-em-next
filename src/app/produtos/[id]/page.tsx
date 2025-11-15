@@ -182,13 +182,13 @@ export default function PaginaDeProduto() {
       <main>
         <article id="pagina1">
           <div className="img-container">
-            <Image 
-              id="img" 
-              src={imageSrc} 
-              alt={produtoData.nome} 
-              width={300} 
+            <Image
+              id="img"
+              src={imageSrc}
+              alt={produtoData.nome}
+              width={300}
               height={400}
-              unoptimized={true}
+              loading="lazy"
             />
           </div>
           <section className="produto-info">
