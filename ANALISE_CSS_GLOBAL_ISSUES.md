@@ -2,7 +2,7 @@
 
 ## Resumo Executivo
 
-Identificadas **7 arquivos CSS com problemas de vazamento de estilos globais** que podem afetar múltiplas páginas. Desses, **3 foram corrigidos (CRÍTICOS)** e **4 ainda precisam de atenção (MÉDIOS)**.
+Identificadas **7 arquivos CSS com problemas de vazamento de estilos globais** que podem afetar múltiplas páginas. Desses, **2 foram corrigidos (CRÍTICOS)** e **5 ainda precisam de atenção (MÉDIOS/CRÍTICOS)**.
 
 ---
 
@@ -23,20 +23,6 @@ Identificadas **7 arquivos CSS com problemas de vazamento de estilos globais** q
 
 ---
 
-### 1.2 `artigoteste.css` → `/artigo/[slug]`
-**Status**: ✅ CORRIGIDO
-
-**Problemas Encontrados**:
-- `body { width: 100%; display: flex; flex-flow: column nowrap; ... }` - Mudava direção flex globalmente
-- `header { width: 100%; height: 560px; ... }` - Afetava header site-wide
-- `main { position: relative; ... }` - Alterava positioning de todos os `main` elements
-
-**Solução Aplicada**:
-- Envolvido com `.page-artigo-wrapper`
-- Todos os seletores `body`, `header`, `main` agora scoped
-- Adicionado wrapper HTML: `<div className="page-artigo-wrapper">`
-
----
 
 ### 1.3 `componentes.css`
 **Status**: ⚠️ PARCIALMENTE TRATADO
@@ -51,7 +37,19 @@ Identificadas **7 arquivos CSS com problemas de vazamento de estilos globais** q
 
 ---
 
-## 2. MÉDIOS - AINDA PRECISAM CORREÇÃO 🔄
+## 2. CRÍTICOS/MÉDIOS - AINDA PRECISAM CORREÇÃO 🔄
+
+### 2.0 `artigoteste.css` → `/artigo/[slug]`
+**Status**: ⏳ PENDENTE (REVERTIDO - precisa de abordagem diferente)
+
+**Problemas**:
+- `body { width: 100%; display: flex; flex-flow: column nowrap; ... }` - Mudava direção flex globalmente
+- `header { width: 100%; height: 560px; ... }` - Afetava header site-wide
+- `main { position: relative; ... }` - Alterava positioning de todos os `main` elements
+
+**Nota**: Revertido porque a solução anterior (wrapper) quebrou outros estilos. Precisa de análise mais cuidadosa antes de corrigir.
+
+---
 
 ### 2.1 `tela-de-cadastro.css` → `/cadastro`, `/cadastro2`, `/login`
 **Status**: ⏳ PENDENTE
@@ -178,6 +176,7 @@ Para cada arquivo problemático, aplicar:
 
 ## Próximas Ações
 
+- [ ] Analisar melhor `artigoteste.css` antes de corrigir (foi revertido)
 - [ ] Corrigir `tela-de-cadastro.css`
 - [ ] Corrigir `parcerias-usuarios.css`
 - [ ] Corrigir `parcerias-empresas.css`
