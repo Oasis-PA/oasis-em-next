@@ -11,7 +11,6 @@ export default function meuperfilafter() {
   return (
     <>
     <Header/>
-    <div className="page-meuperfil-after-wrapper">
       <main>
         <div>
             <h1>Seu perfil está pronto, [nome]!</h1>
@@ -118,7 +117,6 @@ export default function meuperfilafter() {
             <button>DESCUBRA</button>
         </div>
       </section>
-    </div>
       <Footer/>
    </>
   );

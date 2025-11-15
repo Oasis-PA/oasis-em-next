@@ -4,7 +4,6 @@
     padding: 0;
 }
 
-/* NOTE: Header styling is defined here but applied via header component */
 header {
     width: 100%;
     height: auto;
