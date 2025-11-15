@@ -102,13 +102,14 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
   return (
     <>
       {imagemHeader ? (
-        <Header 
-          backgroundImage={imagemHeader} 
+        <Header
+          backgroundImage={imagemHeader}
           theme={themeDark ? "dark" : undefined}
         />
       ) : (
         <Header theme={themeDark ? "dark" : undefined} />
       )}
+      <div className="page-artigo-wrapper">
       <main>
         <article className="markdown-content">
           {/* Botão de favorito no topo */}
@@ -193,6 +194,7 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
           </ReactMarkdown>
         </article>
       </main>
+      </div>
       <Footer/>
     </>
   );

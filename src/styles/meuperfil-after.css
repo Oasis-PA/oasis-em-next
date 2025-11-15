@@ -1,14 +1,15 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
+   Scoped to .page-meuperfil-after-wrapper to prevent global CSS leakage
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
-main * {
+.page-meuperfil-after-wrapper main * {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
 }
 
-body {
+.page-meuperfil-after-wrapper {
     display: flex;
     width: 100%;
     height: auto;
@@ -18,11 +19,11 @@ body {
     justify-content: center;
 }
 
-html {
+.page-meuperfil-after-wrapper {
     overflow-x: hidden;
 }
 
-main {
+.page-meuperfil-after-wrapper main {
     background-image: url(../../public/images/meuperfil-after/header-bg.png);
     display: flex;
     width: 100%;
