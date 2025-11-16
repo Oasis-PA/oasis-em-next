@@ -30,35 +30,29 @@ export default function GerenciamentoConta() {
 
 
   useEffect(() => {
-    // Paraleliza ambas as requisições de uma vez
-    Promise.all([
-      fetch("/api/usuarios/perfil").then(res => res.ok ? res.json() : null),
-      fetch("/api/usuarios/generos").then(res => res.ok ? res.json() : [])
-    ])
-      .then(([userData, generosList]) => {
-        // Processa dados do usuário
-        if (userData) {
+    // Busca dados do perfil
+    fetch("/api/usuarios/perfil")
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data) {
           const fetchedData = {
-            email: userData.email || "",
-            telefone: userData.telefone || "",
-            dataNascimento: userData.data_nascimento?.split("T")[0] || "",
-            genero: userData.id_genero || null,
+            email: data.email || "",
+            telefone: data.telefone || "",
+            dataNascimento: data.data_nascimento?.split("T")[0] || "",
+            genero: data.id_genero || null,
           };
           setEmail(fetchedData.email);
           setTelefone(fetchedData.telefone);
           setDataNascimento(fetchedData.dataNascimento);
           setGenero(fetchedData.genero);
-          setInitialData(fetchedData);
+          setInitialData(fetchedData); // Guarda o estado inicial
         }
+      })
 
-        // Processa lista de gêneros
-        if (generosList && Array.isArray(generosList)) {
-          setGeneros(generosList);
-        }
-      })
-      .catch(error => {
-        console.error("Erro ao carregar dados:", error);
-      })
+    // Busca lista de gêneros
+    fetch("/api/usuarios/generos")
+      .then(res => res.ok ? res.json() : [])
+      .then(lista => setGeneros(lista))
       .finally(() => setLoading(false));
   }, []);
 

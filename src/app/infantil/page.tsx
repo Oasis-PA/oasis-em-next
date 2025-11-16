@@ -23,12 +23,12 @@ const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) =>
   return (
     <div className="page-infantil-wrapper">
     <div className="prod1">
-      <Image
-        src={imageSrc}
-        width={300}
-        height={300}
+      <Image 
+        src={imageSrc} 
+        width={300} 
+        height={300} 
         alt={produto.nome}
-        loading="lazy"
+        unoptimized={true}
       />
       <h5>{produto.tag_principal}</h5>
       <h4>{produto.nome.toUpperCase()}</h4>
