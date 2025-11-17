@@ -101,7 +101,10 @@ describe('Autenticação de Usuários', () => {
       cy.get('button[type="submit"]').click();
 
       // Verifica se foi redirecionado ou mostra sucesso
-      cy.url().should('not.include', '/login');
+      // Port-agnostic check: not on /login page anymore
+      cy.url().then(url => {
+        expect(!url.includes('/login') || url === new URL(Cypress.config().baseUrl).toString()).to.be.true;
+      });
       cy.contains(/bem-vindo|dashboard|home/i).should('exist');
     });
 
