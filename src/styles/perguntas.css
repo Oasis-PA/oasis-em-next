@@ -1,15 +1,32 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* Estilos Globais e Melhorias */
-* {
+.page-perguntas-wrapper > div,
+.page-perguntas-wrapper main,
+.page-perguntas-wrapper section,
+.page-perguntas-wrapper article {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+.page-perguntas-wrapper h1,
+.page-perguntas-wrapper h2,
+.page-perguntas-wrapper h3,
+.page-perguntas-wrapper h4,
+.page-perguntas-wrapper h5,
+.page-perguntas-wrapper h6,
+.page-perguntas-wrapper p,
+.page-perguntas-wrapper span,
+.page-perguntas-wrapper a,
+.page-perguntas-wrapper button {
+    box-sizing: border-box;
+}
+
+.page-perguntas-wrapper {
     background-color: #5E332C;
     width: 100%;
     min-height: 100vh;
@@ -19,7 +36,7 @@ body {
     font-family: "Louis George Cafe", sans-serif;
 }
 
-main {
+.page-perguntas-wrapper main {
     background-color: white;
     border-radius: 1.5rem;
     width: 96vw;
@@ -311,12 +328,12 @@ input[type="radio"]:checked {
 /* ========================================= */
 
 @media (max-width: 1024px) {
-    body {
+    .page-perguntas-wrapper {
         height: auto;
         padding: 1rem 0;
     }
 
-    main {
+    .page-perguntas-wrapper main {
         flex-direction: column;
         height: auto;
         width: 90vw;
@@ -354,7 +371,7 @@ input[type="radio"]:checked {
 }
 
 @media (max-width: 768px) {
-    main {
+    .page-perguntas-wrapper main {
         width: 100%;
         border-radius: 0;
     }

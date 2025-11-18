@@ -36,7 +36,8 @@ export default function Guia() {
   };
 
   return (
-    <>
+    <div className="page-guia-wrapper">
+
       <Header />
       <section className="section-header">
         <h1>Guia do site</h1>
@@ -208,7 +209,7 @@ export default function Guia() {
           </Link>
         </section>
       </main>
-      <Footer />
-    </>
+      <Footer />    </div>
   );
+
 }

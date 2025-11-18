@@ -1,11 +1,29 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-guia-wrapper > div,
+.page-guia-wrapper main,
+.page-guia-wrapper section,
+.page-guia-wrapper article {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
     box-sizing: border-box;
 }
 
-body {
+.page-guia-wrapper h1,
+.page-guia-wrapper h2,
+.page-guia-wrapper h3,
+.page-guia-wrapper h4,
+.page-guia-wrapper h5,
+.page-guia-wrapper h6,
+.page-guia-wrapper p,
+.page-guia-wrapper span,
+.page-guia-wrapper a,
+.page-guia-wrapper button {
+    color: var(--corpo-texto);
+    box-sizing: border-box;
+}
+
+.page-guia-wrapper {
     display: flex;
     width: 100%;
     height: auto;
@@ -14,11 +32,11 @@ body {
     justify-content: center;
 }
 
-html {
+.page-guia-wrapper {
     overflow-x: hidden;
 }
 
-main {
+.page-guia-wrapper main {
     display: flex;
     width: 100%;
     height: auto;

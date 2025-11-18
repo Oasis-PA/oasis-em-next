@@ -259,13 +259,12 @@ const PerguntaPage = () => {
 		if (totalAnswered < quizData.length) {
 			alert(
 				`Por favor, responda todas as perguntas. Você respondeu ${totalAnswered} de ${quizData.length}.`
-			);
+  );
+
 			return;
 		}
 		const totalScore = calculateTotalScore();
 		const redirectPage = getRedirectPage(Number(totalScore));
-		console.log("Pontuação total:", totalScore);
-		console.log("Redirecionando para:", redirectPage);
 		window.location.href = redirectPage;
 	};
 
@@ -277,6 +276,7 @@ const PerguntaPage = () => {
 	const isFirstQuestion = currentQuestion === 1;
 
 	return (
+    <div className="page-perguntas-wrapper">
 		<main>
 			<section className="esquerda">
 				<div className="content">
@@ -346,6 +346,7 @@ const PerguntaPage = () => {
 				</div>
 			</section>
 		</main>
+	</div>
 	);
 };
 

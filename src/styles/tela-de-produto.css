@@ -1,10 +1,27 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-produto-wrapper > div,
+.page-produto-wrapper main,
+.page-produto-wrapper section,
+.page-produto-wrapper article {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+.page-produto-wrapper h1,
+.page-produto-wrapper h2,
+.page-produto-wrapper h3,
+.page-produto-wrapper h4,
+.page-produto-wrapper h5,
+.page-produto-wrapper h6,
+.page-produto-wrapper p,
+.page-produto-wrapper span,
+.page-produto-wrapper a,
+.page-produto-wrapper button {
+  box-sizing: border-box;
+}
+
+.page-produto-wrapper {
   width: 100%;
   font-family: "Louis George Cafe", Arial, sans-serif;
   background-color: var(--body-back);
@@ -12,7 +29,7 @@ html, body {
   overflow-x: hidden;
 }
 
-main {
+.page-produto-wrapper main {
   width: 100%;
   max-width: 1920px;
   padding: 0 20px;
@@ -244,7 +261,7 @@ main {
   background-color: #F2A518;
   border: none;
   margin-bottom: 10px;
-  margin-top: 0; /* Removido margin-top vh */
+  margin-top: 30vh; 
   color: #FFF; /* Cor do texto adicionada */
   font-family: "The Next Font", sans-serif; /* Fonte adicionada */
   font-size: 1.1rem; /* Tamanho ajustado */

@@ -4,7 +4,6 @@ import { prisma } from '@/lib/prisma';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log('📥 Dados recebidos:', body); // Debug
 
     const { nome } = body;
 
@@ -16,7 +15,6 @@ export async function POST(req: Request) {
     }
 
     const nomeNormalizado = nome.trim().toLowerCase();
-    console.log('🔍 Verificando se tag existe:', nomeNormalizado); // Debug
 
     // Verifica se a tag já existe
     const tagExistente = await prisma.tag.findUnique({
@@ -24,14 +22,12 @@ export async function POST(req: Request) {
     });
 
     if (tagExistente) {
-      console.log('⚠️ Tag já existe:', tagExistente); // Debug
       return NextResponse.json(
         { message: 'Esta tag já existe.' },
         { status: 409 }
       );
     }
 
-    console.log('✅ Criando nova tag...'); // Debug
     
     // Cria a tag no banco
     const novaTag = await prisma.tag.create({
@@ -40,7 +36,6 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log('🎉 Tag criada com sucesso:', novaTag); // Debug
 
     return NextResponse.json({
       message: 'Tag cadastrada com sucesso!',
@@ -48,7 +43,6 @@ export async function POST(req: Request) {
     }, { status: 201 });
 
   } catch (error) {
-    console.error('❌ Erro detalhado ao cadastrar tag:', error);
     
     // Retorna mais detalhes do erro em desenvolvimento
     return NextResponse.json(

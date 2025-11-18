@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import "@/styles/infantil.css";
 
-// Interface do produto - atualizada com todos os campos do banco
 interface ProdutoData {
   id_produto: number;
   nome: string;
@@ -18,11 +17,11 @@ interface ProdutoData {
   descricao?: string;
 }
 
-// Componente do card de produto infantil
 const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
   const imageSrc = produto.url_imagem || '/images/infantil/produto.png';
   
   return (
+    <div className="page-infantil-wrapper">
     <div className="prod1">
       <Image 
         src={imageSrc} 
@@ -34,10 +33,11 @@ const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) =>
       <h5>{produto.tag_principal}</h5>
       <h4>{produto.nome.toUpperCase()}</h4>
       <Link href={`/produtos/${produto.id_produto}`}>
-        <button>Veja mais</button>
+        <button id="vejaMais">Veja mais</button>
       </Link>
-    </div>
+    </div>    </div>
   );
+
 };
 
 export default function Infantil() {
@@ -51,10 +51,9 @@ export default function Infantil() {
         setLoading(true);
         setErro(null);
         
-        // Busca produtos com marca "infantil" (exatamente como está no banco)
         const params = new URLSearchParams();
         params.append('marca', 'infantil');
-        params.append('limit', '9'); // 9 produtos para preencher o grid 3x3
+        params.append('limit', '9'); 
         params.append('page', '1');
         
         const res = await fetch(`/api/produtos?${params.toString()}`);
@@ -65,12 +64,10 @@ export default function Infantil() {
         
         const data = await res.json();
         
-        // A API retorna um objeto com { produtos: [...], pagination: {...} }
         const produtosArray = data.produtos || [];
         
         setProdutos(produtosArray);
       } catch (e) {
-        console.error('Erro ao carregar produtos infantis:', e);
         setErro('Não foi possível carregar os produtos infantis');
       } finally {
         setLoading(false);
@@ -80,12 +77,10 @@ export default function Infantil() {
     fetchProdutosInfantis();
   }, []);
 
-  // Divide os produtos em grupos de 3 para cada linha
   const primeiraLinha = produtos.slice(0, 3);
   const segundaLinha = produtos.slice(3, 6);
   const terceiraLinha = produtos.slice(6, 9);
 
-  // Função para renderizar placeholder se não houver produtos suficientes
   const renderPlaceholders = (linha: ProdutoData[], linhaNum: number) => {
     if (linha.length >= 3) return null;
     return [...Array(3 - linha.length)].map((_, i) => (
@@ -143,7 +138,7 @@ export default function Infantil() {
             
             <Link href='artigo/cuidados-com-a-pele-das-criancas' id="artigo4">
               <div>
-                <h4 className="hpreto">Rotina de skincare infantil: protegendo a pele diariamente</h4>
+                <h4 className="hpreto">Rotina de skincare: protegendo a pele diariamente</h4>
                 <p className="ppreto">Crie uma rotina de cuidados simples e gostosa para proteger a pele do seu pequeno. Com 
                   produtos certos e gestos carinhosos, a pele fica saudável, protegida e feliz todos os dias.</p>
               </div>
@@ -153,7 +148,7 @@ export default function Infantil() {
           <div className="d2">
             <Link href='artigo/como-identificar-alergias' id="artigo5">
               <div>
-                <h4 className="hbranco">Como identificar alergias e irritações na pele das crianças</h4>
+                <h4 className="hbranco">Como identificar alergias e irritações na pele</h4>
                 <p className="pbranco">Aprenda a reconhecer os sinais de alergias e irritações na pele delicada das crianças. Com 
                 atenção e cuidado, você protege seu pequeno, evita desconfortos e garante uma pele sempre saudável.</p>
               </div>
@@ -177,20 +172,19 @@ export default function Infantil() {
         </div>
 
         {loading ? (
-          <div style={{ textAlign: 'center', padding: '3rem', fontSize: '1.2rem' }}>
+          <div className="loading-state">
             Carregando produtos infantis...
           </div>
         ) : erro ? (
-          <div style={{ textAlign: 'center', padding: '3rem', color: 'red' }}>
+          <div className="error-state">
             {erro}
           </div>
         ) : produtos.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '3rem' }}>
+          <div className="no-products-state">
             Nenhum produto infantil encontrado no momento.
           </div>
         ) : (
           <>
-            {/* Primeira linha - 3 produtos + banner leão */}
             <div className="produtos">
               {primeiraLinha.map((produto) => (
                 <ProdutoCardInfantil key={produto.id_produto} produto={produto} />
@@ -201,7 +195,6 @@ export default function Infantil() {
               </div>
             </div>
 
-            {/* Segunda linha - banner girafa + 3 produtos */}
             <div className="produtos">
               <div id="girafa-bg">
                 <h1>cremes suaves</h1>
@@ -212,7 +205,6 @@ export default function Infantil() {
               {renderPlaceholders(segundaLinha, 2)}
             </div>
 
-            {/* Terceira linha - 3 produtos + banner zebra */}
             <div className="produtos">
               {terceiraLinha.map((produto) => (
                 <ProdutoCardInfantil key={produto.id_produto} produto={produto} />
@@ -241,7 +233,7 @@ export default function Infantil() {
 
           <div id="dica2">
             <h2>Use pentes largos para reduzir a quebra</h2>
-            <p>Ao desembaraçar, escolha pentes de dentes largos ou dedos. Isso ajuda a 
+            <p>Ao desembaraçar, escolha pentes de dentes largos ou dedos. Isso helps a 
             proteger os fios frágeis e evita dor.</p>
           </div>
         </div>

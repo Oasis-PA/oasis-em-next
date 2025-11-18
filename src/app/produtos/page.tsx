@@ -126,7 +126,6 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
             }));
             setter([{ id: null, nome: allLabel }, ...formattedData]); 
         } catch (e) {
-            console.error(e);
             setter([{ id: null, nome: allLabel }]);
         }
     }, []);
@@ -323,7 +322,7 @@ export default function ProdutosPage() {
     };
 
     return (
-        <>
+        <div className="page-produtos-wrapper">
             <Header className="header-transparente"/>
             <main>
                 <h1>PRODUTOS RECOMENDADOS</h1>
@@ -382,6 +381,6 @@ export default function ProdutosPage() {
             {/* ▲▲▲ FIM DA MUDANÇA ▲▲▲ */}
 
             <Footer />
-        </>
+        </div>
     );
 }

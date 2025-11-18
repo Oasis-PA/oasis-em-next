@@ -41,7 +41,6 @@ export default function CadastrarProdutoPage() {
           setTags(data);
         }
       } catch (err) {
-        console.error('Erro ao carregar tags:', err);
       } finally {
         setLoadingTags(false);
       }
@@ -100,7 +99,6 @@ export default function CadastrarProdutoPage() {
         });
       }
     } catch (err) {
-      console.error(err);
       setErro('Erro de conexão com o servidor.');
     } finally {
       setLoading(false);

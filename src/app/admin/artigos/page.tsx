@@ -36,7 +36,6 @@ export default function AdminArtigosPage() {
         setArtigos(data);
       }
     } catch (error) {
-      console.error('Erro ao carregar artigos:', error);
     } finally {
       setIsLoading(false);
     }
@@ -55,7 +54,6 @@ export default function AdminArtigosPage() {
         alert('Artigo excluído com sucesso!');
       }
     } catch (error) {
-      console.error('Erro ao excluir artigo:', error);
       alert('Erro ao excluir artigo');
     }
   };

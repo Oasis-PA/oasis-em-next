@@ -1,23 +1,27 @@
 // Rota: /api/tipos-pele
 // Tabela Supabase: public.TipoPele (Assumindo que você tem esta tabela)
 
-import { createClient } from '@supabase/supabase-js'; 
 import { NextResponse } from 'next/server';
-
-// 🚨 SUBSTITUA PELAS SUAS VARIÁVEIS DE AMBIENTE REAIS
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabaseAdmin } from '@/lib/supabase';
+import { cachedQuery } from '@/lib/cache';
 
 export async function GET() {
-    // OBS: Ajuste o nome da tabela (TipoPele) e o ID (id_tipo_pele) conforme seu DB!
-    const { data, error } = await supabase
-        .from('TipoPele') 
-        .select('id_tipo_pele, nome'); 
+    try {
+        const data = await cachedQuery(
+            'tipos-pele:all',
+            async () => {
+                const { data, error } = await supabaseAdmin
+                    .from('TipoPele')
+                    .select('id_tipo_pele, nome');
 
-    if (error) {
-        console.error('Erro ao buscar Tipos de Pele:', error);
+                if (error) throw error;
+                return data;
+            },
+            60 // 1 hora
+        );
+
+        return NextResponse.json(data);
+    } catch (error) {
         return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
     }
-    return NextResponse.json(data);
 }

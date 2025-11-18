@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Layout from "./layout";
 
 
@@ -82,19 +83,30 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
     setMensagem("");
   };
 
-  if (loading) return <p>Carregando...</p>;
-
   return (
-    <Layout>
-     
+    <div className="page-perfil-wrapper">
+      <Layout onCancel={handleReset} onSave={handleSave} isLoading={loading}>
+
       <main>
-        <div className="informa">
-          <h4>EDITE SEU PERFIL</h4>
-          <p>
-            Mantenha seus dados pessoais privados. As informações que você
-            adiciona aqui ficam visíveis apenas para você.
-          </p>
-        </div>
+        <Link href="/" className="btn-voltar" style={{ display: 'inline-block', marginBottom: '30px', color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}>
+          ← Voltar
+        </Link>
+
+        {loading && (
+          <div style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
+            <p>Carregando suas informações...</p>
+          </div>
+        )}
+
+        {!loading && (
+          <>
+            <div className="informa">
+              <h4>EDITE SEU PERFIL</h4>
+              <p>
+                Mantenha seus dados pessoais privados. As informações que você
+                adiciona aqui ficam visíveis apenas para você.
+              </p>
+            </div>
 
         <figure id="perf">
           <Image
@@ -147,20 +159,11 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
           </div>
         </form>
 
-        {/* ============================================
-            ALTERAÇÃO NECESSÁRIA AQUI
-            ============================================ */}
-        <footer>
-          <button type="button" onClick={handleReset} className="btn btn-secondary">
-            Redefinir
-          </button>
-          <button type="button" onClick={handleSave} className="btn btn-primary">
-            Salvar
-          </button>
-        </footer>
-
-        {mensagem && <p>{mensagem}</p>}
+            {mensagem && <p>{mensagem}</p>}
+          </>
+        )}
       </main>
-    </Layout>
+      </Layout>
+    </div>
   );
 }

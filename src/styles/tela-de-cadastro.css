@@ -1,11 +1,12 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-login-cadastro-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: black;
 }
 
-body {
+.page-login-cadastro-wrapper {
     display: flex;
     width: 100%;
     min-height: 100vh;
@@ -17,12 +18,7 @@ body {
     overflow-x: hidden;
 }
 
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-main {
+.page-login-cadastro-wrapper main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -31,7 +27,7 @@ main {
     padding: clamp(15px, 3vw, 30px);
 }
 
-h1 {
+.page-login-cadastro-wrapper h1 {
     font-family: "The Next Font";
     font-weight: 400;
     font-size: clamp(2rem, 5vw, 3.75rem);
@@ -39,7 +35,7 @@ h1 {
     margin-bottom: clamp(10px, 2vh, 20px);
 }
 
-p {
+.page-login-cadastro-wrapper p {
     font-family: "Louis George Cafe";
     font-weight: 400;
     font-size: clamp(1rem, 2vw, 1.2rem);
@@ -47,18 +43,18 @@ p {
     line-height: 1.5;
 }
 
-label {
+.page-login-cadastro-wrapper label {
     font-family: "Louis George Cafe";
     font-weight: 600;
     font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
-form {
+.page-login-cadastro-wrapper form {
     width: 100%;
     max-width: 600px;
 }
 
-form input {
+.page-login-cadastro-wrapper form input {
     height: clamp(50px, 8vh, 60px);
     width: 100%;
     color: black;
@@ -71,17 +67,17 @@ form input {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-form input:hover:not(:focus) {
+.page-login-cadastro-wrapper form input:hover:not(:focus) {
     border-color: #7a5a7d;
 }
 
-form input:focus {
+.page-login-cadastro-wrapper form input:focus {
     outline: none;
     border-color: #7D4AB3;
     box-shadow: 0 0 0 3px rgba(125, 74, 179, 0.15);
 }
 
-a {
+.page-login-cadastro-wrapper a {
     text-decoration: none;
     font-weight: bold;
     font-family: "Louis George Cafe";
@@ -91,7 +87,7 @@ a {
     transition: color 0.3s ease;
 }
 
-a:hover {
+.page-login-cadastro-wrapper a:hover {
     color: #5a3680;
     text-decoration: underline;
 }

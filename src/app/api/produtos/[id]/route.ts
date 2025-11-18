@@ -1,11 +1,8 @@
 // file: app/api/produtos/[id]/route.ts
 
-import { createClient } from '@supabase/supabase-js'; 
-import { NextResponse } from 'next/server';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { NextResponse, NextRequest } from 'next/server';
+import { supabaseAdmin } from '@/lib/supabase';
+import { prisma } from '@/lib/prisma';
 
 export async function GET(
   request: Request,
@@ -14,7 +11,7 @@ export async function GET(
   const { id } = await context.params;
 
     try {
-        const { data: produto, error } = await supabase
+        const { data: produto, error } = await supabaseAdmin
             .from('Produto')
             .select(`
                 id_produto, 
@@ -32,7 +29,6 @@ export async function GET(
             .single();
 
         if (error) {
-            console.error('Erro ao buscar produto:', error);
             return NextResponse.json(
                 { error: 'Produto não encontrado', details: error.message }, 
                 { status: 404 }
@@ -85,15 +81,109 @@ export async function GET(
             id_tag: produto.id_tag
         };
 
-        console.log('Produto formatado:', formattedProduct); // Debug
 
         return NextResponse.json(formattedProduct);
 
     } catch (error: any) {
-        console.error('Erro inesperado:', error);
         return NextResponse.json(
-            { error: 'Erro interno do servidor' }, 
+            { error: 'Erro interno do servidor' },
             { status: 500 }
         );
     }
+}
+
+// PATCH - Atualização parcial de produto (requer autenticação admin)
+export async function PATCH(
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await context.params;
+    const id_produto = parseInt(id);
+
+    if (isNaN(id_produto)) {
+      return NextResponse.json(
+        { error: 'ID de produto inválido' },
+        { status: 400 }
+      );
+    }
+
+    // 1. Validar autenticação admin
+    const adminToken = request.cookies.get('admin-auth-token')?.value;
+    if (!adminToken) {
+      return NextResponse.json(
+        { error: 'Acesso não autorizado' },
+        { status: 401 }
+      );
+    }
+
+    // 2. Verificar se o produto existe
+    const produtoExistente = await prisma.produto.findUnique({
+      where: { id_produto },
+    });
+
+    if (!produtoExistente) {
+      return NextResponse.json(
+        { error: 'Produto não encontrado' },
+        { status: 404 }
+      );
+    }
+
+    // 3. Processar dados de atualização
+    const body = await request.json();
+
+    // Campos permitidos para atualização
+    const allowedFields = [
+      'nome',
+      'marca',
+      'preco',
+      'id_categoria',
+      'descricao',
+      'id_tag',
+      'id_tipo_pele',
+      'id_tipo_cabelo',
+      'url_imagem',
+      'url_loja',
+      'composicao',
+      'qualidades',
+      'mais_detalhes',
+    ];
+
+    // Filtrar apenas campos permitidos
+    const updateData: any = {};
+    for (const field of allowedFields) {
+      if (field in body && body[field] !== undefined) {
+        updateData[field] = body[field];
+      }
+    }
+
+    if (Object.keys(updateData).length === 0) {
+      return NextResponse.json(
+        { error: 'Nenhum campo válido fornecido para atualização' },
+        { status: 400 }
+      );
+    }
+
+    // 4. Atualizar produto
+    const produtoAtualizado = await prisma.produto.update({
+      where: { id_produto },
+      data: updateData,
+      include: {
+        categoria: true,
+        tag: true,
+        tipo_cabelo: true,
+        TipoPele: true,
+      },
+    });
+
+    return NextResponse.json({
+      message: 'Produto atualizado com sucesso',
+      produto: produtoAtualizado,
+    });
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: 'Erro ao atualizar produto' },
+      { status: 500 }
+    );
+  }
 }

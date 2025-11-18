@@ -38,7 +38,6 @@ export async function POST(req: Request) {
       );
     }
 
-    console.error("Erro em check-email:", error);
     return NextResponse.json({ message: "Erro no servidor." }, { status: 500 });
   }
 }

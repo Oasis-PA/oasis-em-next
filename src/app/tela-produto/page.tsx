@@ -98,7 +98,8 @@ export default function PaginaDeProduto() {
   };
 
   return (
-    <>
+    <div className="page-produto-wrapper">
+
       <Header/>
 
       <main>
@@ -168,7 +169,7 @@ export default function PaginaDeProduto() {
        
       </main>
 
-      <Footer/>
-    </>
+      <Footer/>    </div>
   );
+
 }

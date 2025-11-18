@@ -1,12 +1,8 @@
 // file: app/api/produtos/route.ts - CÓDIGO ATUALIZADO
 
-import { createClient } from '@supabase/supabase-js'; 
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabaseAdmin } from '@/lib/supabase';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
@@ -19,7 +15,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '12');
     
     try {
-        let query = supabase
+        let query = supabaseAdmin
             .from('Produto')
             .select(`
                 id_produto, 
@@ -49,7 +45,6 @@ export async function GET(request: NextRequest) {
         const { data: produtos, error, count } = await query;
 
         if (error) {
-            console.error('Erro ao buscar produtos:', error);
             return NextResponse.json(
                 { error: 'Erro ao buscar produtos', details: error.message }, 
                 { status: 500 }
@@ -76,7 +71,6 @@ export async function GET(request: NextRequest) {
         });
 
     } catch (error: any) {
-        console.error('Erro inesperado:', error);
         return NextResponse.json(
             { error: 'Erro interno do servidor' }, 
             { status: 500 }

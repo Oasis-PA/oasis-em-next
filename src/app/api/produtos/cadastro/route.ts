@@ -112,7 +112,6 @@ export async function POST(req: Request) {
       produto: novoProduto,
     });
   } catch (error) {
-    console.error('Erro ao cadastrar produto:', error);
     return NextResponse.json(
       { message: 'Erro interno do servidor.', error: String(error) },
       { status: 500 }

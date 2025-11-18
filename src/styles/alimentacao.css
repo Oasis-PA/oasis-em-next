@@ -1,22 +1,40 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* ================================== */
 /* CONFIGURAÇÕES GLOBAIS E TEMAS      */
 /* ================================== */
 
-main * {
+.page-alimentacao-wrapper > div,
+.page-alimentacao-wrapper main,
+.page-alimentacao-wrapper section,
+.page-alimentacao-wrapper article {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     line-height: normal;
 }
 
-body {
+.page-alimentacao-wrapper h1,
+.page-alimentacao-wrapper h2,
+.page-alimentacao-wrapper h3,
+.page-alimentacao-wrapper h4,
+.page-alimentacao-wrapper h5,
+.page-alimentacao-wrapper h6,
+.page-alimentacao-wrapper p,
+.page-alimentacao-wrapper span,
+.page-alimentacao-wrapper a,
+.page-alimentacao-wrapper button {
+    box-sizing: border-box;
+    line-height: normal;
+}
+
+.page-alimentacao-wrapper {
     background-color: var(--body-back);
     overflow-x: hidden;
 }
 
-:root {
-    --sec2-back: #EFE1C7; 
-    --sec2-h1: #3A1F1B; 
+.page-alimentacao-wrapper {
+    --sec2-back: #EFE1C7;
+    --sec2-h1: #3A1F1B;
 }
 
 /* ================================== */

@@ -1,189 +1,72 @@
-*{
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-tendencias-wrapper > div,
+.page-tendencias-wrapper main,
+.page-tendencias-wrapper section,
+.page-tendencias-wrapper article {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    width: 100vw;
+.page-tendencias-wrapper h1,
+.page-tendencias-wrapper h2,
+.page-tendencias-wrapper h3,
+.page-tendencias-wrapper h4,
+.page-tendencias-wrapper h5,
+.page-tendencias-wrapper h6,
+.page-tendencias-wrapper p,
+.page-tendencias-wrapper span,
+.page-tendencias-wrapper a,
+.page-tendencias-wrapper button {
+    box-sizing: border-box;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+.page-tendencias-wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 16px;
 }
 
-.primeiro {
-    margin-top: 5vw;
-    width: 85vw;
-    height: 65vw;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-.banner-principal {
-    background-image: url('../../public/images/tendencias/img-principal2.png');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    height: 43.5vw;
-    width: auto;
-    z-index: 1;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-#tit-1 {
-    position: relative;
-    color: #FFF;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-1, 6vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 6vw;
-    left: 5vw;
-}
-
-#text-1 {
-    position: relative;
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-1, 1.5vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 7vw;
-    left: 5.2vw;
-    width: 60vw;
-}
-
-
-
-.banner-sec {
-    z-index: 2;
-    position: relative;
-    bottom: 14vw;
-    background-image: url('../../public/images/tendencias/img-2.png');
-    background-repeat: no-repeat;
-    background-size: 35.9vw 30vw;
-    width: 36vw;
-    height: 30vw;
-}
-
-#data-1 {
-    width: 8vw;
-    position: relative;
-    color: #000;
-    text-align: center;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1.3vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 5vw;
-    left: 1.7vw;
-
-}
-
-#tit-2 {
-    position: relative;
-    color: #ffffff;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-2, 2.5vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    z-index: 2;
-    top: 15.5vw;
-    left: 1.5vw;
-    width: 29vw;
-    text-align: left;
-}
-
-.butoes {
-    position: relative;
-    display: flex;
-    z-index: 3;
-    top: 15vw;
-    gap: 1vw;
-    left: 1.7vw;
-    width: 24vw;
-}
-
-.banner-sec button {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 20vw;
-    padding: 0.02vw 1vw;
-    white-space: nowrap;
-    border-color: #ffffff;
-    border-width: 0.1vw;
-    border-style: solid;
-    background-color: rgba(192, 192, 192, 0.288);
-    box-shadow: 0vw 0.2vw 0.5vw #00000044;
-}
-
-#salvar {
-    position: relative;
-    top: -7vw;
-    left: 29vw;
-    width: 1.8vw;
-}
-
-
-
-
-
-
-.meio {
-    position: relative;
-    justify-self: center;
-    top: -29vw; 
-    width: 20vw; 
-    left: 4vw;
-}
-
-.meio p {
-    color: #000;
-    text-align: center;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: 3vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: auto;
-    margin-bottom: 2vw;
-}
-
-.meio button {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.6vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    transition: all 0.3s ease;
-    display: flex;
-    margin: 0 auto;
-    height: 3vw;
-    padding: 1.5vw 3vw;
-    justify-content: center;
-    align-items: center;
-    gap: 2vw;
-    flex-shrink: 0;
-    border-radius: 0.3vh;
-    background: #F2A518;
-    border-color: transparent;
+button {
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
 }
 
-.meio button::before {
+/* --- ESTILOS DE FONTE E BOTÕES (MANTIDOS) --- */
+#tit-1, #tit-4, #tit-5, #tit-6, #outro-titulo {
+    font-family: "PLAYFUL RUNWAY";
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: fit-content;
+}
+
+#text-1, #data-1, .banner-sec button, .banner-terc button, #data-2, #text-2, #text-3, #uno p {
+    font-family: "Louis George Cafe";
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#tit-2, #tit-3, .meio button, .produt1 p, .produt2 p, .produt3 p, #but-2, #but-4, #divi p, #but-6, .esq p {
+    font-family: "The Next Font";
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Efeitos de Botão (mantidos) */
+.meio button::before, #but-2::before, #but-4::before, #but-6::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -191,15 +74,56 @@ main {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
     transform: translate(-50%, -50%);
     transition: width 0.6s ease, height 0.6s ease;
 }
 
+.meio button::before, #but-2::before, #but-4::before {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+#but-6::before {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.meio button:hover, #but-2:hover, #but-4:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+}
+
 .meio button:hover {
-    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%); /* Gradiente dourado */
     box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
     transform: translateY(-3px) scale(1.05);
+}
+
+#but-2:hover, #but-4:hover {
+    box-shadow: 0px 8px 15px rgba(242, 165, 24, 0.4);
+    transform: translateY(-2px) scale(1.05);
+}
+
+#but-6:hover {
+    background: linear-gradient(135deg, #7a4a42 0%, #5E332C 100%);
+    box-shadow: 0px 8px 15px rgba(94, 51, 44, 0.4);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.meio button:active, #but-2:active, #but-4:active {
+    background: #d18f15;
+}
+
+.meio button:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
+}
+
+#but-2:active, #but-4:active {
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
+}
+
+#but-6:active {
+    background: #4a2822;
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
 }
 
 .meio button:hover::before {
@@ -207,501 +131,439 @@ main {
     height: 300px;
 }
 
-.meio button:active {
-    background: #d18f15; /* Cor original active */
-    transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
+#but-2:hover::before, #but-4:hover::before, #but-6:hover::before {
+    width: 200px;
+    height: 200px;
+}
+/* --- FIM DOS ESTILOS MANTIDOS --- */
+
+
+.page-tendencias-wrapper main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
+/* CONTAINER PRINCIPAL: Define a largura máxima do conteúdo */
+.content-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 5vw; /* Padding lateral consistente */
+    margin: 0 auto;
+}
+
+/* --- SEÇÃO 1: BANNER E DESTAQUES COM GRID --- */
+.primeiro {
+    width: 100%;
+    margin-top: clamp(2rem, 5vw, 5rem); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
+}
+
+.banner-principal {
+    background-image: url('/images/tendencias/img-principal3.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: clamp(20rem, 40vw, 45rem); 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    padding: clamp(1rem, 2vw, 2rem);
+    padding-left: clamp(10rem, 12vw, 12rem);
+}
+
+#tit-1 {
+    color: #FFF;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+#text-1 {
+    color: #FFF;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    margin-top: clamp(0.5rem, 1vw, 1.5rem);
+    width: 100%; 
+    max-width: 500px; 
+}
+
+/* GRID DE SOBREPOSIÇÃO */
+.primeiro-overlap-group {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 1.4fr; 
+    gap: clamp(1rem, 2vw, 2rem);
+    width: 90vw;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.banner-sec-link, .banner-terc-link {
+    display: block;
+    height: 100%;
+}
+
+.banner-sec {
+    background-image: url('/images/tendencias/img-2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: clamp(20rem, 38vw, 42rem); 
+    position: relative; 
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#tit-2 {
+    color: #ffffff;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.butoes {
+    display: flex;
+    gap: clamp(0.5rem, 1vw, 1rem);
+    flex-wrap: wrap; 
+}
+
+.banner-sec button,
+.banner-terc button {
+    color: #FFF;
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    border-radius: 9999px; /* Usando valor grande para ser um "pill" */
+    padding: 0.2vw 1.2vw;
+    white-space: nowrap;
+    border: 0.1vw solid #ffffff;
+    background-color: rgba(192, 192, 192, 0.288);
+    box-shadow: 0vw 0.2vw 0.5vw #00000044;
+}
+
+.meio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 2vw, 2rem) 0; 
+}
+
+.meio p {
+    color: #000;
+    text-align: center;
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.meio button {
+    color: #FFF;
+    text-align: center;
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    display: flex;
+    padding: clamp(0.8rem, 1vw, 1.2rem) clamp(2rem, 2.5vw, 3rem);
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3rem;
+    background: #F2A518;
+    border-color: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    height: auto; 
+}
 
 .banner-terc {
     background-image: url('/images/tendencias/img-3.png');
     background-repeat: no-repeat;
     position: relative;
-    float: right;
-    bottom: 45vw;
-    width: 25vw;
-    height: 17vw;
-    background-size: 25vw 16vw;
+    width: 100%;
+    height: clamp(20rem, 38vw, 42rem); 
+    background-size: cover;
+    background-position: center;
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
 }
 
 .butoes-2 {
-    position: relative;
     display: flex;
-    z-index: 3;
-    top: 3.5vw;
-    gap: 1vw;
-    left: 1vw;
-    width: 18vw;
-}
-
-.banner-terc button {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 20vw;
-    padding: 0.02vw 1vw;
-    white-space: nowrap;
-    border-color: #ffffff;
-    border-width: 0.1vw;
-    border-style: solid;
-    background-color: rgba(192, 192, 192, 0.288);
-    box-shadow: 0vw 0.2vw 0.5vw #00000044;
+    gap: clamp(0.5rem, 1vw, 1rem);
+    flex-wrap: wrap;
 }
 
 #tit-3 {
     color: #ffffff;
-    position: relative;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-2, 2vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    z-index: 2;
-    top: 4vw;
-    left: 1vw;
-    width: 23vw;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    width: 100%;
     text-align: left;
+    margin-top: 0.5rem;
 }
 
-#data-2 {
-    position: relative;
-    color: #000000;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    top: 1.3vw;
-    left: 1vw;
-    width: 5vw;
-}
-
-#salvar-2 {
-    position: relative;
-    top: -8.2vw;
-    right: -22vw;
-    width: 1.2vw;
-}
-
-
-
-
-
-
-
-
+/* --- SEÇÃO 2: GRID DE DESTAQUE --- */
 .segundo {
-   background-image: url('/images/tendencias/group465.png');
-   background-size: 100% auto;
-   background-repeat: no-repeat;
-   width: 85vw;
-   height: 56vw;
-   position: relative;
-   top: 3vw;
+    background-image: url('/images/tendencias/group465.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 90vw;
+    max-width: 1280px;
+    padding: clamp(2rem, 3vw, 3rem);
+    margin-top: clamp(2rem, 8vw, 8rem); 
+    border-radius: 20px;
+    
+    display: grid;
+    /* Duas colunas */
+    grid-template-columns: 1.5fr 1fr; 
+    gap: clamp(2rem, 3vw, 3rem);
+}
+
+/* Coluna da Esquerda */
+.segundo-col-esq {
+    display: flex;
+    flex-direction: column;
 }
 
 #tit-4 {
     color: #FFF;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 3vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 30vw;
-    position: relative;
-    left: 3vw;
-    top: 3vw;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    width: 100%;
 }
 
 #text-2 {
     color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: 1.2vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 28vw;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    width: 100%;
+    max-width: 500px;
     text-align: justify;
-    position: relative;
-    top: 5vw;
-    left: 3vw;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 .produtss {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 1.5vw, 1.5rem);
+    margin-top: clamp(1rem, 2vw, 2rem);
+}
+
+.produt1, .produt2, .produt3 {
+    width: 100%;
+    height: clamp(12rem, 22vw, 25rem);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 20px;
+    
+    /* Novo: Usa Flex para posicionar texto e botão */
     display: flex;
-    position: relative;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
-    width: 49vw;
-    height: 15vw;
-    top: 17vw;
-    gap: 1vw;
-    left: 1.56vw;
+    padding-bottom: clamp(1rem, 1.5vw, 1.5rem); 
+    padding-top: 1rem;
 }
 
-.produt1 {
-    width: 17vw;
-    height: 22vw;
-    background-repeat: no-repeat;
-    background-image: url('/images/tendencias/produ-1.png');
-    background-size: 14vw;
-    z-index: 1;
-    position: relative;
-}
+.produt1 { background-image: url('/images/tendencias/produ-1.png'); }
+.produt2 { background-image: url('/images/tendencias/produ-2.png'); }
+.produt3 { background-image: url('/images/tendencias/produ-3.png'); }
 
-.produt2 {
-    width: 17vw;
-    height: 22vw;
-    background-repeat: no-repeat;
-    background-image: url('/images/tendencias/produ-2.png');
-    background-size: 14vw;
-    z-index: 1;
-    position: relative;
-}
-
-.produt3 {
-    width: 17vw;
-    height: 22vw;
-    background-repeat: no-repeat;
-    background-image: url('/images/tendencias/produ-3.png');
-    background-size: 14vw;
-    z-index: 1;
-    position: relative;
-}
-
-.produt1 p, .produt3 p {
+/* NOVO: Alinhamento do texto sem position:absolute e transform */
+.produt1 p, .produt2 p, .produt3 p {
     color: #FFF;
     text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.2vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    bottom: 2.4vw;
-    width: 14vw;
-}
-
-.produt2 p {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.2vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    bottom: 3.2vw;
-    width: 14vw;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    width: 100%;
+    margin-bottom: 0.5rem; /* Espaçamento acima do botão */
+    padding: 0 0.5rem;
+    /* Removido position, bottom e transform */
 }
 
 #but-2, #but-4 {
     color: #FFF;
     text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-size: clamp(0.85rem, 1.1vw, 1.1rem);
     display: flex;
-    margin: 0 auto;
-    height: 2vw;
-    padding: 1vw 2vw;
+    height: auto;
+    padding: 0.5rem 1.5rem;
     justify-content: center;
     align-items: center;
-    gap: 1.04vw;
-    flex-shrink: 0;
-    border-radius: 0.16vw;
+    border-radius: 0.16rem;
     background: #F2A518;
-    background: #F2A518; /* Cor original */
     border-color: transparent;
     cursor: pointer;
-    position: relative;
-    top: 15.3vw;
-    right: 1vw;
+    position: relative; /* Para o efeito hover */
     overflow: hidden;
     transition: all 0.4s ease;
+    /* Removido position: absolute */
 }
 
-#but-4 {
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-    margin: 0 auto;
-    height: 2vw;
-    padding: 1vw 2vw;
-    justify-content: center;
-    align-items: center;
-    gap: 1.04vw;
-    flex-shrink: 0;
-    border-radius: 0.16vw;
-    position: relative;
-    top: 13.9vw;
-    right: 1vw;
-}
-
-#but-2::before, #but-4::before {
-    content: '';
+#but-3, #but-5 {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-#but-2:hover, #but-4:hover {
-    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%); /* Gradiente dourado */
-    box-shadow: 0px 8px 15px rgba(242, 165, 24, 0.4);
-    transform: translateY(-2px) scale(1.05);
-}
-
-#but-2:hover::before, #but-4:hover::before {
-    width: 200px;
-    height: 200px;
-}
-
-#but-2:active, #but-4:active {
-    background: #d18f15; /* Cor original active */
-    transform: translateY(0) scale(1.02);
-    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
-}
-
-#but-3 {
-    position: relative;
-    left: 10.3vw;
-    bottom: 3vw;
+    top: 1rem;
+    right: 1rem;
     border-color: transparent;
     background-color: transparent;
+    z-index: 10;
 }
 
-#but-5 {
-    position: relative;
-    left: 10.3vw;
-    bottom: 4.2vw;
-    width: 1.04vw;
-    border-color: transparent;
-    background-color: transparent;
+/* Coluna da Direita */
+.segundo-col-dir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: clamp(1.5rem, 2vw, 2rem);
+    /* Removido transform: translateY */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
-
-
 
 #img-direita {
-    position: relative;
-    top: -28vw;
-    left: 37.5vw;
-    width: 17vw;
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 10px;
 }
 
 #tit-5 {
     color: #000000;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 3vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 20vw;
-    position: relative;
-    left: 56vw;
-    top: -44vw;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    width: 100%;
     text-align: left;
     text-decoration: underline;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 #text-3 {
     color: #000000;
-    font-family: "Louis George Cafe";
-    font-size: 1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 25vw;
+    font-size: clamp(1rem, 1vw, 1.1rem);
+    width: 100%;
     text-align: justify;
-    position: relative;
-    top: -43vw;
-    left: 56vw;
+    margin-top: clamp(0.5rem, 1vw, 1rem);
 }
 
 #divi {
-    background-color: #FFF;
-    width: 25vw;
-    padding: 0.36vw;
-    border-radius: 1.04vw;
-    position: relative;
-    bottom: 41vw;
-    left: 56.5vw;
-    display: flex;
-    justify-content: center;
+    background-color: #f4f4f4; 
+    width: 100%;
+    padding: clamp(0.5rem, 0.7vw, 0.7rem) clamp(1rem, 1vw, 1rem);
+    border-radius: 10px;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 #divi p {
     color: #000;
     text-align: center;
-    font-family: "The Next Font";
-    font-size: 1vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 20vw;
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    width: 100%;
 }
 
 #img-produt-1 {
-    position: relative;
-    bottom: 38vw;
-    left: 57vw;
-    width: 25vw;
+    width: 100%;
+    height: auto;
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 #but-6 {
     color: #FFF;
     text-align: center;
-    font-family: "The Next Font";
-    font-size: 1.2vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
     display: flex;
-    padding: 0.42vw 1.56vw;
+    padding: 0.6rem 1.5rem;
     justify-content: center;
     align-items: center;
-    border-radius: 0.16vw; /* Mantido original */
-    background: #5E332C; /* Cor original */
+    border-radius: 0.16rem;
+    background: #5E332C;
     border-color: transparent;
-    position: relative;
-    top: -43vw;
-    left: 64.5vw;
-    width: 10vw;
+    width: 60%;
     min-height: 35px;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.4s ease;
-}
-#but-6::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-#but-6:hover {
-    background: linear-gradient(135deg, #7a4a42 0%, #5E332C 100%); /* Gradiente marrom */
-    box-shadow: 0px 8px 15px rgba(94, 51, 44, 0.4);
-    transform: translateY(-2px) scale(1.05);
-}
-#but-6:hover::before {
-    width: 200px;
-    height: 200px;
-}
-#but-6:active {
-    background: #4a2822; /* Cor original active */
-    transform: translateY(0) scale(1.02);
-    box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48); /* Sombra original active */
+    margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 
-
+/* --- SEÇÃO 3: LAYOUT DE DUAS COLUNAS COM GRID --- */
 .terceiro {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 8vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     height: auto;
+    align-items: stretch;
+    /* Garante que o conteúdo fique centralizado e com padding lateral */
+    margin: clamp(2rem, 5vw, 5rem) 0;
+    padding: 0 5vw; 
 }
 
 .esq {
     background-image: url('/images/tendencias/princip-3.png');
-    width: 49%;
-    height: auto;
+    width: 100%;
+    min-height: clamp(30rem, 40vw, 45rem);
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding: clamp(1.5rem, 2vw, 2rem);
 }
-
 
 .esq p {
     color: #FFF;
-    font-family: "The Next Font";
-    font-size: var(--TTULO-1, 6vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 40vw;
-
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    width: 100%;
+    max-width: 500px;
 }
 
 .dir {
-    width: 48%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.6vw;
+    gap: clamp(1rem, 1.6vw, 1.6rem);
+    padding: clamp(1.5rem, 2vw, 2rem) clamp(2rem, 4vw, 4rem); 
 }
 
 #tit-6 {
     color: #000;
-    font-family: "PLAYFUL RUNWAY";
-    font-size: var(--TTULO-2, 4vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-size: clamp(2rem, 4vw, 3.5rem);
 }
 
 #uno {
     display: flex;
     align-items: center;
-    padding-bottom: 1.6vw;
-    border-bottom: 1px solid black;
+    padding-bottom: clamp(1rem, 1.6vw, 1.6rem);
+    border-bottom: 1px solid #727272;
 }
 
 #uno p {
     color: #000;
-    font-family: "Louis George Cafe";
-    font-size: 2.4vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    left: 2vw;
+    font-size: clamp(1.2rem, 2.4vw, 2rem);
+    margin-left: clamp(1rem, 2vw, 2rem);
     display: flex;
     align-items: center;
 }
 
 #uno img {
-    width: 4vw;
-    height: 4vw;
-}
-
-#linha {
-    background-color: #727272;
-    height: 100%;
-    width: 100%;
+    width: clamp(2rem, 4vw, 4rem);
+    height: clamp(2rem, 4vw, 4rem);
+    min-width: 40px; 
+    min-height: 40px;
 }
 
 
+/* --- SEÇÃO 4: ESTILOS --- */
+/* --- SEÇÃO 4: ESTILOS TENDÊNCIAS DA SEMANA (.quarto) --- */
 
-
-
-.quarto{
+.quarto {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -713,7 +575,8 @@ main {
 #outro-titulo {
     color: #000;
     font-family: "PLAYFUL RUNWAY";
-    font-size: 5.73vw;
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(2.5rem, 5.73vw, 5rem); 
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -723,59 +586,128 @@ main {
 
 .imagenszinas {
     display: flex;
-    width: 100%;
+    width: 90vw; /* Limita a largura do container principal */
+    max-width: 1400px;
+    margin: 0 auto;
     justify-content: center;
     margin-top: 3vw;
+    gap: 2vw; /* Adicionado gap para espaçamento */
 }
 
-.esqui{
+/* Coluna Esquerda */
+.esqui {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex-grow: 1.5; /* Prioridade de tamanho para a esquerda */
+    gap: 2vw; /* Espaçamento vertical entre sec-1 e sec-2 */
 }
 
-.sec-1{
+.sec-1 {
     display: flex;
     gap: 2vw;
 }
 
-.sec-2{
+.sec-2 {
     display: flex;
     justify-content: space-between;
+    gap: 2vw;
 }
 
-.deitada{
+.deitada {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    gap: 1vw; /* Espaçamento menor para imagens empilhadas */
 }
 
-.diri{
+/* Coluna Direita */
+.diri {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1.5vw;
     margin-left: 2vw;
+    flex-grow: 1; /* Prioridade de tamanho menor para a direita */
 }
-.diri-baixo{
+
+.diri-baixo {
     display: flex;
     justify-content: space-between;
+    gap: 1vw;
 }
-.sec-1 div, .deitada div, .diri-baixo div, .diri-topo div, .empé {
+
+/* --- ESTILOS GERAIS DOS CARDS DE TENDÊNCIA --- */
+
+.sec-1 a, .sec-2 a, .diri-topo a, .diri-baixo a, .empé {
+    /* Faz com que os links ocupem o espaço dos contêineres Flex/Grid */
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    min-height: 10vw; /* Altura mínima base */
+}
+
+.sec-1 a, .deitada a, .diri-baixo a, .diri-topo a, .empé {
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0.5rem; /* Borda arredondada */
+    position: relative;
 }
+
+/* Tamanhos de Imagem */
+/* d-dvw substituído por vw para maior compatibilidade e fluidez */
 
 .img-2 {
-    width: 35.625dvw;
-    height: 12.55dvw;
+    width: 35.625vw;
+    height: 12.55vw;
     background-image: url('/images/tendencias/imagem-2.png');
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
+.img-3 {
+    width: 16.15vw;
+    height: 12.55vw;
+    background-image: url('/images/tendencias/imagem-3.png');
+}
+
+.empé {
+    width: 25.57vw;
+    height: 31.20vw;
+    background-image: url('/images/tendencias/imagem-1.png');
+}
+
+.img-4 {
+    width: 25.57vw;
+    height: 14.32vw;
+    background-image: url('/images/tendencias/imagem-4.png');
+}
+
+.img-5 {
+    width: 25.57vw;
+    height: 14.32vw;
+    background-image: url('/images/tendencias/imagem-5.png');
+}
+
+.img-6 {
+    width: 28.91vw;
+    height: 34.69vw;
+    background-image: url('/images/tendencias/imagem-6.png');
+}
+
+.img-7 {
+    width: 16.09vw;
+    height: 10.19vw;
+    background-image: url('/images/tendencias/imagem-7.png');
+}
+
+.img-8 {
+    width: 11.56vw;
+    height: 10.19vw;
+    background-image: url('/images/tendencias/imagem-8.png');
+}
+
+/* --- ELEMENTOS INTERNOS DO CARD --- */
 
 .elementos {
     display: flex;
@@ -787,7 +719,23 @@ main {
 .cima {
     display: flex;
     justify-content: space-between;
-    margin: 4% 4% 0% 4%;
+    margin: 4% 4% 0% 4%; /* Margens relativas para posicionamento */
+}
+
+#data-3 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Louis George Cafe";
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(0.7rem, 1vw, 1rem); 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#salvar-3 {
+    width: clamp(1rem, 1.26vw, 1.5rem);
+    height: clamp(1rem, 1.69vw, 2rem);
 }
 
 .centro {
@@ -796,18 +744,21 @@ main {
     width: 100%;
     margin-left: 3%;
     margin-bottom: 3%;
+    padding-right: 3%; /* Adiciona padding para não colar na borda */
 }
 
 .butaos {
     display: flex;
     gap: 1vw;
     margin-bottom: 2%;
+    flex-wrap: wrap; /* Permite quebras em telas menores */
 }
 
 .butaos button {
     color: #FFF;
     font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(0.7rem, 1vw, 1rem); 
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -824,94 +775,277 @@ main {
 #tit-7 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: 2vw; 
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(1.2rem, 2vw, 2rem); 
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 90%;
+    width: 100%;
 }
 
 #tit-8 {
     color: #FFF;
     font-family: "The Next Font";
-    font-size: 1.6vw; 
+    /* Usando clamp() para o tamanho de fonte */
+    font-size: clamp(1rem, 1.6vw, 1.6rem); 
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 90%;
-}
-
-#data-3 {
-    color: #FFF;
-    text-align: center;
-    font-family: "Louis George Cafe";
-    font-size: var(--CORPO-DE-TEXTO-2, 1vw);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-#salvar-3 {
-    width: 1.26vw;
-    height: 1.69vw;
-}
-
-
-
-.img-3 {
-    width: 16.15dvw;
-    height: 12.55dvw;
-    background-image: url('/images/tendencias/imagem-3.png');
-}
-
-.empé {
-    width: 25.57dvw;
-    height: 31.20dvw;
-    background-image: url('/images/tendencias/imagem-1.png');
-}
-
-.img-4 {
-    width: 25.57dvw;
-    height: 14.32dvw;
-    background-image: url('/images/tendencias/imagem-4.png');
-}
-
-.img-5 {
-    width: 25.57dvw;
-    height: 14.32dvw;
-    background-image: url('/images/tendencias/imagem-5.png');
-}
-
-.img-6 {
-    width: 28.91dvw;
-    height: 34.69dvw;
-    background-image: url('/images/tendencias/imagem-6.png');
-}
-
-.img-7 {
-    width: 16.09dvw;
-    height: 10.19dvw;
-    background-image: url('/images/tendencias/imagem-7.png');
-}
-
-.img-8 {
-    width: 11.56dvw;
-    height: 10.19dvw;
-    background-image: url('/images/tendencias/imagem-8.png');
-}
-
-
-
-footer {
-    margin-top: 7vw;
-    background-color: #343434;
     width: 100%;
-    height: 17vw;
 }
 
-footer p {
-    color: white;
-    display: flex;
-    justify-content: center;
-    font-size: 2vw;
+/* --- RESPONSIVIDADE PARA FLEXBOX (MEDIA QUERY) --- */
+
+@media (max-width: 1024px) {
+    .imagenszinas {
+        flex-direction: column; /* Empilha as colunas esqui e diri */
+        gap: 4vw;
+    }
+
+    .esqui {
+        gap: 4vw;
+    }
+
+    .sec-1, .sec-2 {
+        gap: 3vw;
+    }
+
+    /* Ajuste de tamanho para caberem em uma linha completa */
+    .img-2, .img-3, .empé, .img-4, .img-5, .img-6, .img-7, .img-8 {
+        /* Largura base ajustada para Flexbox para preencher o espaço */
+        width: 100%; 
+        height: 25vw; /* Altura fixa no tablet */
+    }
+
+    .sec-1 a, .sec-2 a {
+        flex-grow: 1;
+    }
+
+    .img-2 {
+        height: 25vw;
+    }
+    .img-3 {
+        height: 25vw;
+    }
+    
+    .empé {
+        width: 50%; /* Ocupa metade da linha */
+        height: 40vw;
+    }
+    
+    .deitada {
+        width: 50%;
+        gap: 3vw;
+    }
+
+    .img-4, .img-5 {
+        width: 100%;
+        height: 18.5vw;
+    }
+    
+    .diri {
+        flex-direction: row; /* Colunas diri-topo e diri-baixo lado a lado */
+        gap: 3vw;
+        margin-left: 0;
+    }
+
+    .diri-topo, .diri-baixo {
+        flex-grow: 1;
+        width: 50%;
+    }
+
+    .img-6 {
+        height: 40vw;
+    }
+
+    .diri-baixo {
+        flex-direction: column; /* Imagens 7 e 8 empilhadas */
+        gap: 3vw;
+    }
+
+    .img-7, .img-8 {
+        width: 100%;
+        height: 18.5vw;
+    }
+
+}
+
+@media (max-width: 600px) {
+    /* Mobile: Tudo em coluna única */
+    .sec-1, .sec-2, .diri {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .sec-1, .sec-2 {
+        gap: 1.5rem;
+    }
+
+    .empé {
+        width: 100%;
+        height: 60vw;
+    }
+
+    .deitada {
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    .diri {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 1.5rem;
+    }
+
+    .diri-topo, .diri-baixo {
+        width: 100%;
+    }
+
+    .diri-baixo {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .img-2, .img-3, .img-6, .img-7, .img-8 {
+        height: 40vw;
+    }
+    
+    .img-4, .img-5 {
+        height: 30vw;
+    }
+    
+    #tit-7 {
+        font-size: 1.2rem;
+    }
+
+    #tit-8 {
+        font-size: 1rem;
+    }
+}
+/* ... (restante dos estilos .quarto se houver) ... */
+
+
+/* --- RESPONSIVIDADE (Ajustes de Grid e Fontes) --- */
+
+@media (max-width: 1024px) {
+    .banner-principal {
+        height: clamp(25rem, 50vw, 55rem);
+        margin-bottom: clamp(-8rem, -15vw, -18rem);
+    }
+    .primeiro-overlap-group {
+        grid-template-columns: 1.3fr 0.7fr 1.3fr;
+        grid-template-rows: auto auto;
+        width: 90vw;
+        max-width: none;
+        gap: clamp(1.5rem, 3vw, 3rem);
+    }
+    .meio {
+        grid-column: 1 / span 3;
+        order: 3;
+    }
+    .meio p {
+        font-family: "PLAYFUL RUNWAY";
+    }
+    .banner-sec {
+        height: 40vw;
+    }
+    .banner-terc {
+        height: 40vw;
+    }
+    .segundo {
+        width: 90vw;
+    }
+    .produtss {
+        grid-template-columns: 1fr 1fr;
+    }
+    .produt1, .produt2, .produt3 {
+        height: 30vw;
+    }
+    .produt3 {
+        grid-column: 1 / span 2;
+        width: 60%;
+        justify-self: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    /* MOBILE: Layout de coluna única */
+    
+    /* Seção 1 */
+    .banner-principal {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        margin-bottom: -3rem; /* Efeito de overlap mais suave */
+    }
+    .primeiro-overlap-group {
+        grid-template-columns: 1fr; /* Coluna única */
+        gap: 1.5rem;
+        padding-top: 3rem; 
+        width: 90vw;
+    }
+    .banner-sec, .banner-terc {
+        height: 50vw; /* Altura fixa para mobile */
+    }
+    #tit-2, #tit-3 {
+        font-size: 1.2rem;
+    }
+    .meio {
+        order: 3;
+    }
+    
+    /* Seção 2 */
+    .segundo {
+        grid-template-columns: 1fr; /* Coluna única */
+        width: 100%;
+        margin-top: 2rem;
+        padding: 1.5rem 5vw;
+        background-image: none;
+        background-color: #5E332C;
+        border-radius: 0;
+    }
+    .segundo-col-dir {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .produtss {
+        grid-template-columns: 1fr 1fr;
+    }
+    .produt1, .produt2, .produt3 {
+        height: 50vw; 
+    }
+    .produt3 {
+        grid-column: auto; /* Remove centralização */
+        width: 100%; 
+    }
+    #but-6 {
+        width: 80%;
+    }
+
+    /* Seção 3 */
+    .terceiro {
+        grid-template-columns: 1fr; /* Coluna única */
+        padding: 0 5vw;
+        margin: 2rem 0;
+    }
+
+    .esq {
+        min-height: 50vw;
+        justify-content: flex-start;
+        padding: 1.5rem;
+    }
+    .esq p {
+        font-size: 2.5rem;
+        max-width: 100%;
+    }
+    .dir {
+        padding: 1.5rem 0;
+    }
+    #tit-6 {
+        font-size: 2rem;
+    }
+    #uno p {
+        font-size: 1rem;
+    }
 }

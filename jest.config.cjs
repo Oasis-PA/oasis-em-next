@@ -8,6 +8,9 @@ module.exports = {
 
   testMatch: ['**/__tests__/**/*.test.ts', '**/*.test.ts'],
 
+  // Excluir testes de integração por padrão (usar npm run test:integration para rodá-los)
+  testPathIgnorePatterns: ['/node_modules/', '/tests/integration/'],
+
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     'lib/**/*.{ts,tsx}',
@@ -40,6 +43,9 @@ module.exports = {
   resolver: undefined,
 
   // Configurações de performance
-  maxWorkers: 2, // Limita workers para evitar OOM
+  maxWorkers: 1, // Usa apenas 1 worker para evitar race conditions do Prisma
   workerIdleMemoryLimit: '512MB', // Limita memória dos workers
+
+  // Força execução sequencial para evitar problemas com prepared statements
+  testRunner: 'jest-circus/runner',
 };

@@ -1,19 +1,36 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
-main * {
+.page-questionario1-wrapper > div,
+.page-questionario1-wrapper main,
+.page-questionario1-wrapper section,
+.page-questionario1-wrapper article {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+.page-questionario1-wrapper h1,
+.page-questionario1-wrapper h2,
+.page-questionario1-wrapper h3,
+.page-questionario1-wrapper h4,
+.page-questionario1-wrapper h5,
+.page-questionario1-wrapper h6,
+.page-questionario1-wrapper p,
+.page-questionario1-wrapper span,
+.page-questionario1-wrapper a,
+.page-questionario1-wrapper button {
+    box-sizing: border-box;
+}
+
+.page-questionario1-wrapper {
     width: 100%;
     min-height: 100vh; /* Alterado para min-height para melhor adaptação */
 }
 
-main {
+.page-questionario1-wrapper main {
     display: flex;
     background: linear-gradient(90deg, #F2A518 550px, #FFF 160px); /* Ajustado para corresponder à estrutura e cor */
     justify-content: center;
@@ -229,7 +246,7 @@ main {
 /* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
 
 @media (max-width: 1024px) {
-    main {
+    .page-questionario1-wrapper main {
         flex-direction: column;
         background: linear-gradient(180deg, #F2A518 400px, #FFF 120px);
         padding: 1rem;

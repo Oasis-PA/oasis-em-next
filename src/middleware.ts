@@ -1,57 +1,51 @@
-// Em: middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Rotas que exigem login
-const protectedRoutes = [
-  '/perfil',
-  
-  // Adicione aqui outras rotas que devem ser protegidas
-];
+// Não usar jsonwebtoken no middleware (Edge Runtime)
+// Apenas verificar se o token existe (validação completa na API)
 
-// Rotas de autenticação (usuário logado não deve acessar)
+const protectedRoutes = ['/perfil'];
 const authRoutes = ['/login', '/cadastro', '/cadastro2'];
-
-// Rotas ADMIN (exigem autenticação de admin)
 const adminRoutes = ['/admin'];
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // ========== PROTEÇÃO DO ADMIN ==========
   if (pathname.startsWith('/admin')) {
     const adminToken = request.cookies.get('admin-auth-token')?.value;
 
-    // Se não tiver token e não estiver na página de login do admin
+    // Se não tem token e não está na página de login, redireciona
     if (!adminToken && pathname !== '/admin/login') {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
 
-    // Se tiver token mas estiver na página de login, redireciona para dashboard
+    // Se tem token e está na página de login, redireciona para dashboard
     if (adminToken && pathname === '/admin/login') {
       return NextResponse.redirect(new URL('/admin/artigos', request.url));
     }
 
-    // Admin autenticado, permite o acesso
     return NextResponse.next();
   }
 
   // ========== PROTEÇÃO DE USUÁRIO COMUM ==========
   const userToken = request.cookies.get('auth-token')?.value;
 
-  // Se o usuário está logado e tenta acessar uma página de login/cadastro,
-  // redirecione para a página inicial.
-  if (userToken && authRoutes.includes(pathname)) {
+  // NOTA: Edge Runtime não suporta jsonwebtoken
+  // Apenas checamos se o token existe
+  // Validação completa é feita no lado do servidor/API
+  const hasUserToken = !!userToken;
+
+  // Se o usuário tem token e tenta acessar login/cadastro, redireciona para home
+  if (hasUserToken && authRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Se o usuário não está logado e tenta acessar uma rota protegida,
-  // redirecione para o login.
-  if (!userToken && protectedRoutes.includes(pathname)) {
+  // Se o usuário NÃO tem token e tenta acessar rota protegida, redireciona para login
+  if (!hasUserToken && protectedRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  // Caso contrário, permite o acesso.
   return NextResponse.next();
 }
 

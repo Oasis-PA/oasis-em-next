@@ -1,15 +1,55 @@
 "use client";
 
 import {Header, Footer} from "@/components";
-
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 
 import "@/styles/skincare.css";
 
-export default function skincare() {
+interface Produto {
+  id_produto: number;
+  nome: string;
+  url_loja: string | null;
+  url_imagem: string | null;
+  tag_principal: string;
+  id_tag: number | null;
+}
+
+export default function Skincare() {
+  const [produtos, setProdutos] = useState<Produto[]>([]);
+  const [loadingProdutos, setLoadingProdutos] = useState(true);
+
+  // Buscar produtos do banco
+  useEffect(() => {
+    const fetchProdutos = async () => {
+      try {
+        const response = await fetch('/api/produtos?limit=9');
+        const data = await response.json();
+        
+        if (data.produtos) {
+          setProdutos(data.produtos);
+        } else {
+          setProdutos([]);
+        }
+      } catch (error) {
+        setProdutos([]);
+      } finally {
+        setLoadingProdutos(false);
+      }
+    };
+
+    fetchProdutos();
+  }, []);
+
+  // Dividir produtos em 3 grupos de 3
+  const primeiroGrupo = produtos.slice(0, 3);
+  const segundoGrupo = produtos.slice(3, 6);
+  const terceiroGrupo = produtos.slice(6, 9);
+
   return (
-    <>
+    <div className="page-skincare-wrapper">
+
     <Header className="header-transparente"/>
     <section className="section-header">
       <h1>SKIN</h1>
@@ -96,79 +136,83 @@ export default function skincare() {
             <div className="linha"></div>
         </div>
 
-        <div className="produtos">
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
+        {loadingProdutos ? (
+          <div style={{ padding: '4rem', textAlign: 'center' }}>
+            <p>Carregando produtos...</p>
+          </div>
+        ) : produtos.length === 0 ? (
+          <div style={{ padding: '4rem', textAlign: 'center' }}>
+            <p>Nenhum produto encontrado.</p>
+          </div>
+        ) : (
+          <>
+            {/* PRIMEIRO GRUPO - 3 PRODUTOS + MAIS AMADOS */}
+            <div className="produtos">
+              {primeiroGrupo.map((produto) => (
+                <div className="prod1" key={produto.id_produto}>
+                  <img 
+                    src={produto.url_imagem || "/images/infantil/produto.png"} 
+                    alt={produto.nome}
+                  />
+                  <h5>{produto.tag_principal || 'Produto de beleza'}</h5>
+                  <h4>{produto.nome}</h4>
+                  <button>
+                    <Link href={`/produtos/${produto.id_produto}`}>
+                      Veja mais
+                    </Link>
+                  </button>
+                </div>
+              ))}
+              <div className="imagem_produto" id="prod1-bg">
+                <h1>mais amados</h1>
+              </div>
             </div>
 
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
+            {/* SEGUNDO GRUPO - OPÇÃO ACESSÍVEL + 3 PRODUTOS */}
+            <div className="produtos">
+              <div className="imagem_produto" id="prod2-bg">
+                <h1>opção acessível</h1>
+              </div>
+              {segundoGrupo.map((produto) => (
+                <div className="prod1" key={produto.id_produto}>
+                  <img 
+                    src={produto.url_imagem || "/images/infantil/produto.png"} 
+                    alt={produto.nome}
+                  />
+                  <h5>{produto.tag_principal || 'Produto de beleza'}</h5>
+                  <h4>{produto.nome}</h4>
+                  <button>
+                    <Link href={produto.url_loja || `/produto/${produto.id_produto}`}>
+                      Veja mais
+                    </Link>
+                  </button>
+                </div>
+              ))}
             </div>
 
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
+            {/* TERCEIRO GRUPO - 3 PRODUTOS + NATURAL/VEGANO */}
+            <div className="produtos">
+              {terceiroGrupo.map((produto) => (
+                <div className="prod1" key={produto.id_produto}>
+                  <img 
+                    src={produto.url_imagem || "/images/infantil/produto.png"} 
+                    alt={produto.nome}
+                  />
+                  <h5>{produto.tag_principal || 'Produto de beleza'}</h5>
+                  <h4>{produto.nome}</h4>
+                  <button>
+                    <Link href={produto.url_loja || `/produto/${produto.id_produto}`}>
+                      Veja mais
+                    </Link>
+                  </button>
+                </div>
+              ))}
+              <div className="imagem_produto" id="prod3-bg">
+                <h1>natural/<br></br>vegano</h1>
+              </div>
             </div>
-
-            <div className="imagem_produto" id="prod1-bg"><h1>mais amados</h1></div>
-        </div>
-
-        <div className="produtos" >
-            <div className="imagem_produto" id="prod2-bg"><h1>opção acessível</h1></div>
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
-            </div>
-
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
-            </div>
-
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
-            </div>
-        </div>
-
-        <div className="produtos">
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
-            </div>
-
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
-            </div>
-
-            <div className="prod1">
-                <img src="/images/infantil/produto.png" alt="produto1"/>
-                <h5>Força e vigor</h5>
-                <h4>L'Oréal Professionnel Óleo 10 em 1 Absolut Repair</h4>
-                <button>Veja mais</button>
-            </div>
-
-            <div className="imagem_produto" id="prod3-bg"><h1>natural/<br></br>vegano</h1></div>
-        </div>
+          </>
+        )}
 
         <div id="linhatexto2">
             <div className="linha"></div>
@@ -217,6 +261,6 @@ export default function skincare() {
     <section id="imagem-perfume"></section>
     </main>
     <Footer/>
-    </>
+    </div>
   );
 }

@@ -1,12 +1,16 @@
 // src/app/api/admin/artigos/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { protectAdminRoute } from "@/lib/verify-admin-token";
 
 // GET - Buscar artigo específico com tags
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  // Verifica autenticação admin
+  const authError = await protectAdminRoute(request);
+  if (authError) return authError;
+
   try {
     const { id } = await params;
-    console.log("API GET artigo id =", id);
 
     // Se id for só dígitos, trata como number; caso contrário, trata como slug/string
     const isNumeric = /^\d+$/.test(id);
@@ -44,7 +48,6 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     return NextResponse.json(resultado);
   } catch (error) {
-    console.error("Erro GET artigo:", error);
     return NextResponse.json({ message: "Erro interno" }, { status: 500 });
   }
 }
@@ -54,6 +57,10 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // Verifica autenticação admin
+  const authError = await protectAdminRoute(request);
+  if (authError) return authError;
+
   try {
     const { id } = await params;
     const body = await request.json();
@@ -151,7 +158,6 @@ export async function PUT(
 
     return NextResponse.json(resultado);
   } catch (error) {
-    console.error('Erro ao atualizar artigo:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar artigo' },
       { status: 500 }
@@ -164,6 +170,10 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // Verifica autenticação admin
+  const authError = await protectAdminRoute(request);
+  if (authError) return authError;
+
   try {
     const { id } = await params;
     
@@ -175,7 +185,6 @@ export async function DELETE(
 
     return NextResponse.json({ message: 'Artigo excluído com sucesso' });
   } catch (error) {
-    console.error('Erro ao excluir artigo:', error);
     return NextResponse.json(
       { error: 'Erro ao excluir artigo' },
       { status: 500 }

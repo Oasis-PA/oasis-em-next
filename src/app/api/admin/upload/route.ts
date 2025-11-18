@@ -1,8 +1,13 @@
 // src/app/api/admin/upload/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { protectAdminRoute } from '@/lib/verify-admin-token';
 
 export async function POST(request: NextRequest) {
+  // Verifica autenticação admin
+  const authError = await protectAdminRoute(request);
+  if (authError) return authError;
+
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
@@ -71,7 +76,6 @@ export async function POST(request: NextRequest) {
       });
 
     if (uploadError) {
-      console.error('Erro no upload do Supabase:', uploadError);
       return NextResponse.json(
         { error: 'Erro ao fazer upload da imagem' },
         { status: 500 }
@@ -87,7 +91,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ url }, { status: 200 });
   } catch (error) {
-    console.error('Erro ao fazer upload:', error);
     return NextResponse.json(
       { error: 'Erro ao fazer upload da imagem' },
       { status: 500 }

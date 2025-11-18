@@ -1,10 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ⚠️ CRÍTICO: Não usar seletores globais que afetam o header */
+/* Usar apenas .page-artigo-wrapper para isolar estilos */
 
-body {
+.page-artigo-wrapper {
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -13,13 +10,6 @@ body {
     background-color: var(--body-back);
     color: var(--corpo-texto);
     font-family: "Louis George Cafe", sans-serif;
-}
-
-header {
-    width: 100%;
-    height: 560px;
-    flex-shrink: 0;
-    position: relative;
 }
 
 main {
@@ -149,6 +139,72 @@ main > article > ul {
 }
 
 
+/* ========== BOTÃO DE FAVORITO NO TOPO ========== */
+.artigo-favorito-topo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-top: 0;
+}
+
+/* ========== INFORMAÇÕES DE DATA ========== */
+.artigo-datas-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.artigo-data-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.artigo-data-item:hover {
+    color: #333;
+}
+
+.artigo-data-item.artigo-atualizado {
+    color: #ff6987;
+}
+
+.artigo-data-item.artigo-atualizado:hover {
+    color: #ff4d73;
+}
+
+.data-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.artigo-data-item span {
+    font-weight: 500;
+}
+
+/* ========== ANIMAÇÕES ========== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.artigo-favorito-topo,
+.artigo-datas-info {
+    animation: fadeInDown 0.5s ease-out;
+}
+
+
 /* --- MEDIA QUERIES --- */
 
 @media (max-width: 1600px) { 
@@ -157,33 +213,94 @@ main > article > ul {
         width: 90%;
     }
 }
+
 /* Para telas menores (tablets e celulares grandes) */
 @media (max-width: 768px) {
     main > article {
-        margin-top: -200px; /* Reduz a sobreposição em telas menores */
-        padding: 60px 5%; /* Ajusta o padding */
+        margin-top: -200px;
+        padding: 60px 5%;
         width: 90%;
     }
 
     main > article > ul {
         padding-left: 10px;
     }
+
+    /* Ajustes para favorito e datas */
+    .artigo-favorito-topo {
+        margin-bottom: 1rem;
+    }
+
+    .artigo-datas-info {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .data-icon {
+        width: 16px;
+        height: 16px;
+    }
 }
 
 /* Para celulares */
 @media (max-width: 480px) {
     header {
-        height: 300px; /* Diminui a altura do header */
+        height: 300px;
     }
 
     main > article {
-        margin-top: -120px; /* Reduz ainda mais a sobreposição */
+        margin-top: -120px;
         padding: 40px 5%;
         width: 90%;
     }
     
-    /* Justificar texto pode ficar estranho em telas muito pequenas */
     main > article p {
         text-align: left; 
+    }
+
+    /* Ajustes para favorito e datas em mobile */
+    .artigo-datas-info {
+        font-size: 0.8rem;
+    }
+
+    .data-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* ========== MODO ESCURO (OPCIONAL) ========== */
+@media (prefers-color-scheme: dark) {
+    .artigo-datas-info {
+        color: #b0b0b0;
+    }
+
+    .artigo-data-item:hover {
+        color: #e0e0e0;
+    }
+
+    .artigo-data-item.artigo-atualizado {
+        color: #ff8ba7;
+    }
+
+    .artigo-data-item.artigo-atualizado:hover {
+        color: #ffaac0;
+    }
+}
+
+/* ========== IMPRESSÃO ========== */
+@media print {
+    .artigo-favorito-topo {
+        display: none;
+    }
+
+    .artigo-datas-info {
+        color: #666;
+        font-size: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .data-icon {
+        display: none;
     }
 }

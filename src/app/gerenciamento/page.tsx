@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Layout from "./layout";
 
 
@@ -17,6 +18,7 @@ export default function GerenciamentoConta() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [confirmacaoTexto, setConfirmacaoTexto] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [loading, setLoading] = useState(true);
 
   // Estados para a função Redefinir
   const [initialData, setInitialData] = useState({
@@ -46,13 +48,12 @@ export default function GerenciamentoConta() {
           setInitialData(fetchedData); // Guarda o estado inicial
         }
       })
-      .catch(err => console.error(err));
 
     // Busca lista de gêneros
     fetch("/api/usuarios/generos")
       .then(res => res.ok ? res.json() : [])
       .then(lista => setGeneros(lista))
-      .catch(err => console.error(err));
+      .finally(() => setLoading(false));
   }, []);
 
   const handleSave = async (e: React.FormEvent) => {
@@ -132,9 +133,25 @@ export default function GerenciamentoConta() {
 
 
   return (
-    <Layout>
+    <div className="page-gerenciamento-wrapper">
+      <Layout onCancel={handleReset} onSave={(e?: React.FormEvent) => {
+        // Trigger form submit
+        const form = document.getElementById('gerenciamento-form') as HTMLFormElement;
+        form?.requestSubmit();
+      }} isLoading={loading}>
 
-      <main>
+        <main>
+        <Link href="/" className="btn-voltar" style={{ display: 'inline-block', marginBottom: '30px', color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}>
+          ← Voltar
+        </Link>
+
+        {loading && (
+          <div style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
+            <p>Carregando suas informações...</p>
+          </div>
+        )}
+
+        {!loading && (
         <section>
           {/* MELHORIA: Adicionado id ao form e removido o onClick do botão salvar */}
           <form id="gerenciamento-form" onSubmit={handleSave}>
@@ -185,18 +202,7 @@ export default function GerenciamentoConta() {
             </div>
           </form>
         </section>
-
-        {/* ============================================
-            BOTÕES DO FOOTER CORRIGIDOS
-            ============================================ */}
-        <footer>
-          <button type="button" onClick={handleReset} className="btn btn-secondary">
-            Redefinir
-          </button>
-          <button type="submit" form="gerenciamento-form" className="btn btn-primary">
-            Salvar
-          </button>
-        </footer>
+        )}
 
         {mensagem && <p className="feedback-message">{mensagem}</p>}
       </main>
@@ -255,6 +261,7 @@ export default function GerenciamentoConta() {
         </div>
       )}
 
-    </Layout>
+      </Layout>
+    </div>
   );
 }

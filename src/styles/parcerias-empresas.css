@@ -1,3 +1,4 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -6,7 +7,7 @@
 /* CONFIGURAÇÕES GLOBAIS E TEMAS      */
 /* ================================== */
 
-main * {
+.page-parcerias-empresas-wrapper * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -17,7 +18,7 @@ main * {
 /* LAYOUT PRINCIPAL                   */
 /* ================================== */
 
-body {
+.page-parcerias-empresas-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -25,7 +26,7 @@ body {
   overflow-x: hidden;
 }
 
-main {
+.page-parcerias-empresas-wrapper main {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
@@ -37,7 +38,7 @@ main {
 
 /* Em telas menores, o layout vira uma coluna única */
 @media screen and (max-width: 1200px) {
-  main {
+  .page-parcerias-empresas-wrapper main {
     flex-direction: column;
     padding: 0;
     gap: 0;
@@ -71,7 +72,7 @@ form {
   width: 100%;
   max-width: 764px;
   border-radius: 50px;
-  border: 1px solid var(--border-form);
+  border: 1px solid #000;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -114,7 +115,7 @@ form {
 #caixas-texto input, 
 #telefone {
   border: none;
-  border-bottom: 2px solid var(--border-linhas);
+  border-bottom: 1px solid #000;
   height: 60px;
   background-color: var(--body-back);
   width: 100%;
@@ -137,7 +138,7 @@ form {
 #telefone {
   display: flex;
   align-items: center;
-  padding-left: 0;
+  padding-left: 10px;
 }
 
 #telefone > img {
@@ -153,7 +154,8 @@ form {
   background-color: transparent;
   flex: 1;
   font-size: inherit;
-  padding: 10px 12px 10px 0;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
 }
 
 #telefone > input:focus {
@@ -175,7 +177,7 @@ form {
   max-width: 656px;
   height: 183px;
   border-radius: 20px;
-  border: 1px solid var(--border-linhas);
+  border: 1px solid #000;
   background: var(--body-back);
   font-family: "Louis George Cafe", sans-serif;
   font-size: 16px;

@@ -96,6 +96,12 @@ npm run prisma:migrate
 🚀 Validação de Dados com Zod
 Este projeto utiliza o prisma-zod-generator para garantir que as validações de dados estejam sempre sincronizadas com o schema.prisma.
 
+**Estratégia de Validação:** O projeto usa **validação exclusivamente via Zod**, sem HTML5 validation (`required`, `type="email"`, etc.). Isso garante:
+- Mensagens de erro consistentes e customizadas
+- Validação unificada no cliente e servidor
+- Melhor testabilidade (E2E tests com Cypress)
+- Controle total sobre a experiência do usuário
+
 O Fluxo de Trabalho
 Modifique o schema.prisma: Qualquer alteração na estrutura do banco é feita aqui.
 
@@ -163,20 +169,119 @@ GET /api/tags: Listar tags.
 POST /api/tags: Criar uma nova tag.
 
 🧪 Testes
-O projeto utiliza Jest para testes unitários e de integração.
+O projeto possui uma suíte completa de **~177 testes** cobrindo 6 níveis:
 
-Bash
-
+```bash
 # Executar todos os testes
-npm run test
+npm test
 
-# Executar testes em modo "watch"
-npm run test:watch
-
-# Executar apenas os testes da API
+# Testes unitários e validações (50 testes)
+npm run test:validations
 npm run test:api
 
-🏛️ Arquitetura e Documentação Técnica
+# Testes de integração (68 testes)
+npm run test:integration
+
+# Testes avançados (59 testes)
+npm run test:performance    # Performance de queries
+npm run test:concurrency    # Concorrência e race conditions
+npm run test:migration      # Migrações e integridade
+npm run test:backup         # Backup e restore
+npm run test:advanced       # Todos os avançados
+
+# Outros
+npm run test:watch          # Modo watch
+npm run test:coverage       # Cobertura de código
+```
+
+📖 **Para documentação completa de testes, consulte:** [`tests/README.md`](./tests/README.md)
+
+---
+
+## 🎨 Isolamento de CSS e Arquitetura de Estilos
+
+O projeto implementa uma **estratégia de isolamento de CSS** para evitar conflitos entre páginas ao navegar pela aplicação.
+
+### Problema Resolvido
+Em aplicações Next.js, imports de CSS são globais por padrão. Isso causava conflitos quando:
+- Navegando entre páginas diferentes
+- Usando o botão "voltar" do navegador
+- Estilos de uma página "vazavam" para outras
+
+### Solução Implementada
+Cada página/grupo de páginas possui um **wrapper CSS único**:
+
+| Wrapper | Páginas Afetadas | Arquivo CSS |
+|---------|------------------|-------------|
+| `.page-produtos-wrapper` | `/produtos` | `produtos.css` |
+| `.page-login-cadastro-wrapper` | `/login`, `/cadastro`, `/cadastro2` | `tela-de-cadastro.css` |
+| `.page-perfil-wrapper` | `/perfil` | `editar-perfil.css` |
+| `.page-gerenciamento-wrapper` | `/gerenciamento` | `editar-perfil.css` |
+
+### Exemplo de Implementação
+
+**Antes (CSS global - causava conflitos):**
+```css
+main * { margin: 0; padding: 0; }
+body { display: flex; }
+```
+
+**Depois (CSS isolado):**
+```css
+.page-produtos-wrapper * { margin: 0; padding: 0; }
+.page-produtos-wrapper { display: flex; }
+```
+
+**Uso no componente:**
+```tsx
+export default function ProdutosPage() {
+  return (
+    <div className="page-produtos-wrapper">
+      {/* Conteúdo da página */}
+    </div>
+  );
+}
+```
+
+### Benefícios
+- ✅ Navegação entre páginas sem conflitos de estilo
+- ✅ Botão "voltar" funciona corretamente
+- ✅ Cada página mantém seus estilos isolados
+- ✅ Fácil manutenção e debugging
+
+---
+
+## ⚠️ Notas Importantes para Ambiente de Desenvolvimento
+
+### Conexão com Banco de Dados
+O projeto utiliza **Supabase** hospedado externamente. Em ambientes com **firewall restritivo** (como redes corporativas ou SENAI), a conexão pode falhar:
+
+```
+Can't reach database server at `db.yyvjzgxyxgalnnwcjfqh.supabase.co:5432`
+```
+
+**Soluções:**
+1. **Rede doméstica/aberta**: Funciona normalmente
+2. **Hotspot móvel**: Conexão alternativa recomendada
+3. **VPN corporativa**: Pode resolver bloqueios de firewall
+4. **Banco local (desenvolvimento)**: Configurar PostgreSQL local
+
+### Interface Funcional Sem Banco
+Mesmo sem conexão com o banco, você pode:
+- ✅ Navegar por todas as páginas
+- ✅ Visualizar o design e layout responsivo
+- ✅ Testar navegação e CSS isolado
+- ✅ Ver componentes React funcionando
+- ❌ Login/cadastro (requer banco)
+- ❌ Listagem de produtos (requer banco)
+- ❌ Salvar dados (requer banco)
+
+### Testes Cypress
+Os testes E2E falharão **sem conexão com banco**, mas isso é esperado. A suíte completa funciona em ambiente com conectividade adequada.
+
+---
+
+## 🏛️ Arquitetura e Documentação Técnica
 Para uma análise aprofundada da arquitetura do projeto, das decisões técnicas e dos fluxos de trabalho detalhados, consulte a nossa documentação completa na pasta docs/.
 
 01 - Visão Geral da Arquitetura

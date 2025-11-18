@@ -3,16 +3,28 @@
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* ============================================
-   BASE STYLES - Compartilhado entre páginas
+   BASE STYLES - Isolados para perfil/gerenciamento
    ============================================ */
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Aplicado apenas ao container principal */
+
+.page-perfil-wrapper,
+.page-gerenciamento-wrapper {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
 }
 
-:root {
+/* Reset seletivo apenas para elementos que precisam */
+.page-perfil-wrapper main,
+.page-gerenciamento-wrapper main {
+    margin: 0;
+    padding: 0;
+}
+
+/* ⚠️ CRÍTICO: Usar .page-perfil-wrapper e .page-gerenciamento-wrapper em vez de :root */
+/* para evitar afetar TODA a página e o header global */
+.page-perfil-wrapper,
+.page-gerenciamento-wrapper {
     --body-back: #ffffff;
     --corpo-texto: #000000;
     --header-color: #000000;
@@ -27,7 +39,8 @@ main * {
     --danger-hover: #c82333;
 }
 
-:root.dark {
+.page-perfil-wrapper.dark,
+.page-gerenciamento-wrapper.dark {
     --body-back: #0e0e0e;
     --shadow: #161616;
     --corpo-texto: #ffffff;
@@ -35,7 +48,8 @@ main * {
     --linha: rgba(94, 92, 92, 0.6);
 }
 
-body {
+.page-perfil-wrapper,
+.page-gerenciamento-wrapper {
     width: 100%;
     min-height: 100vh;
     background-color: var(--body-back);
@@ -43,7 +57,8 @@ body {
     overflow-x: hidden;
 }
 
-p {
+.page-perfil-wrapper p,
+.page-gerenciamento-wrapper p {
     font-family: "Louis George Cafe";
     color: var(--corpo-texto);
 }
@@ -51,8 +66,8 @@ p {
 /* ============================================
    LAYOUT CONTAINER
    ============================================ */
-.layout-container,
-.config-body {
+.page-perfil-wrapper .layout-container,
+.page-gerenciamento-wrapper .layout-container {
     display: flex;
     min-height: 100vh;
     position: relative;
@@ -150,12 +165,13 @@ p {
    ============================================ */
 .layout-content {
     flex: 1;
-    margin-left: clamp(240px, 17%, 300px); 
+    margin-left: clamp(240px, 17%, 300px);
     padding-bottom: 120px;
     transition: margin-left 0.3s ease;
 }
 
-main {
+.page-perfil-wrapper main,
+.page-gerenciamento-wrapper main {
     max-width: 900px;
     padding: 60px 40px;
     margin: 0 auto;
@@ -246,7 +262,8 @@ figcaption {
 /* ============================================
    FORM - Compartilhado
    ============================================ */
-form {
+.page-perfil-wrapper form,
+.page-gerenciamento-wrapper form {
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -570,9 +587,10 @@ form {
 
 
 /* ============================================
-   FOOTER
+   FOOTER - Isolado para /perfil e /gerenciamento
    ============================================ */
-footer {
+.page-perfil-wrapper footer,
+.page-gerenciamento-wrapper footer {
     position: fixed;
     bottom: 0;
     left: clamp(240px, 17%, 300px);
@@ -594,8 +612,8 @@ footer {
    MENSAGEM DE FEEDBACK
    ============================================ */
 main > p:last-child {
-    position: fixed;
-    bottom: 120px;
+    position: absolute;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #4CAF50;
@@ -603,7 +621,7 @@ main > p:last-child {
     padding: 12px 24px;
     border-radius: 8px;
     font-size: 16px;
-    z-index: 1000;
+    z-index: 50;
 }
 
 /* ============================================
@@ -623,9 +641,13 @@ main > p:last-child {
         display: flex;
     }
 
-    .layout-content, footer {
+    .layout-content {
         margin-left: 0;
-        left: 0;
+    }
+
+    footer {
+        margin-left: 0;
+        margin-top: 20px;
     }
 
     main {
@@ -676,6 +698,8 @@ main > p:last-child {
         flex-direction: column;
         padding: 15px;
         gap: 10px;
+        margin-left: 0;
+        margin-top: 15px;
     }
 
     footer .btn {

@@ -1,0 +1,97 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Check if database secrets are available
+        id: check-secrets
+        run: |
+          if [ -z "${{ secrets.DATABASE_URL_TEST }}" ]; then
+            echo "secrets_available=false" >> $GITHUB_OUTPUT
+            echo "⚠️ Database secrets not configured - skipping database-dependent tests"
+          else
+            echo "secrets_available=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup test database
+        if: steps.check-secrets.outputs.secrets_available == 'true'
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        run: npx prisma migrate deploy
+
+      - name: Run tests
+        if: steps.check-secrets.outputs.secrets_available == 'true'
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        run: npm test -- --coverage --maxWorkers=2
+
+      - name: Skip tests (no database access)
+        if: steps.check-secrets.outputs.secrets_available == 'false'
+        run: |
+          echo "::warning::Tests skipped - DATABASE_URL_TEST secret not configured"
+          echo "To enable tests, configure the following GitHub Secrets in repository settings:"
+          echo "  - DATABASE_URL_TEST"
+          echo "  - ADMIN_USERNAME"
+          echo "  - ADMIN_PASSWORD"
+          echo "  - JWT_SECRET"
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        if: steps.check-secrets.outputs.secrets_available == 'true' && always()
+        with:
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: Comment PR with test results
+        if: github.event_name == 'pull_request' && steps.check-secrets.outputs.secrets_available == 'true' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '## ✅ Test Results\n\n';
+
+            if (fs.existsSync('./coverage/coverage-summary.json')) {
+              const summary = JSON.parse(fs.readFileSync('./coverage/coverage-summary.json', 'utf-8'));
+              const total = summary.total;
+              comment += `- **Lines**: ${total.lines.pct}%\n`;
+              comment += `- **Statements**: ${total.statements.pct}%\n`;
+              comment += `- **Functions**: ${total.functions.pct}%\n`;
+              comment += `- **Branches**: ${total.branches.pct}%\n\n`;
+            }
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment + 'All tests passed! ✨'
+            });

@@ -6,7 +6,8 @@ import "@/styles/corte-modelo.css";
 
 export default function cortemodelo() {
   return (
-    <>
+    <div className="page-corte-modelo-wrapper">
+
     <Header/>
  <main>
         <section className="principal">
@@ -60,5 +61,6 @@ export default function cortemodelo() {
         </section>
       </main>
       <Footer/>
-      </>
-)}
+    </div>
+  );
+}

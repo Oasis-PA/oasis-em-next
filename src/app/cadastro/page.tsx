@@ -58,7 +58,8 @@ export default function TelaCadastro() {
   };
 
   return (
-    <div className="tela-cadastro-container">
+    <div className="page-login-cadastro-wrapper">
+      <div className="tela-cadastro-container">
       <figure className="figure-padding-cadastro">
         <Image
           src="/images/tela-de-cadastro/imagem-tela-login-roxo.png"
@@ -93,13 +94,12 @@ export default function TelaCadastro() {
                   setErros(rest);
                 }
               }}
-              required
             />
             {erros.nome && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.nome}</p>}
 
             <label htmlFor="email">E-mail</label>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               autoComplete="email"
@@ -112,7 +112,6 @@ export default function TelaCadastro() {
                   setErros(rest);
                 }
               }}
-              required
             />
             {erros.email && <p style={{ color: "red", fontSize: "0.875rem" }}>{erros.email}</p>}
 
@@ -136,6 +135,7 @@ export default function TelaCadastro() {
           </Link>
         </section>
       </main>
+      </div>
     </div>
   );
 }

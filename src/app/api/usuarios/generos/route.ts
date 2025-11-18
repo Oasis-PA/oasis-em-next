@@ -15,7 +15,6 @@ export async function GET() {
 
     return NextResponse.json(generos);
   } catch (err) {
-    console.error("Erro ao buscar gêneros:", err);
     return NextResponse.json(
       { error: "Erro ao buscar gêneros" }, 
       { status: 500 }

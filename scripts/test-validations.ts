@@ -1,6 +1,6 @@
 // scripts/test-validations.ts
 // Script para testar validações manualmente
-import { ZodError } from 'zod';
+import { ZodError, ZodSchema } from 'zod';
 import {
   cadastroEtapa1Schema,
   cadastroEtapa2Schema,
@@ -10,7 +10,7 @@ import {
 } from '../src/lib/validations/index.js';
 
 // Função auxiliar para imprimir resultados
-function testar(nome: string, schema: any, dados: any) {
+function testar(nome: string, schema: ZodSchema, dados: unknown) {
   console.log(`\n${'='.repeat(50)}`);
   console.log(`🧪 Testando: ${nome}`);
   console.log('📥 Dados de entrada:', JSON.stringify(dados, null, 2));

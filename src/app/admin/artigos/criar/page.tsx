@@ -83,7 +83,6 @@ export default function NovoArtigoPage() {
         alert('Imagem adicionada ao conteúdo!');
       }
     } catch (error) {
-      console.error('Erro ao processar a imagem:', error);
       alert('Erro ao processar a imagem');
     } finally {
       setUploadingImage(false);
@@ -132,7 +131,6 @@ export default function NovoArtigoPage() {
         alert(data.error || 'Erro ao salvar artigo');
       }
     } catch (error) {
-      console.error('Erro:', error);
       alert('Erro ao salvar artigo');
     } finally {
       setIsLoading(false);

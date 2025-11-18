@@ -1,10 +1,27 @@
-main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.page-ajuda-wrapper > div,
+.page-ajuda-wrapper main,
+.page-ajuda-wrapper section,
+.page-ajuda-wrapper article {
     margin: 0;
     padding: 0;
     color: var(--corpo-texto);
 }
 
-body {
+.page-ajuda-wrapper h1,
+.page-ajuda-wrapper h2,
+.page-ajuda-wrapper h3,
+.page-ajuda-wrapper h4,
+.page-ajuda-wrapper h5,
+.page-ajuda-wrapper h6,
+.page-ajuda-wrapper p,
+.page-ajuda-wrapper span,
+.page-ajuda-wrapper a,
+.page-ajuda-wrapper button {
+    color: var(--corpo-texto);
+}
+
+.page-ajuda-wrapper {
     display: flex;
     width: 100%;
     height: auto;
@@ -15,7 +32,7 @@ body {
     overflow-x: hidden;
 }
 
-html {
+.page-ajuda-wrapper {
     overflow-x: hidden;
     width: 100%;
 }
@@ -58,7 +75,7 @@ html {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-main {
+.page-ajuda-wrapper main {
     display: flex;
     width: 100%;
     height: auto;
@@ -416,7 +433,7 @@ h3:hover {
 }
 
 @media (max-width: 480px) {
-    body {
+    .page-ajuda-wrapper {
         width: 100vw;
         max-width: 100vw;
     }

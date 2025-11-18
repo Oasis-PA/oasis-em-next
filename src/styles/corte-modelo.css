@@ -1,16 +1,15 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* Estilos gerais e melhorias */
-body, html {
-    width: 100%;
-    margin: 0; 
-    padding: 0;
-    box-sizing: border-box; 
-}
 
-html {
+.page-corte-modelo-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     overflow-x: hidden;
 }
 
-main {
+.page-corte-modelo-wrapper main {
     width: 100%;
     display: flex;
     flex-direction: column;
