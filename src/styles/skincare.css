@@ -3,7 +3,11 @@
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
-.page-skincare-wrapper * {
+/* ⚠️ IMPORTANTE: Não aplicar estilos ao header - ele é global */
+.page-skincare-wrapper > div,
+.page-skincare-wrapper main,
+.page-skincare-wrapper section,
+.page-skincare-wrapper article {
     margin: 0;
     padding: 0;
     box-sizing: border-box;

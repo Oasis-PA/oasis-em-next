@@ -1,7 +1,23 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-produto-wrapper * {
+.page-produto-wrapper > div,
+.page-produto-wrapper main,
+.page-produto-wrapper section,
+.page-produto-wrapper article {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+.page-produto-wrapper h1,
+.page-produto-wrapper h2,
+.page-produto-wrapper h3,
+.page-produto-wrapper h4,
+.page-produto-wrapper h5,
+.page-produto-wrapper h6,
+.page-produto-wrapper p,
+.page-produto-wrapper span,
+.page-produto-wrapper a,
+.page-produto-wrapper button {
   box-sizing: border-box;
 }
 

@@ -2,13 +2,8 @@
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
-main * {
-    margin: 0;
-    padding: 0;
-    color: var(--corpo-texto);
-}
-
-body {
+/* ⚠️ CRÍTICO: Usar .page-meuperfil-after-wrapper em vez de body/html global */
+.page-meuperfil-after-wrapper {
     display: flex;
     width: 100%;
     height: auto;
@@ -16,10 +11,13 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    overflow-x: hidden;
 }
 
-html {
-    overflow-x: hidden;
+.page-meuperfil-after-wrapper main * {
+    margin: 0;
+    padding: 0;
+    color: var(--corpo-texto);
 }
 
 main {

@@ -1,9 +1,12 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-tinturas-wrapper * {
+/* IMPORTANTE: Não aplicar estilos ao header - ele é global */
+.page-tinturas-wrapper > div,
+.page-tinturas-wrapper main,
+.page-tinturas-wrapper section,
+.page-tinturas-wrapper article {
     margin: 0;
     padding: 0;
     width: 100%;
-   
 }
 
 .representam{

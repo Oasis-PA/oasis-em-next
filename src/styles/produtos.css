@@ -1,7 +1,23 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-produtos-wrapper * {
+.page-produtos-wrapper > div,
+.page-produtos-wrapper main,
+.page-produtos-wrapper section,
+.page-produtos-wrapper article {
     margin: 0;
     padding: 0;
+    color: var(--corpo-texto);
+}
+
+.page-produtos-wrapper h1,
+.page-produtos-wrapper h2,
+.page-produtos-wrapper h3,
+.page-produtos-wrapper h4,
+.page-produtos-wrapper h5,
+.page-produtos-wrapper h6,
+.page-produtos-wrapper p,
+.page-produtos-wrapper span,
+.page-produtos-wrapper a,
+.page-produtos-wrapper button {
     color: var(--corpo-texto);
 }
 
@@ -17,9 +33,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url(../../public/images/produtos/fundo.png);
-}
-
-html {
     overflow-x: hidden;
 }
 

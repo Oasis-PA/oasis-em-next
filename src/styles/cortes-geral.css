@@ -1,7 +1,24 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-cortes-wrapper * {
+.page-cortes-wrapper > div,
+.page-cortes-wrapper main,
+.page-cortes-wrapper section,
+.page-cortes-wrapper article {
     margin: 0;
     padding: 0;
+    color: var(--corpo-texto);
+    box-sizing: border-box;
+}
+
+.page-cortes-wrapper h1,
+.page-cortes-wrapper h2,
+.page-cortes-wrapper h3,
+.page-cortes-wrapper h4,
+.page-cortes-wrapper h5,
+.page-cortes-wrapper h6,
+.page-cortes-wrapper p,
+.page-cortes-wrapper span,
+.page-cortes-wrapper a,
+.page-cortes-wrapper button {
     color: var(--corpo-texto);
     box-sizing: border-box;
 }

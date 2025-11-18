@@ -3,7 +3,7 @@
 /* CONFIGURAÇÕES GLOBAIS E RESET      */
 /* ================================== */
 
-:root {
+.page-cronograma-wrapper {
   /* Variáveis de cor e fonte para fácil manutenção */
   --font-primary: "PLAYFUL RUNWAY", sans-serif;
   --font-secondary: "THE NEXT FONT", sans-serif;
@@ -1107,7 +1107,7 @@
 
 /* TABLETS E TELAS MENORES (<= 1024px) */
 @media screen and (max-width: 1024px) {
-  :root {
+  .page-cronograma-wrapper {
     --item-min-width: 280px;
     --item-height: 220px;
     --butao-height: auto;
@@ -1137,7 +1137,7 @@
 
 /* CELULARES GRANDES E TABLETS EM RETRATO (<= 768px) */
 @media screen and (max-width: 768px) {
-  :root {
+  .page-cronograma-wrapper {
     --item-min-width: 250px;
     --item-height: 200px;
     --carousel-gap: 8px;
@@ -1182,7 +1182,7 @@
 
 /* CELULARES (<= 480px) */
 @media screen and (max-width: 480px) {
-  :root {
+  .page-cronograma-wrapper {
     --item-min-width: 85%;
     --item-height: 180px;
   }

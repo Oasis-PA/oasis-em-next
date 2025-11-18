@@ -1,7 +1,22 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-infantil-wrapper * {
+/* IMPORTANTE: Não aplicar estilos ao header ou nav - eles são globais */
+.page-infantil-wrapper > div,
+.page-infantil-wrapper main,
+.page-infantil-wrapper section {
     margin: 0;
     padding: 0;
+}
+
+/* Aplicar cor apenas a elementos de texto, não ao header */
+.page-infantil-wrapper h1,
+.page-infantil-wrapper h2,
+.page-infantil-wrapper h3,
+.page-infantil-wrapper h4,
+.page-infantil-wrapper h5,
+.page-infantil-wrapper h6,
+.page-infantil-wrapper p,
+.page-infantil-wrapper span,
+.page-infantil-wrapper a {
     color: var(--corpo-texto);
 }
 

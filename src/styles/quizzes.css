@@ -1,7 +1,23 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-quizzes-wrapper * {
+.page-quizzes-wrapper > div,
+.page-quizzes-wrapper main,
+.page-quizzes-wrapper section,
+.page-quizzes-wrapper article {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+.page-quizzes-wrapper h1,
+.page-quizzes-wrapper h2,
+.page-quizzes-wrapper h3,
+.page-quizzes-wrapper h4,
+.page-quizzes-wrapper h5,
+.page-quizzes-wrapper h6,
+.page-quizzes-wrapper p,
+.page-quizzes-wrapper span,
+.page-quizzes-wrapper a,
+.page-quizzes-wrapper button {
     box-sizing: border-box;
 }
 
