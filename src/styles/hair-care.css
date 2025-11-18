@@ -2,43 +2,25 @@
 /* ================================== */
 /* CONFIGURAÇÕES GLOBAIS E TEMAS      */
 /* ================================== */
-.page-haircare-wrapper > div,
-.page-haircare-wrapper main,
-.page-haircare-wrapper section,
-.page-haircare-wrapper article {
+.page-haircare-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.page-haircare-wrapper h1,
-.page-haircare-wrapper h2,
-.page-haircare-wrapper h3,
-.page-haircare-wrapper h4,
-.page-haircare-wrapper h5,
-.page-haircare-wrapper h6,
-.page-haircare-wrapper p,
-.page-haircare-wrapper span,
-.page-haircare-wrapper a,
-.page-haircare-wrapper button {
-    box-sizing: border-box;
-}
-
-.page-haircare-wrapper {
+:root {
     --body-back: #ffffff;
     --corpo-texto: #000000;
 }
 
-.dark .page-haircare-wrapper {
+.dark:root{
     --body-back: #0e0e0e;
     --corpo-texto: #ffffff;
 }
 
-/* ⚠️ CRÍTICO: Usar seletor scoped em vez de body, html global */
-/* Este CSS agora só afeta elementos DENTRO de .page-haircare-wrapper */
-.page-haircare-wrapper {
+body, html {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     background-color: var(--body-back);
     color: var(--corpo-texto);
     overflow-x: hidden;

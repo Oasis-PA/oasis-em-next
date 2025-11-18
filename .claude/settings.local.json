@@ -72,9 +72,7 @@
       "Bash(npx:*)",
       "Bash(git push:*)",
       "Bash(find:*)",
-      "Bash(curl:*)",
-      "Bash(git revert:*)",
-      "Bash(npm run test:functional:*)"
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

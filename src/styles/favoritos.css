@@ -4,27 +4,14 @@
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* ---- RESET E CONFIGURAÇÕES GLOBAIS ---- */
-.page-favoritos-wrapper > div,
-.page-favoritos-wrapper main,
-.page-favoritos-wrapper section,
-.page-favoritos-wrapper article {
+.page-favoritos-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.page-favoritos-wrapper h1,
-.page-favoritos-wrapper h2,
-.page-favoritos-wrapper h3,
-.page-favoritos-wrapper h4,
-.page-favoritos-wrapper h5,
-.page-favoritos-wrapper h6,
-.page-favoritos-wrapper p,
-.page-favoritos-wrapper span,
-.page-favoritos-wrapper a,
-.page-favoritos-wrapper button {
+.page-favoritos-wrapper * {
     color: var(--corpo-texto);
-    box-sizing: border-box;
 }
 
 .page-favoritos-wrapper {

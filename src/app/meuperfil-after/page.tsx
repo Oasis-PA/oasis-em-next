@@ -9,7 +9,7 @@ import "@/styles/meuperfil-after.css";
 
 export default function meuperfilafter() {
   return (
-    <div className="page-meuperfil-after-wrapper">
+    <>
     <Header/>
       <main>
         <div>
@@ -118,6 +118,6 @@ export default function meuperfilafter() {
         </div>
       </section>
       <Footer/>
-    </div>
+   </>
   );
 }

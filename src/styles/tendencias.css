@@ -1,23 +1,7 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-tendencias-wrapper > div,
-.page-tendencias-wrapper main,
-.page-tendencias-wrapper section,
-.page-tendencias-wrapper article {
+.page-tendencias-wrapper * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-.page-tendencias-wrapper h1,
-.page-tendencias-wrapper h2,
-.page-tendencias-wrapper h3,
-.page-tendencias-wrapper h4,
-.page-tendencias-wrapper h5,
-.page-tendencias-wrapper h6,
-.page-tendencias-wrapper p,
-.page-tendencias-wrapper span,
-.page-tendencias-wrapper a,
-.page-tendencias-wrapper button {
     box-sizing: border-box;
 }
 
