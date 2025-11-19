@@ -294,26 +294,25 @@ button {
 
 /* --- SEÇÃO 2: GRID DE DESTAQUE --- */
 .segundo {
-    background-image: url('/images/tendencias/group465.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 90vw;
-    max-width: 1280px;
+    width: 100%;
+    max-width: 1680px;
     padding: clamp(2rem, 3vw, 3rem);
     margin-top: clamp(2rem, 8vw, 8rem); 
     border-radius: 20px;
-    
-    display: grid;
-    /* Duas colunas */
-    grid-template-columns: 1.5fr 1fr; 
-    gap: clamp(2rem, 3vw, 3rem);
+    display: flex;
+    justify-content: space-between;
+    gap: clamp(1.5rem, 2vw, 3rem);
 }
 
-/* Coluna da Esquerda */
 .segundo-col-esq {
     display: flex;
     flex-direction: column;
+    background-image: url('/images/tendencias/a.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: clamp(3.5rem, 4vw, 4rem);
+    flex: 1;
+    min-width: 0;
 }
 
 #tit-4 {
@@ -333,7 +332,7 @@ button {
 
 .produtss {
     display: grid; 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(1rem, 1.5vw, 1.5rem);
     margin-top: clamp(1rem, 2vw, 2rem);
 }
@@ -346,8 +345,6 @@ button {
     background-position: center;
     position: relative;
     border-radius: 20px;
-    
-    /* Novo: Usa Flex para posicionar texto e botão */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -360,15 +357,13 @@ button {
 .produt2 { background-image: url('/images/tendencias/produ-2.png'); }
 .produt3 { background-image: url('/images/tendencias/produ-3.png'); }
 
-/* NOVO: Alinhamento do texto sem position:absolute e transform */
 .produt1 p, .produt2 p, .produt3 p {
     color: #FFF;
     text-align: center;
     font-size: clamp(0.9rem, 1.2vw, 1.2rem);
     width: 100%;
-    margin-bottom: 0.5rem; /* Espaçamento acima do botão */
+    margin-bottom: 0.5rem;
     padding: 0 0.5rem;
-    /* Removido position, bottom e transform */
 }
 
 #but-2, #but-4 {
@@ -377,17 +372,16 @@ button {
     font-size: clamp(0.85rem, 1.1vw, 1.1rem);
     display: flex;
     height: auto;
-    padding: 0.5rem 1.5rem;
+    padding: clamp(0.5rem, 0.8vw, 1rem) clamp(1.5rem, 2vw, 2.5rem);
     justify-content: center;
     align-items: center;
     border-radius: 0.16rem;
     background: #F2A518;
     border-color: transparent;
     cursor: pointer;
-    position: relative; /* Para o efeito hover */
+    position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    /* Removido position: absolute */
 }
 
 #but-3, #but-5 {
@@ -399,16 +393,16 @@ button {
     z-index: 10;
 }
 
-/* Coluna da Direita */
 .segundo-col-dir {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
-    border-radius: 20px;
-    padding: clamp(1.5rem, 2vw, 2rem);
-    /* Removido transform: translateY */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-image: url('/images/tendencias/b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: clamp(3.5rem, 4vw, 4rem);
+    flex: 1;
+    min-width: 0;
 }
 
 #img-direita {
@@ -461,7 +455,7 @@ button {
     text-align: center;
     font-size: clamp(0.9rem, 1.2vw, 1.2rem);
     display: flex;
-    padding: 0.6rem 1.5rem;
+    padding: clamp(0.6rem, 1vw, 1.2rem) clamp(1.5rem, 2vw, 2.5rem);
     justify-content: center;
     align-items: center;
     border-radius: 0.16rem;
@@ -475,8 +469,6 @@ button {
     margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
-
-/* --- SEÇÃO 3: LAYOUT DE DUAS COLUNAS COM GRID --- */
 .terceiro {
     display: grid;
     grid-template-columns: 1fr 1fr;
