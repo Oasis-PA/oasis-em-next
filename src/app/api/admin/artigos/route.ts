@@ -1,9 +1,14 @@
 // src/app/api/admin/artigos/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { protectAdminRoute } from '@/lib/verify-admin-token';
 
 // GET - Listar todos os artigos com tags
 export async function GET(request: NextRequest) {
+  // Verifica autenticação admin
+  const authError = await protectAdminRoute(request);
+  if (authError) return authError;
+
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
@@ -42,6 +47,10 @@ export async function GET(request: NextRequest) {
 
 // POST - Criar novo artigo com tags
 export async function POST(request: NextRequest) {
+  // Verifica autenticação admin
+  const authError = await protectAdminRoute(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const { 

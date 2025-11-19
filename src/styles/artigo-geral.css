@@ -358,11 +358,12 @@ main > h5:hover {
 .seção2 {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 24px;
+    grid-template-columns: 389px 718px 389px;
+    grid-template-rows: auto;
+    gap: 3.3%;
     width: 100%;
     margin: 2rem 0;
+    justify-content: center;
 }
 
 .grupo-4, .grupo-5, .grupo-6 {
@@ -370,6 +371,7 @@ main > h5:hover {
     height: auto;
     display: flex;
     flex-direction: column;
+    position: relative;
     transition: all 0.3s ease;
     text-decoration: none;
 }
@@ -379,16 +381,40 @@ main > h5:hover {
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo-4 > img, .grupo-5 > img, .grupo-6 > img {
-    width: 100%;
-    height: auto;
+/* GRUPO 4 e 6 - Artigos das extremidades (389x469) */
+.grupo-4 > img, .grupo-6 > img {
+    width: 389px;
+    height: 469px;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
-    aspect-ratio: 3 / 4;
 }
 
-.grupo-4 > h4, .grupo-5 > h4, .grupo-6 > h4 {
+.grupo-4 > .data, .grupo-6 > .data {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 2;
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.9rem, 1vw, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.grupo-4 > svg, .grupo-6 > svg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    width: 16px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.grupo-4 > h4, .grupo-6 > h4 {
     font-family: "The Next Font";
     font-size: clamp(1.25rem, 2vw, 24px);
     font-style: normal;
@@ -398,7 +424,7 @@ main > h5:hover {
     color: var(--text-color);
 }
 
-.descrição-s2 {
+.grupo-4 > .descrição-s2, .grupo-6 > .descrição-s2 {
     font-family: "Louis George Cafe";
     font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
@@ -410,17 +436,124 @@ main > h5:hover {
     color: var(--text-color);
 }
 
-#data4 {
-    margin: 0.5rem 0 0 0;
-    color: var(--text-color);
+.Cartegorias-s2 {
+    display: flex;
+    gap: 10px;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
 }
 
-.grupo-4 > svg, .grupo-5 > svg, .grupo-6 > svg {
-    margin: 0.5rem 0 0 0;
-    align-self: flex-end;
+.Cartegorias-s2 p {
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.9rem, 1vw, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    padding: 2px 12px;
+    border-radius: 30px;
+    border: 1px solid var(--border, #585858);
+    color: var(--text-color);
+    height: 21px;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* GRUPO 5 - Artigo do meio (718x469) */
+.grupo-5 {
+    position: relative;
+    top: 10.6%;
+}
+
+.grupo-5 > img {
+    width: 718px;
+    height: 469px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+}
+
+.grupo-5 > .data {
+    position: absolute;
+    top: 4.1rem;
+    left: 1rem;
+    z-index: 2;
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.9rem, 1vw, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    color: #000000;
+}
+
+.grupo-5 > svg {
+    position: absolute;
+    top: 5rem;
+    right: 1rem;
+    z-index: 2;
     width: 16px;
     height: 22px;
     flex-shrink: 0;
+}
+
+.grupo-5 > h4 {
+    position: absolute;
+    top: 55%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 77%;
+    text-align: left;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(3rem, 4vw, 55px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.grupo-5 > .descrição-s2 {
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 1.5vw, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    height: auto;
+    margin: 0.5rem 0 0 0;
+    color: var(--text-color);
+    transform: translatey(-90%);
+}
+
+.Cartegorias-s2-meio {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Cartegorias-s2-meio p {
+    font-family: "Louis George Cafe";
+    font-size: clamp(0.9rem, 1vw, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    padding: 2px 12px;
+    border-radius: 30px;
+    border: 1px solid #FFF;
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFF;
+    height: 21px;
+    flex-shrink: 0;
+    margin: 0;
 }
 
 /* LINHAS DE ARTIGOS */
@@ -430,22 +563,19 @@ main > h5:hover {
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     width: 100%;
+    
 }
 
 .grupos-linha1 {
-    margin-bottom: 24px;
+    margin-bottom: 6.2%;
+    margin-top: 3.2%;
 }
 
 .grupos-linha1 > a, .grupos-linha2 > a {
     position: relative;
     width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    aspect-ratio: 9 / 11;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem;
     transition: all 0.3s ease;
     text-decoration: none;
 }
@@ -456,19 +586,18 @@ main > h5:hover {
 }
 
 .grupos-linha1 > a > img, .grupos-linha2 > a > img {
-    width: 100%;
-    height: 100%;
+    width: 378.51px;
+    height: 357.24px;
     object-fit: cover;
     object-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
+    border-radius: 40px;
 }
 
 .data-linha {
-    position: static;
-    z-index: 1;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 2;
     color: #ffffff;
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
@@ -488,24 +617,20 @@ main > h5:hover {
 }
 
 .h4-linha {
-    position: static;
-    z-index: 1;
-    color: #FFF;
-    width: 90%;
+    color: var(--text-color);
+    width: 100%;
     font-family: "The Next Font";
     font-size: clamp(1.25rem, 2vw, 24px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top: auto;
+    margin-top: 0.75rem;
     margin-bottom: 0.5rem;
 }
 
 .descrição-linha {
-    position: static;
-    z-index: 1;
-    color: #FFF;
-    width: 85%;
+    color: var(--text-color);
+    width: 100%;
     height: auto;
     font-family: "Louis George Cafe";
     font-size: clamp(1rem, 1.5vw, 20px);
@@ -516,8 +641,6 @@ main > h5:hover {
 }
 
 .Cartegorias-linha {
-    position: static;
-    z-index: 1;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -529,10 +652,9 @@ main > h5:hover {
     height: 21px;
     flex-shrink: 0;
     border-radius: 30px;
-    border: 1px solid #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border, #585858);
     font-family: "Louis George Cafe";
-    color: #FFF;
+    color: var(--text-color);
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
@@ -541,7 +663,6 @@ main > h5:hover {
     padding: 2px 12px;
     margin: 0;
 }
-
 /* SEÇÃO 3 - Layout Especial */
 .seção3 {
     grid-column: 1 / -1;
@@ -745,10 +866,134 @@ main > h5:hover {
     margin: 0;
 }
 
+/* CRONOGRAMA CAPILAR */
+.cronograma-capilar
+{
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 24px;
+    align-items: start;
+    width: 100%;
+    margin: 3rem 0;
+}
+
+.cronograma-capilar > img{
+    grid-row: 1 / 3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.cronograma-capilar > img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+.cronograma-capilar > h5{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    align-self: end;
+    width: 100%;
+    font-family: "The Next Font";
+    font-size: clamp(3.5rem, 8vw, 110px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    padding: 2px 12px;
+    margin: 0;
+    transition: text-shadow 0.3s ease;
+}
+
+.cronograma-capilar > h5:hover {
+    text-shadow: 0 2px 8px var(--shadow);
+}
+
+.cronograma-capilar > button{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    align-self: start;
+    border-radius: 27px;
+    background: #722F53;
+    border-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    width: fit-content;
+    height: 49px;
+    padding: 8px 39px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cronograma-capilar > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 1;
+}
+
+.cronograma-capilar > button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.08);
+}
+
+.cronograma-capilar > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cronograma-capilar > button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.05);
+}
+
+.cronograma-capilar > button p { 
+    color: #f3f3f3;
+    text-align: center;
+    font-family: "The Next Font";
+    font-size: clamp(1rem, 1.5vw, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    z-index: 2;
+}
+
+#linha
+{
+    grid-column: 1 / -1;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 2rem 0;
+}
+
 /* RESPONSIVO */
 @media (max-width: 768px) {
     .seção2 {
         grid-template-columns: 1fr;
+    }
+    
+    .grupo-4 > img, .grupo-5 > img, .grupo-6 > img {
+        width: 100%;
+        height: auto;
     }
     
     .grupos-linha1, .grupos-linha2 {
@@ -830,132 +1075,4 @@ main > h5:hover {
         gap: 1rem;
         margin-top: 1rem;
     }
-}
-
-.cronograma-capilar
-{
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 0 24px;
-    align-items: start;
-    width: 100%;
-    margin: 3rem 0;
-}
-
-.cronograma-capilar > img{
-    grid-row: 1 / 3;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: all 0.3s ease; /* --- ADICIONADO --- */
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px var(--shadow);
-}
-
-.cronograma-capilar > h5{
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    align-self: end;
-    width: 100%;
-    font-family: "The Next Font";
-    font-size: clamp(3.5rem, 8vw, 110px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.1;
-    padding: 2px 12px;
-    margin: 0;
-    transition: text-shadow 0.3s ease; /* --- ADICIONADO --- */
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > h5:hover {
-    text-shadow: 0 2px 8px var(--shadow);
-}
-
-/* --- BOTÃO MODIFICADO --- */
-.cronograma-capilar > button{
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    align-self: start;
-    border-radius: 27px;
-    background: #722F53;
-    border-style: none;
-    margin-top: 1.5rem;
-    display: flex;
-    width: fit-content;
-    height: 49px;
-    padding: 8px 39px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    cursor: pointer;
-    
-    /* --- Efeitos adicionados --- */
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-    z-index: 1;
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button:hover {
-    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
-    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
-    transform: translateY(-3px) scale(1.08);
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-/* --- ADICIONADO --- */
-.cronograma-capilar > button:active {
-    background: #5E332C;
-    transform: translateY(-1px) scale(1.05);
-}
-
-/* --- MODIFICADO (para ficar sobre o efeito) --- */
-.cronograma-capilar > button p { 
-    color: #f3f3f3;
-    text-align: center;
-    font-family: "The Next Font";
-    font-size: clamp(1rem, 1.5vw, 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative; /* --- ADICIONADO --- */
-    z-index: 2; /* --- ADICIONADO --- */
-}
-
-#linha
-{
-    grid-column: 1 / -1;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin: 2rem 0;
 }

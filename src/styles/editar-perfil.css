@@ -5,13 +5,19 @@
 /* ============================================
    BASE STYLES - Isolados para perfil/gerenciamento
    ============================================ */
-/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-perfil-wrapper main *,
-.page-gerenciamento-wrapper main * {
+/* ⚠️ ISOLAMENTO DE ESTILOS - Aplicado apenas ao container principal */
+.page-perfil-wrapper,
+.page-gerenciamento-wrapper {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
+}
+
+/* Reset seletivo apenas para elementos que precisam */
+.page-perfil-wrapper main,
+.page-gerenciamento-wrapper main {
+    margin: 0;
+    padding: 0;
 }
 
 :root {
@@ -55,8 +61,8 @@
 /* ============================================
    LAYOUT CONTAINER
    ============================================ */
-.layout-container,
-.config-body {
+.page-perfil-wrapper .layout-container,
+.page-gerenciamento-wrapper .layout-container {
     display: flex;
     min-height: 100vh;
     position: relative;
@@ -154,12 +160,13 @@
    ============================================ */
 .layout-content {
     flex: 1;
-    margin-left: clamp(240px, 17%, 300px); 
+    margin-left: clamp(240px, 17%, 300px);
     padding-bottom: 120px;
     transition: margin-left 0.3s ease;
 }
 
-main {
+.page-perfil-wrapper main,
+.page-gerenciamento-wrapper main {
     max-width: 900px;
     padding: 60px 40px;
     margin: 0 auto;
@@ -250,7 +257,8 @@ figcaption {
 /* ============================================
    FORM - Compartilhado
    ============================================ */
-form {
+.page-perfil-wrapper form,
+.page-gerenciamento-wrapper form {
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -574,9 +582,10 @@ form {
 
 
 /* ============================================
-   FOOTER
+   FOOTER - Isolado para /perfil e /gerenciamento
    ============================================ */
-footer {
+.page-perfil-wrapper footer,
+.page-gerenciamento-wrapper footer {
     position: fixed;
     bottom: 0;
     left: clamp(240px, 17%, 300px);
@@ -598,8 +607,8 @@ footer {
    MENSAGEM DE FEEDBACK
    ============================================ */
 main > p:last-child {
-    position: fixed;
-    bottom: 120px;
+    position: absolute;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #4CAF50;
@@ -607,7 +616,7 @@ main > p:last-child {
     padding: 12px 24px;
     border-radius: 8px;
     font-size: 16px;
-    z-index: 1000;
+    z-index: 50;
 }
 
 /* ============================================
@@ -627,9 +636,13 @@ main > p:last-child {
         display: flex;
     }
 
-    .layout-content, footer {
+    .layout-content {
         margin-left: 0;
-        left: 0;
+    }
+
+    footer {
+        margin-left: 0;
+        margin-top: 20px;
     }
 
     main {
@@ -680,6 +693,8 @@ main > p:last-child {
         flex-direction: column;
         padding: 15px;
         gap: 10px;
+        margin-left: 0;
+        margin-top: 15px;
     }
 
     footer .btn {

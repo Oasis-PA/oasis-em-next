@@ -89,11 +89,12 @@ export default async function ArtigosPage() {
   const ultimosArtigos = artigos.slice(15);
 
   return (
-    <div className="artigos-page-wrapper">
-      <h5>Artigos</h5>
-      <p>Explore nossos artigos sobre beleza, cuidados e muito mais</p>
+    <div className="page-artigo-wrapper">
+      <div className="artigos-page-wrapper">
+        <h5>Artigos</h5>
+        <p>Explore nossos artigos sobre beleza, cuidados e muito mais</p>
 
-      <main>
+        <main>
           <h5>Recentes</h5>
 
           {/* GRUPO 1 - Artigo Mais Recente (Hero) */}
@@ -164,67 +165,95 @@ export default async function ArtigosPage() {
               </div>
             </Link>
           )}
+          
           {/* SEÇÃO 2 - Grade de 3 Artigos */}
           <div className="seção2">
-            {/* GRUPO 4 */}
+            {/* GRUPO 4 - Artigo Esquerdo (389x469) */}
             {quartoQuinto[0] && (
               <Link href={`/artigo/${quartoQuinto[0].slug}`} key={quartoQuinto[0].id} className="grupo-4">
                 {quartoQuinto[0].imagemHeader && (
-                  <img src={quartoQuinto[0].imagemHeader} alt={quartoQuinto[0].titulo} />
+                  <img 
+                    src={quartoQuinto[0].imagemHeader} 
+                    alt={quartoQuinto[0].titulo}
+                    width={389}
+                    height={469}
+                  />
                 )}
-                <h4>{truncateText(quartoQuinto[0].titulo, DISPLAY_LIMITS.titulo.card)}</h4>
-                <p className="descrição-s2">
-                  {truncateText(quartoQuinto[0].resumo || '', DISPLAY_LIMITS.resumo.card)}
-                </p>
                 <p className="data" id="data4">{formatDate(quartoQuinto[0].criadoEm, quartoQuinto[0].atualizadoEm)}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                   <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinejoin="round"/>
                 </svg>
-              </Link>
-            )}
-
-            {/* GRUPO 5 */}
-            {quartoQuinto[1] && (
-              <Link href={`/artigo/${quartoQuinto[1].slug}`} key={quartoQuinto[1].id} className="grupo-5">
-                <p id="descri" className="descrição-s2">
-                  {truncateText(quartoQuinto[1].resumo || '', DISPLAY_LIMITS.resumo.card)}
+                <h4>{truncateText(quartoQuinto[0].titulo, DISPLAY_LIMITS.titulo.card)}</h4>
+                <p className="descrição-s2">
+                  {truncateText(quartoQuinto[0].resumo || '', DISPLAY_LIMITS.resumo.card)}
                 </p>
-                <div className="Cartegorias-grupo5">
-                  {quartoQuinto[1].ArtigoTag.slice(0, DISPLAY_LIMITS.tags.max).map((at) => (
+                <div className="Cartegorias-s2">
+                  {quartoQuinto[0].ArtigoTag.slice(0, DISPLAY_LIMITS.tags.max).map((at) => (
                     <p key={at.tagId}>{truncateTag(at.Tag.nome, DISPLAY_LIMITS.tags.maxLength)}</p>
                   ))}
                 </div>
-                {quartoQuinto[1].imagemHeader && (
-                  <img src={quartoQuinto[1].imagemHeader} alt={quartoQuinto[1].titulo} />
+              </Link>
+            )}
+
+            {/* GRUPO 5 - Artigo do Meio (718x469) */}
+            {quartoQuinto[1] && (
+              <Link href={`/artigo/${quartoQuinto[1].slug}`} key={quartoQuinto[1].id} className="grupo-5">
+              <p className="descrição-s2">
+                  {truncateText(quartoQuinto[1].resumo || '', DISPLAY_LIMITS.resumo.card)}
+                </p> 
+                 {quartoQuinto[1].imagemHeader && (
+                  <img 
+                    src={quartoQuinto[1].imagemHeader} 
+                    alt={quartoQuinto[1].titulo}
+                    width={718}
+                    height={469}
+                  />
                 )}
                 <p className="data" id="data5">{formatDate(quartoQuinto[1].criadoEm, quartoQuinto[1].atualizadoEm)}</p>
+                 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
                   <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
                 </svg>
                 <h4>{truncateText(quartoQuinto[1].titulo, DISPLAY_LIMITS.titulo.destaque)}</h4>
+               
+                <div className="Cartegorias-s2-meio">
+                  {quartoQuinto[1].ArtigoTag.slice(0, DISPLAY_LIMITS.tags.max).map((at) => (
+                    <p key={at.tagId}>{truncateTag(at.Tag.nome, DISPLAY_LIMITS.tags.maxLength)}</p>
+                  ))}
+                </div>
               </Link>
             )}
 
-            {/* GRUPO 6 (se houver um terceiro artigo na seção2) */}
+            {/* GRUPO 6 - Artigo Direito (389x469) */}
             {artigoGrande && (
               <Link href={`/artigo/${artigoGrande.slug}`} key={artigoGrande.id} className="grupo-4">
                 {artigoGrande.imagemHeader && (
-                  <img src={artigoGrande.imagemHeader} alt={artigoGrande.titulo} />
+                  <img 
+                    src={artigoGrande.imagemHeader} 
+                    alt={artigoGrande.titulo}
+                    width={389}
+                    height={469}
+                  />
                 )}
+                <p className="data" id="data6">{formatDate(artigoGrande.criadoEm, artigoGrande.atualizadoEm)}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
+                  <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinejoin="round"/>
+                </svg>
                 <h4>{truncateText(artigoGrande.titulo, DISPLAY_LIMITS.titulo.card)}</h4>
                 <p className="descrição-s2">
                   {truncateText(artigoGrande.resumo || '', DISPLAY_LIMITS.resumo.card)}
                 </p>
-                <p className="data" id="data4">{formatDate(artigoGrande.criadoEm, artigoGrande.atualizadoEm)}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" fill="none">
-                  <path d="M1 1V21L8 16.4545L15 21V1H1Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinejoin="round"/>
-                </svg>
+                <div className="Cartegorias-s2">
+                  {artigoGrande.ArtigoTag.slice(0, DISPLAY_LIMITS.tags.max).map((at) => (
+                    <p key={at.tagId}>{truncateTag(at.Tag.nome, DISPLAY_LIMITS.tags.maxLength)}</p>
+                  ))}
+                </div>
               </Link>
             )}
             
-            <img src="/images/artigo-geral/gloss.png" alt="Gloss" id="mulher-gloss" />
           </div>
- <img id="linha" src="/images/artigo-geral/linha.png" alt="" />
+          
+          <img id="linha" src="/images/artigo-geral/linha.png" alt="" />
 
           {/* LINHAS DE ARTIGOS QUADRUPLOS */}
           {gruposQuadruplos.length > 0 && (
@@ -283,13 +312,14 @@ export default async function ArtigosPage() {
             </>
           )}
 
-       <section className="cronograma-capilar">
+          {/* SEÇÃO CRONOGRAMA CAPILAR */}
+          <section className="cronograma-capilar">
             <img src="/images/artigo-geral/img cronograma capilar.png" alt="Mulher com cabelo cacheado" />
-            <h5> Voce já fez o seu cronograma capilar?</h5>
+            <h5>Você já fez o seu cronograma capilar?</h5>
             <button>
-                <p>CRONOGRAMA</p>
+              <p>CRONOGRAMA</p>
             </button>
-        </section>
+          </section>
 
           {/* SEÇÃO 3 - Últimos Artigos em Layout Especial */}
           {ultimosArtigos.length > 0 && (
@@ -352,5 +382,6 @@ export default async function ArtigosPage() {
           )}
         </main>
       </div>
+    </div>
   );
 }

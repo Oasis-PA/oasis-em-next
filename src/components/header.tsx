@@ -75,6 +75,18 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
         <Link href="/skincare" onClick={handleLinkClick}>Skincare</Link>
         <Link href="/cronograma-capilar" onClick={handleLinkClick}>Cronograma Capilar</Link>
         <Link href="/infantil" onClick={handleLinkClick}>Infantil</Link>
+
+        {/* Divisor */}
+        <hr style={{ margin: '15px 0', borderColor: 'rgba(0,0,0,0.1)' }} />
+
+        {/* Links de usuário */}
+        {user && (
+          <>
+            <Link href="/perfil" onClick={handleLinkClick}>Editar Perfil</Link>
+            <Link href="/gerenciamento" onClick={handleLinkClick}>Gerenciamento de Conta</Link>
+            <Link href="/favoritos" onClick={handleLinkClick}>Favoritos</Link>
+          </>
+        )}
       </nav>
 
       <header style={headerStyle} className={`${theme} ${className || ''}`}>
@@ -109,7 +121,8 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
                   {isPopupVisible && (
                     <div className="user-popup">
                       <p>Olá, {user.nome}!</p>
-                      <Link href="/perfil" onClick={() => setPopupVisible(false)}>Meu Perfil</Link>
+                      <Link href="/perfil" onClick={() => setPopupVisible(false)}>Editar Perfil</Link>
+                      <Link href="/gerenciamento" onClick={() => setPopupVisible(false)}>Gerenciamento de Conta</Link>
                       <button onClick={handleLogout}>Sair</button>
                     </div>
                   )}

@@ -71,7 +71,8 @@
       "Bash(node test-db.js:*)",
       "Bash(npx:*)",
       "Bash(git push:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

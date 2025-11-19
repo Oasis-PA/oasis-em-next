@@ -1,8 +1,26 @@
 import { defineConfig } from 'cypress';
 
+// Detectar a porta dinamicamente
+function getBaseUrl(): string {
+  // 1. Verificar variável de ambiente CYPRESS_BASE_URL (maior prioridade)
+  if (process.env.CYPRESS_BASE_URL) {
+    return process.env.CYPRESS_BASE_URL;
+  }
+
+  // 2. Verificar variável PORT (usada pelo Next.js dev server)
+  if (process.env.PORT) {
+    return `http://localhost:${process.env.PORT}`;
+  }
+
+  // 3. Verificar NODE_ENV para determinar porta padrão
+  // Se for produção, usar 3000; se for teste, usar 3001
+  const port = process.env.NODE_ENV === 'test' ? 3001 : 3000;
+  return `http://localhost:${port}`;
+}
+
 export default defineConfig({
   e2e: {
-    baseUrl: process.env.CYPRESS_BASE_URL || 'http://localhost:3001',
+    baseUrl: getBaseUrl(),
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
