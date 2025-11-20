@@ -1,21 +1,9 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-cortes-wrapper * {
-    margin: 0;
-    padding: 0;
-    color: var(--corpo-texto);
-    box-sizing: border-box;
-}
-
-.page-cortes-wrapper > header,
-.page-cortes-wrapper > header * {
-    padding: inherit;
-    color: inherit;
-}
-
 .page-cortes-wrapper {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
+    color: var(--corpo-texto);
 }
 
 .page-cortes-wrapper img {
