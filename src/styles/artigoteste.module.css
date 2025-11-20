@@ -1,5 +1,18 @@
-/* ⚠️ CRÍTICO: Não usar seletores globais que afetam o header */
-/* Usar apenas .pageArtigoWrapper para isolar estilos */
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.wrapper * {
+    margin: 0;
+    padding: 0;
+    color: var(--corpo-texto);
+    box-sizing: border-box;
+}
 
 .pageArtigoWrapper {
     width: 100%;

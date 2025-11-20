@@ -84,7 +84,8 @@
       "Bash(do if grep -q \"^\\.page-\" \"$css\")",
       "Bash(then echo \"$css | ✅ Wrapper scoped\")",
       "Bash(else echo \"$css | ❌ Globais\")",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(timeout 30 npm run dev:*)"
     ],
     "deny": [],
     "ask": []

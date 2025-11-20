@@ -100,7 +100,7 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     (artigo.atualizadoEm.getTime() - artigo.criadoEm.getTime() > 60000);
 
   return (
-    <div className={styles.pageArtigoWrapper}>
+    <div className={styles.wrapper}>
       {imagemHeader ? (
         <Header
           backgroundImage={imagemHeader}
@@ -109,8 +109,9 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
       ) : (
         <Header theme={themeDark ? "dark" : undefined} />
       )}
-      <main className={styles.mainWrapper}>
-        <article className={styles.articleContent}>
+      <div className={styles.pageArtigoWrapper}>
+        <main className={styles.mainWrapper}>
+          <article className={styles.articleContent}>
           {/* Botão de favorito no topo */}
           <div className={styles.artigoFavoritoTopo}>
             <FavoriteButton
@@ -196,7 +197,8 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
             {artigo.conteudo}
           </ReactMarkdown>
         </article>
-      </main>
+        </main>
+      </div>
       <Footer/>
     </div>
   );

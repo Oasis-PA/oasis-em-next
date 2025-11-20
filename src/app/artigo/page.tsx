@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { Header, Footer } from "@/components";
 import '@/styles/artigo-geral.css';
 
 export const dynamic = 'force-dynamic';
@@ -27,11 +28,13 @@ export default async function ArtigosListPage() {
   });
 
   return (
-    <main className="artigos-container">
-      <div className="artigos-header">
-        <h1 className="artigos-titulo">Nossos Artigos</h1>
-        <p className="artigos-subtitulo">Descubra dicas e conteúdos exclusivos sobre beleza e cuidados</p>
-      </div>
+    <>
+      <Header />
+      <main className="artigos-container">
+        <div className="artigos-header">
+          <h1 className="artigos-titulo">Nossos Artigos</h1>
+          <p className="artigos-subtitulo">Descubra dicas e conteúdos exclusivos sobre beleza e cuidados</p>
+        </div>
 
       <div className="artigos-grid">
         {artigos
@@ -64,7 +67,9 @@ export default async function ArtigosListPage() {
               </Link>
             );
           })}
-      </div>
-    </main>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

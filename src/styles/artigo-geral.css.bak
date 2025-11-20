@@ -1,20 +1,20 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-/* artigo-geral.module.css - Sem seletores globais, apenas classes */
+/* artigo-geral.css - ATUALIZADO PARA NEXT.JS */
 
-.pageArtigoWrapper {
+.page-artigo-wrapper * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* WRAPPER PRINCIPAL */
-.artigosPageWrapper {
+/* WRAPPER PRINCIPAL (substitui body) */
+.artigos-page-wrapper {
     background-color: var(--bg-color);
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-.artigosPageWrapperH5 {
+.artigos-page-wrapper > h5 {
     text-align: center;
     font-family: "PLAYFUL RUNWAY";
     font-size: clamp(2.5rem, 6vw, 96px);
@@ -25,11 +25,11 @@
     transition: text-shadow 0.3s ease;
 }
 
-.artigosPageWrapperH5:hover {
+.artigos-page-wrapper > h5:hover {
     text-shadow: 0 2px 8px var(--shadow);
 }
 
-.artigosPageWrapperP {
+.artigos-page-wrapper > p {
     text-align: center;
     font-family: "PLAYFUL RUNWAY";
     font-size: clamp(1rem, 2vw, 24px);
@@ -43,7 +43,7 @@
     padding: 0 1rem;
 }
 
-.main {
+.page-artigo-wrapper main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
@@ -53,7 +53,7 @@
     width: 100%;
 }
 
-.mainH5 {
+main>h5 {
     grid-column: 1 / -1;
     font-family: "The Next Font";
     font-size: clamp(2rem, 3vw, 45px);
@@ -64,12 +64,12 @@
     transition: text-shadow 0.3s ease;
 }
 
-.mainH5:hover {
+main > h5:hover {
     text-shadow: 0 2px 8px var(--shadow);
 }
 
 /* GRUPO 1 - Hero Principal */
-.grupo1 {
+.grupo-1 {
     grid-column: 1 / span 7;
     grid-row: 1 / span 2;
     position: relative;
@@ -81,14 +81,16 @@
     transition: all 0.3s ease;
     display: block;
     text-decoration: none;
+      overflow: hidden;
+    transition: all 0.3s ease; /* --- ADICIONADO --- */
 }
 
-.grupo1:hover {
+.grupo-1:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo1Svg {
+.grupo-1 > svg {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -98,16 +100,17 @@
     flex-shrink: 0;
 }
 
-.grupo1Img {
+.grupo-1 > img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    
 }
 
-.grupo1P {
+.grupo-1 > p {
     position: absolute;
     z-index: 1;
     line-height: normal;
@@ -121,7 +124,7 @@
     color: #FFF;
 }
 
-.grupo1H4 {
+.grupo-1 > h4 {
     position: absolute;
     z-index: 1;
     margin: 0;
@@ -148,7 +151,7 @@
     flex-wrap: wrap;
 }
 
-.CartegoriaDiv {
+.Cartegorias > div {
     border-radius: 30px;
     border: 1px solid #FFF;
     background: rgba(245, 238, 238, 0.15);
@@ -157,20 +160,19 @@
     flex-shrink: 0;
 }
 
-.CartegoriaDivP {
+.Cartegorias > div > p {
     color: #ffffff;
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: normal;  
     text-align: center;
     margin: 0;
 }
 
 /* GRUPOS 2 e 3 - Cards Laterais */
-.grupo2,
-.grupo3 {
+.grupo-2, .grupo-3 {
     grid-column: 8 / span 5;
     display: grid;
     grid-template-columns: minmax(150px, 1fr) 1fr;
@@ -182,32 +184,24 @@
     text-decoration: none;
 }
 
-.grupo2 {
-    grid-row: 1 / 2;
-}
+.grupo-2 { grid-row: 1 / 2; }
+.grupo-3 { grid-row: 2 / 3; }
 
-.grupo3 {
-    grid-row: 2 / 3;
-}
-
-.grupo2:hover,
-.grupo3:hover {
+.grupo-2:hover, .grupo-3:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo2Img,
-.grupo3Img {
+.grupo-2 > img, .grupo-3 > img {
     grid-area: 1 / 1 / 5 / 2;
-    width: 100%;
+     width: 100%;
     height: 344px;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
 }
 
-.grupo2Svg,
-.grupo3Svg {
+.grupo-2 > svg, .grupo-3 > svg {
     grid-area: 1 / 2 / 2 / 3;
     justify-self: end;
     margin: 0.5rem 0.5rem 0 0;
@@ -216,8 +210,7 @@
     flex-shrink: 0;
 }
 
-.grupo2H4,
-.grupo3H4 {
+.grupo-2 > h4, .grupo-3 > h4 {
     grid-area: 2 / 2 / 3 / 3;
     font-family: "The Next Font";
     font-size: clamp(1.25rem, 2vw, 24px);
@@ -227,8 +220,7 @@
     color: var(--text-color);
 }
 
-.grupo2P,
-.grupo3P {
+.grupo-2 > p, .grupo-3 > p {
     margin: 0;
     width: 100%;
     height: auto;
@@ -256,7 +248,7 @@
 }
 
 /* CATEGORIAS LADO DIREITO */
-.CartegoriaLadodireito {
+.Cartegorias-ladodireito {
     grid-area: 4 / 2 / 5 / 3;
     display: flex;
     gap: 19px;
@@ -265,7 +257,7 @@
     flex-wrap: wrap;
 }
 
-.CartegoriaLadodireitoP {
+.Cartegorias-ladodireito p {
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
@@ -307,7 +299,7 @@
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.sorriso {
+#sorriso {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -317,7 +309,7 @@
     flex-shrink: 0;
 }
 
-.dataBox {
+#data {
     border-radius: 30px;
     background: #FFF;
     width: fit-content;
@@ -326,7 +318,7 @@
     margin: 0;
 }
 
-.dataBoxP {
+#data p {
     text-align: center;
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
@@ -337,9 +329,9 @@
     color: #000;
 }
 
-.textoBox {
+#texto {
     border-radius: 30px;
-    background: #FFF;
+    background: #FFF;   
     width: 100%;
     max-width: 627px;
     height: auto;
@@ -347,7 +339,7 @@
     padding: 1.5rem;
 }
 
-.textoBoxH5 {
+#texto h5 {
     font-family: "The Next Font";
     font-size: clamp(2.5rem, 5vw, 64px);
     font-style: normal;
@@ -359,7 +351,7 @@
     color: #000;
 }
 
-.carteSeção {
+#carte-seção {
     margin: 1rem 0 0 0;
 }
 
@@ -375,9 +367,7 @@
     justify-content: center;
 }
 
-.grupo4,
-.grupo5,
-.grupo6 {
+.grupo-4, .grupo-5, .grupo-6 {
     width: 100%;
     height: auto;
     display: flex;
@@ -387,16 +377,13 @@
     text-decoration: none;
 }
 
-.grupo4:hover,
-.grupo5:hover,
-.grupo6:hover {
+.grupo-4:hover, .grupo-5:hover, .grupo-6:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
 /* GRUPO 4 e 6 - Artigos das extremidades (389x469) */
-.grupo4Img,
-.grupo6Img {
+.grupo-4 > img, .grupo-6 > img {
     width: 389px;
     height: 469px;
     object-fit: cover;
@@ -404,9 +391,11 @@
     border-radius: 8px;
 }
 
-.grupo4Data,
-.grupo6Data {
+.grupo-4 > .data, .grupo-6 > .data {
+    
+   
     left: 1rem;
+    
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
@@ -416,16 +405,18 @@
     color: var(--text-color);
 }
 
-.grupo4Svg,
-.grupo6Svg {
+.grupo-4 > svg, .grupo-6 > svg {
+   
+   
+   
     margin-left: 90%;
     width: 16px;
     height: 22px;
     flex-shrink: 0;
 }
 
-.grupo4H4,
-.grupo6H4 {
+
+.grupo-4 > h4, .grupo-6 > h4 {
     font-family: "The Next Font";
     font-size: clamp(1.25rem, 2vw, 24px);
     font-style: normal;
@@ -435,8 +426,7 @@
     color: var(--text-color);
 }
 
-.grupo4Descrição,
-.grupo6Descrição {
+.grupo-4 > .descrição-s2, .grupo-6 > .descrição-s2 {
     font-family: "Louis George Cafe";
     font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
@@ -448,14 +438,14 @@
     color: var(--text-color);
 }
 
-.CartegoriaS2 {
+.Cartegorias-s2 {
     display: flex;
     gap: 10px;
     margin-top: 0.5rem;
     flex-wrap: wrap;
 }
 
-.CartegoriaS2P {
+.Cartegorias-s2 p {
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
@@ -472,12 +462,12 @@
 }
 
 /* GRUPO 5 - Artigo do meio (718x469) */
-.grupo5 {
+.grupo-5 {
     position: relative;
     top: 10.6%;
 }
 
-.grupo5Img {
+.grupo-5 > img {
     width: 718px;
     height: 469px;
     object-fit: cover;
@@ -485,7 +475,7 @@
     border-radius: 8px;
 }
 
-.grupo5Data {
+.grupo-5 > .data {
     position: absolute;
     top: 4.1rem;
     left: 1rem;
@@ -499,7 +489,7 @@
     color: #000000;
 }
 
-.grupo5Svg {
+.grupo-5 > svg {
     position: absolute;
     top: 5rem;
     right: 1rem;
@@ -509,7 +499,7 @@
     flex-shrink: 0;
 }
 
-.grupo5H4 {
+.grupo-5 > h4 {
     position: absolute;
     top: 55%;
     left: 48%;
@@ -526,7 +516,7 @@
     margin: 0;
 }
 
-.grupo5Descrição {
+.grupo-5 > .descrição-s2 {
     font-family: "Louis George Cafe";
     font-size: clamp(1rem, 1.5vw, 20px);
     font-style: normal;
@@ -539,7 +529,7 @@
     transform: translatey(-90%);
 }
 
-.CartegoriaS2Meio {
+.Cartegorias-s2-meio {
     position: absolute;
     bottom: 1rem;
     left: 50%;
@@ -551,7 +541,7 @@
     justify-content: center;
 }
 
-.CartegoriaS2MeioP {
+.Cartegorias-s2-meio p {
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
@@ -569,22 +559,21 @@
 }
 
 /* LINHAS DE ARTIGOS */
-.gruposLinha1,
-.gruposLinha2 {
+.grupos-linha1, .grupos-linha2 {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     width: 100%;
+    
 }
 
-.gruposLinha1 {
+.grupos-linha1 {
     margin-bottom: 6.2%;
     margin-top: 3.2%;
 }
 
-.gruposLinha1Link,
-.gruposLinha2Link {
+.grupos-linha1 > a, .grupos-linha2 > a {
     position: relative;
     width: 100%;
     display: flex;
@@ -593,14 +582,12 @@
     text-decoration: none;
 }
 
-.gruposLinha1Link:hover,
-.gruposLinha2Link:hover {
+.grupos-linha1 > a:hover, .grupos-linha2 > a:hover {
     transform: scale(1.04);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.gruposLinha1Img,
-.gruposLinha2Img {
+.grupos-linha1 > a > img, .grupos-linha2 > a > img {
     width: 378.51px;
     height: 357.24px;
     object-fit: cover;
@@ -608,7 +595,7 @@
     border-radius: 40px;
 }
 
-.dataLinha {
+.data-linha {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -621,7 +608,7 @@
     line-height: normal;
 }
 
-.saveIcon {
+.save-icon {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -631,7 +618,7 @@
     flex-shrink: 0;
 }
 
-.h4Linha {
+.h4-linha {
     color: var(--text-color);
     width: 100%;
     font-family: "The Next Font";
@@ -643,7 +630,7 @@
     margin-bottom: 0.5rem;
 }
 
-.descriçãoLinha {
+.descrição-linha {
     color: var(--text-color);
     width: 100%;
     height: auto;
@@ -655,13 +642,13 @@
     margin-bottom: 0.5rem;
 }
 
-.CartegoriaLinha {
+.Cartegorias-linha {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.CartegoriaLinhaP {
+.Cartegorias-linha p {
     width: auto;
     min-width: 81px;
     height: 21px;
@@ -678,7 +665,6 @@
     padding: 2px 12px;
     margin: 0;
 }
-
 /* SEÇÃO 3 - Layout Especial */
 .seção3 {
     grid-column: 1 / -1;
@@ -690,7 +676,7 @@
     margin: 2rem 0;
 }
 
-.grupo6Seção3 {
+.grupo-6 {
     grid-row: 1 / 3;
     grid-column: 1 / 2;
     position: relative;
@@ -705,16 +691,16 @@
     text-decoration: none;
 }
 
-.grupo6Seção3:hover {
+.grupo-6:hover {
     transform: scale(1.04);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo6SeçãoImg {
+.grupo-6 > img {
     display: none;
 }
 
-.datas3 {
+.grupo-6 > #datas3 {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -725,7 +711,7 @@
     font-size: clamp(0.9rem, 1vw, 16px);
 }
 
-.grupo6SeçãoSvg {
+.grupo-6 > svg {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -737,7 +723,7 @@
     flex-shrink: 0;
 }
 
-.grupo6SeçãoH4 {
+.grupo-6 > h4 {
     position: absolute;
     bottom: 4rem;
     left: 1rem;
@@ -753,7 +739,7 @@
     height: auto;
 }
 
-.CartegoriaG6 {
+.Cartegorias-g6 {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
@@ -764,7 +750,7 @@
     gap: 10px;
 }
 
-.CartegoriaG6P {
+.Cartegorias-g6 p {
     width: auto;
     min-width: 81px;
     height: 21px;
@@ -783,23 +769,17 @@
     margin: 0;
 }
 
-.linha1,
-.linha2 {
+.linha1, .linha2 {
     grid-column: 2 / 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
 }
 
-.linha1 {
-    grid-row: 1 / 2;
-}
+.linha1 { grid-row: 1 / 2; }
+.linha2 { grid-row: 2 / 3; }
 
-.linha2 {
-    grid-row: 2 / 3;
-}
-
-.grupo7 {
+.grupo-7 {
     position: relative;
     width: 100%;
     border-radius: 8px;
@@ -808,12 +788,12 @@
     text-decoration: none;
 }
 
-.grupo7:hover {
+.grupo-7:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.grupo7Img {
+.grupo-7 > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -821,7 +801,7 @@
     aspect-ratio: 1 / 1;
 }
 
-.grupo7H4 {
+.grupo-7 > h4 {
     color: #ffffff;
     font-family: "The Next Font";
     font-size: clamp(2rem, 3vw, 45px);
@@ -849,7 +829,7 @@
     line-height: normal;
 }
 
-.grupo7Svg {
+.grupo-7 > svg {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -859,7 +839,7 @@
     flex-shrink: 0;
 }
 
-.CartegoriaG7 {
+.Cartegorias-g7 {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
@@ -869,7 +849,7 @@
     flex-wrap: wrap;
 }
 
-.CartegoriaG7P {
+.Cartegorias-g7 p {
     width: auto;
     min-width: 81px;
     height: 21px;
@@ -889,7 +869,8 @@
 }
 
 /* CRONOGRAMA CAPILAR */
-.cronogramaCapilar {
+.cronograma-capilar
+{
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -900,7 +881,7 @@
     margin: 3rem 0;
 }
 
-.cronogramaCapilarImg {
+.cronograma-capilar > img{
     grid-row: 1 / 3;
     width: 100%;
     height: 100%;
@@ -909,12 +890,12 @@
     transition: all 0.3s ease;
 }
 
-.cronogramaCapilarImg:hover {
+.cronograma-capilar > img:hover {
     transform: scale(1.03);
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-.cronogramaCapilarH5 {
+.cronograma-capilar > h5{
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     align-self: end;
@@ -929,11 +910,11 @@
     transition: text-shadow 0.3s ease;
 }
 
-.cronogramaCapilarH5:hover {
+.cronograma-capilar > h5:hover {
     text-shadow: 0 2px 8px var(--shadow);
 }
 
-.cronogramaCapilarButton {
+.cronograma-capilar > button{
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     align-self: start;
@@ -955,7 +936,7 @@
     overflow: hidden;
 }
 
-.cronogramaCapilarButton::before {
+.cronograma-capilar > button::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -969,23 +950,23 @@
     z-index: 1;
 }
 
-.cronogramaCapilarButton:hover {
+.cronograma-capilar > button:hover {
     background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
     box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
     transform: translateY(-3px) scale(1.08);
 }
 
-.cronogramaCapilarButton:hover::before {
+.cronograma-capilar > button:hover::before {
     width: 300px;
     height: 300px;
 }
 
-.cronogramaCapilarButton:active {
+.cronograma-capilar > button:active {
     background: #5E332C;
     transform: translateY(-1px) scale(1.05);
 }
 
-.cronogramaCapilarButtonP {
+.cronograma-capilar > button p { 
     color: #f3f3f3;
     text-align: center;
     font-family: "The Next Font";
@@ -997,7 +978,8 @@
     z-index: 2;
 }
 
-.linha {
+#linha
+{
     grid-column: 1 / -1;
     width: 100%;
     height: auto;
@@ -1010,31 +992,28 @@
     .seção2 {
         grid-template-columns: 1fr;
     }
-
-    .grupo4Img,
-    .grupo5Img,
-    .grupo6Img {
+    
+    .grupo-4 > img, .grupo-5 > img, .grupo-6 > img {
         width: 100%;
         height: auto;
     }
-
-    .gruposLinha1,
-    .gruposLinha2 {
+    
+    .grupos-linha1, .grupos-linha2 {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 700px) {
-    .artigosPageWrapperH5 {
+    .artigos-page-wrapper > h5 {
         font-size: 48px;
     }
-
-    .artigosPageWrapperP {
+    
+    .artigos-page-wrapper > p {
         font-size: 1rem;
         margin-bottom: 2rem;
     }
 
-    .main {
+    .page-artigo-wrapper main {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -1042,26 +1021,22 @@
         margin-top: 2rem;
     }
 
-    .mainH5 {
+    main > h5 {
         position: static;
         margin-top: 1rem;
         margin-left: 0;
         font-size: 32px;
     }
-
-    .grupo1 {
+    
+    .grupo-1 {
         margin-left: 0;
         margin-top: 1rem;
         width: 100%;
         height: auto;
         aspect-ratio: 775 / 500;
     }
-
-    .grupo2,
-    .grupo3,
-    .grupo4,
-    .grupo5,
-    .grupo6 {
+    
+    .grupo-2, .grupo-3, .grupo-4, .grupo-5, .grupo-6 {
         margin-top: 2rem;
         width: 100%;
         display: grid;
@@ -1069,36 +1044,34 @@
         grid-template-rows: auto auto 1fr auto;
         gap: 10px 20px;
     }
-
+    
     .seção {
         width: 100%;
         aspect-ratio: 4 / 3;
         margin-top: 2rem;
     }
-
+    
     .seção2 {
         display: flex;
         flex-direction: column;
         gap: 2rem;
         margin-top: 2rem;
     }
-
-    .gruposLinha1,
-    .gruposLinha2 {
+    
+    .grupos-linha1, .grupos-linha2 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         margin-top: 2rem;
     }
-
+    
     .seção3 {
         display: flex;
         flex-direction: column;
         margin-top: 2rem;
     }
-
-    .linha1,
-    .linha2 {
+    
+    .linha1, .linha2 {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
