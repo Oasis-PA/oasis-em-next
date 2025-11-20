@@ -74,7 +74,11 @@
       "Bash(find:*)",
       "Bash(curl:*)",
       "Bash(git revert:*)",
-      "Bash(npm run test:functional:*)"
+      "Bash(npm run test:functional:*)",
+      "Bash(npm run cypress:open:*)",
+      "Bash(npm run test:seed:clean:*)",
+      "Bash(node scripts/validate-tests.js:*)",
+      "Bash(node scripts/validate-tests.cjs:*)"
     ],
     "deny": [],
     "ask": []

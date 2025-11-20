@@ -12,51 +12,51 @@
     font-family: "Louis George Cafe", sans-serif;
 }
 
-main {
+.page-artigo-wrapper main {
     position: relative;
-    width: 100%; 
-    max-width: 1200px; 
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
 }
 
-main > article {
-    width: 100%; 
-    padding: 100px 5%; 
+.page-artigo-wrapper main > article {
+    width: 100%;
+    padding: 100px 5%;
     margin-top: -200px;
     background-color: #ffffff;
     color: var(--corpo-texto);
-    border-radius: 8px 8px 0 0; 
+    border-radius: 8px 8px 0 0;
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.15);
     z-index: 1000;
     margin-bottom: 3rem;
 }
 
-main > article h1 {
+.page-artigo-wrapper main > article h1 {
     font-size: clamp(2.25rem, 5vw, 3rem);
     font-weight: 700;
     line-height: 1.2;
 }
 
-main > article h3 {
+.page-artigo-wrapper main > article h3 {
     font-size: clamp(1.5rem, 4vw, 2.3rem);
     font-weight: 700;
     line-height: 1.3;
 }
 
-main > article p,
-main > article li {
+.page-artigo-wrapper main > article p,
+.page-artigo-wrapper main > article li {
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     font-weight: 400;
     line-height: 1.6;
 }
 
-main > article p {
+.page-artigo-wrapper main > article p {
     text-align: justify;
 }
 
-main > article a {
+.page-artigo-wrapper main > article a {
     font-family: 'Louis George Cafe';
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     font-weight: 400;
@@ -65,21 +65,21 @@ main > article a {
     color: #AA35B0;
 }
 
-main > article > h1,
-main > article > h3,
-main > article > p,
-main > article > ul,
-main > article > ol,
-main > article > figure 
+.page-artigo-wrapper main > article > h1,
+.page-artigo-wrapper main > article > h3,
+.page-artigo-wrapper main > article > p,
+.page-artigo-wrapper main > article > ul,
+.page-artigo-wrapper main > article > ol,
+.page-artigo-wrapper main > article > figure
 {
-    margin-bottom: clamp(2rem, 5vw, 4rem); 
+    margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
 
-main > article > ul {
+.page-artigo-wrapper main > article > ul {
     list-style-type: disc;
     list-style-position: inside;
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 
 .artigo-figura {
@@ -207,8 +207,8 @@ main > article > ul {
 
 /* --- MEDIA QUERIES --- */
 
-@media (max-width: 1600px) { 
-    main > article { 
+@media (max-width: 1600px) {
+    .page-artigo-wrapper main > article {
         margin-top: -200px;
         width: 90%;
     }
@@ -216,13 +216,13 @@ main > article > ul {
 
 /* Para telas menores (tablets e celulares grandes) */
 @media (max-width: 768px) {
-    main > article {
+    .page-artigo-wrapper main > article {
         margin-top: -200px;
         padding: 60px 5%;
         width: 90%;
     }
 
-    main > article > ul {
+    .page-artigo-wrapper main > article > ul {
         padding-left: 10px;
     }
 
@@ -244,18 +244,14 @@ main > article > ul {
 
 /* Para celulares */
 @media (max-width: 480px) {
-    header {
-        height: 300px;
-    }
-
-    main > article {
+    .page-artigo-wrapper main > article {
         margin-top: -120px;
         padding: 40px 5%;
         width: 90%;
     }
-    
-    main > article p {
-        text-align: left; 
+
+    .page-artigo-wrapper main > article p {
+        text-align: left;
     }
 
     /* Ajustes para favorito e datas em mobile */

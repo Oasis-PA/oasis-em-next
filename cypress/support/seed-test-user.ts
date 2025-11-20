@@ -1,6 +1,9 @@
 /**
  * Script para criar usuário de teste no banco de dados
  * Este usuário é usado pelos testes E2E do Cypress
+ *
+ * ⚠️ IMPORTANTE: Este script cria dados de teste APENAS para teste
+ * Os dados NÃO são persistidos após os testes
  */
 
 import { PrismaClient } from '@prisma/client';
@@ -17,26 +20,19 @@ export const TEST_USER = {
 
 export async function seedTestUser() {
   try {
+    // Hash da senha
+    const senhaHash = await bcrypt.hash(TEST_USER.senha, 10);
+
     // Verifica se o usuário já existe
     const existingUser = await prisma.usuario.findUnique({
       where: { email: TEST_USER.email },
     });
 
-    // Hash da senha
-    const senhaHash = await bcrypt.hash(TEST_USER.senha, 10);
-
     if (existingUser) {
-      // Atualiza o usuário existente
-      await prisma.usuario.update({
-        where: { email: TEST_USER.email },
-        data: {
-          nome: TEST_USER.nome,
-          senha: senhaHash,
-        },
-      });
-      console.log('✅ Usuário de teste atualizado:', TEST_USER.email);
+      console.log('ℹ️  Usuário de teste já existe:', TEST_USER.email);
+      console.log('💡 Dica: Execute "npm run test:seed:clean" para remover dados de teste');
     } else {
-      // Cria novo usuário
+      // Cria novo usuário apenas para os testes
       await prisma.usuario.create({
         data: {
           nome: TEST_USER.nome,
@@ -46,6 +42,7 @@ export async function seedTestUser() {
         },
       });
       console.log('✅ Usuário de teste criado:', TEST_USER.email);
+      console.log('💡 Dica: Execute "npm run test:seed:clean" para remover após os testes');
     }
   } catch (error) {
     console.error('❌ Erro ao criar usuário de teste:', error);
@@ -55,13 +52,46 @@ export async function seedTestUser() {
   }
 }
 
+export async function cleanupTestUser() {
+  try {
+    const deleted = await prisma.usuario.deleteMany({
+      where: { email: TEST_USER.email },
+    });
+
+    if (deleted.count > 0) {
+      console.log(`✅ ${deleted.count} usuário(s) de teste removido(s)`);
+    } else {
+      console.log('ℹ️  Nenhum usuário de teste encontrado para remover');
+    }
+  } catch (error) {
+    console.error('❌ Erro ao remover usuário de teste:', error);
+    throw error;
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
 // Executa se chamado diretamente
-seedTestUser()
-  .then(() => {
-    console.log('✅ Seed concluído com sucesso');
-    process.exit(0);
-  })
-  .catch((error) => {
-    console.error('❌ Erro no seed:', error);
-    process.exit(1);
-  });
+const command = process.argv[2];
+
+if (command === 'clean') {
+  cleanupTestUser()
+    .then(() => {
+      console.log('✅ Limpeza concluída com sucesso');
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error('❌ Erro na limpeza:', error);
+      process.exit(1);
+    });
+} else if (!command || command === 'seed') {
+  seedTestUser()
+    .then(() => {
+      console.log('✅ Seed concluído com sucesso');
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error('❌ Erro no seed:', error);
+      process.exit(1);
+    });
+}

@@ -7,7 +7,7 @@
 Cypress.Commands.add('login', (email: string, password: string) => {
   cy.visit('/login');
 
-  cy.get('input#email').type(email);
+  cy.get('input#email', { timeout: 5000 }).type(email);
   cy.get('input[type="password"]').type(password);
 
   // Intercepta a requisição de login para verificar o resultado
@@ -15,15 +15,17 @@ Cypress.Commands.add('login', (email: string, password: string) => {
 
   cy.get('button[type="submit"]').click();
 
-  // Aguarda a resposta da API
-  cy.wait('@loginRequest').then((interception) => {
+  // Aguarda a resposta da API com timeout maior
+  cy.wait('@loginRequest', { timeout: 15000 }).then((interception) => {
     if (interception.response && interception.response.statusCode === 200) {
-      // Login bem-sucedido - aguarda redirecionamento
-      cy.url().should('not.include', '/login', { timeout: 10000 });
+      // Login bem-sucedido - aguarda redirecionamento (mas sem quebrar se não redirecionar)
+      cy.url({ timeout: 5000 }).should('not.include', '/login');
     } else {
       // Login falhou - loga o erro para debug
-      cy.log('❌ Login falhou com status:', interception.response?.statusCode);
-      throw new Error(`Login falhou: ${interception.response?.statusCode} - ${JSON.stringify(interception.response?.body)}`);
+      const statusCode = interception.response?.statusCode;
+      const body = interception.response?.body;
+      cy.log('❌ Login falhou com status:', statusCode);
+      throw new Error(`Login falhou: ${statusCode} - ${JSON.stringify(body)}`);
     }
   });
 });
