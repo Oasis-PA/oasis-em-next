@@ -1,0 +1,798 @@
+/* CSS Modules para cortes-geral */
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.wrapper * {
+    margin: 0;
+    padding: 0;
+    color: var(--corpo-texto);
+    box-sizing: border-box;
+}
+
+.wrapper > header,
+.wrapper > header * {
+    padding: inherit;
+    color: inherit;
+}
+
+.wrapper img {
+    max-width: 100%;
+    height: auto;
+}
+
+.voceProcura {
+    background-color: #768791;
+    width: 100vw;
+    height: auto;
+    display: flex;
+}
+
+.textoProcura {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    margin-left: 5%;
+    color: white;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    max-width: 78.6875rem;
+    padding-bottom: 20px;
+    line-height: 1.1;
+    transition: transform 0.3s ease;
+}
+
+.textoProcura:hover {
+    transform: translateX(-10px);
+}
+
+.temos {
+    color: #FFF;
+    max-width: 78.6875rem;
+    font-family: 'The Next Font';
+    font-size: clamp(3rem, 15vw, 8rem);
+    font-style: normal;
+    font-weight: 400;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.temos:hover {
+    transform: scale(1.03);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.mudarVisual {
+    color: #FFF;
+    font-family: 'Louis George Cafe';
+    font-size: clamp(1.5rem, 5.5vw, 2.8125rem);
+    font-style: normal;
+    font-weight: 400;
+    max-width: 78.6875rem;
+    transition: transform 0.3s ease;
+}
+
+.mudarVisual:hover {
+    transform: translateX(-5px);
+}
+
+@media (max-width: 900px) {
+    .voceProcura {
+        flex-direction: column;
+        width: 100vw;
+        padding: 20px 0;
+        align-items: center;
+    }
+    .textoProcura {
+        width: 90%;
+        margin-left: 0;
+        align-items: center;
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.h1MelhorCortes {
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: 110px;
+    margin-top: 71px;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.h1MelhorCortes:hover {
+    color: #722F53;
+    transform: scale(1.03);
+}
+
+.p1 {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 71px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.p1:hover {
+    transform: translateY(-5px);
+    color: #5E332C;
+}
+
+.sectionArtigos {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.sectionArtigos img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.sectionArtigos img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+.divArtigo {
+    flex-direction: column;
+    margin-left: 70px;
+    margin-top: 40px;
+}
+
+.divArtigo2 {
+    flex-direction: column;
+    margin-right: 70px;
+    margin-top: 40px;
+}
+
+.h1TituloArtigo {
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 42px;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.h1TituloArtigo:hover {
+    color: #722F53;
+    transform: translateX(8px);
+}
+
+.p2 {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    letter-spacing: 0.05em;
+    margin-top: 20px;
+    text-align: justify;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease;
+}
+
+.p2:hover {
+    transform: translateX(5px);
+}
+
+.button1 {
+    background: #722F53;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 100;
+    font-size: 22px;
+    width: 200px;
+    height: 53px;
+    cursor: pointer;
+    margin-top: 33px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.button1::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.button1:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.button1:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 30px rgba(114, 47, 83, 0.6);
+    transform: translateY(-5px) scale(1.08);
+}
+
+.button1:active {
+    background: #5E332C;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.button1 a {
+   font-size: 22px;
+}
+
+/* Most visited section */
+.sectionMaisVisitados {
+    margin-top: 70px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.h1MaisVisitados {
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.h1MaisVisitados:hover {
+    color: #5E332C;
+    transform: scale(1.05);
+}
+
+.p3 {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.p3:hover {
+    transform: translateY(-3px);
+}
+
+.divMaisVisitados {
+    margin-top: 62px;
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    max-width: 1610px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divMaisVisitados img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.divMaisVisitados img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(94, 51, 44, 0.4);
+    filter: brightness(1.1);
+}
+
+.esquerda {
+    display: flex;
+}
+
+.direita {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.topo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.base {
+    display: flex;
+}
+
+@media (max-width: 900px) {
+    .divMaisVisitados {
+        flex-direction: column;
+        gap: 24px;
+        max-width: 100%;
+    }
+
+    .topo {
+        gap: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+.sectionSugestaoCortes {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #5E332C;
+    margin-top: 70px;
+    align-items: start;
+    padding: 50px 7vw 20px 7vw;
+}
+
+.divTitulos {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1800px;
+    justify-content: center;
+}
+
+.h1Cabelos {
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+    color: #FFFFFF;
+    margin-right: 70px;
+    display: flex;
+    justify-content: flex-start;
+    margin-right: auto;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.h1Cabelos:hover {
+    transform: translateX(10px);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.divBotaoSeta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 60px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.divBotaoSeta button {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.setaNav {
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.setaNav:hover {
+    transform: scale(1.2);
+}
+
+.setaMargin {
+    margin-left: 16px;
+}
+
+.button2 {
+    border: none;
+    color: white;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 29px;
+    width: 261px;
+    height: 70px;
+    background: #F2A518;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.button2::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.button2:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.button2:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFD700 100%);
+    box-shadow: 0px 10px 30px rgba(242, 165, 24, 0.7);
+    transform: translateY(-5px) scale(1.08);
+}
+
+.button2:active {
+    background: #D89410;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.divImagens {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.divImagens a {
+    display: block;
+}
+
+.divImagens img {
+    max-width: 100%;
+    height: 50vh;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+}
+
+.divImagens img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    filter: brightness(1.15);
+}
+
+@media (max-width: 900px) {
+    .divImagens img {
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .divImagens img {
+        height: auto;
+    }
+}
+
+/* Complete list section */
+.sectionListaCompleta {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.h1ListaCompleta {
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: 96px;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.h1ListaCompleta:hover {
+    color: #722F53;
+    transform: scale(1.03);
+}
+
+.divLista {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.divLista a {
+    font-family: 'The Next Font', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    text-decoration: none;
+    color: var(--corpo-texto);
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.divLista a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #722F53;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.divLista a:hover {
+    color: #722F53;
+    transform: translateY(-3px);
+}
+
+.divLista a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.button3 {
+    margin-top: 50px;
+    margin-bottom: 70px;
+    width: 600px;
+    max-width: 90%;
+    height: 83px;
+    background: #5E332C;
+    border-radius: 45px;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 34px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.button3::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.button3:hover::before {
+    width: 700px;
+    height: 700px;
+}
+
+.button3:hover {
+    background: linear-gradient(135deg, #722F53 0%, #8B3A62 100%);
+    box-shadow: 0 15px 40px rgba(94, 51, 44, 0.6);
+    transform: translateY(-8px) scale(1.05);
+}
+
+.button3:active {
+    background: #47164A;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Helper classes */
+.desktopOnly {
+    display: inline;
+}
+
+@media (max-width: 1600px) {
+    .divMaisVisitados {
+        width: 90%;
+    }
+
+    .h1Cabelos {
+        font-size: 40px;
+        margin-right: 50px;
+    }
+    .divBotaoSeta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .divImagens {
+        justify-content: center;
+    }
+    .sectionSugestaoCortes {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .h1MelhorCortes {
+        font-size: 80px;
+        margin-top: 50px;
+    }
+
+    .p1 {
+        font-size: 35px;
+        margin-bottom: 50px;
+    }
+
+    .sectionArtigos {
+        flex-direction: column;
+    }
+
+    .sectionArtigos img {
+        order: 1;
+    }
+
+    .divArtigo, .divArtigo2 {
+        margin: 30px 0;
+        text-align: center;
+        order: 2;
+    }
+
+    .p2 {
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    .divTitulos {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .h1Cabelos {
+        margin-right: 0;
+        margin-bottom: 30px;
+        font-size: 35px;
+    }
+
+    .divMaisVisitados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .desktopOnly {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .sectionSugestaoCortes {
+        align-items: center;
+    }
+    .h1MelhorCortes {
+        font-size: 60px;
+        margin-top: 40px;
+    }
+
+    .p1 {
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
+
+    .h1TituloArtigo {
+        font-size: 30px;
+    }
+
+    .p2 {
+        font-size: 18px;
+    }
+
+    .h1MaisVisitados {
+        font-size: 35px;
+    }
+
+    .divLista {
+        gap: 20px;
+    }
+
+    .divLista a {
+        font-size: 24px;
+    }
+
+    .button3 {
+        width: 80%;
+        font-size: 28px;
+        height: 70px;
+    }
+
+    .h1ListaCompleta {
+        font-size: 60px;
+    }
+
+    .label {
+        width: 50px;
+        margin-top: -100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .h1MelhorCortes {
+        font-size: 40px;
+        margin-top: 30px;
+    }
+
+    .p1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .h1TituloArtigo {
+        font-size: 24px;
+    }
+
+    .p2 {
+        font-size: 16px;
+    }
+
+    .button1 {
+        width: 180px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .button1 a {
+        width: 180px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .h1MaisVisitados {
+        font-size: 30px;
+    }
+
+    .p3 {
+        font-size: 16px;
+    }
+
+    .divMaisVisitados {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .h1Cabelos {
+        font-size: 28px;
+    }
+
+    .button2 {
+        width: 200px;
+        height: 50px;
+        font-size: 22px;
+    }
+
+    .h1ListaCompleta {
+        font-size: 40px;
+    }
+
+    .divLista a {
+        font-size: 18px;
+    }
+
+    .button3 {
+        font-size: 22px;
+        height: 60px;
+    }
+
+    .label {
+        margin-top: -80px;
+        margin-bottom: 50px;
+    }
+}
