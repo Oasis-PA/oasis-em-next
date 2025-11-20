@@ -49,7 +49,7 @@
     max-width: 60ch;
 }
 
-#s1 {
+.s1 {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -60,7 +60,7 @@
     padding: 0 1rem;
 }
 
-#guia {
+.guia {
     margin-left: clamp(0.7rem, 5vw, 2.8rem);
     display: flex;
     flex-direction: row;
@@ -98,7 +98,7 @@
     width: auto;
 }
 
-#linha {
+.linha {
     width: 95%;
     background-color: black;
     height: 2px;
@@ -106,7 +106,8 @@
     margin-top: clamp(0.5rem, 2vw, 1rem);
 }
 
-#s2 {
+.s2 {
+  flex-flow: column nowrap;
     display: flex;
     width: 100%;
     max-width: 1800px;
@@ -130,7 +131,7 @@
     transform: scale(1.03);
 }
 
-#s2:empty::after {
+.s2:empty::after {
     content: "Nenhuma página encontrada para sua pesquisa.";
     display: block;
     text-align: center;
@@ -180,7 +181,7 @@
     margin-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
-#searchContainer {
+.searchContainer {
     position: relative;
     width: 95%;
     margin: clamp(1.5rem, 4vw, 2rem) auto;
@@ -188,7 +189,7 @@
     align-items: center;
 }
 
-#searchInput {
+.searchInput {
     width: 100%;
     padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
     padding-right: clamp(3rem, 8vw, 4rem);
@@ -211,7 +212,7 @@
     color: #aaa;
 }
 
-#searchIcon {
+.searchIcon {
     position: absolute;
     right: clamp(1rem, 3vw, 1.5rem);
     color: #8B4CB8;
@@ -229,7 +230,9 @@
         flex-direction: column;
     }
 
-    #s1{
+    .s1{
+      display: flex;
+      flex-flow: row;
         align-items: center;
         text-align: center;
         margin-left: 0;
@@ -237,6 +240,7 @@
 
     #guia{
         margin-left: 0;
+        display: flex;
     }
 
     .pagImg {

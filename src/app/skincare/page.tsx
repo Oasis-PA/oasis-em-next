@@ -163,14 +163,13 @@ export default function Skincare() {
                   </button>
                 </div>
               ))}
-              <div className={styles.imagemProduto} id={styles.prod1Bg}>
-                <h1>mais amados</h1>
+                              <div className={`${styles.imagemProduto} ${styles.prod1Bg}`}>                <h1>mais amados</h1>
               </div>
             </div>
 
             {/* SEGUNDO GRUPO - OPÇÃO ACESSÍVEL + 3 PRODUTOS */}
             <div className={styles.produtos}>
-              <div className={styles.imagemProduto} id={styles.prod2Bg}>
+              <div className={`${styles.imagemProduto} ${styles.prod2Bg}`}>
                 <h1>opção acessível</h1>
               </div>
               {segundoGrupo.map((produto) => (
@@ -207,7 +206,7 @@ export default function Skincare() {
                   </button>
                 </div>
               ))}
-              <div className={styles.imagemProduto} id={styles.prod3Bg}>
+              <div className={`${styles.imagemProduto} ${styles.prod3Bg}`}>
                 <h1>natural/<br></br>vegano</h1>
               </div>
             </div>
@@ -222,35 +221,35 @@ export default function Skincare() {
 
     <section className={styles.s5}>
         <div className={styles.dicas}>
-          <div className={styles.cardItem} id={styles.card1}>
+          <div className={`${styles.cardItem} ${styles.card1}`}>
             <div className={styles.conteudo}>
                 <h1>PROTETOR SOLAR É ESSENCIAL</h1>
                 <p>A pele precisa de proteção diária contra manchas e envelhecimento precoce.</p>
             </div>
           </div>
 
-          <div className={styles.cardItem} id={styles.card2}>
+          <div className={`${styles.cardItem} ${styles.card2}`}>
             <div className={styles.conteudo}>
                 <h1>Hidrate logo após o banho</h1>
                 <p>Isso ajuda a reter a umidade e manter a pele macia.</p>
             </div>
           </div>
 
-          <div className={styles.cardItem} id={styles.card3}>
+          <div className={`${styles.cardItem} ${styles.card3}`}>
             <div className={styles.conteudo}>
                 <h1>Evite sabonetes muito agressivos</h1>
                 <p>Prefira fórmulas suaves que não ressequem a pele.</p>
             </div>
           </div>
 
-          <div className={styles.cardItem} id={styles.card4}>
+          <div className={`${styles.cardItem} ${styles.card4}`}>
             <div className={styles.conteudo}>
                 <h1>Inclua antioxidantes na rotina</h1>
                 <p>Vitamina C, por exemplo, ajuda a uniformizar o tom da pele.</p>
             </div>
           </div>
 
-          <div className={styles.cardItem} id={styles.card5}>
+          <div className={`${styles.cardItem} ${styles.card5}`}>
             <div className={styles.conteudo}>
                 <h1>Esfolie com moderação</h1>
                 <p>Uma vez por semana já ajuda a renovar sem agredir.</p>

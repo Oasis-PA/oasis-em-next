@@ -45,6 +45,7 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
+    "@google/genai": "^1.30.0",
     "@prisma/client": "^6.18.0",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-separator": "^1.1.7",

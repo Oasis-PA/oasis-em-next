@@ -17,10 +17,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* Força o navegador a não cachear a página */}
-        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta httpEquiv="Pragma" content="no-cache" />
-        <meta httpEquiv="Expires" content="0" />
+
       </head>
       <body className="app-body" suppressHydrationWarning>
         {children}

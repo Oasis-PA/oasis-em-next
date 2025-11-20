@@ -1,7 +1,7 @@
 "use client";
 
 import { Header, Footer } from "@/components";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import Link from "next/link";
 
@@ -9,13 +9,15 @@ import styles from "@/styles/guia.module.css";
 
 export default function Guia() {
   const [searchTerm, setSearchTerm] = useState("");
+  const sectionRef = useRef<HTMLElement>(null);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
 
-    // Seleciona os links <a> dentro de #s2, que são os novos containers dos cards
-    const links = document.querySelectorAll<HTMLElement>('#s2 > a');
-    
+    const links = sectionRef.current?.querySelectorAll('a');
+
+    if (!links) return;
+
     links.forEach(link => {
       // Procura o título e a descrição dentro do link
       const title = link.querySelector('h1')?.textContent?.toLowerCase() || '';
@@ -45,8 +47,8 @@ export default function Guia() {
       </section>
 
       <main className={styles.main}>
-        <section id="s1">
-          <div id="guia">
+        <section className={styles.s1}>
+          <div className={styles.guia}>
             <Link href='' className={styles.guiaLink}>
               <div className={styles.guiaLinkDiv}>
                 <h1 className={styles.guiaLinkH1}>Páginas</h1>
@@ -68,17 +70,17 @@ export default function Guia() {
               </div>
             </Link>
           </div>
-          <div id="linha"></div>
+          <div className={styles.linha}></div>
 
-          <div id="searchContainer">
+          <div className={styles.searchContainer}>
             <input
               type="text"
-              id="searchInput"
+              id={styles.searchInput}
               placeholder="Pesquisar"
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
             />
-            <div id="searchIcon">
+            <div className={styles.searchIcon}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.35-4.35"></path>
@@ -87,7 +89,7 @@ export default function Guia() {
           </div>
         </section>
 
-        <section id="s2">
+        <section className={styles.s2} ref={sectionRef}>
           <Link href='/alimentacao' className={styles.s2Link}>
             <div className={styles.pag}>
               <img src="images/guia/pag1-alimentacao.png" alt="" className={styles.pagImg} />
