@@ -30,6 +30,7 @@ body, html {
     flex: 0 0 40%; 
     width: 40%;
     height: auto;
+    max-height: 600px;
     object-fit: cover;
     border-radius: 8px;
     margin-left: 0.5rem;
@@ -45,9 +46,13 @@ body, html {
 
 .direita {
     flex: 0 0 56%;
-    width: 60%;
+    width: 56%;
     display: flex;
     flex-direction: column;
+}
+
+.parte-superior {
+    flex: 0 0 auto;
 }
 
 #tit1 {
@@ -58,6 +63,8 @@ body, html {
     margin-bottom: 1.5rem;
     margin-top: 0;
     transition: color 0.3s ease, transform 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 #tit1:hover {
@@ -72,6 +79,8 @@ body, html {
     line-height: 1.6;
     text-align: justify;
     transition: transform 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 #corpo-texto1:hover {
@@ -95,15 +104,13 @@ body, html {
 }
 
 .parte-inferior {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    align-items: stretch;
     margin-top: 3rem;
 }
 
 .quadradinhos {
-    flex: 1;
-    height: auto;
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
@@ -112,6 +119,8 @@ body, html {
     border-radius: 12px;
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
     cursor: pointer;
+    min-height: 250px;
+    max-height: 400px;
 }
 
 .quadradinhos:hover {
@@ -130,6 +139,9 @@ body, html {
     margin-top: 0;
     margin-bottom: 1rem;
     transition: color 0.3s ease, transform 0.3s ease, text-decoration-color 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
 }
 
 .quadradinhos:hover #corpo-tit1 {
@@ -145,10 +157,33 @@ body, html {
     line-height: 1.6;
     text-align: justify;
     transition: color 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 1;
+    overflow-y: auto;
 }
 
 .quadradinhos:hover #corpo-texto2 {
     color: #333;
+}
+
+/* Scrollbar customizada para os quadradinhos */
+#corpo-texto2::-webkit-scrollbar {
+    width: 6px;
+}
+
+#corpo-texto2::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#corpo-texto2::-webkit-scrollbar-thumb {
+    background: #420E45;
+    border-radius: 3px;
+}
+
+#corpo-texto2::-webkit-scrollbar-thumb:hover {
+    background: #722F53;
 }
 
 /* =================================== */
@@ -169,14 +204,19 @@ body, html {
 
     #img-principal {
         max-width: 500px;
+        max-height: 500px;
         height: auto;
         margin-bottom: 2rem;
+        margin-left: 0;
     }
 
     .parte-inferior {
         margin-top: 3rem;
-        flex-direction: row;
-        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .quadradinhos {
+        min-height: 220px;
     }
 }
 
@@ -186,20 +226,23 @@ body, html {
     }
 
     .parte-inferior {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        align-items: stretch;
         gap: 2rem;
     }
 
     .quadradinhos {
-        width: 90%;
-        max-width: 400px;
+        width: 100%;
+        max-width: 100%;
+        min-height: 200px;
+        max-height: 350px;
     }
 }
 
 @media (max-width: 480px) {
     .principal {
         width: 95%;
+        margin: 2vh auto 4rem auto;
     }
 
     #tit1 {
@@ -208,5 +251,23 @@ body, html {
 
     #corpo-texto1, #corpo-texto2 {
         font-size: 1rem;
+    }
+
+    #corpo-tit {
+        font-size: 1.1rem;
+    }
+
+    #corpo-tit1 {
+        font-size: 1.1rem;
+    }
+
+    .quadradinhos {
+        padding: 1.25rem;
+        min-height: 180px;
+        max-height: 320px;
+    }
+
+    #img-principal {
+        max-height: 400px;
     }
 }

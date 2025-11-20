@@ -17,6 +17,8 @@ export default function NovoCortePage() {
     comoArrumar: '',
     imagemPrincipal: '',
     status: 'rascunho',
+    dataPublicacao: '',
+    horaPublicacao: '',
   });
 
   const handleChange = (
@@ -76,10 +78,22 @@ export default function NovoCortePage() {
     setIsLoading(true);
 
     try {
+      // Processar data de publicação se status for agendado
+      let dataPublicacaoCompleta = null;
+      if (formData.status === 'agendado' && formData.dataPublicacao) {
+        const hora = formData.horaPublicacao || '12:00';
+        dataPublicacaoCompleta = `${formData.dataPublicacao}T${hora}:00`;
+      }
+
+      const dataToSend = {
+        ...formData,
+        dataPublicacao: dataPublicacaoCompleta,
+      };
+
       const response = await fetch('/api/admin/cortes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
@@ -126,17 +140,47 @@ export default function NovoCortePage() {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="status">Status *</label>
-          <select
-            id="status"
-            name="status"
-            value={formData.status}
-            onChange={handleChange}
-          >
-            <option value="rascunho">📝 Rascunho</option>
-            <option value="publicado">✓ Publicar Agora</option>
-          </select>
+        <div className="form-row">
+          <div className="form-group flex-1">
+            <label htmlFor="status">Status *</label>
+            <select
+              id="status"
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+            >
+              <option value="rascunho">📝 Rascunho</option>
+              <option value="publicado">✓ Publicar Agora</option>
+              <option value="agendado">🕐 Agendar Publicação</option>
+            </select>
+          </div>
+
+          {formData.status === 'agendado' && (
+            <>
+              <div className="form-group flex-1">
+                <label htmlFor="dataPublicacao">Data *</label>
+                <input
+                  type="date"
+                  id="dataPublicacao"
+                  name="dataPublicacao"
+                  value={formData.dataPublicacao}
+                  onChange={handleChange}
+                  required={formData.status === 'agendado'}
+                  min={new Date().toISOString().split('T')[0]}
+                />
+              </div>
+              <div className="form-group flex-1">
+                <label htmlFor="horaPublicacao">Hora</label>
+                <input
+                  type="time"
+                  id="horaPublicacao"
+                  name="horaPublicacao"
+                  value={formData.horaPublicacao}
+                  onChange={handleChange}
+                />
+              </div>
+            </>
+          )}
         </div>
 
         <div className="form-group">
@@ -255,7 +299,9 @@ export default function NovoCortePage() {
             disabled={isLoading}
           >
             {isLoading ? 'Salvando...' : 
-             formData.status === 'publicado' ? '✓ Publicar' : '💾 Salvar'}
+             formData.status === 'publicado' ? '✓ Publicar' :
+             formData.status === 'agendado' ? '🕐 Agendar' :
+             '💾 Salvar'}
           </button>
         </div>
       </form>

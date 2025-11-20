@@ -10,6 +10,7 @@ interface Corte {
   nome: string;
   slug: string;
   status: string;
+  dataPublicacao: string | null;
   criadoEm: string;
 }
 
@@ -61,10 +62,26 @@ export default function AdminCortesPage() {
     router.push('/admin/login');
   };
 
+  const getStatusDisplay = (status: string, dataPublicacao: string | null) => {
+    if (status === 'agendado' && dataPublicacao) {
+      const data = new Date(dataPublicacao);
+      return `🕐 ${data.toLocaleDateString('pt-BR')} ${data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
+    }
+    
+    const statusMap: { [key: string]: string } = {
+      publicado: '✓ Publicado',
+      rascunho: '📝 Rascunho',
+      agendado: '🕐 Agendado'
+    };
+    
+    return statusMap[status] || status;
+  };
+
   const stats = {
     total: cortes.length,
     publicados: cortes.filter(c => c.status === 'publicado').length,
     rascunhos: cortes.filter(c => c.status === 'rascunho').length,
+    agendados: cortes.filter(c => c.status === 'agendado').length,
   };
 
   return (
@@ -100,6 +117,10 @@ export default function AdminCortesPage() {
           <span className="stat-num">{stats.rascunhos}</span>
           <span className="stat-label">Rascunhos</span>
         </div>
+        <div className="stat scheduled">
+          <span className="stat-num">{stats.agendados}</span>
+          <span className="stat-label">Agendados</span>
+        </div>
       </div>
 
       <div className="filters">
@@ -121,6 +142,12 @@ export default function AdminCortesPage() {
         >
           Rascunhos
         </button>
+        <button
+          className={statusFilter === 'agendado' ? 'active' : ''}
+          onClick={() => setStatusFilter('agendado')}
+        >
+          Agendados
+        </button>
       </div>
 
       {isLoading ? (
@@ -141,7 +168,7 @@ export default function AdminCortesPage() {
                 <p className="slug">/{corte.slug}</p>
                 <div className="artigo-meta">
                   <span className={`status ${corte.status}`}>
-                    {corte.status === 'publicado' ? '✓ Publicado' : '📝 Rascunho'}
+                    {getStatusDisplay(corte.status, corte.dataPublicacao)}
                   </span>
                   <span className="date">
                     {new Date(corte.criadoEm).toLocaleDateString('pt-BR')}

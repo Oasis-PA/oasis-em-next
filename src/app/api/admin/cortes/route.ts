@@ -4,7 +4,6 @@ import { protectAdminRoute } from '@/lib/verify-admin-token';
 
 // GET - Listar todos os cortes
 export async function GET(request: NextRequest) {
-  // Verifica autenticação admin
   const authError = await protectAdminRoute(request);
   if (authError) return authError;
 
@@ -14,7 +13,7 @@ export async function GET(request: NextRequest) {
 
     const where = status && status !== 'todos' ? { status } : {};
 
-    const cortes = await prisma.corte.findMany({
+    const cortes = await prisma.cortes.findMany({
       where,
       orderBy: { criadoEm: 'desc' },
     });
@@ -31,13 +30,15 @@ export async function GET(request: NextRequest) {
 
 // POST - Criar novo corte
 export async function POST(request: NextRequest) {
-  // Verifica autenticação admin
   const authError = await protectAdminRoute(request);
   if (authError) return authError;
 
   try {
     const data = await request.json();
-    
+    // normaliza possíveis nomes do campo vindos do client
+    const incomingDate = data.dataPublicacao ?? data.data_publicacao ?? data.DataPublicacao ?? null;
+    const parsedDate = incomingDate ? new Date(incomingDate) : null;
+
     // Gerar slug a partir do nome
     const slug = data.nome
       .toLowerCase()
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
       .replace(/(^-|-$)/g, '');
 
     // Verifica se o slug já existe
-    const slugExiste = await prisma.corte.findUnique({
+    const slugExiste = await prisma.cortes.findUnique({
       where: { slug }
     });
 
@@ -58,17 +59,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const corte = await prisma.corte.create({
+    const corte = await prisma.cortes.create({
       data: {
         nome: data.nome,
         slug,
         descricao: data.descricao,
         historia: data.historia || null,
-        comoFazer: data.comoFazer || null,
-        rostoCompativel: data.rostoCompativel || null,
-        comoArrumar: data.comoArrumar || null,
-        imagemPrincipal: data.imagemPrincipal || null,
+        como_fazer: data.comoFazer || null,
+        rosto_compativel: data.rostoCompativel || null,
+        como_arrumar: data.comoArrumar || null,
+        imagem_principal: data.imagemPrincipal || null,
         status: data.status || 'rascunho',
+        // usar o campo aceito pelo Prisma Client (dataPublicacao)
+        atualizadoEm: new Date(),
       },
     });
 

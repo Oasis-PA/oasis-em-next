@@ -10,9 +10,7 @@ generator zod {
 
 datasource db {
   provider = "postgresql"
-  //# Connect to Supabase via connection pooling# Connect to Supabase via connection pooling
   url      = "postgresql://postgres.yyvjzgxyxgalnnwcjfqh:capenga@aws-1-sa-east-1.pooler.supabase.com:5432/postgres"
-
 }
 
 model Genero {
@@ -220,4 +218,23 @@ model influenciadores {
   @@index([data_solicitacao(sort: Desc)], map: "idx_influenciadores_data")
   @@index([email], map: "idx_influenciadores_email")
   @@index([status], map: "idx_influenciadores_status")
+}
+
+model Cortes {
+  id               Int       @id @default(autoincrement())
+  nome             String
+  slug             String    @unique
+  descricao        String
+  historia         String?
+  como_fazer       String?
+  rosto_compativel String?
+  como_arrumar     String?
+  imagem_principal String?   @db.VarChar(500)
+  status           String    @default("rascunho")
+  criadoEm         DateTime  @default(now()) @db.Timestamptz(6)
+  atualizadoEm     DateTime  @db.Timestamptz(6)
+  data_publicacao  DateTime? @default(now()) @db.Timestamptz(6)
+
+  @@index([slug], map: "idx_cortes_slug")
+  @@index([status], map: "idx_cortes_status")
 }

@@ -19,6 +19,8 @@ export default function EditarCortePage() {
     comoArrumar: '',
     imagemPrincipal: '',
     status: 'rascunho',
+    dataPublicacao: '',
+    horaPublicacao: '',
   });
 
   useEffect(() => {
@@ -34,6 +36,15 @@ export default function EditarCortePage() {
       const response = await fetch(`/api/admin/cortes/${params.id}`);
       if (response.ok) {
         const data = await response.json();
+        
+        let dataStr = '';
+        let horaStr = '';
+        if (data.dataPublicacao) {
+          const dt = new Date(data.dataPublicacao);
+          dataStr = dt.toISOString().split('T')[0];
+          horaStr = dt.toTimeString().slice(0, 5);
+        }
+
         setFormData({
           nome: data.nome,
           descricao: data.descricao,
@@ -43,6 +54,8 @@ export default function EditarCortePage() {
           comoArrumar: data.comoArrumar || '',
           imagemPrincipal: data.imagemPrincipal || '',
           status: data.status,
+          dataPublicacao: dataStr,
+          horaPublicacao: horaStr,
         });
       } else {
         alert('Corte não encontrado');
@@ -112,10 +125,22 @@ export default function EditarCortePage() {
     setIsSaving(true);
 
     try {
+      // Processar data de publicação se status for agendado
+      let dataPublicacaoCompleta = null;
+      if (formData.status === 'agendado' && formData.dataPublicacao) {
+        const hora = formData.horaPublicacao || '12:00';
+        dataPublicacaoCompleta = `${formData.dataPublicacao}T${hora}:00`;
+      }
+
+      const dataToSend = {
+        ...formData,
+        dataPublicacao: dataPublicacaoCompleta,
+      };
+
       const response = await fetch(`/api/admin/cortes/${params.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
@@ -163,17 +188,47 @@ export default function EditarCortePage() {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="status">Status *</label>
-          <select
-            id="status"
-            name="status"
-            value={formData.status}
-            onChange={handleChange}
-          >
-            <option value="rascunho">📝 Rascunho</option>
-            <option value="publicado">✓ Publicado</option>
-          </select>
+        <div className="form-row">
+          <div className="form-group flex-1">
+            <label htmlFor="status">Status *</label>
+            <select
+              id="status"
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+            >
+              <option value="rascunho">📝 Rascunho</option>
+              <option value="publicado">✓ Publicado</option>
+              <option value="agendado">🕐 Agendado</option>
+            </select>
+          </div>
+
+          {formData.status === 'agendado' && (
+            <>
+              <div className="form-group flex-1">
+                <label htmlFor="dataPublicacao">Data *</label>
+                <input
+                  type="date"
+                  id="dataPublicacao"
+                  name="dataPublicacao"
+                  value={formData.dataPublicacao}
+                  onChange={handleChange}
+                  required={formData.status === 'agendado'}
+                  min={new Date().toISOString().split('T')[0]}
+                />
+              </div>
+              <div className="form-group flex-1">
+                <label htmlFor="horaPublicacao">Hora</label>
+                <input
+                  type="time"
+                  id="horaPublicacao"
+                  name="horaPublicacao"
+                  value={formData.horaPublicacao}
+                  onChange={handleChange}
+                />
+              </div>
+            </>
+          )}
         </div>
 
         <div className="form-group">
