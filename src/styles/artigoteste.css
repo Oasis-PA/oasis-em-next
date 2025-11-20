@@ -244,10 +244,6 @@ main > article > ul {
 
 /* Para celulares */
 @media (max-width: 480px) {
-    header {
-        height: 300px;
-    }
-
     main > article {
         margin-top: -120px;
         padding: 40px 5%;
