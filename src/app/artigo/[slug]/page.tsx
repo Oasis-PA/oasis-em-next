@@ -100,10 +100,10 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     (artigo.atualizadoEm.getTime() - artigo.criadoEm.getTime() > 60000);
 
   return (
-    <>
+    <div className="page-artigo-wrapper">
       {imagemHeader ? (
-        <Header 
-          backgroundImage={imagemHeader} 
+        <Header
+          backgroundImage={imagemHeader}
           theme={themeDark ? "dark" : undefined}
         />
       ) : (
@@ -113,8 +113,8 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
         <article className="markdown-content">
           {/* Botão de favorito no topo */}
           <div className="artigo-favorito-topo">
-            <FavoriteButton 
-              artigoId={artigo.id} 
+            <FavoriteButton
+              artigoId={artigo.id}
               size="large"
             />
           </div>
@@ -154,15 +154,15 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
               h3: ({ children }) => <h3>{children}</h3>,
               p: ({ children, node }) => {
                 // Verifica se o parágrafo contém apenas uma imagem
-                const hasOnlyImage = node?.children?.length === 1 && 
-                                    node.children[0].type === 'element' && 
+                const hasOnlyImage = node?.children?.length === 1 &&
+                                    node.children[0].type === 'element' &&
                                     node.children[0].tagName === 'img';
-                
+
                 // Se só tem imagem, não envolve em <p>
                 if (hasOnlyImage) {
                   return <>{children}</>;
                 }
-                
+
                 return <p>{children}</p>;
               },
               strong: ({ children }) => <strong>{children}</strong>,
@@ -175,12 +175,12 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
                 const match = alt?.match(/^(.*?)\s*\{([^}]+)\}$/);
                 const altText = match ? match[1].trim() : alt;
                 const customClass = match ? match[2].trim() : '';
-                
+
                 return (
                   <figure className={`artigo-figura ${customClass}`}>
-                    <img 
-                      src={src} 
-                      alt={altText || ''} 
+                    <img
+                      src={src}
+                      alt={altText || ''}
                       className="artigo-imagem"
                     />
                     {title && <figcaption>{title}</figcaption>}
@@ -194,6 +194,6 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
         </article>
       </main>
       <Footer/>
-    </>
+    </div>
   );
 }
