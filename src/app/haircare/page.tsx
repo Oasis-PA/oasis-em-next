@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Link from "next/link";
-import Script from 'next/script'; 
+import Script from 'next/script';
 import { Header, Footer } from "@/components";
-import '@/styles/hair-care.css';
+import styles from '@/styles/hair-care.module.css';
 import { useState } from "react";
 // --- IMPORTAÇÕES PARA O SWIPER ---
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -28,72 +28,72 @@ const HairCarePage: React.FC = () => {
   ];
 
   return (
-    <div className="page-haircare-wrapper">
+    <div className={styles.wrapper}>
 
     <Header/>
     <main>
-      <section className="retangulo" id="barra">
-        <div className="aaa">
-          <article id='as-melhores-dicas'>
-            <h1 id="asM">AS MELHORES DICAS PARA SEU CABELO</h1>
-          
+      <section className={styles.barra}>
+        <div className={styles.aaa}>
+          <article>
+            <h1 className={styles.asM}>AS MELHORES DICAS PARA SEU CABELO</h1>
+
           </article>
-          <aside className="grupo-retangulos">
-            <div className="retangulo-item">cortes</div>
-            <div className="retangulo-item">penteados</div>
-            <div className="retangulo-item">tratamentos</div>
-            <div className="retangulo-item">pinturas</div>
+          <aside className={styles.grupoRetangulos}>
+            <div className={styles.retanguloItem}>cortes</div>
+            <div className={styles.retanguloItem}>penteados</div>
+            <div className={styles.retanguloItem}>tratamentos</div>
+            <div className={styles.retanguloItem}>pinturas</div>
           </aside>
         </div>
-        <img src="/images/hair-care/image_47-removebg-preview.png" alt="" id="img47" />
+        <img src="/images/hair-care/image_47-removebg-preview.png" alt="" className={styles.img47} />
       </section>
 
-      <section className="container-imagens">
-        <article className="grupo-img">
-          <img id="img350" src="/images/hair-care/Rectangle 350.png" alt="" />
-          <aside className="img-com-botao">
-            <img id="img352" src="/images/hair-care/Rectangle 352.png" alt="" />
-            <button id="bntRoxo"><Link href='/tinturas'>CONHEÇA</Link></button>
+      <section className={styles.containerImagens}>
+        <article className={styles.grupoImg}>
+          <img src="/images/hair-care/Rectangle 350.png" alt="" />
+          <aside className={styles.imgComBotao}>
+            <img className={styles.img352} src="/images/hair-care/Rectangle 352.png" alt="" />
+            <button className={styles.bntRoxo}><Link href='/tinturas'>CONHEÇA</Link></button>
           </aside>
-          <img id="img351" src="/images/hair-care/Rectangle 351.png" alt="" />
+          <img src="/images/hair-care/Rectangle 351.png" alt="" />
         </article>
       </section>
 
-      <h3 id="nossosTutoriais">Nossos tutoriais</h3>
+      <h3 className={styles.nossosTutoriais}>Nossos tutoriais</h3>
 
-      <section className="container-retangulos">
-        <article className="retangulo-roxo">
-          <div className="circulo-roxo"></div>
-          <h1 id="trança">TRANÇA EMBUTIDA</h1>
-          <ol className="lista-tranca">
+      <section className={styles.containerRetangulos}>
+        <article className={styles.retanguloRoxo}>
+          <div className={styles.circuloRoxo}></div>
+          <h1 className={styles.tranca}>TRANÇA EMBUTIDA</h1>
+          <ol className={styles.listaTraca}>
             <li>Separe uma mecha no topo da cabeça e a divida em três partes iguais</li>
             <li>Comece trançando a lateral esquerda por cima da mecha do meio e depois repita...</li>
           </ol>
         </article>
 
-        <article className="retangulo-roxo">
-          <div className="circulo-roxo"></div>
-          <h1 id="coques">COQUES</h1>
-          <ol className="lista-coques">
+        <article className={styles.retanguloRoxo}>
+          <div className={styles.circuloRoxo}></div>
+          <h1 className={styles.coques}>COQUES</h1>
+          <ol className={styles.listaCoques}>
             <li>Reúna todo o cabelo no topo da cabeça;</li>
             <li>Use a escova para pentear e deixar os fios bem esticados;</li>
             <li>Amarre com uma xuxinha;</li>
           </ol>
         </article>
 
-        <article className="retangulo-roxo">
-          <div className="circulo-roxo"></div>
-          <h1 id="festivos">FESTIVOS</h1>
-          <p className="lista-festivos">Antes de escolher um penteado, é importante considerar o tipo de evento que você vai participar. Para eventos mais formais, como casamentos e formaturas, penteados mais elaborados e sofisticados...</p>
+        <article className={styles.retanguloRoxo}>
+          <div className={styles.circuloRoxo}></div>
+          <h1 className={styles.festivos}>FESTIVOS</h1>
+          <p className={styles.listaFestivos}>Antes de escolher um penteado, é importante considerar o tipo de evento que você vai participar. Para eventos mais formais, como casamentos e formaturas, penteados mais elaborados e sofisticados...</p>
         </article>
       </section>
 
-      {/* --- Seção #barra2 COM CARROSSEL SIMPLES --- */}
-        <section id="barra2">
-          <div className="content">
-            <article className="texto">
-              <h1 id="nossosCortes">NOSSOS CORTES MAIS ACESSADOS</h1>
-              <p id="osCortes">
+      {/* --- Seção barra2 COM CARROSSEL SIMPLES --- */}
+        <section className={styles.barra2}>
+          <div className={styles.content}>
+            <article className={styles.texto}>
+              <h1 className={styles.nossosCortes}>NOSSOS CORTES MAIS ACESSADOS</h1>
+              <p className={styles.osCortes}>
                 Os cortes para cabelos cacheados estão dominando as
                 tendências! Com opções que valorizam o volume e o movimento
                 natural dos fios, esses estilos são pura expressão de personalidade e
@@ -107,19 +107,19 @@ const HairCarePage: React.FC = () => {
             </article>
 
             {/* --- CARROSSEL SWIPER SIMPLES --- */}
-            <div className="imgBarra2-carousel-container">
+            <div className={styles.imgBarra2CarouselContainer}>
               <Swiper
                 modules={[Navigation, Pagination]}
-                spaceBetween={10} // Espaço pequeno entre slides (relevante se houver mais de 1 visível)
-                slidesPerView={1} // MOSTRAR APENAS 1 SLIDE POR VEZ
-                navigation // Habilita setas
-                pagination={{ clickable: true }} // Habilita bolinhas
-                loop={true} // Habilita loop
-                className="simpleHairCareSwiper" // Nova classe para estilização
+                spaceBetween={10}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                loop={true}
+                className={styles.simpleHairCareSwiper}
               >
                 {carouselImages.map((src, index) => (
                   <SwiperSlide key={index}>
-                    <img src={src} alt={`Imagem do carrossel ${index + 1}`} className="simple-carousel-image" />
+                    <img src={src} alt={`Imagem do carrossel ${index + 1}`} className={styles.simpleCarouselImage} />
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -128,64 +128,64 @@ const HairCarePage: React.FC = () => {
           </div>
         </section>
 
-      <section className="container">
-        <div className="dupla">
-          <div className='dupla2'>
-            <article className="item">
-              <img src="/images/hair-care/image.png" alt="Imagem 1" className="imagem" id="img1" />
+      <section className={styles.container}>
+        <div className={styles.dupla}>
+          <div className={styles.dupla2}>
+            <article className={styles.item}>
+              <img src="/images/hair-care/image.png" alt="Imagem 1" className={styles.imagem} />
             </article>
             <h1>SKINCARE</h1>
-              <button className="botao-marrom" id="b1">conheça</button>
+              <button className={styles.botaoMarrom}>conheça</button>
           </div>
-          
-          <div className="dupla2">
-            <article className="item">
-              <img src="/images/hair-care/image (1).png" alt="Imagem 2" className="imagem" id="img2" />
-            
+
+          <div className={styles.dupla2}>
+            <article className={styles.item}>
+              <img src="/images/hair-care/image (1).png" alt="Imagem 2" className={styles.imagem} />
+
             </article>
                   <h1>TINTURAS</h1>
-              <button className="botao-marrom" id="b2">conheça</button>
+              <button className={styles.botaoMarrom}>conheça</button>
           </div>
         </div>
 
-        <div className="dupla">
-          <div className="dupla2">
-            <article className="item">
-              <img src="/images/hair-care/image (2).png" alt="Imagem 3" className="imagem" id="img3" />
-            
+        <div className={styles.dupla}>
+          <div className={styles.dupla2}>
+            <article className={styles.item}>
+              <img src="/images/hair-care/image (2).png" alt="Imagem 3" className={styles.imagem} />
+
             </article>
             <h1>CORTES</h1>
               <Link href="/corteS">
-                <button className="botao-marrom" id="b3">conheça</button>
+                <button className={styles.botaoMarrom}>conheça</button>
               </Link>
           </div>
 
-          <div className="dupla2">
-            <article className="item">
-              <img src="/images/hair-care/image (3).png" alt="Imagem 4" className="imagem" id="img4" />
-            
+          <div className={styles.dupla2}>
+            <article className={styles.item}>
+              <img src="/images/hair-care/image (3).png" alt="Imagem 4" className={styles.imagem} />
+
             </article>
             <h1>CRONOGRAMA</h1>
-              <button className="botao-marrom" id="b4">conheça</button>
+              <button className={styles.botaoMarrom}>conheça</button>
           </div>
         </div>
       </section>
-      <section className="container2">
-        <aside className="dimg">
-          <img src="/images/hair-care/image (4).png" alt="Imagem do óleo de rosa mosqueta" className="imagem2" id="oleo" />
-          <img src="/images/hair-care/image (5).png" alt="Imagem do creme de rosa mosqueta" className="imagem2" id="creme" />
+      <section className={styles.container2}>
+        <aside className={styles.dimg}>
+          <img src="/images/hair-care/image (4).png" alt="Imagem do óleo de rosa mosqueta" className={styles.oleo} />
+          <img src="/images/hair-care/image (5).png" alt="Imagem do creme de rosa mosqueta" className={styles.creme} />
         </aside>
-        
-        <article className="texto">
-          <h2 id="th2">
+
+        <article className={styles.texto}>
+          <h2 className={styles.th2}>
             Benefícios do Óleo de Rosa Mosqueta: <br />
             Aliado para a pele, cabelo e unhas
           </h2>
-            <p id="tp">
+            <p className={styles.tp}>
             O óleo de rosa mosqueta oferece propriedades antioxidantes e ajuda a evitar o envelhecimento precoce. "Além disso, também age na manutenção da integridade e na regeneração da pele". <br /> Dessa forma, o ativo pode ser um grande aliado para a cicatrização e para a <u>melhora de inflamações</u>. <br />
-            “Todos podem usar e sentir os benefícios do óleo de rosa mosqueta. Pode ser que pessoas com a <u>pele oleosa</u> não se sintam tão confortáveis com o sensorial do produto, porém ele não aumenta a oleosidade ou piora a acne, então, pode ser usado tranquilamente, mas é claro que sem excessos”.
+            "Todos podem usar e sentir os benefícios do óleo de rosa mosqueta. Pode ser que pessoas com a <u>pele oleosa</u> não se sintam tão confortáveis com o sensorial do produto, porém ele não aumenta a oleosidade ou piora a acne, então, pode ser usado tranquilamente, mas é claro que sem excessos".
             </p>
-          <button className="botao-roxo"><Link href='/artigo/oleo-de-rosa-mosqueta'>CONHEÇA</Link></button>
+          <button className={styles.botaoRoxo}><Link href='/artigo/oleo-de-rosa-mosqueta'>CONHEÇA</Link></button>
         </article>
       </section>
       
