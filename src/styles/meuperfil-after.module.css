@@ -1,0 +1,446 @@
+/* CSS MODULE: Meuperfil After Page */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: var(--body-back);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.wrapper main * {
+    margin: 0;
+    padding: 0;
+    color: var(--corpo-texto);
+}
+
+.main {
+    background-image: url(../../public/images/meuperfil-after/header-bg.png);
+    display: flex;
+    width: 100%;
+    min-height: 39vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+}
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    margin-left: clamp(3rem, 5.5vw, 5.5rem);
+    margin-top: clamp(4rem, 10vw, 10rem);
+}
+
+.mainDiv h1 {
+    color: #FFF;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "The Next Font";
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: normal;
+    max-width: 52rem;
+    font-weight: 400;
+}
+
+.mainDiv p {
+    color: #FFF;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.35rem, 1.8vw, 1.8rem);
+    margin-top: clamp(0.875rem, 1vw, 1rem);
+    font-weight: 400;
+}
+
+.mainButton {
+    display: flex;
+    width: 16.28188rem;
+    height: 4.3125rem;
+    justify-content: center;
+    align-items: center;
+    background: #F2A518;
+    border: none;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1.35rem, 1.8vw, 1.8rem);
+    margin-top: clamp(4rem, 8.5vw, 8.5rem);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.mainButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.mainButton:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.mainButton:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.mainButton:active {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.s1 {
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(3.5rem, 7vw, 7rem);
+    margin-left: clamp(3.5rem, 9.5vw, 9.5rem);
+}
+
+.s1 h1 {
+   font-family: "The Next Font";
+   font-size: clamp(2.5rem, 5vw, 5rem);
+   font-weight: 400;
+}
+
+.informacoes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: clamp(3rem, 5.5vw, 5.5rem);
+}
+
+.bloco {
+    background-image: url('../../public/images/meuperfil-after/infor-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 26.5vw;
+    height: 18vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.bloco:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.bloco h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-weight: 400;
+    margin-top: clamp(1.25rem, 2vw, 2rem);
+}
+
+.blocoRoxo {
+    width: 22.87475rem;
+    height: 7.5rem;
+    border-radius: 0.9375rem;
+    border: 1px solid #7D4AB3;
+    background: #FAF5FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(1.25rem, 2vw, 2rem);
+}
+
+.blocoRoxo h3 {
+    font-family: "Louis George Cafe";
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    font-weight: 400;
+}
+
+.blocoRoxo h1 {
+    font-family: "The Next Font";
+    font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.s2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(3.5rem, 7vw, 7rem);
+}
+
+.s2 h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 400;
+    max-width: 65rem;
+    margin-right: 32rem;
+}
+
+.s2 h4 {
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-weight: 400;
+    line-height: normal;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    max-width: 65rem;
+    margin-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+.artigo1, .artigo2 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 91.9vw;
+    height: 43.8vw;
+    display: flex;
+    align-items: center;
+    margin-bottom: clamp(4.5rem, 11vw, 11rem);
+}
+
+.artigo1 {
+    margin-left: calc(-1 * (100vw - 100%) / 2);
+    background-image: url('../../public/images/meuperfil-after/artigo1-bg.png');
+    justify-content: end;
+}
+
+.artigo2 {
+    margin-right: calc(-1 * (100vw - 100%) / 2);
+    align-self: flex-end;
+    background-image: url('../../public/images/meuperfil-after/artigo2-bg.png');
+}
+
+.artigoDiv {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+}
+
+.artigo1 .artigoDiv {
+    margin-right: clamp(2rem, 4vw, 4rem);
+}
+
+.artigo2 .artigoDiv {
+    margin-left: clamp(2rem, 4vw, 4rem);
+}
+
+.artigoDiv h1 {
+    font-family: "PLAYFUL RUNWAY";
+    font-size: clamp(2rem, 4vw, 4rem);
+    max-width: 29.5rem;
+    text-align: center;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.blocoTexto {
+    background-color: #FFF;
+    width: 44.5625rem;
+    height: 13.4375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.25rem;
+    padding: clamp(1.125rem, 1.5vw, 1.5rem);
+}
+
+.blocoTexto p {
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    font-weight: 400;
+    line-height: normal;
+}
+
+.cor1 { color: #7D4AB3; }
+.cor2 { color: #F2A518; }
+
+.artigoDiv h4 {
+    text-align: center;
+    font-family: "The Next Font";
+    font-weight: 400;
+    line-height: normal;
+    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    max-width: 27.3rem;
+}
+
+.artigoButton {
+    width: 14.39413rem;
+    height: 3.8125rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-family: "The Next Font";
+    color: #FFF;
+    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.artigoButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.artigo1 .artigoButton {
+    background: #F2A518;
+}
+
+.artigo2 .artigoButton {
+    background: #722F53;
+}
+
+.artigo1 .artigoButton:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.artigo2 .artigoButton:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.artigoButton:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.artigo1 .artigoButton:active {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.artigo2 .artigoButton:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.monte {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 100%;
+  background-color: #5E332C;
+}
+
+.monte img:first-child {
+  width: 100%;
+  height: auto;
+}
+
+.conheca {
+  height: auto;
+  width: clamp(120px, 13.5vw, 200px);
+  margin-top: -10vw;
+  margin-right: 13vw;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.conheca:hover {
+    transform: scale(1.05);
+}
+
+.s3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 40.8vw;
+    flex-direction: row;
+    background-color: #F2A518;
+    margin-top: clamp(3rem, 8vw, 8rem);
+}
+
+.s3 > div {
+    display: flex;
+    flex-direction: column;
+    max-width: 42rem;
+}
+
+.s3 > div h1 {
+    font-family: "The Next Font";
+    font-weight: 400;
+    line-height: 2.5rem;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    max-width: 32rem;
+}
+
+.s3 > div p {
+    text-align: justify;
+    font-family: "Louis George Cafe";
+    font-weight: 400;
+    line-height: 1.6rem;
+    margin-top: clamp(1.125rem, 1.5vw, 1.5rem);
+    font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+    letter-spacing: 0.06669rem;
+}
+
+.s3Button {
+    display: flex;
+    width: 12.72956rem;
+    height: 3.37163rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.85781rem;
+    background: #722F53;
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    margin-top: clamp(2rem, 3vw, 3rem);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.s3Button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.s3Button:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.s3Button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.s3Button:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
