@@ -8,20 +8,6 @@
     color: var(--corpo-texto);
 }
 
-body {
-    display: flex;
-    width: 100%;
-    height: auto;
-    background-color: var(--body-back);
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-}
-
-html {
-    overflow-x: hidden;
-}
-
 .mainContainer {
     display: flex;
     width: 100%;

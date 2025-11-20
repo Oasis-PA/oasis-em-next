@@ -27,18 +27,18 @@
     font-size: 16px;
 }
 
-img {
+.wrapper img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-a {
+.wrapper a {
     text-decoration: none;
     color: inherit;
 }
 
-button {
+.wrapper button {
     cursor: pointer;
 }
 
