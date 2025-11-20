@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { Header, Footer } from "@/components";
 import FavoriteButton from "@/components/FavoriteButton";
-import '@/styles/artigoteste.css';
+import styles from '@/styles/artigoteste.module.css';
 
 interface ArtigoProps {
   params: Promise<{ slug: string }>;
@@ -100,7 +100,7 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     (artigo.atualizadoEm.getTime() - artigo.criadoEm.getTime() > 60000);
 
   return (
-    <div className="page-artigo-wrapper">
+    <div className={styles.pageArtigoWrapper}>
       {imagemHeader ? (
         <Header
           backgroundImage={imagemHeader}
@@ -109,10 +109,10 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
       ) : (
         <Header theme={themeDark ? "dark" : undefined} />
       )}
-      <main>
-        <article className="markdown-content">
+      <main className={styles.mainWrapper}>
+        <article className={styles.articleContent}>
           {/* Botão de favorito no topo */}
-          <div className="artigo-favorito-topo">
+          <div className={styles.artigoFavoritoTopo}>
             <FavoriteButton
               artigoId={artigo.id}
               size="large"
@@ -121,26 +121,26 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
 
           {/* Informações de data */}
           {(artigo.criadoEm || artigo.atualizadoEm) && (
-            <div className="artigo-datas-info">
+            <div className={styles.artigoDatasInfo}>
               {artigo.criadoEm && (
-                <div className="artigo-data-item">
-                  <svg className="data-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className={styles.artigoDataItem}>
+                  <svg className={styles.dataIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                     <line x1="16" y1="2" x2="16" y2="6"></line>
                     <line x1="8" y1="2" x2="8" y2="6"></line>
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  <span>Publicado em {formatarData(artigo.criadoEm)}</span>
+                  <span className={styles.artigoDataItemSpan}>Publicado em {formatarData(artigo.criadoEm)}</span>
                 </div>
               )}
 
               {foiAtualizado && artigo.atualizadoEm && (
-                <div className="artigo-data-item artigo-atualizado">
-                  <svg className="data-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className={`${styles.artigoDataItem} ${styles.artigoAtualizado}`}>
+                  <svg className={styles.dataIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polyline points="23 4 23 10 17 10"></polyline>
                     <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                   </svg>
-                  <span>Atualizado em {formatarData(artigo.atualizadoEm)}</span>
+                  <span className={styles.artigoDataItemSpan}>Atualizado em {formatarData(artigo.atualizadoEm)}</span>
                 </div>
               )}
             </div>
@@ -149,9 +149,9 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
           {/* Conteúdo do artigo */}
           <ReactMarkdown
             components={{
-              h1: ({ children }) => <h1>{children}</h1>,
-              h2: ({ children }) => <h3>{children}</h3>,
-              h3: ({ children }) => <h3>{children}</h3>,
+              h1: ({ children }) => <h1 className={styles.articleHeading1}>{children}</h1>,
+              h2: ({ children }) => <h3 className={styles.articleHeading3}>{children}</h3>,
+              h3: ({ children }) => <h3 className={styles.articleHeading3}>{children}</h3>,
               p: ({ children, node }) => {
                 // Verifica se o parágrafo contém apenas uma imagem
                 const hasOnlyImage = node?.children?.length === 1 &&
@@ -163,27 +163,31 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
                   return <>{children}</>;
                 }
 
-                return <p>{children}</p>;
+                return <p className={styles.articleParagraph}>{children}</p>;
               },
               strong: ({ children }) => <strong>{children}</strong>,
               em: ({ children }) => <em>{children}</em>,
-              ul: ({ children }) => <ul>{children}</ul>,
-              ol: ({ children }) => <ol>{children}</ol>,
-              li: ({ children }) => <li>{children}</li>,
+              ul: ({ children }) => <ul className={styles.articleList}>{children}</ul>,
+              ol: ({ children }) => <ol className={styles.articleList}>{children}</ol>,
+              li: ({ children }) => <li className={styles.articleListItem}>{children}</li>,
               img: ({ src, alt, title }) => {
                 // Extrai classe customizada do alt text se houver
                 const match = alt?.match(/^(.*?)\s*\{([^}]+)\}$/);
                 const altText = match ? match[1].trim() : alt;
                 const customClass = match ? match[2].trim() : '';
 
+                const figureClass = customClass === 'imagem-destaque'
+                  ? `${styles.artigoFigura} ${styles.imagemDestaque}`
+                  : styles.artigoFigura;
+
                 return (
-                  <figure className={`artigo-figura ${customClass}`}>
+                  <figure className={figureClass}>
                     <img
                       src={src}
                       alt={altText || ''}
-                      className="artigo-imagem"
+                      className={styles.artigoImagem}
                     />
-                    {title && <figcaption>{title}</figcaption>}
+                    {title && <figcaption className={styles.artigoFiguraCaption}>{title}</figcaption>}
                   </figure>
                 );
               },
