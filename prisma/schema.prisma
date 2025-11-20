@@ -190,6 +190,20 @@ model FavoritoArtigo {
   @@index([id_usuario], map: "idx_favorito_artigo_usuario")
 }
 
+model Corte {
+  id              Int      @id @default(autoincrement())
+  nome            String
+  slug            String   @unique
+  descricao       String?
+  historia        String?
+  comoFazer       String?
+  rostoCompativel String?
+  comoArrumar     String?
+  imagemPrincipal String?
+  status          String   @default("rascunho")
+  criadoEm        DateTime @default(now())
+}
+
 model influenciadores {
   id                Int       @id @default(autoincrement()) @db.SmallInt
   nome_contato      String    @db.VarChar(255)
