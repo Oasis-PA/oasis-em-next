@@ -34,12 +34,13 @@
     flex-flow: column nowrap;
     align-items: center;
     margin-top: 3rem;
+    margin-top: -61px;
 }
 
 .articleContent {
     width: 100%;
     padding: 100px 5%;
-  
+
     background-color: #ffffff;
     color: var(--corpo-texto);
     border-radius: 8px 8px 0 0;
