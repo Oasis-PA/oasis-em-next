@@ -2,8 +2,20 @@
 .page-tinturas-wrapper * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+.page-tinturas-wrapper > header {
     width: 100%;
-   
+}
+
+.page-tinturas-wrapper > footer {
+    width: 100%;
+}
+
+.page-tinturas-wrapper > footer iframe {
+    width: 100%;
+    height: 400px;
 }
 
 .representam{
