@@ -20,20 +20,19 @@ function truncateTag(tag: string, maxLength: number = 15): string {
 function formatDate(criadoEm: Date, atualizadoEm: Date): string {
   // Se foi atualizado mais de 1 dia depois da criação, mostrar "Atualizado em"
   const diffInDays = Math.abs(new Date(atualizadoEm).getTime() - new Date(criadoEm).getTime()) / (1000 * 60 * 60 * 24);
-  
-  if (diffInDays > 1) {
-    return 'Atualizado em ' + new Date(atualizadoEm).toLocaleDateString('pt-BR', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
-    });
-  }
-  
-  return new Date(criadoEm).toLocaleDateString('pt-BR', {
+
+  // usar mês abreviado (ex: jun, jan)
+  const dtf = new Intl.DateTimeFormat('pt-BR', {
     day: '2-digit',
-    month: 'long',
+    month: 'short',
     year: 'numeric'
   });
+
+  if (diffInDays > 1) {
+    return 'Atualizado em ' + dtf.format(new Date(atualizadoEm));
+  }
+
+  return dtf.format(new Date(criadoEm));
 }
 
 // ===== LIMITES RÍGIDOS PARA EXIBIÇÃO =====
@@ -91,8 +90,8 @@ export default async function ArtigosPage() {
   return (
     <div className="page-artigo-wrapper">
       <div className="artigos-page-wrapper">
-        <h5>Artigos</h5>
-        <p>Explore nossos artigos sobre beleza, cuidados e muito mais</p>
+        <h5>Por dentro das notícias</h5>
+        <p>Veja aqui os melhores artigos sobre cuidados, beleza e dicas. Salve os seus favoritos e leia sempre que quiser!</p>
 
         <main>
           <h5>Recentes</h5>

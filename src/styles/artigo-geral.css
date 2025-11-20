@@ -81,6 +81,8 @@ main > h5:hover {
     transition: all 0.3s ease;
     display: block;
     text-decoration: none;
+      overflow: hidden;
+    transition: all 0.3s ease; /* --- ADICIONADO --- */
 }
 
 .grupo-1:hover {
@@ -105,7 +107,7 @@ main > h5:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    
 }
 
 .grupo-1 > p {
@@ -192,12 +194,11 @@ main > h5:hover {
 
 .grupo-2 > img, .grupo-3 > img {
     grid-area: 1 / 1 / 5 / 2;
-    width: 100%;
-    height: 100%;
+     width: 100%;
+    height: 344px;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
-    min-height: 230px;
 }
 
 .grupo-2 > svg, .grupo-3 > svg {
@@ -391,28 +392,29 @@ main > h5:hover {
 }
 
 .grupo-4 > .data, .grupo-6 > .data {
-    position: absolute;
-    top: 1rem;
+    
+   
     left: 1rem;
-    z-index: 2;
+    
     font-family: "Louis George Cafe";
     font-size: clamp(0.9rem, 1vw, 16px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 0;
+    margin-bottom: 1%;
     color: var(--text-color);
 }
 
 .grupo-4 > svg, .grupo-6 > svg {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 2;
+   
+   
+   
+    margin-left: 90%;
     width: 16px;
     height: 22px;
     flex-shrink: 0;
 }
+
 
 .grupo-4 > h4, .grupo-6 > h4 {
     font-family: "The Next Font";
