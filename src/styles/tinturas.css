@@ -20,7 +20,7 @@
     justify-content: flex-end;
 }
 
-.representam > h1 {
+.representam h1 {
     color: #FFF;
     font-family: "The Next Font";
     font-size: clamp(1.2rem, 8vw, 8rem);
@@ -29,7 +29,7 @@
     margin-left: clamp(1rem, 5vw, 6rem);
 }
 
-.representam > h5 {
+.representam h5 {
     color: #FFF;
     text-align: justify;
     font-family: "Louis George Cafe";
@@ -41,26 +41,26 @@
     margin-top: clamp(0.875rem, 1vw, 1rem);;
 }
 @media (max-width: 900px) {
-    .representam > h1 {
+    .representam h1 {
         font-size: clamp(1.2rem, 12vw, 4rem);
         margin-left: clamp(0.5rem, 3vw, 2rem);
     }
-    .representam > h5 {
+    .representam h5 {
         font-size: clamp(1rem, 3vw, 1.2rem);
         margin-left: clamp(0.5rem, 3vw, 2rem);
         max-width: 60vw;
-        
+
     }
 }
 
 @media (max-width: 600px) {
-    
-    .representam > h1 {
+
+    .representam h1 {
         font-size: clamp(1.2rem, 17vw, 2.5rem);
         max-width: 98vw;
         margin-left: 1vw;
     }
-    .representam > h5 {
+    .representam h5 {
         font-size: clamp(0.5rem, 3vw, 1rem);
         max-width: 60vw;
         margin-left: 1vw;
@@ -149,14 +149,14 @@
     min-width: 0;
 }
 
-.conteudo > h1 {
+.conteudo h1 {
     color: #FFF;
     font-family: "The Next Font", sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
     text-wrap: initial; /* Permite quebra de linha se necessário */
 }
 
-.conteudo > p {
+.conteudo p {
     color: #FFF;
     text-align: justify;
     font-family: "Louis George Cafe", sans-serif;
@@ -195,10 +195,10 @@
         height: clamp(350px, 50vw, 550px); /* Ajusta a altura para o layout 2x2 */
         min-width: unset;
     }
-    .conteudo > h1 {
+    .conteudo h1 {
         font-size: clamp(1.8rem, 4vw, 2.5rem);
     }
-    .conteudo > p {
+    .conteudo p {
         font-size: clamp(1rem, 2vw, 1.3rem);
     }
 }
@@ -215,10 +215,10 @@
     .card-item {
         height: clamp(400px, 100vw, 500px); /* Cards mais altos no celular */
     }
-    .conteudo > h1 {
+    .conteudo h1 {
         font-size: 2rem;
     }
-    .conteudo > p {
+    .conteudo p {
         font-size: 1.1rem;
     }
 }
@@ -245,7 +245,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
-#artigo1 > h1 {
+#artigo1 h1 {
     color: #FFF;
     font-family: "THE NEXT FONT";
     font-size: clamp(2.5rem, 6vw, 6rem);
@@ -269,9 +269,9 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
-#artigo2 > p {
+#artigo2 p {
     text-align: justify;
-    font-family: "Louis George Cafe"; 
+    font-family: "Louis George Cafe";
     line-height: normal;
     font-size: clamp(1.2rem, 1.6vw, 1.6rem);
     align-self: flex-end;
@@ -301,7 +301,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
 }
 
-#artigo3 > h1 {
+#artigo3 h1 {
     color: #FFF;
     text-align: right;
     font-family: "THE NEXT FONT";
@@ -331,7 +331,7 @@
     align-self: end;
 }
 
-#artigo4 > h1 {
+#artigo4 h1 {
     color: #FFF;
     font-family: "THE NEXT FONT";
     line-height: normal;
@@ -365,7 +365,7 @@
     justify-content: center;
 }
 
-#s4 > h1 {
+#s4 h1 {
     font-family: "The Next Font";
     font-size: clamp(3rem, 8vw, 8rem);
     margin-top: clamp(3.5rem, 7vw, 7rem);
@@ -385,24 +385,13 @@
     padding-right: clamp(3rem, 8vw, 8rem);
 }
 
-#s4 > div > div > h1 {
+#s4 div h1 {
     font-family: "The Next Font";
     line-height: normal;
     font-size: clamp(2rem, 3vw, 3rem);
     max-width: 30rem;
     margin-bottom: clamp(1.25rem, 2vw, 2rem);
     margin-left: clamp(1.25rem, 2vw, 2rem);
-}
-
-#s4 > div > a > div > h1 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    max-width: 30rem;
-    text-align: left;
-    margin-bottom: clamp(1.25rem, 2vw, 2rem);
-    margin-left: clamp(1.25rem, 2vw, 2rem);
-    color: #FFF;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-    font-family: "THE NEXT FONT";
 }
 
 /* --- BOTÃO MODIFICADO (BASEADO NO SEU EXEMPLO) --- */
@@ -459,11 +448,6 @@
 /* --- FIM DAS MODIFICAÇÕES DO BOTÃO --- */
 
 
-#s4 > div > button > a {
-    color: #FFF;
-    font-size: clamp(0.875rem, 1vw, 1rem); /* --- MODIFICADO (para bater com o botão) --- */
-    text-decoration: none; /* --- ADICIONADO (pra garantir) --- */
-}
 
 #artigo5, #artigo6, #artigo7, #artigo8, #artigo9  {
     background-size: cover;
@@ -491,16 +475,3 @@
 }
 
 
-/* --- CORREÇÃO PARA LINKS (NEXT.JS) --- */
-/*
-  Isso força as tags <a> criadas pelo <Link>
-  a se comportarem como elementos de bloco.
-  Assim, elas passam a obedecer o layout Flexbox das seções 
-  e permitem que os divs (#artigo1, #artigo3, etc.) 
-  dentro delas tenham o tamanho correto.
-*/
-#s2 > a,
-#s3 > a,
-#s4 > div > a {
-    display: block;
-}
