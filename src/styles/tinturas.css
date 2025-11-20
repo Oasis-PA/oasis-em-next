@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+.page-tinturas-wrapper > header,
+.page-tinturas-wrapper > header * {
+    padding: inherit;
+}
+
 .page-tinturas-wrapper > header {
     width: 100%;
 }

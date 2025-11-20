@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+.page-cortes-wrapper > header,
+.page-cortes-wrapper > header * {
+    padding: inherit;
+    color: inherit;
+}
+
 .page-cortes-wrapper {
     width: 100%;
     min-height: 100vh;
