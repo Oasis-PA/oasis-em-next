@@ -1,0 +1,259 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.wrapper * {
+    margin: 0;
+    padding: 0;
+    color: var(--corpo-texto);
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: clamp(2rem, 4vw, 4rem);
+}
+
+.sectionHeader {
+    background-image: url('../../public/images/guia/header-bg.png');
+    width: 100%;
+    min-height: 30.35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: clamp(1.5rem, 12vw, 7rem);
+}
+
+.sectionHeaderH1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(2.5rem, 12vw, 6.25rem);
+}
+
+.sectionHeaderP {
+    color: #FFF;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    max-width: 60ch;
+}
+
+.s1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1700px;
+    justify-content: center;
+    align-items: self-start;
+    margin-top: clamp(1.5rem, 6vw, 3rem);
+    padding: 0 1rem;
+}
+
+.guia {
+    margin-left: clamp(0.7rem, 5vw, 2.8rem);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.5rem, 7vw, 3.5rem);
+}
+
+.guiaLink {
+    text-decoration: none;
+}
+
+.guiaLinkDiv {
+    display: flex;
+    flex-direction: row;
+    gap: clamp(0.75rem, 2.5vw, 1.25rem);
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    align-items: center;
+}
+
+.guiaLinkDiv:hover {
+    transform: translateX(5px);
+    opacity: 0.8;
+}
+
+.guiaLinkH1 {
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: clamp(1.4rem, 4.5vw, 2.25rem);
+    font-weight: 400;
+}
+
+.guiaLinkImg {
+    height: clamp(20px, 4vw, 30px);
+    width: auto;
+}
+
+.linha {
+    width: 95%;
+    background-color: black;
+    height: 2px;
+    align-self: center;
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+}
+
+.s2 {
+  flex-flow: column nowrap;
+    display: flex;
+    width: 100%;
+    max-width: 1800px;
+    justify-content: center;
+    align-items: stretch;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.s2Link {
+    text-decoration: none;
+    display: flex;
+    transition: all 0.4s ease;
+    max-width: 780px;
+    width: 100%;
+}
+
+.s2Link:hover {
+    transform: scale(1.03);
+}
+
+.s2:empty::after {
+    content: "Nenhuma página encontrada para sua pesquisa.";
+    display: block;
+    text-align: center;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 2rem;
+    margin: 2rem auto;
+}
+
+.pag {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 14vw;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pagImg {
+    width: 55%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pag1, .pag2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45%;
+    padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.pag1 { background-color: #FBF3E2; }
+.pag2 { background-color: #E5DBF0; }
+
+.pag1H1, .pag2H1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+
+.pag1P, .pag2P {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    text-align: justify;
+    margin-top: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.searchContainer {
+    position: relative;
+    width: 95%;
+    margin: clamp(1.5rem, 4vw, 2rem) auto;
+    display: flex;
+    align-items: center;
+}
+
+.searchInput {
+    width: 100%;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+    padding-right: clamp(3rem, 8vw, 4rem);
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    font-family: "Louis George Cafe", sans-serif;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #ECC46F;
+    box-shadow: 0 4px 15px rgba(236, 196, 111, 0.3);
+}
+
+#searchInput::placeholder {
+    color: #aaa;
+}
+
+.searchIcon {
+    position: absolute;
+    right: clamp(1rem, 3vw, 1.5rem);
+    color: #8B4CB8;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .s2Link {
+        flex-direction: column;
+        max-width: 400px;
+        width: 80%;
+    }
+
+    .pag {
+        flex-direction: column;
+    }
+
+    .s1{
+      display: flex;
+      flex-flow: row;
+        align-items: center;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    #guia{
+        margin-left: 0;
+        display: flex;
+    }
+
+    .pagImg {
+        width: 100%;
+        height: 180px;
+    }
+
+    .pag1, .pag2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .pag1P, .pag2P {
+        text-align: center;
+    }
+}
