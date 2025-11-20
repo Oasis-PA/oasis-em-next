@@ -133,3 +133,81 @@
     font-size: 2rem;
   }
 }
+
+/* Navegação após login */
+.admin-navigation {
+  display: flex;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.nav-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 120%;
+  font-family: 'Louis George Cafe', sans-serif;
+}
+
+.nav-card:hover {
+  border-color: #AA35B0;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(170, 53, 176, 0.2);
+  background: linear-gradient(135deg, #ffffff 0%, #f9f0fa 100%);
+}
+
+.nav-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.nav-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-card p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+  .admin-navigation {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .nav-card {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-card {
+    padding: 1.25rem;
+  }
+  
+  .nav-icon {
+    font-size: 2.5rem;
+  }
+  
+  .nav-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .nav-card p {
+    font-size: 0.9rem;
+  }
+}

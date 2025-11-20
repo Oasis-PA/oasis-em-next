@@ -1,10 +1,8 @@
-// src/app/admin/login/page.tsx
 "use client";
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import  '@/styles/login-admin.css';
-
+import '@/styles/login-admin.css';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -14,6 +12,7 @@ export default function AdminLoginPage() {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +31,7 @@ export default function AdminLoginPage() {
       const data = await response.json();
 
       if (response.ok) {
-        router.push('/admin/artigos');
+        setIsAuthenticated(true);
       } else {
         setError(data.error || 'Credenciais inválidas');
       }
@@ -42,6 +41,45 @@ export default function AdminLoginPage() {
       setIsLoading(false);
     }
   };
+
+  const handleNavigate = (path: string) => {
+    router.push(path);
+  };
+
+  if (isAuthenticated) {
+    return (
+      <div className="login-container">
+        <div className="login-box" style={{ maxWidth: '600px' }}>
+          <div className="login-header">
+            <h1>✅ Login realizado com sucesso!</h1>
+            <p>Escolha para onde deseja ir</p>
+          </div>
+
+          <div className="admin-navigation">
+            <button
+              onClick={() => handleNavigate('/admin/artigos')}
+              className="nav-card"
+            >
+              <div className="nav-icon">📝</div>
+              <h3>Artigos</h3>
+              <p>Gerenciar posts e artigos gerais</p>
+            </button>
+
+            <button
+              onClick={() => handleNavigate('/admin/cortes')}
+              className="nav-card"
+            >
+              <div className="nav-icon">✂️</div>
+              <h3>Cortes de Cabelo</h3>
+              <p>Gerenciar catálogo de cortes</p>
+            </button>
+
+          
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="login-container">
@@ -92,8 +130,6 @@ export default function AdminLoginPage() {
             {isLoading ? 'Entrando...' : 'Entrar'}
           </button>
         </form>
-
-       
       </div>
     </div>
   );

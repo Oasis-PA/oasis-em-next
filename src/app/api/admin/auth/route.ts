@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
   const rateLimitResult = rateLimit(clientIp, {
     id: 'admin-login',
     limit: 3,
-    window: 900, // 15 minutos
+    window: 180, // 3 minutos
   });
 
   if (!rateLimitResult.success) {
