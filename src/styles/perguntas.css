@@ -4,25 +4,9 @@
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* Estilos Globais e Melhorias */
-.page-perguntas-wrapper > div,
-.page-perguntas-wrapper main,
-.page-perguntas-wrapper section,
-.page-perguntas-wrapper article {
+.page-perguntas-wrapper * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-.page-perguntas-wrapper h1,
-.page-perguntas-wrapper h2,
-.page-perguntas-wrapper h3,
-.page-perguntas-wrapper h4,
-.page-perguntas-wrapper h5,
-.page-perguntas-wrapper h6,
-.page-perguntas-wrapper p,
-.page-perguntas-wrapper span,
-.page-perguntas-wrapper a,
-.page-perguntas-wrapper button {
     box-sizing: border-box;
 }
 

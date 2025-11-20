@@ -1,23 +1,7 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-ajuda-wrapper > div,
-.page-ajuda-wrapper main,
-.page-ajuda-wrapper section,
-.page-ajuda-wrapper article {
+.page-ajuda-wrapper * {
     margin: 0;
     padding: 0;
-    color: var(--corpo-texto);
-}
-
-.page-ajuda-wrapper h1,
-.page-ajuda-wrapper h2,
-.page-ajuda-wrapper h3,
-.page-ajuda-wrapper h4,
-.page-ajuda-wrapper h5,
-.page-ajuda-wrapper h6,
-.page-ajuda-wrapper p,
-.page-ajuda-wrapper span,
-.page-ajuda-wrapper a,
-.page-ajuda-wrapper button {
     color: var(--corpo-texto);
 }
 

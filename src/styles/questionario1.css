@@ -3,25 +3,9 @@
    CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
-.page-questionario1-wrapper > div,
-.page-questionario1-wrapper main,
-.page-questionario1-wrapper section,
-.page-questionario1-wrapper article {
+.page-questionario1-wrapper * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-.page-questionario1-wrapper h1,
-.page-questionario1-wrapper h2,
-.page-questionario1-wrapper h3,
-.page-questionario1-wrapper h4,
-.page-questionario1-wrapper h5,
-.page-questionario1-wrapper h6,
-.page-questionario1-wrapper p,
-.page-questionario1-wrapper span,
-.page-questionario1-wrapper a,
-.page-questionario1-wrapper button {
     box-sizing: border-box;
 }
 
