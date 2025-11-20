@@ -92,12 +92,8 @@ export default function AdminCortesPage() {
           <Link href="/admin/cortes/novo" className="btn-primary">
             + Novo Corte
           </Link>
-          <Link href="/admin/agendamentos" className="btn-secondary">
-            📅 Agendamentos
-          </Link>
-          <Link href="/admin/artigos" className="btn-secondary">
-            📝 Artigos
-          </Link>
+         
+        
           <button onClick={handleLogout} className="btn-logout">
             Sair
           </button>
