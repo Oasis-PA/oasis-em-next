@@ -27,6 +27,7 @@
     "test:advanced": "jest tests/performance tests/concurrency tests/migration tests/backup",
     "test:advanced:watch": "jest --watch tests/performance tests/concurrency tests/migration tests/backup",
     "test:seed": "dotenv -e .env -- tsx cypress/support/seed-test-user.ts",
+    "test:seed:clean": "dotenv -e .env -- tsx cypress/support/seed-test-user.ts clean",
     "test:functional": "cross-env PORT=3001 start-server-and-test dev http://localhost:3001 cypress:run",
     "test:functional:open": "cross-env PORT=3001 start-server-and-test dev http://localhost:3001 cypress:open",
     "test:functional:headless": "cross-env PORT=3001 start-server-and-test dev http://localhost:3001 'cypress run --headless'",

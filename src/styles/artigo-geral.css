@@ -1,25 +1,9 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* artigo-geral.css - ATUALIZADO PARA NEXT.JS */
 
-.page-artigo-wrapper > div,
-.page-artigo-wrapper main,
-.page-artigo-wrapper section,
-.page-artigo-wrapper article {
+.page-artigo-wrapper * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-.page-artigo-wrapper h1,
-.page-artigo-wrapper h2,
-.page-artigo-wrapper h3,
-.page-artigo-wrapper h4,
-.page-artigo-wrapper h5,
-.page-artigo-wrapper h6,
-.page-artigo-wrapper p,
-.page-artigo-wrapper span,
-.page-artigo-wrapper a,
-.page-artigo-wrapper button {
     box-sizing: border-box;
 }
 

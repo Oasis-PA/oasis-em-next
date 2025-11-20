@@ -13,7 +13,7 @@
 }
 
 /* === VARIÁVEIS DE COR (Ajustadas para o site) === */
-.senha-modal-overlay {
+:root {
   --modal-overlay-bg: rgba(46, 21, 38, 0.85); /* Tom roxo escuro translúcido */
   --modal-bg: #FFFFFF; /* Fundo branco como padrão nos forms */
   --header-bg: #5E332C; /* Marrom escuro para o header, contrastante */
@@ -41,7 +41,7 @@
   --error-border: #f5c6cb;
 }
 /* Adaptação para tema escuro, se houver */
-.dark .senha-modal-overlay {
+:root.dark {
     --modal-bg: #1e1e1e;
     --header-bg: #331a17; /* Marrom mais escuro */
     --text-primary-dark: #e0e0e0;

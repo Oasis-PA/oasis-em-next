@@ -1,23 +1,7 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-respostas-wrapper > div,
-.page-respostas-wrapper main,
-.page-respostas-wrapper section,
-.page-respostas-wrapper article {
+.page-respostas-wrapper * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-.page-respostas-wrapper h1,
-.page-respostas-wrapper h2,
-.page-respostas-wrapper h3,
-.page-respostas-wrapper h4,
-.page-respostas-wrapper h5,
-.page-respostas-wrapper h6,
-.page-respostas-wrapper p,
-.page-respostas-wrapper span,
-.page-respostas-wrapper a,
-.page-respostas-wrapper button {
     box-sizing: border-box;
 }
 

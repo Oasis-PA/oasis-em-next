@@ -6,7 +6,6 @@
    BASE STYLES - Isolados para perfil/gerenciamento
    ============================================ */
 /* ⚠️ ISOLAMENTO DE ESTILOS - Aplicado apenas ao container principal */
-
 .page-perfil-wrapper,
 .page-gerenciamento-wrapper {
     margin: 0;
@@ -21,10 +20,7 @@
     padding: 0;
 }
 
-/* ⚠️ CRÍTICO: Usar .page-perfil-wrapper e .page-gerenciamento-wrapper em vez de :root */
-/* para evitar afetar TODA a página e o header global */
-.page-perfil-wrapper,
-.page-gerenciamento-wrapper {
+:root {
     --body-back: #ffffff;
     --corpo-texto: #000000;
     --header-color: #000000;
@@ -39,8 +35,7 @@
     --danger-hover: #c82333;
 }
 
-.page-perfil-wrapper.dark,
-.page-gerenciamento-wrapper.dark {
+:root.dark {
     --body-back: #0e0e0e;
     --shadow: #161616;
     --corpo-texto: #ffffff;
