@@ -72,7 +72,19 @@
       "Bash(npx:*)",
       "Bash(git push:*)",
       "Bash(find:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(git revert:*)",
+      "Bash(npm run test:functional:*)",
+      "Bash(npm run cypress:open:*)",
+      "Bash(npm run test:seed:clean:*)",
+      "Bash(node scripts/validate-tests.js:*)",
+      "Bash(node scripts/validate-tests.cjs:*)",
+      "Bash(do basename \"$file\" .css)",
+      "Bash(for css in alimentacao.css artigo-geral.css artigoteste.css central-de-ajuda.css cortes-geral.css editar-perfil.css hair-care.css infantil.css meuperfil-after.css parcerias-empresas.css parcerias-usuarios.css quizzes.css respostas.css skincare.css tela-de-cadastro.css tela-de-produto.css)",
+      "Bash(do if grep -q \"^\\.page-\" \"$css\")",
+      "Bash(then echo \"$css | ✅ Wrapper scoped\")",
+      "Bash(else echo \"$css | ❌ Globais\")",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

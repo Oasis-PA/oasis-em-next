@@ -2,7 +2,7 @@
 
 import { Header, Footer } from "@/components";
 import Image from "next/image";
-import "@/styles/tendencias.css";
+import styles from "@/styles/tendencias.module.css";
 import Link from "next/link";
 
 interface TrendCardProps {
@@ -19,33 +19,31 @@ const TrendCard: React.FC<TrendCardProps> = ({ imageClass, title, tags, link, ti
   const saveIconSrc = '/images/tendencias/Salvar.png'; 
 
   return (
-    <div className="page-tendencias-wrapper">
-    // O link envolve todo o card (div com a classe da imagem de fundo)
-    <Link href={link} className={imageClass}> 
-      <div className="elementos">
-        <div className="cima">
-          <p id="data-3">19 jun 2024</p>
+    <Link href={link} className={styles[imageClass]}> 
+      <div className={styles.elementos}>
+        <div className={styles.cima}>
+          <p className={styles.data3}>19 jun 2024</p>
           {/* Componente Image para o ícone de salvar */}
-          <Image 
-            id="salvar-3" 
-            src={saveIconSrc} 
-            alt="Salvar" 
-            width={20} // Tamanho base será sobrescrito pelo CSS
-            height={27} // Tamanho base será sobrescrito pelo CSS
-            unoptimized // Imagens de ícone pequenas podem ser unoptimized
+          <Image
+            className={styles.salvar3}
+            src={saveIconSrc}
+            alt="Salvar"
+            width={20}
+            height={27}
+            unoptimized
           />
         </div>
 
-        <div className="centro">
-          <div className="butaos">
+        <div className={styles.centro}>
+          <div className={styles.butaos}>
             {tags.map((tag, index) => (
               <button key={index}>{tag}</button>
             ))}
           </div>
-          <p id={titId}>{title}</p>
+          <p className={styles[titId]}>{title}</p>
         </div>
       </div>
-    </Link>    </div>
+    </Link>
   );
 
 };
@@ -57,113 +55,113 @@ export default function tendencias() {
       <Header />
       <main>
         {/* ... Seções anteriores (primeiro, segundo, terceiro) ... */}
-        <section className="primeiro">
-          <div className="banner-principal">
-            <p id="tit-1">
+        <section className={styles.primeiro}>
+          <div className={styles.bannerPrincipal}>
+            <p className={styles.tit1}>
               Acompanhe o que está <br /> bombando nos últimos dias
             </p>
-            <p id="text-1">
+            <p className={styles.text1}>
               Os assuntos mais comentados, a nova coleção, o novo tratamento - aqui você encontra de tudo sem precisar sair do conforto. Todas as principais tendências estão reunidas em um único lugar feito pensando especialmente em você.
             </p>
           </div>
 
           {/* NOVO GRUPO PARA SOBREPOSIÇÃO LIMPA */}
-          <div className="primeiro-overlap-group">
-            <Link href='/artigo/qual-creme-comprar' className="banner-sec-link">
-              <div className="banner-sec">
-                <div className="butoes">
+          <div className={styles.primeiroOverlapGroup}>
+            <Link href='/artigo/qual-creme-comprar' className={styles.bannerSecLink}>
+              <div className={styles.bannerSec}>
+                <div className={styles.butoes}>
                   <button>Cabelo</button>
                   <button>Cremes e óleos</button>
                   <button>Produtos</button>
                 </div>
-                <p id="tit-2">Os dilemas do século XXI: Qual creme comprar?</p>
+                <p className={styles.tit2}>Os dilemas do século XXI: Qual creme comprar?</p>
               </div>
             </Link>
 
-            <div className="meio">
+            <div className={styles.meio}>
               <p>
                 O essencial <br /> para o seu estilo
               </p>
               <button>Ver todos</button>
             </div>
 
-            <Link href='/artigo/qual-creme-comprar' className="banner-terc-link">
-              <div className="banner-terc">
-                <div className="butoes-2">
+            <Link href='/artigo/qual-creme-comprar' className={styles.bannerTercLink}>
+              <div className={styles.bannerTerc}>
+                <div className={styles.butoes2}>
                   <button>Cabelo</button>
                   <button>Cremes e óleos</button>
                   <button>Produtos</button>
                 </div>
-                <p id="tit-3">Acessórios para pele e cabelo</p>
+                <p className={styles.tit3}>Acessórios para pele e cabelo</p>
               </div>
             </Link>
           </div>
         </section>
         
-        <section className="segundo">
-          <div className="segundo-col-esq">
-            <p id="tit-4">Cabelo perfeito em 3 passos</p>
-            <p id="text-2">
+        <section className={styles.segundo}>
+          <div className={styles.segundoColEsq}>
+            <p className={styles.tit4}>Cabelo perfeito em 3 passos</p>
+            <p className={styles.text2}>
               Os produtos essenciais para o seu cronograma capilar estão aqui, descubra a importância do cuidado diário.
             </p>
-            <div className="produtss">
-              <div className="produt1">
+            <div className={styles.produtss}>
+              <div className={styles.produt1}>
                 <p>Óleo Essencial</p>
-                <button id="but-2">Ver produto</button>
-                <button id="but-3">
+                <button className={styles.but2}>Ver produto</button>
+                <button className={styles.but3}>
                   <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
               </div>
-              <div className="produt2">
+              <div className={styles.produt2}>
                 <p>Óleo de Coco</p>
-                <button id="but-4">Ver produto</button>
-                <button id="but-5">
+                <button className={styles.but4}>Ver produto</button>
+                <button className={styles.but5}>
                   <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
               </div>
-              <div className="produt3">
+              <div className={styles.produt3}>
                 <p>Creme capilar</p>
-                <button id="but-2">Ver produto</button>
-                <button id="but-3">
+                <button className={styles.but2}>Ver produto</button>
+                <button className={styles.but3}>
                   <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
               </div>
             </div>
           </div>
 
-          <div className="segundo-col-dir">
+          <div className={styles.segundoColDir}>
             <Image 
-              id="img-direita" 
+              className={styles.imgDireita} 
               src="/images/tendencias/imagem-direita.png" 
               alt="Modelo sorrindo com a mão no cabelo" 
               width={400} 
               height={400} 
             />
-            <p id="tit-5">Maquiagens</p>
-            <p id="text-3">
+            <p className={styles.tit5}>Maquiagens</p>
+            <p className={styles.text3}>
               O que você precisa saber sobre a nova linha de maquiagens da Makeup Star!
             </p>
-            <div id="divi">
+            <div className={styles.divi}>
               <p>Produtos essenciais</p>
             </div>
             <Image 
-              id="img-produt-1" 
+              className={styles.imgProdut1} 
               src="/images/tendencias/imagem-maquiagem.png" 
               alt="Foto de maquiagem" 
               width={300} 
               height={100} 
             />
-            <button id="but-6">Ver produtos</button>
+            <button className={styles.but6}>Ver produtos</button>
           </div>
         </section>
 
-        <section className="terceiro">
-          <div className="esq">
+        <section className={styles.terceiro}>
+          <div className={styles.esq}>
             <p>Os itens que você deve usar no inverno</p>
           </div>
-          <div className="dir">
-            <p id="tit-6">Esteja sempre no estilo</p>
-            <div id="uno">
+          <div className={styles.dir}>
+            <p className={styles.tit6}>Esteja sempre no estilo</p>
+            <div className={styles.uno}>
               <Image
                 src="/images/tendencias/Frame.png"
                 alt="Couro repaginado"
@@ -172,7 +170,7 @@ export default function tendencias() {
               />
               <p>Couro repaginado</p>
             </div>
-            <div id="uno">
+            <div className={styles.uno}>
               <Image
                 src="/images/tendencias/frame-1.png"
                 alt="Cachos com volume"
@@ -181,7 +179,7 @@ export default function tendencias() {
               />
               <p>Cachos com volume</p>
             </div>
-            <div id="uno">
+            <div className={styles.uno}>
               <Image
                 src="/images/tendencias/frame-2.png"
                 alt="Acessórios com textura"
@@ -190,7 +188,7 @@ export default function tendencias() {
               />
               <p>Acessórios com textura</p>
             </div>
-            <div id="uno">
+            <div className={styles.uno}>
               <Image
                 src="/images/tendencias/frame-3.png"
                 alt="Sobreposições"
@@ -205,14 +203,14 @@ export default function tendencias() {
         {/* ======================================================= */}
         {/* NOVA SEÇÃO: QUARTO - TENDÊNCIAS DA SEMANA */}
         {/* ======================================================= */}
-        <section className="quarto">
-          <div id="outro-titulo">
+        <section className={styles.quarto}>
+          <div className={styles.outroTitulo}>
             <p>Tendencias da Semana</p>
           </div>
 
-          <section className="imagenszinas">
-            <div className="esqui">
-              <div className="sec-1">
+          <section className={styles.imagenszinas}>
+            <div className={styles.esqui}>
+              <div className={styles.sec1}>
                 {/* Imagem 2 */}
                 <TrendCard
                   imageClass="img-2"
@@ -231,7 +229,7 @@ export default function tendencias() {
                 />
               </div>
 
-              <div className="sec-2">
+              <div className={styles.sec2}>
                 {/* Imagem empé */}
                 <TrendCard
                   imageClass="empé"
@@ -240,7 +238,7 @@ export default function tendencias() {
                   link="/artigo/creme-comprar-2"
                   titId="tit-7"
                 />
-                <div className="deitada">
+                <div className={styles.deitada}>
                   {/* Imagem 4 */}
                   <TrendCard
                     imageClass="img-4"
@@ -261,8 +259,8 @@ export default function tendencias() {
               </div>
             </div>
 
-            <div className="diri">
-              <div className="diri-topo">
+            <div className={styles.diri}>
+              <div className={styles.diriTopo}>
                 {/* Imagem 6 */}
                 <TrendCard
                   imageClass="img-6"
@@ -273,7 +271,7 @@ export default function tendencias() {
                 />
               </div>
 
-              <div className="diri-baixo">
+              <div className={styles.diriBaixo}>
                 {/* Imagem 7 */}
                 <TrendCard
                   imageClass="img-7"

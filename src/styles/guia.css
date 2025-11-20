@@ -10,9 +10,7 @@
     display: flex;
     width: 100%;
     height: auto;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
 }
 
 .page-guia-wrapper {
@@ -24,7 +22,6 @@
     width: 100%;
     height: auto;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
     margin-bottom: clamp(2rem, 4vw, 4rem);
 }

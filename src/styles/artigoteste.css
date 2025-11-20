@@ -1,10 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ⚠️ CRÍTICO: Não usar seletores globais que afetam o header */
+/* Usar apenas .page-artigo-wrapper para isolar estilos */
 
-body {
+.page-artigo-wrapper {
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -13,13 +10,6 @@ body {
     background-color: var(--body-back);
     color: var(--corpo-texto);
     font-family: "Louis George Cafe", sans-serif;
-}
-
-header {
-    width: 100%;
-    height: 560px;
-    flex-shrink: 0;
-    position: relative;
 }
 
 main {
@@ -254,10 +244,6 @@ main > article > ul {
 
 /* Para celulares */
 @media (max-width: 480px) {
-    header {
-        height: 300px;
-    }
-
     main > article {
         margin-top: -120px;
         padding: 40px 5%;

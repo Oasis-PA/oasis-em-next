@@ -1,33 +1,49 @@
 /* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-.page-tendencias-wrapper * {
+.wrapper > div,
+.wrapper main,
+.wrapper section,
+.wrapper article {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.page-tendencias-wrapper {
+.wrapper h1,
+.wrapper h2,
+.wrapper h3,
+.wrapper h4,
+.wrapper h5,
+.wrapper h6,
+.wrapper p,
+.wrapper span,
+.wrapper a,
+.wrapper button {
+    box-sizing: border-box;
+}
+
+.wrapper {
     max-width: 100%;
     overflow-x: hidden;
     font-size: 16px;
 }
 
-img {
+.wrapper img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-a {
+.wrapper a {
     text-decoration: none;
     color: inherit;
 }
 
-button {
+.wrapper button {
     cursor: pointer;
 }
 
 /* --- ESTILOS DE FONTE E BOTÕES (MANTIDOS) --- */
-#tit-1, #tit-4, #tit-5, #tit-6, #outro-titulo {
+.tit1, .tit4, .tit5, .tit6, .outroTitulo {
     font-family: "PLAYFUL RUNWAY";
     font-style: normal;
     font-weight: 400;
@@ -35,14 +51,14 @@ button {
     width: fit-content;
 }
 
-#text-1, #data-1, .banner-sec button, .banner-terc button, #data-2, #text-2, #text-3, #uno p {
+.text1, .data1, .bannerSec button, .bannerTerc button, .data2, .text2, .text3, .uno p {
     font-family: "Louis George Cafe";
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
-#tit-2, #tit-3, .meio button, .produt1 p, .produt2 p, .produt3 p, #but-2, #but-4, #divi p, #but-6, .esq p {
+.tit2, .tit3, .meio button, .produt1 p, .produt2 p, .produt3 p, .but2, .but4, .divi p, .but6, .esq p {
     font-family: "The Next Font";
     font-style: normal;
     font-weight: 400;
@@ -50,7 +66,7 @@ button {
 }
 
 /* Efeitos de Botão (mantidos) */
-.meio button::before, #but-2::before, #but-4::before, #but-6::before {
+.meio button::before, .but2::before, .but4::before, .but6::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -62,15 +78,15 @@ button {
     transition: width 0.6s ease, height 0.6s ease;
 }
 
-.meio button::before, #but-2::before, #but-4::before {
+.meio button::before, .but2::before, .but4::before {
     background: rgba(255, 255, 255, 0.4);
 }
 
-#but-6::before {
+.but6::before {
     background: rgba(255, 255, 255, 0.25);
 }
 
-.meio button:hover, #but-2:hover, #but-4:hover {
+.meio button:hover, .but2:hover, .but4:hover {
     background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
 }
 
@@ -79,18 +95,18 @@ button {
     transform: translateY(-3px) scale(1.05);
 }
 
-#but-2:hover, #but-4:hover {
+.but2:hover, .but4:hover {
     box-shadow: 0px 8px 15px rgba(242, 165, 24, 0.4);
     transform: translateY(-2px) scale(1.05);
 }
 
-#but-6:hover {
+.but6:hover {
     background: linear-gradient(135deg, #7a4a42 0%, #5E332C 100%);
     box-shadow: 0px 8px 15px rgba(94, 51, 44, 0.4);
     transform: translateY(-2px) scale(1.05);
 }
 
-.meio button:active, #but-2:active, #but-4:active {
+.meio button:active, .but2:active, .but4:active {
     background: #d18f15;
 }
 
@@ -99,12 +115,12 @@ button {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.48);
 }
 
-#but-2:active, #but-4:active {
+.but2:active, .but4:active {
     transform: translateY(0) scale(1.02);
     box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
 }
 
-#but-6:active {
+.but6:active {
     background: #4a2822;
     transform: translateY(0) scale(1.02);
     box-shadow: 0 0.21vw 0.21vw 0 rgba(0, 0, 0, 0.48);
@@ -115,14 +131,14 @@ button {
     height: 300px;
 }
 
-#but-2:hover::before, #but-4:hover::before, #but-6:hover::before {
+.but2:hover::before, .but4:hover::before, .but6:hover::before {
     width: 200px;
     height: 200px;
 }
 /* --- FIM DOS ESTILOS MANTIDOS --- */
 
 
-.page-tendencias-wrapper main {
+.wrapper main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,7 +146,7 @@ button {
 }
 
 /* CONTAINER PRINCIPAL: Define a largura máxima do conteúdo */
-.content-wrapper {
+.contentWrapper {
     width: 100%;
     max-width: 1400px;
     padding: 0 5vw; /* Padding lateral consistente */
@@ -140,19 +156,19 @@ button {
 /* --- SEÇÃO 1: BANNER E DESTAQUES COM GRID --- */
 .primeiro {
     width: 100%;
-    margin-top: clamp(2rem, 5vw, 5rem); 
+    margin-top: clamp(2rem, 5vw, 5rem);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: clamp(2rem, 4vw, 4rem);
 }
 
-.banner-principal {
+.bannerPrincipal {
     background-image: url('/images/tendencias/img-principal3.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: clamp(20rem, 40vw, 45rem); 
+    height: clamp(20rem, 40vw, 45rem);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -162,49 +178,49 @@ button {
     padding-left: clamp(10rem, 12vw, 12rem);
 }
 
-#tit-1 {
+.tit1 {
     color: #FFF;
     font-size: clamp(2.5rem, 6vw, 5rem);
 }
 
-#text-1 {
+.text1 {
     color: #FFF;
     font-size: clamp(1rem, 1.5vw, 1.25rem);
     margin-top: clamp(0.5rem, 1vw, 1.5rem);
-    width: 100%; 
-    max-width: 500px; 
+    width: 100%;
+    max-width: 500px;
 }
 
 /* GRID DE SOBREPOSIÇÃO */
-.primeiro-overlap-group {
+.primeiroOverlapGroup {
     display: grid;
-    grid-template-columns: 1.4fr 0.8fr 1.4fr; 
+    grid-template-columns: 1.4fr 0.8fr 1.4fr;
     gap: clamp(1rem, 2vw, 2rem);
     width: 90vw;
     max-width: 1280px;
     margin: 0 auto;
 }
 
-.banner-sec-link, .banner-terc-link {
+.bannerSecLink, .bannerTercLink {
     display: block;
     height: 100%;
 }
 
-.banner-sec {
+.bannerSec {
     background-image: url('/images/tendencias/img-2.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: clamp(20rem, 38vw, 42rem); 
-    position: relative; 
+    height: clamp(20rem, 38vw, 42rem);
+    position: relative;
     padding: clamp(1rem, 1.5vw, 1.5rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
-#tit-2 {
+.tit2 {
     color: #ffffff;
     font-size: clamp(1.5rem, 2.5vw, 2.2rem);
     width: 100%;
@@ -215,11 +231,11 @@ button {
 .butoes {
     display: flex;
     gap: clamp(0.5rem, 1vw, 1rem);
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
-.banner-sec button,
-.banner-terc button {
+.bannerSec button,
+.bannerTerc button {
     color: #FFF;
     font-size: clamp(0.75rem, 1vw, 1rem);
     border-radius: 9999px; /* Usando valor grande para ser um "pill" */
@@ -235,7 +251,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: clamp(1rem, 2vw, 2rem) 0; 
+    padding: clamp(1rem, 2vw, 2rem) 0;
 }
 
 .meio p {
@@ -261,30 +277,30 @@ button {
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    height: auto; 
+    height: auto;
 }
 
-.banner-terc {
+.bannerTerc {
     background-image: url('/images/tendencias/img-3.png');
     background-repeat: no-repeat;
     position: relative;
     width: 100%;
-    height: clamp(20rem, 38vw, 42rem); 
+    height: clamp(20rem, 38vw, 42rem);
     background-size: cover;
     background-position: center;
     padding: clamp(1rem, 1.5vw, 1.5rem);
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
 }
 
-.butoes-2 {
+.butoes2 {
     display: flex;
     gap: clamp(0.5rem, 1vw, 1rem);
     flex-wrap: wrap;
 }
 
-#tit-3 {
+.tit3 {
     color: #ffffff;
     font-size: clamp(1.2rem, 2vw, 1.8rem);
     width: 100%;
@@ -294,34 +310,35 @@ button {
 
 /* --- SEÇÃO 2: GRID DE DESTAQUE --- */
 .segundo {
-    width: 100%;
-    max-width: 1680px;
+    background-image: url('/images/tendencias/group465.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 90vw;
+    max-width: 1280px;
     padding: clamp(2rem, 3vw, 3rem);
-    margin-top: clamp(2rem, 8vw, 8rem); 
+    margin-top: clamp(2rem, 8vw, 8rem);
     border-radius: 20px;
-    display: flex;
-    justify-content: space-between;
-    gap: clamp(1.5rem, 2vw, 3rem);
+
+    display: grid;
+    /* Duas colunas */
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 3vw, 3rem);
 }
 
-.segundo-col-esq {
+/* Coluna da Esquerda */
+.segundoColEsq {
     display: flex;
     flex-direction: column;
-    background-image: url('/images/tendencias/a.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: clamp(3.5rem, 4vw, 4rem);
-    flex: 1;
-    min-width: 0;
 }
 
-#tit-4 {
+.tit4 {
     color: #FFF;
     font-size: clamp(1.8rem, 3vw, 2.8rem);
     width: 100%;
 }
 
-#text-2 {
+.text2 {
     color: #FFF;
     font-size: clamp(1rem, 1.2vw, 1.2rem);
     width: 100%;
@@ -331,8 +348,8 @@ button {
 }
 
 .produtss {
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: clamp(1rem, 1.5vw, 1.5rem);
     margin-top: clamp(1rem, 2vw, 2rem);
 }
@@ -345,11 +362,13 @@ button {
     background-position: center;
     position: relative;
     border-radius: 20px;
+
+    /* Novo: Usa Flex para posicionar texto e botão */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding-bottom: clamp(1rem, 1.5vw, 1.5rem); 
+    padding-bottom: clamp(1rem, 1.5vw, 1.5rem);
     padding-top: 1rem;
 }
 
@@ -357,34 +376,37 @@ button {
 .produt2 { background-image: url('/images/tendencias/produ-2.png'); }
 .produt3 { background-image: url('/images/tendencias/produ-3.png'); }
 
+/* NOVO: Alinhamento do texto sem position:absolute e transform */
 .produt1 p, .produt2 p, .produt3 p {
     color: #FFF;
     text-align: center;
     font-size: clamp(0.9rem, 1.2vw, 1.2rem);
     width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem; /* Espaçamento acima do botão */
     padding: 0 0.5rem;
+    /* Removido position, bottom e transform */
 }
 
-#but-2, #but-4 {
+.but2, .but4 {
     color: #FFF;
     text-align: center;
     font-size: clamp(0.85rem, 1.1vw, 1.1rem);
     display: flex;
     height: auto;
-    padding: clamp(0.5rem, 0.8vw, 1rem) clamp(1.5rem, 2vw, 2.5rem);
+    padding: 0.5rem 1.5rem;
     justify-content: center;
     align-items: center;
     border-radius: 0.16rem;
     background: #F2A518;
     border-color: transparent;
     cursor: pointer;
-    position: relative;
+    position: relative; /* Para o efeito hover */
     overflow: hidden;
     transition: all 0.4s ease;
+    /* Removido position: absolute */
 }
 
-#but-3, #but-5 {
+.but3, .but5 {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -393,26 +415,26 @@ button {
     z-index: 10;
 }
 
-.segundo-col-dir {
+/* Coluna da Direita */
+.segundoColDir {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('/images/tendencias/b.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: clamp(3.5rem, 4vw, 4rem);
-    flex: 1;
-    min-width: 0;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: clamp(1.5rem, 2vw, 2rem);
+    /* Removido transform: translateY */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-#img-direita {
+.imgDireita {
     width: 100%;
     height: auto;
     max-width: 400px;
     border-radius: 10px;
 }
 
-#tit-5 {
+.tit5 {
     color: #000000;
     font-size: clamp(1.8rem, 3vw, 2.8rem);
     width: 100%;
@@ -421,7 +443,7 @@ button {
     margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
-#text-3 {
+.text3 {
     color: #000000;
     font-size: clamp(1rem, 1vw, 1.1rem);
     width: 100%;
@@ -429,33 +451,33 @@ button {
     margin-top: clamp(0.5rem, 1vw, 1rem);
 }
 
-#divi {
-    background-color: #f4f4f4; 
+.divi {
+    background-color: #f4f4f4;
     width: 100%;
     padding: clamp(0.5rem, 0.7vw, 0.7rem) clamp(1rem, 1vw, 1rem);
     border-radius: 10px;
     margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
-#divi p {
+.divi p {
     color: #000;
     text-align: center;
     font-size: clamp(0.9rem, 1vw, 1.1rem);
     width: 100%;
 }
 
-#img-produt-1 {
+.imgProdut1 {
     width: 100%;
     height: auto;
     margin-top: clamp(1rem, 1.5vw, 1.5rem);
 }
 
-#but-6 {
+.but6 {
     color: #FFF;
     text-align: center;
     font-size: clamp(0.9rem, 1.2vw, 1.2rem);
     display: flex;
-    padding: clamp(0.6rem, 1vw, 1.2rem) clamp(1.5rem, 2vw, 2.5rem);
+    padding: 0.6rem 1.5rem;
     justify-content: center;
     align-items: center;
     border-radius: 0.16rem;
@@ -467,8 +489,11 @@ button {
     overflow: hidden;
     transition: all 0.4s ease;
     margin-top: clamp(1rem, 1.5vw, 1.5rem);
+    position: relative;
 }
 
+
+/* --- SEÇÃO 3: LAYOUT DE DUAS COLUNAS COM GRID --- */
 .terceiro {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -477,7 +502,7 @@ button {
     align-items: stretch;
     /* Garante que o conteúdo fique centralizado e com padding lateral */
     margin: clamp(2rem, 5vw, 5rem) 0;
-    padding: 0 5vw; 
+    padding: 0 5vw;
 }
 
 .esq {
@@ -505,22 +530,22 @@ button {
     display: flex;
     flex-direction: column;
     gap: clamp(1rem, 1.6vw, 1.6rem);
-    padding: clamp(1.5rem, 2vw, 2rem) clamp(2rem, 4vw, 4rem); 
+    padding: clamp(1.5rem, 2vw, 2rem) clamp(2rem, 4vw, 4rem);
 }
 
-#tit-6 {
+.tit6 {
     color: #000;
     font-size: clamp(2rem, 4vw, 3.5rem);
 }
 
-#uno {
+.uno {
     display: flex;
     align-items: center;
     padding-bottom: clamp(1rem, 1.6vw, 1.6rem);
     border-bottom: 1px solid #727272;
 }
 
-#uno p {
+.uno p {
     color: #000;
     font-size: clamp(1.2rem, 2.4vw, 2rem);
     margin-left: clamp(1rem, 2vw, 2rem);
@@ -528,10 +553,10 @@ button {
     align-items: center;
 }
 
-#uno img {
+.uno img {
     width: clamp(2rem, 4vw, 4rem);
     height: clamp(2rem, 4vw, 4rem);
-    min-width: 40px; 
+    min-width: 40px;
     min-height: 40px;
 }
 
@@ -548,11 +573,11 @@ button {
     margin-top: 7vw;
 }
 
-#outro-titulo {
+.outroTitulo {
     color: #000;
     font-family: "PLAYFUL RUNWAY";
     /* Usando clamp() para o tamanho de fonte */
-    font-size: clamp(2.5rem, 5.73vw, 5rem); 
+    font-size: clamp(2.5rem, 5.73vw, 5rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -579,12 +604,12 @@ button {
     gap: 2vw; /* Espaçamento vertical entre sec-1 e sec-2 */
 }
 
-.sec-1 {
+.sec1 {
     display: flex;
     gap: 2vw;
 }
 
-.sec-2 {
+.sec2 {
     display: flex;
     justify-content: space-between;
     gap: 2vw;
@@ -607,7 +632,7 @@ button {
     flex-grow: 1; /* Prioridade de tamanho menor para a direita */
 }
 
-.diri-baixo {
+.diriBaixo {
     display: flex;
     justify-content: space-between;
     gap: 1vw;
@@ -615,16 +640,16 @@ button {
 
 /* --- ESTILOS GERAIS DOS CARDS DE TENDÊNCIA --- */
 
-.sec-1 a, .sec-2 a, .diri-topo a, .diri-baixo a, .empé {
+.sec1 a, .sec2 a, .diriTopo a, .diriBaixo a, .empe {
     /* Faz com que os links ocupem o espaço dos contêineres Flex/Grid */
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     flex-shrink: 0;
     min-height: 10vw; /* Altura mínima base */
 }
 
-.sec-1 a, .deitada a, .diri-baixo a, .diri-topo a, .empé {
+.sec1 a, .deitada a, .diriBaixo a, .diriTopo a, .empe {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -635,49 +660,49 @@ button {
 /* Tamanhos de Imagem */
 /* d-dvw substituído por vw para maior compatibilidade e fluidez */
 
-.img-2 {
+.img2 {
     width: 35.625vw;
     height: 12.55vw;
     background-image: url('/images/tendencias/imagem-2.png');
 }
 
-.img-3 {
+.img3 {
     width: 16.15vw;
     height: 12.55vw;
     background-image: url('/images/tendencias/imagem-3.png');
 }
 
-.empé {
+.empe {
     width: 25.57vw;
     height: 31.20vw;
     background-image: url('/images/tendencias/imagem-1.png');
 }
 
-.img-4 {
+.img4 {
     width: 25.57vw;
     height: 14.32vw;
     background-image: url('/images/tendencias/imagem-4.png');
 }
 
-.img-5 {
+.img5 {
     width: 25.57vw;
     height: 14.32vw;
     background-image: url('/images/tendencias/imagem-5.png');
 }
 
-.img-6 {
+.img6 {
     width: 28.91vw;
     height: 34.69vw;
     background-image: url('/images/tendencias/imagem-6.png');
 }
 
-.img-7 {
+.img7 {
     width: 16.09vw;
     height: 10.19vw;
     background-image: url('/images/tendencias/imagem-7.png');
 }
 
-.img-8 {
+.img8 {
     width: 11.56vw;
     height: 10.19vw;
     background-image: url('/images/tendencias/imagem-8.png');
@@ -698,18 +723,18 @@ button {
     margin: 4% 4% 0% 4%; /* Margens relativas para posicionamento */
 }
 
-#data-3 {
+.data3 {
     color: #FFF;
     text-align: center;
     font-family: "Louis George Cafe";
     /* Usando clamp() para o tamanho de fonte */
-    font-size: clamp(0.7rem, 1vw, 1rem); 
+    font-size: clamp(0.7rem, 1vw, 1rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
-#salvar-3 {
+.salvar3 {
     width: clamp(1rem, 1.26vw, 1.5rem);
     height: clamp(1rem, 1.69vw, 2rem);
 }
@@ -734,7 +759,7 @@ button {
     color: #FFF;
     font-family: "Louis George Cafe";
     /* Usando clamp() para o tamanho de fonte */
-    font-size: clamp(0.7rem, 1vw, 1rem); 
+    font-size: clamp(0.7rem, 1vw, 1rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -748,22 +773,22 @@ button {
     box-shadow: 0vw 0.2vw 0.5vw #00000044;
 }
 
-#tit-7 {
+.tit7 {
     color: #FFF;
     font-family: "The Next Font";
     /* Usando clamp() para o tamanho de fonte */
-    font-size: clamp(1.2rem, 2vw, 2rem); 
+    font-size: clamp(1.2rem, 2vw, 2rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     width: 100%;
 }
 
-#tit-8 {
+.tit8 {
     color: #FFF;
     font-family: "The Next Font";
     /* Usando clamp() para o tamanho de fonte */
-    font-size: clamp(1rem, 1.6vw, 1.6rem); 
+    font-size: clamp(1rem, 1.6vw, 1.6rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -782,64 +807,64 @@ button {
         gap: 4vw;
     }
 
-    .sec-1, .sec-2 {
+    .sec1, .sec2 {
         gap: 3vw;
     }
 
     /* Ajuste de tamanho para caberem em uma linha completa */
-    .img-2, .img-3, .empé, .img-4, .img-5, .img-6, .img-7, .img-8 {
+    .img2, .img3, .empe, .img4, .img5, .img6, .img7, .img8 {
         /* Largura base ajustada para Flexbox para preencher o espaço */
-        width: 100%; 
+        width: 100%;
         height: 25vw; /* Altura fixa no tablet */
     }
 
-    .sec-1 a, .sec-2 a {
+    .sec1 a, .sec2 a {
         flex-grow: 1;
     }
 
-    .img-2 {
+    .img2 {
         height: 25vw;
     }
-    .img-3 {
+    .img3 {
         height: 25vw;
     }
-    
-    .empé {
+
+    .empe {
         width: 50%; /* Ocupa metade da linha */
         height: 40vw;
     }
-    
+
     .deitada {
         width: 50%;
         gap: 3vw;
     }
 
-    .img-4, .img-5 {
+    .img4, .img5 {
         width: 100%;
         height: 18.5vw;
     }
-    
+
     .diri {
         flex-direction: row; /* Colunas diri-topo e diri-baixo lado a lado */
         gap: 3vw;
         margin-left: 0;
     }
 
-    .diri-topo, .diri-baixo {
+    .diriTopo, .diriBaixo {
         flex-grow: 1;
         width: 50%;
     }
 
-    .img-6 {
+    .img6 {
         height: 40vw;
     }
 
-    .diri-baixo {
+    .diriBaixo {
         flex-direction: column; /* Imagens 7 e 8 empilhadas */
         gap: 3vw;
     }
 
-    .img-7, .img-8 {
+    .img7, .img8 {
         width: 100%;
         height: 18.5vw;
     }
@@ -848,16 +873,16 @@ button {
 
 @media (max-width: 600px) {
     /* Mobile: Tudo em coluna única */
-    .sec-1, .sec-2, .diri {
+    .sec1, .sec2, .diri {
         flex-direction: column;
         gap: 1.5rem;
     }
 
-    .sec-1, .sec-2 {
+    .sec1, .sec2 {
         gap: 1.5rem;
     }
 
-    .empé {
+    .empe {
         width: 100%;
         height: 60vw;
     }
@@ -873,28 +898,28 @@ button {
         gap: 1.5rem;
     }
 
-    .diri-topo, .diri-baixo {
+    .diriTopo, .diriBaixo {
         width: 100%;
     }
 
-    .diri-baixo {
+    .diriBaixo {
         flex-direction: column;
         gap: 1.5rem;
     }
-    
-    .img-2, .img-3, .img-6, .img-7, .img-8 {
+
+    .img2, .img3, .img6, .img7, .img8 {
         height: 40vw;
     }
-    
-    .img-4, .img-5 {
+
+    .img4, .img5 {
         height: 30vw;
     }
-    
-    #tit-7 {
+
+    .tit7 {
         font-size: 1.2rem;
     }
 
-    #tit-8 {
+    .tit8 {
         font-size: 1rem;
     }
 }
@@ -904,11 +929,11 @@ button {
 /* --- RESPONSIVIDADE (Ajustes de Grid e Fontes) --- */
 
 @media (max-width: 1024px) {
-    .banner-principal {
+    .bannerPrincipal {
         height: clamp(25rem, 50vw, 55rem);
         margin-bottom: clamp(-8rem, -15vw, -18rem);
     }
-    .primeiro-overlap-group {
+    .primeiroOverlapGroup {
         grid-template-columns: 1.3fr 0.7fr 1.3fr;
         grid-template-rows: auto auto;
         width: 90vw;
@@ -922,10 +947,10 @@ button {
     .meio p {
         font-family: "PLAYFUL RUNWAY";
     }
-    .banner-sec {
+    .bannerSec {
         height: 40vw;
     }
-    .banner-terc {
+    .bannerTerc {
         height: 40vw;
     }
     .segundo {
@@ -947,29 +972,29 @@ button {
 
 @media (max-width: 768px) {
     /* MOBILE: Layout de coluna única */
-    
+
     /* Seção 1 */
-    .banner-principal {
+    .bannerPrincipal {
         padding-top: 2rem;
         padding-bottom: 2rem;
         margin-bottom: -3rem; /* Efeito de overlap mais suave */
     }
-    .primeiro-overlap-group {
+    .primeiroOverlapGroup {
         grid-template-columns: 1fr; /* Coluna única */
         gap: 1.5rem;
-        padding-top: 3rem; 
+        padding-top: 3rem;
         width: 90vw;
     }
-    .banner-sec, .banner-terc {
+    .bannerSec, .bannerTerc {
         height: 50vw; /* Altura fixa para mobile */
     }
-    #tit-2, #tit-3 {
+    .tit2, .tit3 {
         font-size: 1.2rem;
     }
     .meio {
         order: 3;
     }
-    
+
     /* Seção 2 */
     .segundo {
         grid-template-columns: 1fr; /* Coluna única */
@@ -980,7 +1005,7 @@ button {
         background-color: #5E332C;
         border-radius: 0;
     }
-    .segundo-col-dir {
+    .segundoColDir {
         padding: 1.5rem;
         margin-top: 2rem;
     }
@@ -989,13 +1014,13 @@ button {
         grid-template-columns: 1fr 1fr;
     }
     .produt1, .produt2, .produt3 {
-        height: 50vw; 
+        height: 50vw;
     }
     .produt3 {
         grid-column: auto; /* Remove centralização */
-        width: 100%; 
+        width: 100%;
     }
-    #but-6 {
+    .but6 {
         width: 80%;
     }
 
@@ -1018,10 +1043,10 @@ button {
     .dir {
         padding: 1.5rem 0;
     }
-    #tit-6 {
+    .tit6 {
         font-size: 2rem;
     }
-    #uno p {
+    .uno p {
         font-size: 1rem;
     }
 }

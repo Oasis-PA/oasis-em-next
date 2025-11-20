@@ -2,13 +2,13 @@
 
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react"; 
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Header, Footer } from "@/components";
 
 import Image from "next/image";
-import Link from "next/link"; 
+import Link from "next/link";
 
-import "@/styles/produtos.css";
+import styles from "@/styles/produtos.module.css";
 
 // -----------------------------------------------------
 // Interface e Componentes Fixos
@@ -23,7 +23,7 @@ interface ProdutoData {
 }
 
 const ChevronDownIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="chevron-icon" width="20" height="20" >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.chevronIcon} width="20" height="20" >
         <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
 );
@@ -65,16 +65,16 @@ const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, o
     const handleButtonClick = () => { if (!disabled) setIsOpen(!isOpen) }
 
     return (
-        <div className={`filter-dropdown-container ${isOpen ? 'active' : ''} ${disabled ? 'disabled' : ''}`} ref={containerRef} >
-            <div className="filter-label">{label}</div>
-            <button className="filter-content" onClick={handleButtonClick} aria-expanded={isOpen} disabled={disabled} >
-                <span className="filter-value">{currentValue}</span>
-                <div className="filter-icon-circle"><ChevronDownIcon /></div>
+        <div className={`${styles.filterDropdownContainer} ${isOpen ? styles.active : ''} ${disabled ? styles.disabled : ''}`} ref={containerRef} >
+            <div className={styles.filterLabel}>{label}</div>
+            <button className={styles.filterContent} onClick={handleButtonClick} aria-expanded={isOpen} disabled={disabled} >
+                <span className={styles.filterValue}>{currentValue}</span>
+                <div className={styles.filterIconCircle}><ChevronDownIcon /></div>
             </button>
             {isOpen && options.length > 1 && (
-                <ul className="dropdown-options-list">
+                <ul className={styles.dropdownOptionsList}>
                     {options.map(option => (
-                        <li key={getOptionKey(option.id)} onClick={() => handleOptionClick(option.id)} className={currentId === option.id ? 'selected' : ''} >
+                        <li key={getOptionKey(option.id)} onClick={() => handleOptionClick(option.id)} className={currentId === option.id ? styles.selected : ''} >
                             {option.nome}
                         </li>
                     ))}
@@ -148,14 +148,14 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
     }
 
     return (
-        <div className="filtros-barra-fundo">
-            <div className="filtros-barra-wrapper">
+        <div className={styles.filtrosBarraFundo}>
+            <div className={styles.filtrosBarraWrapper}>
                 <FilterDropdown label="PRODUTOS" currentValue={getFilterName(tagOptions, currentTagId)} currentId={currentTagId} options={tagOptions} onFilterChange={onTagChange} disabled={loadingFilters} />
-                <FilterDropdown 
-                    label="MARCA" 
-                    currentValue={getFilterName(marcaOptions, currentMarca)} 
-                    currentId={currentMarca} 
-                    options={marcaOptions} 
+                <FilterDropdown
+                    label="MARCA"
+                    currentValue={getFilterName(marcaOptions, currentMarca)}
+                    currentId={currentMarca}
+                    options={marcaOptions}
                     onFilterChange={onMarcaChange}
                     disabled={loadingFilters}
                 />
@@ -172,26 +172,26 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
 // -----------------------------------------------------
 
 const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
-    const imageSrc = produto.url_imagem || '/images/produtos/default-placeholder.png'; 
-    
+    const imageSrc = produto.url_imagem || '/images/produtos/default-placeholder.png';
+
     return (
-        <div className="produto-card">
-            <div className="card-inner-wrapper">
-                <Image 
-                    src={imageSrc} 
-                    width={150} 
-                    height={150} 
-                    alt={produto.nome} 
-                    className="produto-card-image" 
-                    unoptimized={true} 
-                    priority={true} 
+        <div className={styles.produtoCard}>
+            <div className={styles.cardInnerWrapper}>
+                <Image
+                    src={imageSrc}
+                    width={150}
+                    height={150}
+                    alt={produto.nome}
+                    className={styles.produtoCardImage}
+                    unoptimized={true}
+                    priority={true}
                 />
-                <div className="card-text">
-                    <p className="card-tag">{produto.tag_principal}</p>
-                    <h2 className="card-title">{produto.nome.toUpperCase()}</h2>
+                <div className={styles.cardText}>
+                    <p className={styles.cardTag}>{produto.tag_principal}</p>
+                    <h2 className={styles.cardTitle}>{produto.nome.toUpperCase()}</h2>
                 </div>
                 <Link href={`/produtos/${produto.id_produto}`}>
-                    <button className="card-button">
+                    <button className={styles.cardButton}>
                         VER MAIS
                     </button>
                 </Link>
@@ -268,13 +268,13 @@ const ProdutosGrid: React.FC<ProdutosGridProps> = ({ tagId, categoriaId, cabeloI
         fetchProdutos(nextPage, true);
     };
 
-    if (loading) return <div className="loading-message">Carregando produtos...</div>;
-    if (erro) return <div className="error-message">{erro}</div>;
-    
+    if (loading) return <div className={styles.loadingMessage}>Carregando produtos...</div>;
+    if (erro) return <div className={styles.errorMessage}>{erro}</div>;
+
     return (
         <>
-            <section id="produtos-grid-section">
-                <div className="produtos-grid-wrapper">
+            <section className={styles.produtosGridSection}>
+                <div className={styles.produtosGridWrapper}>
                     {produtos.length > 0 ? (
                         produtos.map((produto) => <ProdutoCard key={produto.id_produto} produto={produto} />)
                     ) : (
@@ -282,10 +282,10 @@ const ProdutosGrid: React.FC<ProdutosGridProps> = ({ tagId, categoriaId, cabeloI
                     )}
                 </div>
             </section>
-            
+
             {hasMore && (
-                <div className="load-more-container">
-                    <button className="load-more-button" onClick={handleLoadMore} disabled={loadingMore}>
+                <div className={styles.loadMoreContainer}>
+                    <button className={styles.loadMoreButton} onClick={handleLoadMore} disabled={loadingMore}>
                         {loadingMore ? 'CARREGANDO...' : 'CARREGAR MAIS PRODUTOS'}
                     </button>
                 </div>
@@ -322,14 +322,14 @@ export default function ProdutosPage() {
     };
 
     return (
-        <div className="page-produtos-wrapper">
-            <Header className="header-transparente"/>
+        <div className={styles.wrapper}>
+            <Header className={styles.headerTransparente}/>
             <main>
                 <h1>PRODUTOS RECOMENDADOS</h1>
                 <p>Encontre itens de cuidado para cabelo, pele <br></br> e muito mais.</p>
             </main>
 
-            <section id="s1">
+            <section className={styles.s1}>
                 <Image src="/images/produtos/marca (1).png" alt="SalonLine" width={200} height={60} />
                 <Image src="/images/produtos/marca (2).png" alt="Kolene" width={200} height={60} />
                 <Image src="/images/produtos/marca (3).png" alt="WidiCare" width={200} height={60} />
@@ -343,42 +343,40 @@ export default function ProdutosPage() {
                 </figure>
             </Link>
 
-            <section id="s2">
-                <div className="linha-texto"><h1>TIPOS DE CABELO</h1><div id="linha"></div></div>
-                <div className="imagens-s2">
+            <section className={styles.s2}>
+                <div className={styles.linhaTexto}><h1>TIPOS DE CABELO</h1><div className={styles.linha}></div></div>
+                <div className={styles.imagensS2}>
                     <Image src="/images/produtos/cabelo (1).png" alt="Ondulados" width={200} height={100} />
                     <Image src="/images/produtos/cabelo (2).png" alt="Cacheados" width={200} height={100} />
                     <Image src="/images/produtos/cabelo (3).png" alt="Crespo" width={200} height={100} />
                     <Image src="/images/produtos/cabelo (4).png" alt="C/Química" width={200} height={100} />
                 </div>
-                <div className="linha-texto"><div id="linha2"></div><h1>TIPOS DE PELE</h1></div>
-                <div className="imagens-s2">
+                <div className={styles.linhaTexto}><div className={styles.linha2}></div><h1>TIPOS DE PELE</h1></div>
+                <div className={styles.imagensS2}>
                     <Image src="/images/produtos/pele (1).png" alt="" width={200} height={100} />
                     <Image src="/images/produtos/pele (2).png" alt="" width={200} height={100} />
                     <Image src="/images/produtos/pele (3).png" alt="" width={200} height={100} />
                     <Image src="/images/produtos/pele (4).png" alt="" width={200} height={100} />
                 </div>
             </section>
-            
-            {/* ▼▼▼ MUDANÇA PRINCIPAL AQUI ▼▼▼ */}
-            <div className="produtos-layout-wrapper">
-                <FiltrosBarra 
+
+            <div className={styles.produtosLayoutWrapper}>
+                <FiltrosBarra
                     currentTagId={tagFiltroId} onTagChange={handleTagChange}
                     currentCategoriaId={categoriaFiltroId} onCategoriaChange={handleCategoriaChange}
                     currentCabeloId={cabeloFiltroId} onCabeloChange={handleCabeloChange}
                     currentPeleId={peleFiltroId} onPeleChange={handlePeleChange}
                     currentMarca={marcaFiltro} onMarcaChange={handleMarcaChange}
                 />
-                
-                <ProdutosGrid 
-                    tagId={tagFiltroId} 
+
+                <ProdutosGrid
+                    tagId={tagFiltroId}
                     categoriaId={categoriaFiltroId}
                     cabeloId={cabeloFiltroId}
                     peleId={peleFiltroId}
                     marca={marcaFiltro}
                 />
             </div>
-            {/* ▲▲▲ FIM DA MUDANÇA ▲▲▲ */}
 
             <Footer />
         </div>

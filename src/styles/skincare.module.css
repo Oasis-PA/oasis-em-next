@@ -1,0 +1,718 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+.wrapper > div,
+.wrapper main,
+.wrapper section,
+.wrapper article {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--corpo-texto);
+}
+
+.wrapper > div {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: var(--body-back);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 2300px;
+    align-self: center;
+    justify-self: center;
+}
+
+.wrapper {
+    overflow-x: hidden;
+}
+
+.wrapper main {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* ================================== */
+/* HEADER                             */
+/* ================================== */
+
+.headerTransparente {
+  background-color: transparent !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.sectionHeader {
+    background-image: url('../../public/images/skincare/header-bg.png');
+    width: 100%;
+    height: 60vh;
+    min-height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: clamp(1rem, 5vw, 3rem) clamp(2rem, 10vw, 14rem);
+    max-width: 2200px;
+}
+
+@media (max-width: 900px) {
+    .sectionHeader {
+        min-height: 600px;
+    }
+}
+
+.sectionHeader > h1, .sectionHeader > h2 {
+    color: white;
+    font-family: "The Next Font", sans-serif;
+    line-height: 1;
+}
+
+.sectionHeader > h1 {
+    font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
+}
+
+.sectionHeader > h2 {
+   font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
+    opacity: 50%;
+}
+
+/* ================================== */
+/* SEÇÃO 1 - FAIXA PRETA              */
+/* ================================== */
+
+.s1 {
+    display: flex;
+    width: 100%;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 10vw, 10rem);
+    max-width: 2200px;
+}
+
+.s1 > h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    max-width: 40ch;
+    line-height: 1.2;
+}
+
+.tons {
+    background-image: url('../../public/images/skincare/tons.png');
+    width: 100%;
+    min-height: clamp(50px, 7vw, 120px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 2200px;
+}
+
+/* ================================== */
+/* SEÇÃO 2 - CATEGORIAS               */
+/* ================================== */
+
+.s2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 3.3rem);
+    width: 100%;
+    padding: clamp(2rem, 8vw, 8rem) 1rem;
+}
+
+.categ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.categ:hover {
+    transform: translateY(-8px);
+}
+
+.categ > img {
+    width: clamp(85px, 13vw, 220px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.categ > h2 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+    white-space: nowrap;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.categ:hover > h2 {
+    color: #722F53;
+}
+
+/* ================================== */
+/* SEÇÃO 3 - ARTIGOS                  */
+/* ================================== */
+
+.artigos {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    max-width: 100vw;
+}
+
+.artigo2 {
+    padding: clamp(2rem, 5vw, 4rem);
+    width: 100vw;
+    max-width: 2000px;
+    background: #5E332C;
+    margin: clamp(2rem, 5vw, 4rem) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+@media (max-width: 900px) {
+    .artigos, .artigo2 {
+        flex-direction: column;
+    }
+    .artigo2 {
+        flex-direction: column-reverse;
+    }
+}
+
+.contArtigo {
+    padding: clamp(2.4rem, 7.5vw, 7rem);
+}
+
+.contArtigo > h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+    max-width: 18ch;
+}
+
+.contArtigo > p {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    letter-spacing: 0.06rem;
+    max-width: 43ch;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.contArtigo > button {
+    width: 200px;
+    height: 55px;
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    border-radius: 5px;
+    background: #F2A518;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.contArtigo > button a {
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    position: relative;
+    z-index: 1;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.contArtigo > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.contArtigo > button:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.contArtigo > button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.contArtigo > button:active {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.s3 img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+.s3 img:hover {
+    transform: scale(1.03);
+}
+
+/* ================================== */
+/* SEÇÃO 4 - PRODUTOS                 */
+/* ================================== */
+
+.s4 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: clamp(2rem, 6vw, 8rem);
+    padding: 1rem;
+}
+
+.s4 > div > h1 {
+    font-family: "PLAYFUL RUNWAY", sans-serif;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 400;
+    padding-left: clamp(1rem, 7vw, 8rem);
+    margin-bottom: 1rem;
+}
+
+.linha {
+    width: 40%;
+    min-width: 300px;
+    height: 2px;
+    background-color: black;
+    margin-left: clamp(1rem, 6vw, 8rem);
+}
+
+.linhaTexto1, .linhaTexto2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 2800px;
+}
+
+.linhaTexto2 {
+    margin-top: clamp(1.4rem, 7vw, 9.5rem);
+}
+
+.produtos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: clamp(3rem, 7vw, 7rem);
+    gap: clamp(1rem, 3vw, 3.25rem);
+}
+
+.prod1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    border: 2px solid #5F0B38;
+    background: #FFF;
+    padding-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.prod1:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    border-color: #722F53;
+}
+
+@media (max-width: 900px) {
+    .prod1 {
+        max-width: 370px;
+    }
+}
+
+.prod1 > img {
+    padding: 7%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+.prod1 > h5, .prod1 > h4 {
+    margin-left: 1.4rem;
+}
+
+.prod1 > h5 {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.prod1 > h4 {
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.2rem;
+}
+
+.prod1 > button {
+    align-self: center;
+    margin-top: 2rem;
+    width: 90%;
+    height: 50px;
+    background-color: #ECC46F;
+    border: none;
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    padding: 0;
+}
+
+.prod1 > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.prod1 > button:hover {
+    background: linear-gradient(135deg, #ECC46F 0%, #F5D78E 100%);
+    box-shadow: 0px 10px 25px rgba(236, 196, 111, 0.4);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.prod1 > button:hover::before {
+    width: 350px;
+    height: 350px;
+}
+
+.prod1 > button:active {
+    background: #d4ae5f;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.prod1 > button a {
+    color: #FFF;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prod1Bg, .prod2Bg, .prod3Bg {
+    display: flex;
+    width: 100%;
+    max-width: 450px;
+    min-height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: clamp(2rem, 5vw, 4rem);
+}
+
+.prod1Bg > h1, .prod2Bg > h1, .prod3Bg > h1 {
+    color: #FFF;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 400;
+}
+
+.prod1Bg {
+    background-image: url(../../public/images/skincare/prod1-bg.png);
+}
+
+.prod2Bg {
+    background-image: url(../../public/images/skincare/prod2-bg.png);
+}
+
+.prod3Bg {
+    background-image: url(../../public/images/skincare/prod3-bg.png);
+}
+
+/* ================================== */
+/* SEÇÃO 5 - DICAS (CARDS HOVER)      */
+/* ================================== */
+
+.s5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    margin-top: clamp(2rem, 8vw, 8rem);
+    padding: clamp(2rem, 5vw, 4rem);
+    max-width: 2000px;
+}
+
+.dicas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    width: 100%;
+    max-width: 1700px;
+}
+
+.cardItem {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: clamp(150px, 14.2vw, 220px);
+    height: clamp(370px, 36vw, 700px);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: flex-grow 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s ease;
+}
+
+.cardItem:hover {
+    flex-grow: 4;
+}
+
+.conteudo {
+    width: 100%;
+    height: 100%;
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%);
+    transition: opacity 0.6s ease;
+}
+
+.cardItem:hover .conteudo {
+    opacity: 1;
+}
+
+.conteudo > h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    margin-bottom: 0.5rem;
+}
+
+.conteudo > p {
+    color: #FFF;
+    text-align: justify;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    line-height: 1.5;
+}
+
+.card1 {
+    background-image: url(/images/skincare/card1.png);
+    background-size: 98%;
+}
+
+.card2 {
+    background-image: url(/images/skincare/card2.png);
+    background-size: 98%;
+}
+
+.card3 {
+    background-image: url(/images/skincare/card3.png);
+    background-size: 98%;
+}
+
+.card4 {
+    background-image: url(/images/skincare/card4.png);
+    background-size: 98%;
+}
+
+.card5 {
+    background-image: url(/images/skincare/card5.png);
+    background-size: 98%;
+}
+
+.card1:hover {
+    background-image: url(/images/skincare/dica1-bg.png);
+    background-size: 98%;
+}
+
+.card2:hover {
+    background-image: url(/images/skincare/dica2-bg.png);
+    background-size: 98%;
+}
+
+.card3:hover {
+    background-image: url(/images/skincare/dica3-bg.png);
+    background-size: 98%;
+}
+
+.card4:hover {
+    background-image: url(/images/skincare/dica4-bg.png);
+    background-size: 98%;
+}
+
+.card5:hover {
+    background-image: url(/images/skincare/dica5-bg.png);
+    background-size: 98%;
+}
+
+@media (min-width: 950px) and (max-width: 1900px) {
+    .conteudo {
+        margin-top: clamp(1.5rem, 3vw, 4rem);
+    }
+
+    .conteudo > h1 {
+        color: #FFF;
+        font-family: "The Next Font", sans-serif;
+        font-size: clamp(1.2rem, 2.3vw, 1.9rem);
+        margin-bottom: 0.5rem;
+    }
+
+    .conteudo > p {
+        color: #FFF;
+        text-align: justify;
+        font-family: "Louis George Cafe", sans-serif;
+        font-size: clamp(0.8rem, 1.4vw, 1rem);
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 1300px) {
+    .dicas {
+        gap: 2.5rem;
+    }
+
+    .cardItem {
+        flex-basis: calc(50% - 1.5rem);
+        flex-grow: 1;
+        max-width: 400px;
+        height: 480px;
+    }
+
+    .cardItem:hover {
+        flex-grow: 2;
+    }
+}
+
+@media (max-width: 950px) {
+    .conteudo {
+        background: none;
+    }
+
+    .dicas {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .cardItem {
+        flex-basis: auto;
+        width: 90%;
+        max-width: 400px;
+        height: 500px;
+    }
+
+    .cardItem:hover {
+        flex-grow: 1;
+    }
+
+    .cardItem .conteudo {
+        opacity: 1;
+        justify-content: flex-start;
+    }
+
+    .card1 {
+        background-size: 95%;
+        background-image: url(/images/skincare/dica1-bg.png);
+    }
+
+    .card2 {
+        background-size: 95%;
+        background-image: url(/images/skincare/dica2-bg.png);
+    }
+
+    .card3 {
+        background-size: 95%;
+        background-image: url(/images/skincare/dica3-bg.png);
+    }
+
+    .card4 {
+        background-size: 95%;
+        background-image: url(/images/skincare/dica4-bg.png);
+    }
+
+    .card5 {
+        background-size: 95%;
+        background-image: url(/images/skincare/dica5-bg.png);
+    }
+
+    .imagemProduto {
+        order: 2;
+    }
+
+    .prod1Bg, .prod2Bg, .prod3Bg {
+        width: 40%;
+    }
+
+    .prod1 {
+        width: 40%;
+    }
+}
+
+/* ================================== */
+/* IMAGEM FINAL                       */
+/* ================================== */
+
+.imagemPerfume {
+    background-image: url('/images/skincare/imagem-perfume.png');
+    width: 100%;
+    height: 50vw;
+    min-height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-height: 1200px;
+    max-width: 2000px;
+}
