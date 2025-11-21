@@ -94,7 +94,9 @@
       "Bash(node debug-produtos.js:*)",
       "Bash(node debug-produtos.mjs:*)",
       "Bash(node check-images.mjs:*)",
-      "Bash(npm run export:data:*)"
+      "Bash(npm run export:data:*)",
+      "Bash(npm run backup:*)",
+      "Bash(python scripts/extract-artigos.py:*)"
     ],
     "deny": [],
     "ask": []
