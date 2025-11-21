@@ -1,8 +1,22 @@
-// tests/integration/produtos.integration.test.ts
+/**
+ * Integration Tests: Produtos
+ *
+ * ✅ O QUE TESTA:
+ * - API endpoints POST/GET/PUT/DELETE + Banco de dados
+ * - Relacionamentos (categoria, tipo_cabelo, imagens, avaliações)
+ * - Constraints do banco (NOT NULL, UNIQUE, CASCADE delete)
+ * - Paginação e filtros
+ *
+ * ❌ O QUE NÃO TESTA:
+ * - Validações Zod (responsabilidade do Zod/Cypress)
+ * - Formatação de resposta (responsabilidade do Cypress)
+ * - Interface do usuário (responsabilidade do Cypress)
+ */
+
 import { describe, it, expect } from '@jest/globals';
 import { prisma } from './setup';
 
-describe('Testes de Integração - Produtos', () => {
+describe('[INTEGRATION] Produtos - API + Banco', () => {
 
   describe('Criação de Produto', () => {
     it('deve criar um produto com sucesso no banco de dados', async () => {
