@@ -93,7 +93,8 @@
       "Bash(powershell -Command:*)",
       "Bash(node debug-produtos.js:*)",
       "Bash(node debug-produtos.mjs:*)",
-      "Bash(node check-images.mjs:*)"
+      "Bash(node check-images.mjs:*)",
+      "Bash(npm run export:data:*)"
     ],
     "deny": [],
     "ask": []

@@ -42,7 +42,11 @@
     "prisma:migrate": "dotenv -e .env -- npx prisma migrate dev",
     "dev:test": "cross-env PORT=3001 next dev --turbopack",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "export:data": "tsx scripts/export-data.ts",
+    "import:data": "tsx scripts/import-data.ts",
+    "backup": "npm run export:data",
+    "restore": "npm run import:data"
   },
   "dependencies": {
     "@google/genai": "^1.30.0",
