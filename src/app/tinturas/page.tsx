@@ -108,14 +108,50 @@ export default function Tinturas() {
           </div>
         </section>
 
+        {/* ... Header e Section Representam continuam iguais ... */}
+
+        <section id="s1">
+           {/* ... O código do S1 (Cards verticais) continua igual ... */}
+           {/* ... mantenha o código do S1 que te passei antes ... */}
+        </section>
+
+        {/* --- SEÇÃO S2 (REFEITA ESTILO REVISTA) --- */}
         <section id="s2">
-          <Link href="artigo/10-tons-fantasticos">
+          {/* Card Esquerda: Imagem Cheia */}
+          <Link href="artigo/10-tons-fantasticos" className="card-link-wrapper" id="link-artigo1">
             <div id="artigo1">
+              <div className="tags-wrapper">
+                 <span className="pill-tag">Moda</span>
+                 <span className="pill-tag">Marcas</span>
+              </div>
               <h1>10 TONS FANTÁSTICOS PARA SAIR DO BÁSICO</h1>
             </div>
           </Link>
 
+          {/* Card Direita: Card Branco "Sugestão" */}
           <div id="artigo2">
+            <div className="card-header-row">
+                <Image
+                  src="/images/tinturas/oasis-logo.png"
+                  alt="Oasis Logo"
+                  width={65}
+                  height={40}
+                  className="oasis-logo"
+                />
+                <span className="tag-sugestao">SUGESTÃO</span>
+            </div>
+            
+            {/* A imagem da mulher de trança vai aqui dentro */}
+            <div className="image-container-s2">
+                 <Image 
+                    src="/images/tinturas/artigo2-bg.png" // Certifique-se que esta imagem é a da mulher de trança
+                    alt="Destaque Sugestão"
+                    width={500}
+                    height={300}
+                    style={{objectFit: "cover", width: "100%", height: "100%"}}
+                 />
+            </div>
+
             <p>
               Descubra como equilibrar tintura e tratamento no seu cronograma
               capilar. Devolva brilho, força e vida aos cabelos coloridos!
@@ -123,23 +159,35 @@ export default function Tinturas() {
           </div>
         </section>
 
+        {/* --- SEÇÃO S3 (BANNERS HORIZONTAIS) --- */}
         <section id="s3">
-          <Link href="artigo/nago-colorida">
-            <div id="artigo3">
-              <h1>
-                NAGO COLORIDA: <br />
-                15 ESTILOS <br />
-                DIFERENTES
-              </h1>
+          <Link href="artigo/nago-colorida" className="banner-link">
+            <div id="artigo3" className="banner-item">
+               {/* Se a imagem de fundo já tiver a foto, ok. Se não, precisaria ajustar */}
+               <div className="banner-content right-align">
+                  <h1>NAGÔ COLORIDA: <br />15 ESTILOS DIFERENTES</h1>
+                  <div className="tags-wrapper">
+                    <span className="pill-tag">Moda</span>
+                    <span className="pill-tag">Marcas</span>
+                  </div>
+               </div>
             </div>
           </Link>
 
-          <Link href="artigo/produtos-indispensaveis" id="artigo4a">
-            <div id="artigo4">
-              <h1>PRODUTOS INDISPENSÁVEIS PARA CABELOS PINTADOS</h1>
+          <Link href="artigo/produtos-indispensaveis" className="banner-link">
+            <div id="artigo4" className="banner-item">
+               <div className="banner-content left-align">
+                  <h1>PRODUTOS INDISPENSÁVEIS PARA CABELOS PINTADOS</h1>
+                  <div className="tags-wrapper">
+                    <span className="pill-tag">Moda</span>
+                    <span className="pill-tag">Marcas</span>
+                  </div>
+               </div>
             </div>
           </Link>
         </section>
+
+{/* ... O resto (Linha e S4) continua igual ... */}
 
         <div id="linha"></div>
 
