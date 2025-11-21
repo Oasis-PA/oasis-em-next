@@ -11,7 +11,7 @@ interface User {
 interface HeaderProps {
   backgroundImage?: string;
   backgroundColor?: string;
-  className?: string; 
+  className?: string;
   theme?: 'light' | 'dark';
 }
 
@@ -98,7 +98,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
               <div className={styles.bar}></div>
               <div className={styles.bar}></div>
             </div>
-            
+
             <Link href="/">
               <div className={styles.imagi} aria-label="Página inicial"></div>
             </Link>
@@ -111,7 +111,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
             <Link href="/favoritos">
               <div className={styles.coracao} aria-label="Favoritos"></div>
             </Link>
-            
+
             <div className={styles.user_menu_container}>
               {isLoading ? (
                 <div className={styles.user_placeholder}></div>
