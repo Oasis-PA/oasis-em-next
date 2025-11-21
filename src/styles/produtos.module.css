@@ -281,6 +281,8 @@
     max-width: clamp(320px, 90vw, 1500px);
     margin: 0 auto;
     padding: 0 20px;
+    margin-top: 10vh;
+    margin-bottom: 13vh;
 }
 
 .produtoCard {
