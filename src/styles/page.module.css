@@ -212,11 +212,11 @@
 /* Seção 2: Links de Categoria */
 .s2 {
     display: flex;
-    justify-content: space-around; 
+    justify-content: center; 
     align-items: center;
     flex-wrap: wrap; 
-    gap: 2rem;
-    width: 90%;
+    gap: 3rem;
+    width: 100%;
     height: auto;
     margin-top: 9rem;
 }
