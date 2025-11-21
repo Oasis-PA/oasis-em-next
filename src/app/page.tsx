@@ -71,12 +71,14 @@ export default function OasisHomepage() {
   useEffect(() => {
     const fetchProdutos = async () => {
       try {
-        const response = await fetch('/api/produtos?limit=8');
+        const response = await fetch('/api/produtos?limit=20');
         const data = await response.json();
         
         // A API retorna um objeto com { produtos: [...], pagination: {...} }
         if (data.produtos) {
-          setProdutos(data.produtos);
+          const produtosAleatorios = [...data.produtos].sort(() => Math.random() - 0.5);
+          
+          setProdutos(produtosAleatorios);
         } else {
           setProdutos([]);
         }
@@ -424,25 +426,25 @@ export default function OasisHomepage() {
       <section className={styles.s6}>
         <div className={styles.h1novidades}>NOVIDADES</div>
           <div className={styles.cardsnovidades}>
-            <Link href='/tela-produto'>
+            <Link href='/produtos'>
               <div className={styles.cardnovidade1}>
                 <h1>Creme de Pentear Phytomanga Efeito Pesado 500ml</h1>
               </div>
             </Link>
 
-            <Link href='/tela-produto'>
+            <Link href='/produtos'>
               <div className={styles.cardnovidade2}>
                 <h1>EFFACLAR REEQUILIBRANTE</h1>
               </div>
             </Link>
 
-            <Link href='/tela-produto'>
+            <Link href='/produtos'>
               <div className={styles.cardnovidade3}>
                 <h1>produto</h1>
               </div>
             </Link>
 
-            <Link href='/tela-produto'>
+            <Link href='/produtos'>
               <div className={styles.cardnovidade4}>
                 <h1>produto</h1>
               </div>

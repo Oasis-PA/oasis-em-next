@@ -1,5 +1,5 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
+   CSS COMPLETO: ESTRUTURA ORIGINAL + CORREÇÃO RESPONSIVA CARDPERFIL
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 .mainContainer * {
@@ -63,7 +63,6 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    /* ADIÇÕES PARA O EFEITO */
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
@@ -184,7 +183,7 @@
    border-radius: 18px;
    flex-shrink: 0;
    overflow: hidden;
-   transition: all 0.3s ease; /* ADICIONADO */
+   transition: all 0.3s ease; 
    cursor: pointer;
 }
 
@@ -246,7 +245,7 @@
     font-size: 1.8rem;
     font-weight: 400;
     margin-top: 2rem;
-    transition: color 0.3s ease; /* ADICIONADO */
+    transition: color 0.3s ease; 
 }
 
 .s2links:hover > h1 {
@@ -310,7 +309,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease; /* ADICIONADO */
+    transition: transform 0.3s ease; 
 }
 
 .cortecardconteiner:hover {
@@ -384,7 +383,6 @@
     cursor: pointer;
     border: none;
     text-decoration: none; 
-    /* ADIÇÕES PARA O EFEITO */
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
@@ -419,7 +417,9 @@
     transform: translateY(-1px) scale(1.02);
 }
 
-/* Seção 4: Baseados no seu Perfil */
+/* =========================================================
+   SEÇÃO 4: CARDPERFIL - CORRIGIDO PARA RESPONSIVIDADE
+   ========================================================= */
 .s4 {
     display: flex;
     justify-content: center;
@@ -450,25 +450,34 @@
     margin-top: 1rem;
 }
 
+/* Container dos cards com Flex Wrap e Stretch */
 .cardsperfil {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; 
-    gap: 3rem;
+    align-items: stretch; /* Força todos os cards da linha a terem a mesma altura */
+    flex-wrap: wrap;      /* Permite quebrar para linha de baixo em telas menores */
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
 }
 
+/* Card Individual Responsivo */
 .cardperfil {
     display: flex;
     flex-direction: column;
-    width: clamp(250px, 17vw, 320px);
-    flex-shrink: 0;
-    height: 57vh;
+    /* Flex-grow: 1, Flex-shrink: 1, Flex-basis: 250px */
+    /* Isso garante que ele cresça para preencher mas mantenha um tamanho base */
+    flex: 1 1 250px; 
+    max-width: 240px;       /* Limite máximo no desktop */
+    height: auto;           /* Remove altura fixa (57vh) */
+    min-height: 480px;      /* Garante altura mínima visual */
     border: 3px solid #939191;
-    justify-content: center;
+    justify-content: space-between; /* Espaça o conteúdo interno */
     align-items: center;
-    transition: all 0.3s ease; /* ADICIONADO */
+    transition: all 0.3s ease;
+    padding-bottom: 1.5rem;
+    background-color: #fff;
 }
 
 .cardperfil:hover {
@@ -479,7 +488,8 @@
 
 .cardperfil > img {
     width: 100%;
-    height: auto;
+    height: 280px; /* Altura controlada da imagem */
+    object-fit: contain;
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -487,22 +497,24 @@
 .cardperfil > h1 {
     font-family: "The Next Font";
     font-size: 1.2rem;
-    padding: 1rem 1.1rem 0.5rem;
+    padding: 0.5rem 1.1rem;
     align-self: start;
+    line-height: 1.2;
+    min-height: 3rem; /* Evita pulos de altura se o título for curto */
 }
 
 .cardperfil > h2 {
     font-family: "Louis George Cafe Light";
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     text-align: justify;
     padding: 0 1.1rem 1.1rem;
     align-self: start;
     flex-grow: 1; 
-    
+    color: #555;
 }
 
-/* BOTÃO DO PERFIL REFORMULADO */
+/* BOTÃO DO PERFIL */
 .buttonPerfil {
     font-family: "The Next Font";
     font-size: 1.2rem;
@@ -514,9 +526,8 @@
     color: #FFF;
     width: 90%;
     border-radius: 1.6875rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    /* ADIÇÕES PARA O EFEITO */
+    margin-top: auto; /* Empurra para o fundo do card */
+    margin-bottom: 0;
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
@@ -527,6 +538,10 @@
     font-size: 1.2rem;
     position: relative;
     z-index: 2;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .buttonPerfil::before {
@@ -622,7 +637,6 @@
     background: #722F53;
     border: none;
     cursor: pointer;
-    /* ADIÇÕES PARA O EFEITO */
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
@@ -669,7 +683,7 @@
     max-width: 700px;
     height: auto;
     object-fit: cover;
-    transition: transform 0.4s ease; /* ADICIONADO */
+    transition: transform 0.4s ease; 
 }
 
 .s5 img:hover {
@@ -721,7 +735,7 @@
     position: relative;
     padding: 1rem;
     box-sizing: border-box;
-    transition: transform 0.3s ease; /* ADICIONADO */
+    transition: transform 0.3s ease; 
 }
 
 .cardnovidade1:hover, .cardnovidade2:hover, .cardnovidade3:hover, .cardnovidade4:hover {
@@ -736,7 +750,7 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    transition: background 0.3s ease; /* ADICIONADO */
+    transition: background 0.3s ease; 
 }
 
 .cardnovidade1:hover::before, .cardnovidade2:hover::before, .cardnovidade3:hover::before, .cardnovidade4:hover::before {
@@ -808,7 +822,7 @@
     flex-direction: column;
     min-height: 700px;
     justify-content: end;
-    transition: all 0.4s ease; /* ADICIONADO */
+    transition: all 0.4s ease; 
 }
 
 .artigo1footer:hover, .artigo2footer:hover, .artigo3:hover {
@@ -867,7 +881,7 @@
         width: 100%;
     }
     .cardsperfil {
-        gap: 2rem;
+        gap: 1.5rem;
     }
     .s6 {
       width: 90%;
@@ -885,7 +899,7 @@
     }
 }
 
-/* Telas de Celular */
+/* Telas de Celular e Tablet Pequeno (Responsividade Produtos) */
 @media (max-width: 768px) {
     .mainContainer {
         height: 100vh; 
@@ -916,9 +930,9 @@
         gap: 1rem;
     }
     .cortes {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem 1rem;
     }
 
     .cortecardconteiner {
@@ -932,17 +946,23 @@
     .s4 {
         margin-top: 5rem;
         margin-bottom: 5rem;
+        padding: 0 1rem;
     }
-   .cardsperfil {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
+    
+    /* Ajuste para exibir 2 produtos por linha em mobile */
+    .cardsperfil {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 
-.cardperfil {
-    flex-basis: calc(50% - 0.75rem);
-    width: auto;
-}
+    .cardperfil {
+        /* 50% menos o gap */
+        flex: 1 1 calc(50% - 1rem); 
+        max-width: 250px; /* Remove limite máximo para preencher espaço */
+        min-height: 400px;
+    }
+
     .artigos, .artigo2 {
         flex-direction: column;
     }
@@ -977,15 +997,15 @@
         gap: 1.5rem 1rem; 
     }
 
-   .s2links {
-   flex-basis: calc(50% - 1rem);
-   flex-grow: 0;
-}
+    .s2links {
+       flex-basis: calc(50% - 1rem);
+       flex-grow: 0;
+    }
 
     .s2links > h1 {
         font-size: 1.5rem; 
         margin-top: 1rem;
-}
+    }
 }
 
 @media (max-width: 500px) {
@@ -1010,26 +1030,34 @@
   }
   .s4 {
     padding: 0 1rem;
-}
+  }
 
-.cardperfil > h1 {
+  /* Ajuste para exibir 1 produto por linha em telas muito pequenas */
+  .cardperfil {
+      flex: 1 1 100%;
+      max-width: 100%;
+      min-height: auto;
+      padding-bottom: 1.5rem;
+  }
+
+  .cardperfil > h1 {
     font-size: 1.1rem;
     padding-top: 0.5rem;
-}
+  }
 
-.cardperfil > h2 {
+  .cardperfil > h2 {
     font-size: 1rem;
     text-align: left; 
     line-height: 1.4; 
-}
+  }
 
-.buttonPerfil {
+  .buttonPerfil {
     font-size: 1rem;
     padding: 0.6rem;
     width: 85%;
-}
+  }
   
-.arrow {
+  .arrow {
     margin-right: 4rem;
-}
+  }
 }
