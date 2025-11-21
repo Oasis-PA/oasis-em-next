@@ -96,7 +96,9 @@
       "Bash(node check-images.mjs:*)",
       "Bash(npm run export:data:*)",
       "Bash(npm run backup:*)",
-      "Bash(python scripts/extract-artigos.py:*)"
+      "Bash(python scripts/extract-artigos.py:*)",
+      "Bash(python scripts/parse-artigos.py:*)",
+      "Bash(/dev/null)"
     ],
     "deny": [],
     "ask": []
