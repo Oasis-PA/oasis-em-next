@@ -502,7 +502,7 @@
 .grupo5Svg {
     position: absolute;
     top: 5rem;
-    right: 1rem;
+    right: 1.9rem;
     z-index: 2;
     width: 16px;
     height: 22px;
@@ -623,11 +623,10 @@
 
 .saveIcon {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.3rem;
+    right: 3rem;
     z-index: 2;
-    width: 16px;
-    height: 22px;
+    width: 3px;
     flex-shrink: 0;
 }
 
@@ -727,8 +726,8 @@
 
 .grupo6SeçãoSvg {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.1rem;
+    right: 2.6rem;
     z-index: 1;
     margin: 0;
     transform: none;
@@ -851,11 +850,10 @@
 
 .grupo7Svg {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+   top: 1.1rem;
+    right: 2.6rem;
     z-index: 1;
-    width: 16px;
-    height: 22px;
+    width: 3px;
     flex-shrink: 0;
 }
 

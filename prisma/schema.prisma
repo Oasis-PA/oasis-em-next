@@ -118,19 +118,23 @@ model PasswordReset {
 }
 
 model Artigo {
-  id             Int              @id @default(autoincrement())
-  titulo         String           @default("NOT NULL")
-  slug           String           @unique @default("NOT NULL")
-  conteudo       String           @default("NOT NULL")
-  criadoEm       DateTime         @default(now())
-  atualizadoEm   DateTime         @updatedAt
-  dataPublicacao DateTime?        @db.Timestamptz(6)
-  resumo         String?
-  imagemHeader   String?
-  status         String?          @default("rascunho")
-  themeDark      Boolean?         @default(false)
-  ArtigoTag      ArtigoTag[]
-  FavoritoArtigo FavoritoArtigo[]
+  id              Int              @id @default(autoincrement())
+  titulo          String           @default("NOT NULL")
+  slug            String           @unique @default("NOT NULL")
+  conteudo        String           @default("NOT NULL")
+  criadoEm        DateTime         @default(now())
+  atualizadoEm    DateTime         @updatedAt
+  dataPublicacao  DateTime?        @db.Timestamptz(6)
+  resumo          String?
+  imagemHeader    String?
+  status          String?          @default("rascunho")
+  themeDark       Boolean?         @default(false)
+  id_categoria    Int?
+  CategoriaArtigo CategoriaArtigo? @relation(fields: [id_categoria], references: [id_categoria], onUpdate: NoAction, map: "fk_artigo_categoria")
+  ArtigoTag       ArtigoTag[]
+  FavoritoArtigo  FavoritoArtigo[]
+
+  @@index([id_categoria], map: "idx_artigo_categoria")
 }
 
 model TipoPele {
@@ -188,20 +192,6 @@ model FavoritoArtigo {
   @@index([id_usuario], map: "idx_favorito_artigo_usuario")
 }
 
-model Corte {
-  id              Int      @id @default(autoincrement())
-  nome            String
-  slug            String   @unique
-  descricao       String?
-  historia        String?
-  comoFazer       String?
-  rostoCompativel String?
-  comoArrumar     String?
-  imagemPrincipal String?
-  status          String   @default("rascunho")
-  criadoEm        DateTime @default(now())
-}
-
 model influenciadores {
   id                Int       @id @default(autoincrement()) @db.SmallInt
   nome_contato      String    @db.VarChar(255)
@@ -237,4 +227,15 @@ model Cortes {
 
   @@index([slug], map: "idx_cortes_slug")
   @@index([status], map: "idx_cortes_status")
+}
+
+model CategoriaArtigo {
+  id_categoria Int       @id @default(autoincrement())
+  nome         String    @unique @db.VarChar(50)
+  slug         String    @unique @db.VarChar(100)
+  descricao    String?
+  criadoEm     DateTime? @default(now()) @db.Timestamptz(6)
+  Artigo       Artigo[]
+
+  @@index([slug], map: "idx_categoria_artigo_slug")
 }
