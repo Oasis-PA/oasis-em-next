@@ -87,7 +87,7 @@ export default function cortegeral() {
 
       <section id="section-sugestaocortes">
         <div id="div-titulos">
-          <h1 id="h1-cabelos">CABELOS VOLUMOSOS, CURTOS OU<br className="desktop-only" />COM DREAD - SEJA SUA MELHOR VERSÃO EM 2025</h1>
+          <h1 id="h1-cabelos">CABELOS VOLUMOSOS, CURTOS OU <br className="desktop-only" />COM DREAD - SEJA SUA MELHOR VERSÃO EM 2025</h1>
         </div>
         <div id="div-imagens">
           <Link href="#"><img src="/images/cortes-geral/sugestao-corte (1).png" alt="sugestaocorte1" /></Link>

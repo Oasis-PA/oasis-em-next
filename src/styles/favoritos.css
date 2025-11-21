@@ -896,3 +896,68 @@
     font-size: 1rem;
   }
 }
+
+/* Adicione ao seu favoritos.css */
+
+/* ========== TÍTULOS DOS ARTIGOS - AJUSTE RESPONSIVO ========== */
+#section-imagens-artigos div h1 {
+    color: #FFF;
+    font-family: "The Next Font";
+    font-size: clamp(1.5rem, 3vw, 2.2rem); /* Fonte fluida que diminui automaticamente */
+    font-weight: 400;
+    line-height: 1.2; /* MODIFICADO: linha mais compacta */
+    text-decoration: none;
+    
+    /* Garante que o texto não ultrapasse */
+    max-width: 100%;
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word;
+    hyphens: auto; /* Adiciona hífens se necessário */
+    
+    /* Limita a altura do texto */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Máximo de 3 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    /* Espaçamento interno para não colar nas bordas */
+    padding-right: 40px; /* Espaço para o botão de favorito */
+}
+
+/* Ajustes específicos para cards de artigos favoritados */
+#artigo1, #artigo2, #artigo3, #artigo4, #artigo5, #artigo6, #artigo7, #artigo8, #artigo9 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    padding: clamp(0.875rem, 1vw, 1rem);
+    transition: transform 0.3s ease;
+    position: relative; /* Para o botão de favorito */
+}
+
+/* Media queries para ajustes mais finos */
+@media (max-width: 768px) {
+    #section-imagens-artigos div h1 {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        -webkit-line-clamp: 4; /* Permite mais linhas em telas menores */
+        padding-right: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    #section-imagens-artigos div h1 {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+        -webkit-line-clamp: 3;
+        padding-right: 30px;
+        line-height: 1.15;
+    }
+}
+
+/* Se preferir truncar com reticências ao invés de quebrar linhas */
+.truncate-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 40px); /* Espaço para o botão */
+}
