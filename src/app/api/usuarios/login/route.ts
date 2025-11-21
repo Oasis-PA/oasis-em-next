@@ -61,6 +61,7 @@ export async function POST(req: NextRequest) {
       id: user.id_usuario,
       email: user.email,
       hasProfile: !!user.nome,
+      isAdmin: user.is_admin,
     })
       .setProtectedHeader({ alg: 'HS256' })
       .setIssuedAt()
