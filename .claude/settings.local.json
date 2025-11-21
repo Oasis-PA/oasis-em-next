@@ -90,7 +90,9 @@
       "Bash(npm run test:specific:*)",
       "Bash(npm run test:integration:*)",
       "Bash(npm run prisma:generate:*)",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(node debug-produtos.js:*)",
+      "Bash(node debug-produtos.mjs:*)"
     ],
     "deny": [],
     "ask": []
