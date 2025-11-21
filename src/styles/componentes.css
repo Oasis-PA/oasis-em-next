@@ -415,6 +415,7 @@ footer {
 @media (max-width: 768px) {
     header { 
         padding: 1.5rem 1rem; 
+        max-height: 135px;
     }
     .em_ciminha { 
         width: 100%; 
@@ -544,7 +545,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    header { padding: 1rem 0.8rem; }
+    header { padding: 1rem 0.8rem; max-height: 105px;}
     .header-left { gap: 0.8rem; }
     #imagi { width: 7rem; height: 4rem; }
     .emoticus { gap: 1.2rem; }
