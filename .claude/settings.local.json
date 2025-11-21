@@ -92,7 +92,8 @@
       "Bash(npm run prisma:generate:*)",
       "Bash(powershell -Command:*)",
       "Bash(node debug-produtos.js:*)",
-      "Bash(node debug-produtos.mjs:*)"
+      "Bash(node debug-produtos.mjs:*)",
+      "Bash(node check-images.mjs:*)"
     ],
     "deny": [],
     "ask": []
