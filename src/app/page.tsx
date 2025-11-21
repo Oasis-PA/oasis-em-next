@@ -1,7 +1,6 @@
 "use client";
 import { Header, Footer } from "@/components";
 import { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import Link from "next/link";
 import styles from '@/styles/page.module.css';
@@ -58,31 +57,15 @@ interface Produto {
 }
 
 export default function OasisHomepage() {
-  const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState<'feminino' | 'masculino' | 'mais50'>('feminino');
-
+  
   // Estado para os produtos
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [loadingProdutos, setLoadingProdutos] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Verificar se é admin e redirecionar
-  useEffect(() => {
-    const usuario = sessionStorage.getItem('usuario');
-    if (usuario) {
-      try {
-        const usuarioData = JSON.parse(usuario);
-        if (usuarioData.is_admin) {
-          router.push('/admin');
-        }
-      } catch (error) {
-        console.error('Erro ao verificar status de admin:', error);
-      }
-    }
-  }, [router]);
 
   // Buscar produtos do banco
   useEffect(() => {

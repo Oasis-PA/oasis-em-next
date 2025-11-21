@@ -41,7 +41,6 @@ model Usuario {
   sobrenome       String?
   sobre           String?
   url_foto        String?          @db.VarChar
-  is_admin        Boolean          @default(false)
   avaliacoes      Avaliacao[]
   favoritos       Favorito[]
   FavoritoArtigo  FavoritoArtigo[]
