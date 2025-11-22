@@ -1,0 +1,422 @@
+{
+  "exportDate": "2025-11-22T05:15:44.445Z",
+  "summary": {
+    "usuarios": 3,
+    "produtos": 0,
+    "artigos": 37,
+    "categorias": 3,
+    "tiposCabelo": 5
+  },
+  "usuarios": [
+    {
+      "id_usuario": 1553,
+      "nome": "Cypress Test User",
+      "email": "cypress@test.com",
+      "telefone": null,
+      "sobrenome": null,
+      "sobre": null,
+      "data_nascimento": null,
+      "data_cadastro": "2025-11-22T01:38:07.170Z"
+    },
+    {
+      "id_usuario": 1545,
+      "nome": "celsoq",
+      "email": "celso@gmail.com",
+      "telefone": null,
+      "sobrenome": null,
+      "sobre": null,
+      "data_nascimento": null,
+      "data_cadastro": "2025-11-22T01:16:36.552Z"
+    },
+    {
+      "id_usuario": 1554,
+      "nome": "ADS",
+      "email": "SADA@GMAIL.COM",
+      "telefone": null,
+      "sobrenome": null,
+      "sobre": null,
+      "data_nascimento": null,
+      "data_cadastro": "2025-11-22T03:21:12.776Z"
+    }
+  ],
+  "produtos": [],
+  "artigos": [
+    {
+      "id": 768,
+      "titulo": "Óleos essenciais para cabelo: 7 opções poderosas",
+      "slug": "oleos-essenciais-para-cabelo-7-opcoes-poderosas",
+      "resumo": "# **Óleos Essenciais Para Cabelo: Tratamento Natural e Poderoso**\r\n\r\nA queda de cabelo, caspa persistente, oleosidade excessiva e falta de brilho podem ser trat...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.450Z"
+    },
+    {
+      "id": 769,
+      "titulo": "Ácido hialurônico",
+      "slug": "acido-hialuronico",
+      "resumo": "# **Ácido Hialurônico: O Aliado da Pele Hidratada e Rejuvenescida**\r\n\r\nO ácido hialurônico é uma substância naturalmente presente no corpo humano, encontrada pr...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.509Z"
+    },
+    {
+      "id": 770,
+      "titulo": "Maquiagens",
+      "slug": "maquiagens",
+      "resumo": "#...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.569Z"
+    },
+    {
+      "id": 771,
+      "titulo": "Vai se casar?",
+      "slug": "vai-se-casar",
+      "resumo": "# **Vai Se Casar? Esteja Incrível Para o Seu Grande Amor**\r\n\r\nO dia do casamento está chegando e o coração dispara só de pensar naquele momento mágico de encont...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.628Z"
+    },
+    {
+      "id": 772,
+      "titulo": "Autocuidado masculino",
+      "slug": "autocuidado-masculino",
+      "resumo": "# **Autocuidado Masculino Estético: Quebrando Estereótipos e Celebrando o Cuidado de Si**\r\n\r\nO autocuidado masculino estético está finalmente ganhando o espaço ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.687Z"
+    },
+    {
+      "id": 773,
+      "titulo": "Diferença de gerações",
+      "slug": "diferenca-de-geracoes",
+      "resumo": "# **Padrões de Beleza Através das Gerações: Como Cada Época Moldou Nossa Relação com a Aparência**\r\n\r\nA forma como enxergamos beleza e nos relacionamos com noss...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.748Z"
+    },
+    {
+      "id": 774,
+      "titulo": "Benefícios do Óleo de Rosa Mosqueta",
+      "slug": "beneficios-do-oleo-de-rosa-mosqueta",
+      "resumo": "Você já ouviu falar do óleo de Rosa Mosqueta e ficou curiosa sobre o que ele realmente faz pela sua pele? Esse óleo extraído das sementinhas de uma rosinha selv...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.812Z"
+    },
+    {
+      "id": 775,
+      "titulo": "Shampoos em barra: veja os 5 mais populares",
+      "slug": "shampoos-em-barra-veja-os-5-mais-populares",
+      "resumo": "Os shampoos em barra estão conquistando cada vez mais gente que busca produtos sustentáveis, naturais e que realmente funcionam nos fios. Se você ainda tem dúvi...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.874Z"
+    },
+    {
+      "id": 776,
+      "titulo": "Melhores tipos de finalização",
+      "slug": "melhores-tipos-de-finalizacao",
+      "resumo": "Se você tem cabelo ondulado, cacheado ou crespo, já deve ter ouvido falar em finalização e ficado com aquela dúvida de qual técnica usar. A finalização nada mai...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.934Z"
+    },
+    {
+      "id": 777,
+      "titulo": "10 tons fantásticos para sair do básico",
+      "slug": "10-tons-fantasticos-para-sair-do-basico",
+      "resumo": "# **10 Tons Fantásticos para Sair do Básico**\r\n\r\nCansou do cabelo sempre na mesma cor? Chegou a hora de ousar e experimentar tons que vão muito além do tradicio...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.995Z"
+    },
+    {
+      "id": 778,
+      "titulo": "Como desembaraçar sem dor?",
+      "slug": "como-desembaracar-sem-dor",
+      "resumo": "Cabelo embaraçado é o pesadelo de muita gente, principalmente quem tem fios longos ou cacheados. Aquela sensação de arrancar os fios ao tentar pentear é horríve...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.054Z"
+    },
+    {
+      "id": 779,
+      "titulo": "Erros comuns no cronograma capilar",
+      "slug": "erros-comuns-no-cronograma-capilar",
+      "resumo": "O cronograma capilar é aquela rotina de cuidados que promete transformar o cabelo em poucas semanas. Mas muita gente começa super empolgada e não vê os resultad...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.115Z"
+    },
+    {
+      "id": 780,
+      "titulo": "5 receitas naturais para poder fortalecer os fios",
+      "slug": "5-receitas-naturais-para-poder-fortalecer-os-fios",
+      "resumo": "---\r\n\r\n# **Nutrição Capilar: O Que Comer Para Ter Cabelos Saudáveis**\r\n\r\nVocê percebe que seus cabelos estão opacos, quebradiços ou caem com mais facilidade do ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.175Z"
+    },
+    {
+      "id": 781,
+      "titulo": "Maquiagens: 10 opções para arrasar",
+      "slug": "maquiagens-10-opcoes-para-arrasar",
+      "resumo": "...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.422Z"
+    },
+    {
+      "id": 782,
+      "titulo": "Nagô colorida: 15 estilos diferentes",
+      "slug": "nago-colorida-15-estilos-diferentes",
+      "resumo": "---\r\n\r\n# **Nutrição Capilar: O Que Comer Para Ter Cabelos Saudáveis**\r\n\r\nVocê percebe que seus cabelos estão opacos, quebradiços ou caem com mais facilidade do ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.496Z"
+    },
+    {
+      "id": 783,
+      "titulo": "Produtos indispensáveis para cabelos pintados",
+      "slug": "produtos-indispensaveis-para-cabelos-pintados",
+      "resumo": "Cabelo pintado é lindo mas exige cuidados específicos para manter cor vibrante e fios saudáveis. O processo de coloração, seja com descoloração ou tintura, abre...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.639Z"
+    },
+    {
+      "id": 784,
+      "titulo": "Hidratação caseira para cabelos crespos",
+      "slug": "hidratacao-caseira-para-cabelos-crespos",
+      "resumo": "Cabelos crespos tipo 4 são lindos e cheios de personalidade, mas a estrutura em espiral torna os fios naturalmente mais ressecados. A oleosidade natural do cour...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.699Z"
+    },
+    {
+      "id": 785,
+      "titulo": "Transição capilar: primeiros cuidados essenciais",
+      "slug": "transicao-capilar-primeiros-cuidados-essenciais",
+      "resumo": "A transição capilar é muito mais que simplesmente deixar o cabelo crescer. É processo de resgate da textura natural dos fios depois de anos de alisamentos quími...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.760Z"
+    },
+    {
+      "id": 786,
+      "titulo": "Cabelos masculinos crespos: guia completo de cuidados",
+      "slug": "cabelos-masculinos-crespos-guia-completo-de-cuidados",
+      "resumo": "Muitos homens com cabelo crespo ainda acham que cuidar dos fios é coisa de mulher, mas essa mentalidade está mudando. Cabelos crespos masculinos tipo 4 são natu...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.818Z"
+    },
+    {
+      "id": 787,
+      "titulo": "Cortes que valorizam o rosto redondo",
+      "slug": "cortes-que-valorizam-o-rosto-redondo",
+      "resumo": "Rosto redondo tem suas características únicas e merece cortes que realcem essa beleza natural ou, se preferir, criem ilusão de alongamento. Muitas mulheres com ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.879Z"
+    },
+    {
+      "id": 788,
+      "titulo": "Rotina de skincare para peles negras",
+      "slug": "rotina-de-skincare-para-peles-negras",
+      "resumo": "Pele negra tem características únicas que merecem atenção específica na rotina de cuidados. Apesar da melanina abundante oferecer certa proteção natural, peles ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.940Z"
+    },
+    {
+      "id": 789,
+      "titulo": "Hidratação natural para cabelos infantis",
+      "slug": "hidratacao-natural-para-cabelos-infantis",
+      "resumo": "Cabelos infantis precisam de cuidados especiais e delicados porque estrutura dos fios é diferente da adulta. Crianças têm córtex capilar menos desenvolvido com ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:06.999Z"
+    },
+    {
+      "id": 790,
+      "titulo": "Cuidados com a pele sensível das crianças",
+      "slug": "cuidados-com-a-pele-sensivel-das-criancas",
+      "resumo": "A pele infantil é naturalmente mais fina e delicada que a dos adultos, tornando-se extremamente vulnerável a irritações, alergias e ressecamento. Até os cinco a...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:07.065Z"
+    },
+    {
+      "id": 791,
+      "titulo": "Como identificar alergias e irritações na pele das crianças",
+      "slug": "como-identificar-alergias-e-irritacoes-na-pele-das-criancas",
+      "resumo": "Erupções cutâneas em crianças são extremamente comuns deixando pais preocupados e confusos sobre o que pode estar causando problema. Pele infantil reage facilme...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:07.125Z"
+    },
+    {
+      "id": 792,
+      "titulo": "Dicas para hora do banho sem lágrimas",
+      "slug": "dicas-para-hora-do-banho-sem-lagrimas",
+      "resumo": "# **Dicas para hora do banho sem lágrimas**\r\n\r\n**Bebê sorrindo durante o banho**\r\n\r\nA hora do banho pode ser um momento de muita tensão para pais de primeira vi...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:07.193Z"
+    },
+    {
+      "id": 793,
+      "titulo": "Como escolher o corte ideal para o formato do rosto",
+      "slug": "como-escolher-o-corte-ideal-para-o-formato-do-rosto",
+      "resumo": "Escolher corte de cabelo ideal vai muito além de seguir tendências, é sobre entender características únicas do seu rosto e trabalhar com elas estrategicamente. ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:07.254Z"
+    },
+    {
+      "id": 759,
+      "titulo": "Suplementos para cabelo: funcionam mesmo?",
+      "slug": "suplementos-para-cabelo-funcionam-mesmo",
+      "resumo": "---\r\n\r\n# **Nutrição Capilar: O Que Comer Para Ter Cabelos Saudáveis**\r\n\r\nVocê percebe que seus cabelos estão opacos, quebradiços ou caem com mais facilidade do ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:04.829Z"
+    },
+    {
+      "id": 760,
+      "titulo": "Rotina de skincare infantil: protegendo a pele diariamente",
+      "slug": "rotina-de-skincare-infantil-protegendo-a-pele-diariamente",
+      "resumo": "# **Skincare Infantil: Como Proteger a Pele Delicada das Crianças**\r\n\r\nA pele das crianças é um universo à parte que merece atenção especial dos pais e cuidador...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:04.951Z"
+    },
+    {
+      "id": 761,
+      "titulo": "Melhores óleos vegetais para pele seca",
+      "slug": "melhores-oleos-vegetais-para-pele-seca",
+      "resumo": "# **Óleos Vegetais Para Pele Seca: Guia Completo de Hidratação Natural**\r\n\r\nSua pele está áspera, sem brilho e descamando constantemente? A solução pode estar n...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.011Z"
+    },
+    {
+      "id": 762,
+      "titulo": "Protetor solar para peles retintas",
+      "slug": "protetor-solar-para-peles-retintas",
+      "resumo": "# **Protetor Solar Para Pele Negra: Derrubando Mitos e Celebrando a Diversidade**\r\n\r\n\"Pele negra não precisa de protetor solar.\" Se você já ouviu isso, saiba qu...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.073Z"
+    },
+    {
+      "id": 763,
+      "titulo": "Alimentação e beleza: nutrientes que fazem diferença",
+      "slug": "alimentacao-e-beleza-nutrientes-que-fazem-diferenca",
+      "resumo": "# **Alimentação e Beleza: Os Nutrientes Que Fazem Diferença na Sua Pele**\r\n\r\nA beleza que você tanto deseja começa de dentro para fora, e aquela pele radiante, ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.137Z"
+    },
+    {
+      "id": 764,
+      "titulo": "Cuidados noturnos para cabelo e pele",
+      "slug": "cuidados-noturnos-para-cabelo-e-pele",
+      "resumo": "# **Nanotecnologia em Cosméticos: A Revolução dos Seus Cuidados Noturnos**\r\n\r\nA noite é o momento em que sua pele e cabelos se regeneram naturalmente, mas você ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.197Z"
+    },
+    {
+      "id": 765,
+      "titulo": "Tons de cabelo para o verão: inspire-se\\!",
+      "slug": "tons-de-cabelo-para-o-verao-inspire-se",
+      "resumo": "# **Cores de Cabelo Para o Verão 2025: Tendências Que Vão Te Fazer Brilhar**\r\n\r\nO verão chegou trazendo aquela energia vibrante que pede renovação no visual, e ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.259Z"
+    },
+    {
+      "id": 766,
+      "titulo": "Como fazer waves",
+      "slug": "como-fazer-waves",
+      "resumo": "# **Penteado Waves: O Guia Completo Para Ondas Perfeitas e Empoderadas**\r\n\r\nEstiloso, cheio de personalidade e com uma história poderosa de representatividade, ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.322Z"
+    },
+    {
+      "id": 767,
+      "titulo": "Os Dilemas do Século XXI: Qual Creme Comprar?",
+      "slug": "os-dilemas-do-seculo-xxi-qual-creme-comprar",
+      "resumo": "# **Como Escolher o Creme de Pentear Ideal Para Seu Tipo de Cabelo**\r\n\r\nVocê está no corredor do mercado olhando para dezenas de opções de creme de pentear em p...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T00:46:05.387Z"
+    },
+    {
+      "id": 795,
+      "titulo": "teste",
+      "slug": "teste-6",
+      "resumo": "asdsa",
+      "imagemHeader": "https://yyvjzgxyxgalnnwcjfqh.supabase.co/storage/v1/object/public/artigos-imagens/artigos/teste-6-header-1763777710560.png",
+      "status": "publicado",
+      "criadoEm": "2025-11-22T02:15:22.044Z"
+    },
+    {
+      "id": 796,
+      "titulo": "pinto",
+      "slug": "pinto-grande",
+      "resumo": null,
+      "imagemHeader": "https://yyvjzgxyxgalnnwcjfqh.supabase.co/storage/v1/object/public/artigos-imagens/artigos/pinto-grande-header-1763780532363.png",
+      "status": "publicado",
+      "criadoEm": "2025-11-22T03:02:21.704Z"
+    }
+  ],
+  "categorias": [
+    {
+      "id_categoria": 1,
+      "nome": "cabelo",
+      "descricao": null
+    },
+    {
+      "id_categoria": 2,
+      "nome": "pele",
+      "descricao": null
+    },
+    {
+      "id_categoria": 97,
+      "nome": "teste",
+      "descricao": null
+    }
+  ],
+  "tiposCabelo": [
+    {
+      "id_tipo_cabelo": 1,
+      "nome": "liso",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 2,
+      "nome": "ondulado\n",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 3,
+      "nome": "crespo",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 4,
+      "nome": "cacheado",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 5,
+      "nome": "todos os tipo\n",
+      "descricao": null
+    }
+  ]
+}

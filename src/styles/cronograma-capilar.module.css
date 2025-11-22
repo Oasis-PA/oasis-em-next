@@ -1,10 +1,9 @@
-/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* ================================== */
-/* CONFIGURAÇÕES GLOBAIS E RESET      */
+/* CONFIGURAÇÕES DE ESCOPO (WRAPPER)  */
 /* ================================== */
 
 .wrapper {
-  /* Variáveis de cor e fonte para fácil manutenção */
+  /* Variáveis de cor e fonte */
   --font-primary: "PLAYFUL RUNWAY", sans-serif;
   --font-secondary: "THE NEXT FONT", sans-serif;
   --font-text: "LOUIS GEORGE CAFE", sans-serif;
@@ -19,20 +18,25 @@
   --scrollbar-thumb-hover-color: #555;
   --butao-height: 2vw;
   --butao-width: 9vw;
-}
 
-.wrapper {
-  height: 100%;
+  /* Configurações do Container Principal */
   width: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Impede scroll horizontal indesejado */
+  position: relative;
+}
+
+/* RESET ESCOPADO: A correção crucial para o layout não quebrar */
+.wrapper *,
+.wrapper *:before,
+.wrapper *:after {
   box-sizing: border-box;
 }
 
-
 /* ================================== */
-/* SEÇÃO INICIAL (mulher)            */
+/* SEÇÃO INICIAL (mulher)             */
 /* ================================== */
 
 .mulher {
@@ -128,7 +132,6 @@
   padding: 0 2vw;
   font-size: clamp(3.2rem, 5.8vw, 5.8rem);
   color: #000;
-  font-family: "PLAYFUL RUNWAY";
   font-style: normal;
   font-weight: 400;
   line-height: 102.185%;
@@ -280,7 +283,7 @@
   flex-wrap: wrap;
   gap: 3rem;
   padding: 4vw;
-  scale: 1.10;
+  scale: 1.10; /* Mantido do original */
 }
 
 @media screen and (max-width: 768px) {
@@ -469,7 +472,7 @@
 }
 
 @media screen and (max-width: 1600px) {
-  .praticidade{
+  .praticidade {
     margin-top: 12vh;
   }
   .pratica {
@@ -486,7 +489,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .praticidade{
+  .praticidade {
     margin-top: 7vh;
   }
 }
@@ -528,11 +531,23 @@
   user-select: none;
 }
 
-.passando:active { cursor: grabbing; }
-.passando.isDragging { scroll-snap-type: none; scroll-behavior: auto; }
-.passando::-webkit-scrollbar { height: var(--scrollbar-height); }
-.passando::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb-color); border-radius: calc(var(--scrollbar-height) / 2); }
-.passando::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover-color); }
+.passando:active {
+  cursor: grabbing;
+}
+.passando.isDragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.passando::-webkit-scrollbar {
+  height: var(--scrollbar-height);
+}
+.passando::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: calc(var(--scrollbar-height) / 2);
+}
+.passando::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
 
 .fotos {
   flex: 0 0 auto;
@@ -736,7 +751,7 @@
 }
 
 /* ================================== */
-/* SEÇÃO noCronograma                 */
+/* SEÇÃO NO CRONOGRAMA                */
 /* ================================== */
 .noCronograma {
   display: flex;
@@ -815,8 +830,17 @@
   transform: scale(1.1);
 }
 
-.prog { display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
-.semanalSeta { display: flex; flex-direction: row; }
+.prog {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.semanalSeta {
+  display: flex;
+  flex-direction: row;
+}
 
 .setinha {
   cursor: pointer;
@@ -827,8 +851,16 @@
   transform: scale(1.3);
 }
 
-.semanal { font-family: var(--font-secondary); font-size: clamp(1rem, 1.2vw, 1.4rem); }
-.progressoCronograma { font-family: var(--font-primary); font-size: clamp(1.5rem, 2.1vw, 2rem); }
+.semanal {
+  font-family: var(--font-secondary);
+  font-size: clamp(1rem, 1.2vw, 1.4rem);
+}
+
+.progressoCronograma {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 2.1vw, 2rem);
+}
+
 .barraDeProgresso {
   width: 100%;
   height: 25px;
@@ -841,8 +873,20 @@
   transform: scaleX(1.02);
 }
 
-.oleosEDicas { display: flex; flex-direction: row; gap: 3vw; flex-wrap: wrap; }
-.oleos, .dicas { width: 16vw; min-width: 250px; height: 400px; border-radius: 15px; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.oleosEDicas {
+  display: flex;
+  flex-direction: row;
+  gap: 3vw;
+  flex-wrap: wrap;
+}
+
+.oleos, .dicas {
+  width: 16vw;
+  min-width: 250px;
+  height: 400px;
+  border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
 .oleos:hover, .dicas:hover {
   transform: translateY(-10px) scale(1.03);
@@ -862,7 +906,11 @@
   cursor: pointer;
 }
 
-.dicas { padding: 1rem; background-color: white; cursor: pointer; }
+.dicas {
+  padding: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
 
 .linha {
   width: 90%;
@@ -872,9 +920,22 @@
   border-radius: 1px;
 }
 
-.dicasTopo { display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 1.3vh; }
-.dicasTitulo { font-family: var(--font-secondary); font-size: clamp(1.5rem, 2.2vw, 2rem); }
-.dicasSubtitulo { font-family: var(--font-text); font-size: clamp(0.9rem, 1vw, 1.1rem); }
+.dicasTopo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1.3vh;
+}
+
+.dicasTitulo {
+  font-family: var(--font-secondary);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+.dicasSubtitulo {
+  font-family: var(--font-text);
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+}
 
 .dicasTopicos {
   display: flex;
@@ -897,10 +958,21 @@
   transform: rotate(15deg) scale(1.1);
 }
 
-.sub1 { font-family: "Louis George Cafe"; font-size: 0.9rem; }
-.sub2 { font-family: "The Next Font"; font-size: 1.1rem; }
+.sub1 {
+  font-family: "Louis George Cafe";
+  font-size: 0.9rem;
+}
 
-.hidratanteELogo { display: flex; flex-direction: column; gap: 4.5vh; }
+.sub2 {
+  font-family: "The Next Font";
+  font-size: 1.1rem;
+}
+
+.hidratanteELogo {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5vh;
+}
 
 @media screen and (max-width: 768px) {
   .hidratanteELogo {
@@ -965,7 +1037,9 @@
   box-shadow: 0 20px 45px rgba(94, 51, 44, 0.4);
 }
 
-.hidratante > p { font-family: "Louis George Cafe"; }
+.hidratante > p {
+  font-family: "Louis George Cafe";
+}
 
 .homemGarfo {
   width: 100%;
@@ -1045,7 +1119,10 @@
   filter: drop-shadow(0 4px 8px rgba(255, 0, 0, 0.5));
 }
 
-.sub3 { font-family: "The Next Font"; font-size: 1.1rem; }
+.sub3 {
+  font-family: "The Next Font";
+  font-size: 1.1rem;
+}
 
 .cores {
   display: flex;
@@ -1099,7 +1176,7 @@
 }
 
 /* ================================== */
-/* MEDIA QUERIES PARA RESPONSIVIDADE  */
+/* MEDIA QUERIES GERAIS               */
 /* ================================== */
 
 /* TABLETS E TELAS MENORES (<= 1024px) */
@@ -1111,19 +1188,14 @@
     --butao-width: 120px;
   }
 
-  /* Seção de apostas empilhada */
   .ousadas {
     flex-direction: column;
-  }
-  .ousadas1 {
-    flex-direction: column;
-  }
-  .ousadas3 {
-    flex-direction: column-reverse;
+    
   }
   .ousadas img {
     width: 100%;
     max-width: 400px;
+    order: -1;
   }
 
   .direita {
@@ -1141,7 +1213,6 @@
     --butao-width: 110px;
   }
 
-  /* Esconde decorações que não funcionam bem em telas menores */
   .amarelo, .folhas {
     display: none;
   }
@@ -1151,27 +1222,28 @@
     padding: 0 5vw;
   }
 
-  /* Seção 'lugar' com 2 colunas */
   .quadrado {
     width: 45%;
     min-height: auto;
   }
 
-  /* Seção noCronograma vira uma coluna só */
   .noCronograma {
     flex-direction: column;
     align-items: center;
     height: auto;
     padding: 4vh 5vw;
   }
+
   .esquerda, .direita {
     width: 100%;
     max-width: 500px;
   }
+
   .progresso, .oleos, .dicas, .hidratante, .logo, .shampoos {
     width: 100%;
     min-width: unset;
   }
+
   .oleosEDicas {
     justify-content: center;
   }
@@ -1189,7 +1261,6 @@
     padding-top: 15vh;
   }
 
-  /* Seção 'lugar' com 1 coluna */
   .quadrado {
     width: 90%;
     max-width: 300px;
@@ -1199,7 +1270,6 @@
     min-height: calc(var(--item-height) + 2 * var(--carousel-gap));
   }
 
-  /* Oculta a barra de rolagem em telas pequenas */
   .passando::-webkit-scrollbar {
     display: none;
   }

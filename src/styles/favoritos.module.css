@@ -1,0 +1,866 @@
+/* ARQUIVO: favoritos.module.css
+   MIGRAÇÃO: CSS Global -> CSS Modules (Escopado)
+*/
+
+/* ---- RESET E CONFIGURAÇÕES GLOBAIS (ESCOPADAS) ---- */
+
+/* Container pai que envolve toda a página. 
+   Substitui o seletor 'body' e 'html' globais para este contexto.
+*/
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
+    font-size: 16px; /* Base REM */
+    position: relative;
+}
+
+/* O RESET MAIS IMPORTANTE:
+   Garante que paddings e bordas não aumentem a largura dos elementos.
+   Isso corrige a "quebra" do layout.
+*/
+.wrapper * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--corpo-texto);
+}
+
+/* ---- SEÇÃO PRINCIPAL (MAIN) ---- */
+.mainContainer {
+    display: flex;
+    width: 100%;
+    max-width: 1800px; /* Limita largura em telas 4k */
+    height: auto;
+    align-items: flex-start; /* Alinha topo */
+    flex-wrap: wrap; /* Permite quebra em mobile */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+/* Antigo #imagens-artigos */
+.heroSection {
+    width: 100%;
+    max-width: 599px; /* Largura fixa original */
+    height: 100vh; /* Ocupa altura total */
+    min-height: 400px;
+    margin-right: 0;
+    background-image: url(../../public/images/favoritos/imagem-principal.png);
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(0.875rem, 2vw, 1.5rem);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.heroSection h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+/* Antigo #section-favoritos */
+.favoritesSection {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1129px; /* Espaço restante calculado */
+    padding: 0 1rem;
+}
+
+/* Antigo #h1-favoritos */
+.favoritesTitle {
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: clamp(3.5rem, 10vw, 6.875rem);
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
+}
+
+/* Antigo #p1 */
+.favoritesDescription {
+    width: 100%;
+    height: auto;
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
+}
+
+/* Antigo #h1-artigos */
+.articlesTitle {
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
+}
+
+/* Antigo #section-imagens-artigos */
+.articlesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Container do card do artigo */
+.articleCardWrapper {
+    text-decoration: none;
+    position: relative;
+}
+
+/* Estilo base para os cards (Antigo seletor aninhado > a > div) */
+.articleCard {
+    width: 327px;
+    height: 215px;
+    margin: 0;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(0.875rem, 1vw, 1rem);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.articleCard:hover {
+    transform: scale(1.05);
+}
+
+/* Classes específicas para Backgrounds (Substituindo IDs #artigo1, #artigo2...) */
+.bgArticle1 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle2 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle3 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle4 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle5 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle6 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle7 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle8 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+.bgArticle9 { background-image: url(../../public/images/favoritos/imagem-artigo\ cinza.png); }
+
+.articleCard h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem); /* Ajuste responsivo mantido */
+    font-weight: 400;
+    line-height: 1.2;
+    text-decoration: none;
+    max-width: 100%;
+    padding-right: 40px;
+    
+    /* Truncamento de texto */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---- SEÇÃO ARTIGO DESTAQUE (Antigo #section-artigo) ---- */
+.highlightArticle {
+    margin-top: 145px;
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Ajustado de 100vw para 100% para evitar scroll horizontal indesejado */
+    min-height: 36.6vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../public/images/favoritos/imagem-artigo.png);
+    flex-direction: column;
+    padding: 2rem 0;
+}
+
+.highlightContent {
+    margin-top: 0;
+    margin-left: clamp(2rem, 11.5vw, 11.5rem);
+}
+
+.highlightArticle h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 400;
+}
+
+.highlightArticle h4 {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Botão Conheça (Antigo #button-conheca) */
+.knowMoreBtn {
+    background: #722F53;
+    border-radius: 2px;
+    border: none;
+    color: white;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    width: 185px;
+    height: 49px;
+    cursor: pointer;
+    margin-top: clamp(2rem, 3vw, 3rem);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.knowMoreBtn a {
+    color: white;
+    font-size: 20px;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+}
+
+.knowMoreBtn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 1;
+}
+
+.knowMoreBtn:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.knowMoreBtn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.knowMoreBtn:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* ---- SEÇÃO CATEGORIAS (Antigo #section-artigos) ---- */
+.categoriesSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 3.3rem);
+    width: 100%;
+    padding: clamp(2rem, 8vw, 8rem) clamp(1rem, 5vw, 5rem);
+}
+
+.categoryItem { /* Antigo .categ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.categoryItem:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.categoryItem:hover > h2 {
+    color: #722F53;
+}
+
+.categoryItem > img {
+    width: clamp(85px, 13vw, 220px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.categoryItem > h2 {
+    font-family: 'The Next Font', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+    white-space: nowrap;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+/* ---- CARDS MARRONS (Antigo #section-imagem-marrom) ---- */
+.brownCardsSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 5.86rem);
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+.brownCard { /* Antigo .card-marrom */
+    background: #5E332C;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    min-height: 17rem;
+    border-radius: 1.875rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+}
+
+.brownCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.brownCardImage { /* Antigo #img-marrom */
+    width: clamp(120px, 15vw, 216px);
+    height: auto;
+    padding: 1rem;
+}
+
+.brownCardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    padding: 0 1rem;
+}
+
+.brownCardIcon {
+    width: 1.75rem;
+    height: 1.75rem;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.brownCardContent > h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+    align-self: flex-start;
+}
+
+.brownCardContent > p {
+    color: #FFF;
+    font-family: "Louis George Cafe Light", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 100;
+    line-height: normal;
+    text-align: justify;
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+/* Botão dentro do card marrom */
+.brownCardButton {
+    border: none;
+    color: white;
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    width: 142px;
+    height: 37.61px;
+    background: #F2A518;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 1.75rem;
+    align-self: flex-start;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.brownCardButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.brownCardButton:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.brownCardButton:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.brownCardButton:active {
+    background: #d18f15;
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* ---- SEÇÃO SALVOS / RECENTES (Antigo #section-salvos-recen) ---- */
+.savedSectionWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.savedTitle { /* Antigo #h1-salvos */
+    font-family: 'PLAYFUL RUNWAY', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-top: 150px;
+    text-align: center;
+}
+
+.savedCardsContainer { /* Antigo #section-salvos */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 55px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: #939191 transparent;
+}
+
+.savedCard { /* Antigo .card-salvo */
+    display: flex;
+    flex-direction: column;
+    width: 250px; 
+    flex-shrink: 0;
+    height: auto;
+    border: 3px solid #939191;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.savedCard:hover {
+    transform: translateY(-5px);
+    border-color: #722F53;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.favIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.prodImage {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 1/1.03;
+    object-fit: cover;
+}
+
+.savedCard > h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 1rem 1.1rem 0.5rem;
+    align-self: flex-start;
+}
+
+.savedCard > p {
+    font-family: "Louis George Cafe Light", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: justify;
+    padding: 0 1.1rem 1.1rem;
+    align-self: flex-start;
+}
+
+.seeMoreLink { /* Antigo #p3 */
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 62px;
+    margin-bottom: 90px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.seeMoreLink:hover {
+    color: #722F53;
+}
+
+.goldenImage { /* Antigo #img-dourada */
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* ---- SEÇÃO MAIS PRODUTOS ---- */
+.moreProductsSection {
+    width: 100%;
+    height: auto;
+    background-color: black;
+    padding: 5rem 0;
+    margin-top: clamp(3rem, 5.5vw, 5.5rem);
+}
+
+.moreProductsTitle {
+    font-family: 'The Next Font', sans-serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 10vw, 6.875rem);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.moreProductsContainer {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 5.5rem);
+    margin: clamp(2.5rem, 5vw, 5rem) 0;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.moreProductsCard { /* Antigo .card-maisprodutos */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    background-color: #FFF;
+    border-radius: 1.875rem;
+    transition: all 0.3s ease;
+}
+
+.moreProductsCard:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.productImage {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 1.25rem 1.25rem 0 0;
+}
+
+.moreProductsCard > h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 1rem;
+}
+
+.moreProductsCard > p {
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: justify;
+    padding: 0 1rem;
+    flex-grow: 1;
+}
+
+.cardActionArea {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+}
+
+.cardActionArea > h2 {
+    font-family: "The Next Font", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 1.5rem 0.3rem 1.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.moreProductsCard:hover .cardActionArea > h2 {
+    color: #722F53;
+    text-decoration: underline;
+}
+
+/* ---- SEÇÃO ARTIGOS MOSAICO (Antigo #section-artigos-s2) ---- */
+.mosaicGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 250px);
+    gap: 20px;
+    margin: 143px auto;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.mosaicItem {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    transition: all 0.4s ease;
+    text-decoration: none;
+}
+
+.mosaicItem:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    filter: brightness(1.1);
+}
+
+.mosaicItem > h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 1.5rem;
+}
+
+/* Backgrounds específicos do Mosaico (Antigos IDs) */
+.mosaicBg1 { background-image: url(../../public/images/link-artigos/10-tons-fantasticos.jpg); }
+.mosaicBg2 { background-image: url(../../public/images/link-artigos/nago-colorida.jpg); }
+.mosaicBg3 { background-image: url(../../public/images/link-artigos/produtos-indispensaveis.jpg); }
+.mosaicBg4 { background-image: url(../../public/images/link-artigos/oleo-de-rosa-mosqueta.jpg); }
+.mosaicBg5 { background-image: url(../../public/images/link-artigos/diferenca-de-geracoes.jpg); }
+
+/* Grid Placement classes */
+.mosaicPos1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.mosaicPos2 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.mosaicPos3 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.mosaicPos4 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.mosaicPos5 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+}
+
+/* Botão de favorito interno (CSS Adicional mantido) */
+.favoriteBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+}
+
+/* ---- MEDIA QUERIES ---- */
+@media (max-width: 1200px) {
+    .wrapper {
+        align-items: center;
+    }
+    
+    .mainContainer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .heroSection {
+        margin-right: 0;
+        margin-bottom: 2rem;
+        height: 60vh;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .favoritesSection {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .articlesGrid {
+        flex-wrap: nowrap; 
+        justify-content: flex-start;
+        overflow-x: auto; 
+        padding: 1rem; 
+        scrollbar-width: thin;
+        scrollbar-color: #939191 transparent;
+    }
+    
+    .articlesGrid > a > div { /* Ajuste para o wrapper do link */
+        flex-shrink: 0; 
+    }
+}
+
+@media (max-width: 900px) {
+    .wrapper {
+        align-items: center;
+    }
+
+    .mainContainer {
+        justify-content: center;
+    }
+    
+    .mosaicGrid {
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .mosaicItem {
+        height: 350px; 
+    }
+
+    /* Reset grid positions para mobile */
+    .mosaicPos1, .mosaicPos2, .mosaicPos3, .mosaicPos4 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    
+    .mosaicPos5 {
+        grid-column: 1 / -1;
+    }
+
+    .brownCardImage {
+        width: 250px;
+    }
+
+    .mosaicPos3 {
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        align-items: center;
+    }
+
+    .mainContainer {
+        justify-content: center;
+    }
+    
+    .brownCard {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .brownCardContent {
+        align-items: center;
+    }
+
+    .brownCardIcon {
+        align-self: flex-end; 
+    }
+
+    .brownCardContent > h1, 
+    .brownCardContent > p, 
+    .brownCardButton {
+        align-self: center;
+    }
+
+    .savedCardsContainer > a {
+        display: none;
+    }
+
+    .mosaicGrid {
+        margin: 70px auto;
+    }
+
+    .brownCardImage {
+        width: 250px;
+    }
+    
+    .moreProductsContainer {
+        gap: 1rem;
+    }
+
+    .moreProductsCard {
+        width: calc(50% - 0.5rem); 
+        max-width: none; 
+    }
+
+    .favoriteBtn {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        align-items: center;
+    }
+
+    .mainContainer {
+        justify-content: center;
+    }
+    
+    .brownCardImage {
+        width: 250px;
+    }
+
+    .highlightContent {
+        margin-left: clamp(1rem, 5vw, 2rem);
+    }
+
+    .mosaicItem {
+        min-width: 100px;
+    }
+
+     .mosaicItem > h1 {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 1650px) {
+    .wrapper {
+        align-items: center;
+    }
+
+    .mainContainer {
+        justify-content: center;
+    }
+}

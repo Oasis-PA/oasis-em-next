@@ -9,8 +9,9 @@ import styles from '@/styles/alimentacao.module.css';
 
 const AlimentacaoPage: React.FC = () => {
   return (
+    <>
+    <Header/>
     <div className={styles.wrapper}>
-      <Header/>
       <section className={styles.banner}>
         <div className={styles.textoBanner}>
           <h1>NUTRIENTES <span style={{ color: '#ECC46F' }}>CERTOS</span>, <br />FIOS MAIS <span style={{ color: '#ECC46F' }}>FORTES!</span></h1>
@@ -85,7 +86,7 @@ const AlimentacaoPage: React.FC = () => {
       </section>
 
       <div className={styles.repartição}></div>
-      <img className={styles.linha} src="/images/alimentacao/linha.svg" alt="" />
+      <img className={styles.linhapreta} src="/images/alimentacao/linha.svg" alt="" />
       <section className={styles.sec5}>
         <div className={styles.text}>
           <h2>Artigos fundamentais</h2>
@@ -140,7 +141,9 @@ const AlimentacaoPage: React.FC = () => {
           </div>
         </section>
       </section>
-      <Footer/>    </div>
+      </div>
+      <Footer/> 
+      </>
   );
 
 };

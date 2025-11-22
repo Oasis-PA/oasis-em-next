@@ -28,9 +28,11 @@ const HairCarePage: React.FC = () => {
   ];
 
   return (
+    <>
+    <Header/>
     <div className={styles.wrapper}>
 
-    <Header/>
+    
     <main>
       <section className={styles.barra}>
         <div className={styles.aaa}>
@@ -116,7 +118,7 @@ const HairCarePage: React.FC = () => {
                 pagination={{ clickable: true }}
                 loop={true}
                 className={styles.simpleHairCareSwiper}
-              >
+                >
                 {carouselImages.map((src, index) => (
                   <SwiperSlide key={index}>
                     <img src={src} alt={`Imagem do carrossel ${index + 1}`} className={styles.simpleCarouselImage} />
@@ -193,7 +195,9 @@ const HairCarePage: React.FC = () => {
       <Script src="/Hair-care.js" strategy="lazyOnload" />
     </main>
     
-    <Footer/>    </div>
+       </div>
+       <Footer/> 
+</>
   );
 };
 
