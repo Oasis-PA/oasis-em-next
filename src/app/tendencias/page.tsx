@@ -12,18 +12,14 @@ interface TrendCardProps {
   link: string;
   titId: string;
 }
-
-// Componente para renderizar os cards de tendência
 const TrendCard: React.FC<TrendCardProps> = ({ imageClass, title, tags, link, titId }) => {
-  // Caminho da imagem de salvar ajustado para convenções do Next.js
-  const saveIconSrc = '/images/tendencias/Salvar.png'; 
+  const saveIconSrc = '/images/tendencias/Salvar.png';
 
   return (
-    <Link href={link} className={styles[imageClass]}> 
+    <Link href={link} className={styles[imageClass]}>
       <div className={styles.elementos}>
         <div className={styles.cima}>
           <p className={styles.data3}>19 jun 2024</p>
-          {/* Componente Image para o ícone de salvar */}
           <Image
             className={styles.salvar3}
             src={saveIconSrc}
@@ -54,7 +50,6 @@ export default function tendencias() {
     <>
       <Header />
       <main>
-        {/* ... Seções anteriores (primeiro, segundo, terceiro) ... */}
         <section className={styles.primeiro}>
           <div className={styles.bannerPrincipal}>
             <p className={styles.tit1}>
@@ -65,16 +60,17 @@ export default function tendencias() {
             </p>
           </div>
 
-          {/* NOVO GRUPO PARA SOBREPOSIÇÃO LIMPA */}
           <div className={styles.primeiroOverlapGroup}>
             <Link href='/artigo/qual-creme-comprar' className={styles.bannerSecLink}>
               <div className={styles.bannerSec}>
-                <div className={styles.butoes}>
-                  <button>Cabelo</button>
-                  <button>Cremes e óleos</button>
-                  <button>Produtos</button>
+                <div className={styles.conteudo}>
+                  <div className={styles.butoes}>
+                    <button>Cabelo</button>
+                    <button>Cremes e óleos</button>
+                    <button>Produtos</button>
+                  </div>
+                  <p className={styles.tit2}>Os dilemas do século XXI: Qual creme comprar?</p>
                 </div>
-                <p className={styles.tit2}>Os dilemas do século XXI: Qual creme comprar?</p>
               </div>
             </Link>
 
@@ -87,31 +83,29 @@ export default function tendencias() {
 
             <Link href='/artigo/qual-creme-comprar' className={styles.bannerTercLink}>
               <div className={styles.bannerTerc}>
-                <div className={styles.butoes2}>
-                  <button>Cabelo</button>
-                  <button>Cremes e óleos</button>
-                  <button>Produtos</button>
+                <div className={styles.conteudo}>
+                  <div className={styles.butoes2}>
+                    <button>Cabelo</button>
+                    <button>Cremes e óleos</button>
+                    <button>Produtos</button>
+                  </div>
+                  <p className={styles.tit3}>Acessórios para pele e cabelo</p>
                 </div>
-                <p className={styles.tit3}>Acessórios para pele e cabelo</p>
               </div>
             </Link>
           </div>
         </section>
         
         <section className={styles.segundo}>
+
           <div className={styles.segundoColEsq}>
-            <p className={styles.tit4}>Cabelo perfeito em 3 passos</p>
+            <div className={styles.textos}>
+            <p className={styles.tit4}>Coleção Inverno - Cachos dos sonhos</p>
             <p className={styles.text2}>
-              Os produtos essenciais para o seu cronograma capilar estão aqui, descubra a importância do cuidado diário.
+              Neste inverno, abrace seus cachos como nunca antes. A coleção Cachos dos Sonhos foi criada especialmente para cuidar, nutrir e proteger seus fios nos dias frios, quando o ressecamento e o frizz tentam roubar a cena.
             </p>
+            </div>
             <div className={styles.produtss}>
-              <div className={styles.produt1}>
-                <p>Óleo Essencial</p>
-                <button className={styles.but2}>Ver produto</button>
-                <button className={styles.but3}>
-                  <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
-                </button>
-              </div>
               <div className={styles.produt2}>
                 <p>Óleo de Coco</p>
                 <button className={styles.but4}>Ver produto</button>
@@ -130,28 +124,24 @@ export default function tendencias() {
           </div>
 
           <div className={styles.segundoColDir}>
-            <Image 
-              className={styles.imgDireita} 
-              src="/images/tendencias/imagem-direita.png" 
-              alt="Modelo sorrindo com a mão no cabelo" 
-              width={400} 
-              height={400} 
-            />
-            <p className={styles.tit5}>Maquiagens</p>
+            <div className={styles.textas}>
+            <p className={styles.tit5}>Melhores tipos de finalização</p>
             <p className={styles.text3}>
-              O que você precisa saber sobre a nova linha de maquiagens da Makeup Star!
+              A finalização é a etapa-chave para realçar a beleza natural dos cachos. A fitagem tradicional é ideal para quem busca definição intensa e controle do frizz. Já a fitagem rápida oferece praticidade e um visual mais leve e volumoso. Para cachos duradouros, a combinação de creme e gel é imbatível. 
             </p>
-            <div className={styles.divi}>
-              <p>Produtos essenciais</p>
             </div>
+            <div className={styles.divi}>
+              <p>Linha produtos tropicais - Hidratação Intensa</p>
+            
             <Image 
               className={styles.imgProdut1} 
-              src="/images/tendencias/imagem-maquiagem.png" 
+              src="/images/tendencias/produ-4.png" 
               alt="Foto de maquiagem" 
               width={300} 
-              height={100} 
+              height={250} 
             />
             <button className={styles.but6}>Ver produtos</button>
+          </div>
           </div>
         </section>
 
@@ -200,9 +190,6 @@ export default function tendencias() {
           </div>
         </section>
 
-        {/* ======================================================= */}
-        {/* NOVA SEÇÃO: QUARTO - TENDÊNCIAS DA SEMANA */}
-        {/* ======================================================= */}
         <section className={styles.quarto}>
           <div className={styles.outroTitulo}>
             <p>Tendencias da Semana</p>
@@ -211,49 +198,44 @@ export default function tendencias() {
           <section className={styles.imagenszinas}>
             <div className={styles.esqui}>
               <div className={styles.sec1}>
-                {/* Imagem 2 */}
                 <TrendCard
                   imageClass="img-2"
                   title="Os dilemas do século XXI: Qual creme comprar?"
                   tags={["Cabelo", "Cremes e óleos", "Produtos"]}
                   link="/artigo/creme-comprar"
-                  titId="tit-7"
+                  titId="tit7"
                 />
-                {/* Imagem 3 */}
                 <TrendCard
                   imageClass="img-3"
                   title="skincare - 4 produtos"
                   tags={["Cabelo", "Cremes e óleos"]}
                   link="/artigo/skincare-4"
-                  titId="tit-7"
+                  titId="tit7"
                 />
               </div>
 
               <div className={styles.sec2}>
-                {/* Imagem empé */}
                 <TrendCard
-                  imageClass="empé"
+                  imageClass="empe"
                   title="Os dilemas do século XXI: Qual creme comprar?"
                   tags={["Cabelo", "Cremes e óleos", "Produtos"]}
                   link="/artigo/creme-comprar-2"
-                  titId="tit-7"
+                  titId="tit7"
                 />
                 <div className={styles.deitada}>
-                  {/* Imagem 4 */}
                   <TrendCard
                     imageClass="img-4"
                     title="Os dilemas do século XXI: Qual creme comprar?"
                     tags={["Cabelo", "Cremes e óleos", "Produtos"]}
                     link="/artigo/creme-comprar-3"
-                    titId="tit-7"
+                    titId="tit7"
                   />
-                  {/* Imagem 5 */}
                   <TrendCard
                     imageClass="img-5"
                     title="Os dilemas do século XXI: Qual creme comprar?"
                     tags={["Cabelo", "Cremes e óleos", "Produtos"]}
                     link="/artigo/creme-comprar-4"
-                    titId="tit-7"
+                    titId="tit7"
                   />
                 </div>
               </div>
@@ -261,32 +243,29 @@ export default function tendencias() {
 
             <div className={styles.diri}>
               <div className={styles.diriTopo}>
-                {/* Imagem 6 */}
                 <TrendCard
                   imageClass="img-6"
                   title="Os dilemas do século XXI: Qual creme comprar?"
                   tags={["Cabelo", "Cremes e óleos", "Produtos"]}
                   link="/artigo/creme-comprar-5"
-                  titId="tit-7"
+                  titId="tit7"
                 />
               </div>
 
               <div className={styles.diriBaixo}>
-                {/* Imagem 7 */}
                 <TrendCard
                   imageClass="img-7"
                   title="Grillz em 2025"
                   tags={["Cabelo", "Cremes e óleos"]}
                   link="/artigo/grillz-2025"
-                  titId="tit-7"
+                  titId="tit7"
                 />
-                {/* Imagem 8 */}
                 <TrendCard
                   imageClass="img-8"
                   title="como fazer waves"
                   tags={["Cabelo"]}
                   link="/artigo/waves"
-                  titId="tit-8"
+                  titId="tit8"
                 />
               </div>
             </div>
