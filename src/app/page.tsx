@@ -71,7 +71,7 @@ export default function OasisHomepage() {
   useEffect(() => {
     const fetchProdutos = async () => {
       try {
-        const response = await fetch('/api/produtos?limit=20');
+        const response = await fetch('/api/produtos?limit=30');
         const data = await response.json();
         
         // A API retorna um objeto com { produtos: [...], pagination: {...} }

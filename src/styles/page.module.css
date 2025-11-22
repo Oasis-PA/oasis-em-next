@@ -1009,55 +1009,92 @@
 }
 
 @media (max-width: 500px) {
-  .s2links > img {
-    width: 110px;
-  }
+  /* --- Ajustes Gerais (Mantidos) --- */
+  .s2links > img { width: 110px; }
+  .s2links > h1 { font-size: 1.3rem; }
+  .cortecard > h1 { font-size: 1.3rem; }
+  .conhecaCorteButton { width: 90%; font-size: 1.1rem; }
+  .s4 { 
+    padding: 0 1.5rem; 
+    margin-top: 4rem; 
+    margin-bottom: 4rem;
+    box-sizing: border-box; } 
+  .arrow { margin-right: 4rem; }
 
-  .s2links > h1 {
-    font-size: 1.3rem;
-  }
+  /* --- GRID DE 2 COLUNAS --- */
   .cortes {
-      gap: 1.5rem 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 0.5rem;
   }
 
-  .cortecard > h1 {
-      font-size: 1.3rem;
+  /* --- CONFIGURAÇÃO DOS PRODUTOS --- */
+  .cardsperfil {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Divide exatamente ao meio */
+      gap: 0.8rem; /* Espaço um pouco menor entre os cards */
+      width: 100%;
+      padding: 0;
   }
 
-  .conhecaCorteButton {
-      width: 90%;
-      font-size: 1.1rem;
-  }
-  .s4 {
-    padding: 0 1rem;
-  }
-
-  /* Ajuste para exibir 1 produto por linha em telas muito pequenas */
   .cardperfil {
-      flex: 1 1 100%;
-      max-width: 100%;
-      min-height: auto;
-      padding-bottom: 1.5rem;
+      width: 100%;
+      max-width: none;
+      flex: none;
+      height: 100%;
+      min-height: 300px; /* Garante altura para caber tudo */
+      padding-bottom: 0.8rem;
+      
+      /* Organização interna */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Empurra o botão para o final */
   }
 
+  /* Imagem menor para sobrar espaço pro texto */
+  .cardperfil > img {
+      width: 100%;
+      height: 140px; 
+      object-fit: contain;
+      padding: 0.5rem;
+  }
+
+  /* --- CORREÇÃO DAS LETRAS ESTRANHAS --- */
   .cardperfil > h1 {
-    font-size: 1.1rem;
-    padding-top: 0.5rem;
+    font-size: 0.85rem; /* Reduzi bastante para caber (antes devia estar > 1rem) */
+    font-weight: 700;   /* Mantém negrito, mas controlado */
+    padding: 0.5rem 0.8rem;
+    line-height: 1.2;
+    min-height: auto;
+    margin-bottom: 0.2rem;
+    
+    /* Evita que palavras gigantes quebrem o layout */
+    word-wrap: break-word; 
   }
 
   .cardperfil > h2 {
-    font-size: 1rem;
-    text-align: left; 
-    line-height: 1.4; 
+    font-size: 0.75rem; /* Categoria bem pequena e discreta */
+    padding: 0 0.8rem 0.8rem 0.8rem;
+    margin: 0;
+    line-height: 1.2;
+    color: #666;
   }
 
+  /* --- CORREÇÃO DO BOTÃO --- */
   .buttonPerfil {
-    font-size: 1rem;
-    padding: 0.6rem;
-    width: 85%;
+    width: 90%;
+    margin: 0 auto; /* Centraliza */
+    padding: 0.5rem 0; /* Padding menor verticalmente */
+    font-size: 0.8rem; /* Letra do botão menor para caber */
+    border-radius: 1rem;
+    
+    /* Ajustes Flex para centralizar o texto dentro do botão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  .arrow {
-    margin-right: 4rem;
+  .buttonPerfil a {
+      font-size: 0.8rem; /* Garante que o link dentro respeite o tamanho */
   }
 }
