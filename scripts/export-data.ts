@@ -41,10 +41,13 @@ async function exportData() {
         id: true,
         titulo: true,
         slug: true,
+        conteudo: true,
         resumo: true,
         imagemHeader: true,
         status: true,
         criadoEm: true,
+        dataPublicacao: true,
+        themeDark: true,
       }
     });
 

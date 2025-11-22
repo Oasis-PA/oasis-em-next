@@ -139,12 +139,14 @@ async function importData() {
             id: art.id,
             titulo: art.titulo,
             slug: art.slug,
-            conteudo: art.conteudo || '',
+            conteudo: art.conteudo || art.resumo || '',
             resumo: art.resumo,
             imagemHeader: art.imagemHeader,
-            status: art.status,
+            status: art.status || 'rascunho',
             criadoEm: new Date(art.criadoEm),
             atualizadoEm: new Date(art.criadoEm),
+            dataPublicacao: art.dataPublicacao ? new Date(art.dataPublicacao) : null,
+            themeDark: art.themeDark || false,
           }
         });
       }
