@@ -38,6 +38,8 @@ async function importData() {
     await prisma.produto.deleteMany();
     await prisma.artigo.deleteMany();
     await prisma.artigoTag.deleteMany();
+    await prisma.categoria.deleteMany();
+    await prisma.tipoCabelo.deleteMany();
     console.log('✅ Tabelas limpas\n');
 
     // Importar categorias
