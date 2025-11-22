@@ -98,7 +98,10 @@
       "Bash(npm run backup:*)",
       "Bash(python scripts/extract-artigos.py:*)",
       "Bash(python scripts/parse-artigos.py:*)",
-      "Bash(/dev/null)"
+      "Bash(/dev/null)",
+      "Bash(gh auth:*)",
+      "Bash(git merge:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []
