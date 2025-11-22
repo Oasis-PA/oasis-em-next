@@ -338,26 +338,46 @@ const Favoritos: React.FC = () => {
 
         {/* Seção Mosaico Final */}
         <section className={styles.mosaicGrid}>
-          <Link href='/artigo/10-tons-fantasticos' className={`${styles.mosaicItem} ${styles.mosaicPos1} ${styles.mosaicBg1}`}>
-            <h1>10 tons fantásticos para sair do básico</h1>
-          </Link>
+  {/* Item 1 (Já estava correto) */}
+  <Link 
+    href='/artigo/10-tons-fantasticos' 
+    className={`${styles.mosaicItem} ${styles.mosaicPos1} ${styles.mosaicBg1}`}
+  >
+    <h1>10 tons fantásticos para sair do básico</h1>
+  </Link>
 
-          <Link href='/artigo/nago-colorida' className={`${styles.mosaicItem} ${styles.mosaicPos2} ${styles.mosaicBg2}`}>
-            <h1>Nago colorida: 15 estilos diferentes</h1>
-          </Link>
+  {/* Item 2 (Corrigido) */}
+  <Link 
+    href='/artigo/nago-colorida' 
+    className={`${styles.mosaicItem} ${styles.mosaicPos2} ${styles.mosaicBg2}`}
+  >
+    <h1>Nago colorida: 15 estilos diferentes</h1>
+  </Link>
 
-          <Link href='/artigo/produtos-indispensaveis' className={`${styles.mosaicItem} ${styles.mosaicPos3} ${styles.mosaicBg3}`}>
-            <h1>Produtos indispensáveis para cabelos pintados</h1>
-          </Link>
+  {/* Item 3 (Corrigido) */}
+  <Link 
+    href='/artigo/produtos-indispensaveis' 
+    className={`${styles.mosaicItem} ${styles.mosaicPos3} ${styles.mosaicBg3}`}
+  >
+    <h1>Produtos indispensáveis para cabelos pintados</h1>
+  </Link>
 
-          <Link href='/artigo/oleo-de-rosa-mosqueta' className={`${styles.mosaicItem} ${styles.mosaicPos4} ${styles.mosaicBg4}`}>
-            <h1>Benefícios do Óleo de Rosa Mosqueta</h1>
-          </Link>
+  {/* Item 4 (Corrigido) */}
+  <Link 
+    href='/artigo/oleo-de-rosa-mosqueta' 
+    className={`${styles.mosaicItem} ${styles.mosaicPos4} ${styles.mosaicBg4}`}
+  >
+    <h1>Benefícios do Óleo de Rosa Mosqueta</h1>
+  </Link>
 
-          <Link href='/artigo/diferenca-de-geracoes' className={`${styles.mosaicItem} ${styles.mosaicPos5} ${styles.mosaicBg5}`}>
-            <h1>Diferença de gerações</h1>
-          </Link>
-        </section>
+  {/* Item 5 (Corrigido) */}
+  <Link 
+    href='/artigo/diferenca-de-geracoes' 
+    className={`${styles.mosaicItem} ${styles.mosaicPos5} ${styles.mosaicBg5}`}
+  >
+    <h1>Diferença de gerações</h1>
+  </Link>
+</section>
 
       </div>
       <Footer />
