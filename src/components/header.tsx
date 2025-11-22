@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from './header.module.css';
+import styles from '@/styles/header.module.css';
+
 
 interface User {
   nome: string;
@@ -89,7 +90,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
         )}
       </nav>
 
-      <header style={headerStyle} className={`${styles.header} ${theme} ${className || ''}`}>
+      <header style={headerStyle} className={`${styles.header} ${theme === 'dark' ? styles.dark : ''} ${className || ''}`}>
         <section className={styles.em_ciminha}>
           {/* NOVO: Wrapper para agrupar menu e logo */}
           <div className={styles.header_left}>

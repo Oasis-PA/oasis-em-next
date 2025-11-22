@@ -410,3 +410,9 @@
 .dark .redirecionavel2:active {
     color: #b08c16;
 }
+
+/* Classe base para o tema dark (necessária para CSS Modules) */
+.dark {
+  /* Classe vazia, só precisa existir para o module reconhecer */
+}
+
