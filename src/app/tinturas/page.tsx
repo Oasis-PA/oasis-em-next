@@ -177,7 +177,7 @@ export default function Tinturas() {
             <div id="artigo3" className="banner-item">
                {/* Se a imagem de fundo já tiver a foto, ok. Se não, precisaria ajustar */}
                <div className="banner-content right-align">
-                  <h1>NAGÔ COLORIDA: <br />15 ESTILOS DIFERENTES</h1>
+                  <h1>NAGO COLORIDA: <br />15 ESTILOS DIFERENTES</h1>
                   <div className="tags-wrapper">
                     <span className="pill-tag">Moda</span>
                     <span className="pill-tag">Marcas</span>

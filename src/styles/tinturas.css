@@ -107,6 +107,7 @@
     padding-left: clamp(1rem, 2vw, 2rem); /* Alinha visualmente com os cards */
     box-sizing: border-box;
     transition: text-shadow 0.3s ease;
+    font-weight: 400;
 }
 
 #s1 > h1:hover {
