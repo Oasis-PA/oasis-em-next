@@ -79,6 +79,7 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
 
   if (!artigo.conteudo) {
     return (
+    
     <div className="page-artigo-wrapper">
 
         <Header />
@@ -100,16 +101,18 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
     (artigo.atualizadoEm.getTime() - artigo.criadoEm.getTime() > 60000);
 
   return (
-    <div className={styles.wrapper}>
-      {imagemHeader ? (
+    <>
+    {imagemHeader ? (
         <Header
           backgroundImage={imagemHeader}
           theme={themeDark ? "dark" : undefined}
-          className={styles.header}
+          className={styles.header1}
         />
       ) : (
         <Header theme={themeDark ? "dark" : undefined} />
       )}
+    <div className={styles.wrapper}>
+      
       <div className={styles.pageArtigoWrapper}>
         <main className={styles.mainWrapper}>
           <article className={styles.articleContent}>
@@ -200,7 +203,9 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
         </article>
         </main>
       </div>
-      <Footer/>
+     
     </div>
+  <Footer/>
+    </>
   );
 }
