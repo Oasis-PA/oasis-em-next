@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-// PUT - Atualizar pergunta
+// PUT - Atualizar opção
 export async function PUT(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
@@ -18,29 +18,26 @@ export async function PUT(
       );
     }
 
-    const pergunta = await prisma.pergunta.update({
-      where: { id_pergunta: id },
+    const opcao = await prisma.opcaoResposta.update({
+      where: { id_opcao: id },
       data: {
-        pergunta: data.pergunta,
-        subtitulo: data.subtitulo ?? null,
-        campo_bd: data.campo_bd ?? null,
-        imagem_url: data.imagem_url ?? null,
+        valor: data.valor,
+        texto: data.texto,
         ordem: Number(data.ordem ?? 0),
-        obrigatoria: Boolean(data.obrigatoria ?? true),
       }
     });
 
-    return NextResponse.json({ success: true, data: pergunta });
+    return NextResponse.json({ success: true, data: opcao });
   } catch (error: any) {
-    console.error('Erro ao atualizar pergunta:', error);
+    console.error('Erro ao atualizar opção:', error);
     return NextResponse.json(
-      { success: false, error: error?.message ?? 'Erro ao atualizar pergunta' },
+      { success: false, error: error?.message ?? 'Erro ao atualizar opção' },
       { status: 500 }
     );
   }
 }
 
-// DELETE - Deletar pergunta
+// DELETE - Deletar opção
 export async function DELETE(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
@@ -56,18 +53,18 @@ export async function DELETE(
       );
     }
 
-    await prisma.pergunta.delete({
-      where: { id_pergunta: id }
+    await prisma.opcaoResposta.delete({
+      where: { id_opcao: id }
     });
 
     return NextResponse.json({ 
       success: true, 
-      message: 'Pergunta deletada com sucesso!' 
+      message: 'Opção deletada com sucesso!' 
     });
   } catch (error: any) {
-    console.error('Erro ao deletar pergunta:', error);
+    console.error('Erro ao deletar opção:', error);
     return NextResponse.json(
-      { success: false, error: error?.message ?? 'Erro ao deletar pergunta' },
+      { success: false, error: error?.message ?? 'Erro ao deletar opção' },
       { status: 500 }
     );
   }
