@@ -1,0 +1,121 @@
+=============================================================================
+                    LIMPEZA E ORGANIZAÇÃO DO PROJETO
+=============================================================================
+
+DATA: 21 de Novembro de 2024
+
+ANTES:
+  - 50+ arquivos soltos na raiz
+  - Mistura de documentação, scripts, dados e config
+  - Difícil de navegar
+  - Raiz poluída
+
+DEPOIS:
+  - 27 arquivos na raiz (apenas essenciais)
+  - Estrutura clara e organizada
+  - Fácil de encontrar arquivos
+
+=============================================================================
+                        ARQUIVOS MOVIDOS
+=============================================================================
+
+DOCUMENTAÇÃO → /docs (13 arquivos)
+  - CHECKLIST_CSS_PROBLEMAS.md
+  - COMECE_AQUI.md
+  - CSS_MODULES_MIGRATION_*.md (3 arquivos)
+  - CYPRESS_*.md (4 arquivos)
+  - GUIA_TESTES_CYPRESS.md
+  - INSTRUCOES_RAPIDAS.txt
+  - LEIA-ME-PRIMEIRO.txt
+  - PROBLEMA_BANNER_MENOR_SOLUCAO.md
+  - README_TESTES.txt
+  - RESUMO_*.* (2 arquivos)
+  - SOLUCAO_HEADER_CONSISTENTE.md
+  - STATUS_APRESENTACAO.txt
+  - TESTES_*.* (3 arquivos)
+  - WORKFLOWS_SUMMARY.txt
+
+SCRIPTS TEMPORÁRIOS → /scripts-temp (10 arquivos)
+  - add-css-imports.py
+  - convert-css-module.py
+  - fix-css.ps1
+  - fix-page-imports.py
+  - migrate.ps1
+  - test-db.js
+  - test-db-connection.js
+  - test-supabase-upload.js
+  - check-article-35.ts
+  - verify-article.ts
+
+DADOS → /data (1 arquivo)
+  - artigos.md (novo: arquivo principal de artigos)
+  - artigos.txt (estava na raiz)
+
+DELETADOS (Arquivos duplicados/desnecessários)
+  - jext-env.d.ts (duplicado de next-env.d.ts)
+
+=============================================================================
+                     RAIZ APÓS LIMPEZA
+=============================================================================
+
+Arquivos de Configuração (Essenciais):
+  ✓ cypress.config.ts
+  ✓ eslint.config.mjs
+  ✓ jest.config.cjs
+  ✓ jest.integration.config.cjs
+  ✓ next.config.ts
+  ✓ next-env.d.ts
+  ✓ postcss.config.mjs
+  ✓ tsconfig.json
+
+Arquivos Principais:
+  ✓ package.json
+  ✓ package-lock.json
+  ✓ README.md
+  ✓ LICENSE
+  ✓ ESTRUTURA_PROJETO.md (novo: guia de estrutura)
+
+Pastas Principais:
+  ✓ src/
+  ✓ prisma/
+  ✓ public/
+  ✓ scripts/
+  ✓ data/
+  ✓ docs/
+  ✓ tests/
+  ✓ cypress/
+  ✓ coverage/
+  ✓ node_modules/
+  ✓ backups/
+  ✓ readmes/
+  ✓ scripts-temp/
+
+=============================================================================
+                        BENEFÍCIOS
+=============================================================================
+
+✅ Raiz 45% menor (50+ → 27 arquivos)
+✅ Fácil encontrar configurações
+✅ Documentação bem organizada
+✅ Scripts reutilizáveis separados dos temporários
+✅ Dados centralizados em /data
+✅ Novo guia: ESTRUTURA_PROJETO.md
+✅ Melhor navegabilidade
+✅ Projeto mais profissional
+✅ Onboarding mais fácil para novos devs
+
+=============================================================================
+                     PRÓXIMOS PASSOS
+=============================================================================
+
+1. Commit desta limpeza:
+   git add -A
+   git commit -m "Organizar estrutura do projeto: raiz limpa"
+
+2. Verificar que artigos ainda importam corretamente:
+   python scripts/parse-artigos.py
+   npx tsx scripts/seed-artigos.ts
+
+3. Compartilhar ESTRUTURA_PROJETO.md com a equipe
+
+=============================================================================

@@ -391,7 +391,7 @@ export default function EditarArtigoPage() {
             />
             <span>Ativar tema escuro no header?</span>
           </label>
-          <small>Se ativado, o header terá o tema dark</small>
+          <small>Se ativado, o header terá o tema dark e letras brancas</small>
         </div>
 
         <div className="form-group">

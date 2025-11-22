@@ -1,0 +1,524 @@
+{
+  "exportDate": "2025-11-21T01:12:22.527Z",
+  "summary": {
+    "usuarios": 6,
+    "produtos": 28,
+    "artigos": 5,
+    "categorias": 2,
+    "tiposCabelo": 5
+  },
+  "usuarios": [
+    {
+      "id_usuario": 1259,
+      "nome": "Maria",
+      "email": "maria@example.com",
+      "telefone": "(11) 98765-4321",
+      "sobrenome": "Silva",
+      "sobre": "Apaixonada por cuidados com cabelo",
+      "data_nascimento": "1995-05-15T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.168Z"
+    },
+    {
+      "id_usuario": 1260,
+      "nome": "João",
+      "email": "joao@example.com",
+      "telefone": "(11) 99876-5432",
+      "sobrenome": "Santos",
+      "sobre": "Buscando melhorar meu cabelo",
+      "data_nascimento": "1990-03-22T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.558Z"
+    },
+    {
+      "id_usuario": 1261,
+      "nome": "Ana",
+      "email": "ana@example.com",
+      "telefone": "(21) 98888-7777",
+      "sobrenome": "Oliveira",
+      "sobre": "Skincare e cabelo é minha paixão",
+      "data_nascimento": "1998-07-08T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.971Z"
+    },
+    {
+      "id_usuario": 1262,
+      "nome": "Pedro",
+      "email": "pedro@example.com",
+      "telefone": "(31) 99999-0000",
+      "sobrenome": "Costa",
+      "sobre": "Aprendendo sobre cuidados capilares",
+      "data_nascimento": "1992-11-30T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.360Z"
+    },
+    {
+      "id_usuario": 1263,
+      "nome": "Lucia",
+      "email": "lucia@example.com",
+      "telefone": "(85) 97777-6666",
+      "sobrenome": "Ferreira",
+      "sobre": "Cabelos crespos precisam de amor",
+      "data_nascimento": "1994-02-14T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.751Z"
+    },
+    {
+      "id_usuario": 1264,
+      "nome": "Admin Test",
+      "email": "admin@example.com",
+      "telefone": "(11) 91111-2222",
+      "sobrenome": "Administrator",
+      "sobre": "Administrador do sistema",
+      "data_nascimento": "1988-01-01T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:35.139Z"
+    }
+  ],
+  "produtos": [
+    {
+      "id_produto": 710,
+      "nome": "No Filter Foundation",
+      "marca": "colourpop",
+      "preco": 12,
+      "descricao": "Developed for the Selfie Age, our buildable full coverage, natural matte foundation delivers flawless looking skin from day-to-night. The oil-free, lightweight formula blends smoothly and is easily customizable to create the coverage you want. Build it up or sheer it out, it was developed with innov",
+      "composicao": "Tipo: Foundation",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: liquid | Marca: colourpop",
+      "url_imagem": "https://cdn.shopify.com/s/files/1/1338/0845/products/foundations-lineup_800x1200.jpg?v=1528927785",
+      "url_loja": "https://colourpop.com/products/no-filter-matte-foundation",
+      "data_cadastro": "2025-11-21T01:11:39.736Z"
+    },
+    {
+      "id_produto": 711,
+      "nome": "Serum Foundation",
+      "marca": "deciem",
+      "preco": 6.7,
+      "descricao": "Serum Foundations are lightweight medium-coverage formulations available in a comprehensive shade range across 21 shades. These foundations offer moderate coverage that looks natural with a very lightweight serum feel. They are very low in viscosity and are dispensed with the supplied pump or with t",
+      "composicao": "Tipo: Foundation",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: liquid | Marca: deciem",
+      "url_imagem": "https://3bc01d2807fb1bc0d25c-a86d2521f1af8989841b9619f5314be5.ssl.cf1.rackcdn.com/products/market-img/rdn-serum-foundation-30-r-30ml.png?v=6ab9fcb8ca2abb9828afcf9dcdad9f94",
+      "url_loja": "https://deciem.com/product/rdn-serum-foundation-30-r-30ml",
+      "data_cadastro": "2025-11-21T01:11:40.030Z"
+    },
+    {
+      "id_produto": 712,
+      "nome": "Coverage Foundation",
+      "marca": "deciem",
+      "preco": 6.9,
+      "descricao": "Coverage Foundations are full-coverage formulations available in a comprehensive shade range across 21 shades. These foundations contain higher pigment levels than our Serum Foundations but still offer a smooth finish that avoids the heavy makeup look that can make skin appear more aged. The texture",
+      "composicao": "Tipo: Foundation",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: liquid | Marca: deciem",
+      "url_imagem": "https://3bc01d2807fb1bc0d25c-a86d2521f1af8989841b9619f5314be5.ssl.cf1.rackcdn.com/products/market-img/rdn-coverage-foundation-33-n-30ml.png?v=daa322f179d80e450613c75826602292",
+      "url_loja": "https://deciem.com/product/rdn-coverage-foundation-33-n-30ml",
+      "data_cadastro": "2025-11-21T01:11:40.338Z"
+    },
+    {
+      "id_produto": 713,
+      "nome": " Realist Invisible Setting Powder",
+      "marca": "w3llpeople",
+      "preco": 25,
+      "descricao": "<span style=\"font-weight: 400;\">Keep it real with a polished, soft-focus look using this superfine, loose mineral powder. The healing properties of organic aloe help soothe and calm stressed out skin. Instantly minimize pores, soften imperfections, and creates a matte finish with superfine powder. U",
+      "composicao": "Tipo: Foundation",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: powder | Marca: w3llpeople",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/w3llpeople-Realist-Invisible-Setting-Powder.jpg",
+      "url_loja": "https://www.purpicks.com/product/w3llpeople-realist-invisible-setting-powder/",
+      "data_cadastro": "2025-11-21T01:11:40.642Z"
+    },
+    {
+      "id_produto": 714,
+      "nome": "Multi Purpose Powder - Blush & Eye",
+      "marca": "rejuva minerals",
+      "preco": 25,
+      "descricao": "Our Multi Purpose Pressed Powders may be used for blush or eye shadow. Blended with antioxidants from Certified Organic Fruits, Berries &amp; Botanicals*. Made without any gluten containing ingredients. Mica free Pink Parfait and Papaya will offer a natural, ultra sheer semi-matte finish. The petals",
+      "composicao": "Tipo: Blush",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: powder | Marca: rejuva minerals",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/Rejuva-Minerals-Multi-Purpose-Powder-Blush-_-Eye-1.jpg",
+      "url_loja": "https://www.purpicks.com/product/rejuva-minerals-multi-purpose-powder-blush-eye/",
+      "data_cadastro": "2025-11-21T01:11:41.909Z"
+    },
+    {
+      "id_produto": 715,
+      "nome": "Mineral Blush",
+      "marca": "marienatie",
+      "preco": 25,
+      "descricao": "Formulated to reduce the appearance of pores while creating a long-lasting natural finish.  This MarieNatie brush protects skin with SPF15.  Sericite mica is great for absorbing oil and won’t clog up pores.  Mica is a natural mineral that helps to enhance the skin tone.",
+      "composicao": "Tipo: Blush",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: powder | Marca: marienatie",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/csm/Blush_copy_1024x1024_edd99d6d-301e-4ba1-aa74-a33d21147b7c1.jpg",
+      "url_loja": "https://www.purpicks.com/product/marie-natie-mineral-blush/",
+      "data_cadastro": "2025-11-21T01:11:42.197Z"
+    },
+    {
+      "id_produto": 716,
+      "nome": "Creme to Powder Blush",
+      "marca": "lotus cosmetics usa",
+      "preco": 25,
+      "descricao": "A cream to powder blush made with all natural ingredients that applies like a soft cream but finishes like a silky powder. Antioxidant-rich botanicals help moisturize the skin, while natural pigments provide long-lasting buildable color for a healthy, radiant glow. Made with natural and organic ingr",
+      "composicao": "Tipo: Blush",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: cream | Marca: lotus cosmetics usa",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-creme-to-powder-blush.png",
+      "url_loja": "https://www.purpicks.com/product/lotus-cosmetics-usa-creme-powder-blush/",
+      "data_cadastro": "2025-11-21T01:11:42.507Z"
+    },
+    {
+      "id_produto": 717,
+      "nome": "Cloud Paint",
+      "marca": "glossier",
+      "preco": 22,
+      "descricao": "With Cloud Paint, we set out to make blush the high point of your routine. The pillowy, gel-cream formula is designed to be the most user-friendly cheek color in existence. If you can finger paint, you can Cloud Paint—simply dab it onto cheeks wherever you please. It’s seamless, sheer, and buildable",
+      "composicao": "Tipo: Blush",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: cream | Marca: glossier",
+      "url_imagem": "https://static-assets.glossier.com/production/spree/images/attachments/000/001/241/portrait_normal/CP_PDP_02.jpg?1488382023",
+      "url_loja": "https://www.glossier.com/products/cloud-paint",
+      "data_cadastro": "2025-11-21T01:11:42.823Z"
+    },
+    {
+      "id_produto": 718,
+      "nome": "Blotted Lip",
+      "marca": "colourpop",
+      "preco": 5.5,
+      "descricao": "Blotted Lip Sheer matte lipstick that creates the perfect popsicle pout! Formula is lightweight, matte and buildable for light to medium coverage.",
+      "composicao": "Tipo: Lipstick",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: lipstick | Marca: colourpop",
+      "url_imagem": "https://cdn.shopify.com/s/files/1/1338/0845/products/brain-freeze_a_800x1200.jpg?v=1502255076",
+      "url_loja": "https://colourpop.com/collections/lippie-stix?filter=blotted-lip",
+      "data_cadastro": "2025-11-21T01:11:45.107Z"
+    },
+    {
+      "id_produto": 719,
+      "nome": "Lippie Stix",
+      "marca": "colourpop",
+      "preco": 5.5,
+      "descricao": "Lippie Stix Formula contains Vitamin E, Mango, Avocado, and Shea butter for added comfort and moisture. None of our Lippie formulas contain any nasty ingredients like Parabens or Sulfates.",
+      "composicao": "Tipo: Lipstick",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: lipstick | Marca: colourpop",
+      "url_imagem": "https://cdn.shopify.com/s/files/1/1338/0845/collections/blottedlip-lippie-stix_grande.jpg?v=1512588803",
+      "url_loja": "https://colourpop.com/collections/lippie-stix",
+      "data_cadastro": "2025-11-21T01:11:45.414Z"
+    },
+    {
+      "id_produto": 720,
+      "nome": "Lipstick",
+      "marca": "boosh",
+      "preco": 26,
+      "descricao": "All of our products are free from lead and heavy metals, parabens, phthalates, artificial colourants, and synthetic fragrances.  Boosh lipstick glides on smoothly for clean & protective SPF coverage. They are filled with hydrating oils and butters to preserve and enhance your lips natural surface. O",
+      "composicao": "Tipo: Lipstick",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: lipstick | Marca: boosh",
+      "url_imagem": "https://cdn.shopify.com/s/files/1/1016/3243/products/LIPBALM_LID_grande.jpg?v=1496848378",
+      "url_loja": "https://www.boosh.ca/collections/all",
+      "data_cadastro": "2025-11-21T01:11:45.709Z"
+    },
+    {
+      "id_produto": 721,
+      "nome": "B Glossy Lip Gloss",
+      "marca": "sally b's skin yummies",
+      "preco": 25,
+      "descricao": "Intensify your natural lip color with Sally B's B Glossy Lip Gloss, an organic lip gloss that adds a silky smooth hint of color and shimmer to lips. Formulated with 98% certified organic, moisture-rich ingredients our B Glossy Lip Gloss works to enrich lip health for lips that feel good and look eve",
+      "composicao": "Tipo: Lipstick",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: lip_gloss | Marca: sally b's skin yummies",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/Sally-B_s-Skin-Yummies-B-Glossy-Lip-Gloss.jpg",
+      "url_loja": "https://www.purpicks.com/product/sally-bs-skin-yummies-b-glossy-lip-gloss/",
+      "data_cadastro": "2025-11-21T01:11:46.018Z"
+    },
+    {
+      "id_produto": 722,
+      "nome": "Perfect Lash Mascara",
+      "marca": "marienatie",
+      "preco": 25,
+      "descricao": "Marie Natie Perfect Lash Mascara is made with all natural ingredients that will not only condition your lashes but lengthen and thicken your every lash with every stroke.  Oregano, rosemary and thyme extract are great antioxidants and helps to maintain skin health.  Cinnamon bark extracts helps to f",
+      "composicao": "Tipo: Mascara",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Mascara | Marca: marienatie",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2017/06/marie-natie-perfect-lash-mascara.png",
+      "url_loja": "https://www.purpicks.com/product/marie-natie-perfect-lash-mascara/",
+      "data_cadastro": "2025-11-21T01:11:47.385Z"
+    },
+    {
+      "id_produto": 723,
+      "nome": "Mascara",
+      "marca": "lotus cosmetics usa",
+      "preco": 25,
+      "descricao": "All natural mascara lengthens, thickens, and defines lashes. Created with coffee extract, rice proteins and sunflower oil to condition lashes. Smudge proof and water resistant for lashes that will all day. Made with natural and organic ingredients. In Black, and Brown.",
+      "composicao": "Tipo: Mascara",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Mascara | Marca: lotus cosmetics usa",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-mascara-black.png",
+      "url_loja": "https://www.purpicks.com/product/lotus-cosmetics-usa-mascara/",
+      "data_cadastro": "2025-11-21T01:11:47.695Z"
+    },
+    {
+      "id_produto": 724,
+      "nome": "Volumising Mascara",
+      "marca": "green people",
+      "preco": 25,
+      "descricao": "Natural mineral pigments for intense natural black colour. Nourish roots and condition lashes with 98percent natural ingredients. Unique precision brush offers excellent lash definition Natural cellulose micro spheres give outstanding volume Vitamin E, Sunflower oil & Organic Beeswax",
+      "composicao": "Tipo: Mascara",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Mascara | Marca: green people",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/Green-People-Volumising-Mascara-Black.jpg",
+      "url_loja": "https://www.purpicks.com/product/green-people-volumising-mascara-black/",
+      "data_cadastro": "2025-11-21T01:11:47.982Z"
+    },
+    {
+      "id_produto": 725,
+      "nome": "Muse Mascara",
+      "marca": "c'est moi",
+      "preco": 25,
+      "descricao": "Define, lengthen and nourish lashes with organic shea butter, grapeseed and jojoba oils. Lashes are coated gently and evenly without clumping, transferring or flaking. Long, lush lashes begin with this luxe mascara that is formulated with organic shea butter and oils of grape and jojoba seed to help",
+      "composicao": "Tipo: Mascara",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Mascara | Marca: c'est moi",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/04/cest-moi-muse-mascara.png",
+      "url_loja": "https://www.purpicks.com/product/muse-mascara/",
+      "data_cadastro": "2025-11-21T01:11:48.296Z"
+    },
+    {
+      "id_produto": 726,
+      "nome": "Liquid Liner",
+      "marca": "zorah biocosmetiques",
+      "preco": 25,
+      "descricao": "<strong>12 hours of long-lasting</strong> intense color, transfer-free (leaves no trace on crease above the eyelid) <strong>Pure Light Capture®</strong> <strong>minerals</strong> deliver color and radiance. Silky lines and refreshingly light, Pure Argan eyeliner leaves a weightless feel on the eyeli",
+      "composicao": "Tipo: Eyeliner",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: liquid | Marca: zorah biocosmetiques",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/Zorah-Biocosmetiques-Liquid-Liner.png",
+      "url_loja": "https://www.purpicks.com/product/zorah-biocosmetiques-liquid-liner/",
+      "data_cadastro": "2025-11-21T01:11:50.170Z"
+    },
+    {
+      "id_produto": 727,
+      "nome": "Gel Liner",
+      "marca": "marienatie",
+      "preco": 25,
+      "descricao": "This smooth and creamy formula from MarieNatie will provide a silky soft and non-oily finish. It glides on evenly to deliver immediate results.",
+      "composicao": "Tipo: Eyeliner",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: gel | Marca: marienatie",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/csm/Photo10_12001.jpg",
+      "url_loja": "https://www.purpicks.com/product/marie-natie-gel-liner/",
+      "data_cadastro": "2025-11-21T01:11:50.462Z"
+    },
+    {
+      "id_produto": 728,
+      "nome": "Eyeliner",
+      "marca": "marienatie",
+      "preco": 25,
+      "descricao": "An eyeliner that offers long lasting colour and a natural smooth finish.  Both jojoba oil and meadowfoam oil have amazing moisturizing properties to help repair skin.  Beeswax is known for its healing properties and will help to improve skin conditions.",
+      "composicao": "Tipo: Eyeliner",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: pencil | Marca: marienatie",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/csm/Eyeliner-Group_300dpi_1024x1024_a2ac069c-f517-46bf-a215-8d31f5e948c91.jpg",
+      "url_loja": "https://www.purpicks.com/product/marie-natie-eyeliner/",
+      "data_cadastro": "2025-11-21T01:11:50.770Z"
+    },
+    {
+      "id_produto": 729,
+      "nome": "Fearless Eyeliner",
+      "marca": "c'est moi",
+      "preco": 25,
+      "descricao": "Make eyes pop with this velvety smooth eyeliner that glides on effortlessly and precisely. Make your eyes pop with this sleek, easy-to-use eyeliner. Formulated with both jojoba seed oil and shea butter, its velvety smooth formula glides on effortlessly and precisely. To sharpen, place inside sharpen",
+      "composicao": "Tipo: Eyeliner",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: pencil | Marca: c'est moi",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/04/cest-moi-fearless-eyeliner-pencil.png",
+      "url_loja": "https://www.purpicks.com/product/fearless-eyeliner/",
+      "data_cadastro": "2025-11-21T01:11:51.064Z"
+    },
+    {
+      "id_produto": 730,
+      "nome": "Eyeshadow",
+      "marca": "zorah biocosmetiques",
+      "preco": 25,
+      "descricao": "<strong>Product Description</strong>Anti-aging formula made with organic Pure Argan oil and Pure Light Capture<sup>®</sup> pigments. 24 Hour crease-free intensity (no build-up increase of eyelid), no running. Pure Light Capture® pigments deliver color and luminosity. Silky and refreshingly light fee",
+      "composicao": "Tipo: Eyeshadow",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Eyeshadow | Marca: zorah biocosmetiques",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/02/Ombre-Amazonie-CC.png",
+      "url_loja": "https://www.purpicks.com/product/zorah-eyeshadow/",
+      "data_cadastro": "2025-11-21T01:11:52.452Z"
+    },
+    {
+      "id_produto": 731,
+      "nome": "B Smudged",
+      "marca": "sally b's skin yummies",
+      "preco": 25,
+      "descricao": "Let your eyes naturally pop with our B Smudged, a subtle eye color that adds a tint of color to the base of your lashes. An organic, cream eye color, B Smudged eliminates the inevitable uneven line from traditional eyeliners, and does not require expert blending techniques of messy, powder-based sha",
+      "composicao": "Tipo: Eyeshadow",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Eyeshadow | Marca: sally b's skin yummies",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/Sally-B_s-Skin-Yummies-B-Smudged-1.jpg",
+      "url_loja": "https://www.purpicks.com/product/sally-bs-skin-yummies-b-smudged/",
+      "data_cadastro": "2025-11-21T01:11:52.795Z"
+    },
+    {
+      "id_produto": 732,
+      "nome": "Multi Purpose Powder - Blush & Eye",
+      "marca": "rejuva minerals",
+      "preco": 25,
+      "descricao": "Our Multi Purpose Pressed Powders may be used for blush or eye shadow. Blended with antioxidants from Certified Organic Fruits, Berries &amp; Botanicals*. Made without any gluten containing ingredients. Mica free Pink Parfait and Papaya will offer a natural, ultra sheer semi-matte finish. The petals",
+      "composicao": "Tipo: Eyeshadow",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Eyeshadow | Marca: rejuva minerals",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/Rejuva-Minerals-Multi-Purpose-Powder-Blush-_-Eye-1.jpg",
+      "url_loja": "https://www.purpicks.com/product/rejuva-minerals-multi-purpose-powder-blush-eye/",
+      "data_cadastro": "2025-11-21T01:11:53.101Z"
+    },
+    {
+      "id_produto": 733,
+      "nome": "Multi Purpose Powder - Eye Shadow & Face",
+      "marca": "rejuva minerals",
+      "preco": 25,
+      "descricao": "Our Multi Purpose Pressed Powders may be used as eye shadow, brow powder, eye liner, or for highlighting. Blended with antioxidants from Certified Organic Fruits, Berries &amp; Botanicals*. No gluten derived ingredients. VEGAN. All shades will offer a semi-matte finish, with the exception of White D",
+      "composicao": "Tipo: Eyeshadow",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Eyeshadow | Marca: rejuva minerals",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/06/Rejuva-Minerals-Multi-Purpose-Powder-Eye-Shadow-Face-1.jpg",
+      "url_loja": "https://www.purpicks.com/product/rejuva-minerals-multi-purpose-powder-eye-shadow-face/",
+      "data_cadastro": "2025-11-21T01:11:53.389Z"
+    },
+    {
+      "id_produto": 734,
+      "nome": "Bronzer - loose",
+      "marca": "rejuva minerals",
+      "preco": 25,
+      "descricao": "Caribbean is a multi-purpose shade that is suitable for medium-tan skin tones. This shade may be used as a bronzer, or as a contour shade. <ul><li>Our bronzer has been enhanced with Fruits, Botanicals and Clays for their natural color, fragrance and antioxidant benefits!</li><li>Blended with Certifi",
+      "composicao": "Tipo: Bronzer",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: powder | Marca: rejuva minerals",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/03/rejuva-minerals-bronzer.jpg",
+      "url_loja": "https://www.purpicks.com/product/rejuva-minerals-bronzer-caribbean/",
+      "data_cadastro": "2025-11-21T01:11:54.929Z"
+    },
+    {
+      "id_produto": 735,
+      "nome": "Bronzer - pressed",
+      "marca": "rejuva minerals",
+      "preco": 25,
+      "descricao": "Our bronzer has been enhanced with Fruits, Botanicals and Clays for their natural color, fragrance and antioxidant benefits! Blended with Certified Organics Fruits and Botanicals Formulated with common skin irritants. Our bronzer will offer a natural 'ultra sheer' semi-matte finish. Made without any",
+      "composicao": "Tipo: Bronzer",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: powder | Marca: rejuva minerals",
+      "url_imagem": "https://www.purpicks.com/wp-content/uploads/2018/03/rejuva-minerals-bronzer.jpg",
+      "url_loja": "https://www.purpicks.com/product/rejuva-bronzer-light/",
+      "data_cadastro": "2025-11-21T01:11:55.222Z"
+    },
+    {
+      "id_produto": 736,
+      "nome": "Tango With Bronzing Powder",
+      "marca": "nyx",
+      "preco": 10,
+      "descricao": "It takes two to tango with our brilliant bronzing powder to kickstart your look. Our mosaic bronzer shades create a golden glow on the face and body—like you’ve just returned from a Caribbean getaway. Sun-kissed never looked this beautiful.",
+      "composicao": "Tipo: Bronzer",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Bronzer | Marca: nyx",
+      "url_imagem": "https://www.nyxcosmetics.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-cpd-nyxusa-master-catalog/default/dw99f3e999/ProductImages/Face/Tango_With_Bronzing_Powder/tangowithbronzingpowder_main.jpg?sw=390&sh=390&sm=fit",
+      "url_loja": "https://www.nyxcosmetics.com/tango-with-bronzing-powder/NYX_014.html?cgid=bronzer",
+      "data_cadastro": "2025-11-21T01:11:55.529Z"
+    },
+    {
+      "id_produto": 737,
+      "nome": "Illuminator",
+      "marca": "nyx",
+      "preco": 9,
+      "descricao": "Brighten up your complexion! The radiant shimmer of this illuminator diffuses light so your skin looks vibrant and refreshed while adding a subtle glow. Available in 5 radiant colors.",
+      "composicao": "Tipo: Bronzer",
+      "qualidades": "Produto profissional de maquiagem",
+      "mais_detalhes": "Categoria: Bronzer | Marca: nyx",
+      "url_imagem": "https://www.nyxcosmetics.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-cpd-nyxusa-master-catalog/default/dw5248da3f/ProductImages/Face/Illuminator/800897809003_illuminator_narcissistic_main.jpg?sw=390&sh=390&sm=fit",
+      "url_loja": "https://www.nyxcosmetics.com/illuminator/NYX_062.html?cgid=bronzer",
+      "data_cadastro": "2025-11-21T01:11:55.822Z"
+    }
+  ],
+  "artigos": [
+    {
+      "id": 374,
+      "titulo": "Guia Completo: Como Cuidar de Cabelos Cacheados",
+      "slug": "guia-cabelos-cacheados",
+      "resumo": "Descubra as melhores práticas para manter seus cachos hidratados, definidos e saudáveis.",
+      "imagemHeader": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.042Z"
+    },
+    {
+      "id": 375,
+      "titulo": "Skincare Básico: Rotina Essencial para Pele Saudável",
+      "slug": "skincare-basico-pele-saudavel",
+      "resumo": "Aprenda a rotina básica de skincare para manter sua pele limpa, hidratada e radiante.",
+      "imagemHeader": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.905Z"
+    },
+    {
+      "id": 376,
+      "titulo": "Tratamento de Cabelos Danificados: Recupere a Saúde",
+      "slug": "tratamento-cabelos-danificados",
+      "resumo": "Conheça as melhores estratégias para recuperar cabelos danificados por química, calor e negligência.",
+      "imagemHeader": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.211Z"
+    },
+    {
+      "id": 377,
+      "titulo": "Cortes de Cabelo Masculino: Estilos e Tendências 2024",
+      "slug": "cortes-cabelo-masculino-2024",
+      "resumo": "Conheça os cortes de cabelo masculino mais em alta em 2024 e como escolher o melhor para você.",
+      "imagemHeader": "https://images.unsplash.com/photo-1562322503-3920a8c0b1a3?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.517Z"
+    },
+    {
+      "id": 378,
+      "titulo": "Acne: Causas, Prevenção e Tratamento Eficaz",
+      "slug": "acne-causas-prevencao-tratamento",
+      "resumo": "Entenda as causas da acne e descubra os melhores métodos de prevenção e tratamento.",
+      "imagemHeader": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.822Z"
+    }
+  ],
+  "categorias": [
+    {
+      "id_categoria": 1,
+      "nome": "cabelo",
+      "descricao": null
+    },
+    {
+      "id_categoria": 2,
+      "nome": "pele",
+      "descricao": null
+    }
+  ],
+  "tiposCabelo": [
+    {
+      "id_tipo_cabelo": 1,
+      "nome": "liso",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 2,
+      "nome": "ondulado\n",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 3,
+      "nome": "crespo",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 4,
+      "nome": "cacheado",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 5,
+      "nome": "todos os tipo\n",
+      "descricao": null
+    }
+  ]
+}
