@@ -426,27 +426,31 @@ export default function OasisHomepage() {
       <section className={styles.s6}>
         <div className={styles.h1novidades}>NOVIDADES</div>
           <div className={styles.cardsnovidades}>
-            <Link href='/produtos'>
+            {/* ID 1632 */}
+            <Link href='/produtos/1632'>
               <div className={styles.cardnovidade1}>
-                <h1>Creme de Pentear Phytomanga Efeito Pesado 500ml</h1>
+                <h1>Umidificador para cachos - Vizeme</h1>
               </div>
             </Link>
 
-            <Link href='/produtos'>
+            {/* ID 1633 */}
+            <Link href='/produtos/1633'>
               <div className={styles.cardnovidade2}>
-                <h1>EFFACLAR REEQUILIBRANTE</h1>
+                <h1>Esfoliante Nutritivo Tododia Jambo Rosa e Flor de Caju</h1>
               </div>
             </Link>
 
-            <Link href='/produtos'>
+            {/* ID 1634 */}
+            <Link href='/produtos/1634'>
               <div className={styles.cardnovidade3}>
-                <h1>produto</h1>
+                <h1>Sérum Hidratante Principia 2% Ácidos Hialuronicos + B5</h1>
               </div>
             </Link>
 
-            <Link href='/produtos'>
+            {/* ID 1635 */}
+            <Link href='/produtos/1635'>
               <div className={styles.cardnovidade4}>
-                <h1>produto</h1>
+                <h1>Hidratante Corporal Pele Negra Vegano Raavi</h1>
               </div>
             </Link>
           </div>

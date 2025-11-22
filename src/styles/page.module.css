@@ -768,10 +768,10 @@
     z-index: 2;
 }
 
-.cardnovidade1 {background-image: url('../../public/images/tela-principal/img-prod(1).png');}
-.cardnovidade2 {background-image: url('../../public/images/tela-principal/img-prod(2).png');}
-.cardnovidade3 {background-image: url('../../public/images/tela-principal/img-prod(3).png');}
-.cardnovidade4 {background-image: url('../../public/images/tela-principal/img-prod(4).png');}
+.cardnovidade1 {background-image: url('https://cdn.awsli.com.br/2500x2500/642/642497/produto/27596213/leite-umi-1-1u04az89k9.png');}
+.cardnovidade2 {background-image: url('https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwf0b20613/Produtos/NATBRA-172099_3.jpg');}
+.cardnovidade3 {background-image: url('https://i.pinimg.com/1200x/21/6e/ff/216eff38be871bc181bf2ecfe196b622.jpg');}
+.cardnovidade4 {background-image: url('https://http2.mlstatic.com/D_NQ_NP_829056-MLB92597176295_092025-O.webp');}
 
 
 /* Seção 7: Footer Artigos */
