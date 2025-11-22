@@ -404,6 +404,7 @@ html, body {
     font-family: "Louis George Cafe";
     margin: 0;
     white-space: nowrap;
+    padding-top: 1.5rem;
 }
 
 .span-button-continue-google {
@@ -695,6 +696,7 @@ html, body {
 
     .div-ou {
         padding: 0 12px;
+        padding-top: 1.5rem;
     }
 }
 
@@ -724,6 +726,7 @@ html, body {
 
     .div-ou {
         padding: 0 8px;
+        padding-top: 1.5rem;
     }
 
     .botaogoogle button img {

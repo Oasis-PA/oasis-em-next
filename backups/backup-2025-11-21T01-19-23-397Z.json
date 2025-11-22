@@ -1,0 +1,368 @@
+{
+  "exportDate": "2025-11-21T01:19:23.396Z",
+  "summary": {
+    "usuarios": 6,
+    "produtos": 16,
+    "artigos": 5,
+    "categorias": 2,
+    "tiposCabelo": 5
+  },
+  "usuarios": [
+    {
+      "id_usuario": 1259,
+      "nome": "Maria",
+      "email": "maria@example.com",
+      "telefone": "(11) 98765-4321",
+      "sobrenome": "Silva",
+      "sobre": "Apaixonada por cuidados com cabelo",
+      "data_nascimento": "1995-05-15T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.168Z"
+    },
+    {
+      "id_usuario": 1260,
+      "nome": "João",
+      "email": "joao@example.com",
+      "telefone": "(11) 99876-5432",
+      "sobrenome": "Santos",
+      "sobre": "Buscando melhorar meu cabelo",
+      "data_nascimento": "1990-03-22T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.558Z"
+    },
+    {
+      "id_usuario": 1261,
+      "nome": "Ana",
+      "email": "ana@example.com",
+      "telefone": "(21) 98888-7777",
+      "sobrenome": "Oliveira",
+      "sobre": "Skincare e cabelo é minha paixão",
+      "data_nascimento": "1998-07-08T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.971Z"
+    },
+    {
+      "id_usuario": 1262,
+      "nome": "Pedro",
+      "email": "pedro@example.com",
+      "telefone": "(31) 99999-0000",
+      "sobrenome": "Costa",
+      "sobre": "Aprendendo sobre cuidados capilares",
+      "data_nascimento": "1992-11-30T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.360Z"
+    },
+    {
+      "id_usuario": 1263,
+      "nome": "Lucia",
+      "email": "lucia@example.com",
+      "telefone": "(85) 97777-6666",
+      "sobrenome": "Ferreira",
+      "sobre": "Cabelos crespos precisam de amor",
+      "data_nascimento": "1994-02-14T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.751Z"
+    },
+    {
+      "id_usuario": 1264,
+      "nome": "Admin Test",
+      "email": "admin@example.com",
+      "telefone": "(11) 91111-2222",
+      "sobrenome": "Administrator",
+      "sobre": "Administrador do sistema",
+      "data_nascimento": "1988-01-01T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:35.139Z"
+    }
+  ],
+  "produtos": [
+    {
+      "id_produto": 754,
+      "nome": "Shampoo Neutro Inoar para Cabelo Liso",
+      "marca": "Inoar",
+      "preco": 29.9,
+      "descricao": "Shampoo neutro profissional específico para cabelos lisos, mantém o brilho natural e evita o frizz",
+      "composicao": "Água, Laurilsulfato de Amônio, Cocoamidopropil Betaína, Proteínas Hidrolisadas de Trigo, Pantenol, Vitamina B5, EDTA Tetrassódico",
+      "qualidades": "Limpeza suave, Proteção de cor, Sem sulfato agressivo, Brilho intenso, Maciez prolongada",
+      "mais_detalhes": "Volume: 1000ml | pH: Neutro 6.5 | Indicado para: Cabelos lisos | Frequência: Uso diário | Tempo de ação: 2-3 minutos",
+      "url_imagem": null,
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:19:00.014Z"
+    },
+    {
+      "id_produto": 755,
+      "nome": "Condicionador Hidratante Inoar para Cabelo Liso",
+      "marca": "Inoar",
+      "preco": 32.9,
+      "descricao": "Condicionador com óleo de argan premium para hidratação profunda em cabelos lisos",
+      "composicao": "Água, Cetil Álcool, Estearamida MIPA, Óleo de Argan, Proteína de Seda Hidrolisada, Vitamina E, Panthenol, Glicerina",
+      "qualidades": "Hidratação profunda, Maciez intensa, Brilho natural, Proteção térmica, Reparação de danos",
+      "mais_detalhes": "Volume: 1000ml | Indicado para: Cabelos secos e lisos | Frequência: Uso diário | Tempo de ação: 3-5 minutos",
+      "url_imagem": null,
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:19:00.335Z"
+    },
+    {
+      "id_produto": 756,
+      "nome": "Máscara Capilar Intensiva Inoar para Cabelo Liso",
+      "marca": "Inoar",
+      "preco": 45.9,
+      "descricao": "Máscara profissional com queratina e colágeno para reconstrução intensiva",
+      "composicao": "Água, Cetil Álcool, Cetearil Álcool, Queratina Hidrolisada, Colágeno Marinho, Óleo de Argan, Vitamina E, Pantenol, Proteína de Soja",
+      "qualidades": "Reconstrução profunda, Resistência aumentada, Brilho intenso, Reparação de pontas duplas, Proteção térmica",
+      "mais_detalhes": "Volume: 250ml | Indicado para: Cabelos danificados e lisos | Frequência: 1-2x por semana | Tempo de ação: 10-15 minutos",
+      "url_imagem": null,
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:19:00.655Z"
+    },
+    {
+      "id_produto": 757,
+      "nome": "Sérum Anti-Frizz Inoar para Cabelo Liso",
+      "marca": "Inoar",
+      "preco": 55.9,
+      "descricao": "Sérum finalizador que controla frizz e proporciona brilho prolongado",
+      "composicao": "Ciclopentasiloxano, Óleo de Argan, Vitamina E (Tocoferol), Panthenol, Filtro Solar (Avobenzona), Silicone Volátil, Óleo de Coco",
+      "qualidades": "Anti-frizz ultra potente, Brilho por até 72h, Proteção UV, Não deixa resíduo, Secagem rápida",
+      "mais_detalhes": "Volume: 250ml | Indicado para: Todos os cabelos (especial liso) | Frequência: Uso diário | Aplicar em cabelo seco ou semi-seco",
+      "url_imagem": null,
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:19:00.981Z"
+    },
+    {
+      "id_produto": 758,
+      "nome": "Shampoo Definidor OGX para Cabelo Cacheado",
+      "marca": "OGX",
+      "preco": 38.9,
+      "descricao": "Shampoo que define e controla cachos, com queratina e proteínas",
+      "composicao": "Água, Laurilsulfato de Amônio, Cocoamidopropil Betaína, Queratina Hidrolisada, Proteínas do Trigo, Óleo de Coco, Manteiga de Karité",
+      "qualidades": "Definição de cachos, Controle de frizz, Não resseca, Proteção da cor, Volume natural",
+      "mais_detalhes": "Volume: 385ml | Indicado para: Cabelos cacheados e ondulados | Frequência: Uso diário | Tempo de ação: 2-3 minutos",
+      "url_imagem": null,
+      "url_loja": "https://www.ogx.com",
+      "data_cadastro": "2025-11-21T01:19:01.305Z"
+    },
+    {
+      "id_produto": 759,
+      "nome": "Condicionador Definidor OGX para Cabelo Cacheado",
+      "marca": "OGX",
+      "preco": 38.9,
+      "descricao": "Condicionador que reforça a definição natural dos cachos",
+      "composicao": "Água, Cetil Álcool, Estearamida MIPA, Manteiga de Karité, Óleo de Coco, Proteína de Trigo Hidrolisada, Pantenol, Glicerina",
+      "qualidades": "Definição reforçada, Hidratação profunda, Controle de volume, Reduz frizz, Cachos mais brilhantes",
+      "mais_detalhes": "Volume: 385ml | Indicado para: Cabelos cacheados | Frequência: Uso diário | Tempo de ação: 3-5 minutos",
+      "url_imagem": null,
+      "url_loja": "https://www.ogx.com",
+      "data_cadastro": "2025-11-21T01:19:01.622Z"
+    },
+    {
+      "id_produto": 760,
+      "nome": "Máscara Intensiva OGX para Cabelo Cacheado",
+      "marca": "OGX",
+      "preco": 52.9,
+      "descricao": "Máscara regeneradora com queratina para reconstrução e hidratação intensiva",
+      "composicao": "Água, Cetil Álcool, Cetearil Álcool, Queratina Hidrolisada, Proteína de Trigo, Óleo de Coco, Pantenol, Vitamina E, Aloe Vera",
+      "qualidades": "Reconstrução profunda, Hidratação intensiva, Cachos mais definidos, Repara danos, Brilho intenso",
+      "mais_detalhes": "Volume: 200ml | Indicado para: Cabelos cacheados danificados | Frequência: 1-2x por semana | Tempo de ação: 10-15 minutos",
+      "url_imagem": null,
+      "url_loja": "https://www.ogx.com",
+      "data_cadastro": "2025-11-21T01:19:02.233Z"
+    },
+    {
+      "id_produto": 761,
+      "nome": "Gel Definidor OGX para Cabelo Cacheado",
+      "marca": "OGX",
+      "preco": 32.9,
+      "descricao": "Gel finalizador que define e fixa os cachos com flexibilidade",
+      "composicao": "Água, Álcool Denat., Polimeros (PVP/VA), Aroma, Panthenol, Extratos de Plantas, Conservantes, Glicerina",
+      "qualidades": "Fixação flexível, Não endurece, Define cachos, Sem resíduo branco, Hold prolongado",
+      "mais_detalhes": "Volume: 170ml | Indicado para: Cabelos cacheados | Frequência: Uso diário | Aplicar em cabelo úmido antes de secar",
+      "url_imagem": null,
+      "url_loja": "https://www.ogx.com",
+      "data_cadastro": "2025-11-21T01:19:02.548Z"
+    },
+    {
+      "id_produto": 762,
+      "nome": "Limpador Facial Neutrogena para Pele Seca",
+      "marca": "Neutrogena",
+      "preco": 24.9,
+      "descricao": "Limpador suave que remove impurezas sem ressecamento excessivo",
+      "composicao": "Água, Laurilsulfato de Sódio, Cocoamidopropil Betaína, Glicerina, Aloe Barbadensis (Aloe Vera), Vitamina E (Tocoferol), EDTA Tetrassódico",
+      "qualidades": "Limpeza profunda, Não resseca, Remove maquiagem, Não irrita, Mantém pH equilibrado",
+      "mais_detalhes": "Volume: 200ml | Indicado para: Pele normal e seca | Frequência: 2x diário (manhã e noite) | Espuma leve e suave",
+      "url_imagem": null,
+      "url_loja": "https://www.neutrogena.com.br",
+      "data_cadastro": "2025-11-21T01:19:03.131Z"
+    },
+    {
+      "id_produto": 763,
+      "nome": "Hidratante Facial Neutrogena FPS 30 para Pele Seca",
+      "marca": "Neutrogena",
+      "preco": 39.9,
+      "descricao": "Hidratante diurno com proteção solar para pele seca",
+      "composicao": "Água, Óleo de Girassol, Ciclopentasiloxano, Dióxido de Titânio, Óxido de Zinco, Glicerina, Ceramidas, Pantenol, Ácido Hialurônico",
+      "qualidades": "Hidratação 24h, Proteção UVA/UVB FPS30, Não oleoso, Absorção rápida, Textura leve",
+      "mais_detalhes": "Volume: 52ml | Indicado para: Pele seca | Frequência: Uso diário (manhã) | Aplicar após tônico",
+      "url_imagem": null,
+      "url_loja": "https://www.neutrogena.com.br",
+      "data_cadastro": "2025-11-21T01:19:03.448Z"
+    },
+    {
+      "id_produto": 764,
+      "nome": "Tônico Facial Neutrogena para Pele Seca",
+      "marca": "Neutrogena",
+      "preco": 28.9,
+      "descricao": "Tônico equilibrador que prepara a pele para absorção de outros produtos",
+      "composicao": "Água, Glicerina, Propilenoglicol, Niacinamida, Panthenol, Aloe Barbadensis, Extratos de Plantas, Conservantes",
+      "qualidades": "Equilibra pH, Aumenta absorção, Revitaliza pele, Sem álcool, Textura leve",
+      "mais_detalhes": "Volume: 200ml | Indicado para: Pele seca | Frequência: 1-2x diário (após limpeza) | Aplicar com algodão",
+      "url_imagem": null,
+      "url_loja": "https://www.neutrogena.com.br",
+      "data_cadastro": "2025-11-21T01:19:03.775Z"
+    },
+    {
+      "id_produto": 765,
+      "nome": "Noite Reparadora Neutrogena para Pele Seca",
+      "marca": "Neutrogena",
+      "preco": 49.9,
+      "descricao": "Creme noturno reparador com fórmula concentrada",
+      "composicao": "Água, Óleo de Girassol, Cetil Álcool, Glicerina, Manteiga de Karité, Ceramidas, Ácido Hialurônico, Pantenol, Vitamina E, Colágeno",
+      "qualidades": "Hidratação intensiva noturna, Reparação profunda, Suaviza linhas, Textura rica, Absorção durante a noite",
+      "mais_detalhes": "Volume: 50ml | Indicado para: Pele seca | Frequência: Uso noturno (antes de dormir) | Fórmula concentrada",
+      "url_imagem": null,
+      "url_loja": "https://www.neutrogena.com.br",
+      "data_cadastro": "2025-11-21T01:19:04.092Z"
+    },
+    {
+      "id_produto": 766,
+      "nome": "Limpador Gel Cerave para Pele Oleosa",
+      "marca": "Cerave",
+      "preco": 34.9,
+      "descricao": "Limpador gel que remove excesso de óleo sem ressecamento",
+      "composicao": "Água, Coco-Glucosídeo, Decil Glucosídeo, Niacinamida, Ácido Hialurônico, Ceramidas (1, 3, 6-II), Óxido de Zinco, Ácido Salicílico",
+      "qualidades": "Remove sebo excessivo, Controla oleosidade, Limpeza profunda, Não resseca, Sem sulfatos",
+      "mais_detalhes": "Volume: 236ml | Indicado para: Pele oleosa | Frequência: 2x diário | Espuma suave e controlada",
+      "url_imagem": null,
+      "url_loja": "https://www.cerave.com",
+      "data_cadastro": "2025-11-21T01:19:04.402Z"
+    },
+    {
+      "id_produto": 767,
+      "nome": "Hidratante Matificante Cerave para Pele Oleosa",
+      "marca": "Cerave",
+      "preco": 42.9,
+      "descricao": "Hidratante oil-free com ácido salicílico para controle de oleosidade",
+      "composicao": "Água, Niacinamida, Ácido Salicílico, Ácido Hialurônico, Ceramidas, Óxido de Zinco, Pantenol, Glicerina, Extrato de Chá Verde",
+      "qualidades": "Toque seco/matificante, Controla oleosidade, Não comedogênico, Absorção rápida, Oil-free",
+      "mais_detalhes": "Volume: 52ml | Indicado para: Pele oleosa | Frequência: 2x diário | Textura leve e fluida",
+      "url_imagem": null,
+      "url_loja": "https://www.cerave.com",
+      "data_cadastro": "2025-11-21T01:19:04.712Z"
+    },
+    {
+      "id_produto": 768,
+      "nome": "Sérum Clareador Cerave para Pele Oleosa",
+      "marca": "Cerave",
+      "preco": 55.9,
+      "descricao": "Sérum leve com niacinamida para clarear e controlar oleosidade",
+      "composicao": "Água, Niacinamida, Ácido Hialurônico, Ceramidas, Pantenol, Glicerina, Extrato de Licorice, Vitamina B3, Conservantes",
+      "qualidades": "Clareia manchas, Controla brilho, Textura leve, Absorção rápida, Não deixa resíduo",
+      "mais_detalhes": "Volume: 30ml | Indicado para: Pele oleosa com manchas | Frequência: 1-2x diário | Aplicar antes do hidratante",
+      "url_imagem": null,
+      "url_loja": "https://www.cerave.com",
+      "data_cadastro": "2025-11-21T01:19:05.024Z"
+    },
+    {
+      "id_produto": 769,
+      "nome": "Máscara Argila Cerave para Pele Oleosa",
+      "marca": "Cerave",
+      "preco": 38.9,
+      "descricao": "Máscara de argila para limpeza profunda e destoxificação",
+      "composicao": "Argila Caolim, Água, Glicerina, Niacinamida, Ácido Hialurônico, Ceramidas, Pantenol, Óxido de Zinco, Extrato de Chá Verde",
+      "qualidades": "Limpeza profunda, Reduz poros, Desintoxica, Controla oleosidade, Textura cremosa",
+      "mais_detalhes": "Volume: 85ml | Indicado para: Pele oleosa | Frequência: 1-2x por semana | Tempo de ação: 10-15 minutos",
+      "url_imagem": null,
+      "url_loja": "https://www.cerave.com",
+      "data_cadastro": "2025-11-21T01:19:05.341Z"
+    }
+  ],
+  "artigos": [
+    {
+      "id": 374,
+      "titulo": "Guia Completo: Como Cuidar de Cabelos Cacheados",
+      "slug": "guia-cabelos-cacheados",
+      "resumo": "Descubra as melhores práticas para manter seus cachos hidratados, definidos e saudáveis.",
+      "imagemHeader": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.042Z"
+    },
+    {
+      "id": 375,
+      "titulo": "Skincare Básico: Rotina Essencial para Pele Saudável",
+      "slug": "skincare-basico-pele-saudavel",
+      "resumo": "Aprenda a rotina básica de skincare para manter sua pele limpa, hidratada e radiante.",
+      "imagemHeader": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.905Z"
+    },
+    {
+      "id": 376,
+      "titulo": "Tratamento de Cabelos Danificados: Recupere a Saúde",
+      "slug": "tratamento-cabelos-danificados",
+      "resumo": "Conheça as melhores estratégias para recuperar cabelos danificados por química, calor e negligência.",
+      "imagemHeader": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.211Z"
+    },
+    {
+      "id": 377,
+      "titulo": "Cortes de Cabelo Masculino: Estilos e Tendências 2024",
+      "slug": "cortes-cabelo-masculino-2024",
+      "resumo": "Conheça os cortes de cabelo masculino mais em alta em 2024 e como escolher o melhor para você.",
+      "imagemHeader": "https://images.unsplash.com/photo-1562322503-3920a8c0b1a3?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.517Z"
+    },
+    {
+      "id": 378,
+      "titulo": "Acne: Causas, Prevenção e Tratamento Eficaz",
+      "slug": "acne-causas-prevencao-tratamento",
+      "resumo": "Entenda as causas da acne e descubra os melhores métodos de prevenção e tratamento.",
+      "imagemHeader": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.822Z"
+    }
+  ],
+  "categorias": [
+    {
+      "id_categoria": 1,
+      "nome": "cabelo",
+      "descricao": null
+    },
+    {
+      "id_categoria": 2,
+      "nome": "pele",
+      "descricao": null
+    }
+  ],
+  "tiposCabelo": [
+    {
+      "id_tipo_cabelo": 1,
+      "nome": "liso",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 2,
+      "nome": "ondulado\n",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 3,
+      "nome": "crespo",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 4,
+      "nome": "cacheado",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 5,
+      "nome": "todos os tipo\n",
+      "descricao": null
+    }
+  ]
+}

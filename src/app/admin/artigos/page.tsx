@@ -12,7 +12,7 @@ interface Artigo {
   slug: string;
   status: string;
   dataPublicacao: string | null;
-  tags: string[];
+  categoria: { id_categoria: number; nome: string } | null;
   createdAt: string;
 }
 
@@ -36,6 +36,7 @@ export default function AdminArtigosPage() {
         setArtigos(data);
       }
     } catch (error) {
+      console.error('Erro ao carregar artigos:', error);
     } finally {
       setIsLoading(false);
     }
@@ -150,7 +151,7 @@ export default function AdminArtigosPage() {
       ) : artigos.length === 0 ? (
         <div className="empty">
           <p>Nenhum artigo encontrado</p>
-          <Link href="/admin/artigos/novo" className="btn-primary">
+          <Link href="/admin/artigos/criar" className="btn-primary">
             Criar Primeiro Artigo
           </Link>
         </div>
@@ -165,9 +166,9 @@ export default function AdminArtigosPage() {
                   <span className={`status ${artigo.status}`}>
                     {getStatusDisplay(artigo.status, artigo.dataPublicacao)}
                   </span>
-                  {artigo.tags.length > 0 && (
-                    <span className="tags">
-                      🏷️ {artigo.tags.join(', ')}
+                  {artigo.categoria && (
+                    <span className="categoria-badge">
+                      📁 {artigo.categoria.nome}
                     </span>
                   )}
                   <span className="date">

@@ -1,0 +1,418 @@
+/* Estilos do Header como CSS Module */
+
+.header {
+    width: 100%;
+    height: 215px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: white;
+    padding: 2rem;
+    position: relative;
+    z-index: 999;
+    transition: box-shadow 0.3s ease;
+}
+
+.header:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.em_ciminha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.imagi {
+    background-image: url('/images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 6rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.imagi:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.emoticus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.algo {
+    background-image: url('/images/guia.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 3rem;
+    height: 2.6rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.algo:hover {
+    transform: translateY(-4px) scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.coracao {
+    background-image: url('/images/coracao.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 3.5rem;
+    height: 4rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.coracao:hover {
+    transform: translateY(-4px) scale(1.15);
+    filter: drop-shadow(0 4px 8px rgba(170, 53, 176, 0.4));
+}
+
+.coracao:active {
+    transform: scale(0.95);
+}
+
+.user {
+    background-image: url('/images/perfil.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 3.5rem;
+    height: 4rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.user:hover {
+    transform: translateY(-4px) scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.em_baixinho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.coisas {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    gap: 1.5rem;
+}
+
+.redirecionavel, .redirecionavel2 {
+    color: #040101;
+    text-align: center;
+    text-decoration: none;
+    font-family: "The Next Font";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: color 0.4s, transform 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+.redirecionavel::after, .redirecionavel2::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.redirecionavel:hover::after, .redirecionavel2:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.redirecionavel:hover {
+    color: #AA35B0;
+    transform: translateY(-2px);
+}
+
+.redirecionavel:active {
+    color: #47164A;
+    transform: translateY(0);
+}
+
+.redirecionavel2:hover {
+    color: #F2A518;
+    transform: translateY(-2px);
+}
+
+.redirecionavel2:active {
+    color: #b08c16;
+    transform: translateY(0);
+}
+
+.user_menu_container { position: relative; }
+
+.user_popup {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 180px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user_popup p {
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.user_popup:hover p {
+    color: #5E332C;
+}
+
+.user_popup a, .user_popup button {
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.user_popup a:hover, .user_popup button:hover {
+    background-color: #AA35B0;
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Estilos do Menu Hambúrguer e Lateral */
+.hamburger_menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2.2rem;
+    height: 1.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 2000;
+    transition: transform 0.3s ease;
+}
+
+.hamburger_menu:hover {
+    transform: scale(1.1);
+}
+
+.hamburger_menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+.hamburger_menu:hover .bar {
+    background-color: #AA35B0;
+}
+
+.dark .hamburger_menu .bar {
+    background-color: #FFF;
+}
+
+.dark .hamburger_menu:hover .bar {
+    background-color: #F2A518;
+}
+
+.mobile_menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background-color: #f4f4f4;
+    z-index: 2000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+    gap: 1rem;
+}
+
+.mobile_menu.open {
+    transform: translateX(0);
+    box-shadow: 5px 0px 15px rgba(0,0,0,0.2);
+}
+
+.mobile_menu a {
+    color: #333;
+    text-decoration: none;
+    font-family: "The Next Font", sans-serif;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    text-align: left;
+    transition: background-color 0.3s ease, transform 0.3s ease, padding-left 0.3s ease;
+}
+
+.mobile_menu a:hover {
+    background-color: #AA35B0;
+    color: white;
+    transform: translateX(8px);
+    padding-left: 2.5rem;
+}
+
+.close_menu_btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close_menu_btn:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: #AA35B0;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .coisas {
+        width: 98%;
+        gap: 0.5rem;
+        justify-content: space-around;
+    }
+    .redirecionavel, .redirecionavel2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1.5rem 1rem;
+    }
+    .em_ciminha {
+        width: 100%;
+    }
+
+    .header_left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .hamburger_menu {
+        display: flex;
+    }
+
+    .imagi {
+        width: 8rem;
+        height: 5rem;
+    }
+
+    .emoticus {
+        gap: 2rem;
+    }
+
+    .algo { width: 2.5rem; height: 2.1rem; }
+    .coracao { width: 3rem; height: 3.5rem; }
+    .user { width: 3rem; height: 3.5rem; }
+
+    .em_baixinho {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header { padding: 1rem 0.8rem; }
+    .header_left { gap: 0.8rem; }
+    .imagi { width: 7rem; height: 4rem; }
+    .emoticus { gap: 1.2rem; }
+    .algo { width: 2.0rem; height: 1.7rem; }
+    .coracao { width: 2.4rem; height: 2.8rem; }
+    .user { width: 2.4rem; height: 2.8rem; }
+    .user_popup { right: 5px; width: 160px; }
+}
+
+/* Estilos do Tema Escuro para o Header */
+.dark .imagi {
+  background-image: url('/images/logo-white.png');
+}
+
+.dark .algo {
+  background-image: url('/images/guia-white.svg');
+}
+
+.dark .coracao {
+  background-image: url('/images/coracao-white.svg');
+}
+
+.dark .user {
+  background-image: url('/images/perfil-white.svg');
+}
+
+.dark .redirecionavel,
+.dark .redirecionavel2 {
+  color: #FFFFFF;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.dark .redirecionavel:hover {
+  color: #AA35B0;
+}
+
+.dark .redirecionavel2:hover {
+  color: #F2A518;
+}
+
+.dark .redirecionavel2:active {
+    color: #b08c16;
+}
+
+/* Classe base para o tema dark (necessária para CSS Modules) */
+.dark {
+  /* Classe vazia, só precisa existir para o module reconhecer */
+}
+
