@@ -4,7 +4,6 @@ import { Header, Footer } from "@/components";
 import FavoriteButton from "@/components/FavoriteButton";
 import Link from "next/link";
 import React, { useEffect, useState } from 'react';
-// Importação correta do CSS Module como objeto 'styles'
 import styles from "@/styles/favoritos.module.css";
 
 interface Artigo {
@@ -40,7 +39,7 @@ const Favoritos: React.FC = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setFavoritos(data.favoritos);
+        setFavoritos(data.favoritos || []);
       } else if (response.status === 401) {
         setError('Você precisa estar logado para ver seus favoritos');
       } else {
@@ -53,15 +52,40 @@ const Favoritos: React.FC = () => {
     }
   };
 
-  // Cria array de 9 posições mesclando favoritos com cards vazios
-  const artigosGrid = Array.from({ length: 9 }, (_, index) =>
-    favoritos[index] || null
-  );
+  // Renderiza apenas os cards de artigos favoritados (sem cards vazios)
+  const renderArticlesGrid = () => {
+    return favoritos.map((favorito) => (
+      <Link 
+        key={`favorito-${favorito.id_favorito_artigo}`} 
+        href={`/artigo/${favorito.Artigo.slug}`} 
+        className={styles.articleCardWrapper}
+      >
+        <div
+          className={styles.articleCard}
+          style={{
+            backgroundImage: favorito.Artigo.imagemHeader
+              ? `url(${favorito.Artigo.imagemHeader})`
+              : 'none',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <h1>{favorito.Artigo.titulo}</h1>
+          <div className={styles.favoriteBtn}>
+            <FavoriteButton
+              artigoId={favorito.Artigo.id}
+              initialIsFavorited={true}
+              size="medium"
+            />
+          </div>
+        </div>
+      </Link>
+    ));
+  };
 
   return (
     <>
       <Header />
-      {/* Wrapper principal com o reset de box-sizing */}
       <div className={styles.wrapper}>
 
         <main className={styles.mainContainer}>
@@ -90,44 +114,50 @@ const Favoritos: React.FC = () => {
                 </Link>
               </div>
             ) : (
-              <section className={styles.articlesGrid}>
-                {artigosGrid.map((favorito, index) => (
-                  favorito ? (
-                    // Card PREENCHIDO com artigo
-                    <Link key={index} href={`/artigo/${favorito.Artigo.slug}`} className={styles.articleCardWrapper}>
-                      <div
-                        className={styles.articleCard}
-                        style={{
-                          backgroundImage: favorito.Artigo.imagemHeader
-                            ? `url(${favorito.Artigo.imagemHeader})`
-                            : 'none',
-                          // BackgroundSize e Position já estão na classe .articleCard,
-                          // mas mantemos aqui caso a imagem venha inline de forma diferente
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                      >
-                        <h1>{favorito.Artigo.titulo}</h1>
-                        <div className={styles.favoriteBtn}>
-                          <FavoriteButton
-                            artigoId={favorito.Artigo.id}
-                            initialIsFavorited={true}
-                            size="medium"
-                          />
-                        </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    // Card VAZIO (Placeholder)
-                    // Usamos a sintaxe styles['bgArticle1'] para acessar classes dinâmicas
-                    <Link key={index} href="#" className={styles.articleCardWrapper}>
-                      <div className={`${styles.articleCard} ${styles[`bgArticle${index + 1}`]}`}>
-                        <h1>ARTIGO AQUI</h1>
-                      </div>
-                    </Link>
-                  )
-                ))}
-              </section>
+              <>
+                {favoritos.length === 0 ? (
+                  <div style={{ 
+                    textAlign: 'center', 
+                    padding: '3rem 2rem', 
+                    marginBottom: '2rem',
+                    fontFamily: "'Louis George Cafe', sans-serif",
+                    background: 'rgba(114, 47, 83, 0.05)',
+                    borderRadius: '12px',
+                    maxWidth: '600px',
+                    margin: '0 auto 2rem'
+                  }}>
+                    <p style={{
+                      fontSize: '1.3rem',
+                      fontWeight: '600',
+                      color: '#722F53',
+                      marginBottom: '0.8rem'
+                    }}>
+                      Você ainda não tem artigos favoritados.
+                    </p>
+                    <p style={{ 
+                      fontSize: '1.1rem',
+                      color: '#666'
+                    }}>
+                      Explore nossos artigos e salve seus favoritos!
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <p style={{
+                      fontFamily: "'Louis George Cafe', sans-serif",
+                      fontSize: '1rem',
+                      color: '#666',
+                      marginBottom: '1.5rem',
+                      marginLeft: 'clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem)'
+                    }}>
+                      {favoritos.length} {favoritos.length === 1 ? 'artigo favoritado' : 'artigos favoritados'}
+                    </p>
+                    <section className={styles.articlesGrid}>
+                      {renderArticlesGrid()}
+                    </section>
+                  </>
+                )}
+              </>
             )}
           </section>
         </main>
@@ -146,33 +176,33 @@ const Favoritos: React.FC = () => {
         {/* Seção Categorias */}
         <section className={styles.categoriesSection}>
           <Link href='/alimentacao' className={styles.categoryItem}>
-              <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
-              <h2>ALIMENTAÇÃO</h2>
+            <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
+            <h2>ALIMENTAÇÃO</h2>
           </Link>
 
           <Link href='/cronograma-capilar' className={styles.categoryItem}>
-              <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
-              <h2>CRONOGRAMA</h2>
+            <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
+            <h2>CRONOGRAMA</h2>
           </Link>
 
           <Link href='/haircare' className={styles.categoryItem}>
-              <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
-              <h2>HAIR-CARE</h2>
+            <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
+            <h2>HAIR-CARE</h2>
           </Link>
 
           <Link href='/produtos' className={styles.categoryItem}>
-              <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
-              <h2>PRODUTOS</h2>
+            <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
+            <h2>PRODUTOS</h2>
           </Link>
 
           <Link href='/infantil' className={styles.categoryItem}>
-              <img src="/images/skincare/categ5.png" alt="INFANTIL" />
-              <h2>INFANTIL</h2>
+            <img src="/images/skincare/categ5.png" alt="INFANTIL" />
+            <h2>INFANTIL</h2>
           </Link>
 
           <Link href='/tendencias' className={styles.categoryItem}>
-              <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
-              <h2>TENDÊNCIAS</h2>
+            <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
+            <h2>TENDÊNCIAS</h2>
           </Link>
         </section>
 
@@ -215,7 +245,6 @@ const Favoritos: React.FC = () => {
           <div className={styles.savedCardsContainer}>
             <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
 
-            {/* Exemplo de repetição manual mantido do original */}
             <div className={styles.savedCard}>
               <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
               <img className={styles.prodImage} src="/images/favoritos/imagem-produto.png" alt="" />
