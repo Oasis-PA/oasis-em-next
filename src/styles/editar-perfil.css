@@ -599,7 +599,7 @@ figcaption {
     justify-content: flex-end;
     gap: 20px;
     padding: 0 40px;
-    z-index: 100;
+    z-index: 1100; /* Aumentado para ficar acima de elementos flutuantes */
     transition: left 0.3s ease;
 }
 
@@ -616,8 +616,29 @@ main > p:last-child {
     padding: 12px 24px;
     border-radius: 8px;
     font-size: 16px;
-    z-index: 50;
+    z-index: 2000;
 }
+
+/* ============================================
+   CORREÇÃO DE DUPLICIDADE E LAYOUT
+   ============================================ */
+/* Esta regra oculta qualquer container de botões (.form-actions)
+   que esteja dentro do main ou solto na wrapper, 
+   MANTENDO apenas o do footer visível. 
+*/
+.page-perfil-wrapper main .form-actions,
+.page-gerenciamento-wrapper main .form-actions,
+.page-perfil-wrapper > .form-actions {
+    display: none !important;
+}
+
+/* Garante que a action bar dentro do footer seja exibida */
+.page-perfil-wrapper footer .form-actions,
+.page-gerenciamento-wrapper footer .form-actions {
+    display: flex !important;
+    margin-top: 0; /* Remove margem extra no footer */
+}
+
 
 /* ============================================
    RESPONSIVIDADE
@@ -640,9 +661,11 @@ main > p:last-child {
         margin-left: 0;
     }
 
-    footer {
+    footer,
+    .page-perfil-wrapper footer,
+    .page-gerenciamento-wrapper footer {
+        left: 0; /* Corrige a posição do footer em mobile */
         margin-left: 0;
-        margin-top: 20px;
     }
 
     main {
@@ -682,19 +705,20 @@ main > p:last-child {
         width: 100%;
     }
 
-    footer {
+    .page-perfil-wrapper footer,
+    .page-gerenciamento-wrapper footer {
         justify-content: center;
+        padding: 20px;
+        height: auto; /* Footer altura automática em mobile */
     }
 }
 
 @media screen and (max-width: 480px) {
-    footer {
-        height: auto;
+    .page-perfil-wrapper footer,
+    .page-gerenciamento-wrapper footer {
         flex-direction: column;
-        padding: 15px;
         gap: 10px;
-        margin-left: 0;
-        margin-top: 15px;
+        padding: 15px;
     }
 
     footer .btn {
