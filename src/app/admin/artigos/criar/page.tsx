@@ -1,11 +1,17 @@
 // src/app/admin/artigos/novo/page.tsx
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import '@/styles/admin-artigos.css';
 import styles from "@/styles/artigo.module.css";
+
+interface CategoriaArtigo {
+  id_categoria: number;
+  nome: string;
+  slug: string;
+}
 
 export default function NovoArtigoPage() {
   const router = useRouter();
@@ -18,12 +24,62 @@ export default function NovoArtigoPage() {
     status: 'rascunho',
     dataPublicacao: '',
     horaPublicacao: '',
-    tags: '',
+    id_categoria: '',
     themeDark: false
   });
+  const [categorias, setCategorias] = useState<CategoriaArtigo[]>([]);
+  const [novaCategoria, setNovaCategoria] = useState('');
+  const [criandoCategoria, setCriandoCategoria] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+
+  useEffect(() => {
+    fetchCategorias();
+  }, []);
+
+  const fetchCategorias = async () => {
+    try {
+      const response = await fetch('/api/admin/categorias-artigos');
+      if (response.ok) {
+        const data = await response.json();
+        setCategorias(data);
+      }
+    } catch (error) {
+      console.error('Erro ao carregar categorias:', error);
+    }
+  };
+
+  const handleCriarCategoria = async () => {
+    if (!novaCategoria.trim()) {
+      alert('Digite o nome da categoria');
+      return;
+    }
+
+    setCriandoCategoria(true);
+    try {
+      const response = await fetch('/api/admin/categorias-artigos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome: novaCategoria.trim() })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setCategorias(prev => [...prev, data.categoria]);
+        setFormData(prev => ({ ...prev, id_categoria: String(data.categoria.id_categoria) }));
+        setNovaCategoria('');
+        alert('Categoria criada com sucesso!');
+      } else {
+        const error = await response.json();
+        alert(error.error || 'Erro ao criar categoria');
+      }
+    } catch (error) {
+      alert('Erro ao criar categoria');
+    } finally {
+      setCriandoCategoria(false);
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -51,8 +107,9 @@ export default function NovoArtigoPage() {
 
     setUploadingImage(true);
 
-    const slug = formData.slug?.trim() || ""; // use o campo slug do state
+    const slug = formData.slug?.trim() || "";
     if (!slug) {
+      setUploadingImage(false);
       alert("Você deve definir o slug antes de enviar a imagem do header.");
       return;
     }
@@ -66,6 +123,7 @@ export default function NovoArtigoPage() {
     if (!res.ok) {
       const body = await res.text();
       alert("Falha no upload: " + body);
+      setUploadingImage(false);
       return;
     }
     const data = await res.json();
@@ -100,10 +158,17 @@ export default function NovoArtigoPage() {
         dataPublicacaoCompleta = `${formData.dataPublicacao}T${hora}:00`;
       }
 
-      const tagsArray = formData.tags
-        .split(',')
-        .map(tag => tag.trim())
-        .filter(tag => tag.length > 0);
+      // Verificar se a categoria existe antes de enviar
+      if (formData.id_categoria) {
+        const categoriaExiste = categorias.some(
+          cat => cat.id_categoria === parseInt(formData.id_categoria)
+        );
+        if (!categoriaExiste) {
+          alert('Categoria selecionada não existe. Por favor, selecione uma categoria válida.');
+          setIsLoading(false);
+          return;
+        }
+      }
 
       const dataToSend = {
         titulo: formData.titulo,
@@ -113,8 +178,8 @@ export default function NovoArtigoPage() {
         imagemHeader: formData.imagemHeader || null,
         status: formData.status,
         dataPublicacao: dataPublicacaoCompleta,
-        tags: tagsArray,
-        themeDark: formData.themeDark  
+        id_categoria: formData.id_categoria ? parseInt(formData.id_categoria) : null,
+        themeDark: formData.themeDark
       };
 
       const response = await fetch('/api/admin/artigos', {
@@ -227,16 +292,40 @@ export default function NovoArtigoPage() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="tags">Tags (separadas por vírgula)</label>
-          <input
-            type="text"
-            id="tags"
-            name="tags"
-            value={formData.tags}
-            onChange={handleChange}
-            placeholder="skincare, beleza, tutorial"
-          />
-          <small>Ex: skincare, beleza, rotina</small>
+          <label htmlFor="id_categoria">Categoria</label>
+          <div className="categoria-selector">
+            <select
+              id="id_categoria"
+              name="id_categoria"
+              value={formData.id_categoria}
+              onChange={handleChange}
+            >
+              <option value="">Selecione uma categoria</option>
+              {categorias.map(cat => (
+                <option key={cat.id_categoria} value={cat.id_categoria}>
+                  {cat.nome}
+                </option>
+              ))}
+            </select>
+            <div className="criar-categoria">
+              <input
+                type="text"
+                value={novaCategoria}
+                onChange={(e) => setNovaCategoria(e.target.value)}
+                placeholder="Nova categoria..."
+                maxLength={50}
+              />
+              <button
+                type="button"
+                onClick={handleCriarCategoria}
+                disabled={criandoCategoria || !novaCategoria.trim()}
+                className="btn-small"
+              >
+                {criandoCategoria ? '...' : '+ Criar'}
+              </button>
+            </div>
+          </div>
+          <small>Selecione uma categoria existente ou crie uma nova</small>
         </div>
 
         <div className="form-group">
