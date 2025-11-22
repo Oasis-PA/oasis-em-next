@@ -592,3 +592,101 @@
     width: 100%;
   }
 }
+
+/* Adicionar ao arquivo admin-artigos.css existente */
+
+/* Adicionar ao arquivo admin-artigos.css existente */
+
+/* Seletor de Categoria */
+.categoria-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.categoria-selector select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.categoria-selector select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.criar-categoria {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.criar-categoria input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.criar-categoria input:focus {
+  border-color: #28a745;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.btn-small:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.btn-small:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Badge de categoria na listagem */
+.categoria-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #e9ecef;
+  color: #495057;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Responsividade */
+@media (min-width: 480px) {
+  .categoria-selector {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .categoria-selector select {
+    flex: 1;
+    max-width: 250px;
+  }
+
+  .criar-categoria {
+    flex: 1;
+  }
+}
