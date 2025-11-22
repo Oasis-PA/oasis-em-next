@@ -689,10 +689,10 @@ p.listaFestivos {
     align-items: flex-start;
     justify-content: center;
     margin-top: 5rem;
-    gap: 2rem; /* Espaço padrão entre as colunas */
+    gap: 6rem; /* Espaço padrão entre as colunas */
     padding: 2rem;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1600px;
     margin-left: auto;
     margin-right: auto;
 }
