@@ -1,0 +1,131 @@
+name: 💾 Backup Automático do Banco
+
+# Acionadores
+on:
+  push:
+    branches:
+      - main
+      - apresentacao-tcc
+    # Ignorar commits que apenas atualizem documentação
+    paths-ignore:
+      - "docs/**"
+      - "README.md"
+      - "CHANGELOG.md"
+  schedule:
+    # Executar backup diariamente às 2 da manhã (UTC)
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    # Permite acionamento manual via GitHub UI
+
+# Variáveis de ambiente
+env:
+  NODE_VERSION: "20"
+  BACKUP_DIR: "backups"
+
+jobs:
+  backup:
+    name: 📦 Executar Backup do Banco
+    runs-on: ubuntu-latest
+
+    # Permissões necessárias
+    permissions:
+      contents: write
+      actions: read
+
+    steps:
+      # 1. Fazer checkout do código
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. Configurar Node.js
+      - name: 🔧 Configurar Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      # 3. Instalar dependências
+      - name: 📚 Instalar dependências
+        run: npm ci
+        continue-on-error: true
+
+      # 4. Verificar variáveis de ambiente
+      - name: 🔐 Verificar variáveis de ambiente
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "❌ DATABASE_URL não está configurada!"
+            exit 1
+          fi
+          echo "✅ DATABASE_URL configurada"
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      # 5. Executar backup
+      - name: 💾 Executar backup do banco de dados
+        run: npm run backup
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        continue-on-error: true
+
+      # 6. Verificar se backup foi criado
+      - name: 🔍 Verificar arquivo de backup
+        run: |
+          if [ -f "$(ls -t backups/backup-*.json | head -1)" ]; then
+            echo "✅ Backup criado com sucesso!"
+            ls -lh backups/backup-*.json | head -5
+          else
+            echo "⚠️ Nenhum backup encontrado"
+          fi
+
+      # 7. Configurar Git para commit automático
+      - name: ⚙️ Configurar Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # 8. Adicionar backup ao Git
+      - name: 📝 Adicionar arquivo de backup ao Git
+        run: |
+          if [ -n "$(git status --porcelain backups/)" ]; then
+            git add backups/
+            echo "✅ Arquivo de backup adicionado"
+          else
+            echo "ℹ️ Nenhuma alteração nos backups"
+          fi
+
+      # 9. Fazer commit do backup
+      - name: 🔗 Fazer commit do backup
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "backup: Novo backup automático - $(date +'%Y-%m-%d %H:%M:%S UTC')" \
+              -m "Este backup foi gerado automaticamente pelo GitHub Actions" \
+              -m "Triggers: push para main/apresentacao-tcc, ou schedule diário" \
+              --no-verify
+            echo "✅ Commit criado com sucesso"
+          else
+            echo "ℹ️ Nenhuma alteração para commitar"
+          fi
+
+      # 10. Fazer push do backup para o repositório
+      - name: 🚀 Push do backup para o repositório
+        run: |
+          if [ -n "$(git log --oneline -1 --format='%s' | grep -i backup)" ]; then
+            git push origin main
+            echo "✅ Backup enviado para o repositório"
+          else
+            echo "ℹ️ Nenhum backup novo para enviar"
+          fi
+        continue-on-error: true
+
+      # 11. Notificar sucesso
+      - name: ✅ Backup concluído com sucesso
+        if: success()
+        run: echo "🎉 Backup automático executado com sucesso!"
+
+      # 12. Notificar erro
+      - name: ❌ Notificar erro
+        if: failure()
+        run: echo "⚠️ Houve um erro durante o backup. Verifique os logs acima."

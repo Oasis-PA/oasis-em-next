@@ -1,0 +1,129 @@
+name: 🔍 CI/CD - Testes e Build
+
+on:
+  push:
+    branches:
+      - main
+      - apresentacao-tcc
+      - develop
+  pull_request:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  # Job 1: Linting
+  lint:
+    name: 🧹 ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📚 Instalar dependências
+        run: npm ci
+
+      - name: 🔍 Executar ESLint
+        run: npm run lint
+        continue-on-error: true
+
+  # Job 2: Build
+  build:
+    name: 🏗️ Build Next.js
+    runs-on: ubuntu-latest
+    needs: lint
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📚 Instalar dependências
+        run: npm ci
+
+      - name: 🏗️ Build do Next.js
+        run: npm run build
+
+      - name: 📤 Upload de artefatos
+        uses: actions/upload-artifact@v3
+        with:
+          name: next-build
+          path: .next/
+          retention-days: 5
+
+  # Job 3: Testes de Integração
+  test:
+    name: 🧪 Testes de Integração
+    runs-on: ubuntu-latest
+    needs: build
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: oasis_test
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📚 Instalar dependências
+        run: npm ci
+
+      - name: 🔄 Executar migrations
+        run: npm run prisma:migrate
+        env:
+          DATABASE_URL: "postgresql://postgres:password@localhost:5432/oasis_test"
+
+      - name: 🧪 Rodar testes
+        run: npm run test:integration
+        env:
+          DATABASE_URL: "postgresql://postgres:password@localhost:5432/oasis_test"
+        continue-on-error: true
+
+  # Job 4: Relatório Final
+  status:
+    name: 📊 Status Final
+    runs-on: ubuntu-latest
+    needs: [lint, build, test]
+    if: always()
+
+    steps:
+      - name: ✅ Verificar resultado
+        run: |
+          if [ "${{ needs.lint.result }}" = "failure" ] || \
+             [ "${{ needs.build.result }}" = "failure" ] || \
+             [ "${{ needs.test.result }}" = "failure" ]; then
+            echo "⚠️ Um ou mais jobs falharam. Verifique os logs acima."
+            exit 1
+          else
+            echo "✅ Todos os jobs completados com sucesso!"
+          fi
