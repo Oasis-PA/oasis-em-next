@@ -1,0 +1,316 @@
+{
+  "exportDate": "2025-11-21T01:15:12.447Z",
+  "summary": {
+    "usuarios": 6,
+    "produtos": 12,
+    "artigos": 5,
+    "categorias": 2,
+    "tiposCabelo": 5
+  },
+  "usuarios": [
+    {
+      "id_usuario": 1259,
+      "nome": "Maria",
+      "email": "maria@example.com",
+      "telefone": "(11) 98765-4321",
+      "sobrenome": "Silva",
+      "sobre": "Apaixonada por cuidados com cabelo",
+      "data_nascimento": "1995-05-15T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.168Z"
+    },
+    {
+      "id_usuario": 1260,
+      "nome": "João",
+      "email": "joao@example.com",
+      "telefone": "(11) 99876-5432",
+      "sobrenome": "Santos",
+      "sobre": "Buscando melhorar meu cabelo",
+      "data_nascimento": "1990-03-22T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.558Z"
+    },
+    {
+      "id_usuario": 1261,
+      "nome": "Ana",
+      "email": "ana@example.com",
+      "telefone": "(21) 98888-7777",
+      "sobrenome": "Oliveira",
+      "sobre": "Skincare e cabelo é minha paixão",
+      "data_nascimento": "1998-07-08T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.971Z"
+    },
+    {
+      "id_usuario": 1262,
+      "nome": "Pedro",
+      "email": "pedro@example.com",
+      "telefone": "(31) 99999-0000",
+      "sobrenome": "Costa",
+      "sobre": "Aprendendo sobre cuidados capilares",
+      "data_nascimento": "1992-11-30T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.360Z"
+    },
+    {
+      "id_usuario": 1263,
+      "nome": "Lucia",
+      "email": "lucia@example.com",
+      "telefone": "(85) 97777-6666",
+      "sobrenome": "Ferreira",
+      "sobre": "Cabelos crespos precisam de amor",
+      "data_nascimento": "1994-02-14T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.751Z"
+    },
+    {
+      "id_usuario": 1264,
+      "nome": "Admin Test",
+      "email": "admin@example.com",
+      "telefone": "(11) 91111-2222",
+      "sobrenome": "Administrator",
+      "sobre": "Administrador do sistema",
+      "data_nascimento": "1988-01-01T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:35.139Z"
+    }
+  ],
+  "produtos": [
+    {
+      "id_produto": 742,
+      "nome": "Shampoo Neutro Profissional",
+      "marca": "Inoar",
+      "preco": 29.9,
+      "descricao": "Shampoo suave para limpeza diária de todos os tipos de cabelo",
+      "composicao": "Água, Laurilsulfato de Amônio, Proteínas de Trigo, Vitaminas B",
+      "qualidades": "Limpeza profunda, Proteção de cor, Sem ressecamento",
+      "mais_detalhes": "Volume: 1000ml | pH Neutro | Uso diário",
+      "url_imagem": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop",
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:14:36.894Z"
+    },
+    {
+      "id_produto": 743,
+      "nome": "Condicionador Hidratante Profissional",
+      "marca": "Inoar",
+      "preco": 32.9,
+      "descricao": "Condicionador com óleo de argan para hidratação intensiva",
+      "composicao": "Água, Óleo de Argan, Proteína de Seda, Vitamina E, Emolientes",
+      "qualidades": "Maciez intensa, Brilho natural, Reparação profunda",
+      "mais_detalhes": "Volume: 1000ml | Indicado para cabelos secos | Uso diário",
+      "url_imagem": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=500&h=500&fit=crop",
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:14:37.203Z"
+    },
+    {
+      "id_produto": 744,
+      "nome": "Máscara Capilar Intensiva com Queratina",
+      "marca": "OGX",
+      "preco": 67.5,
+      "descricao": "Máscara reparadora com queratina hidrolisada para cabelos danificados",
+      "composicao": "Água, Queratina, Proteínas do Trigo, Óleo de Coco, Pantenol",
+      "qualidades": "Reconstrução, Resistência, Reparação de danos",
+      "mais_detalhes": "Volume: 200ml | Deixar 15-20min | 1-2x por semana",
+      "url_imagem": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop",
+      "url_loja": "https://www.ogx.com",
+      "data_cadastro": "2025-11-21T01:14:37.511Z"
+    },
+    {
+      "id_produto": 745,
+      "nome": "Sérum Anti-Frizz Finalizador",
+      "marca": "Inoar",
+      "preco": 55.9,
+      "descricao": "Sérum finalizador que controla frizz e hidrata",
+      "composicao": "Silicone, Óleo de Argan, Vitaminas, Protetor Solar",
+      "qualidades": "Anti-frizz, Brilho, Proteção UV, Longa duração",
+      "mais_detalhes": "Volume: 250ml | Aplicar em cabelo seco | Duração até 72h",
+      "url_imagem": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop",
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:14:37.816Z"
+    },
+    {
+      "id_produto": 746,
+      "nome": "Shampoo Matizador Violeta",
+      "marca": "Matizador",
+      "preco": 45,
+      "descricao": "Shampoo que elimina tons indesejados em cabelos loiros",
+      "composicao": "Água, Pigmentos Violeta, Sulfactantes Suaves, Proteínas",
+      "qualidades": "Matização eficaz, Tom platinado, Proteção de cor",
+      "mais_detalhes": "Volume: 250ml | Cabelos loiros/platinados | 1-2x por semana",
+      "url_imagem": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&h=500&fit=crop",
+      "url_loja": "https://www.matizador.com.br",
+      "data_cadastro": "2025-11-21T01:14:38.123Z"
+    },
+    {
+      "id_produto": 747,
+      "nome": "Leave-In Conditioner para Cachos",
+      "marca": "SheaMoisture",
+      "preco": 48.9,
+      "descricao": "Condicionador leave-in para definição e hidratação de cachos",
+      "composicao": "Água, Manteiga de Karité, Óleo de Coco, Aloe Vera",
+      "qualidades": "Definição de cachos, Hidratação, Anti-frizz",
+      "mais_detalhes": "Volume: 236ml | Não enxaguar | Cabelos cacheados",
+      "url_imagem": "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=500&h=500&fit=crop",
+      "url_loja": "https://www.sheamoisture.com",
+      "data_cadastro": "2025-11-21T01:14:38.426Z"
+    },
+    {
+      "id_produto": 748,
+      "nome": "Limpador Facial Suave",
+      "marca": "Neutrogena",
+      "preco": 24.9,
+      "descricao": "Limpador suave que remove maquiagem e impurezas sem ressecar",
+      "composicao": "Água, Tensoativos Suaves, Aloe Vera, Vitamina E",
+      "qualidades": "Limpeza profunda, Não irrita, Remove maquiagem",
+      "mais_detalhes": "Volume: 200ml | Uso 2x diário | Todos os tipos de pele",
+      "url_imagem": "https://images.unsplash.com/photo-1600643081563-c06c8e53b385?w=500&h=500&fit=crop",
+      "url_loja": "https://www.neutrogena.com.br",
+      "data_cadastro": "2025-11-21T01:14:38.727Z"
+    },
+    {
+      "id_produto": 749,
+      "nome": "Hidratante Diurno com FPS 30",
+      "marca": "Cerave",
+      "preco": 39.9,
+      "descricao": "Hidratante facial com proteção solar para uso diário",
+      "composicao": "Água, Óleo de Girassol, Ceramidas, Ácido Hialurônico, FPS 30",
+      "qualidades": "Hidratação 24h, Proteção UVA/UVB, Não oleoso",
+      "mais_detalhes": "Volume: 52ml | Uso diário manhã | Absorção rápida",
+      "url_imagem": "https://images.unsplash.com/photo-1596214174519-27f57006b1ca?w=500&h=500&fit=crop",
+      "url_loja": "https://www.cerave.com",
+      "data_cadastro": "2025-11-21T01:14:39.041Z"
+    },
+    {
+      "id_produto": 750,
+      "nome": "Sérum Hidratante com Ácido Hialurônico",
+      "marca": "The Ordinary",
+      "preco": 19.9,
+      "descricao": "Sérum leve com ácido hialurônico para hidratação profunda",
+      "composicao": "Ácido Hialurônico, Glicerina, Água, Tamarindo, Esqualano",
+      "qualidades": "Hidratação intensa, Leve, Absorção rápida",
+      "mais_detalhes": "Volume: 30ml | Uso 1-2x diário | Antes do hidratante",
+      "url_imagem": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop",
+      "url_loja": "https://www.theordinary.com",
+      "data_cadastro": "2025-11-21T01:14:39.348Z"
+    },
+    {
+      "id_produto": 751,
+      "nome": "Máscara Facial de Argila",
+      "marca": "Natura",
+      "preco": 29.9,
+      "descricao": "Máscara detoxificante com argila para limpeza profunda",
+      "composicao": "Água, Argila Pura, Chá Verde, Zinc, Aloe Vera",
+      "qualidades": "Limpeza profunda, Reduz poros, Controla oleosidade",
+      "mais_detalhes": "Volume: 100ml | Deixar 10-15min | 1-2x por semana",
+      "url_imagem": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=500&h=500&fit=crop",
+      "url_loja": "https://www.natura.com.br",
+      "data_cadastro": "2025-11-21T01:14:39.655Z"
+    },
+    {
+      "id_produto": 752,
+      "nome": "Protetor Solar FPS 50+",
+      "marca": "Sundown",
+      "preco": 34.9,
+      "descricao": "Protetor solar com proteção máxima contra UVA e UVB",
+      "composicao": "Água, Óxido de Zinco, Avobenzona, Octinoxato, Vitamina E",
+      "qualidades": "Proteção UVA/UVB, Resistente à água, Toque seco",
+      "mais_detalhes": "Volume: 200ml | Reaplicar a cada 2h | Uso diário obrigatório",
+      "url_imagem": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop",
+      "url_loja": "https://www.sundown.com.br",
+      "data_cadastro": "2025-11-21T01:14:39.962Z"
+    },
+    {
+      "id_produto": 753,
+      "nome": "Tônico Facial Equilibrador",
+      "marca": "Estée Lauder",
+      "preco": 59.9,
+      "descricao": "Tônico que equilibra pH e prepara a pele para outros produtos",
+      "composicao": "Água, Glicerina, Niacinamida, Extrato de Ginseng, Aloe Vera",
+      "qualidades": "Equilibra pH, Pré-tratamento, Aumenta absorção",
+      "mais_detalhes": "Volume: 200ml | Uso após limpeza | 1-2x diário",
+      "url_imagem": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop",
+      "url_loja": "https://www.esteelauder.com.br",
+      "data_cadastro": "2025-11-21T01:14:40.266Z"
+    }
+  ],
+  "artigos": [
+    {
+      "id": 374,
+      "titulo": "Guia Completo: Como Cuidar de Cabelos Cacheados",
+      "slug": "guia-cabelos-cacheados",
+      "resumo": "Descubra as melhores práticas para manter seus cachos hidratados, definidos e saudáveis.",
+      "imagemHeader": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.042Z"
+    },
+    {
+      "id": 375,
+      "titulo": "Skincare Básico: Rotina Essencial para Pele Saudável",
+      "slug": "skincare-basico-pele-saudavel",
+      "resumo": "Aprenda a rotina básica de skincare para manter sua pele limpa, hidratada e radiante.",
+      "imagemHeader": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.905Z"
+    },
+    {
+      "id": 376,
+      "titulo": "Tratamento de Cabelos Danificados: Recupere a Saúde",
+      "slug": "tratamento-cabelos-danificados",
+      "resumo": "Conheça as melhores estratégias para recuperar cabelos danificados por química, calor e negligência.",
+      "imagemHeader": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.211Z"
+    },
+    {
+      "id": 377,
+      "titulo": "Cortes de Cabelo Masculino: Estilos e Tendências 2024",
+      "slug": "cortes-cabelo-masculino-2024",
+      "resumo": "Conheça os cortes de cabelo masculino mais em alta em 2024 e como escolher o melhor para você.",
+      "imagemHeader": "https://images.unsplash.com/photo-1562322503-3920a8c0b1a3?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.517Z"
+    },
+    {
+      "id": 378,
+      "titulo": "Acne: Causas, Prevenção e Tratamento Eficaz",
+      "slug": "acne-causas-prevencao-tratamento",
+      "resumo": "Entenda as causas da acne e descubra os melhores métodos de prevenção e tratamento.",
+      "imagemHeader": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.822Z"
+    }
+  ],
+  "categorias": [
+    {
+      "id_categoria": 1,
+      "nome": "cabelo",
+      "descricao": null
+    },
+    {
+      "id_categoria": 2,
+      "nome": "pele",
+      "descricao": null
+    }
+  ],
+  "tiposCabelo": [
+    {
+      "id_tipo_cabelo": 1,
+      "nome": "liso",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 2,
+      "nome": "ondulado\n",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 3,
+      "nome": "crespo",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 4,
+      "nome": "cacheado",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 5,
+      "nome": "todos os tipo\n",
+      "descricao": null
+    }
+  ]
+}

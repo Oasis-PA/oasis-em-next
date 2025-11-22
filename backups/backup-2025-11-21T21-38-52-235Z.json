@@ -1,0 +1,52 @@
+{
+  "exportDate": "2025-11-21T21:38:52.234Z",
+  "summary": {
+    "usuarios": 0,
+    "produtos": 0,
+    "artigos": 0,
+    "categorias": 2,
+    "tiposCabelo": 5
+  },
+  "usuarios": [],
+  "produtos": [],
+  "artigos": [],
+  "categorias": [
+    {
+      "id_categoria": 1,
+      "nome": "cabelo",
+      "descricao": null
+    },
+    {
+      "id_categoria": 2,
+      "nome": "pele",
+      "descricao": null
+    }
+  ],
+  "tiposCabelo": [
+    {
+      "id_tipo_cabelo": 1,
+      "nome": "liso",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 2,
+      "nome": "ondulado\n",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 3,
+      "nome": "crespo",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 4,
+      "nome": "cacheado",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 5,
+      "nome": "todos os tipo\n",
+      "descricao": null
+    }
+  ]
+}

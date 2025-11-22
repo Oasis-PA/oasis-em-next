@@ -1,0 +1,303 @@
+{
+  "exportDate": "2025-11-21T01:10:17.687Z",
+  "summary": {
+    "usuarios": 6,
+    "produtos": 11,
+    "artigos": 5,
+    "categorias": 2,
+    "tiposCabelo": 5
+  },
+  "usuarios": [
+    {
+      "id_usuario": 1259,
+      "nome": "Maria",
+      "email": "maria@example.com",
+      "telefone": "(11) 98765-4321",
+      "sobrenome": "Silva",
+      "sobre": "Apaixonada por cuidados com cabelo",
+      "data_nascimento": "1995-05-15T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.168Z"
+    },
+    {
+      "id_usuario": 1260,
+      "nome": "João",
+      "email": "joao@example.com",
+      "telefone": "(11) 99876-5432",
+      "sobrenome": "Santos",
+      "sobre": "Buscando melhorar meu cabelo",
+      "data_nascimento": "1990-03-22T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.558Z"
+    },
+    {
+      "id_usuario": 1261,
+      "nome": "Ana",
+      "email": "ana@example.com",
+      "telefone": "(21) 98888-7777",
+      "sobrenome": "Oliveira",
+      "sobre": "Skincare e cabelo é minha paixão",
+      "data_nascimento": "1998-07-08T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:33.971Z"
+    },
+    {
+      "id_usuario": 1262,
+      "nome": "Pedro",
+      "email": "pedro@example.com",
+      "telefone": "(31) 99999-0000",
+      "sobrenome": "Costa",
+      "sobre": "Aprendendo sobre cuidados capilares",
+      "data_nascimento": "1992-11-30T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.360Z"
+    },
+    {
+      "id_usuario": 1263,
+      "nome": "Lucia",
+      "email": "lucia@example.com",
+      "telefone": "(85) 97777-6666",
+      "sobrenome": "Ferreira",
+      "sobre": "Cabelos crespos precisam de amor",
+      "data_nascimento": "1994-02-14T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:34.751Z"
+    },
+    {
+      "id_usuario": 1264,
+      "nome": "Admin Test",
+      "email": "admin@example.com",
+      "telefone": "(11) 91111-2222",
+      "sobrenome": "Administrator",
+      "sobre": "Administrador do sistema",
+      "data_nascimento": "1988-01-01T00:00:00.000Z",
+      "data_cadastro": "2025-11-21T00:57:35.139Z"
+    }
+  ],
+  "produtos": [
+    {
+      "id_produto": 693,
+      "nome": "Shampoo Neutro Profissional",
+      "marca": "Inoar",
+      "preco": 29.9,
+      "descricao": "Shampoo neutro profissional para todos os tipos de cabelo. Limpeza suave sem ressecamento.",
+      "composicao": "Água, Sulfactantes Suaves, Proteínas Hidrolisadas, Vitaminas",
+      "qualidades": "Limpeza suave, Proteção de cor, Sem sulfato agressivo",
+      "mais_detalhes": "Volume: 1000ml | Tipo: Limpeza | pH: Neutro",
+      "url_imagem": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop",
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:04:47.957Z"
+    },
+    {
+      "id_produto": 694,
+      "nome": "Condicionador Hidratante Profissional",
+      "marca": "Inoar",
+      "preco": 32.9,
+      "descricao": "Condicionador hidratante para cabelos secos e danificados. Efeito macio e brilhante.",
+      "composicao": "Água, Emolientes, Proteína de Seda, Óleo de Argan, Vitaminas",
+      "qualidades": "Hidratação profunda, Maciez intenso, Brilho natural",
+      "mais_detalhes": "Volume: 1000ml | Tipo: Hidratação | Indicado para: Cabelos ressecados",
+      "url_imagem": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=500&h=500&fit=crop",
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:04:48.276Z"
+    },
+    {
+      "id_produto": 695,
+      "nome": "Shampoo Blue Violet Matizador",
+      "marca": "Matizador",
+      "preco": 45,
+      "descricao": "Shampoo matizador para cabelos loiros e platinados. Elimina tons amarelados.",
+      "composicao": "Água, Pigmentos Violeta, Sulfactantes, Proteínas",
+      "qualidades": "Matização eficaz, Tom platinado, Proteção de cor",
+      "mais_detalhes": "Volume: 250ml | Tipo: Matizador | Frequência: 1-2x por semana",
+      "url_imagem": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop",
+      "url_loja": "https://www.matizador.com.br",
+      "data_cadastro": "2025-11-21T01:04:48.571Z"
+    },
+    {
+      "id_produto": 696,
+      "nome": "Máscara Capilar Hidratante",
+      "marca": "Moroccanoil",
+      "preco": 89.9,
+      "descricao": "Máscara profissional com óleo de argan marroquino. Tratamento intensivo.",
+      "composicao": "Água, Óleo de Argan Puro, Proteínas, Aminoácidos, Vitaminas E",
+      "qualidades": "Hidratação máxima, Brilho intenso, Regeneração profunda",
+      "mais_detalhes": "Volume: 250ml | Tipo: Tratamento | Tempo de ação: 15-20min",
+      "url_imagem": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop",
+      "url_loja": "https://www.moroccanoil.com",
+      "data_cadastro": "2025-11-21T01:04:48.872Z"
+    },
+    {
+      "id_produto": 697,
+      "nome": "Keratin Complex Treatment",
+      "marca": "OGX",
+      "preco": 67.5,
+      "descricao": "Tratamento com queratina para cabelos danificados. Repara e fortalece.",
+      "composicao": "Água, Queratina Hidrolisada, Proteínas do Trigo, Óleo de Coco",
+      "qualidades": "Reconstrução, Resistência, Maciez",
+      "mais_detalhes": "Volume: 198ml | Tipo: Tratamento | Ideal para: Cabelos danificados",
+      "url_imagem": "https://images.unsplash.com/photo-1596214174519-27f57006b1ca?w=500&h=500&fit=crop",
+      "url_loja": "https://www.ogx.com",
+      "data_cadastro": "2025-11-21T01:04:49.166Z"
+    },
+    {
+      "id_produto": 698,
+      "nome": "Óleo de Argan Puro",
+      "marca": "Marroquino",
+      "preco": 75,
+      "descricao": "Óleo de argan 100% puro para hidratação profunda. Origem Marrocos.",
+      "composicao": "100% Óleo de Argan Puro (Argania spinosa)",
+      "qualidades": "Hidratação profunda, Anti-frizz, Brilho natural, Proteção UV",
+      "mais_detalhes": "Volume: 100ml | Concentração: 100% puro | Origem: Marrocos",
+      "url_imagem": "https://images.unsplash.com/photo-1600643081563-c06c8e53b385?w=500&h=500&fit=crop",
+      "url_loja": "https://www.marroquino.com.br",
+      "data_cadastro": "2025-11-21T01:04:49.468Z"
+    },
+    {
+      "id_produto": 699,
+      "nome": "Sérum Anti-Frizz",
+      "marca": "Inoar",
+      "preco": 55.9,
+      "descricao": "Sérum anti-frizz para cabelos ressecados. Controle de frizz até 72h.",
+      "composicao": "Água, Silicone, Óleos Essenciais, Vitaminas",
+      "qualidades": "Anti-frizz, Brilho, Proteção térmica, Longa duração",
+      "mais_detalhes": "Volume: 250ml | Tipo: Finalização | Duração: até 72h",
+      "url_imagem": "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=500&h=500&fit=crop",
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:04:49.761Z"
+    },
+    {
+      "id_produto": 700,
+      "nome": "Leave-In Conditioner",
+      "marca": "SheaMoisture",
+      "preco": 48.9,
+      "descricao": "Condicionador leave-in para cachos definidos. Hidratação contínua.",
+      "composicao": "Água, Manteiga de Karité, Óleo de Coco, Aloe Vera",
+      "qualidades": "Definição de cachos, Hidratação, Anti-frizz, Sem resíduos",
+      "mais_detalhes": "Volume: 236ml | Tipo: Leave-in | Indicado para: Cabelos ondulados e cacheados",
+      "url_imagem": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&h=500&fit=crop",
+      "url_loja": "https://www.sheamoisture.com",
+      "data_cadastro": "2025-11-21T01:04:50.060Z"
+    },
+    {
+      "id_produto": 701,
+      "nome": "Spray Fixador de Penteado",
+      "marca": "Inoar",
+      "preco": 35.9,
+      "descricao": "Spray fixador com proteção UV. Mantém penteados perfeitos o dia todo.",
+      "composicao": "Água, Resinas, Protetor Solar, Silicone Volátil",
+      "qualidades": "Fixação extra forte, Proteção UV, Sem resíduos",
+      "mais_detalhes": "Volume: 400ml | Fixação: Extra forte | Proteção: UV",
+      "url_imagem": "https://images.unsplash.com/photo-1600204706957-c6195da55bfc?w=500&h=500&fit=crop",
+      "url_loja": "https://www.inoar.com.br",
+      "data_cadastro": "2025-11-21T01:04:50.353Z"
+    },
+    {
+      "id_produto": 702,
+      "nome": "Coloração Permanente Chocolate",
+      "marca": "Schwarzkopf",
+      "preco": 52.9,
+      "descricao": "Coloração permanente ton chocolate. Cobertura 100% de fios brancos.",
+      "composicao": "Peróxido de Hidrogênio, Amônia, Pigmentos, Condicionadores",
+      "qualidades": "Cobertura total, Cor vibrante, Brilho duradouro",
+      "mais_detalhes": "Tom: Chocolate 4.7 | Cobertura: 100% fios brancos | Durabilidade: até 6 semanas",
+      "url_imagem": "https://images.unsplash.com/photo-1629283888716-a6d53faf3140?w=500&h=500&fit=crop",
+      "url_loja": "https://www.schwarzkopf.com.br",
+      "data_cadastro": "2025-11-21T01:04:50.658Z"
+    },
+    {
+      "id_produto": 703,
+      "nome": "Tônico Capilar Loiro Platinado",
+      "marca": "Loma",
+      "preco": 89.9,
+      "descricao": "Tônico capilar para cabelos loiros. Elimina tons indesejados.",
+      "composicao": "Água, Pigmentos Platinados, Vitaminas, Proteínas",
+      "qualidades": "Matização perfeita, Tom platinado, Proteção de cor",
+      "mais_detalhes": "Volume: 237ml | Tom: Loiro Platinado | Frequência: 1x por semana",
+      "url_imagem": "https://images.unsplash.com/photo-1596214174519-27f57006b1ca?w=500&h=500&fit=crop",
+      "url_loja": "https://www.loma.com.br",
+      "data_cadastro": "2025-11-21T01:04:50.951Z"
+    }
+  ],
+  "artigos": [
+    {
+      "id": 374,
+      "titulo": "Guia Completo: Como Cuidar de Cabelos Cacheados",
+      "slug": "guia-cabelos-cacheados",
+      "resumo": "Descubra as melhores práticas para manter seus cachos hidratados, definidos e saudáveis.",
+      "imagemHeader": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.042Z"
+    },
+    {
+      "id": 375,
+      "titulo": "Skincare Básico: Rotina Essencial para Pele Saudável",
+      "slug": "skincare-basico-pele-saudavel",
+      "resumo": "Aprenda a rotina básica de skincare para manter sua pele limpa, hidratada e radiante.",
+      "imagemHeader": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:22.905Z"
+    },
+    {
+      "id": 376,
+      "titulo": "Tratamento de Cabelos Danificados: Recupere a Saúde",
+      "slug": "tratamento-cabelos-danificados",
+      "resumo": "Conheça as melhores estratégias para recuperar cabelos danificados por química, calor e negligência.",
+      "imagemHeader": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.211Z"
+    },
+    {
+      "id": 377,
+      "titulo": "Cortes de Cabelo Masculino: Estilos e Tendências 2024",
+      "slug": "cortes-cabelo-masculino-2024",
+      "resumo": "Conheça os cortes de cabelo masculino mais em alta em 2024 e como escolher o melhor para você.",
+      "imagemHeader": "https://images.unsplash.com/photo-1562322503-3920a8c0b1a3?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.517Z"
+    },
+    {
+      "id": 378,
+      "titulo": "Acne: Causas, Prevenção e Tratamento Eficaz",
+      "slug": "acne-causas-prevencao-tratamento",
+      "resumo": "Entenda as causas da acne e descubra os melhores métodos de prevenção e tratamento.",
+      "imagemHeader": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1200&h=600&fit=crop",
+      "status": "publicado",
+      "criadoEm": "2025-11-21T00:56:23.822Z"
+    }
+  ],
+  "categorias": [
+    {
+      "id_categoria": 1,
+      "nome": "cabelo",
+      "descricao": null
+    },
+    {
+      "id_categoria": 2,
+      "nome": "pele",
+      "descricao": null
+    }
+  ],
+  "tiposCabelo": [
+    {
+      "id_tipo_cabelo": 1,
+      "nome": "liso",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 2,
+      "nome": "ondulado\n",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 3,
+      "nome": "crespo",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 4,
+      "nome": "cacheado",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 5,
+      "nome": "todos os tipo\n",
+      "descricao": null
+    }
+  ]
+}

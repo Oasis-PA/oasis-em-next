@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/@lobehub/icons-static-png/latest/files/light/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.tcdn.com.br',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   async headers() {
