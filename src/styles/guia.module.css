@@ -1,12 +1,20 @@
-/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
+/* ⚠️ NOTA: Aplique a classe 'wrapper' na div que envolve todo o seu componente.
+   Exemplo React: <div className={styles.wrapper}> ... </div>
+*/
+
+/* --- RESET ESCOPADO --- */
 .wrapper {
     display: flex;
     width: 100%;
     height: auto;
     flex-direction: column;
     overflow-x: hidden;
+    /* Garante que o contexto de fonte base seja herdado se necessário */
 }
 
+/* Restaura o comportamento do "main *" do CSS antigo.
+   Aplica reset apenas aos elementos DENTRO deste módulo.
+*/
 .wrapper * {
     margin: 0;
     padding: 0;
@@ -14,15 +22,18 @@
     box-sizing: border-box;
 }
 
+/* --- ESTRUTURA PRINCIPAL --- */
 .main {
     display: flex;
     width: 100%;
     height: auto;
     justify-content: center;
+    align-items: center; /* Restaurado do CSS antigo */
     flex-direction: column;
     margin-bottom: clamp(2rem, 4vw, 4rem);
 }
 
+/* --- HEADER --- */
 .sectionHeader {
     background-image: url('../../public/images/guia/header-bg.png');
     width: 100%;
@@ -49,6 +60,7 @@
     max-width: 60ch;
 }
 
+/* --- SEÇÃO 1 (GUIA) --- */
 .s1 {
     display: flex;
     flex-direction: column;
@@ -106,15 +118,15 @@
     margin-top: clamp(0.5rem, 2vw, 1rem);
 }
 
+/* --- SEÇÃO 2 (GRID DE RESULTADOS) --- */
 .s2 {
-  flex-flow: column nowrap;
     display: flex;
     width: 100%;
     max-width: 1800px;
     justify-content: center;
     align-items: stretch;
     gap: clamp(1.5rem, 4vw, 3rem);
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* ESSENCIAL: Mantém os itens em grade, não coluna */
     padding: 1rem;
     margin-top: 1rem;
 }
@@ -131,6 +143,7 @@
     transform: scale(1.03);
 }
 
+/* Tratamento de estado vazio via pseudo-classe */
 .s2:empty::after {
     content: "Nenhuma página encontrada para sua pesquisa.";
     display: block;
@@ -140,8 +153,10 @@
     color: #666;
     padding: 2rem;
     margin: 2rem auto;
+    width: 100%; /* Garante centralização quando vazio */
 }
 
+/* --- CARDS (PAG) --- */
 .pag {
     display: flex;
     flex-direction: row;
@@ -181,6 +196,7 @@
     margin-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
+/* --- SEARCH --- */
 .searchContainer {
     position: relative;
     width: 95%;
@@ -203,12 +219,13 @@
     outline: none;
 }
 
-#searchInput:focus {
+/* Corrigido: De #searchInput para .searchInput */
+.searchInput:focus {
     border-color: #ECC46F;
     box-shadow: 0 4px 15px rgba(236, 196, 111, 0.3);
 }
 
-#searchInput::placeholder {
+.searchInput::placeholder {
     color: #aaa;
 }
 
@@ -219,6 +236,7 @@
     pointer-events: none;
 }
 
+/* --- MEDIA QUERIES --- */
 @media (max-width: 768px) {
     .s2Link {
         flex-direction: column;
@@ -230,17 +248,16 @@
         flex-direction: column;
     }
 
-    .s1{
-      display: flex;
-      flex-flow: row;
-        align-items: center;
+    .s1 {
+        align-items: center; /* Centraliza no eixo cruzado */
         text-align: center;
         margin-left: 0;
+        /* Removemos o flex-flow: row que estava errado, mantém column herdado */
     }
 
-    #guia{
+    .guia {
         margin-left: 0;
-        display: flex;
+        /* display: flex já é padrão, não precisa repetir */
     }
 
     .pagImg {

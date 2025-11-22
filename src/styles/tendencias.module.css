@@ -446,15 +446,14 @@
     background: url('/images/tendencias/princip-3.png') center/cover no-repeat;
     min-height: clamp(30rem, 40vw, 45rem);
     display: flex;
-    justify-content: center;
     align-items: flex-end;
     padding: clamp(1.5rem, 2vw, 2rem);
 }
 
 .esq p {
     color: #FFF;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    max-width: 500px;
+    font-size: clamp(4.5rem, 5vw, 7rem);
+    max-width: 90%;
 }
 
 .dir {

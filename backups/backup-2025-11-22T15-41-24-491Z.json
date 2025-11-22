@@ -1,0 +1,717 @@
+{
+  "exportDate": "2025-11-22T15:41:24.491Z",
+  "summary": {
+    "usuarios": 3,
+    "produtos": 24,
+    "artigos": 35,
+    "categorias": 4,
+    "tiposCabelo": 4
+  },
+  "usuarios": [
+    {
+      "id_usuario": 1553,
+      "nome": "Cypress Test User",
+      "email": "cypress@test.com",
+      "telefone": null,
+      "sobrenome": null,
+      "sobre": null,
+      "data_nascimento": null,
+      "data_cadastro": "2025-11-22T01:38:07.170Z"
+    },
+    {
+      "id_usuario": 1545,
+      "nome": "celsoq",
+      "email": "celso@gmail.com",
+      "telefone": null,
+      "sobrenome": null,
+      "sobre": null,
+      "data_nascimento": null,
+      "data_cadastro": "2025-11-22T01:16:36.552Z"
+    },
+    {
+      "id_usuario": 1554,
+      "nome": "ADS",
+      "email": "SADA@GMAIL.COM",
+      "telefone": null,
+      "sobrenome": null,
+      "sobre": null,
+      "data_nascimento": null,
+      "data_cadastro": "2025-11-22T03:21:12.776Z"
+    }
+  ],
+  "produtos": [
+    {
+      "id_produto": 1617,
+      "nome": "Shampoo Texturas Reais Crespos 355ml",
+      "marca": "Dove",
+      "preco": 27.99,
+      "descricao": null,
+      "composicao": "Ingredientes ativos concentrados, como Óleo de Jojoba. Fórmula liberada (sem sulfatos, parabenos, petrolatos e silicones).",
+      "qualidades": "Desenvolvido para curvaturas 4 (ABC). Proporciona limpeza delicada, nutrição profunda e fortalecimento contra a quebra, potencializando a textura natural dos fios.",
+      "mais_detalhes": "Massageie sobre os cabelos molhados e enxágue. Aplique novamente se necessário.",
+      "url_imagem": "https://alexfarma.vteximg.com.br/arquivos/ids/159917-1000-1000/SHAMPOO-DOVE-CRESPOS-TEXTURAS-REAIS-355ML.jpg?v=638315025663700000",
+      "url_loja": "https://www.lojasrede.com.br/shampoo-dove-texturas-reais-crespos-355ml/p",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1618,
+      "nome": "Shampoo todecacho Cachos Dos Sonhos 300ml",
+      "marca": "Salon Line",
+      "preco": 18.99,
+      "descricao": null,
+      "composicao": "Óleo de Amêndoa, Vinagre de Maçã e Óleo de Moringa. Fórmula liberada e vegana.",
+      "qualidades": "Limpa o couro cabeludo enquanto hidrata o comprimento. Equilibra o pH, sela as cutículas e proporciona brilho extremo. Indicado para curvaturas 2ABC e 3A.",
+      "mais_detalhes": "Aplique o shampoo com os cabelos molhados, massageando suavemente. Enxágue bem. Se necessário, repita a aplicação.",
+      "url_imagem": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/76717/509b8a51-6617-4d22-b5a0-3c8c0f5d2d0a-salon-line-todecacho-cachos-dos-sonhos-shampoo-300ml.png",
+      "url_loja": "https://www.princesadonorteonline.com.br/shampoo-salon-line-todecacho-cachos-dos-sonhos-300ml.html",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1619,
+      "nome": "Shampoo Afro Vegan 300ml",
+      "marca": "Inoar",
+      "preco": 29.04,
+      "descricao": null,
+      "composicao": "Manteiga de Karité e Óleo de Rícino. Fórmula 100% vegana, livre de sulfatos e parabenos.",
+      "qualidades": "Limpeza suave que não compromete a forma dos cachos. Nutre, hidrata, sela as cutículas, confere maciez e brilho, e estimula o crescimento saudável.",
+      "mais_detalhes": "Aplique nos cabelos molhados, massageie suavemente e enxágue. Reaplique se necessário.",
+      "url_imagem": "https://ikesaki.vteximg.com.br/arquivos/ids/304815/Inoar-Afro-Vegan---Shampoo-300ml.png",
+      "url_loja": "https://www.clincosmeticos.com.br/cabelo/shampoo/inoar-afro-vegan-shampoo-300ml",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1620,
+      "nome": "Shampoo Higienizando a JUBA 500ml",
+      "marca": "Widi Care",
+      "preco": 52.9,
+      "descricao": null,
+      "composicao": "Óleo de Linhaça Dourada, Extrato de Avelã e Óleo de Coco. Fórmula sem sulfatos, parabenos e petrolatos.",
+      "qualidades": "Limpa, faz espuma e não embola os fios. Desenvolvido para respeitar as curvaturas, hidrata e nutre desde a primeira aplicação, com espuma cremosa.",
+      "mais_detalhes": "Aplique nos cabelos molhados, massageando o couro cabeludo. Puxe a espuma para o comprimento e pontas. Enxágue bem.",
+      "url_imagem": "https://drogariasp.vteximg.com.br/arquivos/ids/1053217-1000-1000/849235---Shampoo-Widi-Care-Higienizando-a-Juba-500ml_0001_7898623241046_99_3_1200_72_SRGB.png?v=638437016284870000",
+      "url_loja": "https://www.epocacosmeticos.com.br/widi-care-higienizando-a-juba-shampoo/p",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1621,
+      "nome": "Shampoo Magic Wash 315ml",
+      "marca": "Soul Power",
+      "preco": 27.99,
+      "descricao": null,
+      "composicao": "D-Pantenol, Óleo de Oliva, Óleo de Macadâmia e Extrato Fitoglicerinado de Uva. Fórmula sem sulfato.",
+      "qualidades": "Limpeza suave sem ressecar, ideal para low poo. Confere hidratação de longa duração, maciez, brilho e ajuda a definir os cachos, reduzindo o frizz.",
+      "mais_detalhes": "Aplique nos cabelos molhados, do couro cabeludo às pontas. Massageie com movimentos circulares a raiz e enxágue. Repita se necessário.",
+      "url_imagem": "https://ikesaki.vtexassets.com/arquivos/ids/198803-800-auto?v=638890192978930000&width=800&height=auto&aspect=true",
+      "url_loja": "https://www.lojasrede.com.br/shampoo-soul-power-magic-wash-315ml/p",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1622,
+      "nome": "Condicionador Meu Cacho Minha Vida 500g",
+      "marca": "Lola Cosmetics",
+      "preco": 33.92,
+      "descricao": null,
+      "composicao": "Óleo de Patauá e Extratos Vegetais. Fórmula liberada para Low/No Poo, com ativos como Óleo de Coco, Extrato de Mamão Papaya e Manteiga de Cacau.",
+      "qualidades": "Nutre e condiciona cabelos crespos e cacheados. Ajuda a aumentar a umidade, elasticidade e maciez dos fios. Ideal para uso diário ou co-wash.",
+      "mais_detalhes": "Após o shampoo, aplique uma quantidade nos cabelos úmidos, emulsione e deixe agir por 1 a 2 minutos. Enxágue bem. Para co-wash, massageie no couro cabeludo e enxágue.",
+      "url_imagem": "https://dermabox.com.br/cdn/shop/files/QQYSYMMD7-1_08c49f69-a1c8-4f10-8984-3017f05a833c.jpg?v=1754968282&width=1920",
+      "url_loja": "https://dermabox.com.br/products/meu-cacho-minha-vida-condicionador-500g-lola-cosmetics",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1613,
+      "nome": "Shampoo Hidratante Intense Moisturizing Curl Expression 300ml",
+      "marca": "L'Oréal Professionnel",
+      "preco": 157,
+      "descricao": null,
+      "composicao": "Glicerina (3%), Urea H e Semente de Hibisco. Fórmula sem sulfatos e sem silicone.",
+      "qualidades": "Limpa suavemente enquanto proporciona hidratação intensa e de longa duração, sem pesar. Facilita o desembaraçar e prepara os fios para a máscara.",
+      "mais_detalhes": "Use semanalmente. Aplique uniformemente no cabelo molhado, massageie até obter uma espuma leve e enxágue abundantemente.",
+      "url_imagem": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/20049717/3fe470a0-d47e-423e-8ae1-4c881fbf2a4a-20049717-loreal-curl-exp-int-moist-sh-hid-300ml.png",
+      "url_loja": "https://www.sephora.com.br/shampoo-hidratante-l-oreal-professionnel-intense-moisturizing-curl-expression-serie-expert-9090618637-9090618637.html",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1614,
+      "nome": "Shampoo Boom Hidratação Duradoura 250ml",
+      "marca": "Seda",
+      "preco": 17.99,
+      "descricao": null,
+      "composicao": "Enriquecido com Manteiga de Karité. Livre de parabenos.",
+      "qualidades": "Higieniza, desembaraça e hidrata os cachos por mais tempo. Limpa sem ressecar, mantendo a maciez.",
+      "mais_detalhes": "Coloque o shampoo na mão e aplique direto no cabelo molhado. Massageie suavemente o couro cabeludo e depois enxágue.",
+      "url_imagem": "https://farmaciasnissei.com.br/media/produtos/1000244_20250514_0.jpg",
+      "url_loja": "https://www.lojasrede.com.br/shampoo-seda-boom-hidratacao-duradoura-250ml/p",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1615,
+      "nome": "Shampoo Umectante Óleo Extraordinário Cachos 400ml",
+      "marca": "Elseve (L'Oréal Paris)",
+      "preco": 28.99,
+      "descricao": null,
+      "composicao": "Óleo de Coco e Óleos de Flores Preciosas. Fórmula sem sulfato e sem sal.",
+      "qualidades": "Limpa suavemente sem ressecar. Proporciona nutrição intensa, definição duradoura, controle do frizz e brilho. Ideal para cabelos cacheados a crespos ou em transição.",
+      "mais_detalhes": "Aplique nos cabelos molhados e massageie suavemente. Enxágue. Repita a operação se necessário.",
+      "url_imagem": "https://drogariaspacheco.vteximg.com.br/arquivos/ids/781518-1000-1000/637262---shampoo-elseve-oleo-extraordinario-cachos-400ml.jpg?v=637829605718770000",
+      "url_loja": "https://www.lojasrede.com.br/shampoo-elseve-oleo-extraordinario-cachos-400ml/p",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1616,
+      "nome": "Shampoo Cachos Definidos 400ml",
+      "marca": "Pantene",
+      "preco": 31.82,
+      "descricao": null,
+      "composicao": "Fórmula Pro-V com Ômega 9 e Óleo de Coco.",
+      "qualidades": "Limpa suavemente, hidrata profundamente e promove definição sem pesar. Ajuda a fortalecer os fios, controla o frizz e proporciona brilho.",
+      "mais_detalhes": "Aplique sobre o cabelo úmido, massageie suavemente o couro cabeludo com a ponta dos dedos em movimentos circulares. Enxágue e repita se necessário.",
+      "url_imagem": "https://drogariaspacheco.vteximg.com.br/arquivos/ids/783230-500-500/349143---shampoo-tresemme-cachos-definidos-400ml.jpg?v=637830581569830000",
+      "url_loja": "https://www.ikesaki.com.br/shampoo-pantene-cachos-definidos-400ml/p",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1623,
+      "nome": "Máscara Curl Expression 250ml",
+      "marca": "L'Oréal Professionnel",
+      "preco": 213.42,
+      "descricao": null,
+      "composicao": "Glicerina (3%), Urea H e Semente de Hibisco. (Nota: É uma máscara de hidratação intensa que serve como o passo de condicionamento da linha).",
+      "qualidades": "Hidrata intensamente, desembaraça, controla o frizz e dá um toque sedoso. Desembaraça e hidrata profundamente cachos e crespos.",
+      "mais_detalhes": "Após o shampoo, aplique nos cabelos levemente secos com toalha e deixe agir de 2 a 10 minutos. Em seguida, enxágue bem.",
+      "url_imagem": "https://ikesaki.vtexassets.com/arquivos/ids/315199-800-auto?v=638282461157700000&width=800&height=auto&aspect=true",
+      "url_loja": "https://www.epocacosmeticos.com.br/loreal-professionnel-curl-expression-serie-expert-mascara/p",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1624,
+      "nome": "Condicionador Boom Hidratação Duradoura 250ml",
+      "marca": "Seda",
+      "preco": 7.99,
+      "descricao": null,
+      "composicao": "Enriquecido com Manteiga de Karité. Livre de parabenos e óleo mineral.",
+      "qualidades": "Sela as cutículas e hidrata intensamente, proporcionando super maciez desde a primeira lavagem. Combate o ressecamento e define os cachos.",
+      "mais_detalhes": "Após o shampoo, aplique o condicionador nos cabelos molhados, espalhe por todo o cabelo, concentrando no comprimento e pontas. Deixe agir por 30 segundos e enxágue.",
+      "url_imagem": "https://drogariaspacheco.vteximg.com.br/arquivos/ids/1412437-1000-1000/854611---Condicionador-Capilar-Seda-Boom-Hidratacao-Duradoura-250ml-1.jpg.jpg?v=638830225081400000",
+      "url_loja": "https://www.drogariasaopaulo.com.br/condicionador-capilar-seda-boom-hidratacao-duradoura-250ml/p",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1625,
+      "nome": "Condicionador Umectante Óleo Extraordinário Cachos 400ml",
+      "marca": "Elseve (L'Oréal Paris)",
+      "preco": 31.99,
+      "descricao": null,
+      "composicao": "Óleo de Coco e Óleos de Flores Preciosas. Fórmula sem sulfato e sem sal.",
+      "qualidades": "Nutre intensamente, hidrata e desembaraça. Promove umectação profunda sem pesar, controla o frizz e define os cachos por até 48 horas.",
+      "mais_detalhes": "Aplique em todo o comprimento, do meio até as pontas. Deixe o produto agir por alguns minutos e depois enxágue completamente.",
+      "url_imagem": "https://paguemenos.vtexassets.com/arquivos/ids/696101/7899706152167-02.jpg?v=638259692968900000",
+      "url_loja": "https://www.extrafarma.com.br/condicionador-l-oreal-paris-elseve-oleo-extraordinario-cachos-com-400ml/p",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1626,
+      "nome": "Condicionador Cachos Definidos 400ml",
+      "marca": "Pantene",
+      "preco": 31.99,
+      "descricao": null,
+      "composicao": "Fórmula Pro-V com Óleo de Coco e Ômega 9.",
+      "qualidades": "Desembaraça, hidrata profundamente e fortalece os fios. Ajuda a reestruturar o cabelo para cachos definidos, resistentes à umidade e com volume controlado.",
+      "mais_detalhes": "Aplique sobre o cabelo molhado após o shampoo, da metade do cabelo até as pontas. Penteie suavemente com os dedos. Enxágue e repita se necessário.",
+      "url_imagem": "https://drogariaspacheco.vteximg.com.br/arquivos/ids/1333780-1000-1000/630446---Condicionador-Pantene-Cachos-Hidra-Vitaminados-400ml_0004_0.png?v=638606187414200000",
+      "url_loja": "https://www.drogariaspacheco.com.br/condicionador-pantene-cachos-hidra-vitaminados-400ml/p",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1627,
+      "nome": "Condicionador Texturas Reais Crespos 400ml",
+      "marca": "Dove",
+      "preco": 30.9,
+      "descricao": null,
+      "composicao": "Óleo de Jojoba e ingredientes ativos concentrados. Fórmula liberada (sem parabenos, petrolatos, óleo mineral e corantes).",
+      "qualidades": "Promove ultra desembaraço, nutrição e fortalecimento. Desenvolvido para cabelos crespos (Curvaturas 4A, 4B, 4C), sela as cutículas, retém a hidratação e reduz o frizz.",
+      "mais_detalhes": "Após o shampoo, aplique o condicionador do meio para as pontas, deixe agir por 1 minuto e enxágue para um desembaraço completo.",
+      "url_imagem": "https://tfdfn2.vtexassets.com/arquivos/ids/221861/condicionador-dove-texturas-reais-crespos-400ml.jpg?v=638168149722670000",
+      "url_loja": "https://sinete.com.br/cond-dove-400ml-texturas-reais-crespo.html",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1628,
+      "nome": "Condicionador todecacho Cachos Dos Sonhos 300ml",
+      "marca": "Salon Line",
+      "preco": 20,
+      "descricao": null,
+      "composicao": "Óleo de Amêndoa e Vinagre de Maçã. Com tecnologia PROFIX (hidratação, força e saúde). Vegano.",
+      "qualidades": "Proporciona super desembaraço, condiciona perfeitamente, dá emoliência e maciez. Garante cachos soltos, definição e sela as cutículas.",
+      "mais_detalhes": "Aplique o condicionador após o uso do shampoo, massageando suavemente do comprimento às pontas. Deixe agir de 1 a 3 minutos e enxágue bem.",
+      "url_imagem": "https://images.tcdn.com.br/img/img_prod/1017481/condicionador_todecacho_cachos_dos_sonhos_300ml_salon_line_22481_1_516d9bba3eb70cc0112bdec4d9c2d7f3.jpg",
+      "url_loja": "https://www.apamoveis.com.br/condicionador-todecacho-cachos-dos-sonhos-300ml-salon-line-p982",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1629,
+      "nome": "Condicionador Afro Vegan 300ml",
+      "marca": "Inoar",
+      "preco": 21.52,
+      "descricao": null,
+      "composicao": "Manteiga de Karité e Óleo de Rícino. Fórmula vegana, sem sulfatos e parabenos.",
+      "qualidades": "Fórmula vegana que nutre, hidrata, repõe nutrientes e sela as cutículas. Deixa os cabelos maleáveis, macios, com brilho e estimula o crescimento.",
+      "mais_detalhes": "Após lavar os cabelos com o shampoo Afro Vegan, aplique o condicionador no comprimento e pontas. Massageie por 2 minutos e enxágue completamente.",
+      "url_imagem": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/57136/1e72189b-a4b2-42b5-b28a-4a663b3343a5-inoar-afro-vegan-condicionador-300ml.png",
+      "url_loja": "https://www.loja.inoar.com.br/produto/condicionador-hidratacao-afro-vegan-inoar-300ml-150224/",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1630,
+      "nome": "Condicionador Hidro-Nutritivo Condicionando a Juba 500ml",
+      "marca": "Widi Care",
+      "preco": 59.9,
+      "descricao": null,
+      "composicao": "Óleo de Linhaça Dourada, Óleo de Abacate e Manteiga de Murumuru. Fórmula liberada.",
+      "qualidades": "Condicionador hidro-nutritivo que promove alta emoliência. Proporciona desembaraço, maciez, brilho, hidrata e nutre a fibra capilar em uma única aplicação.",
+      "mais_detalhes": "Após higienizar com o shampoo, aplique uma pequena quantidade do condicionador por todo o comprimento e pontas. Deixe agir por 3 minutos e enxágue.",
+      "url_imagem": "https://images.tcdn.com.br/img/img_prod/690995/condicionador_juba_widi_care_500ml_hidro_nutritivo_47833803_1_f32aea451a348ad70db8dd17ff40ab95.jpg",
+      "url_loja": "https://lojawidicare.com.br/produtos/condicionador-hidro-nutritivo-condicionando-a-juba-500ml/",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1631,
+      "nome": "Condicionador Color Curls Magic Help 315ml",
+      "marca": "Soul Power",
+      "preco": 11.9,
+      "descricao": null,
+      "composicao": "Queratina, Aminoácidos, Colágeno Vegetal e Manteiga de Karité. Fórmula sem sulfatos, parabenos e silicones.",
+      "qualidades": "Formulado para cabelos cacheados coloridos ou descoloridos. Hidrata, desembaraça, fortalece os fios, protege a cor e tem ação antiemborrachamento.",
+      "mais_detalhes": "Aplique nos cabelos úmidos após o shampoo ou máscara, concentrando nas pontas. Deixe agir por 3-5 minutos e enxágue bem.",
+      "url_imagem": "https://beautycolorcompany.fbitsstatic.net/img/p/condicionador-color-curls-soul-power-recupera-cachos-ressecados-315ml-151227/337846.jpg?w=420&h=420&v=202503141041",
+      "url_loja": "https://www.ikesaki.com.br/condicionador-beauty-color-soul-power-color-curls-magic-help-315ml/p",
+      "data_cadastro": "2025-11-22T14:27:23.159Z"
+    },
+    {
+      "id_produto": 1612,
+      "nome": "Shampoo Hidratante Meu Cacho Minha Vida 500ml",
+      "marca": "Lola Cosmetics",
+      "preco": 31.37,
+      "descricao": null,
+      "composicao": "Fórmula suave com Óleo de Patauá e Extratos Vegetais. Livre de sulfatos, silicones, parabenos e petrolatos (liberado para Low Poo).",
+      "qualidades": "Limpa os fios de forma suave, sem agredir. Ajuda a aumentar a umidade natural, a elasticidade e a maciez dos cabelos. Indicado para uso diário.",
+      "mais_detalhes": "Aplique uma pequena quantidade nos cabelos úmidos, massageie suavemente com as pontas dos dedos o couro cabeludo e os fios. Enxágue. Se necessário, repita a aplicação.",
+      "url_imagem": "https://d2l4mdyojly1ma.cloudfront.net/Custom/Content/Products/45/49/45499_meu-cacho-minha-vida-shampoo-500ml-ps-19629-30_z7_638736767187606030.webp",
+      "url_loja": "https://dermabox.com.br/products/meu-cacho-minha-vida-shampoo-hidratante-500ml-lola-cosmetics",
+      "data_cadastro": "2025-11-22T13:30:42.825Z"
+    },
+    {
+      "id_produto": 1632,
+      "nome": "Leite Umidificador de Perfect Cachos 300ml (Termoprotetor)",
+      "marca": "Vizeme",
+      "preco": 47.9,
+      "descricao": null,
+      "composicao": "Óleo de Coco, Luna Matrix e Styleze. Livre de parabenos, sulfatos e petrolatos (Liberado para Low Poo).",
+      "qualidades": "Produto único que atua como termoprotetor e modelador. Reduz o frizz, define os cachos, proporciona brilho intenso e não pesa nos fios.",
+      "mais_detalhes": "Aplique nos cabelos úmidos ou secos, espalhando uniformemente. Amasse os cachos de baixo para cima para ativar a forma. Não enxágue. Pode ser usado antes do secador/difusor.",
+      "url_imagem": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/MP8549/1b1e7b59-6bcd-4586-891c-03fb3ca68f11-6232279d7dd0e00fa5e8e584-14796949479151532222.jpg",
+      "url_loja": "https://www.loja.vizeme.com.br/leite-umidificador-de-cachos-300ml",
+      "data_cadastro": "2025-11-22T14:55:44.964Z"
+    },
+    {
+      "id_produto": 1633,
+      "nome": "Esfoliante Nutritivo Tododia Jambo Rosa e Flor de Caju 190g",
+      "marca": "Natura",
+      "preco": 39,
+      "descricao": null,
+      "composicao": "Óleo de gergelim, Pantenol, Vitamina E e micropartículas de sementes de damasco.",
+      "qualidades": "Desenvolvido especialmente para peles negras e pardas. Esfolia sem agredir, previne pelos encravados, remove células mortas e deixa a pele renovada e macia.",
+      "mais_detalhes": "Durante o banho, aplique sobre a pele úmida com movimentos circulares em todo o corpo (exceto rosto). Enxágue em seguida. Use até 3 vezes por semana.",
+      "url_imagem": "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwde89c44c/Produtos/NATBRA-172099_1.jpg",
+      "url_loja": "https://www.natura.com.br/p/esfoliante-nutritivo-tododia-jambo-rosa-e-flor-de-caju-190-g/125345",
+      "data_cadastro": "2025-11-22T14:55:44.964Z"
+    },
+    {
+      "id_produto": 1634,
+      "nome": "Sérum Hidratante AH-2 (2% Ácidos Hialurônicos + 1% B5)",
+      "marca": "Principia",
+      "preco": 54,
+      "descricao": null,
+      "composicao": "2% de complexo com 4 tipos de Ácidos Hialurônicos e 1% de Vitamina B5 (D-Pantenol).",
+      "qualidades": "Hidratação profunda, aumento da firmeza e elasticidade, melhora o viço e suaviza rugas e linhas finas. Textura leve e não oleosa.",
+      "mais_detalhes": "Aplique diariamente de manhã e à noite. Com o rosto limpo e seco, dispense algumas gotas nos dedos ou na face e espalhe suavemente, inclusive na área dos olhos. Use antes de cremes e protetor solar.",
+      "url_imagem": "https://product-data.raiadrogasil.io/images/10901275.webp",
+      "url_loja": "https://www.principiaskin.com/serum-hidratante-acidos-hialuronicos-vitamina-b5-ah-2.html",
+      "data_cadastro": "2025-11-22T14:55:44.964Z"
+    },
+    {
+      "id_produto": 1635,
+      "nome": "Hidratante Corporal Pele Negra Vegano 200g",
+      "marca": "Raavi",
+      "preco": 25.09,
+      "descricao": null,
+      "composicao": "Manteiga de Karité, Manteiga de Cacau, Óleo de Girassol e Alantoína. 92% de ingredientes naturais.",
+      "qualidades": "Restaura o brilho natural e a aparência radiante da pele negra. Combate o ressecamento e a aspereza (cinza) da pele, com rápida absorção e toque aveludado.",
+      "mais_detalhes": "Uso diário. Aplique sempre que necessário em todo o corpo, massageando com movimentos suaves até a total absorção do produto.",
+      "url_imagem": "https://www.drogaraia.com.br/_next/image?url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F6634939.webp&w=3840&q=40",
+      "url_loja": "https://www.ikesaki.com.br/hidratante-corporal-raavi-pele-negra-200g/p",
+      "data_cadastro": "2025-11-22T14:55:44.964Z"
+    }
+  ],
+  "artigos": [
+    {
+      "id": 797,
+      "titulo": "Suplementos para cabelo: funcionam mesmo?",
+      "slug": "suplementos-para-cabelo-funcionam-mesmo",
+      "resumo": "Segundo dermatologistas e tricologistas especializados, alguns extratos botânicos realmente ajudam em casos específicos de alopecia androgenética:",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:29.979Z"
+    },
+    {
+      "id": 798,
+      "titulo": "Rotina de skincare infantil: protegendo a pele diariamente",
+      "slug": "rotina-de-skincare-infantil-protegendo-a-pele-diariamente",
+      "resumo": "**O que priorizar na escolha:**",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.104Z"
+    },
+    {
+      "id": 799,
+      "titulo": "Melhores óleos vegetais para pele seca",
+      "slug": "melhores-oleos-vegetais-para-pele-seca",
+      "resumo": "Cada óleo vegetal possui propriedades únicas que atendem necessidades específicas da pele, e conhecer essas características ajuda você a escolher o tratament...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.169Z"
+    },
+    {
+      "id": 800,
+      "titulo": "Protetor solar para peles retintas",
+      "slug": "protetor-solar-para-peles-retintas",
+      "resumo": "Nossa pele retrata nossa ancestralidade, mas vivemos em uma estrutura que historicamente negligenciou as necessidades da pele negra. É hora de mudar essa rea...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.229Z"
+    },
+    {
+      "id": 801,
+      "titulo": "Alimentação e beleza: nutrientes que fazem diferença",
+      "slug": "alimentacao-e-beleza-nutrientes-que-fazem-diferenca",
+      "resumo": "A beleza que você tanto deseja começa de dentro para fora, e aquela pele radiante, cabelos brilhantes e unhas fortes têm muito mais a ver com o que você colo...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.290Z"
+    },
+    {
+      "id": 802,
+      "titulo": "Cuidados noturnos para cabelo e pele",
+      "slug": "cuidados-noturnos-para-cabelo-e-pele",
+      "resumo": "A noite é o momento em que sua pele e cabelos se regeneram naturalmente, mas você sabia que a tecnologia por trás dos produtos noturnos evoluiu drasticamente...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.351Z"
+    },
+    {
+      "id": 803,
+      "titulo": "Tons de cabelo para o verão: inspire-se\\!",
+      "slug": "tons-de-cabelo-para-o-verao-inspire-se",
+      "resumo": "O loiro mel dourado continua sendo o queridinho absoluto, vibrante e luminoso com nuances que vão do dourado claro ao acobreado, perfeito para quem deseja cl...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.413Z"
+    },
+    {
+      "id": 804,
+      "titulo": "Como fazer waves",
+      "slug": "como-fazer-waves",
+      "resumo": "Estiloso, cheio de personalidade e com uma história poderosa de representatividade, o penteado waves conquistou o mundo com sua estética única e significado ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.472Z"
+    },
+    {
+      "id": 805,
+      "titulo": "Os Dilemas do Século XXI: Qual Creme Comprar?",
+      "slug": "os-dilemas-do-seculo-xxi-qual-creme-comprar",
+      "resumo": "Você está no corredor do mercado olhando para dezenas de opções de creme de pentear em pânico total, se perguntando se vai escolher algo muito pesado, muito ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.535Z"
+    },
+    {
+      "id": 806,
+      "titulo": "Óleos essenciais para cabelo: 7 opções poderosas",
+      "slug": "oleos-essenciais-para-cabelo-7-opc-es-poderosas",
+      "resumo": "A queda de cabelo, caspa persistente, oleosidade excessiva e falta de brilho podem ser tratadas com ajuda da natureza através dos óleos essenciais, que são e...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.595Z"
+    },
+    {
+      "id": 807,
+      "titulo": "Ácido hialurônico",
+      "slug": "acido-hialuronico",
+      "resumo": "A beleza está diretamente ligada a rostos proporcionais, simétricos e bem marcados, características que naturalmente se alteram com o processo de envelhecime...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.655Z"
+    },
+    {
+      "id": 808,
+      "titulo": "Maquiagens",
+      "slug": "maquiagens",
+      "resumo": "",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.715Z"
+    },
+    {
+      "id": 809,
+      "titulo": "Vai se casar?",
+      "slug": "vai-se-casar",
+      "resumo": "O dia do casamento está chegando e o coração dispara só de pensar naquele momento mágico de encontrar seu amor no altar. Depois de meses planejando cada deta...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.772Z"
+    },
+    {
+      "id": 810,
+      "titulo": "Autocuidado masculino",
+      "slug": "autocuidado-masculino",
+      "resumo": "O autocuidado masculino estético está finalmente ganhando o espaço que sempre mereceu na sociedade contemporânea, mas esse caminho não foi simples nem livre ...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.832Z"
+    },
+    {
+      "id": 811,
+      "titulo": "Diferença de gerações",
+      "slug": "diferenca-de-gerac-es",
+      "resumo": "BRANDÃO, Daniella Vitória; PEREIRA, Janine Morais. PADRÃO DE BELEZA E RACISMO NA CONSTRUÇÃO DA IDENTIDADE DE MULHERES NEGRAS.",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.893Z"
+    },
+    {
+      "id": 812,
+      "titulo": "Benefícios do Óleo de Rosa Mosqueta",
+      "slug": "beneficios-do-oleo-de-rosa-mosqueta",
+      "resumo": "Você já ouviu falar do óleo de Rosa Mosqueta e ficou curiosa sobre o que ele realmente faz pela sua pele? Esse óleo extraído das sementinhas de uma rosinha s...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:30.953Z"
+    },
+    {
+      "id": 813,
+      "titulo": "Shampoos em barra: veja os 5 mais populares",
+      "slug": "shampoos-em-barra-veja-os-5-mais-populares",
+      "resumo": "Cada cabelo tem necessidades específicas e por isso existem shampoos em barra formulados para diferentes tipos de fios. Vamos entender o que procurar em cada...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.012Z"
+    },
+    {
+      "id": 814,
+      "titulo": "Melhores tipos de finalização",
+      "slug": "melhores-tipos-de-finalizacao",
+      "resumo": "Deixe secar por pelo menos oito horas ou faça à noite e solte os enroladinhos ao acordar. O resultado são cachos lindos e uniformes que duram vários dias com...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.073Z"
+    },
+    {
+      "id": 815,
+      "titulo": "10 tons fantásticos para sair do básico",
+      "slug": "10-tons-fantasticos-para-sair-do-basico",
+      "resumo": "Para quem quer sair do básico com sofisticação. O vinho com toques roxos traz profundidade e personalidade forte. Funciona bem em bases escuras e é statement...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.132Z"
+    },
+    {
+      "id": 816,
+      "titulo": "Como desembaraçar sem dor?",
+      "slug": "como-desembaracar-sem-dor",
+      "resumo": "Cabelo embaraçado é o pesadelo de muita gente, principalmente quem tem fios longos ou cacheados. Aquela sensação de arrancar os fios ao tentar pentear é horr...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.191Z"
+    },
+    {
+      "id": 817,
+      "titulo": "Erros comuns no cronograma capilar",
+      "slug": "erros-comuns-no-cronograma-capilar",
+      "resumo": "O cronograma capilar é aquela rotina de cuidados que promete transformar o cabelo em poucas semanas. Mas muita gente começa super empolgada e não vê os resul...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.249Z"
+    },
+    {
+      "id": 818,
+      "titulo": "5 receitas naturais para poder fortalecer os fios",
+      "slug": "5-receitas-naturais-para-poder-fortalecer-os-fios",
+      "resumo": "Cabelo fraco e quebradiço não é destino, é falta de cuidado específico. A natureza oferece ingredientes poderosos que podem transformar essa situação com rec...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.308Z"
+    },
+    {
+      "id": 819,
+      "titulo": "Maquiagens: 10 opções para arrasar",
+      "slug": "maquiagens-10-opc-es-para-arrasar",
+      "resumo": "Escolher a make certa faz toda diferença entre um visual incrível e um look que não funciona. Cada momento pede um estilo diferente, e conhecer as opções dei...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.366Z"
+    },
+    {
+      "id": 820,
+      "titulo": "Nagô colorida: 15 estilos diferentes",
+      "slug": "nago-colorida-15-estilos-diferentes",
+      "resumo": "As tranças nagô já são lindas por si só, mas quando ganham cor viram verdadeiras obras de arte no cabelo. Esse penteado tradicional africano que carrega hist...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.425Z"
+    },
+    {
+      "id": 821,
+      "titulo": "Produtos indispensáveis para cabelos pintados",
+      "slug": "produtos-indispensaveis-para-cabelos-pintados",
+      "resumo": "Cabelo pintado é lindo mas exige cuidados específicos para manter cor vibrante e fios saudáveis. O processo de coloração, seja com descoloração ou tintura, a...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.485Z"
+    },
+    {
+      "id": 822,
+      "titulo": "Hidratação caseira para cabelos crespos",
+      "slug": "hidratacao-caseira-para-cabelos-crespos",
+      "resumo": "Cabelos crespos tipo 4 são lindos e cheios de personalidade, mas a estrutura em espiral torna os fios naturalmente mais ressecados. A oleosidade natural do c...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.546Z"
+    },
+    {
+      "id": 823,
+      "titulo": "Transição capilar: primeiros cuidados essenciais",
+      "slug": "transicao-capilar-primeiros-cuidados-essenciais",
+      "resumo": "A transição capilar é muito mais que simplesmente deixar o cabelo crescer. É processo de resgate da textura natural dos fios depois de anos de alisamentos qu...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.604Z"
+    },
+    {
+      "id": 824,
+      "titulo": "Cabelos masculinos crespos: guia completo de cuidados",
+      "slug": "cabelos-masculinos-crespos-guia-completo-de-cuidados",
+      "resumo": "Muitos homens com cabelo crespo ainda acham que cuidar dos fios é coisa de mulher, mas essa mentalidade está mudando. Cabelos crespos masculinos tipo 4 são n...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.667Z"
+    },
+    {
+      "id": 825,
+      "titulo": "Cortes que valorizam o rosto redondo",
+      "slug": "cortes-que-valorizam-o-rosto-redondo",
+      "resumo": "Rosto redondo tem suas características únicas e merece cortes que realcem essa beleza natural ou, se preferir, criem ilusão de alongamento. Muitas mulheres c...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.727Z"
+    },
+    {
+      "id": 826,
+      "titulo": "Rotina de skincare para peles negras",
+      "slug": "rotina-de-skincare-para-peles-negras",
+      "resumo": "Pele negra tem características únicas que merecem atenção específica na rotina de cuidados. Apesar da melanina abundante oferecer certa proteção natural, pel...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.786Z"
+    },
+    {
+      "id": 827,
+      "titulo": "Hidratação natural para cabelos infantis",
+      "slug": "hidratacao-natural-para-cabelos-infantis",
+      "resumo": "Cabelos infantis precisam de cuidados especiais e delicados porque estrutura dos fios é diferente da adulta. Crianças têm córtex capilar menos desenvolvido c...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.847Z"
+    },
+    {
+      "id": 828,
+      "titulo": "Cuidados com a pele sensível das crianças",
+      "slug": "cuidados-com-a-pele-sensivel-das-criancas",
+      "resumo": "A pele infantil é naturalmente mais fina e delicada que a dos adultos, tornando-se extremamente vulnerável a irritações, alergias e ressecamento. Até os cinc...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.906Z"
+    },
+    {
+      "id": 829,
+      "titulo": "Como identificar alergias e irritações na pele das crianças",
+      "slug": "como-identificar-alergias-e-irritac-es-na-pele-das-criancas",
+      "resumo": "Erupções cutâneas em crianças são extremamente comuns deixando pais preocupados e confusos sobre o que pode estar causando problema. Pele infantil reage faci...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:31.965Z"
+    },
+    {
+      "id": 830,
+      "titulo": "Dicas para hora do banho sem lágrimas",
+      "slug": "dicas-para-hora-do-banho-sem-lagrimas",
+      "resumo": "**Bebê sorrindo durante o banho**",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:32.025Z"
+    },
+    {
+      "id": 831,
+      "titulo": "Como escolher o corte ideal para o formato do rosto",
+      "slug": "como-escolher-o-corte-ideal-para-o-formato-do-rosto",
+      "resumo": "Escolher corte de cabelo ideal vai muito além de seguir tendências, é sobre entender características únicas do seu rosto e trabalhar com elas estrategicament...",
+      "imagemHeader": null,
+      "status": "publicado",
+      "criadoEm": "2025-11-22T14:45:32.084Z"
+    }
+  ],
+  "categorias": [
+    {
+      "id_categoria": 1,
+      "nome": "cabelo",
+      "descricao": null
+    },
+    {
+      "id_categoria": 2,
+      "nome": "pele",
+      "descricao": null
+    },
+    {
+      "id_categoria": 97,
+      "nome": "teste",
+      "descricao": null
+    },
+    {
+      "id_categoria": 98,
+      "nome": "alimentação",
+      "descricao": null
+    }
+  ],
+  "tiposCabelo": [
+    {
+      "id_tipo_cabelo": 1,
+      "nome": "liso",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 2,
+      "nome": "ondulado\n",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 3,
+      "nome": "crespo",
+      "descricao": null
+    },
+    {
+      "id_tipo_cabelo": 4,
+      "nome": "cacheado",
+      "descricao": null
+    }
+  ]
+}

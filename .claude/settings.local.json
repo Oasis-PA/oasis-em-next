@@ -6,7 +6,16 @@
       "Bash(node check-artigos.js:*)",
       "Bash(xargs -I {} sh -c 'echo \"\"\"\"Arquivo: {}\"\"\"\" && head -c 500 {}')",
       "Bash(node restore-artigos.js:*)",
-      "Bash(node restore-usuario.js:*)"
+      "Bash(node restore-usuario.js:*)",
+      "Bash(npm run backup:*)",
+      "Bash(node:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''''EOF''''\nfix: backup agora salva conteudo completo dos artigos\n\n- Adicionar campo ''''conteudo'''' no export-data.ts\n- Adicionar campos ''''dataPublicacao'''' e ''''themeDark'''' no export\n- Atualizar import-data.ts para restaurar todos os campos\n- Fallback para resumo se conteudo estiver vazio\n\nIsso resolve o problema de perda de dados em artigos durante backup/restore.\n\n🤖 Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(xargs ls:*)",
+      "Bash(npm run restore:*)",
+      "Bash(git commit:*)",
+      "Bash(npx ts-node:*)",
+      "Bash(npx tsx:*)"
     ],
     "deny": [],
     "ask": []
