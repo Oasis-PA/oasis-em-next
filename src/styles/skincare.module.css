@@ -1,19 +1,4 @@
-/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
-/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÕES REFORMULADOS E HOVERS
-   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-
-.wrapper > div,
-.wrapper main,
-.wrapper section,
-.wrapper article {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--corpo-texto);
-}
-
-.wrapper > div {
+.mainContainer {
     display: flex;
     width: 100%;
     height: auto;
@@ -24,19 +9,14 @@
     max-width: 2300px;
     align-self: center;
     justify-self: center;
+    overflow-x: hidden; /* Substitui o html { overflow-x: hidden } */
 }
 
-.wrapper {
-    overflow-x: hidden;
-}
-
-.wrapper main {
-    display: flex;
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.mainContainer * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--corpo-texto);
 }
 
 /* ================================== */
@@ -44,12 +24,12 @@
 /* ================================== */
 
 .headerTransparente {
-  background-color: transparent !important;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+    background-color: transparent !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .sectionHeader {
@@ -67,13 +47,8 @@
     max-width: 2200px;
 }
 
-@media (max-width: 900px) {
-    .sectionHeader {
-        min-height: 600px;
-    }
-}
-
-.sectionHeader > h1, .sectionHeader > h2 {
+.sectionHeader > h1, 
+.sectionHeader > h2 {
     color: white;
     font-family: "The Next Font", sans-serif;
     line-height: 1;
@@ -84,7 +59,7 @@
 }
 
 .sectionHeader > h2 {
-   font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
+    font-size: clamp(9rem, 10vw + 2rem, 15.3125rem);
     opacity: 50%;
 }
 
@@ -193,17 +168,13 @@
     flex-direction: row;
 }
 
-@media (max-width: 900px) {
-    .artigos, .artigo2 {
-        flex-direction: column;
-    }
-    .artigo2 {
-        flex-direction: column-reverse;
-    }
-}
-
 .contArtigo {
     padding: clamp(2.4rem, 7.5vw, 7rem);
+}
+
+.artigo2 .contArtigo h1,
+.artigo2 .contArtigo p {
+    color: #FFFFFF !important;
 }
 
 .contArtigo > h1 {
@@ -212,6 +183,7 @@
     margin-bottom: 1.2rem;
     line-height: 1.2;
     max-width: 18ch;
+    color: #000; 
 }
 
 .contArtigo > p {
@@ -222,8 +194,10 @@
     text-align: justify;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    color: #000; 
 }
 
+/* Botões 'Leia Mais' */
 .contArtigo > button {
     width: 200px;
     height: 55px;
@@ -276,6 +250,7 @@
     transform: translateY(-1px) scale(1.02);
 }
 
+/* Seção 3 Imagem (Assumindo que há uma div .s3 ou apenas direcionando a img na hierarquia) */
 .s3 img {
     width: 100%;
     max-width: 700px;
@@ -285,6 +260,16 @@
 
 .s3 img:hover {
     transform: scale(1.03);
+}
+
+/* Media Queries Seção 3 */
+@media (max-width: 900px) {
+    .artigos, .artigo2 {
+        flex-direction: column;
+    }
+    .artigo2 {
+        flex-direction: column-reverse;
+    }
 }
 
 /* ================================== */
@@ -354,12 +339,6 @@
     border-color: #722F53;
 }
 
-@media (max-width: 900px) {
-    .prod1 {
-        max-width: 370px;
-    }
-}
-
 .prod1 > img {
     padding: 7%;
     width: 100%;
@@ -382,6 +361,7 @@
     font-size: 1.2rem;
 }
 
+/* Botão do Produto */
 .prod1 > button {
     align-self: center;
     margin-top: 2rem;
@@ -397,7 +377,7 @@
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    padding: 0;
+    padding: 0; /* Reset importante pois alguns browsers adicionam padding */
 }
 
 .prod1 > button::before {
@@ -429,20 +409,7 @@
     transform: translateY(-1px) scale(1.02);
 }
 
-.prod1 > button a {
-    color: #FFF;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-    padding: 0.8rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Backgrounds dos Produtos */
 .prod1Bg, .prod2Bg, .prod3Bg {
     display: flex;
     width: 100%;
@@ -462,16 +429,14 @@
     font-weight: 400;
 }
 
-.prod1Bg {
-    background-image: url(../../public/images/skincare/prod1-bg.png);
-}
+.prod1Bg { background-image: url(../../public/images/skincare/prod1-bg.png); }
+.prod2Bg { background-image: url(../../public/images/skincare/prod2-bg.png); }
+.prod3Bg { background-image: url(../../public/images/skincare/prod3-bg.png); }
 
-.prod2Bg {
-    background-image: url(../../public/images/skincare/prod2-bg.png);
-}
-
-.prod3Bg {
-    background-image: url(../../public/images/skincare/prod3-bg.png);
+@media (max-width: 900px) {
+    .prod1 {
+        max-width: 370px;
+    }
 }
 
 /* ================================== */
@@ -499,6 +464,7 @@
     max-width: 1700px;
 }
 
+/* Classe unificada dos cards */
 .cardItem {
     background-size: cover;
     background-repeat: no-repeat;
@@ -548,74 +514,30 @@
     line-height: 1.5;
 }
 
-.card1 {
-    background-image: url(/images/skincare/card1.png);
-    background-size: 98%;
-}
+/* IDs convertidos para Classes (Imagens) */
+.card1 { background-image: url(/images/skincare/card1.png); background-size: 98%; }
+.card2 { background-image: url(/images/skincare/card2.png); background-size: 98%; }
+.card3 { background-image: url(/images/skincare/card3.png); background-size: 98%; }
+.card4 { background-image: url(/images/skincare/card4.png); background-size: 98%; }
+.card5 { background-image: url(/images/skincare/card5.png); background-size: 98%; }
 
-.card2 {
-    background-image: url(/images/skincare/card2.png);
-    background-size: 98%;
-}
+.card1:hover { background-image: url(/images/skincare/dica1-bg.png); background-size: 98%; }
+.card2:hover { background-image: url(/images/skincare/dica2-bg.png); background-size: 98%; }
+.card3:hover { background-image: url(/images/skincare/dica3-bg.png); background-size: 98%; }
+.card4:hover { background-image: url(/images/skincare/dica4-bg.png); background-size: 98%; }
+.card5:hover { background-image: url(/images/skincare/dica5-bg.png); background-size: 98%; }
 
-.card3 {
-    background-image: url(/images/skincare/card3.png);
-    background-size: 98%;
-}
-
-.card4 {
-    background-image: url(/images/skincare/card4.png);
-    background-size: 98%;
-}
-
-.card5 {
-    background-image: url(/images/skincare/card5.png);
-    background-size: 98%;
-}
-
-.card1:hover {
-    background-image: url(/images/skincare/dica1-bg.png);
-    background-size: 98%;
-}
-
-.card2:hover {
-    background-image: url(/images/skincare/dica2-bg.png);
-    background-size: 98%;
-}
-
-.card3:hover {
-    background-image: url(/images/skincare/dica3-bg.png);
-    background-size: 98%;
-}
-
-.card4:hover {
-    background-image: url(/images/skincare/dica4-bg.png);
-    background-size: 98%;
-}
-
-.card5:hover {
-    background-image: url(/images/skincare/dica5-bg.png);
-    background-size: 98%;
-}
+/* Media Queries Dicas */
 
 @media (min-width: 950px) and (max-width: 1900px) {
     .conteudo {
         margin-top: clamp(1.5rem, 3vw, 4rem);
     }
-
     .conteudo > h1 {
-        color: #FFF;
-        font-family: "The Next Font", sans-serif;
         font-size: clamp(1.2rem, 2.3vw, 1.9rem);
-        margin-bottom: 0.5rem;
     }
-
     .conteudo > p {
-        color: #FFF;
-        text-align: justify;
-        font-family: "Louis George Cafe", sans-serif;
         font-size: clamp(0.8rem, 1.4vw, 1rem);
-        line-height: 1.5;
     }
 }
 
@@ -623,14 +545,12 @@
     .dicas {
         gap: 2.5rem;
     }
-
     .cardItem {
         flex-basis: calc(50% - 1.5rem);
         flex-grow: 1;
         max-width: 400px;
         height: 480px;
     }
-
     .cardItem:hover {
         flex-grow: 2;
     }
@@ -640,64 +560,46 @@
     .conteudo {
         background: none;
     }
-
     .dicas {
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
     }
-
     .cardItem {
         flex-basis: auto;
         width: 90%;
         max-width: 400px;
         height: 500px;
     }
-
     .cardItem:hover {
         flex-grow: 1;
     }
-
     .cardItem .conteudo {
         opacity: 1;
         justify-content: flex-start;
     }
-
-    .card1 {
-        background-size: 95%;
-        background-image: url(/images/skincare/dica1-bg.png);
-    }
-
-    .card2 {
-        background-size: 95%;
-        background-image: url(/images/skincare/dica2-bg.png);
-    }
-
-    .card3 {
-        background-size: 95%;
-        background-image: url(/images/skincare/dica3-bg.png);
-    }
-
-    .card4 {
-        background-size: 95%;
-        background-image: url(/images/skincare/dica4-bg.png);
-    }
-
-    .card5 {
-        background-size: 95%;
-        background-image: url(/images/skincare/dica5-bg.png);
-    }
-
-    .imagemProduto {
-        order: 2;
-    }
-
+    
+    /* Ajuste das imagens mobile para combinar com o antigo */
+    .card1 { background-size: 95%; background-image: url(/images/skincare/dica1-bg.png); }
+    .card2 { background-size: 95%; background-image: url(/images/skincare/dica2-bg.png); }
+    .card3 { background-size: 95%; background-image: url(/images/skincare/dica3-bg.png); }
+    .card4 { background-size: 95%; background-image: url(/images/skincare/dica4-bg.png); }
+    .card5 { background-size: 95%; background-image: url(/images/skincare/dica5-bg.png); }
+    
     .prod1Bg, .prod2Bg, .prod3Bg {
         width: 40%;
     }
-
     .prod1 {
         width: 40%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sectionHeader {
+        min-height: 700px;
+    }
+    .sectionHeader > h1, .sectionHeader > h2 {
+        font-size: 7.5rem;
     }
 }
 
@@ -716,3 +618,4 @@
     max-height: 1200px;
     max-width: 2000px;
 }
+
