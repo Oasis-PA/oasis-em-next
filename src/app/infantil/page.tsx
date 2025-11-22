@@ -17,27 +17,33 @@ interface ProdutoData {
   descricao?: string;
 }
 
+// Componente do Card refatorado para alinhar altura e botão
 const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
   const imageSrc = produto.url_imagem || '/images/infantil/produto.png';
   
   return (
-    <div className="page-infantil-wrapper">
     <div className="prod1">
-      <Image 
-        src={imageSrc} 
-        width={300} 
-        height={300} 
-        alt={produto.nome}
-        unoptimized={true}
-      />
-      <h5>{produto.tag_principal}</h5>
-      <h4>{produto.nome.toUpperCase()}</h4>
-      <Link href={`/produtos/${produto.id_produto}`}>
-        <button id="vejaMais">Veja mais</button>
-      </Link>
-    </div>    </div>
-  );
+      <div className="img-container">
+        <Image 
+          src={imageSrc} 
+          width={300} 
+          height={300} 
+          alt={produto.nome}
+          unoptimized={true}
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        />
+      </div>
+      
+      <div className="info-produto">
+        <h5>{produto.tag_principal || "CUIDADOS"}</h5>
+        <h4>{produto.nome.toUpperCase()}</h4>
+      </div>
 
+      <Link href={`/produtos/${produto.id_produto}`} className="btn-link">
+        <button id="vejaMais">VEJA MAIS</button>
+      </Link>
+    </div>
+  );
 };
 
 export default function Infantil() {
@@ -51,9 +57,10 @@ export default function Infantil() {
         setLoading(true);
         setErro(null);
         
+        // Carrega produtos gerais (pode aumentar o limit se precisar buscar mais opções para filtrar)
         const params = new URLSearchParams();
-        params.append('marca', 'infantil');
-        params.append('limit', '9'); 
+        params.append('marca', 'Infantil');
+        params.append('limit', '20'); 
         params.append('page', '1');
         
         const res = await fetch(`/api/produtos?${params.toString()}`);
@@ -63,9 +70,7 @@ export default function Infantil() {
         }
         
         const data = await res.json();
-        
         const produtosArray = data.produtos || [];
-        
         setProdutos(produtosArray);
       } catch (e) {
         setErro('Não foi possível carregar os produtos infantis');
@@ -77,24 +82,51 @@ export default function Infantil() {
     fetchProdutosInfantis();
   }, []);
 
-  const primeiraLinha = produtos.slice(0, 3);
-  const segundaLinha = produtos.slice(3, 6);
-  const terceiraLinha = produtos.slice(6, 9);
+  // FILTRAGEM PERSONALIZADA POR NOME
+  
+  // Linha 1: Shampoos (Leão)
+  const primeiraLinha = produtos.filter(produto => 
+    produto.nome === "Shampoo Kids Cabelo Cacheado 240ml" ||
+    produto.nome === "Shampoo #todecachinho Baby 300ml"||
+    produto.nome === "Shampoo Juntinhos Cachos Encantados Moana 300ml" 
+   
+  ).slice(0, 3);
 
-  const renderPlaceholders = (linha: ProdutoData[], linhaNum: number) => {
+  // Linha 2: Cremes (Girafa)
+  const segundaLinha = produtos.filter(produto => 
+    produto.nome === "Loção Hidratante Baby 100ml" ||
+    produto.nome === "Loção Hidratante Bebê Vida Leite de Arroz 200ml"||
+    produto.nome === "Creme para Pentear Cachos dos Sonhos 200ml" 
+   
+  ).slice(0, 3);
+
+  // Linha 3: Sabonetes/Outros (Zebra)
+  const terceiraLinha = produtos.filter(produto => 
+    produto.nome === "Sabonete Líquido Bebê Camomila Refil 250ml" ||
+    produto.nome === "Creme de Tratamento Divino Potinho Kids 1kg"||
+    produto.nome === "Creme para Pentear Juntinhos Moana 300ml"
+   
+  ).slice(0, 3);
+
+  // Renderiza placeholders se não houver produtos suficientes
+  const renderPlaceholders = (linha: ProdutoData[]) => {
     if (linha.length >= 3) return null;
     return [...Array(3 - linha.length)].map((_, i) => (
-      <div key={`placeholder-${linhaNum}-${i}`} className="prod1" style={{ opacity: 0.5 }}>
-        <img src="/images/infantil/produto.png" alt="placeholder" />
-        <h5>Em breve</h5>
-        <h4>Produto em breve</h4>
-        <button disabled>Em breve</button>
+      <div key={`placeholder-${i}`} className="prod1" style={{ opacity: 0.5 }}>
+        <div className="img-container">
+           <img src="/images/infantil/produto.png" alt="placeholder" style={{width:'100%', objectFit:'contain'}}/>
+        </div>
+        <div className="info-produto">
+            <h5>Em breve</h5>
+            <h4>Produto em breve</h4>
+        </div>
+        <button id="vejaMais" disabled style={{cursor: 'not-allowed', background: '#ccc'}}>Em breve</button>
       </div>
     ));
   };
 
   return (
-    <>
+    <div className="page-infantil-wrapper">
       <Header />
       <main>
         <div id="d1">
@@ -121,8 +153,7 @@ export default function Infantil() {
               <div>
                 <h4 className="hpreto">Hidratação natural para cabelos infantis</h4>
                 <p className="ppreto">Cuide dos fios delicados do seu pequeno com hidratação natural e suave. 
-                Ingredientes seguros transformam cabelos ressecados em fios macios, saudáveis e cheios de vida, 
-                com todo carinho que eles merecem</p>
+                Ingredientes seguros transformam cabelos ressecados em fios macios, saudáveis e cheios de vida.</p>
               </div>
             </Link>
           </div>
@@ -132,7 +163,7 @@ export default function Infantil() {
               <div>
                 <h4 className="hbranco">Cuidados com a pele sensível das crianças</h4>
                 <p className="pbranco">Proteja a pele delicada do seu filho com cuidados especiais e produtos suaves. 
-                  Previna irritações e mantenha a pele macia, saudável e protegida todos os dias, com carinho e segurança.</p>
+                  Previna irritações e mantenha a pele macia, saudável e protegida todos os dias.</p>
               </div>
             </Link>
             
@@ -140,7 +171,7 @@ export default function Infantil() {
               <div>
                 <h4 className="hpreto">Rotina de skincare: protegendo a pele diariamente</h4>
                 <p className="ppreto">Crie uma rotina de cuidados simples e gostosa para proteger a pele do seu pequeno. Com 
-                  produtos certos e gestos carinhosos, a pele fica saudável, protegida e feliz todos os dias.</p>
+                  produtos certos e gestos carinhosos, a pele fica saudável.</p>
               </div>
             </Link>   
           </div>
@@ -150,7 +181,7 @@ export default function Infantil() {
               <div>
                 <h4 className="hbranco">Como identificar alergias e irritações na pele</h4>
                 <p className="pbranco">Aprenda a reconhecer os sinais de alergias e irritações na pele delicada das crianças. Com 
-                atenção e cuidado, você protege seu pequeno, evita desconfortos e garante uma pele sempre saudável.</p>
+                atenção e cuidado, você protege seu pequeno.</p>
               </div>
             </Link>
 
@@ -158,7 +189,7 @@ export default function Infantil() {
               <div>
                 <h4 className="hbranco">Dicas para hora do banho sem lágrimas</h4>
                 <p className="pbranco">Transforme o banho em um momento especial e divertido, sem choro e sem estresse. Com as técnicas 
-                certas e produtos suaves, seu pequeno vai amar esse momento de carinho, diversão e cuidado.</p>
+                certas e produtos suaves, seu pequeno vai amar esse momento.</p>
               </div>
             </Link> 
           </div>
@@ -172,87 +203,88 @@ export default function Infantil() {
         </div>
 
         {loading ? (
-          <div className="loading-state">
-            Carregando produtos infantis...
-          </div>
+          <div className="loading-state">Carregando produtos infantis...</div>
         ) : erro ? (
-          <div className="error-state">
-            {erro}
-          </div>
+          <div className="error-state">{erro}</div>
         ) : produtos.length === 0 ? (
-          <div className="no-products-state">
-            Nenhum produto infantil encontrado no momento.
-          </div>
+          <div className="no-products-state">Nenhum produto infantil encontrado no momento.</div>
         ) : (
           <>
+            {/* LINHA 1: 3 Produtos + Banner Leão */}
             <div className="produtos">
               {primeiraLinha.map((produto) => (
                 <ProdutoCardInfantil key={produto.id_produto} produto={produto} />
               ))}
-              {renderPlaceholders(primeiraLinha, 1)}
-              <div id="leao-bg">
-                <h1>shampoos sem sulfato</h1>
+              {renderPlaceholders(primeiraLinha)}
+              
+              <div id="leao-bg" className="banner-grid">
+                <h1>shampoos<br/>sem sulfato</h1>
               </div>
             </div>
 
+            {/* LINHA 2: Banner Girafa + 3 Produtos */}
             <div className="produtos">
-              <div id="girafa-bg">
-                <h1>cremes suaves</h1>
+              <div id="girafa-bg" className="banner-grid">
+                <h1>cremes<br/>suaves</h1>
               </div>
+              
               {segundaLinha.map((produto) => (
                 <ProdutoCardInfantil key={produto.id_produto} produto={produto} />
               ))}
-              {renderPlaceholders(segundaLinha, 2)}
+              {renderPlaceholders(segundaLinha)}
             </div>
 
+            {/* LINHA 3: 3 Produtos + Banner Zebra */}
             <div className="produtos">
               {terceiraLinha.map((produto) => (
                 <ProdutoCardInfantil key={produto.id_produto} produto={produto} />
               ))}
-              {renderPlaceholders(terceiraLinha, 3)}
-              <div id="zebra-bg">
+              {renderPlaceholders(terceiraLinha)}
+              
+              <div id="zebra-bg" className="banner-grid">
                 <h1>natural/<br />vegano</h1>
               </div>
             </div>
           </>
         )}
+      </section>
 
+      <section id="s3">
         <div id="linhatexto2">
           <div className="linha"></div>
           <h1>Dicas rápidas para você</h1>
         </div>
-      </section>
 
-      <section id="s3">
-        <div className="dicas">
-          <div id="dica1">
+        {/* NOVA GRID DE DICAS 2x2 */}
+        <div className="dicas-grid">
+          
+          <div id="dica1" className="dica-card">
             <h2>Evite produtos com fragrâncias fortes</h2>
             <p>Produtos com cheiro muito intenso podem irritar a pele delicada da criança. 
             Prefira opções suaves e específicas para o público infantil.</p>
           </div>
 
-          <div id="dica2">
+          <div id="dica2" className="dica-card">
             <h2>Use pentes largos para reduzir a quebra</h2>
-            <p>Ao desembaraçar, escolha pentes de dentes largos ou dedos. Isso helps a 
+            <p>Ao desembaraçar, escolha pentes de dentes largos ou dedos. Isso ajuda a 
             proteger os fios frágeis e evita dor.</p>
           </div>
-        </div>
 
-        <div className="dicas">
-          <div id="dica3">
+          <div id="dica3" className="dica-card">
             <h2>Sempre aplique protetor solar nas crianças</h2>
             <p>Mesmo em dias nublados, a pele precisa de proteção. Escolha fórmulas
             infantis suaves e reaplique conforme necessário.</p>
           </div>
 
-          <div id="dica4">
+          <div id="dica4" className="dica-card">
             <h2>Hidrate a pele após o banho</h2>
             <p>Logo após o banho, aplique hidratante infantil para manter a pele macia,
             protegida e saudável.</p>
           </div>
         </div>
       </section>
+      
       <Footer />
-    </>
+    </div>
   );
 }
