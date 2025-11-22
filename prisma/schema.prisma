@@ -29,24 +29,25 @@ model TipoCabelo {
 }
 
 model Usuario {
-  id_usuario      Int              @id @default(autoincrement())
-  nome            String
-  email           String           @unique
-  telefone        String?
-  senha           String
-  data_nascimento DateTime?
-  data_cadastro   DateTime         @default(now())
-  id_genero       Int
-  id_tipo_cabelo  Int?
-  sobrenome       String?
-  sobre           String?
-  url_foto        String?          @db.VarChar
-  avaliacoes      Avaliacao[]
-  favoritos       Favorito[]
-  FavoritoArtigo  FavoritoArtigo[]
-  passwordResets  PasswordReset[]
-  genero          Genero           @relation(fields: [id_genero], references: [id_genero])
-  tipo_cabelo     TipoCabelo?      @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
+  id_usuario           Int                    @id @default(autoincrement())
+  nome                 String
+  email                String                 @unique
+  telefone             String?
+  senha                String
+  data_nascimento      DateTime?
+  data_cadastro        DateTime               @default(now())
+  id_genero            Int
+  id_tipo_cabelo       Int?
+  sobrenome            String?
+  sobre                String?
+  url_foto             String?                @db.VarChar
+  avaliacoes           Avaliacao[]
+  favoritos            Favorito[]
+  FavoritoArtigo       FavoritoArtigo[]
+  passwordResets       PasswordReset[]
+  QuestionarioResposta QuestionarioResposta[]
+  genero               Genero                 @relation(fields: [id_genero], references: [id_genero])
+  tipo_cabelo          TipoCabelo?            @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo])
 }
 
 model Categoria {
@@ -238,4 +239,73 @@ model CategoriaArtigo {
   Artigo       Artigo[]
 
   @@index([slug], map: "idx_categoria_artigo_slug")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model OpcaoResposta {
+  id_opcao    Int       @id @default(autoincrement())
+  id_pergunta Int
+  valor       String    @db.VarChar(100)
+  texto       String    @db.VarChar(500)
+  ordem       Int
+  criado_em   DateTime? @default(now()) @db.Timestamp(6)
+  Pergunta    Pergunta  @relation(fields: [id_pergunta], references: [id_pergunta], onDelete: Cascade, onUpdate: NoAction, map: "fk_opcao_pergunta")
+
+  @@index([ordem], map: "idx_opcao_ordem")
+  @@index([id_pergunta], map: "idx_opcao_pergunta")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Pergunta {
+  id_pergunta     Int             @id @default(autoincrement())
+  id_questionario Int
+  pergunta        String
+  subtitulo       String?         @db.VarChar(255)
+  campo_bd        String          @db.VarChar(100)
+  imagem_url      String?         @db.VarChar(500)
+  ordem           Int
+  obrigatoria     Boolean?        @default(true)
+  criado_em       DateTime?       @default(now()) @db.Timestamp(6)
+  atualizado_em   DateTime?       @default(now()) @db.Timestamp(6)
+  OpcaoResposta   OpcaoResposta[]
+  Questionario    Questionario    @relation(fields: [id_questionario], references: [id_questionario], onDelete: Cascade, onUpdate: NoAction, map: "fk_pergunta_questionario")
+
+  @@index([ordem], map: "idx_pergunta_ordem")
+  @@index([id_questionario], map: "idx_pergunta_questionario")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Questionario {
+  id_questionario      Int                    @id @default(autoincrement())
+  slug                 String                 @unique @db.VarChar(100)
+  titulo               String                 @db.VarChar(255)
+  descricao            String?
+  icon                 String?                @default("📋") @db.VarChar(10)
+  ativo                Boolean?               @default(true)
+  ordem                Int?                   @default(0)
+  redirect_url         String?                @db.VarChar(255)
+  criado_em            DateTime?              @default(now()) @db.Timestamp(6)
+  atualizado_em        DateTime?              @default(now()) @db.Timestamp(6)
+  Pergunta             Pergunta[]
+  QuestionarioResposta QuestionarioResposta[]
+
+  @@index([ativo], map: "idx_questionario_ativo")
+  @@index([slug], map: "idx_questionario_slug")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model QuestionarioResposta {
+  id_resposta     Int          @id @default(autoincrement())
+  id_usuario      Int
+  id_questionario Int
+  respostas       Json
+  data_resposta   DateTime?    @default(now()) @db.Timestamp(6)
+  atualizado_em   DateTime?    @default(now()) @db.Timestamp(6)
+  Questionario    Questionario @relation(fields: [id_questionario], references: [id_questionario], onDelete: Cascade, onUpdate: NoAction, map: "fk_resposta_questionario")
+  Usuario         Usuario      @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction, map: "fk_resposta_usuario")
+
+  @@unique([id_usuario, id_questionario], map: "unique_usuario_questionario")
+  @@index([data_resposta], map: "idx_resposta_data")
+  @@index([id_questionario], map: "idx_resposta_questionario")
+  @@index([id_usuario], map: "idx_resposta_usuario")
 }
