@@ -54,7 +54,7 @@ const Favoritos: React.FC = () => {
   };
 
   // Cria array de 9 posições mesclando favoritos com cards vazios
-  const artigosGrid = Array.from({ length: 9 }, (_, index) => 
+  const artigosGrid = Array.from({ length: 9 }, (_, index) =>
     favoritos[index] || null
   );
 
@@ -63,7 +63,7 @@ const Favoritos: React.FC = () => {
       <Header />
       {/* Wrapper principal com o reset de box-sizing */}
       <div className={styles.wrapper}>
-        
+
         <main className={styles.mainContainer}>
           <figure className={styles.heroSection}>
             <h1>Quais as tendências de 2025?</h1>
@@ -72,12 +72,12 @@ const Favoritos: React.FC = () => {
           <section className={styles.favoritesSection}>
             <h1 className={styles.favoritesTitle}>Favoritos</h1>
             <p className={styles.favoritesDescription}>
-              Veja seus artigos favoritados sempre que quiser! Para sua compra, 
+              Veja seus artigos favoritados sempre que quiser! Para sua compra,
               faremos a seleção das lojas com os preços mais em conta para o seu bolso.
             </p>
-            
+
             <h1 className={styles.articlesTitle}>ARTIGOS</h1>
-            
+
             {isLoading ? (
               <div className="loading-favoritos">
                 <p>Carregando seus favoritos...</p>
@@ -95,13 +95,13 @@ const Favoritos: React.FC = () => {
                   favorito ? (
                     // Card PREENCHIDO com artigo
                     <Link key={index} href={`/artigo/${favorito.Artigo.slug}`} className={styles.articleCardWrapper}>
-                      <div 
+                      <div
                         className={styles.articleCard}
                         style={{
-                          backgroundImage: favorito.Artigo.imagemHeader 
-                            ? `url(${favorito.Artigo.imagemHeader})` 
+                          backgroundImage: favorito.Artigo.imagemHeader
+                            ? `url(${favorito.Artigo.imagemHeader})`
                             : 'none',
-                          // BackgroundSize e Position já estão na classe .articleCard, 
+                          // BackgroundSize e Position já estão na classe .articleCard,
                           // mas mantemos aqui caso a imagem venha inline de forma diferente
                           backgroundSize: 'cover',
                           backgroundPosition: 'center'
@@ -109,7 +109,7 @@ const Favoritos: React.FC = () => {
                       >
                         <h1>{favorito.Artigo.titulo}</h1>
                         <div className={styles.favoriteBtn}>
-                          <FavoriteButton 
+                          <FavoriteButton
                             artigoId={favorito.Artigo.id}
                             initialIsFavorited={true}
                             size="medium"
@@ -214,7 +214,7 @@ const Favoritos: React.FC = () => {
           <h1 className={styles.savedTitle}>Salvos Recentemente</h1>
           <div className={styles.savedCardsContainer}>
             <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
-            
+
             {/* Exemplo de repetição manual mantido do original */}
             <div className={styles.savedCard}>
               <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
@@ -263,7 +263,7 @@ const Favoritos: React.FC = () => {
         <section className={styles.moreProductsSection}>
           <h1 className={styles.moreProductsTitle}>MAIS PRODUTOS</h1>
           <div className={styles.moreProductsContainer}>
-            
+
             <div className={styles.moreProductsCard}>
               <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
               <h1>PRODUTO TAL</h1>
@@ -309,31 +309,31 @@ const Favoritos: React.FC = () => {
 
         {/* Seção Mosaico Final */}
         <section className={styles.mosaicGrid}>
-          <Link href='/artigo/10-tons-fantasticos' legacyBehavior>
+          <Link href='/artigo/10-tons-fantasticos' >
             <a className={`${styles.mosaicItem} ${styles.mosaicPos1} ${styles.mosaicBg1}`}>
               <h1>10 tons fantásticos para sair do básico</h1>
             </a>
           </Link>
 
-          <Link href='/artigo/nago-colorida' legacyBehavior>
+          <Link href='/artigo/nago-colorida' >
             <a className={`${styles.mosaicItem} ${styles.mosaicPos2} ${styles.mosaicBg2}`}>
               <h1>Nago colorida: 15 estilos diferentes</h1>
             </a>
           </Link>
 
-          <Link href='/artigo/produtos-indispensaveis' legacyBehavior>
+          <Link href='/artigo/produtos-indispensaveis' >
             <a className={`${styles.mosaicItem} ${styles.mosaicPos3} ${styles.mosaicBg3}`}>
               <h1>Produtos indispensáveis para cabelos pintados</h1>
             </a>
           </Link>
 
-          <Link href='/artigo/oleo-de-rosa-mosqueta' legacyBehavior>
+          <Link href='/artigo/oleo-de-rosa-mosqueta' >
             <a className={`${styles.mosaicItem} ${styles.mosaicPos4} ${styles.mosaicBg4}`}>
               <h1>Benefícios do Óleo de Rosa Mosqueta</h1>
             </a>
           </Link>
 
-          <Link href='/artigo/diferenca-de-geracoes' legacyBehavior>
+          <Link href='/artigo/diferenca-de-geracoes' >
             <a className={`${styles.mosaicItem} ${styles.mosaicPos5} ${styles.mosaicBg5}`}>
               <h1>Diferença de gerações</h1>
             </a>

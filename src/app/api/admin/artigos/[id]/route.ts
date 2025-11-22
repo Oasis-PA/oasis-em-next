@@ -127,7 +127,7 @@ export async function PUT(
     // Verificar se categoria existe (se fornecida)
     if (id_categoria) {
       const categoriaExiste = await prisma.categoria.findUnique({
-        where: { id_categoria: parseInt(id_categoria) }
+        where: { id_categoria: parseInt(id_categoria as any, 10) }
       });
 
       if (!categoriaExiste) {
@@ -138,22 +138,44 @@ export async function PUT(
       }
     }
 
+    // construir o objeto de atualização explicitamente para evitar valores inválidos
+    const updateData: any = {
+      titulo: titulo !== undefined ? titulo : artigoExistente.titulo,
+      slug: slug !== undefined ? slug : artigoExistente.slug,
+      conteudo: conteudo !== undefined ? conteudo : artigoExistente.conteudo,
+      resumo: resumo !== undefined ? resumo : artigoExistente.resumo,
+      imagemHeader: imagemHeader !== undefined ? imagemHeader : artigoExistente.imagemHeader,
+      status: status !== undefined ? status : artigoExistente.status,
+      // normalizar dataPublicacao: se fornecida e válida converte para Date, se null mantém null,
+      // se não fornecida mantém o valor existente
+      dataPublicacao:
+        dataPublicacao === null
+          ? null
+          : dataPublicacao !== undefined && dataPublicacao !== ""
+          ? new Date(dataPublicacao)
+          : artigoExistente.dataPublicacao,
+      id_categoria:
+        id_categoria !== undefined
+          ? id_categoria
+            ? parseInt(id_categoria as any, 10)
+            : null
+          : artigoExistente.id_categoria,
+      themeDark: themeDark !== undefined ? Boolean(themeDark) : artigoExistente.themeDark
+    };
+
+    // debug: log do payload antes do update (remove/ajuste em produção)
+    console.log("[ADMIN] updateData:", JSON.stringify(updateData, (_k, v) => {
+      // Date -> ISO string for safe logging
+      if (v instanceof Date) return v.toISOString();
+      return v;
+    }));
+
     // Atualizar artigo
     const artigoAtualizado = await prisma.artigo.update({
       where: { id: artigoId },
-      data: {
-        titulo: titulo || artigoExistente.titulo,
-        slug: slug || artigoExistente.slug,
-        conteudo: conteudo || artigoExistente.conteudo,
-        resumo: resumo !== undefined ? resumo : artigoExistente.resumo,
-        imagemHeader: imagemHeader !== undefined ? imagemHeader : artigoExistente.imagemHeader,
-        status: status || artigoExistente.status,
-        dataPublicacao: dataPublicacao ? new Date(dataPublicacao) : null,
-        id_categoria: id_categoria !== undefined ? (id_categoria ? parseInt(id_categoria as any, 10) : null) : artigoExistente.id_categoria,
-        themeDark: themeDark !== undefined ? themeDark : artigoExistente.themeDark
-      }
+      data: updateData
     });
-
+ 
     // buscar categoria separadamente e anexar ao retorno
     let categoriaAtualizada = null;
     if (artigoAtualizado.id_categoria) {
@@ -162,7 +184,7 @@ export async function PUT(
         select: { id_categoria: true, nome: true }
       });
     }
-
+ 
     return NextResponse.json({
       message: 'Artigo atualizado com sucesso',
       artigo: { ...artigoAtualizado, categoria: categoriaAtualizada }
