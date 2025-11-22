@@ -38,9 +38,9 @@ export default function Guia() {
   };
 
   return (
+    <>
+    <Header />
     <div className={styles.wrapper}>
-
-      <Header />
       <section className={styles.sectionHeader}>
         <h1 className={styles.sectionHeaderH1}>Guia do site</h1>
         <p className={styles.sectionHeaderP}>Seu caminho para descobrir produtos, artigos e muito mais!</p>
@@ -75,7 +75,7 @@ export default function Guia() {
           <div className={styles.searchContainer}>
             <input
               type="text"
-              id={styles.searchInput}
+              className={styles.searchInput} 
               placeholder="Pesquisar"
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
@@ -211,7 +211,9 @@ export default function Guia() {
           </Link>
         </section>
       </main>
-      <Footer />    </div>
+      </div>
+      <Footer /> 
+      </>
   );
 
 }
