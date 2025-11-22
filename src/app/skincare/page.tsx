@@ -48,9 +48,11 @@ export default function Skincare() {
   const terceiroGrupo = produtos.slice(6, 9);
 
   return (
+    <>
+     <Header className={styles.headerTransparente}/>
     <div className={styles.wrapper}>
 
-    <Header className={styles.headerTransparente}/>
+   
     <section className={styles.sectionHeader}>
       <h1>SKIN</h1>
       <h2>CARE</h2>
@@ -259,7 +261,8 @@ export default function Skincare() {
     </section>
     <section className={styles.imagemPerfume}></section>
     </main>
-    <Footer/>
     </div>
+    <Footer/>
+    </>
   );
 }
