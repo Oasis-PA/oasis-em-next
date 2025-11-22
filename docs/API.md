@@ -3,7 +3,7 @@
 ## 🏗️ Stack Tecnológico
 
 ### Frontend
-- **Next.js 14** - Framework React com SSR
+- **Next.js 15** - Framework React com SSR
 - **React 18** - UI library
 - **TypeScript** - Type safety
 - **CSS Modules** - Estilo encapsulado
