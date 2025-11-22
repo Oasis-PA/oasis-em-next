@@ -301,59 +301,71 @@
 /* SEÇÃO S2 - ESTILO REVISTA          */
 /* ================================== */
 
+/* ================================== */
+/* SEÇÃO S2 - ESTILO REVISTA (RESPONSIVO) */
+/* ================================== */
+
 #s2 {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Lado a lado no PC */
     width: 100%;
-    max-width: 2000px; /* Limite menor para ficar mais "box" como na foto */
-    margin: 3rem auto;
-    padding: 0 2rem;
-    gap: 2rem;
-    align-items: stretch;
+    max-width: 2000px; /* Limite para não ficar esticado demais em telas 4k */
+    margin: clamp(2rem, 5vw, 4rem) auto;
+    padding: 0 clamp(1.5rem, 5vw, 3rem); /* Padding lateral seguro */
+    gap: clamp(1.5rem, 3vw, 3rem); /* Espaço entre os cards */
+    align-items: stretch; /* Faz ambos terem a mesma altura se possível */
     box-sizing: border-box;
 }
 
-/* --- LADO ESQUERDO (10 TONS) --- */
+/* --- LADO ESQUERDO (10 TONS - FOTO CHEIA) --- */
 .card-link-wrapper {
-    flex: 1;
+    flex: 1.4; /* Ocupa proporcionalmente mais espaço (aprox 60%) */
     text-decoration: none;
+    display: flex; /* Garante que o link preencha a altura */
 }
 
 #artigo1 {
-    
     background-image: url('../../public/images/tinturas/sair-do-basico.png');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    min-height: 800px; /* Altura fixa boa */
-    width: 65%;
-    min-width: 360px;
-    max-width: 1200px;
-    border-radius: 0; /* Na foto parece quadrado ou levemente arredondado */
+    width: 75%;
+    min-height: clamp(500px, 50vw, 700px); /* Altura mínima garantida */
+    
+    /* Layout interno */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 2rem;
+    padding: clamp(0.5rem, 1vw, 1rem);
     box-sizing: border-box;
     position: relative;
+    
+    /* Estética */
+    border-radius: 0; /* Retangular como na referência */
+    transition: transform 0.4s ease;
+}
+
+#artigo1:hover {
+    transform: scale(1.01); /* Zoom suave ao passar o mouse */
 }
 
 #artigo1 h1 {
     font-family: "THE NEXT FONT";
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2.5rem, 5vw, 5rem); /* Tipografia fluida */
     color: white;
     line-height: 0.9;
     text-transform: uppercase;
-    max-width: 80%;
-    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+    max-width: 90%;
+    text-shadow: 1px 1px 15px rgba(0,0,0,0.6);
+    margin: 0;
 }
 
 /* --- LADO DIREITO (CARD SUGESTÃO - BRANCO) --- */
 #artigo2 {
+
     /* centraliza o card dentro do container pai */
-    align-self: center !important;
+    align-self: center ;
     margin: auto;
-    justify-content: center;
+    
     align-items: center;
     flex: 0.7; /* Um pouco menor que o da esquerda */
     width: 60%;
@@ -365,170 +377,287 @@
     background-color: #FAF5FF; /* Um branco levemente lilás/gelo */
     border-radius: 12px;
     padding: 1.5rem;
+
+
+
+
+    flex: 1; /* Ocupa proporcionalmente menos espaço (aprox 40%) */
     display: flex;
     flex-direction: column;
+    background-color: #FAF5FF; /* Fundo branco gelo/lilás */
+    border-radius: 16px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* Sombra elegante */
+    box-sizing: border-box;
     gap: 1rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    justify-content: center;
+    /* Centralização vertical se o card da esquerda for muito alto */
+    align-self: center !important; 
+    width: 100%; /* Garante que preencha o espaço do flex */
 }
 
+/* Cabeçalho do Card Branco (Logo + Tag) */
 .card-header-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     margin-bottom: 0.5rem;
 }
 
-.logo-a {
-    font-family: serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #000;
+.oasis-logo {
+    /* Ajuste se necessário para o tamanho do seu logo */
+    width: auto;
+    height: clamp(25px, 4vw, 40px); 
 }
 
 .tag-sugestao {
-    background-color: #420E45; /* Cor vinho escuro da tag */
+    cursor: pointer;
+    background-color: #420E45;
     color: white;
-    padding: 0.3rem 1rem;
-    border-radius: 14px;
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    border: none;
     font-family: sans-serif;
-    font-weight: bold;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
     letter-spacing: 1px;
+    
 }
 
+/* Imagem interna do Card Branco */
 .image-container-s2 {
     width: 100%;
-    height: 300px; /* Altura fixa da imagem interna */
+    /* Altura proporcional à largura para manter aspecto bonito */
+    aspect-ratio: 16 / 10; 
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
+}
+
+/* Linha Decorativa */
+.linha-wrapper {
+    width: 100%;
+    margin: 0.5rem 0;
 }
 
 #artigo2 p {
     font-family: "Louis George Cafe";
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
     color: #333;
     line-height: 1.5;
     text-align: left;
-    margin-top: auto; /* Empurra o texto para baixo se sobrar espaço */
+    margin: 0;
+}
+
+
+/* ================================== */
+/* RESPONSIVIDADE S2 (TABLET E MOBILE) */
+/* ================================== */
+
+@media (max-width: 1024px) {
+    #s2 {
+        flex-direction: column; /* Empilha um em cima do outro */
+        gap: 3rem;
+    }
+
+    /* O Card da esquerda vira um banner largo */
+    .card-link-wrapper {
+        width: 100%;
+        flex: auto;
+    }
+
+    #artigo1 {
+        min-height: 500px;
+        width: 100%;
+    }
+
+    /* O Card branco ocupa a largura total também */
+    #artigo2 {
+        width: 100%;
+        max-width: 700px; /* Limita a largura para não ficar feio em tablets */
+        margin: 0 auto; /* Centraliza */
+        align-self: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    #s2 {
+        padding: 0 1rem; /* Menos padding lateral no celular */
+        margin-top: 2rem;
+    }
+
+    #artigo1 {
+        min-height: 400px; /* Altura menor para celular */
+        padding: 1.5rem;
+    }
+
+    #artigo1 h1 {
+        font-size: 2.5rem;
+    }
+
+    #artigo2 {
+        padding: 1.5rem;
+    }
+    
+    .image-container-s2 {
+        height: auto;
+        min-height: 200px;
+    }
 }
 
 /* ================================== */
 /* SEÇÃO S3 - BANNERS (NAGÔ / PROD)   */
 /* ================================== */
 
+/* ================================== */
+/* SEÇÃO S3 - BANNERS (RESPONSIVA)    */
+/* ================================== */
+
 #s3 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto 5rem auto;
-    padding: 0 2rem;
-    gap: 2rem;
+    max-width: 2000px;
+    margin: 0 auto clamp(3rem, 8vw, 6rem) auto; /* Margem fluida em baixo */
+    padding: 0 clamp(1rem, 5vw, 2rem); /* Padding lateral seguro */
+    gap: clamp(1.5rem, 3vw, 2.5rem);
     box-sizing: border-box;
 }
 
 .banner-link {
     text-decoration: none;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Estilo Base do Banner */
 .banner-item {
-    width: 100%;
-    height: 300px; /* Banners bem largos e altos */
-    border-radius: 40px; /* Arredondamento forte estilo "pilula" */
+    height: clamp(300px, 40vw, 450px); /* Altura fluida, nunca menor que 300px */
+    border-radius: 40px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
-    padding: 0 4rem; /* Espaço lateral interno */
+    padding: 0 clamp(2rem, 5vw, 4rem);
     box-sizing: border-box;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .banner-item:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* --- BANNER 1: NAGÔ (Fundo Escuro) --- */
+/* --- BANNER 1: NAGÔ (Originalmente 60%, alinhado à esquerda) --- */
 #artigo3 {
-    /* Supondo que sua imagem de fundo já tenha a cor escura */
+    width: 60%; /* Largura original Desktop */
     background-image: url('../../public/images/tinturas/nago.png');
-    justify-content: flex-end; /* Texto na DIREITA */
+    justify-content: flex-end; /* Conteúdo na direita */
+    margin-right: auto; /* Garante alinhamento à esquerda */
 }
 
-/* --- BANNER 2: PRODUTOS (Fundo Cinza) --- */
+/* --- BANNER 2: PRODUTOS (Originalmente 75%, alinhado à direita) --- */
 #artigo4 {
+    width: 75%; /* Largura original Desktop */
     background-image: url('../../public/images/tinturas/cabelo-pintado.png');
-    justify-content: flex-start; /* Texto na ESQUERDA */
+    justify-content: flex-start; /* Conteúdo na esquerda */
+    align-self: flex-end; /* Joga o banner todo para a direita do container #s3 */
+    margin-left: auto;
 }
 
+/* Container do Texto dentro do Banner */
 .banner-content {
-    max-width: 50%;
+    max-width: 55%; /* Limita o texto para não cobrir a imagem toda */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
+    
+    /* Fundo suave para melhorar leitura em qualquer imagem */
+    padding: 1.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(2px); /* Leve desfoque para destacar texto */
 }
 
 .banner-content.right-align {
-    align-items: flex-end; /* Alinha tags e texto à direita */
+    align-items: flex-end;
     text-align: right;
 }
 
 .banner-content.left-align {
-    align-items: flex-start; /* Alinha tags e texto à esquerda */
+    align-items: flex-start;
     text-align: left;
 }
 
 .banner-item h1 {
     font-family: "THE NEXT FONT";
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 5rem); /* Tipografia responsiva */
     color: white;
-    line-height: 1;
+    line-height: 0.95;
     text-transform: uppercase;
     margin: 0;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* ================================== */
-/* RESPONSIVIDADE (TABLET/MOBILE)     */
+/* RESPONSIVIDADE S3 (TABLET E MOBILE)*/
 /* ================================== */
-@media (max-width: 900px) {
-    #s2 {
-        flex-direction: column;
-        padding: 0 1rem;
-    }
-    
-    #artigo1 {
-        min-height: 400px;
-    }
 
-    #artigo2 {
-        flex: auto;
+/* Tablet (até 1024px) */
+@media (max-width: 1024px) {
+    #artigo3, #artigo4 {
+        width: 100%; /* Remove a assimetria para aproveitar a tela */
+        align-self: center; /* Centraliza tudo */
     }
 
     .banner-item {
-        height: auto; /* Altura automática no mobile */
-        min-height: 250px;
-        border-radius: 20px;
-        padding: 2rem;
-        background-position: center; 
+        border-radius: 30px; /* Reduz um pouco a curva */
+        justify-content: center !important; /* Centraliza conteúdo */
     }
-    
-    /* No mobile, centralizamos o texto dos banners para garantir leitura */
-    #artigo3, #artigo4 {
-        justify-content: center;
-        text-align: center;
+
+    .banner-content {
+        max-width: 80%; /* Aumenta a área de texto */
+        align-items: center !important; /* Força centro */
+        text-align: center !important; /* Força centro */
+        
     }
-    
+}
+
+/* Mobile (até 600px) */
+@media (max-width: 600px) {
+    #s3 {
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .banner-item {
+        height: 300px; /* Altura fixa para celular */
+        border-radius: 20px; /* Curva menor combina mais com celular */
+        padding: 1rem;
+        background-position: left;
+    }
+.banner-item2{
+    background-position: right;
+}
     .banner-content {
         max-width: 100%;
-        align-items: center !important;
-        text-align: center !important;
-        background-color: rgba(0,0,0,0.4); /* Fundo escuro para ler texto */
-        padding: 1rem;
-        border-radius: 10px;
+        width: 100%;
+        
     }
+
+    .banner-item h1 {
+        font-size: 2.2rem; /* Tamanho legível para celular */
+    }
+    
+    /* Ajuste das tags no mobile para ficarem menores */
+    .pill-tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
 }
 #linha {
     display: flex;
@@ -539,123 +668,175 @@
     margin-top: clamp(3.5rem, 7vw, 7rem);
 }
 
+/* ================================== */
+/* SEÇÃO S4 - ARTIGOS EM ALTA (GRID)  */
+/* ================================== */
+
+/* ================================== */
+/* SEÇÃO S4 - ARTIGOS EM ALTA (GRID)  */
+/* ================================== */
+
 #s4 {
     background-image: url('../../public/images/tinturas/s4-bg.png');
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    box-sizing: border-box;
+    background-position: center;
     width: 100%;
-    max-width: 100vw;
-    height: 69.41vw;
+    min-height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-#s4 h1 {
-    font-family: "The Next Font";
-    font-size: clamp(3rem, 8vw, 8rem);
-    margin-top: clamp(3.5rem, 7vw, 7rem);
-    margin-bottom: clamp(3.5rem, 7vw, 7rem);
-}
-
-#s4 > div > * {
+    /* Padding ajustado para não colar nas bordas em telas menores */
+    padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 5vw, 2rem);
     box-sizing: border-box;
-    width: calc((100% - 2 * clamp(1.5rem, 2.5vw, 2.5rem)) / 3);
 }
 
-#s4 > div {
+#s4 > h1 {
+    font-family: "The Next Font", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: #000;
+    margin-bottom: clamp(2rem, 4vw, 4rem);
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+/* --- GRID SYSTEM --- */
+.s4-grid {
+    display: grid;
+    /* Desktop: 3 colunas iguais */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: clamp(1rem, 2vw, 2rem);
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* Wrapper do Link (Item do Grid) */
+.grid-item {
+    text-decoration: none;
+    width: 100%;
     display: flex;
-    gap: clamp(1.5rem, 2.5vw, 2.5rem);
-    flex-wrap: wrap;
-    padding-left: clamp(3rem, 8vw, 8rem);
-    padding-right: clamp(3rem, 8vw, 8rem);
-}
-
-#s4 div h1 {
-    font-family: "The Next Font";
-    line-height: normal;
-    font-size: clamp(2rem, 3vw, 3rem);
-    max-width: 30rem;
-    margin-bottom: clamp(1.25rem, 2vw, 2rem);
-    margin-left: clamp(1.25rem, 2vw, 2rem);
-}
-
-/* --- BOTÃO MODIFICADO (BASEADO NO SEU EXEMPLO) --- */
-#s4 > div > button {
-    display: flex;
-    width: 15.9375rem;
-    height: 3.0625rem;
     justify-content: center;
-    align-items: center;
-    align-self: end;
-    margin-left: 7.9rem;
-    margin-right: 7.9rem;
-    
-    background-color: #722F53;
-    border-radius: 20px;
-    color: white;
-    border: none;
-    font-family: "THE NEXT FONT"; /* Mantive sua fonte original */
-    cursor: pointer;
-    font-size: clamp(0.875rem, 1vw, 1rem); /* Fonte do seu exemplo */
-    transition: all 0.4s ease;
-    overflow: hidden;
+    align-items: stretch; /* Garante que ocupem a altura disponível */
 }
 
-/* --- ADICIONADO (EFEITOS DO SEU EXEMPLO) --- */
-#s4 > div > button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-#s4 > div > button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-#s4 > div > button:hover {
-    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
-    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
-    transform: translateY(-3px) scale(1.08);
-}
-
-#s4 > div > button:active {
-    background: #5E332C;
-    transform: translateY(-1px) scale(1.05);
-}
-/* --- FIM DAS MODIFICAÇÕES DO BOTÃO --- */
-
-
-
-#artigo5, #artigo6, #artigo7, #artigo8, #artigo9  {
+/* --- ESTILO DOS CARDS --- */
+.card-s4 {
+    width: 100%;
+    /* Mantém formato retangular bonito em qualquer tela */
+    aspect-ratio: 3 / 2; 
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
-    box-sizing: border-box;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    
     display: flex;
-    align-items: end;
-    width: 27.1vw;
-    height: 18.5vw;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* --- ADICIONADO --- */
+    align-items: flex-end;
+    padding: 1.5rem;
+    box-sizing: border-box;
 }
 
+.card-s4 h1 {
+    font-family: "THE NEXT FONT", sans-serif;
+    font-size: clamp(1.1rem, 1.4vw, 1.8rem);
+    color: white;
+    background-color: #333333cc; /* Fundo semi-transparente para melhorar leitura */
+    border-radius: 12px;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 0;
+    max-width: 95%;
+}
+
+/* Hover Effect unificado */
+.card-s4:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* IDs das Imagens (Mantidos) */
 #artigo5 {background-image: url('../../public/images/link-artigos/cuidados-noturnos.jpg');}
 #artigo6 {background-image: url('../../public/images/link-artigos/transicao-capilar.jpg');}
 #artigo7 {background-image: url('../../public/images/link-artigos/acidificacao-no-cabelo.jpg');}
 #artigo8 {background-image: url('../../public/images/link-artigos/protetor-solar-para-peles-retintas.jpg');}
 #artigo9 {background-image: url('../../public/images/link-artigos/como-fazer-waves.jpg');}
 
+/* --- BOTÃO (CORRIGIDO) --- */
+.button-wrapper {
+    /* Flexbox centraliza o botão na célula do grid */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    min-height: 100px; /* Garante espaço vertical */
+}
+
+#botaos4 {
+    display: flex;
+    /* Removemos a largura fixa e as margens gigantes */
+    width: auto;
+    min-width: 200px; /* Tamanho mínimo clicável */
+    padding: 0 2rem;
+    height: 3.5rem;
+    
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* IMPORTANTE: Reset de margem para não quebrar o mobile */
+    
+    background-color: #722F53;
+    border-radius: 30px;
+    color: white;
+    border: none;
+    font-family: "THE NEXT FONT";
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeitos do Botão */
+#botaos4:hover {
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+}
+
+/* ================================== */
+/* RESPONSIVIDADE (MÉDIA QUERIES)     */
+/* ================================== */
+
+/* Tablet (até 1024px) -> 2 Colunas */
+@media (max-width: 1024px) {
+    .s4-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Colunas */
+        gap: 1.5rem;
+    }
+}
+
+/* Celular (até 600px) -> 1 Coluna */
+@media (max-width: 600px) {
+    #s4 {
+        padding: 3rem 1rem; /* Padding menor no celular */
+    }
+
+    .s4-grid {
+        grid-template-columns: 1fr; /* 1 Coluna (Empilhado) */
+        gap: 2rem;
+    }
+
+    .card-s4 {
+        aspect-ratio: 16 / 9; /* Cards um pouco mais largos no celular */
+    }
+    
+    #botaos4 {
+        width: 100%; /* Botão ocupa largura total no celular */
+        max-width: 300px;
+    }
+}
 /* --- ADICIONADO (HOVER PARA TODOS OS ARTIGOS) --- */
 #artigo1:hover, #artigo2:hover, #artigo3:hover, #artigo4:hover, 
 #artigo5:hover, #artigo6:hover, #artigo7:hover, #artigo8:hover, #artigo9:hover {

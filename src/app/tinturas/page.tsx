@@ -138,20 +138,32 @@ export default function Tinturas() {
                   height={40}
                   className="oasis-logo"
                 />
-                <span className="tag-sugestao">SUGESTÃO</span>
+                
+                  <button className="tag-sugestao" type="button">SUGESTÃO</button>
+                
             </div>
             
             {/* A imagem da mulher de trança vai aqui dentro */}
             <div className="image-container-s2">
                  <Image 
-                    src="/images/tinturas/artigo2-bg.png" // Certifique-se que esta imagem é a da mulher de trança
+                    src="/images/tinturas/foto-sugestao.png" // Certifique-se que esta imagem é a da mulher de trança
                     alt="Destaque Sugestão"
                     width={500}
                     height={300}
                     style={{objectFit: "cover", width: "100%", height: "100%"}}
                  />
             </div>
-
+            <div className="linha-wrapper">
+              <Image
+                src="/images/tinturas/linha.png"
+                alt="Linha decorativa"
+                width={1200}
+                height={2}
+                style={{ objectFit: "contain", width: "100%", height: "auto" }}
+                className="linha-img"
+                priority
+              />
+            </div>
             <p>
               Descubra como equilibrar tintura e tratamento no seu cronograma
               capilar. Devolva brilho, força e vida aos cabelos coloridos!
@@ -175,7 +187,7 @@ export default function Tinturas() {
           </Link>
 
           <Link href="artigo/produtos-indispensaveis" className="banner-link">
-            <div id="artigo4" className="banner-item">
+            <div id="artigo4" className="banner-item banner-item2">
                <div className="banner-content left-align">
                   <h1>PRODUTOS INDISPENSÁVEIS PARA CABELOS PINTADOS</h1>
                   <div className="tags-wrapper">
@@ -191,43 +203,48 @@ export default function Tinturas() {
 
         <div id="linha"></div>
 
+        {/* --- SEÇÃO S4 (ARTIGOS EM ALTA - GRID) --- */}
         <section id="s4">
-          <h1>artigos em alta</h1>
-          <div>
-            <Link href="artigo/cuidados-noturnos">
-              <div id="artigo5">
+          <h1>ARTIGOS EM ALTA</h1>
+          
+          {/* Adicionei a classe "s4-grid" aqui para controlar o layout */}
+          <div className="s4-grid">
+            
+            <Link href="artigo/cuidados-noturnos" className="grid-item">
+              <div id="artigo5" className="card-s4">
                 <h1>Cuidados noturnos para cabelo e pele</h1>
               </div>
             </Link>
 
-            <Link href="artigo/transicao-capilar">
-              <div id="artigo6">
+            <Link href="artigo/transicao-capilar" className="grid-item">
+              <div id="artigo6" className="card-s4">
                 <h1>Transição capilar: primeiros cuidados essenciais</h1>
               </div>
             </Link>
 
-            <Link href="artigo/acidificacao-no-cabelo">
-              <div id="artigo7">
+            <Link href="artigo/acidificacao-no-cabelo" className="grid-item">
+              <div id="artigo7" className="card-s4">
                 <h1>Acidificação capilar</h1>
               </div>
             </Link>
 
-            <Link href="artigo/protetor-solar-para-peles-retintas">
-              <div id="artigo8">
+            <Link href="artigo/protetor-solar-para-peles-retintas" className="grid-item">
+              <div id="artigo8" className="card-s4">
                 <h1>Protetor solar para pele retinta</h1>
               </div>
             </Link>
 
-            {/* Correção de Link/Button para evitar erros de HTML */}
-            <Link href="/artigos-geral">
-                <button style={{ pointerEvents: "none" }}>VER MAIS</button>
+            {/* O Botão fica no meio na versão Desktop */}
+            <Link href="/artigos-geral" className="grid-item button-wrapper">
+                <button id="botaos4">VER MAIS</button>
             </Link>
 
-            <Link href="artigo/como-fazer-waves">
-              <div id="artigo9">
+            <Link href="artigo/como-fazer-waves" className="grid-item">
+              <div id="artigo9" className="card-s4">
                 <h1>Como fazer waves?</h1>
               </div>
             </Link>
+            
           </div>
         </section>
       </main>
