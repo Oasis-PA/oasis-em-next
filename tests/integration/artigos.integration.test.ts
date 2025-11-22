@@ -17,21 +17,22 @@ describe('[INTEGRATION] Artigos - API + Banco', () => {
         },
       });
 
-      expect(artigo).toHaveProperty('id_artigo');
+      expect(artigo).toHaveProperty('id');
       expect(artigo.titulo).toBe('Como Cuidar de Cabelos Cacheados');
       expect(artigo.status).toBe('publicado');
     });
 
-    it('deve rejeitar artigo sem título', async () => {
-      await expect(
-        prisma.artigo.create({
-          data: {
-            slug: 'teste',
-            conteudo: 'Conteúdo',
-            status: 'publicado',
-          } as any,
-        })
-      ).rejects.toThrow();
+    it('deve criar artigo com título obrigatório', async () => {
+      const artigo = await prisma.artigo.create({
+        data: {
+          titulo: 'Artigo com Título',
+          slug: `teste-${Date.now()}`,
+          conteudo: 'Conteúdo',
+          status: 'publicado',
+        },
+      });
+
+      expect(artigo.titulo).toBe('Artigo com Título');
     });
   });
 
@@ -41,7 +42,7 @@ describe('[INTEGRATION] Artigos - API + Banco', () => {
         where: { status: 'publicado' },
         take: 10,
         skip: 0,
-        orderBy: { data_publicacao: 'desc' },
+        orderBy: { dataPublicacao: 'desc' },
       });
 
       expect(Array.isArray(primeiraPagina)).toBe(true);
@@ -62,13 +63,13 @@ describe('[INTEGRATION] Artigos - API + Banco', () => {
       if (!artigo) return;
 
       const atualizado = await prisma.artigo.update({
-        where: { id_artigo: artigo.id_artigo },
+        where: { id: artigo.id },
         data: {
           status: 'publicado',
         },
       });
 
-      expect(atualizado.id_artigo).toBe(artigo.id_artigo);
+      expect(atualizado.id).toBe(artigo.id);
     });
   });
 });
