@@ -126,17 +126,17 @@ export async function PUT(
 
     // Verificar se categoria existe (se fornecida)
     if (id_categoria) {
-      const categoriaExiste = await prisma.categoria.findUnique({
-        where: { id_categoria: parseInt(id_categoria as any, 10) }
-      });
+  const categoriaExiste = await prisma.categoriaArtigo.findUnique({ // [!code focus]
+    where: { id_categoria: parseInt(id_categoria as any, 10) }
+  });
 
-      if (!categoriaExiste) {
-        return NextResponse.json(
-          { error: 'Categoria não encontrada' },
-          { status: 400 }
-        );
-      }
-    }
+  if (!categoriaExiste) {
+    return NextResponse.json(
+      { error: 'Categoria não encontrada' }, // Pode até melhorar: 'Categoria de artigo não encontrada'
+      { status: 400 }
+    );
+  }
+}
 
     // construir o objeto de atualização explicitamente para evitar valores inválidos
     const updateData: any = {
@@ -175,7 +175,7 @@ export async function PUT(
       where: { id: artigoId },
       data: updateData
     });
- 
+
     // buscar categoria separadamente e anexar ao retorno
     let categoriaAtualizada = null;
     if (artigoAtualizado.id_categoria) {
@@ -184,7 +184,7 @@ export async function PUT(
         select: { id_categoria: true, nome: true }
       });
     }
- 
+
     return NextResponse.json({
       message: 'Artigo atualizado com sucesso',
       artigo: { ...artigoAtualizado, categoria: categoriaAtualizada }
