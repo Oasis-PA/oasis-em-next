@@ -322,11 +322,12 @@ export default function ProdutosPage() {
     };
 
     return (
+        <>
+        <Header className={styles.headerTransparente}/>
         <div className={styles.wrapper}>
-            <Header className={styles.headerTransparente}/>
-            <main>
-                <h1>PRODUTOS RECOMENDADOS</h1>
-                <p>Encontre itens de cuidado para cabelo, pele <br></br> e muito mais.</p>
+            <main className={styles.main}> 
+            <h1>PRODUTOS RECOMENDADOS</h1>
+            <p>Encontre itens de cuidado para cabelo, pele <br></br> e muito mais.</p>
             </main>
 
             <section className={styles.s1}>
@@ -338,7 +339,7 @@ export default function ProdutosPage() {
             </section>
 
             <Link href='/cronograma-capilar'>
-                <figure>
+                <figure className={styles.figure}> 
                     <Image src="/images/produtos/quiz.png" alt="quiz-cronograma-capilar" width={600} height={120} />
                 </figure>
             </Link>
@@ -377,8 +378,8 @@ export default function ProdutosPage() {
                     marca={marcaFiltro}
                 />
             </div>
-
-            <Footer />
         </div>
+        <Footer />
+        </>
     );
 }
