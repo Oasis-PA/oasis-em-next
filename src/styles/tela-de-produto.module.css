@@ -1,0 +1,332 @@
+/* produto.module.css */
+
+/* Reset local para o wrapper */
+.pageProdutoWrapper * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pageProdutoWrapper {
+  width: 100%;
+  font-family: "Louis George Cafe", Arial, sans-serif;
+  background-color: var(--body-back);
+  color: var(--corpo-texto);
+  overflow-x: hidden;
+}
+
+.pageProdutoWrapper main {
+  width: 100%;
+  max-width: 1920px;
+  padding: 0 20px;
+  background-color: var(--body-back);
+}
+
+/* Loading e Erro Containers */
+.loadingContainer,
+.erroContainer {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Utilitários */
+.headerTransparente {
+  background-color: transparent !important;
+}
+
+/* Container principal do produto (Antigo #pagina1) */
+.pagina1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 6vh;
+  margin-bottom: 50px;
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* Container de imagem do produto */
+.imgContainer {
+  position: relative;
+  width: 45%;
+  max-width: 738px;
+}
+
+/* Antigo #img */
+.produtoImg {
+  width: 90%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Informações do produto */
+.produtoInfo {
+  width: 45%;
+  display: flex; /* Adicionado para garantir flex-direction funcione */
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+/* Antigo #nomeProduto */
+.nomeProduto {
+  font-family: "The Next Font", serif;
+  font-size: 2.5rem;
+  width: 100%;
+  margin: 15px 0;
+  font-weight: 400;
+}
+
+/* Antigo #menorValor */
+.menorValor {
+  font-family: "Louis George Cafe", sans-serif;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+/* Antigo #preco */
+.preco {
+  font-size: 2.5rem;
+  font-family: "The Next Font", serif;
+  color: var(--preco);
+  margin-bottom: 50px;
+  font-weight: 400;
+}
+
+.detalhes {
+  cursor: pointer;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+/* ============================================
+   ESTILOS DOS DETALHES (Abas)
+   ============================================ */
+.composicao,
+.qualidades,
+.maisDetalhes {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-block;
+  transition: border 0.3s ease;
+}
+
+/* Hover */
+.composicao:hover,
+.qualidades:hover,
+.maisDetalhes:hover {
+  border: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Active State (Adicionado via condicional no React) */
+.active {
+  border: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   TOOLTIP
+   ============================================ */
+.tooltipText {
+  visibility: hidden;
+  width: 400px;
+  max-width: 90vw;
+  max-height: 350px;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  z-index: 10;
+  font-size: 19px;
+  line-height: 1.4;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Tooltip visível quando o pai tem a classe .active */
+.composicao.active .tooltipText,
+.qualidades.active .tooltipText,
+.maisDetalhes.active .tooltipText {
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Scrollbar customizada */
+.tooltipText::-webkit-scrollbar {
+  width: 6px;
+}
+.tooltipText::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+.tooltipText::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+}
+.tooltipText::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   BOTÃO AMARELO E CONTAINER
+   ============================================ */
+/* Antigo #vaAoSite */
+.vaAoSiteContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.vaParaCompraTexto {
+  font-weight: 400;
+  font-family: "The Next Font";
+  font-size: 1.5rem;
+}
+
+.botaoAmarelo {
+  cursor: pointer;
+  width: 80%;
+  height: 48.75px;
+  background-color: #F2A518;
+  border: none;
+  margin-bottom: 10px;
+  margin-top: 30vh;
+  color: #FFF;
+  font-family: "The Next Font", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border-radius: 4px;
+}
+
+.botaoAmarelo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.botaoAmarelo:hover:not(:disabled) {
+  background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+  box-shadow: 0px 8px 20px rgba(242, 165, 24, 0.5);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.botaoAmarelo:hover:not(:disabled)::before {
+  width: 350px;
+  height: 350px;
+}
+
+.botaoAmarelo:active:not(:disabled) {
+  background: #d18f15;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.botaoAmarelo:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.botaoAmarelo:disabled::before {
+  display: none;
+}
+
+/* Linha divisória - Antigo #linha */
+.linha {
+  width: 90%;
+  max-width: 1659px;
+  height: 1px;
+  background-color: #F2A518;
+  margin: 30px auto;
+}
+
+/* Fonte */
+@font-face {
+  font-family: "Next Font";
+  src: url(/public/assets/fontes/TheNextFont.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .pagina1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .imgContainer, .produtoInfo {
+    width: 90%;
+    max-width: 738px;
+  }
+
+  .vaAoSiteContainer {
+    align-self: center;
+    margin-top: 30px;
+  }
+  
+  .tooltipText {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nomeProduto {
+    font-size: 2rem;
+  }
+  
+  .detalhes {
+    font-size: 1.2rem;
+    gap: 20px;
+  }
+
+  .tooltipText {
+    width: 300px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .detalhes {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .tooltipText {
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+  }
+}
