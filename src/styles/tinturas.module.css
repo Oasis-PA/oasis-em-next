@@ -33,6 +33,27 @@
   justify-content: flex-end;
 }
 
+@media (max-width: 600px) {
+  .representam {
+    background-position: right;
+    min-height: 75vw;
+    
+  }
+}
+@media (max-width: 500px) {
+  .representam {
+    
+    min-height: 85vw;
+    
+  }
+}
+@media (max-width: 400px) {
+  .representam {
+    
+    min-height: 100vw;
+    
+  }
+}
 .representam h1 {
   color: #FFF;
   font-family: "The Next Font", sans-serif;
@@ -73,7 +94,7 @@
     margin-left: 1vw;
   }
   .representam h5 {
-    font-size: clamp(0.5rem, 3vw, 1rem);
+    font-size: clamp(1rem, 3vw, 1rem);
     max-width: 60vw;
     margin-left: 1vw;
     margin-bottom: clamp(1.5rem, 4vw, 5rem);
@@ -247,7 +268,54 @@
     font-size: 1.1rem;
   }
 }
+/* ... (Mantenha o código anterior da S1 igual) ... */
 
+/* Carrossel S1 - Apenas abaixo de 700px */
+@media (max-width: 700px) {
+  .tipos {
+    display: flex; /* Muda de Grid para Flex (linha) */
+    flex-wrap: nowrap; /* Garante que não quebre linha */
+    overflow-x: auto; /* Habilita o scroll horizontal */
+    
+    /* Mágica do Scroll Snap */
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+    
+    /* Espaçamento */
+    gap: 1rem;
+    padding-left: 1.5rem; /* Padding para o primeiro card não colar na borda */
+    padding-right: 1.5rem;
+    padding-bottom: 2rem; /* Espaço extra embaixo */
+    
+    /* Garante que o container ocupe a largura correta para o scroll */
+    width: 100vw;
+    margin-left: -1.5rem; /* Compensa o padding do container pai (.s1) */
+    max-width: none;
+  }
+
+  /* Esconde a barra de rolagem (opcional, deixa mais bonito) */
+  .tipos::-webkit-scrollbar {
+    display: none;
+  }
+  .tipos {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .cardItem {
+    /* Tamanho do Card no Carrossel */
+    min-width: 85vw; /* Ocupa 85% da tela (mostra um pedacinho do próximo) */
+    height: 450px; /* Mantém a altura fixa */
+    
+    /* Alinhamento do Snap */
+    scroll-snap-align: center;
+    flex: none; /* Impede que o card encolha */
+    
+    /* Reset de margens e transformações */
+    margin: 0;
+  }
+}
 /* ================================== */
 /* ESTILOS GERAIS (TAGS)              */
 /* ================================== */
@@ -533,7 +601,20 @@
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
+/* Ajuste de Posição do Background (S3) - Intervalo Intermediário */
+/* Ajuste de Posição do Background (S3) - Intervalo Intermediário CORRIGIDO */
+@media (min-width: 600px) and (max-width: 1880px) {
+  
+  /* Artigo 3 (Nagô): Texto na Direita -> Fundo alinhado à ESQUERDA para mostrar a pessoa */
+  .artigo3 {
+    background-position: left center !important;
+  }
 
+  /* Artigo 4 (Produtos): Texto na Esquerda -> Fundo alinhado à DIREITA para mostrar a pessoa */
+  .artigo4 {
+    background-position: right center !important;
+  }
+}
 @media (max-width: 1024px) {
   .artigo3, .artigo4 {
     width: 100%;
@@ -649,9 +730,9 @@
 
 .cardS4 h1 {
   font-family: "THE NEXT FONT", sans-serif;
-  font-size: clamp(1.1rem, 1.4vw, 1.8rem);
+  font-size: clamp(1.3rem, 1.7vw, 2rem);
   color: white;
-  background-color: #333333cc;
+  background-color: rgba(51, 51, 51, 0.08);
   border-radius: 12px;
   line-height: 1;
   text-transform: uppercase;
@@ -701,26 +782,68 @@
   box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
 }
 
+/* ================================== */
+/* RESPONSIVIDADE (MEDIA QUERIES)     */
+/* ================================== */
+
+/* Tablet (de 601px até 1024px) */
 @media (max-width: 1024px) {
   .s4Grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 Colunas */
     gap: 1.5rem;
   }
-}
 
+  /* === 1. Botão vai para o final de tudo e centraliza === */
+  .buttonWrapper {
+    grid-column: 1 / -1; /* Ocupa a largura total da grid (todas as colunas) */
+    order: 100; /* Número alto força o botão a ser o último elemento visualmente */
+    margin-top: 1.5rem; /* Espaço para não grudar no card de cima */
+  }
+
+  /* === 2. Artigo 9 (Último Card) fica centralizado na grade === */
+  /* O Artigo 9 é o último filho (.gridItem) da lista no seu HTML */
+  .gridItem:last-child {
+    grid-column: 1 / -1; /* Faz ele ocupar as 2 colunas da linha */
+    justify-self: center; /* Centraliza o card no meio do espaço */
+    width: 100%; 
+    max-width: 50%; /* Limita a largura para ele ficar do tamanho de um card normal */
+  }
+}
+/* Celular (até 600px) */
 @media (max-width: 600px) {
   .s4 {
     padding: 3rem 1rem;
   }
+
   .s4Grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 Coluna (Empilhado) */
     gap: 2rem;
   }
+
   .cardS4 {
     aspect-ratio: 16 / 9;
   }
+  
   .botaoS4 {
     width: 100%;
     max-width: 300px;
+  }
+
+  /* Mantém o botão no final (herda a lógica de cima, mas reforçamos) */
+  .buttonWrapper {
+    order: 100; 
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+  }
+
+  /* === Override Importante === */
+  /* No celular, o Artigo 9 deve ocupar 100% da tela, e não 50% como no tablet */
+  .gridItem:last-child {
+    max-width: 100%;
+  }
+}
+@media (max-width: 320px) {
+  .cardS4{
+    padding: 0.8rem;
   }
 }
