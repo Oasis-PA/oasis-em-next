@@ -7,11 +7,11 @@ export async function PUT(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const params = await context.params;
+    const { id } = await context.params;
     const data = await request.json();
-    const id = parseInt(params.id);
+    const idNum = parseInt(id);
 
-    if (!id || isNaN(id)) {
+    if (!idNum || isNaN(idNum)) {
       return NextResponse.json(
         { success: false, error: 'ID inválido' },
         { status: 400 }
@@ -19,7 +19,7 @@ export async function PUT(
     }
 
     const pergunta = await prisma.pergunta.update({
-      where: { id_pergunta: id },
+      where: { id_pergunta: idNum },
       data: {
         pergunta: data.pergunta,
         subtitulo: data.subtitulo ?? null,
@@ -46,10 +46,10 @@ export async function DELETE(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const params = await context.params;
-    const id = parseInt(params.id);
+    const { id } = await context.params;
+    const idNum = parseInt(id);
 
-    if (!id || isNaN(id)) {
+    if (!idNum || isNaN(idNum)) {
       return NextResponse.json(
         { success: false, error: 'ID inválido' },
         { status: 400 }
@@ -57,12 +57,12 @@ export async function DELETE(
     }
 
     await prisma.pergunta.delete({
-      where: { id_pergunta: id }
+      where: { id_pergunta: idNum }
     });
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Pergunta deletada com sucesso!' 
+    return NextResponse.json({
+      success: true,
+      message: 'Pergunta deletada com sucesso!'
     });
   } catch (error: any) {
     console.error('Erro ao deletar pergunta:', error);

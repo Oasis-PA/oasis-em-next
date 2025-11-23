@@ -1,12 +1,11 @@
-// 📁 src/app/api/ibge/cidades/[sigla]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { sigla: string } }
+  context: { params: Promise<{ sigla: string }> }
 ) {
   try {
-    const { sigla } = params;
+    const { sigla } = await context.params;
 
     if (!sigla || sigla.length !== 2) {
       return NextResponse.json(
@@ -20,9 +19,9 @@ export async function GET(
       {
         method: 'GET',
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
-        next: { revalidate: 86400 } // Cache por 24 horas
+        next: { revalidate: 86400 },
       }
     );
 
@@ -35,13 +34,12 @@ export async function GET(
     return NextResponse.json(data, {
       status: 200,
       headers: {
-        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=43200'
-      }
+        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=43200',
+      },
     });
-
   } catch (error: any) {
     console.error('Erro ao buscar cidades:', error);
-    
+
     return NextResponse.json(
       { error: 'Não foi possível carregar as cidades' },
       { status: 500 }
