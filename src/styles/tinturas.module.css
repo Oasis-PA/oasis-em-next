@@ -732,7 +732,6 @@
   font-family: "THE NEXT FONT", sans-serif;
   font-size: clamp(1.3rem, 1.7vw, 2rem);
   color: white;
-  background-color: rgba(51, 51, 51, 0.08);
   border-radius: 12px;
   line-height: 1;
   text-transform: uppercase;
