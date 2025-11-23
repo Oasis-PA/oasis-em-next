@@ -1,0 +1,364 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   SenhaModal.module.css
+   Refatorado para CSS Modules com nomenclatura camelCase
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Animações locais */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === VARIÁVEIS (Mantidas locais ao escopo do componente ou herdadas) === */
+.overlay {
+  --modal-overlay-bg: rgba(46, 21, 38, 0.85);
+  --modal-bg: #FFFFFF;
+  --header-bg: #5E332C;
+  --accent-color: #F2A518;
+  --accent-hover: #e69917;
+  --text-primary-dark: #000000;
+  --text-secondary-dark: #333333;
+  --text-primary-light: #FFFFFF;
+  --border-color-light: #E0E0E0;
+  --border-color-focus: #722F53;
+  --input-bg: #FFFFFF;
+  --input-placeholder: #AAAAAA;
+  --button-primary-bg: #722F53;
+  --button-primary-hover-start: #8B3A62;
+  --button-primary-hover-end: #D946A6;
+  --button-secondary-border: #722F53;
+  --button-secondary-text: #722F53;
+  --button-secondary-hover-bg: rgba(114, 47, 83, 0.08);
+  --success-bg: #f0fff0;
+  --success-text: #28a745;
+  --success-border: #b8e6c3;
+  --error-bg: #fff5f5;
+  --error-text: #dc3545;
+  --error-border: #f5c6cb;
+}
+
+/* Adaptação para tema escuro usando seletor global */
+:global(.dark) .overlay {
+  --modal-bg: #1e1e1e;
+  --header-bg: #331a17;
+  --text-primary-dark: #e0e0e0;
+  --text-secondary-dark: #b0b0b0;
+  --border-color-light: #444444;
+  --input-bg: #2a2a2a;
+  --input-placeholder: #777777;
+  --button-secondary-border: #a36f8f;
+  --button-secondary-text: #e6dceb;
+  --button-secondary-hover-bg: rgba(114, 47, 83, 0.2);
+  --success-bg: rgba(40, 167, 69, 0.1);
+  --success-border: rgba(40, 167, 69, 0.3);
+  --error-bg: rgba(220, 53, 69, 0.1);
+  --error-border: rgba(220, 53, 69, 0.3);
+}
+
+/* === FONTES === */
+.title,
+.btnPrimary {
+  font-family: "The Next Font", sans-serif;
+}
+
+.description,
+.label,
+.input,
+.btnSecondary,
+.message {
+  font-family: "Louis George Cafe", sans-serif;
+}
+
+/* Overlay do Modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--modal-overlay-bg);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Container do Modal */
+.content {
+  background: var(--modal-bg);
+  border-radius: 1.5rem;
+  width: 90%;
+  max-width: 28rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid var(--border-color-light);
+  position: relative;
+}
+
+/* Header */
+.header {
+  background: var(--header-bg);
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+.title {
+  color: var(--accent-color);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(242, 165, 24, 0.5);
+  color: var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.closeBtn:hover {
+  background: rgba(242, 165, 24, 0.2);
+  border-color: var(--accent-color);
+  transform: rotate(90deg) scale(1.1);
+  color: var(--accent-hover);
+}
+
+/* Body */
+.body {
+  padding: 1.75rem 2rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--text-secondary-dark);
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Form */
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  color: var(--button-primary-bg);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color-light);
+  border-radius: 0.6rem;
+  color: var(--text-primary-dark);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.input:hover:not(:focus) {
+  border-color: #c4a9b6;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--border-color-focus);
+  box-shadow: 0 0 0 3px rgba(114, 47, 83, 0.15);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Sobrescrita Dark Mode local */
+:global(.dark) .input:disabled {
+  background-color: #333;
+}
+
+/* === BOTÃO PRIMÁRIO === */
+.btnPrimary {
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  background: var(--button-primary-bg);
+  color: var(--text-primary-light);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin-top: 1rem;
+}
+
+.btnPrimary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: 0;
+}
+
+/* Span necessário para o z-index do texto funcionar sobre o efeito before */
+.btnPrimary span {
+  position: relative;
+  z-index: 1;
+  color: #FFF;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--button-primary-hover-start) 0%, var(--button-primary-hover-end) 100%);
+  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.5);
+  transform: translateY(-3px) scale(1.03);
+}
+
+.btnPrimary:hover:not(:disabled)::before {
+  width: 150%;
+  padding-top: 150%;
+  height: auto;
+}
+
+.btnPrimary:active:not(:disabled) {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0px 5px 15px rgba(114, 47, 83, 0.4);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* === BOTÃO SECUNDÁRIO === */
+.btnSecondary {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--button-secondary-border);
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--button-secondary-text);
+}
+
+.btnSecondary:hover {
+  background: var(--button-secondary-hover-bg);
+  border-color: var(--button-secondary-border);
+  color: var(--button-secondary-text);
+}
+
+:global(.dark) .btnSecondary:hover {
+  color: var(--text-primary-light);
+}
+
+/* Mensagens */
+.message {
+  margin-top: 1.25rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.messageSuccess {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid var(--success-border);
+}
+
+.messageError {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  .content {
+    width: 95%;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+
+  .header {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .closeBtn {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .body {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btnPrimary {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .btnSecondary {
+    font-size: 0.8rem;
+  }
+}

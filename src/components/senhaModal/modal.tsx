@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import "@/styles/SenhaModal.css";
+// Importação do CSS Module
+import styles from "@/styles/senhamodal.module.css";
 
 interface ModalProps {
   isOpen: boolean;
@@ -55,15 +56,15 @@ export default function SenhaModal({ isOpen, onClose }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="senha-modal-overlay" onClick={handleClose}>
-      <div className="senha-modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className={styles.overlay} onClick={handleClose}>
+      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         {/* Header */}
-        <div className="senha-modal-header">
-          <h2 className="senha-modal-title">Recuperar Senha</h2>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Recuperar Senha</h2>
           
           <button
             onClick={handleClose}
-            className="senha-modal-close"
+            className={styles.closeBtn}
             aria-label="Fechar"
           >
             ×
@@ -71,21 +72,21 @@ export default function SenhaModal({ isOpen, onClose }: ModalProps) {
         </div>
 
         {/* Body */}
-        <div className="senha-modal-body">
-          <p className="senha-modal-description">
+        <div className={styles.body}>
+          <p className={styles.description}>
             Digite seu e-mail cadastrado para receber instruções de recuperação de senha.
           </p>
 
           <form onSubmit={handleSubmit}>
-            <div className="senha-form-group">
-              <label htmlFor="email" className="senha-form-label">
+            <div className={styles.formGroup}>
+              <label htmlFor="email" className={styles.label}>
                 E-mail
               </label>
               <input
                 id="email"
                 type="email"
                 placeholder="seu@email.com"
-                className="senha-form-input"
+                className={styles.input}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -95,15 +96,22 @@ export default function SenhaModal({ isOpen, onClose }: ModalProps) {
 
             <button
               type="submit"
-              className="senha-btn senha-btn-primary"
+              className={styles.btnPrimary}
               disabled={loading}
             >
-              {loading ? "Enviando..." : "Enviar link de recuperação"}
+              {/* Span adicionado para garantir o z-index correto sobre o efeito hover do CSS */}
+              <span>
+                {loading ? "Enviando..." : "Enviar link de recuperação"}
+              </span>
             </button>
           </form>
 
           {mensagem && (
-            <div className={`senha-message ${sucesso ? 'senha-message-success' : 'senha-message-error'}`}>
+            <div
+              className={`${styles.message} ${
+                sucesso ? styles.messageSuccess : styles.messageError
+              }`}
+            >
               {mensagem}
             </div>
           )}
@@ -111,7 +119,7 @@ export default function SenhaModal({ isOpen, onClose }: ModalProps) {
           {sucesso && (
             <button
               onClick={handleClose}
-              className="senha-btn senha-btn-secondary"
+              className={styles.btnSecondary}
             >
               Fechar
             </button>
