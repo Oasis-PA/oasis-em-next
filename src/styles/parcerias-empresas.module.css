@@ -1,13 +1,13 @@
-/* ⚠️ ISOLAMENTO DE ESTILOS - Evita conflitos com outras páginas */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-   CSS COMPLETO: ESTRUTURA ORIGINAL MANTIDA + BOTÃO REFORMULADO E HOVERS
+   CSS MODULES: Refatorado para camelCase e Escopado
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* ================================== */
-/* CONFIGURAÇÕES GLOBAIS E TEMAS      */
+/* CONFIGURAÇÕES GLOBAIS (Escopadas)  */
 /* ================================== */
 
-.page-parcerias-empresas-wrapper * {
+/* Garante o reset apenas dentro desta página */
+.wrapper * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@
 /* LAYOUT PRINCIPAL                   */
 /* ================================== */
 
-.page-parcerias-empresas-wrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -26,7 +26,7 @@
   overflow-x: hidden;
 }
 
-.page-parcerias-empresas-wrapper main {
+.mainContent {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
@@ -38,7 +38,7 @@
 
 /* Em telas menores, o layout vira uma coluna única */
 @media screen and (max-width: 1200px) {
-  .page-parcerias-empresas-wrapper main {
+  .mainContent {
     flex-direction: column;
     padding: 0;
     gap: 0;
@@ -49,7 +49,7 @@
 /* FORMULÁRIO DE CONTATO              */
 /* ================================== */
 
-#container {
+.formContainer {
   flex: 1 1 600px;
   display: flex;
   justify-content: center;
@@ -60,14 +60,14 @@
 
 /* Formulário aparece depois da imagem em telas menores */
 @media screen and (max-width: 1200px) {
-  #container {
+  .formContainer {
     order: 2;
     margin: 30px auto;
     width: 95%;
   }
 }
 
-form {
+.form {
   padding: 30px 20px;
   width: 100%;
   max-width: 764px;
@@ -79,31 +79,32 @@ form {
 }
 
 @media screen and (max-width: 768px) {
-  form {
+  .form {
     padding: 20px 15px;
     border-radius: 30px;
   }
 }
 
 .titulo {
-   margin-top: 27px;
-    text-align: center;
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(28px, 5vw, 44px);
-    font-weight: 600;
+  margin-top: 27px;
+  text-align: center;
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 600;
 }
 
 .subtitulo {
-     margin-top: 20px;
-    margin-bottom: 25px;
-    text-align: center;
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(18px, 2.5vw, 18px);
-    font-weight: 400;
-    padding: 0 15px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(18px, 2.5vw, 18px);
+  font-weight: 400;
+  padding: 0 15px;
 }
 
-#caixas-texto {
+/* Antigo #caixas-texto */
+.caixasTexto {
   width: 100%;
   max-width: 656px;
   margin-bottom: 20px;
@@ -112,8 +113,9 @@ form {
   gap: 15px;
 }
 
-#caixas-texto input, 
-#telefone {
+/* Estilização dos inputs dentro de caixasTexto e do telefone */
+.caixasTexto input, 
+.telefoneWrapper {
   border: none;
   border-bottom: 1px solid #000;
   height: 60px;
@@ -122,33 +124,34 @@ form {
   font-family: "Louis George Cafe", sans-serif;
   font-size: clamp(16px, 2vw, 18px);
   padding: 10px 12px;
-  transition: border-bottom-color 0.3s ease; /* ADICIONADO */
+  transition: border-bottom-color 0.3s ease;
 }
 
-/* HOVER ADICIONADO para inputs */
-#caixas-texto input:hover:not(:focus) {
+/* HOVER Inputs */
+.caixasTexto input:hover:not(:focus) {
   border-bottom-color: #a36f8f;
 }
 
-#caixas-texto input:focus {
+.caixasTexto input:focus {
   outline: none;
   border-bottom-color: #722F53;
 }
 
-#telefone {
+/* Antigo #telefone */
+.telefoneWrapper {
   display: flex;
   align-items: center;
   padding-left: 10px;
 }
 
-#telefone > img {
+.telefoneWrapper > img {
   width: 25px;
   height: 25px;
   margin: 0 10px 0 12px;
   flex-shrink: 0;
 }
 
-#telefone > input {
+.telefoneWrapper > input {
   height: 100%;
   border: none;
   background-color: transparent;
@@ -158,11 +161,12 @@ form {
   font-size: clamp(16px, 2vw, 20px);
 }
 
-#telefone > input:focus {
+.telefoneWrapper > input:focus {
   outline: none;
 }
 
-#contato {
+/* Antigo #contato */
+.contatoLabel {
   width: 100%;
   max-width: 656px;
   margin-bottom: 15px;
@@ -171,7 +175,8 @@ form {
   text-align: left;
 }
 
-#motivo {
+/* Antigo #motivo */
+.motivoTextarea {
   margin-bottom: 45px;
   width: 100%;
   max-width: 656px;
@@ -184,21 +189,20 @@ form {
   padding: 20px;
   resize: vertical;
   line-height: 1.5;
-  transition: border-color 0.3s ease; /* ADICIONADO */
+  transition: border-color 0.3s ease;
 }
 
-/* HOVER ADICIONADO para textarea */
-#motivo:hover:not(:focus) {
+.motivoTextarea:hover:not(:focus) {
   border-color: #a36f8f;
 }
 
-#motivo:focus {
+.motivoTextarea:focus {
   outline: none;
   border-color: #722F53;
 }
 
 @media screen and (max-width: 768px) {
-  #motivo {
+  .motivoTextarea {
     height: 150px;
     padding: 15px;
   }
@@ -221,7 +225,8 @@ form {
   }
 }
 
-.eusou, .eusou2 {
+/* Antigos .eusou e .eusou2 */
+.euSou, .euSou2 {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -235,54 +240,52 @@ form {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.eusou:hover, .eusou2:hover {
+.euSou:hover, .euSou2:hover {
   transform: scale(1.03);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.dark .eusou:hover, .dark .eusou2:hover {
-  box-shadow: 0 10px 20px rgba(255,255,255,0.1);
-}
 
-.eusoua, .eusoub {
+.euSouA, .euSouB {
   width: 90%;
   font-family: "Louis George Cafe", sans-serif;
   font-size: 20px;
   line-height: 1.4;
 }
-.eusoua { 
+
+.euSouA { 
   text-align: center;
   font-size: 20px;
   font-family: "louis George Cafe", sans-serif;
   margin-bottom: 3%;
   font-weight: 600;
 }
-.eusoub 
-{
+
+.euSouB {
   text-align: justify;
   font-family: "Louis George Cafe", sans-serif;
   font-size: 17px;
- }
+}
      
-.eusou {
+.euSou {
   border: 2px solid #5F0B38;
   background: #FFEDC5;
 }
 
-.eusou2 {
+.euSou2 {
   border: 2px solid #474747;
   background: var(--eusou);
 }
 
 @media screen and (max-width: 480px) {
-  .eusou, .eusou2 {
+  .euSou, .euSou2 {
     width: 100%;
     max-width: 300px;
   }
 }
 
-/* BOTÃO DE ENVIO REFORMULADO */
-.conheça {
+/* BOTÃO DE ENVIO REFORMULADO - Antigo .conheça */
+.conheca {
   display: flex;
   width: 294px;
   height: 49px;
@@ -298,13 +301,12 @@ form {
   margin-top: 15px;
   border: none;
   cursor: pointer;
-  /* ADIÇÕES PARA O EFEITO */
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
 }
 
-.conheça::before {
+.conheca::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -317,26 +319,30 @@ form {
     transition: width 0.6s ease, height 0.6s ease;
 }
 
-.conheça:hover {
+.conheca:hover {
     background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
     box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
     transform: translateY(-3px) scale(1.05);
 }
 
-.conheça:hover::before {
+.conheca:hover::before {
     width: 400px;
     height: 400px;
 }
 
-.conheça:active {
+.conheca:active {
     background: #5E332C;
     transform: translateY(-1px) scale(1.02);
 }
 
 @media screen and (max-width: 480px) {
-  .conheça {
+  .conheca {
     width: 80%;
     max-width: 280px;
+  }
+
+  .asideFigure {
+    max-height: 100px;
   }
 }
 
@@ -344,7 +350,7 @@ form {
 /* ASIDE (IMAGEM LATERAL)             */
 /* ================================== */
 
-aside {
+.aside {
   flex: 1 1 900px;
   min-width: 300px;
   display: flex;
@@ -353,13 +359,13 @@ aside {
 
 /* Imagem aparece primeiro em telas menores */
 @media screen and (max-width: 1200px) {
-  aside {
+  .aside {
     width: 100%;
     order: 1; 
   }
 }
 
-aside > figure {
+.asideFigure {
   background: url(/images/imagem-pagina-empresas.png) no-repeat center center;
   background-size: cover;
   width: 100%;
@@ -372,19 +378,28 @@ aside > figure {
 }
 
 @media screen and (max-width: 1200px) {
-  aside > figure {
+  .asideFigure {
     border-radius: 0;
     max-width: 100%;
     min-height: 500px;
     justify-content: flex-end;
     padding-bottom: 50px;
   }
+
+  .aside, .asideFigure {
+    max-height: 800px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  /* Se houver classe .moda no HTML, converta para camelCase se necessário, mantive .moda aqui */
   .moda {
     font-size: 24px;
     height: 35px;
+  }
+
+  .aside, .asideFigure {
+    max-height: 600px;
   }
 }
 
@@ -393,8 +408,13 @@ aside > figure {
     font-size: 18px;
     height: 30px;
   }
+  .aside, .asideFigure {
+    max-height: 500px;
+  }
 }
-#conheça {
+
+/* Antigo ID #conheça */
+.textoConheca {
     font-size: 18px;
     font-family: "Louis George Cafe", sans-serif;
     font-weight: 600;
@@ -410,13 +430,13 @@ aside > figure {
   animation: slideIn 0.3s ease-out;
 }
 
-.message.success {
+.success {
   background-color: #d4edda;
   color: #155724;
   border: 1px solid #c3e6cb;
 }
 
-.message.error {
+.error {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
@@ -433,7 +453,8 @@ aside > figure {
   }
 }
 
-button:disabled {
+/* Button Disabled Global Style inside wrapper */
+.wrapper button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }

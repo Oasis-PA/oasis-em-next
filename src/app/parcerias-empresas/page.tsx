@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
-import {Header, Footer} from "@/components";
-import '@/styles/parcerias-empresas.css';
+import { Header, Footer } from "@/components";
+import styles from '@/styles/parcerias-empresas.module.css';
 
 const ParceriasEmpresasPage: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -76,22 +76,26 @@ const ParceriasEmpresasPage: React.FC = () => {
     };
 
     return (
-    <div className="page-parcerias-empresas-wrapper">
-
-        <Header/>
-            <main>
-                <article id="container">
-                    <form onSubmit={handleSubmit}>
-                        <h1 className="titulo">COMO PODEMOS AJUDAR?</h1>
-                        <p className="subtitulo">Nossa equipe vai te responder com a maior disponibilidade.</p>
+        <>
+        <Header />
+        <div className={styles.wrapper}>
+            {/* main agora recebe classe para flexbox */}
+            <main className={styles.mainContent}>
+                
+                {/* id="container" virou classe formContainer */}
+                <article className={styles.formContainer}>
+                    <form onSubmit={handleSubmit} className={styles.form}>
+                        <h1 className={styles.titulo}>COMO PODEMOS AJUDAR?</h1>
+                        <p className={styles.subtitulo}>Nossa equipe vai te responder com a maior disponibilidade.</p>
 
                         {message.text && (
-                            <div className={`message ${message.type}`}>
+                            <div className={`${styles.message} ${message.type === 'success' ? styles.success : styles.error}`}>
                                 {message.text}
                             </div>
                         )}
 
-                        <section id="caixas-texto">
+                        {/* id="caixas-texto" virou classe caixasTexto */}
+                        <section className={styles.caixasTexto}>
                             <input
                                 type="text"
                                 name="nome"
@@ -110,7 +114,9 @@ const ParceriasEmpresasPage: React.FC = () => {
                                 onChange={handleChange}
                                 required
                             />
-                            <div id="telefone">
+                            
+                            {/* id="telefone" virou classe telefoneWrapper */}
+                            <div className={styles.telefoneWrapper}>
                                 <p>BR</p>
                                 <img src="/images/parcerias-empresas/brasil.png" alt="Brasil" />
                                 <p>+55</p>
@@ -124,6 +130,7 @@ const ParceriasEmpresasPage: React.FC = () => {
                                     required
                                 />
                             </div>
+
                             <input
                                 type="text"
                                 name="empresaRepresentada"
@@ -154,8 +161,11 @@ const ParceriasEmpresasPage: React.FC = () => {
                             />
                         </section>
 
-                        <section id="contato">
+                        {/* section id="contato" virou classe contatoLabel */}
+                        <section className={styles.contatoLabel}>
+                            {/* textarea id="motivo" virou classe motivoTextarea */}
                             <textarea
+                                className={styles.motivoTextarea}
                                 name="motivo"
                                 id="motivo"
                                 placeholder=" Nos conte um pouco do que deseja"
@@ -165,23 +175,22 @@ const ParceriasEmpresasPage: React.FC = () => {
                             />
                         </section>
 
-                        <section className="cliente">
-                            <Link className="eusou2" href="../parcerias-influenciadores">
+                        <section className={styles.cliente}>
+                            <Link className={styles.euSou2} href="../parcerias-influenciadores">
                                 <img src="/images/parcerias-empresas/usuario.png" alt="Ícone de usuário" />
-                                <p className="eusoua">Eu sou um influenciador</p>
-                                <p className="eusoub">Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
+                                <p className={styles.euSouA}>Eu sou um influenciador</p>
+                                <p className={styles.euSouB}>Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
                             </Link>
-                            <Link className="eusou" href="../parcerias-empresas">
+                            <Link className={styles.euSou} href="../parcerias-empresas">
                                 <img src="/images/parcerias-empresas/empresa.png" alt="Ícone de empresa" />
-                                <p className="eusoua">Eu sou uma empresa</p>
-                                <p className="eusoub">Contato para parcerias, dúvidas sobre regulamentos, reportação de queixas.</p>
+                                <p className={styles.euSouA}>Eu sou uma empresa</p>
+                                <p className={styles.euSouB}>Contato para parcerias, dúvidas sobre regulamentos, reportação de queixas.</p>
                             </Link>
                         </section>
 
                         <button
                             type="submit"
-                            className="conheça"
-                            id="conheça"
+                            className={styles.conheca}
                             disabled={isLoading}
                         >
                             {isLoading ? 'ENVIANDO...' : 'ENVIAR SOLICITAÇÃO'}
@@ -189,16 +198,19 @@ const ParceriasEmpresasPage: React.FC = () => {
                     </form>
                 </article>
 
-                <aside>
-                    <figure>
+                {/* aside agora tem classe para controle de layout */}
+                <aside className={styles.aside}>
+                    <figure className={styles.asideFigure}>
                     </figure>
                 </aside>
             </main>
 
             <Script src="/parcerias.js" strategy="afterInteractive" />
-        <Footer/>    </div>
-  );
-
+            
+        </div>
+        <Footer />
+        </>
+    );
 };
 
 export default ParceriasEmpresasPage;
