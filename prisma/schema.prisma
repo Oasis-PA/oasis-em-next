@@ -80,6 +80,7 @@ model Produto {
   tag            Tag?            @relation(fields: [id_tag], references: [id_tag], onDelete: NoAction, onUpdate: NoAction)
   tipo_cabelo    TipoCabelo?     @relation(fields: [id_tipo_cabelo], references: [id_tipo_cabelo], onDelete: NoAction, onUpdate: NoAction)
   TipoPele       TipoPele?       @relation(fields: [id_tipo_pele], references: [id_tipo_pele], onDelete: NoAction, onUpdate: NoAction)
+  ProdutoTag     ProdutoTag[]
 }
 
 model Avaliacao {
@@ -103,10 +104,17 @@ model Favorito {
 }
 
 model Tag {
-  id_tag    Int         @id @default(autoincrement())
-  nome      String      @unique
-  ArtigoTag ArtigoTag[]
-  produtos  Produto[]
+  id_tag             Int                  @id @default(autoincrement())
+  nome               String               @unique
+  slug               String?              @unique @db.VarChar(100)
+  descricao          String?
+  tipo               String?              @default("caracteristica") @db.VarChar(50)
+  ArtigoTag          ArtigoTag[]
+  produtos           Produto[]
+  ProdutoTag         ProdutoTag[]
+  QuestionarioTagMap QuestionarioTagMap[]
+
+  @@index([slug], map: "idx_tag_slug")
 }
 
 model PasswordReset {
@@ -308,4 +316,33 @@ model QuestionarioResposta {
   @@index([data_resposta], map: "idx_resposta_data")
   @@index([id_questionario], map: "idx_resposta_questionario")
   @@index([id_usuario], map: "idx_resposta_usuario")
+}
+
+model ProdutoTag {
+  id_produto_tag Int       @id @default(autoincrement())
+  id_produto     Int
+  id_tag         Int
+  principal      Boolean?  @default(false)
+  ordem          Int?
+  criado_em      DateTime? @default(now()) @db.Timestamp(6)
+  Produto        Produto   @relation(fields: [id_produto], references: [id_produto], onDelete: Cascade, onUpdate: NoAction, map: "fk_produto_tag_produto")
+  Tag            Tag       @relation(fields: [id_tag], references: [id_tag], onDelete: Cascade, onUpdate: NoAction, map: "fk_produto_tag_tag")
+
+  @@unique([id_produto, id_tag], map: "unique_produto_tag")
+  @@index([id_produto], map: "idx_produto_tag_produto")
+  @@index([id_tag], map: "idx_produto_tag_tag")
+}
+
+model QuestionarioTagMap {
+  id_map         Int       @id @default(autoincrement())
+  campo_bd       String    @db.VarChar(100)
+  valor_resposta String    @db.VarChar(100)
+  id_tag         Int
+  peso           Int?      @default(10)
+  criado_em      DateTime? @default(now()) @db.Timestamp(6)
+  Tag            Tag       @relation(fields: [id_tag], references: [id_tag], onDelete: Cascade, onUpdate: NoAction, map: "fk_questionario_tag_map")
+
+  @@unique([campo_bd, valor_resposta, id_tag], map: "unique_campo_valor_tag")
+  @@index([campo_bd], map: "idx_questionario_tag_campo")
+  @@index([valor_resposta], map: "idx_questionario_tag_valor")
 }

@@ -16,6 +16,7 @@ interface ProdutoData {
   mais_detalhes: string;
   tag_principal: string;
   preco?: string;
+  tags?: Array<{ id: number; nome: string; principal: boolean }>; // ✅ NOVO (opcional)
 }
 
 export default function PaginaDeProduto() {
