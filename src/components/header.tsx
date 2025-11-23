@@ -138,7 +138,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
         </section>
         <section className={styles.em_baixinho}>
           <div className={styles.coisas}>
-            <Link href="/cortes-geral" className={styles.redirecionavel}>Cortes</Link>
+            <Link href="/corte" className={styles.redirecionavel}>Cortes</Link>
             <Link href="/haircare" className={styles.redirecionavel}>Hair Care</Link>
             <Link href="/tinturas" className={styles.redirecionavel}>Tinturas</Link>
             <Link href="/skincare" className={styles.redirecionavel}>Skincare</Link>
