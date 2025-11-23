@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import "@/styles/respostas.css";
+import styles from "@/styles/respostas.module.css";
 
 const nomesEventos = {
     hidratacao: 'Hidratação',
@@ -88,10 +87,11 @@ function gerarCalendario(mes: number, ano: number) {
                 const tratamento = getTratamentoPorData(dia, mes, ano);
                 let bolinha = null;
                 if (tratamento) {
-                    bolinha = <span className={`bolinha ${tratamento}`} title={nomesEventos[tratamento as keyof typeof nomesEventos]}></span>;
+                    // Mapeia a classe dinâmica baseada na chave do objeto estilos
+                    bolinha = <span className={`${styles.dot} ${styles[tratamento]}`} title={nomesEventos[tratamento as keyof typeof nomesEventos]}></span>;
                 }
                 colunas.push(
-                    <td key={j}>{bolinha}<div>{dia}</div></td>);
+                    <td key={j}>{bolinha}<div className={styles.calendarDayNumber}>{dia}</div></td>);
                 dia++;
             }
         }
@@ -100,16 +100,16 @@ function gerarCalendario(mes: number, ano: number) {
     }
     return (
         <>
-            <table className="tabela-calendario">
+            <table className={styles.calendarTable}>
                 <thead>
                     <tr>{diasSemana.map((d, i) => <th key={i}>{d}</th>)}</tr>
                 </thead>
                 <tbody>{linhas}</tbody>
             </table>
-            <div className="legenda-calendario">
-                <span><span className="bolinha hidratacao"></span> Hidratação</span>
-                <span><span className="bolinha nutricao"></span> Nutrição</span>
-                <span><span className="bolinha reconstrucao"></span> Reconstrução</span>
+            <div className={styles.calendarLegend}>
+                <span><span className={`${styles.dot} ${styles.hidratacao}`}></span> Hidratação</span>
+                <span><span className={`${styles.dot} ${styles.nutricao}`}></span> Nutrição</span>
+                <span><span className={`${styles.dot} ${styles.reconstrucao}`}></span> Reconstrução</span>
             </div>
         </>
     );
@@ -239,7 +239,7 @@ const QuestionarioPage: React.FC<QuestionarioPageProps> = ({ step }) => {
                 tipo = 'Pausa: Descanso ou cuidados leves.';
             }
             return (
-                <div id={id} key={id}>
+                <div key={id} className={styles.weekDayItem}>
                     <h1>{nome}</h1>
                     <p>{tipo}</p>
                 </div>
@@ -248,35 +248,34 @@ const QuestionarioPage: React.FC<QuestionarioPageProps> = ({ step }) => {
     }
 
     return (
-        <main>
-            <section className="de-ladinho">
-                <div className="em-ciminha">
+        <main className={styles.pageWrapper}>
+            <section className={styles.sidebar}>
+                <div className={styles.topIcons}>
                     <Link href="/">
-                        <img id="logo" src="/images/logo-reduzida.png" alt="Logo" style={{ cursor: 'pointer' }} />
+                        <img className={styles.logo} src="/images/logo-reduzida.png" alt="Logo" />
                     </Link>
-                    <img id="user" src="/images/resposta/user.png" alt="" />
+                    <img className={styles.userAvatar} src="/images/resposta/user.png" alt="" />
                 </div>
-                <div className="botoes-pgn-respostas">
+                <div className={styles.navButtons}>
                     <Link href="/guia">
-                        <img src="/images/lupa.png" alt="Ir para Guia" style={{ cursor: 'pointer' }} />
+                        <img src="/images/lupa.png" alt="Ir para Guia" />
                     </Link>
                     <Link href="/favoritos">
-                        <img src="/images/coracao.svg" alt="Ir para Favoritos" style={{ cursor: 'pointer' }} />
+                        <img src="/images/coracao.svg" alt="Ir para Favoritos" />
                     </Link>
                     <img
                         src="/images/tres-barras.svg"
                         alt="Menu"
                         onClick={toggleMenu}
-                        style={{ cursor: 'pointer' }}
                     />
                 </div>
                 <div></div>
             </section>
 
-            <div className={`menu-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
+            <div className={`${styles.menuOverlay} ${menuOpen ? styles.active : ''}`} onClick={closeMenu}></div>
 
-            <div className={`menu-mobile ${menuOpen ? 'active' : ''}`}>
-                <button className="menu-close" onClick={closeMenu}>✕</button>
+            <div className={`${styles.menuMobile} ${menuOpen ? styles.active : ''}`}>
+                <button className={styles.menuClose} onClick={closeMenu}>✕</button>
                 <Link href="/guia" onClick={closeMenu}>
                     <img src="/images/lupa.png" alt="Guia" />
                     <span>Guia</span>
@@ -287,69 +286,69 @@ const QuestionarioPage: React.FC<QuestionarioPageProps> = ({ step }) => {
                 </Link>
             </div>
 
-            <section className="outro-ladinho">
-                <div className="titulos">
+            <section className={styles.mainLayout}>
+                <div className={styles.titles}>
                     <h1>Cabelo Saudável</h1>
                     <p>15/60 pontos</p>
                 </div>
-                <div className="abaixo">
-                    <section className="esquerda">
-                        <div className="info-texto">
-                            <div className="img-info-texto-info1"></div>
-                            <div className="content">
+                <div className={styles.contentGrid}>
+                    <section className={styles.leftColumn}>
+                        <div className={styles.infoCard}>
+                            <div className={`${styles.infoImage} ${styles.infoImage1}`}></div>
+                            <div className={styles.cardContent}>
                                 <p>Cabelo com brilho natural, pouco frizz, boa resistência, sem ou com pouca química, couro cabeludo saudável e rotina de lavagem equilibrada.</p>
-                                <section className="detalhes">
-                                    <div className="elementos">
-                                        <div className="texto-e-img">
+                                <section className={styles.detailsList}>
+                                    <div className={styles.detailItem}>
+                                        <div className={styles.detailHeader}>
                                             <img src="/images/resposta/calendario.png" alt="" />
-                                            <p id="texto">Tratamento</p>
+                                            <p className={styles.detailLabel}>Tratamento</p>
                                         </div>
-                                        <p id="explicacao">Manutenção</p>
+                                        <p className={styles.detailValue}>Manutenção</p>
                                     </div>
-                                    <div className="elementos">
-                                        <div className="texto-e-img">
+                                    <div className={styles.detailItem}>
+                                        <div className={styles.detailHeader}>
                                             <img src="/images/resposta/relogio.png" alt="" />
-                                            <p id="texto">Duração</p>
+                                            <p className={styles.detailLabel}>Duração</p>
                                         </div>
-                                        <p id="explicacao">3 Meses</p>
+                                        <p className={styles.detailValue}>3 Meses</p>
                                     </div>
-                                    <div className="elementos">
-                                        <div className="texto-e-img">
+                                    <div className={styles.detailItem}>
+                                        <div className={styles.detailHeader}>
                                             <img src="/images/resposta/secador.png" alt="" />
-                                            <p id="texto">Danos</p>
+                                            <p className={styles.detailLabel}>Danos</p>
                                         </div>
-                                        <p id="explicacao">Mínimo</p>
+                                        <p className={styles.detailValue}>Mínimo</p>
                                     </div>
                                 </section>
                             </div>
                         </div>
 
-                        <section className="conjunto-de-calendar">
-                            <div className="calendar">
+                        <section className={styles.statsWrapper}>
+                            <div className={styles.miniCalendar}>
                                 <h1>Semanal</h1>
-                                <div className="quadradinho">
-                                    <div id="text">
+                                <div className={styles.statBox}>
+                                    <div className={styles.statItem}>
                                         <h1>02-03</h1>
                                         <p>Lavagens</p>
                                     </div>
-                                    <div id="text">
+                                    <div className={styles.statItem}>
                                         <h1>03</h1>
                                         <p>Tratamentos</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="calendar">
+                            <div className={styles.miniCalendar}>
                                 <h1>Mensal</h1>
-                                <div className="quadradinho">
-                                    <div id="text">
+                                <div className={styles.statBox}>
+                                    <div className={styles.statItem}>
                                         <h1>00</h1>
                                         <p>Reconstrução</p>
                                     </div>
-                                    <div id="text">
+                                    <div className={styles.statItem}>
                                         <h1>00</h1>
                                         <p>Umectações</p>
                                     </div>
-                                    <div id="text">
+                                    <div className={styles.statItem}>
                                         <h1>01</h1>
                                         <p>Acidificações</p>
                                     </div>
@@ -357,39 +356,39 @@ const QuestionarioPage: React.FC<QuestionarioPageProps> = ({ step }) => {
                             </div>
                         </section>
 
-                        <div className="calenderio">
-                            <div className="calendario-nav">
-                                <button className="calendario-seta" onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
-                                <h2 id="calendario-mes-ano">{nomesMeses[mesAtual]} {anoAtual}</h2>
-                                <button className="calendario-seta" onClick={handleMesProximo} aria-label="Próximo mês">&#8594;</button>
+                        <div className={styles.calendarSection}>
+                            <div className={styles.calendarNav}>
+                                <button className={styles.calendarArrow} onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
+                                <h2 className={styles.calendarTitle}>{nomesMeses[mesAtual]} {anoAtual}</h2>
+                                <button className={styles.calendarArrow} onClick={handleMesProximo} aria-label="Próximo mês">&#8594;</button>
                             </div>
                             <div id="calendario-tabela">{gerarCalendario(mesAtual, anoAtual)}</div>
                         </div>
                     </section>
-                    <section className="direita">
+                    <section className={styles.rightColumn}>
                         <h1>Informativo</h1>
-                        <div className="cronograma">
-                            <div className="aa">
-                                <button id="semana-anterior" onClick={handleSemanaAnterior}>←</button>
+                        <div className={styles.scheduleCard}>
+                            <div className={styles.scheduleHeader}>
+                                <button onClick={handleSemanaAnterior}>←</button>
                                 <h1>Cronograma Semanal</h1>
-                                <button id="semana-proxima" onClick={handleSemanaProxima}>→</button>
+                                <button onClick={handleSemanaProxima}>→</button>
                             </div>
-                            <p id="data">{getSemanaLabel()}</p>
-                            <div className="dias-da-semana">
-                                <div className="conteudo">
+                            <p className={styles.scheduleDateLabel}>{getSemanaLabel()}</p>
+                            <div className={styles.weekDaysContainer}>
+                                <div className={styles.weekDaysContent}>
                                     {getCronogramaSemana()}
                                 </div>
                             </div>
                         </div>
-                        <section className="diquinhas">
-                            <div className="dicas">
+                        <section className={styles.tipsContainer}>
+                            <div className={styles.tipCard}>
                                 <h1>Dicas</h1>
                                 <p><b>Antes de Aplicar:</b> Lave com shampoo suave sem sulfato, use água morna e retire o excesso de água antes da máscara.<br />
                                     <b>Durante:</b> Aplique do comprimento às pontas, deixe agir 15-20min e massageie suavemente.<br />
                                     <b>Finalização:</b> Enxágue com água fria, use leave-in leve, evite água quente e durma com fronha de cetim.<br />
                                     <b>Manutenção:</b> Mantenha lavagem de 2 a 3x por semana. Evite excesso de calor. Corte a cada 3 meses para prevenir pontas duplas.</p>
                             </div>
-                            <div className="dicas">
+                            <div className={styles.tipCard}>
                                 <h1>Alimentação</h1>
                                 <p><b>Proteínas:</b> ovos, carnes, leguminosas.<br />
                                     <b>Vitaminas B:</b> ovos, nozes, vegetais verdes.<br />
@@ -403,50 +402,50 @@ const QuestionarioPage: React.FC<QuestionarioPageProps> = ({ step }) => {
                             </div>
                         </section>
                         <h2>Produtos recomendados</h2>
-                        <section className="produtos">
-                            <div className="produtinho">
+                        <section className={styles.productsContainer}>
+                            <div className={styles.productCard}>
                                 <h1>Hidratação</h1>
-                                <div className="img-produtinhos-1"></div>
+                                <div className={`${styles.productImage} ${styles.productImg1}`}></div>
                                 <p>Be Younger Repair Hair Mask - hidratação profunda com ácido hialurônico e pantenol para manter a saúde.</p>
                                 <button>Conheça</button>
                             </div>
-                            <div className="produtinho">
+                            <div className={styles.productCard}>
                                 <h1>Nutrição</h1>
-                                <div className="img-produtinhos-2"></div>
+                                <div className={`${styles.productImage} ${styles.productImg2}`}></div>
                                 <p>Braé Fiber Mask - nutrição com óleo de linhaça e manteigas para brilho e maciez natural.</p>
                                 <button>Conheça</button>
                             </div>
-                            <div className="produtinho">
+                            <div className={styles.productCard}>
                                 <h1>Leave-in</h1>
-                                <div className="img-produtinhos-3"></div>
+                                <div className={`${styles.productImage} ${styles.productImg3}`}></div>
                                 <p>Elseve Cicatri Renov Leave-In - proteção térmica e finalização para manter cabelos saudáveis.</p>
                                 <button>Conheça</button>
                             </div>
                         </section>
-                        <section className="articles">
-                            <Link href='/' className="artigo">
-                                <div id="conteudinho">
-                                    <div className="aaaa">
-                                        <div className="butoes">
+                        <section className={styles.articlesContainer}>
+                            <Link href='/' className={`${styles.articleCard} ${styles.articleCard1}`}>
+                                <div className={styles.articleContent}>
+                                    <div className={styles.articleTextWrapper}>
+                                        <div className={styles.articleButtons}>
                                             <button>Cortes</button>
                                             <button>Marcas</button>
                                         </div>
                                         <h1>Como escolher o corte ideal para o formato do rosto</h1>
                                     </div>
                                 </div>
-                                <img src="/images/resposta/Vector.png" alt="" />
+                                <img className={styles.articleArrow} src="/images/resposta/Vector.png" alt="" />
                             </Link>
-                            <Link href='/' className="artigo1">
-                                <div id="conteudinho">
-                                    <div className="aaaa">
-                                        <div className="butoes">
+                            <Link href='/' className={`${styles.articleCard} ${styles.articleCard2}`}>
+                                <div className={styles.articleContent}>
+                                    <div className={styles.articleTextWrapper}>
+                                        <div className={styles.articleButtons}>
                                             <button>Moda</button>
                                             <button>Marcas</button>
                                         </div>
                                         <h1>Os 10 melhores óleos essenciais</h1>
                                     </div>
                                 </div>
-                                <img src="/images/resposta/Vector.png" alt="" />
+                                <img className={styles.articleArrow} src="/images/resposta/Vector.png" alt="" />
                             </Link>
                         </section>
                     </section>
