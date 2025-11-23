@@ -34,7 +34,7 @@
     align-items: center;
 }
 
-.header1 {
+.headerArticle {
     width: 100%;
     height: 560px;
     flex-shrink: 0;
@@ -227,7 +227,7 @@
 
 /* Para telas menores (tablets e celulares grandes) */
 @media (max-width: 768px) {
-    .header1 {
+    .headerArticle {
     min-height: 400px;
     }
     
@@ -259,7 +259,7 @@
 
 /* Para celulares */
 @media (max-width: 480px) {
-    .header1 {
+    .headerArticle {
         min-height: 300px;
     }
     
