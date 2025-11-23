@@ -4,6 +4,7 @@ import { Header, Footer } from "@/components";
 import Image from "next/image";
 import styles from "@/styles/tendencias.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // 1. Importação necessária
 
 interface TrendCardProps {
   imageClass: string;
@@ -12,6 +13,7 @@ interface TrendCardProps {
   link: string;
   titId: string;
 }
+
 const TrendCard: React.FC<TrendCardProps> = ({ imageClass, title, tags, link, titId }) => {
   const saveIconSrc = '/images/tendencias/Salvar.png';
 
@@ -41,10 +43,16 @@ const TrendCard: React.FC<TrendCardProps> = ({ imageClass, title, tags, link, ti
       </div>
     </Link>
   );
-
 };
 
 export default function tendencias() {
+  const router = useRouter(); // 2. Inicialização do router
+
+  // Função para navegar para o final da página de produtos
+  const irParaFinalProdutos = () => {
+    // Certifique-se de que na página '/produtos' exista um elemento com id="final"
+    router.push('/produtos#final');
+  };
 
   return (
     <>
@@ -108,14 +116,16 @@ export default function tendencias() {
             <div className={styles.produtss}>
               <div className={styles.produt2}>
                 <p>Óleo de Coco</p>
-                <button className={styles.but4}>Ver produto</button>
+                {/* 3. Botão atualizado */}
+                <button className={styles.but4} onClick={irParaFinalProdutos}>Ver produto</button>
                 <button className={styles.but5}>
                   <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
               </div>
               <div className={styles.produt3}>
                 <p>Creme capilar</p>
-                <button className={styles.but2}>Ver produto</button>
+                {/* 3. Botão atualizado */}
+                <button className={styles.but2} onClick={irParaFinalProdutos}>Ver produto</button>
                 <button className={styles.but3}>
                   <Image src="/images/tendencias/Salvar.png" alt="" width={24} height={24}/>
                 </button>
@@ -140,7 +150,9 @@ export default function tendencias() {
               width={300} 
               height={250} 
             />
-            <button className={styles.but6}>Ver produtos</button>
+            
+            {/* 3. Botão atualizado */}
+            <button className={styles.but6} onClick={irParaFinalProdutos}>Ver produtos</button>
           </div>
           </div>
         </section>
