@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 import '@/styles/globals.css'; 
-import styles from '@/styles/parcerias-usuarios.module.css'; // Certifique-se que o caminho está correto
+import styles from '@/styles/parcerias-usuarios.module.css';
 import { Header, Footer } from "@/components";
 
 interface Localidade {
@@ -13,15 +13,14 @@ interface Localidade {
 }
 
 const ParceriasUsuariosPage: React.FC = () => {
-  // Estados para os dados da aplicação
   const [estados, setEstados] = useState<Localidade[]>([]);
   const [estadoSelecionado, setEstadoSelecionado] = useState('');
   const [cidades, setCidades] = useState<Localidade[]>([]);
   const [cidadeSelecionada, setCidadeSelecionada] = useState('');
   const [isLoadingCidades, setIsLoadingCidades] = useState(false);
+  const [isLoadingEstados, setIsLoadingEstados] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Estados do formulário
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -29,56 +28,71 @@ const ParceriasUsuariosPage: React.FC = () => {
   const [numeroSeguidores, setNumeroSeguidores] = useState('');
   const [proposta, setProposta] = useState('');
 
-  // Estados de submissão
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  // Carregar estados
+  // Carregar estados usando API Route interna
   useEffect(() => {
-    const URL_ESTADOS = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome';
+    const carregarEstados = async () => {
+      console.log('🔄 Iniciando carregamento dos estados...');
+      
+      try {
+        const response = await fetch('/api/ibge/estados');
 
-    fetch(URL_ESTADOS)
-      .then(response => {
-        if (!response.ok) throw new Error('Erro ao carregar estados.');
-        return response.json();
-      })
-      .then((data: Localidade[]) => {
+        console.log('📡 Response status:', response.status);
+
+        if (!response.ok) {
+          throw new Error(`Erro HTTP: ${response.status}`);
+        }
+
+        const data: Localidade[] = await response.json();
+        console.log('✅ Estados carregados:', data.length);
+        
         setEstados(data);
-      })
-      .catch(err => {
-        setError("Não foi possível carregar a lista de estados.");
-      });
+        setError(null);
+      } catch (err: any) {
+        console.error('❌ Erro ao carregar estados:', err);
+        setError("Não foi possível carregar os estados. Tente novamente.");
+      } finally {
+        setIsLoadingEstados(false);
+      }
+    };
+
+    carregarEstados();
   }, []);
 
-  // Carregar cidades quando estado mudar
-  const handleEstadoChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  // Carregar cidades usando API Route interna
+  const handleEstadoChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const siglaEstado = event.target.value;
     setEstadoSelecionado(siglaEstado);
     setCidades([]);
     setCidadeSelecionada('');
     setError(null);
 
-    if (siglaEstado) {
-      setIsLoadingCidades(true);
-      const URL_CIDADES = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${siglaEstado}/municipios?orderBy=nome`;
+    if (!siglaEstado) return;
 
-      fetch(URL_CIDADES)
-        .then(response => {
-          if (!response.ok) throw new Error('Erro ao carregar cidades.');
-          return response.json();
-        })
-        .then((data: Localidade[]) => {
-          setCidades(data);
-          setIsLoadingCidades(false);
-        })
-        .catch(err => {
-          setError("Não foi possível carregar as cidades deste estado.");
-          setIsLoadingCidades(false);
-        });
+    setIsLoadingCidades(true);
+    console.log(`🔄 Carregando cidades de ${siglaEstado}...`);
+
+    try {
+      const response = await fetch(`/api/ibge/cidades/${siglaEstado}`);
+
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+
+      const data: Localidade[] = await response.json();
+      console.log('✅ Cidades carregadas:', data.length);
+      
+      setCidades(data);
+    } catch (err: any) {
+      console.error('❌ Erro ao carregar cidades:', err);
+      setError(`Não foi possível carregar as cidades.`);
+    } finally {
+      setIsLoadingCidades(false);
     }
   };
 
-  // Formatar telefone enquanto digita
   const handleTelefoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, '');
     
@@ -92,7 +106,6 @@ const ParceriasUsuariosPage: React.FC = () => {
     }
   };
 
-  // Submeter formulário
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
@@ -152,7 +165,6 @@ const ParceriasUsuariosPage: React.FC = () => {
     <Header/>
     <div className={styles.wrapper}>
       <main className={styles.wrapperMain}>
-        {/* Usamos className={styles.container} pois mudamos de ID para Class no CSS */}
         <div className={styles.container}>
           <form onSubmit={handleSubmit} method="post" className={styles.formContainer}>
             <h1 className={styles.titulo}>PARCERIA COM INFLUENCIADORES</h1>
@@ -176,7 +188,6 @@ const ParceriasUsuariosPage: React.FC = () => {
               </div>
             )}
 
-            {/* Container dos inputs agora é uma classe no CSS Module */}
             <div className={styles.caixasTexto}>
               <input
                 type="text"
@@ -197,7 +208,6 @@ const ParceriasUsuariosPage: React.FC = () => {
                 required
               />
 
-              {/* Container do telefone ajustado para classe */}
               <div className={styles.telefoneContainer}>
                 <p>BR</p>
                 <img src="/images/atendimento-usuario/brasil.png" alt="Brasil" />
@@ -218,9 +228,12 @@ const ParceriasUsuariosPage: React.FC = () => {
                 id="estado"
                 value={estadoSelecionado}
                 onChange={handleEstadoChange}
+                disabled={isLoadingEstados}
                 required
               >
-                <option value="">Selecione o Estado...</option>
+                <option value="">
+                  {isLoadingEstados ? "Carregando estados..." : "Selecione o Estado..."}
+                </option>
                 {estados.map((estado) => (
                   <option key={estado.id} value={estado.sigla}>
                     {estado.nome} ({estado.sigla})
