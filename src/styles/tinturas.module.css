@@ -666,7 +666,7 @@
   height: 2px;
   background-color: black;
   width: 90%;
-  margin-top: clamp(3.5rem, 7vw, 7rem);
+  margin: clamp(3.5rem, 7vw, 7rem) auto 0 auto; 
 }
 
 /* ================================== */
@@ -675,7 +675,7 @@
 .s4 {
   background-image: url('/images/tinturas/s4-bg.png');
   background-size: cover;
-  background-position: center;
+  background-position: top;
   width: 100%;
   min-height: 800px;
   display: flex;
