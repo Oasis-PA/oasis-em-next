@@ -21,17 +21,19 @@ export default function CadastrarProdutoPage() {
     id_categoria: '',
     url_imagem: '',
     url_loja: '',
-    id_tag: '',
     id_tipo_cabelo: '',
     id_tipo_pele: '',
   });
+  
+  // ✅ NOVO: Estado para múltiplas tags
+  const [tagsSelecionadas, setTagsSelecionadas] = useState<number[]>([]);
+  
   const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(false);
   const [loadingTags, setLoadingTags] = useState(true);
   const [mensagem, setMensagem] = useState('');
   const [erro, setErro] = useState('');
 
-  // Busca as tags disponíveis ao carregar o componente
   useEffect(() => {
     async function fetchTags() {
       try {
@@ -56,6 +58,28 @@ export default function CadastrarProdutoPage() {
     }));
   };
 
+  // ✅ NOVO: Função para adicionar/remover tags
+  const handleTagToggle = (tagId: number) => {
+    setTagsSelecionadas(prev => {
+      if (prev.includes(tagId)) {
+        // Remove se já estiver selecionada
+        return prev.filter(id => id !== tagId);
+      } else {
+        // Adiciona se não estiver
+        return [...prev, tagId];
+      }
+    });
+  };
+
+  // ✅ NOVO: Marcar tag como principal
+  const handleSetPrincipal = (tagId: number) => {
+    // Move a tag para o início do array (primeira = principal)
+    setTagsSelecionadas(prev => {
+      const filtered = prev.filter(id => id !== tagId);
+      return [tagId, ...filtered];
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -68,13 +92,23 @@ export default function CadastrarProdutoPage() {
       return;
     }
 
+    // ✅ NOVO: Validar se pelo menos uma tag foi selecionada
+    if (tagsSelecionadas.length === 0) {
+      setErro('Selecione pelo menos uma tag para o produto.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch('/api/produtos/cadastro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          tags_ids: tagsSelecionadas // ✅ NOVO: Envia array de IDs
+        }),
       });
 
       const data = await res.json();
@@ -93,10 +127,10 @@ export default function CadastrarProdutoPage() {
           id_categoria: '',
           url_imagem: '',
           url_loja: '',
-          id_tag: '',
           id_tipo_cabelo: '',
           id_tipo_pele: '',
         });
+        setTagsSelecionadas([]); // ✅ Limpa tags selecionadas
       }
     } catch (err) {
       setErro('Erro de conexão com o servidor.');
@@ -170,23 +204,110 @@ export default function CadastrarProdutoPage() {
             ></textarea>
           </div>
 
+          {/* ✅ NOVO: Seleção de múltiplas tags */}
           <div className="form-group">
-            <label htmlFor="id_tag">Tag Principal:</label>
-            <select 
-              id="id_tag" 
-              name="id_tag" 
-              value={formData.id_tag} 
-              onChange={handleChange}
-              disabled={loadingTags}
-            >
-              <option value="">Selecione uma tag</option>
-              {tags.map(tag => (
-                <option key={tag.id_tag} value={tag.id_tag}>
-                  {tag.nome}
-                </option>
-              ))}
-            </select>
-            {loadingTags && <small>Carregando tags...</small>}
+            <label>Tags do Produto:</label>
+            {loadingTags ? (
+              <small>Carregando tags...</small>
+            ) : (
+              <>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '8px',
+                  padding: '10px',
+                  border: '1px solid #ddd',
+                  borderRadius: '4px',
+                  maxHeight: '200px',
+                  overflowY: 'auto'
+                }}>
+                  {tags.map((tag, index) => {
+                    const isSelected = tagsSelecionadas.includes(tag.id_tag);
+                    const isPrincipal = tagsSelecionadas[0] === tag.id_tag;
+                    
+                    return (
+                      <div 
+                        key={tag.id_tag}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          padding: '6px 10px',
+                          background: isSelected ? (isPrincipal ? '#FFD700' : '#e3f2fd') : '#f5f5f5',
+                          border: isSelected ? '2px solid #2196F3' : '1px solid #ddd',
+                          borderRadius: '16px',
+                          cursor: 'pointer',
+                          fontSize: '13px',
+                          fontWeight: isPrincipal ? 'bold' : 'normal'
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => handleTagToggle(tag.id_tag)}
+                          style={{ cursor: 'pointer' }}
+                        />
+                        <span onClick={() => handleTagToggle(tag.id_tag)}>
+                          {tag.nome}
+                        </span>
+                        {isSelected && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleSetPrincipal(tag.id_tag);
+                            }}
+                            style={{
+                              
+                              border: 'none',
+                              cursor: 'pointer',
+                              fontSize: '10px',
+                              padding: '2px 6px',
+                              borderRadius: '4px',
+                              background: isPrincipal ? '#333' : '#fff',
+                              color: isPrincipal ? '#fff' : '#333'
+                            }}
+                            title="Marcar como principal"
+                          >
+                            {isPrincipal ? '★ Principal' : '☆'}
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                <small style={{ display: 'block', marginTop: '8px', color: '#666' }}>
+                  ✓ Selecione múltiplas tags | ★ Clique na estrela para marcar como principal
+                </small>
+                {tagsSelecionadas.length > 0 && (
+                  <div style={{ marginTop: '10px', padding: '8px', background: '#f0f0f0', borderRadius: '4px' }}>
+                    <strong>Selecionadas ({tagsSelecionadas.length}):</strong>
+                    <div style={{ marginTop: '5px' }}>
+                      {tagsSelecionadas.map((id, idx) => {
+                        const tag = tags.find(t => t.id_tag === id);
+                        return (
+                          <span
+                            key={id}
+                            style={{
+                              display: 'inline-block',
+                              margin: '2px',
+                              padding: '4px 8px',
+                              background: idx === 0 ? '#FFD700' : '#fff',
+                              border: '1px solid #ddd',
+                              borderRadius: '8px',
+                              fontSize: '12px'
+                            }}
+                          >
+                            {idx === 0 && '★ '}
+                            {tag?.nome}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
 
           <div className="form-group">

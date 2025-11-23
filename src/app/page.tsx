@@ -1,3 +1,5 @@
+// ✅ MUDANÇAS MÍNIMAS - Apenas no s4 e nos states relacionados
+
 "use client";
 import { Header, Footer } from "@/components";
 import { useState, useEffect, useRef } from 'react';
@@ -47,6 +49,7 @@ const cortesData = {
   ]
 };
 
+// ✅ ATUALIZADO: Interface com campos adicionais
 interface Produto {
   id_produto: number;
   nome: string;
@@ -54,6 +57,8 @@ interface Produto {
   url_imagem: string | null;
   tag_principal: string;
   id_tag: number | null;
+  motivos?: string[];  // ✅ NOVO
+  score?: number;      // ✅ NOVO
 }
 
 export default function OasisHomepage() {
@@ -62,27 +67,49 @@ export default function OasisHomepage() {
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState<'feminino' | 'masculino' | 'mais50'>('feminino');
   
-  // Estado para os produtos
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [loadingProdutos, setLoadingProdutos] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [userId, setUserId] = useState<number | null>(null); // ✅ NOVO
 
-  // Buscar produtos do banco
+  // ✅ NOVO: Detectar usuário logado
+  useEffect(() => {
+    // Tente pegar o ID do usuário do localStorage/cookie/sessão
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      setUserId(parseInt(storedUserId));
+    }
+  }, []);
+
+  // ✅ ATUALIZADO: Buscar recomendações inteligentes
   useEffect(() => {
     const fetchProdutos = async () => {
       try {
-        const response = await fetch('/api/produtos?limit=30');
+        let response;
+        
+        // Se usuário estiver logado, use recomendações inteligentes
+        if (userId) {
+          response = await fetch(`/api/recomendacoes-inteligentes?id_usuario=${userId}&limit=12`);
+        } else {
+          // Senão, use produtos aleatórios
+          response = await fetch('/api/produtos?limit=30');
+        }
+        
         const data = await response.json();
         
-        // A API retorna um objeto com { produtos: [...], pagination: {...} }
-        if (data.produtos) {
+        // ✅ ADAPTADO: Aceita ambos os formatos de resposta
+        if (data.recomendacoes) {
+          // Formato de recomendações inteligentes
+          setProdutos(data.recomendacoes);
+        } else if (data.produtos) {
+          // Formato normal de produtos
           const produtosAleatorios = [...data.produtos].sort(() => Math.random() - 0.5);
-          
           setProdutos(produtosAleatorios);
         } else {
           setProdutos([]);
         }
       } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
         setProdutos([]);
       } finally {
         setLoadingProdutos(false);
@@ -90,7 +117,7 @@ export default function OasisHomepage() {
     };
 
     fetchProdutos();
-  }, []);
+  }, [userId]); // ✅ Recarrega quando userId mudar
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -127,7 +154,6 @@ export default function OasisHomepage() {
 
   const currentCortes = cortesData[activeCategory];
 
-  // Funções para navegação dos produtos
   const handlePrevious = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
   };
@@ -321,9 +347,14 @@ export default function OasisHomepage() {
         </div>
       </section>
 
+      {/* ✅ SEÇÃO S4 ATUALIZADA */}
       <section className={styles.s4}>
         <h1>Baseados no seu Perfil</h1>
-        <p>Uma lista de recomendações personalizadas baseadas <br></br>no seu perfil. Veja produtos que se foram feitos especialmente para você!</p>
+        <p>
+          {userId 
+            ? 'Uma lista de recomendações personalizadas baseadas no seu perfil. Veja produtos que foram feitos especialmente para você!'
+            : 'Produtos selecionados especialmente para você. Faça login para recomendações personalizadas!'}
+        </p>
         
         {loadingProdutos ? (
           <div style={{ padding: '2rem', textAlign: 'center' }}>
@@ -332,6 +363,13 @@ export default function OasisHomepage() {
         ) : produtos.length === 0 ? (
           <div style={{ padding: '2rem', textAlign: 'center' }}>
             <p>Nenhum produto encontrado.</p>
+            {userId && (
+              <p style={{ marginTop: '1rem' }}>
+                <Link href="/cronograma-capilar" style={{ color: '#FFD700', textDecoration: 'underline' }}>
+                  Complete seu questionário
+                </Link> para receber recomendações personalizadas!
+              </p>
+            )}
           </div>
         ) : (
           <>
@@ -343,7 +381,30 @@ export default function OasisHomepage() {
                     alt={produto.nome} 
                   />
                   <h1>{produto.nome}</h1>
-                  <h2>{produto.tag_principal ? `${produto.tag_principal}` : 'Produto de qualidade para cuidados especiais.'}</h2>
+                  
+                  {/* ✅ ATUALIZADO: Mostra motivo da recomendação se existir */}
+                  <h2>
+                    {produto.motivos && produto.motivos.length > 0 
+                      ? produto.motivos[0]
+                      : (produto.tag_principal || 'Produto de qualidade para cuidados especiais.')}
+                  </h2>
+
+                  {/* ✅ NOVO: Badge de compatibilidade (opcional) */}
+                  {produto.score && produto.score > 50 && (
+                    <div style={{
+                      background: '#FFD700',
+                      color: '#000',
+                      padding: '4px 8px',
+                      borderRadius: '8px',
+                      fontSize: '11px',
+                      fontWeight: 'bold',
+                      marginTop: '8px',
+                      display: 'inline-block'
+                    }}>
+                      Compatibilidade: {Math.round((produto.score / 100) * 100)}%
+                    </div>
+                  )}
+
                   <button className={styles.buttonPerfil}>
                     <Link href={`/produtos/${produto.id_produto}`}>
                       IR PARA COMPRA
@@ -426,28 +487,24 @@ export default function OasisHomepage() {
       <section className={styles.s6}>
         <div className={styles.h1novidades}>NOVIDADES</div>
           <div className={styles.cardsnovidades}>
-            {/* ID 1632 */}
             <Link href='/produtos/1632'>
               <div className={styles.cardnovidade1}>
                 <h1>Umidificador para cachos - Vizeme</h1>
               </div>
             </Link>
 
-            {/* ID 1633 */}
             <Link href='/produtos/1633'>
               <div className={styles.cardnovidade2}>
                 <h1>Esfoliante Nutritivo Tododia Jambo Rosa e Flor de Caju</h1>
               </div>
             </Link>
 
-            {/* ID 1634 */}
             <Link href='/produtos/1634'>
               <div className={styles.cardnovidade3}>
                 <h1>Sérum Hidratante Principia 2% Ácidos Hialuronicos + B5</h1>
               </div>
             </Link>
 
-            {/* ID 1635 */}
             <Link href='/produtos/1635'>
               <div className={styles.cardnovidade4}>
                 <h1>Hidratante Corporal Pele Negra Vegano Raavi</h1>

@@ -1,4 +1,5 @@
 // app/api/produtos/cadastro/route.ts
+// ATUALIZADO: Suporta múltiplas tags
 
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
@@ -17,7 +18,8 @@ export async function POST(req: Request) {
       id_categoria,
       url_imagem,
       url_loja,
-      id_tag,
+      id_tag, // Tag principal (compatibilidade)
+      tags_ids, // ✅ NOVO: Array de IDs de tags
       id_tipo_cabelo,
       id_tipo_pele
     } = body;
@@ -37,13 +39,30 @@ export async function POST(req: Request) {
 
     if (!categoriaExiste) {
       return NextResponse.json(
-        { message: `Categoria com ID ${id_categoria} não encontrada. Por favor, use uma categoria válida.` },
+        { message: `Categoria com ID ${id_categoria} não encontrada.` },
         { status: 404 }
       );
     }
 
-    // Verifica se a tag existe (se foi fornecida)
-    if (id_tag) {
+    // ✅ NOVO: Validar tags se fornecidas
+    const tagsParaAdicionar: number[] = [];
+    
+    if (tags_ids && Array.isArray(tags_ids) && tags_ids.length > 0) {
+      // Validar se todas as tags existem
+      const tagsExistentes = await prisma.tag.findMany({
+        where: { id_tag: { in: tags_ids.map((id: any) => parseInt(id, 10)) } }
+      });
+
+      if (tagsExistentes.length !== tags_ids.length) {
+        return NextResponse.json(
+          { message: 'Uma ou mais tags não foram encontradas.' },
+          { status: 404 }
+        );
+      }
+
+      tagsParaAdicionar.push(...tags_ids.map((id: any) => parseInt(id, 10)));
+    } else if (id_tag) {
+      // Compatibilidade: usar id_tag como tag principal
       const tagExiste = await prisma.tag.findUnique({
         where: { id_tag: parseInt(id_tag, 10) }
       });
@@ -54,9 +73,11 @@ export async function POST(req: Request) {
           { status: 404 }
         );
       }
+
+      tagsParaAdicionar.push(parseInt(id_tag, 10));
     }
 
-    // Verifica se o tipo de cabelo existe (se foi fornecido)
+    // Validar tipo de cabelo
     if (id_tipo_cabelo) {
       const tipoCabeloExiste = await prisma.tipoCabelo.findUnique({
         where: { id_tipo_cabelo: parseInt(id_tipo_cabelo, 10) }
@@ -70,7 +91,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // Verifica se o tipo de pele existe (se foi fornecido)
+    // Validar tipo de pele
     if (id_tipo_pele) {
       const tipoPeleExiste = await prisma.tipoPele.findUnique({
         where: { id_tipo_pele: parseInt(id_tipo_pele, 10) }
@@ -84,7 +105,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // Cria o produto com todos os campos
+    // ✅ ATUALIZADO: Criar produto com múltiplas tags
     const novoProduto = await prisma.produto.create({
       data: {
         nome,
@@ -94,16 +115,27 @@ export async function POST(req: Request) {
         marca,
         preco: parseFloat(preco),
         id_categoria: parseInt(id_categoria, 10),
-        id_tag: id_tag ? parseInt(id_tag, 10) : null,
+        id_tag: tagsParaAdicionar[0] || null, // Mantém compatibilidade
         id_tipo_cabelo: id_tipo_cabelo ? parseInt(id_tipo_cabelo, 10) : null,
         id_tipo_pele: id_tipo_pele ? parseInt(id_tipo_pele, 10) : null,
         url_imagem: url_imagem?.trim() || null,
         url_loja: url_loja?.trim() || null,
+        
+        // ✅ NOVO: Adicionar tags na tabela ProdutoTag
+        ProdutoTag: {
+          create: tagsParaAdicionar.map((tagId, index) => ({
+            id_tag: tagId,
+            principal: index === 0, // Primeira tag é principal
+            ordem: index + 1
+          }))
+        }
       },
       include: {
-        tag: true,
-        tipo_cabelo: true,
         categoria: true,
+        tipo_cabelo: true,
+        ProdutoTag: {
+          include: { Tag: true }
+        }
       }
     });
 
@@ -112,6 +144,7 @@ export async function POST(req: Request) {
       produto: novoProduto,
     });
   } catch (error) {
+    console.error('Erro ao cadastrar produto:', error);
     return NextResponse.json(
       { message: 'Erro interno do servidor.', error: String(error) },
       { status: 500 }

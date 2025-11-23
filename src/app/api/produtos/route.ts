@@ -1,7 +1,7 @@
-// file: app/api/produtos/route.ts - CÓDIGO ATUALIZADO
+// file: app/api/produtos/route.ts
+// ATUALIZADO: Suporta múltiplas tags
 
-import { NextResponse } from 'next/server';
-import { NextRequest } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 export async function GET(request: NextRequest) {
@@ -15,14 +15,22 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '12');
 
     try {
-        // Construir filtros
+        // Construir filtros base
         const where: any = {};
 
-        if (tagId) where.id_tag = parseInt(tagId);
         if (categoriaId) where.id_categoria = parseInt(categoriaId);
         if (cabeloId) where.id_tipo_cabelo = parseInt(cabeloId);
         if (peleId) where.id_tipo_pele = parseInt(peleId);
         if (marca) where.marca = marca;
+
+        // ✅ NOVO: Filtro por tag usando ProdutoTag
+        if (tagId) {
+            where.ProdutoTag = {
+                some: {
+                    id_tag: parseInt(tagId)
+                }
+            };
+        }
 
         // Paginação
         const from = (page - 1) * limit;
@@ -30,7 +38,7 @@ export async function GET(request: NextRequest) {
         // Buscar total
         const total = await prisma.produto.count({ where });
 
-        // Buscar produtos
+        // ✅ ATUALIZADO: Buscar produtos com múltiplas tags
         const produtos = await prisma.produto.findMany({
             where,
             select: {
@@ -38,9 +46,14 @@ export async function GET(request: NextRequest) {
                 nome: true,
                 url_loja: true,
                 url_imagem: true,
-                id_tag: true,
-                tag: {
-                    select: { nome: true }
+                ProdutoTag: {
+                    where: { principal: true },
+                    take: 1,
+                    include: {
+                        Tag: {
+                            select: { nome: true }
+                        }
+                    }
                 }
             },
             skip: from,
@@ -48,13 +61,14 @@ export async function GET(request: NextRequest) {
             orderBy: { id_produto: 'desc' }
         });
 
+        // ✅ ATUALIZADO: Formatar resposta com tag principal
         const formattedProducts = produtos.map((p: any) => ({
             id_produto: p.id_produto,
             nome: p.nome,
             url_loja: p.url_loja,
             url_imagem: p.url_imagem || null,
-            tag_principal: p.tag?.nome || 'Geral',
-            id_tag: p.id_tag
+            tag_principal: p.ProdutoTag?.[0]?.tag?.nome || 'Geral',
+            id_tag: p.ProdutoTag?.[0]?.tag?.id_tag || null
         }));
 
         return NextResponse.json({
