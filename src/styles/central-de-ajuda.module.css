@@ -35,10 +35,6 @@
     transition: transform 0.3s ease;
 }
 
-.headerAjuda:hover {
-    transform: scale(1.01);
-}
-
 .headerAjuda::after {
     content: 'Bem-vindo à nossa Central de Ajuda!';
     display: flex;
@@ -59,12 +55,6 @@
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.4s ease;
-}
-
-.headerAjuda:hover::after {
-    background-color: #5E332C;
-    transform: translateX(-50%) translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Seção 1 (Intro) --- */

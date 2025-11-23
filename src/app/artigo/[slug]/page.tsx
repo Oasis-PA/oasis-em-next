@@ -106,7 +106,7 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
         <Header
           backgroundImage={imagemHeader}
           theme={themeDark ? "dark" : undefined}
-          className={styles.header1}
+          className={styles.headerArticle}
         />
       ) : (
         <Header theme={themeDark ? "dark" : undefined} />
