@@ -163,63 +163,113 @@
 
 .user_menu_container { position: relative; }
 
+/* =========================================================
+   POPUP DO USUÁRIO (HEADER) - ESTILO "BELEZA NEGRA"
+   ========================================================= */
+
 .user_popup {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 15px); /* Mais espaço para não colar no header */
   right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 210px; /* Um pouco mais largo para melhor leitura */
   z-index: 2000;
+  
+  /* Identidade Visual */
+  background-color: #FFF;
+  border: 2px solid #722F53; /* Borda Vinho */
+  border-radius: 18px;       /* Arredondamento igual aos Cards */
+  padding: 1.2rem;
+  
+  /* Sombra vinho suave */
+  box-shadow: 0 10px 30px rgba(114, 47, 83, 0.25);
+  
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: 180px;
-  animation: slideDown 0.3s ease;
+  gap: 0.6rem;
+  
+  /* Animação com efeito elástico suave */
+  animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Seta decorativa no topo (aponta para o ícone de usuário) */
+.user_popup::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  right: 25px; /* Ajuste se necessário para alinhar ao ícone */
+  width: 16px;
+  height: 16px;
+  background-color: #FFF;
+  border-top: 2px solid #722F53;
+  border-left: 2px solid #722F53;
+  transform: rotate(45deg);
 }
 
+/* Nome do Usuário (Destaque) */
 .user_popup p {
-    font-weight: bold;
-    margin: 0 0 0.5rem 0;
-    color: #333;
-    transition: color 0.3s ease;
+  font-family: "The Next Font", sans-serif; /* Fonte de Título */
+  font-size: 1.2rem;
+  color: #722F53;
+  margin: 0 0 0.8rem 0;
+  text-align: center;
+  
+  /* Linha divisória dourada */
+  border-bottom: 1px solid #ECC46F;
+  padding-bottom: 0.5rem;
+  width: 100%;
 }
 
 .user_popup:hover p {
-    color: #5E332C;
+  color: #5F0B38; /* Escurece levemente no hover do container */
 }
 
-.user_popup a, .user_popup button {
+/* Links e Botões da lista */
+.user_popup a, 
+.user_popup button {
+  font-family: "Louis George Cafe", sans-serif; /* Fonte de Texto */
+  font-size: 1rem;
+  font-weight: 400;
   text-decoration: none;
   color: #333;
-  background: none;
+  background: transparent;
   border: none;
-  padding: 0.5rem;
+  padding: 0.7rem 1rem;
   text-align: left;
   cursor: pointer;
   width: 100%;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  border-radius: 10px; /* Bordas internas mais suaves */
+  
+  /* Transições suaves */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-.user_popup a:hover, .user_popup button:hover {
-    background-color: #AA35B0;
-    color: white;
-    transform: translateX(5px);
+/* Efeito Hover nos itens */
+.user_popup a:hover, 
+.user_popup button:hover {
+  /* Gradiente da Identidade Visual */
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  color: white;
+  
+  /* Movimento para direita */
+  transform: translateX(5px);
+  
+  /* Sombra interna para destaque */
+  box-shadow: 0 4px 10px rgba(114, 47, 83, 0.3);
+  font-weight: 600; /* Leve negrito para leitura */
+}
+
+/* Animação de entrada */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Estilos do Menu Hambúrguer e Lateral */
