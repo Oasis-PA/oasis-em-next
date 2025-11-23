@@ -33,8 +33,52 @@ export default async function CorteGeral() {
           </p>
         </div>
       </section>
+
+        {/* ======================================================= */}
+        {/* NOVA SEÇÃO: LISTAGEM DE CORTES DO BANCO DE DADOS        */}
+        {/* ======================================================= */}
         
-      <main className={styles.container}>
+        <section className={styles.sectionTodosCortes}>
+          <h1 className={styles.h1MelhoresCortes} style={{ marginTop: '100px', marginBottom: '60px' }}>
+            Nossa Galeria
+          </h1>
+          
+          {cortes.length > 0 ? (
+            <div className={styles.gridCortes}>
+              {cortes.map((corte) => (
+                <Link href={`/corte/${corte.slug}`} key={corte.id} className={styles.cardCorte}>
+                  <div className={styles.cardCorteImagemWrapper}>
+                    {corte.imagem_principal ? (
+                      <img 
+                        src={corte.imagem_principal} 
+                        alt={corte.nome} 
+                        className={styles.cardCorteImg}
+                      />
+                    ) : (
+                      <div className={styles.cardCortePlaceholder}>Sem Imagem</div>
+                    )}
+                  </div>
+                  <div className={styles.cardCorteContent}>
+                    <h2 className={styles.cardCorteTitulo}>{corte.nome}</h2>
+                    {/* A classe aqui mudou para aplicar o estilo novo */}
+                    <span className={styles.cardCorteButton}>
+                      VER DETALHES
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            /* Container para centralizar perfeitamente o texto quando vazio */
+            <div className={styles.emptyStateContainer}>
+              <p className={styles.p2} style={{ margin: 0 }}>
+                Nenhum corte registrado no momento.
+              </p>
+            </div>
+          )}
+        </section>
+
+        <main className={styles.container}>
         
         {/* Título Principal */}
         <h1 className={styles.h1MelhoresCortes}>Melhores Cortes</h1>
@@ -96,51 +140,7 @@ export default async function CorteGeral() {
             </Link>
           </div>
         </section>
-
-        {/* ======================================================= */}
-        {/* NOVA SEÇÃO: LISTAGEM DE CORTES DO BANCO DE DADOS        */}
-        {/* ======================================================= */}
         
-        <section className={styles.sectionTodosCortes}>
-          <h1 className={styles.h1MelhoresCortes} style={{ marginTop: '100px', marginBottom: '60px' }}>
-            Nossa Galeria
-          </h1>
-          
-          {cortes.length > 0 ? (
-            <div className={styles.gridCortes}>
-              {cortes.map((corte) => (
-                <Link href={`/corte/${corte.slug}`} key={corte.id} className={styles.cardCorte}>
-                  <div className={styles.cardCorteImagemWrapper}>
-                    {corte.imagem_principal ? (
-                      <img 
-                        src={corte.imagem_principal} 
-                        alt={corte.nome} 
-                        className={styles.cardCorteImg}
-                      />
-                    ) : (
-                      <div className={styles.cardCortePlaceholder}>Sem Imagem</div>
-                    )}
-                  </div>
-                  <div className={styles.cardCorteContent}>
-                    <h2 className={styles.cardCorteTitulo}>{corte.nome}</h2>
-                    {/* A classe aqui mudou para aplicar o estilo novo */}
-                    <span className={styles.cardCorteButton}>
-                      VER DETALHES
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            /* Container para centralizar perfeitamente o texto quando vazio */
-            <div className={styles.emptyStateContainer}>
-              <p className={styles.p2} style={{ margin: 0 }}>
-                Nenhum corte registrado no momento.
-              </p>
-            </div>
-          )}
-        </section>
-
       </main>
       <Footer/>
     </div>
