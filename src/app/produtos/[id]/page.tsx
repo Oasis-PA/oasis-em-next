@@ -25,15 +25,13 @@ export default function PaginaDeProduto() {
 
   // Estados
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [activeDetalhe, setActiveDetalhe] = useState("composicao");
-  const [isSetaLeft, setIsSetaLeft] = useState(false);
+  // ALTERAÇÃO AQUI: Começa com "qualidades" ativo
+  const [activeDetalhe, setActiveDetalhe] = useState("qualidades"); 
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
 
-  // Refs
-  const composicaoRef = useRef<HTMLHeadingElement>(null);
-  const qualidadesRef = useRef<HTMLHeadingElement>(null);
-  const maisDetalhesRef = useRef<HTMLHeadingElement>(null);
+  // Ref para detectar clique fora
+  const areaDetalhesRef = useRef<HTMLDivElement>(null);
 
   // Dados do produto
   const [produtoData, setProdutoData] = useState<ProdutoData>({
@@ -48,21 +46,15 @@ export default function PaginaDeProduto() {
     preco: "",
   });
 
-  // Buscar dados do produto
+  // Buscar dados
   useEffect(() => {
     if (!id) return;
-
     const fetchProduto = async () => {
       setLoading(true);
       setErro(null);
-
       try {
         const res = await fetch(`/api/produtos/${id}`);
-
-        if (!res.ok) {
-          throw new Error("Produto não encontrado");
-        }
-
+        if (!res.ok) throw new Error("Produto não encontrado");
         const data = await res.json();
         setProdutoData(data);
       } catch (e: any) {
@@ -71,11 +63,10 @@ export default function PaginaDeProduto() {
         setLoading(false);
       }
     };
-
     fetchProduto();
   }, [id]);
 
-  // Hook para o tema (Mantido global pois afeta document)
+  // Tema
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -84,184 +75,107 @@ export default function PaginaDeProduto() {
     }
   }, [isDarkMode]);
 
-  // Hook para o estilo das imagens de sol e lua (Mantido lógica original)
-  useEffect(() => {
-    const solImg = document.getElementById("sol") as HTMLImageElement;
-    const luaImg = document.getElementById("lua") as HTMLImageElement;
-
-    if (solImg && luaImg) {
-      if (isDarkMode) {
-        solImg.style.opacity = "0";
-        luaImg.style.opacity = "1";
-      } else {
-        solImg.style.opacity = "1";
-        luaImg.style.opacity = "0";
-      }
-    }
-  }, [isDarkMode]);
-
-  // Hook para detectar cliques fora dos detalhes
+  // Fecha ao clicar fora
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const refs = [composicaoRef, qualidadesRef, maisDetalhesRef];
-      const clickedOutside = refs.every(
-        (ref) => ref.current && !ref.current.contains(event.target as Node)
-      );
-
-      if (clickedOutside && activeDetalhe) {
+      if (areaDetalhesRef.current && !areaDetalhesRef.current.contains(event.target as Node)) {
         setActiveDetalhe("");
       }
     };
-
-    if (activeDetalhe) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    if (activeDetalhe) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [activeDetalhe]);
 
-  // Função para lidar com o clique no botão amarelo
   const handleBotaoAmareloClick = () => {
-    if (produtoData.url_loja) {
-      window.open(produtoData.url_loja, "_blank");
-    }
+    if (produtoData.url_loja) window.open(produtoData.url_loja, "_blank");
   };
 
-  // Função para lidar com o clique nos detalhes
   const handleDetalheClick = (detalhe: string) => {
-    if (activeDetalhe === detalhe) {
-      setActiveDetalhe("");
-    } else {
-      setActiveDetalhe(detalhe);
+    if (activeDetalhe === detalhe) setActiveDetalhe("");
+    else setActiveDetalhe(detalhe);
+  };
+
+  const renderTextoAtivo = () => {
+    switch (activeDetalhe) {
+      case "composicao": return produtoData.composicao || "Informação não disponível";
+      case "qualidades": return produtoData.qualidades || "Informação não disponível";
+      case "maisDetalhes": return produtoData.mais_detalhes || "Informação não disponível";
+      default: return null;
     }
   };
 
-  // Função para lidar com o clique na seta
-  const handleSetaClick = () => {
-    setIsSetaLeft((prev) => !prev);
-  };
+  if (loading) return <div className={styles.loadingContainer}>Carregando...</div>;
+  if (erro) return <div className={styles.erroContainer}>Erro: {erro}</div>;
 
-  // Loading e erro
-  if (loading) {
-    return (
-      <div className={styles.pageProdutoWrapper}>
-        <Header />
-        <main className={styles.loadingContainer}>
-          <p>Carregando produto...</p>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
-  if (erro) {
-    return (
-      <div className={styles.pageProdutoWrapper}>
-        <Header />
-        <main className={styles.erroContainer}>
-          <p>Erro: {erro}</p>
-          <button onClick={() => router.push("/produtos")}>
-            Voltar para produtos
-          </button>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
-  const imageSrc =
-    produtoData.url_imagem || "/images/produtos/default-placeholder.png";
+  const imageSrc = produtoData.url_imagem || "/images/produtos/default-placeholder.png";
 
   return (
-    <>
-      <div className={styles.pageProdutoWrapper}>
-        {/* Adicionado Wrapper para garantir escopo do CSS */}
-        <Header className={styles.headerTransparente} />
+    <div className={styles.pageProdutoWrapper}>
+      <Header className={styles.headerTransparente} />
+      <main>
+        <article className={styles.pagina1}>
+          <div className={styles.imgContainer}>
+            <Image
+              className={styles.produtoImg}
+              src={imageSrc}
+              alt={produtoData.nome}
+              width={300}
+              height={400}
+              unoptimized={true}
+            />
+          </div>
+          <section className={styles.produtoInfo}>
+            <h2 className={styles.nomeProduto}>{produtoData.nome}</h2>
+            <p className={styles.menorValor}>Valor</p>
+            <h2 className={styles.preco}>R$ {produtoData.preco || "0,00"}</h2>
 
-        <main>
-          <article className={styles.pagina1}>
-            <div className={styles.imgContainer}>
-              <Image
-                className={styles.produtoImg}
-                src={imageSrc}
-                alt={produtoData.nome}
-                width={300}
-                height={400}
-                unoptimized={true}
-              />
-            </div>
-            <section className={styles.produtoInfo}>
-              <h2 className={styles.nomeProduto}>{produtoData.nome}</h2>
-              <p className={styles.menorValor}>Valor</p>
-              <h2 className={styles.preco}>
-                R$ {produtoData.preco || "0,00"}
-              </h2>
-
-              <div className={styles.detalhes}>
-                {/* COMPOSIÇÃO */}
+            {/* Container Principal */}
+            <div className={styles.containerDetalhes} ref={areaDetalhesRef}>
+              
+              {/* Lista de Botões (Esquerda) */}
+              <div className={styles.listaBotoes}>
                 <h5
-                  ref={composicaoRef}
-                  className={`${styles.composicao} ${
-                    activeDetalhe === "composicao" ? styles.active : ""
-                  }`}
+                  className={`${styles.botaoDetalhe} ${activeDetalhe === "composicao" ? styles.active : ""}`}
                   onClick={() => handleDetalheClick("composicao")}
                 >
                   Composição
-                  <span className={styles.tooltipText}>
-                    {produtoData.composicao || "Informação não disponível"}
-                  </span>
                 </h5>
-
-                {/* QUALIDADES */}
                 <h5
-                  ref={qualidadesRef}
-                  className={`${styles.qualidades} ${
-                    activeDetalhe === "qualidades" ? styles.active : ""
-                  }`}
+                  className={`${styles.botaoDetalhe} ${activeDetalhe === "qualidades" ? styles.active : ""}`}
                   onClick={() => handleDetalheClick("qualidades")}
                 >
                   Qualidades
-                  <span className={styles.tooltipText}>
-                    {produtoData.qualidades || "Informação não disponível"}
-                  </span>
                 </h5>
-
-                {/* MAIS DETALHES */}
                 <h5
-                  ref={maisDetalhesRef}
-                  className={`${styles.maisDetalhes} ${
-                    activeDetalhe === "maisDetalhes" ? styles.active : ""
-                  }`}
+                  className={`${styles.botaoDetalhe} ${activeDetalhe === "maisDetalhes" ? styles.active : ""}`}
                   onClick={() => handleDetalheClick("maisDetalhes")}
                 >
                   Dicas de uso
-                  <span className={styles.tooltipText}>
-                    {produtoData.mais_detalhes || "Informação não disponível"}
-                  </span>
                 </h5>
               </div>
 
-              <aside className={styles.vaAoSiteContainer}>
-                <button
-                  className={styles.botaoAmarelo}
-                  onClick={handleBotaoAmareloClick}
-                  disabled={!produtoData.url_loja}
-                >
-                  <h3 className={styles.vaParaCompraTexto}>
-                    {produtoData.url_loja ? "VÁ AO SITE" : "LINK INDISPONÍVEL"}
-                  </h3>
-                </button>
-              </aside>
-            </section>
-          </article>
+              {/* Texto (Direita) */}
+              <div className={`${styles.areaTexto} ${activeDetalhe ? styles.visivel : ''}`}>
+                {renderTextoAtivo()}
+              </div>
+            </div>
 
-          <div className={styles.linha}></div>
-        </main>
-
-        <Footer />
-      </div>
-    </>
+            <aside className={styles.vaAoSiteContainer}>
+              <button
+                className={styles.botaoAmarelo}
+                onClick={handleBotaoAmareloClick}
+                disabled={!produtoData.url_loja}
+              >
+                <h3 className={styles.vaParaCompraTexto}>
+                  {produtoData.url_loja ? "VÁ AO SITE" : "LINK INDISPONÍVEL"}
+                </h3>
+              </button>
+            </aside>
+          </section>
+        </article>
+        <div className={styles.linha}></div>
+      </main>
+      <Footer />
+    </div>
   );
 }
