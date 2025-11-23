@@ -64,36 +64,37 @@ export default function Skincare() {
       </section>
       <div className={styles.tons}></div>
 
+      {/* SEÇÃO 2 - CATEGORIAS LINKADAS */}
       <section className={styles.s2}>
-          <div className={styles.categ}>
+          <Link href="/alimentacao" className={styles.categ}>
             <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
             <h2>ALIMENTAÇÃO</h2>
-          </div>
+          </Link>
 
-          <div className={styles.categ}>
+          <Link href="/cronograma-capilar" className={styles.categ}>
             <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
             <h2>CRONOGRAMA</h2>
-          </div>
+          </Link>
 
-          <div className={styles.categ}>
+          <Link href="/haircare" className={styles.categ}>
             <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
             <h2>HAIR-CARE</h2>
-          </div>
+          </Link>
 
-          <div className={styles.categ}>
+          <Link href="/produtos" className={styles.categ}>
             <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
             <h2>PRODUTOS</h2>
-          </div>
+          </Link>
 
-          <div className={styles.categ}>
+          <Link href="/infantil" className={styles.categ}>
             <img src="/images/skincare/categ5.png" alt="INFANTIL" />
             <h2>INFANTIL</h2>
-          </div>
+          </Link>
 
-          <div className={styles.categ}>
+          <Link href="/tendencias" className={styles.categ}>
             <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
             <h2>TENDÊNCIAS</h2>
-          </div>
+          </Link>
       </section>
       
       <section className={styles.s3}>
