@@ -1,0 +1,287 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   CSS MODULES CORRIGIDO
+   Padrão: camelCase | Estrutura: Scoped
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* 1. O WRAPPER PRINCIPAL
+   Substitui o antigo 'body'. Define a base para o isolamento.
+*/
+.pageQuestionario1Wrapper {
+  width: 100%;
+  min-height: 100vh;
+  /* Garante que a fonte base seja herdada corretamente */
+  font-family: "Louis George Cafe", sans-serif; 
+}
+
+/* 2. RESET ESCOPADO (CRUCIAL)
+   Isso conserta o layout quebrado. Aplica o box-sizing apenas 
+   aos elementos DENTRO deste módulo.
+*/
+.pageQuestionario1Wrapper * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Substitui o seletor 'main' antigo */
+.main {
+  display: flex;
+  background: linear-gradient(90deg, #F2A518 550px, #FFF 160px);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* --- COLUNA ESQUERDA --- */
+
+.esquerda {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 40%;
+  height: 100%;
+  gap: 2rem;
+}
+
+.voltar {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  height: fit-content;
+}
+
+/* Antigo #voltando */
+.voltando {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.voltarIcon {
+  width: .7rem;
+  height: 1rem;
+}
+
+.voltarLink {
+  color: #f3f3f3;
+  font-family: "Louis George Cafe", sans-serif;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: normal;
+  width: fit-content;
+  transition: text-decoration 1s linear, color 0.3s ease;
+}
+
+.voltarLink:hover {
+  color: hsl(0, 0%, 100%);
+  text-decoration: underline;
+  text-underline-offset: 5%;
+  text-decoration-color: #5E332C;
+  text-decoration-thickness: 0.1rem;
+}
+
+/* Antigo #img-principal -> convertido para camelCase */
+.imgPrincipal {
+  width: 100%;
+  max-width: 50rem;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- COLUNA DIREITA --- */
+
+.direita {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+  max-width: 42rem;
+  align-items: center;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 40rem;
+  justify-content: center;
+}
+
+/* Antigo #quiz */
+.quizTag {
+  display: flex;
+  justify-content: center;
+  background-color: #5E332C;
+  width: fit-content;
+  color: #FFF;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.4rem 1.5rem;
+}
+
+/* Antigo .conteudo h1 */
+.title {
+  color: #000;
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+/* Antigo .conteudo p */
+.description {
+  margin-top: 1rem;
+  color: #000;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(1rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.abaixo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 35rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* --- BOTÃO REFORMULADO --- */
+/* Antigo .conteudo button */
+.startButton {
+  background: #F2A518;
+  width: 100%;
+  padding: 1.2rem 2rem;
+  border-style: none;
+  border-radius: 3rem;
+  color: #FFF;
+  text-align: center;
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.startButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.startButton:hover {
+  background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+  box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.startButton:hover::before {
+  width: 500px;
+  height: 500px;
+}
+
+.startButton:active {
+  background: #d18f15;
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* --- BENEFÍCIOS --- */
+
+.beneficios {
+  width: 100%;
+  border: .15rem solid #000;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.beneficios:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-color: #5E332C;
+}
+
+.beneficiosTitle {
+  color: #000;
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.textinhos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 1rem 2rem;
+  text-align: center;
+}
+
+.beneficiosText {
+  color: #000;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  width: 100%;
+}
+
+/* --- MEDIA QUERIES --- */
+
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+    background: linear-gradient(180deg, #F2A518 400px, #FFF 120px);
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .esquerda {
+    width: 100%;
+    padding-left: 0;
+    transform: translateX(0);
+    align-items: center;
+    padding-top: 120px;
+  }
+
+  .voltar {
+    top: 2rem;
+    left: 2rem;
+  }
+
+  .direita {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .conteudo {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .textinhos {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
