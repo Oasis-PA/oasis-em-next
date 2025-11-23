@@ -81,7 +81,7 @@ export default async function CorteGeral() {
         <main className={styles.container}>
         
         {/* Título Principal */}
-        <h1 className={styles.h1MelhoresCortes}>Melhores Cortes</h1>
+        <h1 className={styles.h1MelhoresCortes}>Alguns dos nossos artigos</h1>
         <p className={styles.p1}>
           Para aqueles que desejam mudar a aparência e só<br className={styles.desktopOnly} /> precisam de uma inspiração.
         </p>
@@ -140,7 +140,7 @@ export default async function CorteGeral() {
             </Link>
           </div>
         </section>
-        
+
       </main>
       <Footer/>
     </div>
