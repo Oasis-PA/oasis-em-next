@@ -1,5 +1,3 @@
-// file: app/produtos/page.tsx - CÓDIGO ATUALIZADO
-
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
@@ -85,7 +83,7 @@ const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, o
 };
 
 // -----------------------------------------------------
-// FiltrosBarra
+// FiltrosBarra (CORRIGIDO: Normalização de texto)
 // -----------------------------------------------------
 
 interface FiltrosBarraProps {
@@ -115,15 +113,53 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
     const [marcaOptions, setMarcaOptions] = useState<FilterOption[]>([{ id: null, nome: "TODAS" }]);
     const [loadingFilters, setLoadingFilters] = useState(true);
 
-    const fetchOptions = useCallback(async (endpoint: string, setter: React.Dispatch<React.SetStateAction<FilterOption[]>>, allLabel: string, idKey: string, nameKey: string = 'nome') => {
+    // Lista de nomes permitidos
+    const tagsPermitidas = [
+        "condicionador", 
+        "shampoo", 
+        "mascara capilar", 
+        "serum facial", 
+        "hidratante corporal", 
+        "óleo capilar", 
+        "protetor solar", 
+        "sabonete", 
+        "colônia", 
+        "umidificador", 
+        "esfoliante", 
+        "creme"
+    ];
+
+    const fetchOptions = useCallback(async (
+        endpoint: string, 
+        setter: React.Dispatch<React.SetStateAction<FilterOption[]>>, 
+        allLabel: string, 
+        idKey: string, 
+        nameKey: string = 'nome',
+        allowedNames?: string[] 
+    ) => {
         try {
             const res = await fetch(endpoint);
             if (!res.ok) throw new Error(`Falha ao carregar ${endpoint}`);
             const data = await res.json();
-            const formattedData = data.map((item: any) => ({
+            
+            // Função para remover acentos e espaços extras (ex: "Colônia" vira "COLONIA")
+            const normalize = (str: string) => 
+                str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toUpperCase();
+
+            let formattedData = data.map((item: any) => ({
                 id: item[idKey], 
                 nome: item[nameKey].toUpperCase(),
             }));
+
+            // Filtro robusto (ignora acentos)
+            if (allowedNames && allowedNames.length > 0) {
+                const allowedSet = new Set(allowedNames.map(n => normalize(n)));
+                
+                formattedData = formattedData.filter((item: { nome: string; }) => {
+                    return allowedSet.has(normalize(item.nome));
+                });
+            }
+
             setter([{ id: null, nome: allLabel }, ...formattedData]); 
         } catch (e) {
             setter([{ id: null, nome: allLabel }]);
@@ -133,7 +169,7 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
     useEffect(() => {
         setLoadingFilters(true);
         Promise.all([
-            fetchOptions('/api/tags', setTagOptions, "TODOS", 'id_tag'), 
+            fetchOptions('/api/tags', setTagOptions, "TODOS", 'id_tag', 'nome', tagsPermitidas), 
             fetchOptions('/api/categorias', setCategoriaOptions, "TODAS", 'id_categoria'),
             fetchOptions('/api/tipos-cabelo', setCabeloOptions, "TODOS", 'id_tipo_cabelo'), 
             fetchOptions('/api/tipos-pele', setPeleOptions, "TODOS", 'id_tipo_pele'),
