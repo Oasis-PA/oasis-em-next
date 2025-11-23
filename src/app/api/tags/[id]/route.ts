@@ -1,5 +1,5 @@
 // Rota: /api/tags/[id]
-// CRUD para tags (requer autenticação admin)
+// CRUD para tags (com autenticação admin e usando tabela pivô)
 
 import { NextResponse, NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
@@ -35,7 +35,7 @@ export async function GET(
     }
 
     return NextResponse.json(tag);
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
       { error: 'Erro ao buscar tag' },
       { status: 500 }
@@ -45,7 +45,7 @@ export async function GET(
 
 /**
  * PATCH /api/tags/[id]
- * Atualizar uma tag (requer autenticação admin)
+ * Atualizar uma tag (autenticação admin preservada)
  */
 export async function PATCH(
   request: NextRequest,
@@ -62,7 +62,7 @@ export async function PATCH(
       );
     }
 
-    // Validar autenticação admin
+    // Autenticação admin (mantida exatamente como antes)
     const adminToken = request.cookies.get('admin-auth-token')?.value;
     if (!adminToken) {
       return NextResponse.json(
@@ -71,7 +71,6 @@ export async function PATCH(
       );
     }
 
-    // Verificar se tag existe
     const tagExistente = await prisma.tag.findUnique({
       where: { id_tag },
     });
@@ -83,52 +82,37 @@ export async function PATCH(
       );
     }
 
-    // Processar dados de atualização
     const body = await request.json();
 
-    // Campos permitidos para atualização
     const allowedFields = ['nome'];
-
-    // Filtrar apenas campos permitidos
     const updateData: any = {};
+
     for (const field of allowedFields) {
-      if (field in body && body[field] !== undefined) {
+      if (body[field] !== undefined) {
         updateData[field] = body[field];
       }
     }
 
-    if (Object.keys(updateData).length === 0) {
-      return NextResponse.json(
-        { error: 'Nenhum campo válido fornecido para atualização' },
-        { status: 400 }
-      );
-    }
-
-    // Validar nome não vazio
-    if (updateData.nome && typeof updateData.nome === 'string') {
+    if (updateData.nome) {
       const nome = updateData.nome.trim();
-      if (nome.length === 0) {
-        return NextResponse.json(
-          { error: 'Nome da tag não pode ser vazio' },
-          { status: 400 }
-        );
-      }
+
       if (nome.length < 2) {
         return NextResponse.json(
           { error: 'Nome deve ter pelo menos 2 caracteres' },
           { status: 400 }
         );
       }
+
       if (nome.length > 50) {
         return NextResponse.json(
           { error: 'Nome não pode ter mais de 50 caracteres' },
           { status: 400 }
         );
       }
+
       updateData.nome = nome;
     }
 
-    // Atualizar tag
     const tagAtualizada = await prisma.tag.update({
       where: { id_tag },
       data: updateData,
@@ -141,7 +125,7 @@ export async function PATCH(
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
       { error: 'Erro ao atualizar tag' },
       { status: 500 }
@@ -151,7 +135,7 @@ export async function PATCH(
 
 /**
  * DELETE /api/tags/[id]
- * Deletar uma tag (requer autenticação admin)
+ * Deletar tag (autenticação + pivot mantidos)
  */
 export async function DELETE(
   request: NextRequest,
@@ -163,23 +147,21 @@ export async function DELETE(
 
     if (isNaN(id_tag)) {
       return NextResponse.json(
-        { error: 'ID de tag inválido' },
+        { error: 'ID inválido' },
         { status: 400 }
       );
     }
 
-    // Validar autenticação admin
     const adminToken = request.cookies.get('admin-auth-token')?.value;
     if (!adminToken) {
       return NextResponse.json(
-        { error: 'Acesso não autorizado. Token de admin necessário.' },
+        { error: 'Acesso negado' },
         { status: 401 }
       );
     }
 
-    // Verificar se tag existe
     const tagExistente = await prisma.tag.findUnique({
-      where: { id_tag },
+      where: { id_tag }
     });
 
     if (!tagExistente) {
@@ -189,33 +171,33 @@ export async function DELETE(
       );
     }
 
-    // Verificar se existem produtos usando esta tag
-    const produtosComTag = await prisma.produto.count({
-      where: { id_tag },
+    const produtosComTag = await prisma.produtoTag.count({
+      where: { id_tag }
     });
 
     if (produtosComTag > 0) {
       return NextResponse.json(
         {
-          error: `Não é possível deletar esta tag. Existem ${produtosComTag} produto(s) usando esta tag.`,
+          error: `Não é possível deletar. Esta tag está sendo usada por ${produtosComTag} produto(s).`
         },
-        { status: 409 } // Conflict
+        { status: 409 }
       );
     }
 
-    // Deletar tag
     await prisma.tag.delete({
-      where: { id_tag },
+      where: { id_tag }
     });
 
     return NextResponse.json(
       { message: 'Tag deletada com sucesso' },
       { status: 200 }
     );
-  } catch (error: any) {
+
+  } catch (error) {
     return NextResponse.json(
       { error: 'Erro ao deletar tag' },
       { status: 500 }
     );
   }
 }
+
