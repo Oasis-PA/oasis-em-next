@@ -223,42 +223,53 @@ export default function Skincare() {
 
     <section className={styles.s5}>
         <div className={styles.dicas}>
-          <div className={`${styles.cardItem} ${styles.card1}`}>
-            <div className={styles.conteudo}>
-                <h1>PROTETOR SOLAR É ESSENCIAL</h1>
-                <p>A pele precisa de proteção diária contra manchas e envelhecimento precoce.</p>
+          <div className={styles.card}>
+            <h1>Protetor solar é essencial</h1>
+            <p>A pele precisa de proteção diária contra manchas e envelhecimento precoce.</p>
+            <div className={styles.numphoto}>
+              <h1>01</h1>
+              <img src="images/skincare/numphoto (3).png" alt="" />
             </div>
           </div>
 
-          <div className={`${styles.cardItem} ${styles.card2}`}>
-            <div className={styles.conteudo}>
-                <h1>Hidrate logo após o banho</h1>
-                <p>Isso ajuda a reter a umidade e manter a pele macia.</p>
+          <div className={styles.card}>
+            <h1>Hidrate logo após o banho</h1>
+            <p>Isso ajuda a reter a umidade e manter a pele macia.</p>
+            <div className={styles.numphoto}>
+              <h1>02</h1>
+              <img src="images/skincare/numphoto (4).png" alt="" />
             </div>
           </div>
 
-          <div className={`${styles.cardItem} ${styles.card3}`}>
-            <div className={styles.conteudo}>
-                <h1>Evite sabonetes muito agressivos</h1>
-                <p>Prefira fórmulas suaves que não ressequem a pele.</p>
+          <div className={styles.card}>
+            <h1>Evite sabonetes  agressivos</h1>
+            <p>Prefira fórmulas suaves que não ressequem a pele.</p>
+            <div className={styles.numphoto}>
+              <h1>03</h1>
+              <img src="images/skincare/numphoto (5).png" alt="" />
             </div>
           </div>
 
-          <div className={`${styles.cardItem} ${styles.card4}`}>
-            <div className={styles.conteudo}>
-                <h1>Inclua antioxidantes na rotina</h1>
-                <p>Vitamina C, por exemplo, ajuda a uniformizar o tom da pele.</p>
+          <div className={styles.card}>
+            <h1>antioxidantes na rotina</h1>
+            <p>Vitamina C, por exemplo, ajuda a uniformizar o tom da pele.</p>
+            <div className={styles.numphoto}>
+              <h1>04</h1>
+              <img src="images/skincare/numphoto (2).png" alt="" />
             </div>
           </div>
 
-          <div className={`${styles.cardItem} ${styles.card5}`}>
-            <div className={styles.conteudo}>
-                <h1>Esfolie com moderação</h1>
-                <p>Uma vez por semana já ajuda a renovar sem agredir.</p>
+          <div className={styles.card}>
+            <h1>Esfolie com moderação</h1>
+            <p>Uma vez por semana já ajuda a renovar sem agredir.</p>
+            <div className={styles.numphoto}>
+              <h1>05</h1>
+              <img src="images/skincare/numphoto (1).png" alt="" />
             </div>
           </div>
         </div>
     </section>
+
     <section className={styles.imagemPerfume}></section>
     </main>
     </div>

@@ -300,7 +300,7 @@
     margin-left: clamp(1rem, 6vw, 8rem);
 }
 
-.linhaTexto1, .linhaTexto2 {
+.linhatexto1, .linhatexto2 {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -308,7 +308,7 @@
     max-width: 2800px;
 }
 
-.linhaTexto2 {
+.linhatexto2 {
     margin-top: clamp(1.4rem, 7vw, 9.5rem);
 }
 
@@ -316,7 +316,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch; 
     justify-content: center;
     margin-top: clamp(3rem, 7vw, 7rem);
     gap: clamp(1rem, 3vw, 3.25rem);
@@ -331,6 +331,7 @@
     background: #FFF;
     padding-bottom: 1rem;
     transition: all 0.3s ease;
+    height: auto; 
 }
 
 .prod1:hover {
@@ -359,12 +360,16 @@
 .prod1 > h4 {
     font-family: "The Next Font", sans-serif;
     font-size: 1.2rem;
+    margin-left: 1.4rem;
+    margin-right: 1.4rem; 
 }
 
 /* Botão do Produto */
 .prod1 > button {
     align-self: center;
-    margin-top: 2rem;
+    margin-top: 2rem; 
+    margin-top: auto;
+    margin-bottom: 1rem; 
     width: 90%;
     height: 50px;
     background-color: #ECC46F;
@@ -378,6 +383,10 @@
     overflow: hidden;
     transition: all 0.4s ease;
     padding: 0; /* Reset importante pois alguns browsers adicionam padding */
+}
+
+.prod1 > button a {
+    color: #FFF;
 }
 
 .prod1 > button::before {
@@ -439,153 +448,8 @@
     }
 }
 
-/* ================================== */
-/* SEÇÃO 5 - DICAS (CARDS HOVER)      */
-/* ================================== */
-
-.s5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: black;
-    margin-top: clamp(2rem, 8vw, 8rem);
-    padding: clamp(2rem, 5vw, 4rem);
-    max-width: 2000px;
-}
-
-.dicas {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
-    width: 100%;
-    max-width: 1700px;
-}
-
-/* Classe unificada dos cards */
-.cardItem {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: clamp(150px, 14.2vw, 220px);
-    height: clamp(370px, 36vw, 700px);
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    transition: flex-grow 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s ease;
-}
-
-.cardItem:hover {
-    flex-grow: 4;
-}
-
-.conteudo {
-    width: 100%;
-    height: 100%;
-    padding: clamp(1.5rem, 3vw, 2.75rem);
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%);
-    transition: opacity 0.6s ease;
-}
-
-.cardItem:hover .conteudo {
-    opacity: 1;
-}
-
-.conteudo > h1 {
-    color: #FFF;
-    font-family: "The Next Font", sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-    margin-bottom: 0.5rem;
-}
-
-.conteudo > p {
-    color: #FFF;
-    text-align: justify;
-    font-family: "Louis George Cafe", sans-serif;
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-    line-height: 1.5;
-}
-
-/* IDs convertidos para Classes (Imagens) */
-.card1 { background-image: url(/images/skincare/card1.png); background-size: 98%; }
-.card2 { background-image: url(/images/skincare/card2.png); background-size: 98%; }
-.card3 { background-image: url(/images/skincare/card3.png); background-size: 98%; }
-.card4 { background-image: url(/images/skincare/card4.png); background-size: 98%; }
-.card5 { background-image: url(/images/skincare/card5.png); background-size: 98%; }
-
-.card1:hover { background-image: url(/images/skincare/dica1-bg.png); background-size: 98%; }
-.card2:hover { background-image: url(/images/skincare/dica2-bg.png); background-size: 98%; }
-.card3:hover { background-image: url(/images/skincare/dica3-bg.png); background-size: 98%; }
-.card4:hover { background-image: url(/images/skincare/dica4-bg.png); background-size: 98%; }
-.card5:hover { background-image: url(/images/skincare/dica5-bg.png); background-size: 98%; }
-
-/* Media Queries Dicas */
-
-@media (min-width: 950px) and (max-width: 1900px) {
-    .conteudo {
-        margin-top: clamp(1.5rem, 3vw, 4rem);
-    }
-    .conteudo > h1 {
-        font-size: clamp(1.2rem, 2.3vw, 1.9rem);
-    }
-    .conteudo > p {
-        font-size: clamp(0.8rem, 1.4vw, 1rem);
-    }
-}
-
-@media (max-width: 1300px) {
-    .dicas {
-        gap: 2.5rem;
-    }
-    .cardItem {
-        flex-basis: calc(50% - 1.5rem);
-        flex-grow: 1;
-        max-width: 400px;
-        height: 480px;
-    }
-    .cardItem:hover {
-        flex-grow: 2;
-    }
-}
 
 @media (max-width: 950px) {
-    .conteudo {
-        background: none;
-    }
-    .dicas {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-    }
-    .cardItem {
-        flex-basis: auto;
-        width: 90%;
-        max-width: 400px;
-        height: 500px;
-    }
-    .cardItem:hover {
-        flex-grow: 1;
-    }
-    .cardItem .conteudo {
-        opacity: 1;
-        justify-content: flex-start;
-    }
-    
-    /* Ajuste das imagens mobile para combinar com o antigo */
-    .card1 { background-size: 95%; background-image: url(/images/skincare/dica1-bg.png); }
-    .card2 { background-size: 95%; background-image: url(/images/skincare/dica2-bg.png); }
-    .card3 { background-size: 95%; background-image: url(/images/skincare/dica3-bg.png); }
-    .card4 { background-size: 95%; background-image: url(/images/skincare/dica4-bg.png); }
-    .card5 { background-size: 95%; background-image: url(/images/skincare/dica5-bg.png); }
-    
     .prod1Bg, .prod2Bg, .prod3Bg {
         width: 40%;
     }
@@ -619,3 +483,145 @@
     max-width: 2000px;
 }
 
+/* nova parte de dicas */
+
+/* Container da seção */
+.s5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    /* Margens ajustadas para serem fluidas */
+    margin-top: clamp(2rem, 8vw, 8rem);
+    padding: clamp(1rem, 5vw, 4rem) 0; /* Removi padding lateral para o scroll ir até a borda */
+    overflow: hidden; /* Garante que nada saia da section */
+}
+
+/* Container dos cards (Área de Scroll) */
+.dicas {
+    display: flex;
+    flex-direction: row;
+    /* Inicia da esquerda para garantir que o scroll funcione bem */
+    justify-content: flex-start; 
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    width: 100%;
+    
+    /* Mágica do Scroll Horizontal */
+    overflow-x: auto; 
+    scroll-behavior: smooth;
+    
+    /* Garante que os itens não quebrem linha */
+    flex-wrap: nowrap; 
+    
+    /* UX: Faz o scroll "travar" no card (efeito carrossel) */
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+    
+    /* Espaçamento interno para o primeiro e último card não colarem na borda */
+    padding: 1rem clamp(1rem, 5vw, 4rem); 
+
+    /* Esconde a barra de rolagem (opcional, mas fica mais bonito) */
+    scrollbar-width: none; /* Firefox */
+}
+
+.dicas::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* O Card Individual */
+.card {
+    display: flex;
+    flex-direction: column;
+    
+    /* Garante que o card não encolha. Ele força o scroll */
+    flex: 0 0 auto; 
+    
+    /* UX: Onde o scroll deve parar (no centro do card) */
+    scroll-snap-align: center; 
+
+    /* Tamanho Padrão (Desktop Grande) */
+    width: 313px;
+    height: 572px;
+    
+    border: 1.5px solid white;
+    border-radius: 15px;
+    background: radial-gradient(ellipse at top, #271546B3 0%, #0d021fB3 50%, #000000B3 90%);  
+    padding: clamp(1.125rem, 1.5vw, 1.5rem);
+    transition: all 0.3s ease; /* Suaviza a mudança de tamanho */
+}
+
+.card > h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif; /* Adicionei fallback */
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+
+.card > p {
+    color: #FFF;
+    text-align: justify;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 1.4375rem;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+
+.numphoto {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.numphoto > h1 {
+    color: #FFF;
+    font-family: "The Next Font", sans-serif;
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.numphoto > img {
+    /* Garanta que a imagem não estoure o container se diminuir */
+    max-width: 100px; 
+    height: auto;
+}
+
+/* --- MEDIA QUERIES (Diminuindo a seção progressivamente) --- */
+
+/* 1. Laptops menores e Tablets (max-width: 1200px) */
+@media (max-width: 1200px) {
+    .card {
+        width: 280px;
+        height: 520px;
+    }
+    .card > h1 { font-size: 1.8rem; }
+    .card > p { font-size: 1.25rem; }
+    .numphoto > h1 { font-size: 3.5rem; }
+}
+
+/* 2. Tablets Verticais e Celulares Grandes (max-width: 768px) */
+@media (max-width: 768px) {
+    .card {
+        width: 250px;
+        height: 480px;
+    }
+    .card > h1 { font-size: 1.6rem; }
+    .card > p { font-size: 1.1rem; }
+    .numphoto > h1 { font-size: 3rem; }
+}
+
+/* 3. Celulares Menores (max-width: 480px) */
+@media (max-width: 480px) {
+    .card {
+        width: 220px;
+        height: 420px; /* Redução drástica na altura para caber na tela do celular */
+    }
+    .card > h1 { font-size: 1.4rem; }
+    .card > p { font-size: 1rem; }
+    .numphoto > h1 { font-size: 2.5rem; }
+    .numphoto > img { max-width: 70px; } /* Reduz a imagem também */
+}
