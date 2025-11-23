@@ -2,10 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
-import Image from 'next/image';
-import '@/styles/parcerias-usuarios.css';
-import '@/styles/globals.css';
-import {Header, Footer} from "@/components";
+import '@/styles/globals.css'; 
+import styles from '@/styles/parcerias-usuarios.module.css'; // Certifique-se que o caminho está correto
+import { Header, Footer } from "@/components";
 
 interface Localidade {
   id: number;
@@ -101,7 +100,6 @@ const ParceriasUsuariosPage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Validações básicas no frontend
       if (!nome || !email || !telefone || !estadoSelecionado || !cidadeSelecionada || 
           !perfilPrincipal || !numeroSeguidores || !proposta) {
         setError('Por favor, preencha todos os campos obrigatórios.');
@@ -111,9 +109,7 @@ const ParceriasUsuariosPage: React.FC = () => {
 
       const response = await fetch('/api/parcerias/influenciadores', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nome_contato: nome,
           email: email,
@@ -132,10 +128,7 @@ const ParceriasUsuariosPage: React.FC = () => {
         throw new Error(data.error || 'Erro ao enviar proposta');
       }
 
-      // Sucesso!
       setSuccessMessage(data.message);
-      
-      // Limpar formulário
       setNome('');
       setEmail('');
       setTelefone('');
@@ -145,8 +138,6 @@ const ParceriasUsuariosPage: React.FC = () => {
       setPerfilPrincipal('');
       setNumeroSeguidores('');
       setProposta('');
-
-      // Scroll para o topo para ver a mensagem
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (err: any) {
@@ -158,43 +149,35 @@ const ParceriasUsuariosPage: React.FC = () => {
 
   return (
     <>
-      <Header/>
-      <main>
-        <div id="container">
-          <form onSubmit={handleSubmit} method="post">
-            <h1 className="titulo">PARCERIA COM INFLUENCIADORES</h1>
-            <p className="subtitulo">Preencha os campos para que nossa equipe de marketing possa avaliar a proposta.</p>
+    <Header/>
+    <div className={styles.wrapper}>
+      <main className={styles.wrapperMain}>
+        {/* Usamos className={styles.container} pois mudamos de ID para Class no CSS */}
+        <div className={styles.container}>
+          <form onSubmit={handleSubmit} method="post" className={styles.formContainer}>
+            <h1 className={styles.titulo}>PARCERIA COM INFLUENCIADORES</h1>
+            <p className={styles.subtitulo}>Preencha os campos para que nossa equipe de marketing possa avaliar a proposta.</p>
 
-            {/* Mensagem de Sucesso */}
             {successMessage && (
               <div style={{
-                backgroundColor: '#4CAF50',
-                color: 'white',
-                padding: '15px',
-                borderRadius: '5px',
-                marginBottom: '20px',
-                textAlign: 'center'
+                backgroundColor: '#4CAF50', color: 'white', padding: '15px',
+                borderRadius: '5px', marginBottom: '20px', textAlign: 'center', width: '100%'
               }}>
                 {successMessage}
               </div>
             )}
 
-            {/* Mensagem de Erro */}
             {error && (
               <div style={{
-                backgroundColor: '#f44336',
-                color: 'white',
-                padding: '15px',
-                borderRadius: '5px',
-                marginBottom: '20px',
-                textAlign: 'center'
+                backgroundColor: '#f44336', color: 'white', padding: '15px',
+                borderRadius: '5px', marginBottom: '20px', textAlign: 'center', width: '100%'
               }}>
                 {error}
               </div>
             )}
 
-            <div id="caixas-texto">
-              {/* Nome e Contato */}
+            {/* Container dos inputs agora é uma classe no CSS Module */}
+            <div className={styles.caixasTexto}>
               <input
                 type="text"
                 name="nome-contato"
@@ -214,8 +197,8 @@ const ParceriasUsuariosPage: React.FC = () => {
                 required
               />
 
-              {/* Telefone */}
-              <div id="telefone">
+              {/* Container do telefone ajustado para classe */}
+              <div className={styles.telefoneContainer}>
                 <p>BR</p>
                 <img src="/images/atendimento-usuario/brasil.png" alt="Brasil" />
                 <p>+55</p>
@@ -230,13 +213,11 @@ const ParceriasUsuariosPage: React.FC = () => {
                 />
               </div>
 
-              {/* Estado */}
               <select
                 name="estado"
                 id="estado"
                 value={estadoSelecionado}
                 onChange={handleEstadoChange}
-                style={{ appearance: 'none' }}
                 required
               >
                 <option value="">Selecione o Estado...</option>
@@ -247,20 +228,17 @@ const ParceriasUsuariosPage: React.FC = () => {
                 ))}
               </select>
 
-              {/* Cidade */}
               <select
                 name="cidade"
                 id="cidade"
                 value={cidadeSelecionada}
                 onChange={(e) => setCidadeSelecionada(e.target.value)}
                 disabled={!estadoSelecionado || isLoadingCidades}
-                style={{ appearance: 'none' }}
                 required
               >
                 <option value="">
                   {isLoadingCidades ? "Carregando cidades..." : cidades.length === 0 && estadoSelecionado ? "Nenhuma cidade encontrada" : "Selecione a Cidade..."}
                 </option>
-
                 {cidades.map((cidade) => (
                   <option key={cidade.id} value={cidade.nome}>
                     {cidade.nome}
@@ -268,10 +246,9 @@ const ParceriasUsuariosPage: React.FC = () => {
                 ))}
               </select>
 
-              {/* Perfil Principal */}
               <input
                 type="text"
-                name="perfil-principal"
+                name="nicho"
                 id="perfil-principal"
                 placeholder="@usuário_principal (Ex: Instagram/TikTok)"
                 value={perfilPrincipal}
@@ -279,7 +256,6 @@ const ParceriasUsuariosPage: React.FC = () => {
                 required
               />
               
-              {/* Número de Seguidores */}
               <input
                 type="text"
                 name="numero-seguidores"
@@ -291,36 +267,35 @@ const ParceriasUsuariosPage: React.FC = () => {
               />
             </div>
 
-            {/* Proposta */}
-            <label htmlFor="motivo">
-              <p className="contato">Detalhes da Proposta de Parceria</p>
+            <label htmlFor="motivo" style={{width: '100%', maxWidth: '656px'}}>
+              <p className={styles.contatoLabel}>Detalhes da Proposta de Parceria</p>
             </label>
             <textarea
               name="proposta"
               id="motivo"
+              className={styles.motivo}
               placeholder=" Nos conte um pouco sobre o formato da parceria, o que você espera e qual o seu público."
               value={proposta}
               onChange={(e) => setProposta(e.target.value)}
               required
             ></textarea>
 
-            {/* Links de navegação */}
-            <div className="eu">
-              <Link className="eusou" href="/parcerias-influenciadores">
+            <div className={styles.euContainer}>
+              <Link className={styles.euSouCard} href="/parcerias-influenciadores">
                 <img src="/images/atendimento-usuario/usuario.png" alt="Ícone de usuário" />
-                <p className="eusoua">Eu sou um influenciador</p>
-                <p className="eusoub">Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
+                <p className={styles.euSouTitulo}>Eu sou um influenciador</p>
+                <p className={styles.euSouDescricao}>Dúvidas sobre o funcionamento do site, requisição de dados gerais, reportação de erros.</p>
               </Link>
-              <Link className="eusou2" href="/parcerias-empresas">
+              <Link className={styles.euSouCard2} href="/parcerias-empresas">
                 <img src="/images/atendimento-usuario/empresa.png" alt="Ícone de empresa" />
-                <p className="eusoua">Eu sou uma empresa</p>
-                <p className="eusoub">Contato para parcerias, dúvidas sobre regulamentos, reportação de queixas.</p>
+                <p className={styles.euSouTitulo}>Eu sou uma empresa</p>
+                <p className={styles.euSouDescricao}>Contato para parcerias, dúvidas sobre regulamentos, reportação de queixas.</p>
               </Link>
             </div>
 
             <button 
               type="submit" 
-              id="conheça"
+              className={styles.botaoConheca}
               disabled={isSubmitting}
               style={{
                 opacity: isSubmitting ? 0.6 : 1,
@@ -332,13 +307,21 @@ const ParceriasUsuariosPage: React.FC = () => {
           </form>
         </div>
 
-        <aside>
-          <figure></figure>
+        <aside className={styles.sidebarWrapper}>
+          <figure className={styles.sidebarImage}>
+            <img 
+              className={styles.favorito} 
+              src="/images/favorito.png" 
+              alt="Destaque" 
+              onError={(e) => e.currentTarget.style.display = 'none'} 
+            />
+          </figure>
         </aside>
       </main>
 
       <Script src="/parcerias.js" strategy="afterInteractive" />
-      <Footer/>
+    </div>
+    <Footer/>
     </>
   );
 };
