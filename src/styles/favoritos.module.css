@@ -432,20 +432,20 @@
     gap: 2rem;
     margin-top: 55px;
     width: 100%;
-    /* Remove o scroll pois agora usamos botões JS */
     overflow-x: hidden; 
     padding: 1rem;
+    transition: all 0.3s ease;
 }
 
 /* NOVO: Classe para quando a lista está expandida */
 .expandedContainer {
-    flex-wrap: wrap; /* Faz os cards caírem para a próxima linha */
+    flex-wrap: wrap; 
     overflow-x: visible;
     height: auto;
     justify-content: center;
+    align-items: flex-start;
 }
 
-/* Ajuste para dar espaço quando eles estão em grade */
 .expandedContainer .savedCard {
     margin-bottom: 2rem;
 }
@@ -461,13 +461,14 @@
     justify-content: center;
     transition: transform 0.2s ease;
     z-index: 10;
-    flex-shrink: 0; /* Garante que a seta não esmague */
+    flex-shrink: 0; 
 }
 
 .scrollBtn:hover:not(:disabled) {
     transform: scale(1.2);
 }
 
+/* Estilo padrão (Desktop) dos cards */
 .savedCard {
     display: flex;
     flex-direction: column;
@@ -480,9 +481,9 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* Animação ao trocar os cards */
     animation: fadeIn 0.5s ease;
     gap: 1rem;
+    background-color: #fff; /* Garante fundo branco */
 }
 
 @keyframes fadeIn {
@@ -689,6 +690,7 @@
 .mosaicPos5 { grid-column: 3 / 4; grid-row: 1 / 3; }
 
 /* ---- MEDIA QUERIES ---- */
+
 @media (max-width: 1200px) {
     .wrapper { align-items: center; }
     .mainContainer {
@@ -729,6 +731,7 @@
     .mosaicPos3 { height: 100%; }
 }
 
+/* --- AJUSTE TABLET / MOBILE MÉDIO (ALTERADO PARA GRID 2 COLUNAS) --- */
 @media (max-width: 768px) {
     .wrapper { align-items: center; }
     .mainContainer { justify-content: center; }
@@ -736,9 +739,6 @@
     .brownCardContent { align-items: center; }
     .brownCardIcon { align-self: flex-end; }
     .brownCardContent > h1, .brownCardContent > p, .brownCardButton { align-self: center; }
-
-    /* ATENÇÃO: Mantém as setas visíveis para clicar, ou esconda se quiser apenas swipe */
-    .scrollBtn { display: flex; }
 
     .mosaicGrid { margin: 70px auto; }
     .brownCardImage { width: 250px; }
@@ -749,6 +749,30 @@
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1.5rem;
         padding: 0 0.5rem;
+    }
+
+    /* === CORREÇÃO DO ALINHAMENTO (GRID 2 COLUNAS) === */
+    /* Removemos o flex e setas para usar Grid puro, igual no mobile */
+    .scrollBtn { 
+        display: none; 
+    }
+
+    .savedCardsContainer, .expandedContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 colunas */
+        gap: 1rem;
+        width: 100%;
+        padding: 0 1rem;
+        overflow-x: visible;
+        justify-content: center;
+    }
+
+    .savedCard {
+        width: 100%;
+        max-width: none;
+        height: 100%; /* Força altura igual em toda a linha */
+        min-height: 480px; /* Altura mínima segura para tablet */
+        margin: 0;
     }
 }
 
@@ -765,4 +789,46 @@
 @media (max-width: 1650px) {
     .wrapper { align-items: center; }
     .mainContainer { justify-content: center; }
+}
+
+/* --- MOBILE PEQUENO (Mantido intacto como solicitado) --- */
+@media (max-width: 500px) {
+    .savedCardsContainer, .expandedContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        overflow-x: visible;
+        width: 100%;
+        padding: 0 1rem;
+        flex-wrap: wrap; 
+    }
+
+    .scrollBtn {
+        display: none;
+    }
+
+    .savedCard {
+        width: 100%;
+        min-height: 360px; 
+        height: auto;
+        margin-bottom: 0;
+        flex-shrink: 1;
+    }
+
+    .prodImage {
+        height: 120px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .savedCard > h1 {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+        word-wrap: break-word;
+    }
+
+    .savedCard > p {
+        font-size: 0.75rem;
+        padding: 0 0.5rem 0.5rem;
+    }
 }
