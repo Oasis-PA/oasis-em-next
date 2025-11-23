@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import "@/styles/resetar.css"; // Certifique-se que o caminho está correto
+import "@/styles/resetar.css"; 
 
 export default function ResetarPage() {
   const [senha, setSenha] = useState("");
