@@ -294,6 +294,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .cardInnerWrapper {
@@ -303,7 +304,7 @@
   background-color: white;
   padding: 15px;
   border-radius: 12px;
-  height: 100%;
+  flex: 1;
 }
 
 .produtoCardImage {
@@ -584,8 +585,8 @@
 
   .loadMoreButton {
     /* Ajuste leve para mobile se necessário, mas mantendo o estilo principal */
-    width: 12rem; 
-    height: 3.5rem;
+    width: 15rem; 
+    height: 4.5rem;
     font-size: 1.2rem;
   }
 }
@@ -621,9 +622,7 @@
 
   /* Ajustes Grid */
   .produtosGridWrapper {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    justify-content: center;
+    align-items: stretch; /* Garante que todas as células tenham a mesma altura */
   }
 
   .produtosLayoutWrapper {
@@ -663,8 +662,8 @@
   }
 
   .loadMoreButton {
-    width: 10rem;
-    height: 3rem;
+    width: 15rem;
+    height: 4rem;
     font-size: 1rem;
   }
 
