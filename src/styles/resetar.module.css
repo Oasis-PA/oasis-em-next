@@ -1,0 +1,177 @@
+.pageWrapper {
+  background-color: #fdfaf7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+}
+
+/* Container Flex Principal */
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Card Branco */
+.resetCard {
+  background-color: #FFFFFF;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+/* Título (Anteriormente .reset-card h1) */
+.title {
+  font-family: "The Next Font", sans-serif;
+  color: #5F0B38;
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+/* Container do Formulário */
+.resetForm {
+  width: 100%;
+}
+
+/* Input de Senha (Anteriormente .reset-form input[type="password"]) */
+.inputField {
+  font-family: "Louis George Cafe", sans-serif;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inputField::placeholder {
+  color: #aaa;
+}
+
+.inputField:hover:not(:focus) {
+  border-color: #c4a9b6;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #722F53;
+  box-shadow: 0 0 0 3px rgba(114, 47, 83, 0.15);
+}
+
+/* Botão de Envio (Anteriormente .submit-btn) */
+.submitBtn {
+  font-family: "The Next Font", sans-serif;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background-color: #722F53;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  z-index: 1; /* Garante que o texto fique acima do pseudo-elemento */
+}
+
+/* Efeito Ripple/Preenchimento do botão */
+.submitBtn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+  transform: translateY(-3px) scale(1.03);
+}
+
+.submitBtn:hover::before {
+  width: 450px;
+  height: 450px;
+}
+
+.submitBtn:active {
+  background: #5F0B38;
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* Mensagem de Feedback */
+.feedbackMessage {
+  font-family: "Louis George Cafe", sans-serif;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  padding: 0.8rem;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   RESPONSIVIDADE
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 1rem;
+  }
+
+  .resetCard {
+    padding: 2rem;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .resetCard {
+    padding: 1.5rem 1.2rem;
+    border-radius: 8px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .inputField {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .submitBtn {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+
+  .submitBtn:hover {
+    transform: translateY(-1px) scale(1.01);
+  }
+}

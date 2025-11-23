@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import { Header, Footer } from "@/components";
-import '@/styles/corte-modelo.css';
+import styles from '@/styles/corte-modelo.module.css';
 
 interface CorteProps {
   params: Promise<{ slug: string }>;
@@ -9,7 +9,6 @@ interface CorteProps {
 
 export async function generateStaticParams() {
   try {
-    const now = new Date();
     const cortes: { slug: string }[] = await prisma.cortes.findMany({
       where: {
         OR: [
@@ -35,7 +34,7 @@ export default async function CortePage({ params }: CorteProps) {
 
   if (!corte) return notFound();
 
-  // normaliza fields (cliente Prisma pode expor camelCase ou snake_case)
+  // normaliza fields
   const normalized = {
     id: corte.id,
     nome: (corte as any).nome ?? corte.nome,
@@ -85,13 +84,13 @@ export default async function CortePage({ params }: CorteProps) {
     }
   }
 
-  // Se não houver descrição, mostrar mensagem
+  // Se não houver descrição, mostrar mensagem (Layout de erro atualizado com styles)
   if (!normalized.descricao) {
     return (
-      <div className="page-corte-modelo-wrapper">
+      <div className={styles.wrapper}>
         <Header />
         <main>
-          <section className="principal">
+          <section className={styles.container}>
             <p>Corte não encontrado ou sem conteúdo.</p>
           </section>
         </main>
@@ -101,58 +100,58 @@ export default async function CortePage({ params }: CorteProps) {
   }
 
   return (
-    <div className="page-corte-modelo-wrapper">
+    <div className={styles.wrapper}>
       <Header />
       <main>
-        <section className="principal">
+        <section className={styles.container}>
           {normalized.imagemPrincipal && (
             <img 
-              id="img-principal" 
+              className={styles.mainImage}
               src={normalized.imagemPrincipal} 
               alt={`Imagem ${normalized.nome}`}
             />
           )}
-          
-          <div className="direita">
-            <div className="parte-superior">
-              <p id="tit1">{normalized.nome}</p>
-              <p id="corpo-texto1">
+           
+          <div className={styles.rightColumn}>
+            <div className={styles.topSection}>
+              <p className={styles.title}>{normalized.nome}</p>
+              <p className={styles.description}>
                 {normalized.descricao}
               </p>
               
               {normalized.historia && (
                 <>
-                  <p id="corpo-tit">Quando surgiu?</p>
-                  <p id="corpo-texto1">
+                  <p className={styles.sectionTitle}>Quando surgiu?</p>
+                  <p className={styles.description}>
                     {normalized.historia}
                   </p>
                 </>
               )}
             </div>
 
-            <div className="parte-inferior">
+            <div className={styles.grid}>
               {normalized.comoFazer && (
-                <div className="quadradinhos">
-                  <p id="corpo-tit1">Como fazer</p>
-                  <p id="corpo-texto2">
+                <div className={styles.card}>
+                  <p className={styles.cardTitle}>Como fazer</p>
+                  <p className={styles.cardText}>
                     {normalized.comoFazer}
                   </p>
                 </div>
               )}
 
               {normalized.rostoCompativel && (
-                <div className="quadradinhos">
-                  <p id="corpo-tit1">Com qual rosto combina?</p>
-                  <p id="corpo-texto2">
+                <div className={styles.card}>
+                  <p className={styles.cardTitle}>Com qual rosto combina?</p>
+                  <p className={styles.cardText}>
                     {normalized.rostoCompativel}
                   </p>
                 </div>
               )}
 
               {normalized.comoArrumar && (
-                <div className="quadradinhos">
-                  <p id="corpo-tit1">Como arrumar</p>
-                  <p id="corpo-texto2">
+                <div className={styles.card}>
+                  <p className={styles.cardTitle}>Como arrumar</p>
+                  <p className={styles.cardText}>
                     {normalized.comoArrumar}
                   </p>
                 </div>

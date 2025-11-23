@@ -1,0 +1,668 @@
+/* CortesGeral.module.css */
+
+/* Wrapper principal (antigo .page-cortes-wrapper) */
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header & Footer targeting (elementos filhos diretos) */
+.wrapper > header,
+.wrapper > footer {
+  width: 100%;
+}
+
+.wrapper > header iframe,
+.wrapper > footer iframe {
+  width: 100%;
+  height: auto;
+}
+
+.wrapper > footer iframe {
+  height: 400px;
+}
+
+.wrapper > aside {
+  margin-bottom: 200px;
+}
+
+/* Container geral */
+.container {
+  width: 100%;
+  max-width: 1920px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+/* Seção "Você Procura" */
+.voceProcura {
+  background-color: #768791;
+  width: 100vw;
+  height: auto;
+  display: flex;
+}
+
+.textoProcura {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  margin-left: 5%;
+  color: white;
+  font-family: 'The Next Font', sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  max-width: 78.6875rem;
+  padding-bottom: 20px;
+  line-height: 1.1;
+  transition: transform 0.3s ease;
+}
+
+.textoProcura:hover {
+  transform: translateX(-10px);
+}
+
+.temos {
+  color: #FFF;
+  max-width: 78.6875rem;
+  font-family: 'The Next Font';
+  font-size: clamp(3rem, 15vw, 8rem);
+  font-style: normal;
+  font-weight: 400;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.temos:hover {
+  transform: scale(1.03);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.mudarVisual {
+  color: #FFF;
+  font-family: 'Louis George Cafe';
+  font-size: clamp(1.5rem, 5.5vw, 2.8125rem);
+  font-style: normal;
+  font-weight: 400;
+  max-width: 78.6875rem;
+  transition: transform 0.3s ease;
+}
+
+.mudarVisual:hover {
+  transform: translateX(-5px);
+}
+
+/* Títulos e Parágrafos Principais */
+.h1MelhoresCortes {
+  font-family: 'PLAYFUL RUNWAY', sans-serif;
+  font-weight: 400;
+  font-size: 110px;
+  margin-top: 71px;
+  text-align: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.h1MelhoresCortes:hover {
+  color: #722F53;
+  transform: scale(1.03);
+}
+
+.p1 {
+  font-family: 'Louis George Cafe', sans-serif;
+  font-weight: 400;
+  font-size: 45px;
+  text-align: center;
+  margin-bottom: 71px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.p1:hover {
+  transform: translateY(-5px);
+  color: #5E332C;
+}
+
+/* Seções de Artigos */
+.sectionArtigos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 50px;
+}
+
+.sectionArtigos img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.sectionArtigos img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.1);
+}
+
+.divArtigo {
+  flex-direction: column;
+  margin-left: 70px;
+  margin-top: 0;
+}
+
+/* Caso específico do segundo artigo (antigo #div-artigo2) */
+.divArtigo2 {
+  flex-direction: column;
+  margin-right: 70px;
+  margin-top: 0;
+}
+
+.h1TituloArtigo {
+  font-family: 'The Next Font', sans-serif;
+  font-weight: 400;
+  font-size: 42px;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.h1TituloArtigo:hover {
+  color: #722F53;
+  transform: translateX(8px);
+}
+
+.p2 {
+  font-family: 'Louis George Cafe', sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+  letter-spacing: 0.05em;
+  margin-top: 20px;
+  text-align: justify;
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease;
+}
+
+.p2:hover {
+  transform: translateX(5px);
+}
+
+/* Botões */
+.button1 {
+  background: #722F53;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  font-family: 'The Next Font', sans-serif;
+  font-weight: 100;
+  font-size: 22px;
+  width: 200px;
+  height: 53px;
+  cursor: pointer;
+  margin-top: 33px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.button1::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.button1:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.button1:hover {
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  box-shadow: 0px 10px 30px rgba(114, 47, 83, 0.6);
+  transform: translateY(-5px) scale(1.08);
+}
+
+.button1:active {
+  background: #5E332C;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.button1 a {
+  font-size: 22px;
+  color: #FFF;
+  text-decoration: none;
+}
+
+/* Seção Mais Visitados */
+.sectionMaisVisitados {
+  margin-top: 70px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.h1MaisVisitados {
+  font-family: 'PLAYFUL RUNWAY', sans-serif;
+  font-weight: 400;
+  font-size: 45px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.h1MaisVisitados:hover {
+  color: #5E332C;
+  transform: scale(1.05);
+}
+
+.p3 {
+  font-family: 'Louis George Cafe', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  margin-top: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.p3:hover {
+  transform: translateY(-3px);
+}
+
+.divMaisVisitados {
+  margin-top: 62px;
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 1610px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.divMaisVisitados img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.divMaisVisitados img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(94, 51, 44, 0.4);
+  filter: brightness(1.1);
+}
+
+.esquerda {
+  display: flex;
+}
+
+.direita {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.topo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.base {
+  display: flex;
+}
+
+/* Sugestão de Cortes */
+.sectionSugestaoCortes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #5E332C;
+  margin-top: 70px;
+  align-items: start;
+  padding: 50px 7vw 20px 7vw;
+}
+
+.divTitulos {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1800px;
+  justify-content: center;
+}
+
+.h1Cabelos {
+  font-family: 'The Next Font', sans-serif;
+  font-weight: 400;
+  font-size: 45px;
+  color: #FFFFFF;
+  margin-right: 70px;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: auto;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.h1Cabelos:hover {
+  transform: translateX(10px);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.divBotaoseta {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 60px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.divBotaoseta button {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.setaNav {
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.setaNav:hover {
+  transform: scale(1.2);
+}
+
+.setaMargin {
+  margin-left: 16px;
+}
+
+.button2 {
+  border: none;
+  color: white;
+  font-family: 'The Next Font', sans-serif;
+  font-weight: 400;
+  font-size: 29px;
+  width: 261px;
+  height: 70px;
+  background: #F2A518;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.button2::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.button2:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.button2:hover {
+  background: linear-gradient(135deg, #F2A518 0%, #FFD700 100%);
+  box-shadow: 0px 10px 30px rgba(242, 165, 24, 0.7);
+  transform: translateY(-5px) scale(1.08);
+}
+
+.button2:active {
+  background: #D89410;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.divImagens {
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.divImagens a {
+  display: block;
+}
+
+.divImagens img {
+  max-width: 100%;
+  height: 50vh;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+}
+
+.divImagens img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  filter: brightness(1.15);
+}
+
+/* Helper classes */
+.desktopOnly {
+  display: inline;
+}
+
+/* --- MEDIA QUERIES --- */
+
+@media (max-width: 1600px) {
+  .divMaisVisitados {
+    width: 90%;
+  }
+
+  .h1Cabelos {
+    font-size: 40px;
+    margin-right: 50px;
+  }
+  
+  .divBotaoseta {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .divImagens {
+    justify-content: center;
+  }
+  
+  .sectionSugestaoCortes {
+    justify-content: center;
+  }
+  
+  .h1MelhoresCortes {
+    font-size: 80px;
+    margin-top: 50px;
+  }
+
+  .p1 {
+    font-size: 35px;
+    margin-bottom: 50px;
+  }
+
+  .sectionArtigos {
+    flex-direction: column;
+  }
+
+  .sectionArtigos img {
+    order: 1;
+  }
+
+  .divArtigo,
+  .divArtigo2 {
+    margin: 30px auto;
+    text-align: center;
+    order: 2;
+    align-items: center;
+  }
+
+  .p2 {
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  .divTitulos {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .h1Cabelos {
+    margin-right: 0;
+    margin-bottom: 30px;
+    font-size: 35px;
+  }
+
+  .divMaisVisitados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Classes que substituem os IDs para o grid */
+  .img1 {
+    grid-row: span 1;
+  }
+
+  .img4 {
+    grid-column: span 1;
+    grid-column-start: auto;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .voceProcura {
+    flex-direction: column;
+    width: 100vw;
+    padding: 20px 0;
+    align-items: center;
+  }
+  
+  .textoProcura {
+    width: 90%;
+    margin-left: 0;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .divMaisVisitados {
+    flex-direction: column;
+    gap: 24px;
+    max-width: 100%;
+  }
+
+  .topo {
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .divImagens img {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionSugestaoCortes {
+    align-items: center;
+  }
+  
+  .h1MelhoresCortes {
+    font-size: 60px;
+    margin-top: 40px;
+  }
+
+  .p1 {
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+
+  .h1TituloArtigo {
+    font-size: 30px;
+  }
+
+  .p2 {
+    font-size: 18px;
+  }
+
+  .h1MaisVisitados {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .divImagens img {
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .h1MelhoresCortes {
+    font-size: 40px;
+    margin-top: 30px;
+  }
+
+  .p1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .h1TituloArtigo {
+    font-size: 24px;
+  }
+
+  .p2 {
+    font-size: 16px;
+  }
+
+  .button1,
+  .button1 a {
+    width: 180px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .h1MaisVisitados {
+    font-size: 30px;
+  }
+
+  .p3 {
+    font-size: 16px;
+  }
+
+  .divMaisVisitados {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .h1Cabelos {
+    font-size: 28px;
+  }
+
+  .button2 {
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,438 @@
+/* ⚠️ ISOLAMENTO DE ESTILOS */
+/* Convertido de .page-infantil-wrapper * */
+.pageWrapper * {
+  margin: 0;
+  padding: 0;
+  color: var(--corpo-texto);
+  box-sizing: border-box;
+}
+
+.pageWrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.pageWrapper main {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- BANNER PRINCIPAL (Antigo #d1) --- */
+.bannerPrincipal {
+  /* Ajuste de caminho: referência direta à pasta public */
+  background-image: url('/images/infantil/banner.png');
+  width: 100vw;
+  height: 50vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex; 
+  flex-direction: column;
+  padding-left: clamp(1rem, 7vw, 8rem);
+  /* Centralização para compensar width 100vw dentro de container */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.bannerPrincipal > h1 {
+  color: #FFF;
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(2.5rem, 2rem + 3.5vw, 6.5rem);
+  font-weight: 400;
+  width: 100%;
+  max-width: 70%;
+  margin-top: clamp(1rem, 5vw, 6.98rem);
+  line-height: 1.1;
+}
+
+.spanVerde { color: #DEFF8F; }
+.spanRosa { color: #E79EEB; }
+.spanAmarelo { color: #ECC46F; }
+
+.bannerPrincipal > p {
+  color: #FFF;
+  text-align: justify;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 57%;
+  margin-top: 1rem;
+}
+
+/* --- SEÇÃO DE ARTIGOS (Antigo #s1) --- */
+.sectionArtigos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: clamp(4rem, 8vw, 12rem);
+}
+
+.sectionArtigos > h1 {
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: clamp(2rem, 1.5rem + 3.5vw, 6.25rem);
+  padding-left: clamp(1rem, 7vw, 8rem);
+}
+
+.sectionArtigos > p {
+  text-align: justify;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  max-width: min(95%, 50.81rem);
+  padding-left: clamp(1rem, 7vw, 8rem);
+}
+
+.artigosContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; 
+  margin-top: 4rem;
+  align-items: center;
+}
+
+/* Linhas de artigos (Antigo #d2 e .d2) */
+.artigosRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem; 
+  width: 100%;
+  max-width: 1400px;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+/* Cards de Artigos (Base para todos) */
+.cardArtigo {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.5rem;
+  flex: 1;
+  min-height: 300px; 
+  transition: all 0.4s ease;
+  padding: 2rem; 
+}
+
+.cardArtigo:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Modificadores específicos para Backgrounds */
+.artigo1 { background-image: url('/images/infantil/artigo1.png'); }
+.artigo2 { background-image: url('/images/infantil/artigo2.png'); }
+.artigo3 { background-image: url('/images/infantil/artigo3.png'); }
+.artigo4 { background-image: url('/images/infantil/artigo4.png'); }
+.artigo5 { background-image: url('/images/infantil/artigo5.png'); }
+.artigo6 { background-image: url('/images/infantil/artigo6.png'); }
+
+/* Títulos e Textos dos Artigos */
+.titleBlack, .titleWhite {
+  font-family: "The Next Font", sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.titleWhite { color: #FFF; }
+
+.textBlack, .textWhite {
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.textWhite { color: #FFF; }
+
+
+/* --- SEÇÃO DE PRODUTOS (Antigo #s2) --- */
+.sectionProdutos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1280px;
+  margin: 8rem auto 4rem auto;
+  padding: 0 clamp(1rem, 5vw, 4rem);
+}
+
+.headerLineWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+/* Seletores descendentes para h1 dentro das seções */
+.sectionProdutos h1, 
+.sectionDicas h1 {
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  white-space: nowrap;
+  margin-right: 2rem;
+}
+
+.sectionDicas h1 { 
+  margin-left: 2rem; 
+  margin-right: 0; 
+}
+
+.dividingLine {
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  flex-grow: 1;
+}
+
+/* GRID DE PRODUTOS */
+.produtosGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* CARD DE PRODUTO INDIVIDUAL (Antigo .prod1) */
+.produtoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  border: 2px solid #5F0B38;
+  background: #FFF;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.produtoCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.imgContainer {
+  width: 100%;
+  height: 250px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.infoProduto {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+.produtoCard h5 {
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.produtoCard h4 {
+  font-family: "The Next Font", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.btnLink {
+  width: 100%;
+  margin-top: auto; 
+}
+
+.btnVejaMais {
+  width: 100%;
+  margin-top: 1.5rem;
+  background-color: #420E45;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "The Next Font", sans-serif;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.btnVejaMais:hover {
+  background: #6d1b5b;
+}
+
+/* BANNERS ILUSTRATIVOS (Leão, Zebra, Girafa) */
+.bannerGrid {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  padding: 2rem;
+}
+
+.bannerLeao { background-image: url('/images/infantil/produtos1.png'); }
+.bannerZebra { background-image: url('/images/infantil/produtos2.png'); }
+.bannerGirafa { background-image: url('/images/infantil/produtos3.png'); }
+
+.bannerGrid h1 {
+  color: #FFF !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  font-family: "The Next Font", sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin: 0 !important; 
+}
+
+/* --- SEÇÃO DE DICAS (Antigo #s3) --- */
+.sectionDicas {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1280px;
+  margin: 4rem auto 8rem auto;
+  padding: 0 clamp(1rem, 5vw, 4rem);
+}
+
+.dicasGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.dicaCard {
+  border-radius: 20px;
+  padding: 2.5rem;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 90%; 
+  transition: transform 0.3s ease;
+}
+
+.dicaCard:hover { transform: translateY(-5px); }
+
+.dicaCard h2 {
+  font-family: "The Next Font", sans-serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  max-width: 90%;
+}
+
+.dicaCard p {
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  max-width: 60%; 
+}
+
+/* Modificadores de Dicas (Cores e Backgrounds) */
+.dica1 { 
+  background-color: #F7E5C0; 
+  background-image: url('/images/infantil/dica1.png'); 
+}
+.dica1 h2, .dica1 p { color: #EFA61B; }
+
+.dica2 { 
+  background-color: #F9D490; 
+  background-image: url('/images/infantil/dica2.png'); 
+}
+.dica2 h2, .dica2 p { color: #8B572A; }
+
+.dica3 { 
+  background-color: #F396C7; 
+  background-image: url('/images/infantil/dica3.png'); 
+  background-position: bottom left; 
+}
+.dica3 h2, .dica3 p { 
+  color: #570A27; 
+  text-align: right; 
+  align-self: flex-end; 
+} 
+
+.dica4 { 
+  background-color: #E79EEB; 
+  background-image: url('/images/infantil/dica4.png'); 
+}
+.dica4 h2, .dica4 p { color: #420E45; }
+
+/* Loading e Erros */
+.loadingState, .errorState, .noProductsState {
+  text-align: center;
+  padding: 3rem;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1.5rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1024px) {
+  .produtosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .artigosRow {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerPrincipal { height: 80vw; }
+  
+  .sectionArtigos > h1, 
+  .sectionProdutos h1, 
+  .sectionDicas h1 {
+    font-size: 2.5rem;
+    padding-left: 0;
+    margin-right: 0;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .headerLineWrapper {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .dividingLine { display: none; }
+
+  .produtosGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Dicas Mobile */
+  .dicasGrid {
+    grid-template-columns: 1fr; 
+  }
+
+  .dicaCard {
+    min-height: 320px;
+    padding: 2rem;
+    background-size: 220px; 
+  }
+  .dicaCard p {
+    max-width: 70%;
+  }
+  
+  .bannerGrid, .produtoCard {
+    min-height: auto;
+  }
+  .bannerGrid { aspect-ratio: 1/1; }
+}

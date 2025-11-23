@@ -1,12 +1,10 @@
-// file: app/produtos/[id]/page.tsx
-
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import "@/styles/tela-de-produto.css";
-import {Header, Footer} from "@/components";
+import styles from "@/styles/tela-de-produto.module.css"; 
+import { Header, Footer } from "@/components";
 
 interface ProdutoData {
   id_produto: number;
@@ -27,7 +25,7 @@ export default function PaginaDeProduto() {
 
   // Estados
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [activeDetalhe, setActiveDetalhe] = useState('composicao');
+  const [activeDetalhe, setActiveDetalhe] = useState("composicao");
   const [isSetaLeft, setIsSetaLeft] = useState(false);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
@@ -47,7 +45,7 @@ export default function PaginaDeProduto() {
     qualidades: "",
     mais_detalhes: "",
     tag_principal: "",
-    preco: ""
+    preco: "",
   });
 
   // Buscar dados do produto
@@ -60,15 +58,15 @@ export default function PaginaDeProduto() {
 
       try {
         const res = await fetch(`/api/produtos/${id}`);
-        
+
         if (!res.ok) {
-          throw new Error('Produto não encontrado');
+          throw new Error("Produto não encontrado");
         }
 
         const data = await res.json();
         setProdutoData(data);
       } catch (e: any) {
-        setErro(e.message || 'Erro ao carregar produto');
+        setErro(e.message || "Erro ao carregar produto");
       } finally {
         setLoading(false);
       }
@@ -77,7 +75,7 @@ export default function PaginaDeProduto() {
     fetchProduto();
   }, [id]);
 
-  // Hook para o tema
+  // Hook para o tema (Mantido global pois afeta document)
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -86,18 +84,18 @@ export default function PaginaDeProduto() {
     }
   }, [isDarkMode]);
 
-  // Hook para o estilo das imagens de sol e lua
+  // Hook para o estilo das imagens de sol e lua (Mantido lógica original)
   useEffect(() => {
-    const solImg = document.getElementById('sol') as HTMLImageElement;
-    const luaImg = document.getElementById('lua') as HTMLImageElement;
+    const solImg = document.getElementById("sol") as HTMLImageElement;
+    const luaImg = document.getElementById("lua") as HTMLImageElement;
 
     if (solImg && luaImg) {
       if (isDarkMode) {
-        solImg.style.opacity = '0';
-        luaImg.style.opacity = '1';
+        solImg.style.opacity = "0";
+        luaImg.style.opacity = "1";
       } else {
-        solImg.style.opacity = '1';
-        luaImg.style.opacity = '0';
+        solImg.style.opacity = "1";
+        luaImg.style.opacity = "0";
       }
     }
   }, [isDarkMode]);
@@ -107,35 +105,34 @@ export default function PaginaDeProduto() {
     const handleClickOutside = (event: MouseEvent) => {
       const refs = [composicaoRef, qualidadesRef, maisDetalhesRef];
       const clickedOutside = refs.every(
-        ref => ref.current && !ref.current.contains(event.target as Node)
+        (ref) => ref.current && !ref.current.contains(event.target as Node)
       );
 
       if (clickedOutside && activeDetalhe) {
-        setActiveDetalhe('');
+        setActiveDetalhe("");
       }
     };
 
     if (activeDetalhe) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [activeDetalhe]);
 
   // Função para lidar com o clique no botão amarelo
   const handleBotaoAmareloClick = () => {
     if (produtoData.url_loja) {
-      window.open(produtoData.url_loja, '_blank');
+      window.open(produtoData.url_loja, "_blank");
     }
   };
 
   // Função para lidar com o clique nos detalhes
   const handleDetalheClick = (detalhe: string) => {
-    
     if (activeDetalhe === detalhe) {
-      setActiveDetalhe('');
+      setActiveDetalhe("");
     } else {
       setActiveDetalhe(detalhe);
     }
@@ -143,117 +140,128 @@ export default function PaginaDeProduto() {
 
   // Função para lidar com o clique na seta
   const handleSetaClick = () => {
-    setIsSetaLeft(prev => !prev);
+    setIsSetaLeft((prev) => !prev);
   };
 
   // Loading e erro
   if (loading) {
     return (
-    <div className="page-produto-wrapper">
-
+      <div className={styles.pageProdutoWrapper}>
         <Header />
-        <main style={{ padding: '2rem', textAlign: 'center' }}>
+        <main className={styles.loadingContainer}>
           <p>Carregando produto...</p>
         </main>
-        <Footer />    </div>
-  );
-
+        <Footer />
+      </div>
+    );
   }
 
   if (erro) {
     return (
-      <>
+      <div className={styles.pageProdutoWrapper}>
         <Header />
-        <main style={{ padding: '2rem', textAlign: 'center' }}>
+        <main className={styles.erroContainer}>
           <p>Erro: {erro}</p>
-          <button onClick={() => router.push('/produtos')}>Voltar para produtos</button>
+          <button onClick={() => router.push("/produtos")}>
+            Voltar para produtos
+          </button>
         </main>
         <Footer />
-      </>
+      </div>
     );
   }
 
-  const imageSrc = produtoData.url_imagem || '/images/produtos/default-placeholder.png';
+  const imageSrc =
+    produtoData.url_imagem || "/images/produtos/default-placeholder.png";
 
   return (
     <>
-      <Header className="header-transparente"/>
+      <div className={styles.pageProdutoWrapper}>
+        {/* Adicionado Wrapper para garantir escopo do CSS */}
+        <Header className={styles.headerTransparente} />
 
-      <main>
-        <article id="pagina1">
-          <div className="img-container">
-            <Image 
-              id="img" 
-              src={imageSrc} 
-              alt={produtoData.nome} 
-              width={300} 
-              height={400}
-              unoptimized={true}
-            />
-          </div>
-          <section className="produto-info">
-            <h2 id="nomeProduto">{produtoData.nome}</h2>
-            <p id="menorValor">Valor</p>
-            <h2 id="preco">R$ {produtoData.preco || "0,00"}</h2>
-            
-            <div className="detalhes">
-              {/* COMPOSIÇÃO */}
-              <h5
-                ref={composicaoRef}
-                className={`composicao ${activeDetalhe === 'composicao' ? 'active' : ''}`}
-                onClick={() => handleDetalheClick('composicao')}
-              >
-                Composição
-                <span className={`tooltip-text ${activeDetalhe === 'composicao' ? 'active' : ''}`}>
-                  {produtoData.composicao || "Informação não disponível"}
-                </span>
-              </h5>
-
-              {/* QUALIDADES */}
-              <h5
-                ref={qualidadesRef}
-                className={`qualidades ${activeDetalhe === 'qualidades' ? 'active' : ''}`}
-                onClick={() => handleDetalheClick('qualidades')}
-              >
-                Qualidades
-                <span className={`tooltip-text ${activeDetalhe === 'qualidades' ? 'active' : ''}`}>
-                  {produtoData.qualidades || "Informação não disponível"}
-                </span>
-              </h5>
-
-              {/* MAIS DETALHES */}
-              <h5
-                ref={maisDetalhesRef}
-                className={`maisDetalhes ${activeDetalhe === 'maisDetalhes' ? 'active' : ''}`}
-                onClick={() => handleDetalheClick('maisDetalhes')}
-              >
-                Dicas de uso
-                <span className={`tooltip-text ${activeDetalhe === 'maisDetalhes' ? 'active' : ''}`}>
-                  {produtoData.mais_detalhes || "Informação não disponível"}
-                </span>
-              </h5>
+        <main>
+          <article className={styles.pagina1}>
+            <div className={styles.imgContainer}>
+              <Image
+                className={styles.produtoImg}
+                src={imageSrc}
+                alt={produtoData.nome}
+                width={300}
+                height={400}
+                unoptimized={true}
+              />
             </div>
+            <section className={styles.produtoInfo}>
+              <h2 className={styles.nomeProduto}>{produtoData.nome}</h2>
+              <p className={styles.menorValor}>Valor</p>
+              <h2 className={styles.preco}>
+                R$ {produtoData.preco || "0,00"}
+              </h2>
 
-            <aside className="container" id="vaAoSite">
-              <button 
-                className="botaoAmarelo" 
-                onClick={handleBotaoAmareloClick}
-                disabled={!produtoData.url_loja}
-              >
-                <h3 className="VaParaCompra">
-                  {produtoData.url_loja ? 'VÁ AO SITE' : 'LINK INDISPONÍVEL'}
-                </h3>
-              </button>
-            </aside>
-          </section>
-        </article>
+              <div className={styles.detalhes}>
+                {/* COMPOSIÇÃO */}
+                <h5
+                  ref={composicaoRef}
+                  className={`${styles.composicao} ${
+                    activeDetalhe === "composicao" ? styles.active : ""
+                  }`}
+                  onClick={() => handleDetalheClick("composicao")}
+                >
+                  Composição
+                  <span className={styles.tooltipText}>
+                    {produtoData.composicao || "Informação não disponível"}
+                  </span>
+                </h5>
 
-        <div id="linha"></div>
+                {/* QUALIDADES */}
+                <h5
+                  ref={qualidadesRef}
+                  className={`${styles.qualidades} ${
+                    activeDetalhe === "qualidades" ? styles.active : ""
+                  }`}
+                  onClick={() => handleDetalheClick("qualidades")}
+                >
+                  Qualidades
+                  <span className={styles.tooltipText}>
+                    {produtoData.qualidades || "Informação não disponível"}
+                  </span>
+                </h5>
 
-       
-      </main>
+                {/* MAIS DETALHES */}
+                <h5
+                  ref={maisDetalhesRef}
+                  className={`${styles.maisDetalhes} ${
+                    activeDetalhe === "maisDetalhes" ? styles.active : ""
+                  }`}
+                  onClick={() => handleDetalheClick("maisDetalhes")}
+                >
+                  Dicas de uso
+                  <span className={styles.tooltipText}>
+                    {produtoData.mais_detalhes || "Informação não disponível"}
+                  </span>
+                </h5>
+              </div>
 
-      <Footer />
+              <aside className={styles.vaAoSiteContainer}>
+                <button
+                  className={styles.botaoAmarelo}
+                  onClick={handleBotaoAmareloClick}
+                  disabled={!produtoData.url_loja}
+                >
+                  <h3 className={styles.vaParaCompraTexto}>
+                    {produtoData.url_loja ? "VÁ AO SITE" : "LINK INDISPONÍVEL"}
+                  </h3>
+                </button>
+              </aside>
+            </section>
+          </article>
+
+          <div className={styles.linha}></div>
+        </main>
+
+        <Footer />
+      </div>
     </>
   );
 }

@@ -1,0 +1,277 @@
+/* corteModelo.module.css */
+
+.wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.wrapper main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1700px;
+  margin: 4vh auto 8rem auto;
+  display: flex;
+  gap: 3rem;
+}
+
+/* Antigo #img-principal */
+.mainImage {
+  flex: 0 0 40%;
+  width: 40%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 0.5rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.mainImage:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.05);
+}
+
+/* Antigo .direita */
+.rightColumn {
+  flex: 0 0 56%;
+  width: 56%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Antigo .parte-superior */
+.topSection {
+  flex: 0 0 auto;
+}
+
+/* Antigo #tit1 */
+.title {
+  color: #000;
+  font-family: "The Next Font", sans-serif;
+  font-size: 2.8125rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.title:hover {
+  color: #420E45;
+  transform: translateX(8px);
+}
+
+/* Antigo #corpo-texto1 */
+.description {
+  color: #000;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  text-align: justify;
+  transition: transform 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.description:hover {
+  transform: translateX(5px);
+}
+
+/* Antigo #corpo-tit */
+.sectionTitle {
+  color: #420E45;
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-decoration: underline solid #420E45;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sectionTitle:hover {
+  transform: translateX(8px);
+  color: #722F53;
+}
+
+/* Antigo .parte-inferior */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* Antigo .quadradinhos */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: #FFF;
+  box-shadow: 0 4px 22.9px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+  cursor: pointer;
+  min-height: 250px;
+  max-height: 400px;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(66, 14, 69, 0.3);
+  background-color: #FAFAFA;
+}
+
+/* Antigo #corpo-tit1 */
+.cardTitle {
+  color: #420E45;
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-decoration: underline solid #420E45;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease, text-decoration-color 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex-shrink: 0;
+}
+
+.card:hover .cardTitle {
+  color: #722F53;
+  transform: scale(1.05);
+  text-decoration-color: #722F53;
+}
+
+/* Antigo #corpo-texto2 */
+.cardText {
+  color: #000;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  text-align: justify;
+  transition: color 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.card:hover .cardText {
+  color: #333;
+}
+
+/* Scrollbar customizada para os cards */
+.cardText::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cardText::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.cardText::-webkit-scrollbar-thumb {
+  background: #420E45;
+  border-radius: 3px;
+}
+
+.cardText::-webkit-scrollbar-thumb:hover {
+  background: #722F53;
+}
+
+/* =================================== */
+/* ========== MEDIA QUERIES ========== */
+/* =================================== */
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  .mainImage, .rightColumn {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .mainImage {
+    max-width: 500px;
+    max-height: 500px;
+    height: auto;
+    margin-bottom: 2rem;
+    margin-left: 0;
+  }
+
+  .grid {
+    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .card {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title, .sectionTitle {
+    text-align: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    min-height: 200px;
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    margin: 2vh auto 4rem auto;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .description, .cardText {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+    min-height: 180px;
+    max-height: 320px;
+  }
+
+  .mainImage {
+    max-height: 400px;
+  }
+}

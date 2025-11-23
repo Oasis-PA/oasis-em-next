@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import "@/styles/resetar.css"; 
+import styles from "@/styles/resetar.module.css";
 
 export default function ResetarPage() {
   const [senha, setSenha] = useState("");
@@ -26,28 +26,32 @@ export default function ResetarPage() {
   }
 
   return (
-    <div className="page-resetar-wrapper">
-    <main className="main-container">
-      <div className="reset-card">
-        <h1>Redefinir Senha</h1>
-        <form onSubmit={handleReset} className="reset-form">
-          <input
-            type="password"
-            placeholder="Nova senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            required
-          />
-          <button
-            type="submit"
-            className="submit-btn"
-          >
-            Salvar nova senha
-          </button>
-        </form>
-        {mensagem && <p className="feedback-message">{mensagem}</p>}
-      </div>
-    </main>
+    <div className={styles.pageWrapper}>
+      <main className={styles.mainContainer}>
+        <div className={styles.resetCard}>
+          {/* Adicionada classe direta 'title' ao invés de depender de cascata */}
+          <h1 className={styles.title}>Redefinir Senha</h1>
+          
+          <form onSubmit={handleReset} className={styles.resetForm}>
+            <input
+              type="password"
+              placeholder="Nova senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+              className={styles.inputField}
+            />
+            <button
+              type="submit"
+              className={styles.submitBtn}
+            >
+              Salvar nova senha
+            </button>
+          </form>
+          
+          {mensagem && <p className={styles.feedbackMessage}>{mensagem}</p>}
+        </div>
+      </main>
     </div>
   );
 }
