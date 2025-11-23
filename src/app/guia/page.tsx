@@ -140,16 +140,6 @@ export default function Guia() {
             </div>
           </Link>
 
-          <Link href='/haircare' className={styles.s2Link}>
-            <div className={styles.pag}>
-              <img src="images/guia/pag6-haircare.png" alt="" className={styles.pagImg} />
-              <div className={styles.pag2}>
-                <h1 className={styles.pag2H1}>HAIRCARE</h1>
-                <p className={styles.pag2P}>Aprenda a cuidar da sua coroa! Aqui você encontra as melhores dicas de hidratação, nutrição e finalização para realçar a beleza única dos seus cabelos crespos e cacheados.</p>
-              </div>
-            </div>
-          </Link>
-
           <Link href='/infantil' className={styles.s2Link}>
             <div className={styles.pag}>
               <img src="images/guia/pag7-infantil.png" alt="" className={styles.pagImg} />

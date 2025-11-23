@@ -71,7 +71,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
           &times;
         </button>
         <Link href="/cortes-geral" onClick={handleLinkClick}>Cortes</Link>
-        <Link href="/haircare" onClick={handleLinkClick}>Hair Care</Link>
+        <Link href="/artigo" onClick={handleLinkClick}>Artigos</Link>
         <Link href="/tinturas" onClick={handleLinkClick}>Tinturas</Link>
         <Link href="/skincare" onClick={handleLinkClick}>Skincare</Link>
         <Link href="/cronograma-capilar" onClick={handleLinkClick}>Cronograma Capilar</Link>
@@ -139,7 +139,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
         <section className={styles.em_baixinho}>
           <div className={styles.coisas}>
             <Link href="/corte" className={styles.redirecionavel}>Cortes</Link>
-            <Link href="/haircare" className={styles.redirecionavel}>Hair Care</Link>
+            <Link href="/artigo" className={styles.redirecionavel}>Artigos</Link>
             <Link href="/tinturas" className={styles.redirecionavel}>Tinturas</Link>
             <Link href="/skincare" className={styles.redirecionavel}>Skincare</Link>
             <Link href="/cronograma-capilar" className={styles.redirecionavel2}>Cronograma Capilar</Link>

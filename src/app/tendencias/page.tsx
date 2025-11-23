@@ -89,7 +89,7 @@ export default function tendencias() {
               <button>Ver todos</button>
             </div>
 
-            <Link href='/artigo/qual-creme-comprar' className={styles.bannerTercLink}>
+            <Link href='/artigo/acido-hialuronico' className={styles.bannerTercLink}>
               <div className={styles.bannerTerc}>
                 <div className={styles.conteudo}>
                   <div className={styles.butoes2}>
@@ -97,7 +97,7 @@ export default function tendencias() {
                     <button>Cremes e óleos</button>
                     <button>Produtos</button>
                   </div>
-                  <p className={styles.tit3}>Acessórios para pele e cabelo</p>
+                  <p className={styles.tit3}>Ácido hialurônico</p>
                 </div>
               </div>
             </Link>
@@ -212,7 +212,7 @@ export default function tendencias() {
               <div className={styles.sec1}>
                 <TrendCard
                   imageClass="img-2"
-                  title="Os dilemas do século XXI: Qual creme comprar?"
+                  title="Melhores tipos de finalização"
                   tags={["Cabelo", "Cremes e óleos", "Produtos"]}
                   link="/artigo/creme-comprar"
                   titId="tit7"
