@@ -1,12 +1,6 @@
-/* ARQUIVO: favoritos.module.css
-   MIGRAÇÃO: CSS Global -> CSS Modules (Escopado)
-*/
+/* ARQUIVO: favoritos.module.css */
 
 /* ---- RESET E CONFIGURAÇÕES GLOBAIS (ESCOPADAS) ---- */
-
-/* Container pai que envolve toda a página. 
-   Substitui o seletor 'body' e 'html' globais para este contexto.
-*/
 .wrapper {
     display: flex;
     width: 100%;
@@ -18,10 +12,6 @@
     position: relative;
 }
 
-/* O RESET MAIS IMPORTANTE:
-   Garante que paddings e bordas não aumentem a largura dos elementos.
-   Isso corrige a "quebra" do layout.
-*/
 .wrapper * {
     margin: 0;
     padding: 0;
@@ -33,18 +23,17 @@
 .mainContainer {
     display: flex;
     width: 100%;
-    max-width: 1800px; /* Limita largura em telas 4k */
+    max-width: 1800px;
     height: auto;
-    align-items: flex-start; /* Alinha topo */
-    flex-wrap: wrap; /* Permite quebra em mobile */
-    margin: 0 auto; /* Centraliza o container */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 auto;
 }
 
-/* Antigo #imagens-artigos */
 .heroSection {
     width: 100%;
-    max-width: 599px; /* Largura fixa original */
-    height: 100vh; /* Ocupa altura total */
+    max-width: 599px;
+    height: 100vh;
     min-height: 400px;
     margin-right: 0;
     background-image: url(../../public/images/favoritos/imagem-principal.png);
@@ -65,17 +54,15 @@
     line-height: 1.1;
 }
 
-/* Antigo #section-favoritos */
 .favoritesSection {
     display: flex;
     flex-direction: column;
     margin-top: 50px;
     width: 100%;
-    max-width: 1129px; /* Espaço restante calculado */
+    max-width: 1129px;
     padding: 0 1rem;
 }
 
-/* Antigo #h1-favoritos */
 .favoritesTitle {
     font-family: 'PLAYFUL RUNWAY', sans-serif;
     font-weight: 400;
@@ -83,7 +70,6 @@
     margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
-/* Antigo #p1 */
 .favoritesDescription {
     width: 100%;
     height: auto;
@@ -93,7 +79,6 @@
     margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
-/* Antigo #h1-artigos */
 .articlesTitle {
     font-family: 'The Next Font', sans-serif;
     font-weight: 400;
@@ -103,7 +88,6 @@
     margin-left: clamp(0.8rem, 1.2vw + 0.5rem, 1.2rem);
 }
 
-/* Antigo #section-imagens-artigos - ATUALIZADO */
 .articlesGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -112,7 +96,6 @@
     padding: 0 1rem;
 }
 
-/* Container do card do artigo */
 .articleCardWrapper {
     text-decoration: none;
     position: relative;
@@ -120,7 +103,6 @@
     transition: all 0.3s ease;
 }
 
-/* Estilo base para os cards */
 .articleCard {
     width: 100%;
     height: 215px;
@@ -138,14 +120,8 @@
 }
 
 @keyframes fadeInCard {
-    from {
-        opacity: 0;
-        transform: scale(0.95) translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .articleCardWrapper:hover .articleCard {
@@ -161,15 +137,12 @@
     text-decoration: none;
     max-width: 100%;
     padding-right: 40px;
-    
-    /* Truncamento de texto */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Botão de favorito interno */
 .favoriteBtn {
     position: absolute;
     top: 12px;
@@ -177,7 +150,7 @@
     z-index: 10;
 }
 
-/* ---- SEÇÃO ARTIGO DESTAQUE (Antigo #section-artigo) ---- */
+/* ---- SEÇÃO ARTIGO DESTAQUE ---- */
 .highlightArticle {
     margin-top: 145px;
     display: flex;
@@ -210,7 +183,6 @@
     line-height: normal;
 }
 
-/* Botão Conheça (Antigo #button-conheca) */
 .knowMoreBtn {
     background: #722F53;
     border-radius: 2px;
@@ -269,7 +241,7 @@
     transform: translateY(-1px) scale(1.02);
 }
 
-/* ---- SEÇÃO CATEGORIAS (Antigo #section-artigos) ---- */
+/* ---- SEÇÃO CATEGORIAS ---- */
 .categoriesSection {
     display: flex;
     flex-direction: row;
@@ -314,7 +286,7 @@
     transition: color 0.3s ease;
 }
 
-/* ---- CARDS MARRONS (Antigo #section-imagem-marrom) ---- */
+/* ---- CARDS MARRONS ---- */
 .brownCardsSection {
     display: flex;
     flex-direction: row;
@@ -326,7 +298,8 @@
 }
 
 .brownCard {
-    background: #5E332C;
+    background-color: #fff;
+    border: 2px solid #5f0b38;
     width: 100%;
     max-width: 500px;
     height: auto;
@@ -368,26 +341,24 @@
 }
 
 .brownCardContent > h1 {
-    color: #FFF;
+    color: #070707;
     font-family: "The Next Font", sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
-    line-height: 2.5rem;
     align-self: flex-start;
 }
 
 .brownCardContent > p {
-    color: #FFF;
+    color: #2e2e2e;
     font-family: "Louis George Cafe Light", sans-serif;
-    font-size: 1.25rem;
     font-weight: 100;
     line-height: normal;
     text-align: justify;
     max-width: 100%;
     align-self: flex-start;
+    margin-top: 1rem;
 }
 
-/* Botão dentro do card marrom */
 .brownCardButton {
     border: none;
     color: white;
@@ -435,7 +406,7 @@
     transform: translateY(-1px) scale(1.02);
 }
 
-/* ---- SEÇÃO SALVOS / RECENTES (Antigo #section-salvos-recen) ---- */
+/* ---- SEÇÃO SALVOS / RECENTES (ATUALIZADA) ---- */
 .savedSectionWrapper {
     display: flex;
     flex-direction: column;
@@ -461,10 +432,40 @@
     gap: 2rem;
     margin-top: 55px;
     width: 100%;
-    overflow-x: auto;
+    /* Remove o scroll pois agora usamos botões JS */
+    overflow-x: hidden; 
     padding: 1rem;
-    scrollbar-width: thin;
-    scrollbar-color: #939191 transparent;
+}
+
+/* NOVO: Classe para quando a lista está expandida */
+.expandedContainer {
+    flex-wrap: wrap; /* Faz os cards caírem para a próxima linha */
+    overflow-x: visible;
+    height: auto;
+    justify-content: center;
+}
+
+/* Ajuste para dar espaço quando eles estão em grade */
+.expandedContainer .savedCard {
+    margin-bottom: 2rem;
+}
+
+/* Estilo dos botões de seta */
+.scrollBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    z-index: 10;
+    flex-shrink: 0; /* Garante que a seta não esmague */
+}
+
+.scrollBtn:hover:not(:disabled) {
+    transform: scale(1.2);
 }
 
 .savedCard {
@@ -473,11 +474,20 @@
     width: 250px; 
     flex-shrink: 0;
     height: auto;
+    min-height: 490px;
     border: 3px solid #939191;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    /* Animação ao trocar os cards */
+    animation: fadeIn 0.5s ease;
+    gap: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 .savedCard:hover {
@@ -503,7 +513,7 @@
 
 .savedCard > h1 {
     font-family: "The Next Font", sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 400;
     padding: 1rem 1.1rem 0.5rem;
     align-self: flex-start;
@@ -511,10 +521,10 @@
 
 .savedCard > p {
     font-family: "Louis George Cafe Light", sans-serif;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 400;
     text-align: justify;
-    padding: 0 1.1rem 1.1rem;
+    padding: 0 1.1rem 1.5rem;
     align-self: flex-start;
 }
 
@@ -627,7 +637,7 @@
     text-decoration: underline;
 }
 
-/* ---- SEÇÃO ARTIGOS MOSAICO (Antigo #section-artigos-s2) ---- */
+/* ---- SEÇÃO ARTIGOS MOSAICO ---- */
 .mosaicGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -666,52 +676,27 @@
     padding: 1.5rem;
 }
 
-/* Backgrounds específicos do Mosaico */
 .mosaicBg1 { background-image: url(../../public/images/link-artigos/10-tons-fantasticos.jpg); }
 .mosaicBg2 { background-image: url(../../public/images/link-artigos/nago-colorida.jpg); }
 .mosaicBg3 { background-image: url(../../public/images/link-artigos/produtos-indispensaveis.jpg); }
 .mosaicBg4 { background-image: url(../../public/images/link-artigos/oleo-de-rosa-mosqueta.jpg); }
 .mosaicBg5 { background-image: url(../../public/images/link-artigos/diferenca-de-geracoes.jpg); }
 
-/* Grid Placement classes */
-.mosaicPos1 {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-}
-
-.mosaicPos2 {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-}
-
-.mosaicPos3 {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-}
-
-.mosaicPos4 {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-}
-
-.mosaicPos5 {
-    grid-column: 3 / 4;
-    grid-row: 1 / 3;
-}
+.mosaicPos1 { grid-column: 1 / 2; grid-row: 1 / 2; }
+.mosaicPos2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+.mosaicPos3 { grid-column: 2 / 3; grid-row: 1 / 2; }
+.mosaicPos4 { grid-column: 2 / 3; grid-row: 2 / 3; }
+.mosaicPos5 { grid-column: 3 / 4; grid-row: 1 / 3; }
 
 /* ---- MEDIA QUERIES ---- */
 @media (max-width: 1200px) {
-    .wrapper {
-        align-items: center;
-    }
-    
+    .wrapper { align-items: center; }
     .mainContainer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 0;
     }
-
     .heroSection {
         margin-right: 0;
         margin-bottom: 2rem;
@@ -719,12 +704,7 @@
         width: 100%;
         max-width: 100%;
     }
-
-    .favoritesSection {
-        width: 100%;
-        margin-top: 0;
-    }
-
+    .favoritesSection { width: 100%; margin-top: 0; }
     .articlesGrid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1.5rem;
@@ -732,97 +712,39 @@
 }
 
 @media (max-width: 900px) {
-    .wrapper {
-        align-items: center;
-    }
-
-    .mainContainer {
-        justify-content: center;
-    }
-    
+    .wrapper { align-items: center; }
+    .mainContainer { justify-content: center; }
     .mosaicGrid {
         grid-template-columns: repeat(2, 1fr); 
         grid-template-rows: auto;
         height: auto;
     }
-
-    .mosaicItem {
-        height: 350px; 
-    }
-
-    /* Reset grid positions para mobile */
+    .mosaicItem { height: 350px; }
     .mosaicPos1, .mosaicPos2, .mosaicPos3, .mosaicPos4 {
         grid-column: auto;
         grid-row: auto;
     }
-    
-    .mosaicPos5 {
-        grid-column: 1 / -1;
-    }
-
-    .brownCardImage {
-        width: 250px;
-    }
-
-    .mosaicPos3 {
-        height: 100%;
-    }
+    .mosaicPos5 { grid-column: 1 / -1; }
+    .brownCardImage { width: 250px; }
+    .mosaicPos3 { height: 100%; }
 }
 
 @media (max-width: 768px) {
-    .wrapper {
-        align-items: center;
-    }
+    .wrapper { align-items: center; }
+    .mainContainer { justify-content: center; }
+    .brownCard { flex-direction: column; text-align: center; }
+    .brownCardContent { align-items: center; }
+    .brownCardIcon { align-self: flex-end; }
+    .brownCardContent > h1, .brownCardContent > p, .brownCardButton { align-self: center; }
 
-    .mainContainer {
-        justify-content: center;
-    }
-    
-    .brownCard {
-        flex-direction: column;
-        text-align: center;
-    }
+    /* ATENÇÃO: Mantém as setas visíveis para clicar, ou esconda se quiser apenas swipe */
+    .scrollBtn { display: flex; }
 
-    .brownCardContent {
-        align-items: center;
-    }
-
-    .brownCardIcon {
-        align-self: flex-end; 
-    }
-
-    .brownCardContent > h1, 
-    .brownCardContent > p, 
-    .brownCardButton {
-        align-self: center;
-    }
-
-    .savedCardsContainer > a {
-        display: none;
-    }
-
-    .mosaicGrid {
-        margin: 70px auto;
-    }
-
-    .brownCardImage {
-        width: 250px;
-    }
-    
-    .moreProductsContainer {
-        gap: 1rem;
-    }
-
-    .moreProductsCard {
-        width: calc(50% - 0.5rem); 
-        max-width: none; 
-    }
-
-    .favoriteBtn {
-        top: 8px;
-        right: 8px;
-    }
-
+    .mosaicGrid { margin: 70px auto; }
+    .brownCardImage { width: 250px; }
+    .moreProductsContainer { gap: 1rem; }
+    .moreProductsCard { width: calc(50% - 0.5rem); max-width: none; }
+    .favoriteBtn { top: 8px; right: 8px; }
     .articlesGrid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1.5rem;
@@ -831,42 +753,16 @@
 }
 
 @media (max-width: 480px) {
-    .wrapper {
-        align-items: center;
-    }
-
-    .mainContainer {
-        justify-content: center;
-    }
-    
-    .brownCardImage {
-        width: 250px;
-    }
-
-    .highlightContent {
-        margin-left: clamp(1rem, 5vw, 2rem);
-    }
-
-    .mosaicItem {
-        min-width: 100px;
-    }
-
-    .mosaicItem > h1 {
-        padding: 1rem;
-    }
-
-    .articlesGrid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+    .wrapper { align-items: center; }
+    .mainContainer { justify-content: center; }
+    .brownCardImage { width: 250px; }
+    .highlightContent { margin-left: clamp(1rem, 5vw, 2rem); }
+    .mosaicItem { min-width: 100px; }
+    .mosaicItem > h1 { padding: 1rem; }
+    .articlesGrid { grid-template-columns: 1fr; gap: 1rem; }
 }
 
 @media (max-width: 1650px) {
-    .wrapper {
-        align-items: center;
-    }
-
-    .mainContainer {
-        justify-content: center;
-    }
+    .wrapper { align-items: center; }
+    .mainContainer { justify-content: center; }
 }

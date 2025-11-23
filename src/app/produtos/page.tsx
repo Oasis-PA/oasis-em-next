@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Header, Footer } from "@/components";
+import FavoriteButton from "@/components/FavoriteButton"; // <--- 1. Importação adicionada
 
 import Image from "next/image";
 import Link from "next/link";
@@ -83,7 +84,7 @@ const FilterDropdown: React.FC<FilterProps> = ({ label, currentValue, options, o
 };
 
 // -----------------------------------------------------
-// FiltrosBarra (CORRIGIDO: Normalização de texto)
+// FiltrosBarra
 // -----------------------------------------------------
 
 interface FiltrosBarraProps {
@@ -113,7 +114,6 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
     const [marcaOptions, setMarcaOptions] = useState<FilterOption[]>([{ id: null, nome: "TODAS" }]);
     const [loadingFilters, setLoadingFilters] = useState(true);
 
-    // Lista de nomes permitidos
     const tagsPermitidas = [
         "condicionador", 
         "shampoo", 
@@ -142,7 +142,6 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
             if (!res.ok) throw new Error(`Falha ao carregar ${endpoint}`);
             const data = await res.json();
             
-            // Função para remover acentos e espaços extras (ex: "Colônia" vira "COLONIA")
             const normalize = (str: string) => 
                 str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toUpperCase();
 
@@ -151,13 +150,9 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
                 nome: item[nameKey].toUpperCase(),
             }));
 
-            // Filtro robusto (ignora acentos)
             if (allowedNames && allowedNames.length > 0) {
                 const allowedSet = new Set(allowedNames.map(n => normalize(n)));
-                
-                formattedData = formattedData.filter((item: { nome: string; }) => {
-                    return allowedSet.has(normalize(item.nome));
-                });
+                formattedData = formattedData.filter((item: { nome: string; }) => allowedSet.has(normalize(item.nome)));
             }
 
             setter([{ id: null, nome: allLabel }, ...formattedData]); 
@@ -187,14 +182,7 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
         <div className={styles.filtrosBarraFundo}>
             <div className={styles.filtrosBarraWrapper}>
                 <FilterDropdown label="PRODUTOS" currentValue={getFilterName(tagOptions, currentTagId)} currentId={currentTagId} options={tagOptions} onFilterChange={onTagChange} disabled={loadingFilters} />
-                <FilterDropdown
-                    label="MARCA"
-                    currentValue={getFilterName(marcaOptions, currentMarca)}
-                    currentId={currentMarca}
-                    options={marcaOptions}
-                    onFilterChange={onMarcaChange}
-                    disabled={loadingFilters}
-                />
+                <FilterDropdown label="MARCA" currentValue={getFilterName(marcaOptions, currentMarca)} currentId={currentMarca} options={marcaOptions} onFilterChange={onMarcaChange} disabled={loadingFilters} />
                 <FilterDropdown label="CATEGORIA" currentValue={getFilterName(categoriaOptions, currentCategoriaId)} currentId={currentCategoriaId} options={categoriaOptions} onFilterChange={onCategoriaChange} disabled={loadingFilters} />
                 <FilterDropdown label="TIPO DE CABELO" currentValue={getFilterName(cabeloOptions, currentCabeloId)} currentId={currentCabeloId} options={cabeloOptions} onFilterChange={onCabeloChange} disabled={loadingFilters} />
                 <FilterDropdown label="TIPO DE PELE" currentValue={getFilterName(peleOptions, currentPeleId)} currentId={currentPeleId} options={peleOptions} onFilterChange={onPeleChange} disabled={loadingFilters} />
@@ -204,7 +192,7 @@ const FiltrosBarra: React.FC<FiltrosBarraProps> = ({
 };
 
 // -----------------------------------------------------
-// ProdutoCard
+// ProdutoCard (ATUALIZADO COM BOTÃO DE FAVORITO)
 // -----------------------------------------------------
 
 const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
@@ -212,7 +200,18 @@ const ProdutoCard: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
 
     return (
         <div className={styles.produtoCard}>
-            <div className={styles.cardInnerWrapper}>
+            {/* Adicionamos position relative aqui para o botão absoluto funcionar */}
+            <div className={styles.cardInnerWrapper} style={{ position: 'relative' }}>
+                
+                {/* --- BOTÃO DE FAVORITO --- */}
+                <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
+                    <FavoriteButton 
+                        produtoId={produto.id_produto} // Passa o ID como produto
+                        size="small"
+                    />
+                </div>
+                {/* ------------------------- */}
+
                 <Image
                     src={imageSrc}
                     width={150}
@@ -340,7 +339,6 @@ export default function ProdutosPage() {
     const [peleFiltroId, setPeleFiltroId] = useState<number | null>(null);
     const [marcaFiltro, setMarcaFiltro] = useState<string | null>(null);
 
-    // Funções "wrapper" para garantir a segurança dos tipos
     const handleTagChange = (id: string | number | null) => {
         if (typeof id === 'number' || id === null) setTagFiltroId(id);
     };
