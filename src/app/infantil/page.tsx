@@ -4,7 +4,7 @@ import { Header, Footer } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import "@/styles/infantil.css";
+import styles from "@/styles/infantil.module.css";
 
 interface ProdutoData {
   id_produto: number;
@@ -17,13 +17,13 @@ interface ProdutoData {
   descricao?: string;
 }
 
-// Componente do Card refatorado para alinhar altura e botão
+// Componente do Card refatorado para utilizar styles
 const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) => {
   const imageSrc = produto.url_imagem || '/images/infantil/produto.png';
   
   return (
-    <div className="prod1">
-      <div className="img-container">
+    <div className={styles.produtoCard}>
+      <div className={styles.imgContainer}>
         <Image 
           src={imageSrc} 
           width={300} 
@@ -34,13 +34,13 @@ const ProdutoCardInfantil: React.FC<{ produto: ProdutoData }> = ({ produto }) =>
         />
       </div>
       
-      <div className="info-produto">
+      <div className={styles.infoProduto}>
         <h5>{produto.tag_principal || "CUIDADOS"}</h5>
         <h4>{produto.nome.toUpperCase()}</h4>
       </div>
 
-      <Link href={`/produtos/${produto.id_produto}`} className="btn-link">
-        <button id="vejaMais">VEJA MAIS</button>
+      <Link href={`/produtos/${produto.id_produto}`} className={styles.btnLink}>
+        <button className={styles.btnVejaMais}>VEJA MAIS</button>
       </Link>
     </div>
   );
@@ -57,7 +57,6 @@ export default function Infantil() {
         setLoading(true);
         setErro(null);
         
-        // Carrega produtos gerais (pode aumentar o limit se precisar buscar mais opções para filtrar)
         const params = new URLSearchParams();
         params.append('marca', 'Infantil');
         params.append('limit', '20'); 
@@ -83,112 +82,109 @@ export default function Infantil() {
   }, []);
 
   // FILTRAGEM PERSONALIZADA POR NOME
-  
-  // Linha 1: Shampoos (Leão)
   const primeiraLinha = produtos.filter(produto => 
     produto.nome === "Shampoo Kids Cabelo Cacheado 240ml" ||
     produto.nome === "Shampoo #todecachinho Baby 300ml"||
     produto.nome === "Shampoo Juntinhos Cachos Encantados Moana 300ml" 
-   
   ).slice(0, 3);
 
-  // Linha 2: Cremes (Girafa)
   const segundaLinha = produtos.filter(produto => 
     produto.nome === "Loção Hidratante Baby 100ml" ||
     produto.nome === "Loção Hidratante Bebê Vida Leite de Arroz 200ml"||
     produto.nome === "Creme para Pentear Cachos dos Sonhos 200ml" 
-   
   ).slice(0, 3);
 
-  // Linha 3: Sabonetes/Outros (Zebra)
   const terceiraLinha = produtos.filter(produto => 
     produto.nome === "Sabonete Líquido Bebê Camomila Refil 250ml" ||
     produto.nome === "Creme de Tratamento Divino Potinho Kids 1kg"||
     produto.nome === "Creme para Pentear Juntinhos Moana 300ml"
-   
   ).slice(0, 3);
 
   // Renderiza placeholders se não houver produtos suficientes
   const renderPlaceholders = (linha: ProdutoData[]) => {
     if (linha.length >= 3) return null;
     return [...Array(3 - linha.length)].map((_, i) => (
-      <div key={`placeholder-${i}`} className="prod1" style={{ opacity: 0.5 }}>
-        <div className="img-container">
+      <div key={`placeholder-${i}`} className={styles.produtoCard} style={{ opacity: 0.5 }}>
+        <div className={styles.imgContainer}>
            <img src="/images/infantil/produto.png" alt="placeholder" style={{width:'100%', objectFit:'contain'}}/>
         </div>
-        <div className="info-produto">
-            <h5>Em breve</h5>
-            <h4>Produto em breve</h4>
+        <div className={styles.infoProduto}>
+           <h5>Em breve</h5>
+           <h4>Produto em breve</h4>
         </div>
-        <button id="vejaMais" disabled style={{cursor: 'not-allowed', background: '#ccc'}}>Em breve</button>
+        <button className={styles.btnVejaMais} disabled style={{cursor: 'not-allowed', background: '#ccc'}}>Em breve</button>
       </div>
     ));
   };
 
   return (
-    <div className="page-infantil-wrapper">
-      <Header />
+    <>
+    <Header />
+    <div className={styles.pageWrapper}>
       <main>
-        <div id="d1">
-          <h1>Cuidados <span id="span1">infantis</span> com <span id="span2">carinho</span> e <span id="span3">identidade!</span></h1>
+        <div className={styles.bannerPrincipal}>
+          <h1>Cuidados <span className={styles.spanVerde}>infantis</span> com <span className={styles.spanRosa}>carinho</span> e <span className={styles.spanAmarelo}>identidade!</span></h1>
           <p>Dicas, produtos e rotinas pensadas para a pele e o cabelo das suas crianças, com segurança, leveza e muito amor.</p>
         </div>
       </main>
 
-      <section id="s1">
+      <section className={styles.sectionArtigos}>
         <h1>Artigos fundamentais</h1>
         <p>Dicas, guias e truques essenciais para a rotina de cuidados dos pequenos.</p>
 
-        <div id="artigos">
-          <div id="d2">
-            <Link href='artigo/como-desembaracar-sem-dor' id="artigo1">
+        <div className={styles.artigosContainer}>
+          {/* Linha 1 de Artigos */}
+          <div className={styles.artigosRow}>
+            <Link href='artigo/como-desembaracar-sem-dor' className={`${styles.cardArtigo} ${styles.artigo1}`}>
               <div>
-                <h4 className="hpreto">Como desembaraçar sem dor?</h4>
-                <p className="ppreto">Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
+                <h4 className={styles.titleBlack}>Como desembaraçar sem dor?</h4>
+                <p className={styles.textBlack}>Desembarace os cabelos infantis sem dor e sem choro. Com as técnicas
                 e produtos certos, a tarefa vira um momento de carinho, deixando os fios macios e felizes.</p>
               </div>
             </Link>
 
-            <Link href='artigo/hidratacao-para-cabelos-infantis' id="artigo2">
+            <Link href='artigo/hidratacao-para-cabelos-infantis' className={`${styles.cardArtigo} ${styles.artigo2}`}>
               <div>
-                <h4 className="hpreto">Hidratação natural para cabelos infantis</h4>
-                <p className="ppreto">Cuide dos fios delicados do seu pequeno com hidratação natural e suave. 
+                <h4 className={styles.titleBlack}>Hidratação natural para cabelos infantis</h4>
+                <p className={styles.textBlack}>Cuide dos fios delicados do seu pequeno com hidratação natural e suave. 
                 Ingredientes seguros transformam cabelos ressecados em fios macios, saudáveis e cheios de vida.</p>
               </div>
             </Link>
           </div>
 
-          <div className="d2">
-            <Link href='artigo/cuidados-com-a-pele-das-criancas' id="artigo3">
+          {/* Linha 2 de Artigos */}
+          <div className={styles.artigosRow}>
+            <Link href='artigo/cuidados-com-a-pele-das-criancas' className={`${styles.cardArtigo} ${styles.artigo3}`}>
               <div>
-                <h4 className="hbranco">Cuidados com a pele sensível das crianças</h4>
-                <p className="pbranco">Proteja a pele delicada do seu filho com cuidados especiais e produtos suaves. 
+                <h4 className={styles.titleWhite}>Cuidados com a pele sensível das crianças</h4>
+                <p className={styles.textWhite}>Proteja a pele delicada do seu filho com cuidados especiais e produtos suaves. 
                   Previna irritações e mantenha a pele macia, saudável e protegida todos os dias.</p>
               </div>
             </Link>
             
-            <Link href='artigo/cuidados-com-a-pele-das-criancas' id="artigo4">
+            <Link href='artigo/cuidados-com-a-pele-das-criancas' className={`${styles.cardArtigo} ${styles.artigo4}`}>
               <div>
-                <h4 className="hpreto">Rotina de skincare: protegendo a pele diariamente</h4>
-                <p className="ppreto">Crie uma rotina de cuidados simples e gostosa para proteger a pele do seu pequeno. Com 
+                <h4 className={styles.titleBlack}>Rotina de skincare: protegendo a pele diariamente</h4>
+                <p className={styles.textBlack}>Crie uma rotina de cuidados simples e gostosa para proteger a pele do seu pequeno. Com 
                   produtos certos e gestos carinhosos, a pele fica saudável.</p>
               </div>
             </Link>   
           </div>
 
-          <div className="d2">
-            <Link href='artigo/como-identificar-alergias' id="artigo5">
+          {/* Linha 3 de Artigos */}
+          <div className={styles.artigosRow}>
+            <Link href='artigo/como-identificar-alergias' className={`${styles.cardArtigo} ${styles.artigo5}`}>
               <div>
-                <h4 className="hbranco">Como identificar alergias e irritações na pele</h4>
-                <p className="pbranco">Aprenda a reconhecer os sinais de alergias e irritações na pele delicada das crianças. Com 
+                <h4 className={styles.titleWhite}>Como identificar alergias e irritações na pele</h4>
+                <p className={styles.textWhite}>Aprenda a reconhecer os sinais de alergias e irritações na pele delicada das crianças. Com 
                 atenção e cuidado, você protege seu pequeno.</p>
               </div>
             </Link>
 
-            <Link href='artigo/dicas-para-hora-do-banho' id="artigo6">
+            <Link href='artigo/dicas-para-hora-do-banho' className={`${styles.cardArtigo} ${styles.artigo6}`}>
               <div>
-                <h4 className="hbranco">Dicas para hora do banho sem lágrimas</h4>
-                <p className="pbranco">Transforme o banho em um momento especial e divertido, sem choro e sem estresse. Com as técnicas 
+                <h4 className={styles.titleWhite}>Dicas para hora do banho sem lágrimas</h4>
+                <p className={styles.textWhite}>Transforme o banho em um momento especial e divertido, sem choro e sem estresse. Com as técnicas 
                 certas e produtos suaves, seu pequeno vai amar esse momento.</p>
               </div>
             </Link> 
@@ -196,35 +192,35 @@ export default function Infantil() {
         </div>
       </section>
       
-      <section id="s2">
-        <div id="linhatexto1">
+      <section className={styles.sectionProdutos}>
+        <div className={styles.headerLineWrapper}>
           <h1>Produtos recomendados</h1>
-          <div className="linha"></div>
+          <div className={styles.dividingLine}></div>
         </div>
 
         {loading ? (
-          <div className="loading-state">Carregando produtos infantis...</div>
+          <div className={styles.loadingState}>Carregando produtos infantis...</div>
         ) : erro ? (
-          <div className="error-state">{erro}</div>
+          <div className={styles.errorState}>{erro}</div>
         ) : produtos.length === 0 ? (
-          <div className="no-products-state">Nenhum produto infantil encontrado no momento.</div>
+          <div className={styles.noProductsState}>Nenhum produto infantil encontrado no momento.</div>
         ) : (
           <>
             {/* LINHA 1: 3 Produtos + Banner Leão */}
-            <div className="produtos">
+            <div className={styles.produtosGrid}>
               {primeiraLinha.map((produto) => (
                 <ProdutoCardInfantil key={produto.id_produto} produto={produto} />
               ))}
               {renderPlaceholders(primeiraLinha)}
               
-              <div id="leao-bg" className="banner-grid">
+              <div className={`${styles.bannerGrid} ${styles.bannerLeao}`}>
                 <h1>shampoos<br/>sem sulfato</h1>
               </div>
             </div>
 
             {/* LINHA 2: Banner Girafa + 3 Produtos */}
-            <div className="produtos">
-              <div id="girafa-bg" className="banner-grid">
+            <div className={styles.produtosGrid}>
+              <div className={`${styles.bannerGrid} ${styles.bannerGirafa}`}>
                 <h1>cremes<br/>suaves</h1>
               </div>
               
@@ -235,13 +231,13 @@ export default function Infantil() {
             </div>
 
             {/* LINHA 3: 3 Produtos + Banner Zebra */}
-            <div className="produtos">
+            <div className={styles.produtosGrid}>
               {terceiraLinha.map((produto) => (
                 <ProdutoCardInfantil key={produto.id_produto} produto={produto} />
               ))}
               {renderPlaceholders(terceiraLinha)}
               
-              <div id="zebra-bg" className="banner-grid">
+              <div className={`${styles.bannerGrid} ${styles.bannerZebra}`}>
                 <h1>natural/<br />vegano</h1>
               </div>
             </div>
@@ -249,34 +245,34 @@ export default function Infantil() {
         )}
       </section>
 
-      <section id="s3">
-        <div id="linhatexto2">
-          <div className="linha"></div>
+      <section className={styles.sectionDicas}>
+        <div className={styles.headerLineWrapper}>
+          <div className={styles.dividingLine}></div>
           <h1>Dicas rápidas para você</h1>
         </div>
 
-        {/* NOVA GRID DE DICAS 2x2 */}
-        <div className="dicas-grid">
+        {/* GRID DE DICAS */}
+        <div className={styles.dicasGrid}>
           
-          <div id="dica1" className="dica-card">
+          <div className={`${styles.dicaCard} ${styles.dica1}`}>
             <h2>Evite produtos com fragrâncias fortes</h2>
             <p>Produtos com cheiro muito intenso podem irritar a pele delicada da criança. 
             Prefira opções suaves e específicas para o público infantil.</p>
           </div>
 
-          <div id="dica2" className="dica-card">
+          <div className={`${styles.dicaCard} ${styles.dica2}`}>
             <h2>Use pentes largos para reduzir a quebra</h2>
             <p>Ao desembaraçar, escolha pentes de dentes largos ou dedos. Isso ajuda a 
             proteger os fios frágeis e evita dor.</p>
           </div>
 
-          <div id="dica3" className="dica-card">
+          <div className={`${styles.dicaCard} ${styles.dica3}`}>
             <h2>Sempre aplique protetor solar nas crianças</h2>
             <p>Mesmo em dias nublados, a pele precisa de proteção. Escolha fórmulas
             infantis suaves e reaplique conforme necessário.</p>
           </div>
 
-          <div id="dica4" className="dica-card">
+          <div className={`${styles.dicaCard} ${styles.dica4}`}>
             <h2>Hidrate a pele após o banho</h2>
             <p>Logo após o banho, aplique hidratante infantil para manter a pele macia,
             protegida e saudável.</p>
@@ -284,7 +280,9 @@ export default function Infantil() {
         </div>
       </section>
       
-      <Footer />
+      
     </div>
+  <Footer />
+    </>
   );
 }
