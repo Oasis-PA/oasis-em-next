@@ -379,6 +379,7 @@ export default function ProdutosPage() {
                 />
             </div>
         </div>
+        <div id="final"></div>
         <Footer />
         </>
     );
