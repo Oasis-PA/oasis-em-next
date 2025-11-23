@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-// Importação do CSS Module
 import styles from '@/styles/favorite-button.module.css';
 
 interface FavoriteButtonProps {
-  artigoId: number;
+  artigoId?: number;    // Agora opcional
+  produtoId?: number;   // Novo: ID do produto
   initialIsFavorited?: boolean;
   size?: 'small' | 'medium' | 'large';
   showLabel?: boolean;
@@ -14,6 +14,7 @@ interface FavoriteButtonProps {
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ 
   artigoId, 
+  produtoId,
   initialIsFavorited = false,
   size = 'medium',
   showLabel = false
@@ -23,13 +24,26 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
   const [isAnimating, setIsAnimating] = useState(false);
   const router = useRouter();
 
+  // Determina se é produto ou artigo baseado na prop recebida
+  const isProduto = !!produtoId;
+  const currentId = isProduto ? produtoId : artigoId;
+
   useEffect(() => {
-    checkFavoriteStatus();
-  }, [artigoId]);
+    if (currentId) {
+      checkFavoriteStatus();
+    }
+  }, [currentId]);
 
   const checkFavoriteStatus = async () => {
+    if (!currentId) return;
+
     try {
-      const response = await fetch(`/api/favoritos/artigos/check/${artigoId}`, {
+      // Muda a URL dependendo se é produto ou artigo
+      const endpoint = isProduto 
+        ? `/api/favoritos/produtos/check/${currentId}`
+        : `/api/favoritos/artigos/check/${currentId}`;
+
+      const response = await fetch(endpoint, {
         method: 'GET',
         credentials: 'include',
       });
@@ -39,7 +53,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
         setIsFavorited(data.isFavorited);
       }
     } catch (error) {
-      // Tratamento silencioso ou log de erro
+      // Silencioso
     }
   };
 
@@ -47,15 +61,29 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (isLoading) return;
+    if (isLoading || !currentId) return;
 
     setIsLoading(true);
     setIsAnimating(true);
 
     try {
-      const endpoint = isFavorited 
-        ? `/api/favoritos/artigos/${artigoId}`
-        : '/api/favoritos/artigos';
+      // Lógica de URL para Produto vs Artigo
+      let endpoint: string;
+      let body: any;
+
+      if (isProduto) {
+        // --- LÓGICA DE PRODUTO ---
+        endpoint = isFavorited 
+          ? `/api/favoritos/produtos/${currentId}` // DELETE
+          : '/api/favoritos/produtos';             // POST
+        body = isFavorited ? undefined : JSON.stringify({ id_produto: currentId });
+      } else {
+        // --- LÓGICA DE ARTIGO (Mantida igual) ---
+        endpoint = isFavorited 
+          ? `/api/favoritos/artigos/${currentId}`
+          : '/api/favoritos/artigos';
+        body = isFavorited ? undefined : JSON.stringify({ id_artigo: currentId });
+      }
 
       const response = await fetch(endpoint, {
         method: isFavorited ? 'DELETE' : 'POST',
@@ -63,7 +91,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: isFavorited ? undefined : JSON.stringify({ id_artigo: artigoId }),
+        body: body,
       });
 
       if (response.status === 401) {
@@ -79,25 +107,21 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
         try {
           const errorData = await response.json();
           errorMessage = errorData.error || errorData.message || errorMessage;
-        } catch {
-          const errorText = await response.text();
-          errorMessage = errorText || errorMessage;
-        }
-        alert(`Erro: ${errorMessage}\n\nVeja o console para mais detalhes.`);
+        } catch { /* erro silencioso */ }
+        alert(`Erro: ${errorMessage}`);
         setIsAnimating(false);
       }
     } catch (error) {
-      alert('Erro de conexão. Tente novamente.\n\nVeja o console para mais detalhes.');
+      alert('Erro de conexão.');
       setIsAnimating(false);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Construção dinâmica das classes
   const buttonClasses = [
     styles.favoriteButton,
-    styles[size], // Acessa dinamicamente .small, .medium ou .large
+    styles[size],
     isFavorited ? styles.favorited : '',
     isAnimating ? styles.animating : ''
   ].filter(Boolean).join(' ');
@@ -109,11 +133,12 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       className={buttonClasses}
       aria-label={isFavorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
       title={isFavorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+      style={{ zIndex: 20 }} // Garante que fique acima da imagem
     >
       <svg
         className={styles.favoriteIcon}
         viewBox="0 0 24 24"
-        fill="none"
+        fill={isFavorited ? "currentColor" : "none"} // Preenche o coração se favoritado
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"

@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import styles from '@/styles/page.module.css';
+import FavoriteButton from "@/components/FavoriteButton"; // Importação adicionada
 
 const slidesData = [
   {
@@ -375,7 +376,19 @@ export default function OasisHomepage() {
           <>
             <div className={styles.cardsperfil}>
               {produtosVisiveis.map((produto) => (
-                <div className={styles.cardperfil} key={produto.id_produto}>
+                <div 
+                  className={styles.cardperfil} 
+                  key={produto.id_produto}
+                  style={{ position: 'relative' }} // Necessário para posicionar o botão de favorito
+                >
+                  {/* BOTÃO DE FAVORITO INSERIDO AQUI */}
+                  <div style={{ position: 'absolute', top: '15px', right: '15px', zIndex: 10 }}>
+                    <FavoriteButton 
+                      produtoId={produto.id_produto}
+                      size="small"
+                    />
+                  </div>
+                  
                   <img 
                     src={produto.url_imagem || "/images/favoritos/imagem-produto.png"} 
                     alt={produto.nome} 

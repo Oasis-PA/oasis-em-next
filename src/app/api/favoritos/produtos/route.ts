@@ -26,7 +26,6 @@ async function verifyToken (request: NextRequest): Promise<{ userId: number; ema
     const { payload } = await jwtVerify(token, secret);
     const decoded = payload as unknown as JWTPayload;
 
-    // Tenta diferentes possíveis nomes do campo ID
     const userId = decoded.userId || decoded.id || decoded.id_usuario;
 
     if (!userId) {
@@ -122,7 +121,8 @@ export async function POST(request: NextRequest) {
             marca: true,
             preco: true,
             url_imagem: true,
-            descricao: true,
+            // Alterado de 'descricao' para 'qualidades'
+            qualidades: true,
           },
         },
       },
@@ -175,7 +175,8 @@ export async function GET(request: NextRequest) {
             marca: true,
             preco: true,
             url_imagem: true,
-            descricao: true,
+            // Alterado de 'descricao' para 'qualidades' no GET também
+            qualidades: true,
             data_cadastro: true,
           },
         },

@@ -6,6 +6,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from 'react';
 import styles from "@/styles/favoritos.module.css";
 
+// --- Interfaces ---
 interface Artigo {
   id: number;
   titulo: string;
@@ -21,10 +22,29 @@ interface FavoritoArtigo {
   Artigo: Artigo;
 }
 
+interface Produto {
+  id_produto: number;
+  nome: string;
+  qualidades?: string; 
+  url_imagem: string | null; 
+}
+
+interface FavoritoProduto {
+  id?: number; 
+  id_favorito_produto?: number; 
+  produto: Produto; 
+}
+
 const Favoritos: React.FC = () => {
   const [favoritos, setFavoritos] = useState<FavoritoArtigo[]>([]);
+  const [produtosFavoritos, setProdutosFavoritos] = useState<FavoritoProduto[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // LÓGICA DE CARROSSEL + EXPANSÃO
+  const [currentRecentIndex, setCurrentRecentIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false); // NOVO: Controla se mostra tudo em grade
+  const itemsPerPage = 5; // Mantido 5 como pediu
 
   useEffect(() => {
     carregarFavoritos();
@@ -33,26 +53,47 @@ const Favoritos: React.FC = () => {
   const carregarFavoritos = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('/api/favoritos/artigos', {
-        credentials: 'include',
-      });
+      
+      const [resArtigos, resProdutos] = await Promise.all([
+        fetch('/api/favoritos/artigos', { credentials: 'include' }),
+        fetch('/api/favoritos/produtos', { credentials: 'include' })
+      ]);
 
-      if (response.ok) {
-        const data = await response.json();
-        setFavoritos(data.favoritos || []);
-      } else if (response.status === 401) {
-        setError('Você precisa estar logado para ver seus favoritos');
-      } else {
-        setError('Erro ao carregar favoritos');
+      if (resArtigos.ok) {
+        const dataArtigos = await resArtigos.json();
+        setFavoritos(dataArtigos.favoritos || []);
+      } else if (resArtigos.status === 401) {
+        throw new Error('Você precisa estar logado para ver seus favoritos');
       }
-    } catch (err) {
-      setError('Erro ao carregar favoritos');
+
+      if (resProdutos.ok) {
+        const dataProdutos = await resProdutos.json();
+        setProdutosFavoritos(dataProdutos.favoritos || []);
+      }
+
+    } catch (err: any) {
+      setError(err.message || 'Erro ao carregar favoritos');
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Renderiza apenas os cards de artigos favoritados (sem cards vazios)
+  // Funções de navegação (Só funcionam se NÃO estiver expandido)
+  const handlePrevRecent = () => {
+    setCurrentRecentIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNextRecent = () => {
+    setCurrentRecentIndex((prev) => Math.min(produtosFavoritos.length - itemsPerPage, prev + 1));
+  };
+
+  // LÓGICA: Se expandido = mostra tudo. Se não = mostra fatia de 5.
+  const visibleRecentProducts = isExpanded 
+    ? produtosFavoritos 
+    : (produtosFavoritos.length > 0 
+        ? produtosFavoritos.slice(currentRecentIndex, currentRecentIndex + itemsPerPage)
+        : []);
+
   const renderArticlesGrid = () => {
     return favoritos.map((favorito) => (
       <Link 
@@ -126,18 +167,10 @@ const Favoritos: React.FC = () => {
                     maxWidth: '600px',
                     margin: '0 auto 2rem'
                   }}>
-                    <p style={{
-                      fontSize: '1.3rem',
-                      fontWeight: '600',
-                      color: '#722F53',
-                      marginBottom: '0.8rem'
-                    }}>
+                    <p style={{ fontSize: '1.3rem', fontWeight: '600', color: '#722F53', marginBottom: '0.8rem' }}>
                       Você ainda não tem artigos favoritados.
                     </p>
-                    <p style={{ 
-                      fontSize: '1.1rem',
-                      color: '#666'
-                    }}>
+                    <p style={{ fontSize: '1.1rem', color: '#666' }}>
                       Explore nossos artigos e salve seus favoritos!
                     </p>
                   </div>
@@ -162,7 +195,6 @@ const Favoritos: React.FC = () => {
           </section>
         </main>
 
-        {/* Seção Artigo Destaque */}
         <section className={styles.highlightArticle}>
           <div className={styles.highlightContent}>
             <h1>Ácido hialurônico</h1>
@@ -173,211 +205,208 @@ const Favoritos: React.FC = () => {
           </div>
         </section>
 
-        {/* Seção Categorias */}
         <section className={styles.categoriesSection}>
           <Link href='/alimentacao' className={styles.categoryItem}>
             <img src="/images/skincare/categ1.png" alt="ALIMENTAÇÃO" />
             <h2>ALIMENTAÇÃO</h2>
           </Link>
-
           <Link href='/cronograma-capilar' className={styles.categoryItem}>
             <img src="/images/skincare/categ2.png" alt="CRONOGRAMA" />
             <h2>CRONOGRAMA</h2>
           </Link>
-
           <Link href='/haircare' className={styles.categoryItem}>
             <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
             <h2>HAIR-CARE</h2>
           </Link>
-
           <Link href='/produtos' className={styles.categoryItem}>
             <img src="/images/skincare/categ4.png" alt="PRODUTOS" />
             <h2>PRODUTOS</h2>
           </Link>
-
           <Link href='/infantil' className={styles.categoryItem}>
             <img src="/images/skincare/categ5.png" alt="INFANTIL" />
             <h2>INFANTIL</h2>
           </Link>
-
           <Link href='/tendencias' className={styles.categoryItem}>
             <img src="/images/skincare/categ6.png" alt="TENDÊNCIAS" />
             <h2>TENDÊNCIAS</h2>
           </Link>
         </section>
 
-        {/* Seção Cards Marrons */}
         <section className={styles.brownCardsSection}>
-          <div className={styles.brownCard}>
-            <img className={styles.brownCardImage} src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div className={styles.brownCardContent}>
-              <img className={styles.brownCardIcon} src="/images/favoritos/fav.svg" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-              <button className={styles.brownCardButton}>CONHEÇA</button>
-            </div>
-          </div>
-
-          <div className={styles.brownCard}>
-            <img className={styles.brownCardImage} src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div className={styles.brownCardContent}>
-              <img className={styles.brownCardIcon} src="/images/favoritos/fav.svg" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-              <button className={styles.brownCardButton}>CONHEÇA</button>
-            </div>
-          </div>
-
-          <div className={styles.brownCard}>
-            <img className={styles.brownCardImage} src="/images/favoritos/imagem-produto-salvo.png" alt="" />
-            <div className={styles.brownCardContent}>
-              <img className={styles.brownCardIcon} src="/images/favoritos/fav.svg" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-              <button className={styles.brownCardButton}>CONHEÇA</button>
-            </div>
-          </div>
+          {produtosFavoritos.length > 0 ? (
+            produtosFavoritos.slice(0, 3).map((favProd, index) => (
+              <div key={`brown-${favProd.produto?.id_produto || index}`} className={styles.brownCard}>
+                <img 
+                  className={styles.brownCardImage} 
+                  src={favProd.produto?.url_imagem || "/images/favoritos/imagem-produto-salvo.png"} 
+                  alt={favProd.produto?.nome || "Produto"} 
+                />
+                <div className={styles.brownCardContent}>
+                  <img className={styles.brownCardIcon} src="/images/favoritos/fav.svg" alt="Favorito" />
+                  <h1>{favProd.produto?.nome}</h1>
+                  <p>{favProd.produto?.qualidades || "Sem qualidades disponíveis."}</p>
+                  {favProd.produto?.id_produto && (
+                    <Link href={`/produtos/${favProd.produto.id_produto}`}>
+                      <button className={styles.brownCardButton}>CONHEÇA</button>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <div className={styles.brownCard}>
+                <img className={styles.brownCardImage} src="/images/favoritos/imagem-produto-salvo.png" alt="" />
+                <div className={styles.brownCardContent}>
+                  <img className={styles.brownCardIcon} src="/images/favoritos/fav.svg" alt="" />
+                  <h1>PRODUTO EXEMPLO</h1>
+                  <p>Descrição do produto exemplo.</p>
+                  <button className={styles.brownCardButton}>CONHEÇA</button>
+                </div>
+              </div>
+            </>
+          )}
         </section>
 
-        {/* Seção Salvos Recentemente */}
+        {/* Seção Salvos Recentemente - LÓGICA DE CARROSSEL QUE VIRA GRADE */}
         <section className={styles.savedSectionWrapper}>
           <h1 className={styles.savedTitle}>Salvos Recentemente</h1>
-          <div className={styles.savedCardsContainer}>
-            <Link href="#"><img src="/images/favoritos/seta-esquerda.svg" alt="seta" width="16px" height="30px" /></Link>
+          
+          {/* Adiciona classe 'expandedContainer' se isExpanded for true */}
+          <div className={`${styles.savedCardsContainer} ${isExpanded ? styles.expandedContainer : ''}`}>
+            
+            {/* Seta Esquerda: Esconde se estiver expandido */}
+            {!isExpanded && (
+              <button 
+                className={styles.scrollBtn} 
+                onClick={handlePrevRecent}
+                disabled={currentRecentIndex === 0}
+                style={{ 
+                  opacity: currentRecentIndex === 0 ? 0.3 : 1,
+                  cursor: currentRecentIndex === 0 ? 'not-allowed' : 'pointer'
+                }}
+                aria-label="Anterior"
+              >
+                <img src="/images/favoritos/seta-esquerda.svg" alt="seta esquerda" width="16px" height="30px" />
+              </button>
+            )}
+            
+            {produtosFavoritos.length > 0 ? (
+              // Mostra lista filtrada OU completa dependendo do estado
+              visibleRecentProducts.map((favProd, index) => (
+                <div 
+                  key={`recent-${favProd.produto?.id_produto || index}`} 
+                  className={styles.savedCard}
+                >
+                  <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="Favorito" />
+                  <img 
+                    className={styles.prodImage} 
+                    src={favProd.produto?.url_imagem || "/images/favoritos/imagem-produto.png"} 
+                    alt={favProd.produto?.nome || "Produto"} 
+                  />
+                  <h1>{favProd.produto?.nome?.toUpperCase()}</h1>
+                  <p>{favProd.produto?.qualidades || "Sem informações."}</p>
+                </div>
+              ))
+            ) : (
+              <div className={styles.savedCard}>
+                 <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
+                 <img className={styles.prodImage} src="/images/favoritos/imagem-produto.png" alt="" />
+                 <h1>SEM FAVORITOS</h1>
+                 <p>Seus produtos recentes aparecerão aqui.</p>
+              </div>
+            )}
 
-            <div className={styles.savedCard}>
-              <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
-              <img className={styles.prodImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
-
-            <div className={styles.savedCard}>
-              <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
-              <img className={styles.prodImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
-
-            <div className={styles.savedCard}>
-              <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
-              <img className={styles.prodImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
-
-            <div className={styles.savedCard}>
-              <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
-              <img className={styles.prodImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
-
-            <div className={styles.savedCard}>
-              <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="" />
-              <img className={styles.prodImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
-            </div>
-
-            <Link href="#"><img src="/images/favoritos/seta-direita.svg" alt="seta" width="16px" height="30px" /></Link>
+            {/* Seta Direita: Esconde se estiver expandido */}
+            {!isExpanded && (
+              <button 
+                className={styles.scrollBtn} 
+                onClick={handleNextRecent}
+                disabled={currentRecentIndex >= produtosFavoritos.length - itemsPerPage}
+                style={{ 
+                  opacity: currentRecentIndex >= produtosFavoritos.length - itemsPerPage ? 0.3 : 1,
+                  cursor: currentRecentIndex >= produtosFavoritos.length - itemsPerPage ? 'not-allowed' : 'pointer'
+                }}
+                aria-label="Próximo"
+              >
+                <img src="/images/favoritos/seta-direita.svg" alt="seta direita" width="16px" height="30px" />
+              </button>
+            )}
           </div>
-          <Link href="#">
-            <p className={styles.seeMoreLink}>Veja lista completa</p>
-          </Link>
+          
+          {/* Link 'Veja lista completa' - Expande e desaparece */}
+          {!isExpanded && produtosFavoritos.length > itemsPerPage && (
+            <p 
+                className={styles.seeMoreLink} 
+                onClick={() => setIsExpanded(true)}
+                style={{ cursor: 'pointer' }}
+            >
+                Veja lista completa
+            </p>
+          )}
+          
           <img className={styles.goldenImage} src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
         </section>
 
-        {/* Seção Mais Produtos */}
         <section className={styles.moreProductsSection}>
           <h1 className={styles.moreProductsTitle}>MAIS PRODUTOS</h1>
           <div className={styles.moreProductsContainer}>
-
             <div className={styles.moreProductsCard}>
               <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
               <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
               <div className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
               </div>
             </div>
-
             <div className={styles.moreProductsCard}>
               <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
               <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
               <div className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
               </div>
             </div>
-
             <div className={styles.moreProductsCard}>
               <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
               <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
               <div className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
               </div>
             </div>
-
             <div className={styles.moreProductsCard}>
               <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
               <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função, visando tal efeito.</p>
+              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
               <div className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
               </div>
             </div>
-
           </div>
         </section>
 
-        {/* Seção Mosaico Final */}
         <section className={styles.mosaicGrid}>
-  {/* Item 1 (Já estava correto) */}
-  <Link 
-    href='/artigo/10-tons-fantasticos' 
-    className={`${styles.mosaicItem} ${styles.mosaicPos1} ${styles.mosaicBg1}`}
-  >
-    <h1>10 tons fantásticos para sair do básico</h1>
-  </Link>
-
-  {/* Item 2 (Corrigido) */}
-  <Link 
-    href='/artigo/nago-colorida' 
-    className={`${styles.mosaicItem} ${styles.mosaicPos2} ${styles.mosaicBg2}`}
-  >
-    <h1>Nago colorida: 15 estilos diferentes</h1>
-  </Link>
-
-  {/* Item 3 (Corrigido) */}
-  <Link 
-    href='/artigo/produtos-indispensaveis' 
-    className={`${styles.mosaicItem} ${styles.mosaicPos3} ${styles.mosaicBg3}`}
-  >
-    <h1>Produtos indispensáveis para cabelos pintados</h1>
-  </Link>
-
-  {/* Item 4 (Corrigido) */}
-  <Link 
-    href='/artigo/oleo-de-rosa-mosqueta' 
-    className={`${styles.mosaicItem} ${styles.mosaicPos4} ${styles.mosaicBg4}`}
-  >
-    <h1>Benefícios do Óleo de Rosa Mosqueta</h1>
-  </Link>
-
-  {/* Item 5 (Corrigido) */}
-  <Link 
-    href='/artigo/diferenca-de-geracoes' 
-    className={`${styles.mosaicItem} ${styles.mosaicPos5} ${styles.mosaicBg5}`}
-  >
-    <h1>Diferença de gerações</h1>
-  </Link>
-</section>
+          <Link href='/artigo/10-tons-fantasticos' className={`${styles.mosaicItem} ${styles.mosaicPos1} ${styles.mosaicBg1}`}>
+            <h1>10 tons fantásticos para sair do básico</h1>
+          </Link>
+          <Link href='/artigo/nago-colorida' className={`${styles.mosaicItem} ${styles.mosaicPos2} ${styles.mosaicBg2}`}>
+            <h1>Nago colorida: 15 estilos diferentes</h1>
+          </Link>
+          <Link href='/artigo/produtos-indispensaveis' className={`${styles.mosaicItem} ${styles.mosaicPos3} ${styles.mosaicBg3}`}>
+            <h1>Produtos indispensáveis para cabelos pintados</h1>
+          </Link>
+          <Link href='/artigo/oleo-de-rosa-mosqueta' className={`${styles.mosaicItem} ${styles.mosaicPos4} ${styles.mosaicBg4}`}>
+            <h1>Benefícios do Óleo de Rosa Mosqueta</h1>
+          </Link>
+          <Link href='/artigo/diferenca-de-geracoes' className={`${styles.mosaicItem} ${styles.mosaicPos5} ${styles.mosaicBg5}`}>
+            <h1>Diferença de gerações</h1>
+          </Link>
+        </section>
 
       </div>
       <Footer />

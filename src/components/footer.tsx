@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <Link href='/'>
         <img 
-          src="images/logo-footer.png" 
+          src="https://i.imgur.com/Ye5uraU.png" 
           alt="Logo principal da marca" 
           className={styles.logo} 
         />
@@ -77,7 +77,7 @@ export default function Footer() {
       </div>
 
       <img 
-        src="images/logo2-footer.png" 
+        src="https://i.imgur.com/c4XrBmB.png" 
         alt="Logo secundário da marca" 
         className={`${styles.logo} ${styles.logoSecondary}`} 
       />
