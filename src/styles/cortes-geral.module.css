@@ -1,6 +1,6 @@
 /* CortesGeral.module.css */
 
-/* Wrapper principal (antigo .page-cortes-wrapper) */
+/* Wrapper principal */
 .wrapper {
   width: 100%;
   min-height: 100vh;
@@ -12,7 +12,7 @@
   height: auto;
 }
 
-/* Header & Footer targeting (elementos filhos diretos) */
+/* Header & Footer targeting */
 .wrapper > header,
 .wrapper > footer {
   width: 100%;
@@ -26,10 +26,6 @@
 
 .wrapper > footer iframe {
   height: 400px;
-}
-
-.wrapper > aside {
-  margin-bottom: 200px;
 }
 
 /* Container geral */
@@ -152,13 +148,15 @@
   flex-direction: column;
   margin-left: 70px;
   margin-top: 0;
+  display: flex; /* Garante que align-items funcione */
 }
 
-/* Caso específico do segundo artigo (antigo #div-artigo2) */
+/* Caso específico do segundo artigo */
 .divArtigo2 {
   flex-direction: column;
   margin-right: 70px;
   margin-top: 0;
+  display: flex; /* Garante que align-items funcione */
 }
 
 .h1TituloArtigo {
@@ -190,11 +188,9 @@
   transform: translateX(5px);
 }
 
-/* Botões */
 .button1 {
   background: #722F53;
   border-radius: 30px;
-  border: none;
   color: white;
   font-family: 'The Next Font', sans-serif;
   font-weight: 100;
@@ -206,6 +202,10 @@
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  display: flex;           
+  justify-content: center;   
+  align-items: center;       
+  text-decoration: none;     
 }
 
 .button1::before {
@@ -238,173 +238,146 @@
   transform: translateY(-2px) scale(1.05);
 }
 
-.button1 a {
-  font-size: 22px;
-  color: #FFF;
-  text-decoration: none;
+/* Helper classes */
+.desktopOnly {
+  display: inline;
 }
 
-/* Seção Mais Visitados */
-.sectionMaisVisitados {
-  margin-top: 70px;
+/* ========================================= */
+/* NOVA SEÇÃO: GALERIA DE CORTES (GRID)      */
+/* ========================================= */
+
+.sectionTodosCortes {
   width: 100%;
-  padding: 0 20px;
-}
-
-.h1MaisVisitados {
-  font-family: 'PLAYFUL RUNWAY', sans-serif;
-  font-weight: 400;
-  font-size: 45px;
-  letter-spacing: 0.05em;
-  text-align: center;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.h1MaisVisitados:hover {
-  color: #5E332C;
-  transform: scale(1.05);
-}
-
-.p3 {
-  font-family: 'Louis George Cafe', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  letter-spacing: 0.05em;
-  margin-top: 10px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.p3:hover {
-  transform: translateY(-3px);
-}
-
-.divMaisVisitados {
-  margin-top: 62px;
-  display: flex;
-  gap: 40px;
-  width: 100%;
-  max-width: 1610px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.divMaisVisitados img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
-  cursor: pointer;
-}
-
-.divMaisVisitados img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(94, 51, 44, 0.4);
-  filter: brightness(1.1);
-}
-
-.esquerda {
-  display: flex;
-}
-
-.direita {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-.topo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.base {
-  display: flex;
-}
-
-/* Sugestão de Cortes */
-.sectionSugestaoCortes {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  background-color: #5E332C;
-  margin-top: 70px;
-  align-items: start;
-  padding: 50px 7vw 20px 7vw;
-}
-
-.divTitulos {
-  display: flex;
-  flex-direction: row;
-  margin-top: 40px;
-  width: 100%;
-  max-width: 1800px;
-  justify-content: center;
-}
-
-.h1Cabelos {
-  font-family: 'The Next Font', sans-serif;
-  font-weight: 400;
-  font-size: 45px;
-  color: #FFFFFF;
-  margin-right: 70px;
-  display: flex;
-  justify-content: flex-start;
-  margin-right: auto;
-  transition: transform 0.3s ease, text-shadow 0.3s ease;
-}
-
-.h1Cabelos:hover {
-  transform: translateX(10px);
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-.divBotaoseta {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
-  margin-top: 60px;
+  padding-bottom: 120px; /* Mais espaço antes do footer */
+}
+
+/* Grid Padrão (Desktop Grande) */
+.gridCortes {
+  display: grid;
   width: 100%;
-  flex-wrap: wrap;
+  max-width: 1600px; 
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 60px; 
+  padding: 0 40px; 
 }
 
-.divBotaoseta button {
-  margin-right: 20px;
-  margin-bottom: 20px;
+/* Container de Estado Vazio Centralizado */
+.emptyStateContainer {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.setaNav {
-  margin: 0 10px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
+/* Card Individual */
+.cardCorte {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  text-decoration: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  height: 100%;
+  border: 1px solid #722F53;
+  /* Garante que o card tenha largura mínima no slider */
+  min-width: 0; 
 }
 
-.setaNav:hover {
-  transform: scale(1.2);
+.cardCorte:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(114, 47, 83, 0.2);
 }
 
-.setaMargin {
-  margin-left: 16px;
+/* Wrapper da imagem */
+.cardCorteImagemWrapper {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  position: relative;
 }
 
-.button2 {
-  border: none;
-  color: white;
+.cardCorteImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.cardCortePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-family: 'Louis George Cafe', sans-serif;
+  font-size: 20px;
+}
+
+.cardCorte:hover .cardCorteImg {
+  transform: scale(1.1);
+}
+
+/* Conteúdo do Card */
+.cardCorteContent {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  background-color: #fff;
+  gap: 20px;
+}
+
+.cardCorteTitulo {
   font-family: 'The Next Font', sans-serif;
+  font-size: 32px;
+  color: #333;
+  text-align: center;
+  margin: 0;
   font-weight: 400;
-  font-size: 29px;
-  width: 261px;
-  height: 70px;
-  background: #F2A518;
-  border-radius: 3px;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.cardCorte:hover .cardCorteTitulo {
+  color: #722F53;
+}
+
+/* Botão do Card */
+.cardCorteButton {
+  background: transparent;
+  border-radius: 30px;
+  border: 1px solid #722F53;
+  color: #722F53;
+  font-family: 'The Next Font', sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  width: 180px;    
+  height: 48px;    
   cursor: pointer;
-  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  display: flex;            
+  justify-content: center;   
+  align-items: center;       
+  text-decoration: none;  
+  transition: all 0.4s ease;
+  z-index: 1;
+  margin-top: auto;
 }
 
-.button2::before {
+.cardCorteButton::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -412,84 +385,35 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
   transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
 }
 
-.button2:hover::before {
-  width: 400px;
-  height: 400px;
+.cardCorte:hover .cardCorteButton::before {
+  width: 300px;
+  height: 300px;
 }
 
-.button2:hover {
-  background: linear-gradient(135deg, #F2A518 0%, #FFD700 100%);
-  box-shadow: 0px 10px 30px rgba(242, 165, 24, 0.7);
-  transform: translateY(-5px) scale(1.08);
+.cardCorte:hover .cardCorteButton {
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  box-shadow: 0px 10px 30px rgba(114, 47, 83, 0.6);
+  transform: translateY(-3px) scale(1.05);
+  color: #FFF;
+  border: none;
 }
 
-.button2:active {
-  background: #D89410;
+.cardCorteButton:active {
+  background: #5E332C;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px) scale(1.05);
-}
-
-.divImagens {
-  width: 100%;
-  display: flex;
-  margin-top: 50px;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.divImagens a {
-  display: block;
-}
-
-.divImagens img {
-  max-width: 100%;
-  height: 50vh;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
-}
-
-.divImagens img:hover {
-  transform: scale(1.08);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  filter: brightness(1.15);
-}
-
-/* Helper classes */
-.desktopOnly {
-  display: inline;
+  transform: translateY(-1px) scale(1.02);
 }
 
 /* --- MEDIA QUERIES --- */
 
-@media (max-width: 1600px) {
-  .divMaisVisitados {
-    width: 90%;
-  }
-
-  .h1Cabelos {
-    font-size: 40px;
-    margin-right: 50px;
-  }
-  
-  .divBotaoseta {
-    justify-content: center;
-  }
-}
-
+/* Breakpoint Principal: 1200px */
 @media (max-width: 1200px) {
-  .divImagens {
-    justify-content: center;
-  }
-  
-  .sectionSugestaoCortes {
-    justify-content: center;
-  }
-  
   .h1MelhoresCortes {
     font-size: 80px;
     margin-top: 50px;
@@ -500,6 +424,7 @@
     margin-bottom: 50px;
   }
 
+  /* Ajustes dos Artigos */
   .sectionArtigos {
     flex-direction: column;
   }
@@ -513,7 +438,8 @@
     margin: 30px auto;
     text-align: center;
     order: 2;
-    align-items: center;
+    /* Centraliza itens (incluindo o botão) horizontalmente no modo coluna */
+    align-items: center; 
   }
 
   .p2 {
@@ -521,33 +447,41 @@
     margin: 20px auto;
   }
 
-  .divTitulos {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .h1Cabelos {
-    margin-right: 0;
-    margin-bottom: 30px;
-    font-size: 35px;
-  }
-
-  .divMaisVisitados {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Classes que substituem os IDs para o grid */
-  .img1 {
-    grid-row: span 1;
-  }
-
-  .img4 {
-    grid-column: span 1;
-    grid-column-start: auto;
-  }
-
   .desktopOnly {
     display: none;
+  }
+
+  /* --- SLIDER DOS CORTES --- */
+  /* Transforma o Grid em Slider Horizontal aqui */
+  .gridCortes {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Efeito magnético ao rolar */
+    -webkit-overflow-scrolling: touch; /* Rolagem suave no iOS */
+    gap: 20px;
+    padding: 0 20px 20px 20px; /* Padding bottom extra para barra de rolagem não cortar a sombra */
+    max-width: 100vw;
+  }
+
+  /* Estilização da barra de rolagem (opcional, deixa mais bonito) */
+  .gridCortes::-webkit-scrollbar {
+    height: 6px;
+  }
+  .gridCortes::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .gridCortes::-webkit-scrollbar-thumb {
+    background: #722F53;
+    border-radius: 10px;
+  }
+
+  /* Ajuste do Card dentro do Slider */
+  .cardCorte {
+    /* Define tamanho fixo para não esmagar */
+    min-width: 300px; 
+    max-width: 320px;
+    scroll-snap-align: center; /* Centraliza o card na tela ao soltar */
   }
 }
 
@@ -566,28 +500,9 @@
     font-size: 18px;
     text-align: center;
   }
-  
-  .divMaisVisitados {
-    flex-direction: column;
-    gap: 24px;
-    max-width: 100%;
-  }
-
-  .topo {
-    gap: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .divImagens img {
-    height: auto;
-  }
 }
 
 @media (max-width: 768px) {
-  .sectionSugestaoCortes {
-    align-items: center;
-  }
-  
   .h1MelhoresCortes {
     font-size: 60px;
     margin-top: 40px;
@@ -606,14 +521,18 @@
     font-size: 18px;
   }
 
-  .h1MaisVisitados {
-    font-size: 35px;
+  /* Ajustes finos no slider para mobile */
+  .cardCorte {
+    min-width: 280px;
+    max-width: 300px;
   }
-}
 
-@media (max-width: 600px) {
-  .divImagens img {
-    height: auto;
+  .cardCorteImagemWrapper {
+    height: 300px;
+  }
+  
+  .cardCorteTitulo {
+    font-size: 26px;
   }
 }
 
@@ -641,28 +560,5 @@
     width: 180px;
     height: 45px;
     font-size: 18px;
-  }
-
-  .h1MaisVisitados {
-    font-size: 30px;
-  }
-
-  .p3 {
-    font-size: 16px;
-  }
-
-  .divMaisVisitados {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .h1Cabelos {
-    font-size: 28px;
-  }
-
-  .button2 {
-    width: 200px;
-    height: 50px;
-    font-size: 22px;
   }
 }
