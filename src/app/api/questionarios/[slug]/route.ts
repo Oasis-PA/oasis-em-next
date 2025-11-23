@@ -3,12 +3,14 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await context.params;
+
     const questionario = await prisma.questionario.findFirst({
       where: {
-        slug: params.slug,
+        slug,
         ativo: true
       },
       include: {
