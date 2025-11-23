@@ -227,7 +227,7 @@
 
 /* Para telas menores (tablets e celulares grandes) */
 @media (max-width: 768px) {
-    .header {
+    .header1 {
     min-height: 400px;
     }
     
@@ -259,7 +259,7 @@
 
 /* Para celulares */
 @media (max-width: 480px) {
-    .header {
+    .header1 {
         min-height: 300px;
     }
     
