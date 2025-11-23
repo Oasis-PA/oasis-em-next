@@ -1,6 +1,5 @@
 /* produto.module.css */
 
-/* Reset local para o wrapper */
 .pageProdutoWrapper * {
   margin: 0;
   padding: 0;
@@ -22,19 +21,16 @@
   background-color: var(--body-back);
 }
 
-/* Loading e Erro Containers */
 .loadingContainer,
 .erroContainer {
   padding: 2rem;
   text-align: center;
 }
 
-/* Utilitários */
 .headerTransparente {
   background-color: transparent !important;
 }
 
-/* Container principal do produto (Antigo #pagina1) */
 .pagina1 {
   display: flex;
   flex-direction: row;
@@ -47,14 +43,12 @@
   padding: 20px 0;
 }
 
-/* Container de imagem do produto */
 .imgContainer {
   position: relative;
   width: 45%;
   max-width: 738px;
 }
 
-/* Antigo #img */
 .produtoImg {
   width: 90%;
   height: auto;
@@ -62,16 +56,14 @@
   object-fit: contain;
 }
 
-/* Informações do produto */
 .produtoInfo {
   width: 45%;
-  display: flex; /* Adicionado para garantir flex-direction funcione */
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 0;
 }
 
-/* Antigo #nomeProduto */
 .nomeProduto {
   font-family: "The Next Font", serif;
   font-size: 2.5rem;
@@ -80,14 +72,12 @@
   font-weight: 400;
 }
 
-/* Antigo #menorValor */
 .menorValor {
   font-family: "Louis George Cafe", sans-serif;
-  margin-top: 20px;
+  margin-top: 27px;
   margin-bottom: 5px;
 }
 
-/* Antigo #preco */
 .preco {
   font-size: 2.5rem;
   font-family: "The Next Font", serif;
@@ -96,99 +86,96 @@
   font-weight: 400;
 }
 
-.detalhes {
-  cursor: pointer;
-  font-family: "Louis George Cafe", sans-serif;
-  font-size: 1.5rem;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-bottom: 20px;
-  font-weight: 400;
-}
-
 /* ============================================
-   ESTILOS DOS DETALHES (Abas)
+   ESTRUTURA: MENU LATERAL + TEXTO AO LADO
    ============================================ */
-.composicao,
-.qualidades,
-.maisDetalhes {
-  position: relative;
-  padding: 10px;
-  cursor: pointer;
-  display: inline-block;
-  transition: border 0.3s ease;
+
+.containerDetalhes {
+  display: flex;
+  flex-direction: row; /* Garante Lado a lado */
+  align-items: flex-start;
+  gap: 50px; /* Reduzi um pouco o gap para caber em telas menores */
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  font-family: "Louis George Cafe", sans-serif;
 }
 
-/* Hover */
-.composicao:hover,
-.qualidades:hover,
-.maisDetalhes:hover {
+.listaBotoes {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  /* Mudei de min-width fixo para auto/fit-content para nao empurrar o texto */
+  min-width: 140px; 
+}
+
+/* ESTILO DOS BOTÕES (FORMATO QUADRADO) */
+.botaoDetalhe {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 400;
+  white-space: nowrap;
+  
+  padding: 10px; 
+  border: 3px solid transparent; 
+  
+  transition: border 0.3s ease, opacity 0.3s ease;
+}
+
+.botaoDetalhe:hover {
   border: 3px solid rgba(0, 0, 0, 0.2);
 }
 
-/* Active State (Adicionado via condicional no React) */
-.active {
+.botaoDetalhe.active {
   border: 3px solid rgba(0, 0, 0, 0.3);
+  font-weight: bold; 
 }
 
-/* ============================================
-   TOOLTIP
-   ============================================ */
-.tooltipText {
-  visibility: hidden;
-  width: 400px;
-  max-width: 90vw;
-  max-height: 350px;
-  overflow-y: auto;
+/* ESTILO DO TEXTO */
+.areaTexto {
+  flex: 1; /* Ocupa todo o espaço restante */
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
-  text-align: left;
   border-radius: 6px;
-  padding: 10px;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 8px;
-  z-index: 10;
-  font-size: 19px;
+  padding: 15px;
+  font-size: 27px; /* Reduzi levemente para caber melhor no layout lado a lado */
   line-height: 1.4;
-  pointer-events: none;
+  min-height: 250px;
+  
+  /* Remove o max-width fixo para ele se adaptar ao espaço que sobra */
+  width: 100%; 
+  
   opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
-/* Tooltip visível quando o pai tem a classe .active */
-.composicao.active .tooltipText,
-.qualidades.active .tooltipText,
-.maisDetalhes.active .tooltipText {
-  border: 3px solid rgba(0, 0, 0, 0.3);
-  visibility: visible;
+.areaTexto.visivel {
   opacity: 1;
-  pointer-events: auto;
+  visibility: visible;
+  transform: translateX(0);
+  border: 3px solid rgba(0, 0, 0, 0.3);
 }
 
-/* Scrollbar customizada */
-.tooltipText::-webkit-scrollbar {
+.areaTexto::-webkit-scrollbar {
   width: 6px;
 }
-.tooltipText::-webkit-scrollbar-track {
+.areaTexto::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
 }
-.tooltipText::-webkit-scrollbar-thumb {
+.areaTexto::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 3px;
 }
-.tooltipText::-webkit-scrollbar-thumb:hover {
+.areaTexto::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.7);
 }
 
 /* ============================================
-   BOTÃO AMARELO E CONTAINER
+   BOTÃO AMARELO
    ============================================ */
-/* Antigo #vaAoSite */
 .vaAoSiteContainer {
   display: flex;
   flex-direction: column;
@@ -196,7 +183,7 @@
   align-items: center;
   width: 100%;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 .vaParaCompraTexto {
@@ -212,7 +199,7 @@
   background-color: #F2A518;
   border: none;
   margin-bottom: 10px;
-  margin-top: 30vh;
+  margin-top: 5vh;
   color: #FFF;
   font-family: "The Next Font", sans-serif;
   font-size: 1.1rem;
@@ -262,7 +249,6 @@
   display: none;
 }
 
-/* Linha divisória - Antigo #linha */
 .linha {
   width: 90%;
   max-width: 1659px;
@@ -271,7 +257,6 @@
   margin: 30px auto;
 }
 
-/* Fonte */
 @font-face {
   font-family: "Next Font";
   src: url(/public/assets/fontes/TheNextFont.ttf);
@@ -279,7 +264,10 @@
   font-style: normal;
 }
 
-/* Media Queries */
+/* ============================================
+   MEDIA QUERIES - AJUSTE PRINCIPAL AQUI
+   ============================================ */
+
 @media (max-width: 1200px) {
   .pagina1 {
     flex-direction: column;
@@ -296,9 +284,7 @@
     margin-top: 30px;
   }
   
-  .tooltipText {
-    width: 350px;
-  }
+  /* NÃO FORÇAR COLUNA AQUI MAIS */
 }
 
 @media (max-width: 768px) {
@@ -306,27 +292,54 @@
     font-size: 2rem;
   }
   
-  .detalhes {
+  .botaoDetalhe {
     font-size: 1.2rem;
-    gap: 20px;
+    padding: 8px; /* Reduz padding para caber */
   }
 
-  .tooltipText {
-    width: 300px;
-    font-size: 16px;
+  .areaTexto {
+    font-size: 21px;
+    padding: 10px;
+  }
+
+  /* Ainda mantemos lado a lado em 768px e 475px */
+  .containerDetalhes {
+    flex-direction: row; 
+    gap: 15px;
   }
 }
-
-@media (max-width: 576px) {
-  .detalhes {
-    flex-direction: column;
-    gap: 10px;
+@media (max-width: 500px) {
+  .nomeProduto {
+    font-size: 2rem;
   }
   
-  .tooltipText {
-    width: 90vw;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
+  .botaoDetalhe {
+    font-size: 1rem;
+    padding: 8px; /* Reduz padding para caber */
   }
+
+  .areaTexto {
+    font-size: 17px;
+    padding: 10px;
+  }
+
+  .botaoAmarelo {
+  cursor: pointer;
+  max-width: 130px;
+  
+
 }
+.vaParaCompraTexto {
+  font-weight: 400;
+  font-family: "The Next Font";
+  font-size: 1rem;
+}
+  /* Ainda mantemos lado a lado em 768px e 475px */
+  .containerDetalhes {
+    flex-direction: row; 
+    gap: 15px;
+    
+  }
+  
+}
+
