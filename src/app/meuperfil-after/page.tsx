@@ -5,8 +5,10 @@ import { Header, Footer } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/meuperfil-after.module.css";
+import { useRouter } from "next/navigation";
 
 export default function MeuPerfilAfter() {
+  const router = useRouter();
   const [nome, setNome] = useState("[nome]");
   const [respostas, setRespostas] = useState({
     tipo_cabelo: "X",
@@ -25,15 +27,12 @@ export default function MeuPerfilAfter() {
     try {
       const response = await fetch("/api/usuarios/perfil/questionario", {
         method: "GET",
-        credentials: "include", // garante envio de cookies/sessão
+        credentials: "include",
       });
 
       const contentType = response.headers.get("content-type") || "";
-      // Se a resposta não for JSON (ex.: redirect HTML), não tentar parsear
       if (!response.ok) {
-        // 401: não autorizado — manter defaults silenciosamente
         if (response.status === 401) return;
-        // tentar ler JSON de erro quando possível
         if (contentType.includes("application/json")) {
           const err = await response.json().catch(() => null);
           console.warn("Erro ao carregar perfil:", response.status, err);
@@ -43,16 +42,14 @@ export default function MeuPerfilAfter() {
         return;
       }
 
-      // parse seguro
       let data: any = null;
       if (contentType.includes("application/json")) {
         data = await response.json().catch((e) => {
-          console.warn("Falha ao parsear JSON do /api/usuarios/perfil/questionario:", e);
+          console.warn("Falha ao parsear JSON:", e);
           return null;
         });
       } else {
-        // resposta HTML ou outro; não quebrar a página
-        console.warn("Retorno não-JSON em /api/usuarios/perfil/questionario — ignorando.");
+        console.warn("Retorno não-JSON — ignorando.");
         return;
       }
 
@@ -73,8 +70,12 @@ export default function MeuPerfilAfter() {
       }
     } catch (error) {
       console.error("Erro ao carregar dados:", error);
-      // Mantém valores padrão se houver erro
     }
+  };
+
+  const handleEditarQuestionario = () => {
+    // Redirecionar para o questionário - ajuste o slug conforme necessário
+    router.push("/meu-perfil/questionario/meu-perfil");
   };
 
   return (
@@ -89,7 +90,33 @@ export default function MeuPerfilAfter() {
       </main>
 
       <section className={styles.s1}>
-        <h1>suas informações</h1>
+        <div style={{ 
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center",
+          marginBottom: "2rem"
+        }}>
+          <h1>suas informações</h1>
+          <button 
+            onClick={handleEditarQuestionario}
+            style={{
+              padding: "0.70rem 0.1rem",
+              background: "#F2A518",
+              border: "none",
+              borderRadius: "8px",
+              color: "white",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: "600",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = "#d89415"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "#F2A518"}
+          >
+            ✏️ Editar Respostas
+          </button>
+        </div>
+        
         <div className={styles.informacoes}>
           <div className={styles.bloco}>
             <h1>Seu tipo de cabelo é:</h1>
