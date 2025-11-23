@@ -590,6 +590,20 @@
     height: auto;
 }
 
+.card {
+    /* ... (suas outras propriedades) ... */
+    cursor: pointer; /* Muda o cursor para indicar clique */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Suaviza a animação */
+}
+
+/* 2. Adicione este bloco novo no final do arquivo CSS */
+.card:hover {
+    transform: scale(1.03); /* Aumenta o card em 3% */
+    border-color: #aa96cc; /* Muda a borda para um tom lilás/claro */
+    box-shadow: 0 0 20px rgba(170, 150, 204, 0.2); /* Adiciona um brilho suave */
+    z-index: 10; /* Garante que o card fique por cima dos outros */
+}
+
 /* --- MEDIA QUERIES (Diminuindo a seção progressivamente) --- */
 
 /* 1. Laptops menores e Tablets (max-width: 1200px) */
