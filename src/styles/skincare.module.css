@@ -331,6 +331,7 @@
     background: #FFF;
     padding-bottom: 1rem;
     transition: all 0.3s ease;
+    gap: 10px;
     height: auto; 
 }
 
@@ -369,7 +370,7 @@
     align-self: center;
     margin-top: 2rem; 
     margin-top: auto;
-    margin-bottom: 1rem; 
+     
     width: 90%;
     height: 50px;
     background-color: #ECC46F;

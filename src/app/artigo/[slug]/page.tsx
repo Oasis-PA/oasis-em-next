@@ -153,53 +153,53 @@ export default async function ArtigoPage({ params }: ArtigoProps) {
 
           {/* Conteúdo do artigo */}
           <ReactMarkdown
-            components={{
-              h1: ({ children }) => <h1 className={styles.articleHeading1}>{children}</h1>,
-              h2: ({ children }) => <h3 className={styles.articleHeading3}>{children}</h3>,
-              h3: ({ children }) => <h3 className={styles.articleHeading3}>{children}</h3>,
-              p: ({ children, node }) => {
-                // Verifica se o parágrafo contém apenas uma imagem
-                const hasOnlyImage = node?.children?.length === 1 &&
-                                    node.children[0].type === 'element' &&
-                                    node.children[0].tagName === 'img';
+  components={{
+    h1: ({ children }) => <h1 className={styles.articleHeading1}>{children}</h1>,
+    h2: ({ children }) => <h3 className={styles.articleHeading3}>{children}</h3>,
+    h3: ({ children }) => <h3 className={styles.articleHeading3}>{children}</h3>,
 
-                // Se só tem imagem, não envolve em <p>
-                if (hasOnlyImage) {
-                  return <>{children}</>;
-                }
+    // Ajuste do <p> para evitar <figure> dentro
+    p: ({ children, node }) => {
+      const hasOnlyImageOrFigure =
+        node?.children?.length === 1 &&
+        node.children[0].type === 'element' &&
+        (node.children[0].tagName === 'img' || node.children[0].tagName === 'figure');
 
-                return <p className={styles.articleParagraph}>{children}</p>;
-              },
-              strong: ({ children }) => <strong>{children}</strong>,
-              em: ({ children }) => <em>{children}</em>,
-              ul: ({ children }) => <ul className={styles.articleList}>{children}</ul>,
-              ol: ({ children }) => <ol className={styles.articleList}>{children}</ol>,
-              li: ({ children }) => <li className={styles.articleListItem}>{children}</li>,
-              img: ({ src, alt, title }) => {
-                // Extrai classe customizada do alt text se houver
-                const match = alt?.match(/^(.*?)\s*\{([^}]+)\}$/);
-                const altText = match ? match[1].trim() : alt;
-                const customClass = match ? match[2].trim() : '';
+      if (hasOnlyImageOrFigure) {
+        return <>{children}</>; // não envolve em <p>
+      }
 
-                const figureClass = customClass === 'imagem-destaque'
-                  ? `${styles.artigoFigura} ${styles.imagemDestaque}`
-                  : styles.artigoFigura;
+      return <p className={styles.articleParagraph}>{children}</p>;
+    },
 
-                return (
-                  <figure className={figureClass}>
-                    <img
-                      src={src}
-                      alt={altText || ''}
-                      className={styles.artigoImagem}
-                    />
-                    {title && <figcaption className={styles.artigoFiguraCaption}>{title}</figcaption>}
-                  </figure>
-                );
-              },
-            }}
-          >
-            {artigo.conteudo}
-          </ReactMarkdown>
+    strong: ({ children }) => <strong>{children}</strong>,
+    em: ({ children }) => <em>{children}</em>,
+    ul: ({ children }) => <ul className={styles.articleList}>{children}</ul>,
+    ol: ({ children }) => <ol className={styles.articleList}>{children}</ol>,
+    li: ({ children }) => <li className={styles.articleListItem}>{children}</li>,
+
+    img: ({ src, alt, title }) => {
+      const match = alt?.match(/^(.*?)\s*\{([^}]+)\}$/);
+      const altText = match ? match[1].trim() : alt;
+      const customClass = match ? match[2].trim() : '';
+
+      const figureClass =
+        customClass === 'imagem-destaque'
+          ? `${styles.artigoFigura} ${styles.imagemDestaque}`
+          : styles.artigoFigura;
+
+      return (
+        <figure className={figureClass}>
+          <img src={src} alt={altText || ''} className={styles.artigoImagem} />
+          {title && <figcaption className={styles.artigoFiguraCaption}>{title}</figcaption>}
+        </figure>
+      );
+    },
+  }}
+>
+  {artigo.conteudo}
+</ReactMarkdown>
+
         </article>
         </main>
       </div>
