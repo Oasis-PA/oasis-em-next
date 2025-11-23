@@ -97,24 +97,7 @@ export default function MeuPerfilAfter() {
           marginBottom: "2rem"
         }}>
           <h1>suas informações</h1>
-          <button 
-            onClick={handleEditarQuestionario}
-            style={{
-              padding: "0.70rem 0.1rem",
-              background: "#F2A518",
-              border: "none",
-              borderRadius: "8px",
-              color: "white",
-              cursor: "pointer",
-              fontSize: "0.9rem",
-              fontWeight: "600",
-              transition: "all 0.3s ease",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "#d89415"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "#F2A518"}
-          >
-            ✏️ Editar Respostas
-          </button>
+          <button onClick={handleEditarQuestionario} className={styles.botaoEditar}> ✏️ Editar Respostas </button>
         </div>
         
         <div className={styles.informacoes}>

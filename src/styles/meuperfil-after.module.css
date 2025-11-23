@@ -444,3 +444,44 @@
     background: #5E332C;
     transform: translateY(-1px) scale(1.02);
 }
+
+.botaoEditar {
+    width: 14.39413rem;
+    height: 3.8125rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-family: "The Next Font";
+    color: #FFF;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background-color: #F2A518;
+}
+
+.botaoEditar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.botaoEditar:hover {
+    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.botaoEditar:hover::before {
+    width: 300px;
+    height: 300px;
+}
