@@ -162,7 +162,7 @@ export default function Infantil() {
               </div>
             </Link>
             
-            <Link href='artigo/cuidados-com-a-pele-das-criancas' className={`${styles.cardArtigo} ${styles.artigo4}`}>
+            <Link href='artigo/rotina-de-skincare-infantil-protegendo-a-pele-diariamente' className={`${styles.cardArtigo} ${styles.artigo4}`}>
               <div>
                 <h4 className={styles.titleBlack}>Rotina de skincare: protegendo a pele diariamente</h4>
                 <p className={styles.textBlack}>Crie uma rotina de cuidados simples e gostosa para proteger a pele do seu pequeno. Com 
