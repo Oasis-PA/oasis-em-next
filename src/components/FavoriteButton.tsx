@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import '@/styles/favorite-button.css';
+// Importação do CSS Module
+import styles from '@/styles/favorite-button.module.css';
 
 interface FavoriteButtonProps {
   artigoId: number;
@@ -23,7 +24,6 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
   const router = useRouter();
 
   useEffect(() => {
-    // Verifica o estado inicial do favorito
     checkFavoriteStatus();
   }, [artigoId]);
 
@@ -39,6 +39,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
         setIsFavorited(data.isFavorited);
       }
     } catch (error) {
+      // Tratamento silencioso ou log de erro
     }
   };
 
@@ -48,7 +49,6 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
 
     if (isLoading) return;
 
-
     setIsLoading(true);
     setIsAnimating(true);
 
@@ -56,7 +56,6 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       const endpoint = isFavorited 
         ? `/api/favoritos/artigos/${artigoId}`
         : '/api/favoritos/artigos';
-
 
       const response = await fetch(endpoint, {
         method: isFavorited ? 'DELETE' : 'POST',
@@ -67,9 +66,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
         body: isFavorited ? undefined : JSON.stringify({ id_artigo: artigoId }),
       });
 
-
       if (response.status === 401) {
-        // Usuário não autenticado, redireciona para login
         router.push('/login');
         return;
       }
@@ -78,13 +75,10 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
         setIsFavorited(!isFavorited);
         setTimeout(() => setIsAnimating(false), 400);
       } else {
-        // Tenta ler o erro como JSON, senão usa texto
         let errorMessage = 'Erro ao processar favorito';
-        let errorDetails = {};
         try {
           const errorData = await response.json();
           errorMessage = errorData.error || errorData.message || errorMessage;
-          errorDetails = errorData;
         } catch {
           const errorText = await response.text();
           errorMessage = errorText || errorMessage;
@@ -100,16 +94,24 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
     }
   };
 
+  // Construção dinâmica das classes
+  const buttonClasses = [
+    styles.favoriteButton,
+    styles[size], // Acessa dinamicamente .small, .medium ou .large
+    isFavorited ? styles.favorited : '',
+    isAnimating ? styles.animating : ''
+  ].filter(Boolean).join(' ');
+
   return (
     <button
       onClick={handleToggleFavorite}
       disabled={isLoading}
-      className={`favorite-button favorite-button--${size} ${isFavorited ? 'favorited' : ''} ${isAnimating ? 'favorite-button--animating' : ''}`}
+      className={buttonClasses}
       aria-label={isFavorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
       title={isFavorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
     >
       <svg
-        className="favorite-icon"
+        className={styles.favoriteIcon}
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -119,8 +121,9 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       >
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
       </svg>
+      
       {showLabel && (
-        <span className="favorite-label">
+        <span className={styles.favoriteLabel}>
           {isFavorited ? 'Favoritado' : 'Favoritar'}
         </span>
       )}
