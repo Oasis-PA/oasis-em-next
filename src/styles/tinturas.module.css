@@ -732,7 +732,6 @@
   font-family: "THE NEXT FONT", sans-serif;
   font-size: clamp(1.3rem, 1.7vw, 2rem);
   color: white;
-  background-color: rgba(51, 51, 51, 0.08);
   border-radius: 12px;
   line-height: 1;
   text-transform: uppercase;
@@ -755,31 +754,53 @@
   min-height: 100px;
 }
 
-.botaoS4 {
-  display: flex;
-  width: auto;
-  min-width: 200px;
-  padding: 0 2rem;
-  height: 3.5rem;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  background-color: #722F53;
-  border-radius: 30px;
-  color: white;
-  border: none;
-  font-family: "THE NEXT FONT", sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
+.botaoS4{
+    display: flex;
+    width: 15.9375rem;
+    height: 3.0625rem;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    
+    background-color: #722F53;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-family: "THE NEXT FONT"; /* Mantive sua fonte original */
+    cursor: pointer;
+    font-size: clamp(0.875rem, 1vw, 1rem); /* Fonte do seu exemplo */
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+/* --- ADICIONADO (EFEITOS DO SEU EXEMPLO) --- */
+.botaoS4::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.botaoS4:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .botaoS4:hover {
-  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+    transform: translateY(-3px) scale(1.08);
+}
+
+.botaoS4:active {
+    background: #5E332C;
+    transform: translateY(-1px) scale(1.05);
 }
 
 /* ================================== */
