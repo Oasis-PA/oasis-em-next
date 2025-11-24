@@ -5,6 +5,12 @@ import Link from "next/link";
 // Importação do CSS Module
 import styles from "@/styles/respostas.module.css";
 
+// 1. Adicionando a Interface do Usuário
+interface User {
+  nome: string;
+  url_foto?: string;
+}
+
 const nomesEventos = {
   hidratacao: 'Hidratação',
   nutricao: 'Nutrição',
@@ -132,6 +138,9 @@ const Respostas: React.FC = () => {
   const [semanaAtual, setSemanaAtual] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // 2. Estado para o Usuário
+  const [user, setUser] = useState<User | null>(null);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -139,6 +148,25 @@ const Respostas: React.FC = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  // 3. useEffect para buscar a foto
+  useEffect(() => {
+    async function fetchUserProfile() {
+      try {
+        const response = await fetch('/api/usuarios/perfil');
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar perfil:", error);
+        setUser(null);
+      }
+    }
+    fetchUserProfile();
+  }, []);
 
   useEffect(() => {
     setSemanaAtual(0);
@@ -252,7 +280,16 @@ const Respostas: React.FC = () => {
           <Link href="/">
             <img className={styles.logo} src="/images/logo-reduzida.png" alt="Logo" />
           </Link>
-          <img className={styles.userAvatar} src="/images/resposta/user.png" alt="User" />
+          
+          {/* 4. Atualização da imagem do usuário */}
+          <Link href="/perfil">
+            <img 
+              className={styles.userAvatar} 
+              src={user?.url_foto ? user.url_foto : "/images/resposta/user.png"} 
+              alt="User Profile" 
+            />
+          </Link>
+
         </div>
         <div className={styles.navButtons}>
           <Link href="/guia">
