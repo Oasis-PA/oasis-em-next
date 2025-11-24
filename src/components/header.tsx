@@ -7,6 +7,7 @@ import styles from '@/styles/header.module.css';
 
 interface User {
   nome: string;
+  url_foto?: string;
 }
 
 interface HeaderProps {
@@ -66,7 +67,6 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
   return (
     <>
       <nav className={`${styles.mobile_menu} ${isMobileMenuOpen ? styles.open : ''}`}>
-        {/* NOVO: Botão 'X' para fechar o menu */}
         <button className={styles.close_menu_btn} onClick={() => setMobileMenuOpen(false)} aria-label="Fechar menu">
           &times;
         </button>
@@ -77,10 +77,8 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
         <Link href="/cronograma-capilar" onClick={handleLinkClick}>Cronograma Capilar</Link>
         <Link href="/infantil" onClick={handleLinkClick}>Infantil</Link>
 
-        {/* Divisor */}
         <hr style={{ margin: '15px 0', borderColor: 'rgba(0,0,0,0.1)' }} />
 
-        {/* Links de usuário */}
         {user && (
           <>
             <Link href="/perfil" onClick={handleLinkClick}>Editar Perfil</Link>
@@ -92,7 +90,6 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
 
       <header style={headerStyle} className={`${styles.header} ${theme === 'dark' ? styles.dark : ''} ${className || ''}`}>
         <section className={styles.em_ciminha}>
-          {/* NOVO: Wrapper para agrupar menu e logo */}
           <div className={styles.header_left}>
             <div className={styles.hamburger_menu} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
               <div className={styles.bar}></div>
@@ -118,7 +115,22 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
                 <div className={styles.user_placeholder}></div>
               ) : user ? (
                 <>
-                  <div className={styles.user} aria-label="Perfil" onClick={() => setPopupVisible(!isPopupVisible)}></div>
+                  {user.url_foto ? (
+                    <div 
+                      className={styles.user_with_photo} 
+                      aria-label="Perfil" 
+                      onClick={() => setPopupVisible(!isPopupVisible)}
+                      style={{
+                        backgroundImage: `url(${user.url_foto})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: '50%',
+                        cursor: 'pointer'
+                      }}
+                    ></div>
+                  ) : (
+                    <div className={styles.user} aria-label="Perfil" onClick={() => setPopupVisible(!isPopupVisible)}></div>
+                  )}
                   {isPopupVisible && (
                     <div className={styles.user_popup}>
                       <p>Olá, {user.nome}!</p>

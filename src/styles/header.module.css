@@ -463,7 +463,22 @@
 }
 
 /* Classe base para o tema dark (necessária para CSS Modules) */
-.dark {
-  /* Classe vazia, só precisa existir para o module reconhecer */
+
+
+/* Adicione estas regras ao seu header.module.css existente */
+
+.user_with_photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border: 2px solid #722F53;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.user_with_photo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(114, 47, 83, 0.3);
+}
