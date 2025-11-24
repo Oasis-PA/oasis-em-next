@@ -76,9 +76,9 @@ export default function Skincare() {
             <h2>CRONOGRAMA</h2>
           </Link>
 
-          <Link href="/haircare" className={styles.categ}>
-            <img src="/images/skincare/categ3.png" alt="HAIR-CARE" />
-            <h2>HAIR-CARE</h2>
+          <Link href="/tinturas" className={styles.categ}>
+            <img src="/images/skincare/categ3.png" alt="TINTURAS" />
+            <h2>TINTURAS</h2>
           </Link>
 
           <Link href="/produtos" className={styles.categ}>
