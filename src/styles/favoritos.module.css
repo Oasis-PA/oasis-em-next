@@ -301,9 +301,9 @@
     background-color: #fff;
     border: 2px solid #5f0b38;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     height: auto;
-    min-height: 17rem;
+    min-height: 15rem;
     border-radius: 1.875rem;
     display: flex;
     flex-direction: row;
@@ -320,9 +320,9 @@
 }
 
 .brownCardImage {
-    width: clamp(120px, 15vw, 216px);
+    width: clamp(100px, 13vw, 150px);
     height: auto;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .brownCardContent {
@@ -343,8 +343,8 @@
 .brownCardContent > h1 {
     color: #070707;
     font-family: "The Next Font", sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    
     align-self: flex-start;
 }
 
@@ -514,7 +514,7 @@
 .savedCard > h1 {
     font-family: "The Next Font", sans-serif;
     font-size: 1.1rem;
-    font-weight: 400;
+  
     padding: 1rem 1.1rem 0.5rem;
     align-self: flex-start;
 }
@@ -522,7 +522,7 @@
 .savedCard > p {
     font-family: "Louis George Cafe Light", sans-serif;
     font-size: 1rem;
-    font-weight: 400;
+    
     text-align: justify;
     padding: 0 1.1rem 1.5rem;
     align-self: flex-start;

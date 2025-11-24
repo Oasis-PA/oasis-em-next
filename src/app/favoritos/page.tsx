@@ -221,7 +221,7 @@ const Favoritos: React.FC = () => {
                     src={favProd.produto?.url_imagem || "/images/favoritos/imagem-produto-salvo.png"} 
                     alt={favProd.produto?.nome || "Produto"} 
                   />
-                  <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
+                  <div style={{ position: 'absolute', top: '-10px', right: '3px', zIndex: 10 }}>
                     <FavoriteButton
                       produtoId={favProd.produto?.id_produto}
                       initialIsFavorited={true}
