@@ -1,489 +1,729 @@
-/* CSS MODULE: Meuperfil After Page */
+/* --- CSS BASE (Desktop - Mantido Original com Pequenos Ajustes de Segurança) --- */
 
 .wrapper {
-    display: flex;
-    width: 100%;
-    height: auto;
-    background-color: var(--body-back);
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    overflow-x: hidden;
+  display: flex;
+  width: 100%;
+  height: auto;
+  background-color: var(--body-back);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: hidden; /* Vital para mobile */
+}
+
+/* Regra global para impedir imagens de estourarem o layout */
+.wrapper img {
+  max-width: 100%;
+  height: auto;
 }
 
 .wrapper main * {
-    margin: 0;
-    padding: 0;
-    color: var(--corpo-texto);
+  margin: 0;
+  padding: 0;
+  color: var(--corpo-texto);
 }
 
 .main {
-    background-image: url(../../public/images/meuperfil-after/header-bg.png);
-    display: flex;
-    width: 100%;
-    min-height: 39vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    flex-direction: column;
+  background-image: url(../../public/images/meuperfil-after/header-bg.png);
+  display: flex;
+  width: 100%;
+  min-height: 39vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-direction: column;
 }
 
 .mainDiv {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .mainDiv h1 {
-    color: #FFF;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: "The Next Font";
-    font-size: clamp(2.5rem, 6vw, 6rem);
-    line-height: normal;
-    max-width: 52rem;
-    font-weight: 400;
-    margin-top: 10rem;
-    margin-left: 6rem;
+  color: #FFF;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "The Next Font", sans-serif;
+  /* Ajustado clamp para evitar textos gigantes em mobile muito pequeno */
+  font-size: clamp(2rem, 6vw, 6rem);
+  line-height: normal;
+  max-width: 52rem;
+  font-weight: 400;
+  margin-top: 10rem;
+  margin-left: 6rem;
 }
 
 .mainDiv p {
-    color: #FFF;
-    font-family: "Louis George Cafe";
-    font-size: clamp(1.35rem, 1.8vw, 1.8rem);
-    margin-top: clamp(0.875rem, 1vw, 1rem);
-    font-weight: 400;
-    margin-left: 6rem;
+  color: #FFF;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.8rem);
+  margin-top: clamp(0.875rem, 1vw, 1rem);
+  font-weight: 400;
+  margin-left: 6rem;
+  max-width: 80%; 
 }
 
-.mainButton {
-    display: flex;
-    width: 16.28188rem;
-    height: 4.3125rem;
-    justify-content: center;
-    align-items: center;
-    background: #F2A518;
-    border: none;
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: clamp(1.35rem, 1.8vw, 1.8rem);
-    margin-top: clamp(4rem, 8.5vw, 8.5rem);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    margin-left: 6rem;
+.main a {
+  display: inline-flex;
+  width: fit-content;  
+  max-width: 90%;    
+  padding: 1.5rem 3rem;
+  justify-content: center;
+  align-items: center;
+  background: #F2A518;
+  border: none;
+  color: #FFF;
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  margin-top: clamp(3rem, 6vw, 6rem);
+  margin-left: clamp(1.5rem, 6rem, 6rem);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  z-index: 10;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+
 }
 
-.mainButton::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+.main a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
 }
 
-.mainButton:hover {
-    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
-    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
-    transform: translateY(-3px) scale(1.05);
+.main a:hover {
+  background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+  box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+  transform: translateY(-3px) scale(1.05);
 }
 
-.mainButton:hover::before {
-    width: 300px;
-    height: 300px;
+.main a:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
-.mainButton:active {
-    background: #d18f15;
-    transform: translateY(-1px) scale(1.02);
+.main a:active {
+  background: #d18f15;
+  transform: translateY(-1px) scale(1.02);
 }
 
 .s1 {
-    display: flex;
-    flex-direction: column;
-    margin-top: clamp(3.5rem, 7vw, 7rem);
-    margin-left: clamp(3.5rem, 9.5vw, 9.5rem);
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(3.5rem, 7vw, 7rem);
+  margin-left: clamp(3.5rem, 9.5vw, 9.5rem);
+  /* Remove margem direita fixa para evitar overflow, controla no pai ou max-width */
+  margin-right: clamp(1rem, 5vw, 5rem); 
 }
 
 .s1 h1 {
-   font-family: "The Next Font";
-   font-size: clamp(2.5rem, 5vw, 5rem);
-   font-weight: 400;
+ font-family: "The Next Font", sans-serif;
+ font-size: clamp(2rem, 5vw, 5rem);
+ font-weight: 400;
 }
 
 .informacoes {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: clamp(3rem, 5.5vw, 5.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: clamp(3rem, 5.5vw, 5.5rem);
+  gap: 2rem; /* Adicionado gap para consistência */
 }
 
 .bloco {
-    background-image: url('../../public/images/meuperfil-after/infor-bg.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 26.5vw;
-    height: 18vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
+  background-image: url('../../public/images/meuperfil-after/infor-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 26.5vw;
+  height: 18vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  /* Min height e width para garantir usabilidade */
+  min-width: 280px; 
+  min-height: 220px;
 }
 
 .bloco:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
 }
 
 .bloco h1 {
-    font-family: "PLAYFUL RUNWAY";
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-    font-weight: 400;
-    margin-top: clamp(1.25rem, 2vw, 2rem);
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  margin-top: clamp(1.25rem, 2vw, 2rem);
+  text-align: center;
 }
 
 .blocoRoxo {
-    width: 22.87475rem;
-    height: 7.5rem;
-    border-radius: 0.9375rem;
-    border: 1px solid #7D4AB3;
-    background: #FAF5FF;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: clamp(1.25rem, 2vw, 2rem);
+  width: 80%; /* Relativo ao pai */
+  max-width: 22.87475rem;
+  height: 7.5rem;
+  border-radius: 0.9375rem;
+  border: 1px solid #7D4AB3;
+  background: #FAF5FF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: clamp(1.25rem, 2vw, 2rem);
 }
 
 .blocoRoxo h3 {
-    font-family: "Louis George Cafe";
-    font-size: clamp(1rem, 1.25vw, 1.25rem);
-    font-weight: 400;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  font-weight: 400;
 }
 
 .blocoRoxo h1 {
-    font-family: "The Next Font";
-    font-size: clamp(2rem, 3vw, 3rem);
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+  margin-top: 0; /* Reset margin herdado */
 }
 
 .s2 {
-    display: flex;
-    flex-direction: column;
-    margin-top: clamp(3.5rem, 7vw, 7rem);
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(3.5rem, 7vw, 7rem);
+  width: 100%;
 }
 
-.s2 h1 {
-    font-family: "PLAYFUL RUNWAY";
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 400;
-    max-width: 65rem;
-    margin-right: 32rem;
+.s2 > h1 {
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-weight: 400;
+  max-width: 90%;
+  margin-left: clamp(3.5rem, 9.5vw, 9.5rem);
 }
 
-.s2 h4 {
-    text-align: justify;
-    font-family: "Louis George Cafe";
-    font-weight: 400;
-    line-height: normal;
-    font-size: clamp(1.25rem, 2vw, 2rem);
-    max-width: 65rem;
-    margin-bottom: clamp(2.5rem, 5vw, 5rem);
+.s2 > h4 {
+  text-align: justify;
+  font-family: "Louis George Cafe", sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  font-size: clamp(1.1rem, 2vw, 2rem);
+  max-width: 90%;
+  margin-bottom: clamp(2.5rem, 5vw, 5rem);
+  margin-left: clamp(3.5rem, 9.5vw, 9.5rem);
 }
 
 .artigo1, .artigo2 {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 91.9vw;
-    height: 43.8vw;
-    display: flex;
-    align-items: center;
-    margin-bottom: clamp(4.5rem, 11vw, 11rem);
+   display: flex;
+   width: 90%; /* Ajuste de segurança */
+   max-width: 1400px;
+   height: auto;
+   justify-content: center;
+   align-items: center;
+   border-radius: 30px;
+   flex-direction: row;
+   gap: 5rem;
+   align-self: center;
+   padding: 5rem;
+   box-sizing: border-box; /* Garante que padding não estoure width */
+   margin-bottom: 3rem;
 }
 
 .artigo1 {
-    margin-left: calc(-1 * (100vw - 100%) / 2);
-    background-image: url('../../public/images/meuperfil-after/artigo1-bg.png');
-    justify-content: end;
+   background-color: #FFF7E8;
 }
 
 .artigo2 {
-    margin-right: calc(-1 * (100vw - 100%) / 2);
-    align-self: flex-end;
-    background-image: url('../../public/images/meuperfil-after/artigo2-bg.png');
+   background-color: #FAF5FF;
+}
+
+.artigo1 img, .artigo2 img {
+  border-radius: 30px;
+  max-width: 45%; /* Garante proporção desktop */
+  object-fit: cover;
 }
 
 .artigoDiv {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2rem, 4vw, 4rem);
-    align-items: center;
-}
-
-.artigo1 .artigoDiv {
-    margin-right: clamp(2rem, 4vw, 4rem);
-}
-
-.artigo2 .artigoDiv {
-    margin-left: clamp(2rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .artigoDiv h1 {
-    font-family: "PLAYFUL RUNWAY";
-    font-size: clamp(2rem, 4vw, 4rem);
-    max-width: 29.5rem;
-    text-align: center;
-    font-weight: 400;
-    line-height: normal;
+  font-family: "PLAYFUL RUNWAY", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  max-width: 30.5rem;
+  text-align: center;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .blocoTexto {
-    background-color: #FFF;
-    width: 44.5625rem;
-    height: 13.4375rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1.25rem;
-    padding: clamp(1.125rem, 1.5vw, 1.5rem);
+  background-color: #FFF;
+  width: 100%;
+  max-width: 44.5625rem;
+  min-height: 13.4375rem;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 2vw, 2rem);
+  box-sizing: border-box;
 }
 
 .blocoTexto p {
-    text-align: justify;
-    font-family: "Louis George Cafe";
-    font-size: clamp(1.25rem, 2vw, 2rem);
-    font-weight: 400;
-    line-height: normal;
+  text-align: justify;
+  font-family: "Louis George Cafe", sans-serif;
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 400;
+  line-height: normal;
 }
 
-.cor1 { color: #7D4AB3; }
-.cor2 { color: #F2A518; }
-
 .artigoDiv h4 {
-    text-align: center;
-    font-family: "The Next Font";
-    font-weight: 400;
-    line-height: normal;
-    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
-    max-width: 27.3rem;
+  text-align: center;
+  font-family: "The Next Font", sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  max-width: 27.3rem;
 }
 
 .artigoButton {
-    width: 14.39413rem;
-    height: 3.8125rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    font-family: "The Next Font";
-    color: #FFF;
-    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
+  width: 14.39413rem;
+  height: 3.8125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-family: "The Next Font", sans-serif;
+  color: #FFF;
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
 }
 
 .artigoButton::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
 }
 
-.artigo1 .artigoButton {
-    background: #F2A518;
-}
-
-.artigo2 .artigoButton {
-    background: #722F53;
-}
+.artigo1 .artigoButton { background: #F2A518; }
+.artigo2 .artigoButton { background: #722F53; }
 
 .artigo1 .artigoButton:hover {
-    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
-    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
-    transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+  box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .artigo2 .artigoButton:hover {
-    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
-    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
-    transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .artigoButton:hover::before {
-    width: 300px;
-    height: 300px;
+  width: 300px;
+  height: 300px;
 }
 
 .artigo1 .artigoButton:active {
-    background: #d18f15;
-    transform: translateY(-1px) scale(1.02);
+  background: #d18f15;
+  transform: translateY(-1px) scale(1.02);
 }
 
 .artigo2 .artigoButton:active {
-    background: #5E332C;
-    transform: translateY(-1px) scale(1.02);
+  background: #5E332C;
+  transform: translateY(-1px) scale(1.02);
 }
 
 .monte {
   display: flex;
-  align-items: flex-end;
   flex-direction: column;
   width: 100%;
   background-color: #5E332C;
+  position: relative; /* CRUCIAL: Torna este elemento a âncora */
+  padding-bottom: 4rem; /* Cria espaço extra embaixo para o botão não vazar */
 }
 
 .monte img:first-child {
   width: 100%;
   height: auto;
+  display: block; /* Remove espaços brancos fantasmas abaixo de imagens */
+}
+
+@keyframes floatY {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 .conheca {
+  /* Tamanho fluido mantido */
+  width: clamp(140px, 16vw, 240px);
   height: auto;
-  width: clamp(120px, 13.5vw, 200px);
-  margin-top: -10vw;
-  margin-right: 13vw;
+  
+  position: absolute;
+  
+  /* CORREÇÃO: Adicionada unidade 'px' ou '%' e ajustado para overlapping.
+     Um valor negativo faz ele "cair" para fora da seção .monte, criando um efeito 3D legal.
+     Se quiser ele totalmente dentro, use bottom: 20px */
+  bottom: 120px; 
+  right: 8%;
+  
   cursor: pointer;
-  transition: transform 0.3s ease;
+  z-index: 20;
+  
+  /* Sombra mais forte para destacar do fundo */
+  filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.4));
+  
+  /* Aplica a animação de flutuação */
+  animation: floatY 4s ease-in-out infinite;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .conheca:hover {
-    transform: scale(1.05);
+  /* Pausa a animação ao passar o mouse para facilitar o clique */
+  animation-play-state: paused;
+  /* Aumenta um pouco e brilha */
+  transform: scale(1.1) rotate(2deg);
+  filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.5)) brightness(1.1);
 }
 
 .s3 {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 100vw;
-    min-height: 40.8vw;
-    flex-direction: row;
-    background-color: #F2A518;
-    margin-top: clamp(3rem, 8vw, 8rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 40.8vw;
+  flex-direction: row;
+  background-color: #F2A518;
+  margin-top: clamp(3rem, 8vw, 8rem);
+  padding: 4rem 2rem; /* Adicionado padding vertical */
+  box-sizing: border-box;
+}
+
+.s3 > img {
+    max-width: 45%;
 }
 
 .s3 > div {
-    display: flex;
-    flex-direction: column;
-    max-width: 42rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 42rem;
 }
 
 .s3 > div h1 {
-    font-family: "The Next Font";
-    font-weight: 400;
-    line-height: 2.5rem;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-    max-width: 32rem;
+  font-family: "The Next Font", sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: clamp(2rem, 2.5vw, 2.5rem);
+  max-width: 32rem;
 }
 
 .s3 > div p {
-    text-align: justify;
-    font-family: "Louis George Cafe";
-    font-weight: 400;
-    line-height: 1.6rem;
-    margin-top: clamp(1.125rem, 1.5vw, 1.5rem);
-    font-size: clamp(1.05rem, 1.3vw, 1.3rem);
-    letter-spacing: 0.06669rem;
+  text-align: justify;
+  font-family: "Louis George Cafe", sans-serif;
+  font-weight: 400;
+  line-height: 1.6rem;
+  margin-top: clamp(1.125rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+  letter-spacing: 0.06669rem;
 }
 
 .s3Button {
-    display: flex;
-    width: 12.72956rem;
-    height: 3.37163rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1.85781rem;
-    background: #722F53;
-    color: #FFF;
-    font-family: "The Next Font";
-    font-size: clamp(1.05rem, 1.3vw, 1.3rem);
-    font-weight: 400;
-    border: none;
-    cursor: pointer;
-    margin-top: clamp(2rem, 3vw, 3rem);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
+  display: flex;
+  width: 12.72956rem;
+  height: 3.37163rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.85781rem;
+  background: #722F53;
+  color: #FFF;
+  font-family: "The Next Font", sans-serif;
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  margin-top: clamp(2rem, 3vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
 }
 
 .s3Button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
 }
 
 .s3Button:hover {
-    background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
-    box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
-    transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .s3Button:hover::before {
-    width: 300px;
-    height: 300px;
+  width: 300px;
+  height: 300px;
 }
 
 .s3Button:active {
-    background: #5E332C;
-    transform: translateY(-1px) scale(1.02);
+  background: #5E332C;
+  transform: translateY(-1px) scale(1.02);
 }
 
 .botaoEditar {
-    width: 14.39413rem;
-    height: 3.8125rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    font-family: "The Next Font";
-    color: #FFF;
-    font-size: 1.2rem;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    background-color: #F2A518;
+  width: 14.39413rem;
+  height: 3.8125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-family: "The Next Font", sans-serif;
+  color: #FFF;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  background-color: #F2A518;
 }
 
 .botaoEditar::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
 }
 
 .botaoEditar:hover {
-    background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
-    box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
-    transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #F2A518 0%, #FFC95C 100%);
+  box-shadow: 0px 10px 25px rgba(242, 165, 24, 0.5);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .botaoEditar:hover::before {
-    width: 300px;
-    height: 300px;
+  width: 300px;
+  height: 300px;
+}
+
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
+
+/* TABLET E DISPOSITIVOS MÉDIOS (Até 1024px) */
+@media (max-width: 1024px) {
+  .artigo1, .artigo2 {
+    flex-direction: column;
+    padding: 3rem;
+    gap: 2rem;
+  }
+
+  .conheca {
+    bottom: 100px;
+  }
+
+  /* Na ordem do DOM, a imagem pode aparecer depois do texto, 
+     use order para garantir imagem no topo se desejar */
+  .artigo1 img, .artigo2 img {
+    max-width: 80%;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Corrige inversão visual na artigo2 se a imagem estiver à direita no desktop */
+  .artigo2 {
+    flex-direction: column-reverse; /* Imagem (que está por ultimo no html) vai pro topo? não, vai pro fundo. Vamos manter normal ou ajustar conforme preferência visual */
+  }
+  
+  /* Ajuste específico para garantir que imagem fique no topo se for o desejo, 
+     ou manter texto -> imagem. No mobile, imagem geralmente vem primeiro ou por ultimo
+     para quebrar o texto. Vamos deixar fluxo natural, mas ajustando largura */
+}
+
+/* MOBILE (Celulares e Tablets Pequenos - Até 768px) */
+@media (max-width: 768px) {
+  
+  /* Header / Main Hero */
+  .main {
+    min-height: 70vh; /* Mais altura no mobile para ver o bg */
+    justify-content: center;
+    align-items: flex-start; /* Mantém alinhamento à esquerda, mas com menos margem */
+  }
+
+  .mainDiv h1, 
+  .mainDiv p, 
+  .main a {
+    margin-left: 1.5rem; /* Margem padrão segura mobile */
+    margin-right: 1.5rem;
+  }
+
+  .mainDiv h1 {
+    margin-top: 5rem;
+    font-size: 3rem; /* Tamanho legível */
+  }
+
+  .main a {
+    /* Reseta margens para o padrão mobile seguro */
+    margin-left: 1.5rem;
+    margin-right: 1.5rem; /* Evita que encoste na direita em telas muito pequenas */
+    margin-top: 3rem;     /* Reduz o espaço superior em relação ao desktop */
+    
+    /* Garante largura confortável */
+    width: fit-content;   
+    max-width: 90%;       /* Segurança para não estourar a tela */
+    
+    /* Ajusta padding para ser proporcional à tela menor */
+    padding: 1rem 2.5rem; 
+    
+    /* Garante tamanho de fonte legível sem ser gigante */
+    font-size: 1.2rem;    
+  }
+
+   .conheca {
+    bottom: 50px;
+  }
+
+  /* S1: Header da seção de informações */
+  .s1 {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 4rem;
+  }
+  
+  /* Transforma o header da seção (título + botão editar) em coluna ou ajusta layout */
+  .s1 > div[style] {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1.5rem;
+  }
+
+  /* --- O PEDIDO DE SCROLL HORIZONTAL NOS CARDS --- */
+  .informacoes {
+    display: flex;
+    flex-wrap: nowrap; /* Impede quebra de linha */
+    overflow-x: auto; /* Habilita scroll horizontal */
+    width: 100vw; /* Ocupa largura total */
+    margin-left: -1.5rem; /* Compensa a margem do pai para encostar na borda */
+    padding-left: 1.5rem; /* Padding interno para alinhar o primeiro item */
+    padding-right: 1.5rem; /* Espaço no final */
+    padding-bottom: 2rem; /* Espaço para a scrollbar não colar */
+    scroll-snap-type: x mandatory; /* Efeito magnético ao scrolar */
+    -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+  }
+
+  .bloco {
+    width: 85vw; /* Card ocupa quase a tela toda */
+    height: auto;
+    min-height: 250px; /* Altura mínima segura */
+    flex-shrink: 0; /* Impede o card de encolher */
+    scroll-snap-align: center; /* Centraliza o card ao soltar */
+    margin-right: 1rem;
+    background-size: cover;
+    padding-bottom: 2rem;
+  }
+  
+  /* Ajuste no conteúdo dentro do card */
+  .bloco h1 {
+    font-size: 2rem;
+  }
+  
+  .blocoRoxo {
+    width: 90%;
+  }
+
+  /* S2: Artigos */
+  .s2 > h1, .s2 > h4 {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    max-width: 100%;
+  }
+
+  .artigo1, .artigo2 {
+    width: 92%; /* Quase full width */
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  
+  .artigo1 img, .artigo2 img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .blocoTexto {
+    padding: 1.5rem;
+    height: auto; /* Altura automática */
+  }
+
+  /* Seção Monte */
+
+  /* S3: Skincare */
+  .s3 {
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+    height: auto;
+  }
+  
+  .s3 > img {
+    max-width: 80%;
+    margin-bottom: 2rem;
+  }
+  
+  .s3 > div {
+    align-items: center;
+  }
+  
+  .s3 > div h1 {
+    text-align: center;
+  }
+  
+  .s3 > div p {
+    text-align: center; /* Leitura melhor centralizada em colunas estreitas */
+  }
+}
+
+/* PEQUENOS CELULARES (ex: iPhone SE, Galaxy Fold fechado) */
+@media (max-width: 380px) {
+  .mainDiv h1 {
+    font-size: 2.5rem;
+  }
+  
+  .bloco h1 {
+    font-size: 1.8rem;
+  }
 }
