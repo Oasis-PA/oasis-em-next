@@ -435,34 +435,32 @@ const Respostas: React.FC = () => {
               </div>
             </section>
 
-            {/* Artigos */}
+          {/* Artigos */}
             <section className={styles.articlesContainer}>
-              <div className={`${styles.articleCard} ${styles.articleCard1}`}>
+              <Link href='artigo/como-escolher-o-corte-ideal-para-o-formato-do-rosto' className={`${styles.articleCard} ${styles.articleCard1}`}>
                 <div className={styles.articleContent}>
-                  <p>13 jan 2025</p>
+                  <div className={styles.articleTextWrapper}>
+                    <div className={styles.articleButtons}>
+                      <button>Cortes</button>
+                      <button>Marcas</button>
+                    </div>
+                    <h1>Como escolher o corte ideal para o formato do rosto</h1>
+                  </div>
+                </div>
+                <img className={styles.articleArrow} src="/images/resposta/Vector.png" alt="" />
+              </Link>
+              <Link href='/artigo/shampoos-em-barra' className={`${styles.articleCard} ${styles.articleCard2}`}>
+                <div className={styles.articleContent}>
                   <div className={styles.articleTextWrapper}>
                     <div className={styles.articleButtons}>
                       <button>Moda</button>
                       <button>Marcas</button>
                     </div>
-                    <h1>Os 10 melhores óleos essenciais</h1>
+                    <h1>Shampoos em barra: veja os 5 mais populares</h1>
                   </div>
                 </div>
                 <img className={styles.articleArrow} src="/images/resposta/Vector.png" alt="" />
-              </div>
-              <div className={`${styles.articleCard} ${styles.articleCard2}`}>
-                <div className={styles.articleContent}>
-                  <p>13 jan 2025</p>
-                  <div className={styles.articleTextWrapper}>
-                    <div className={styles.articleButtons}>
-                      <button>Moda</button>
-                      <button>Marcas</button>
-                    </div>
-                    <h1>Os 10 melhores óleos essenciais</h1>
-                  </div>
-                </div>
-                <img className={styles.articleArrow} src="/images/resposta/Vector.png" alt="" />
-              </div>
+              </Link>
             </section>
           </section>
         </div>

@@ -68,8 +68,6 @@ const CronogramaCapilar: React.FC = () => {
         </p>
       </div>
 
-      <p className={styles.se}>Se você não quer responder perguntas, tudo bem! Aqui nós temos cronogramas prontos para todos os tipos de cabelo.</p>
-
      <section className={styles.passando}>
         
         <Link href="artigo/acidificacao-no-cabelo" className={styles.fotos}>
@@ -81,7 +79,7 @@ const CronogramaCapilar: React.FC = () => {
         
         <Link href="artigo/como-desembaracar-sem-dor" className={styles.fotos}>
           <div className={`${styles.cardImagem} ${styles.bgCronograma}`}>
-            <p className={styles.textoFoto}>COMO <br />DESEMBARAÇAR</p>
+            <p className={styles.textoFoto}>COMO <br />DESEMBARAÇAR <br /> SEM DOR</p>
           </div>
         </Link>
         
@@ -97,7 +95,7 @@ const CronogramaCapilar: React.FC = () => {
           </div>
         </Link>
         
-        <Link href="artigo/suplementos-para-cabelo-funcionam-mesmo" className={styles.fotos}>
+        <Link href="artigo/suplementos-para-cabelo" className={styles.fotos}>
           <div className={`${styles.cardImagem} ${styles.bgCuidado}`}>
             <p className={styles.textoFoto}>SUPLEMENTOS CAPILARES</p>
           </div>

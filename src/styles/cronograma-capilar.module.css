@@ -464,11 +464,11 @@
 }
 
 .bgCronograma {
-  background-image: url('/images/link-artigos/como-desembaracar-sem-dor.jpg');
+  background-image: url('/images/link-artigos/como-desembaracar-sem-dor.jpeg');
 }
 
 .bgSOS {
-  background-image: url('/images/link-artigos/qual-creme-comprar.jpg');
+  background-image: url('/images/link-artigos/qual-creme-comprar.jpeg');
 }
 
 .bgRecupere {
@@ -476,11 +476,11 @@
 }
 
 .bgCuidado {
-  background-image: url('/images/link-artigos/suplementos-para-cabelo-funcionam-mesmo.jpg');
+  background-image: url('/images/link-artigos/suplementos-para-cabelo.jpeg');
 }
 
 .bgAgenda {
-  background-image: url('/images/link-artigos/melhores-tipos-de-finalizacao.jpg');
+  background-image: url('/images/link-artigos/melhores-tipos-de-finalizacao.jpeg');
 }
 
 
@@ -736,7 +736,7 @@
 }
 
 .oleos {
-  background: url('/images/link-artigos/oleos-essenciais-para-cabelo-7-opc-es-poderosas') no-repeat center center;
+  background: url(../../public/images/Cronograma-capilar/oleos.png) no-repeat center center;
   background-size: cover;
   color: white;
   font-family: 'The Next Font';
@@ -1058,4 +1058,88 @@
   .passando::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* meus hover */
+
+.ajuda:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.quadrado:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 60px 60px 80px rgba(117, 25, 139, 0.3);
+}
+
+.quadrado:hover .imagem {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.quadrado:hover .legendaQuadrado {
+  color: #722F53;
+  transform: scale(1.05);
+}
+
+.quadrado:hover .legendaQuadrado {
+  color: #722F53;
+  transform: scale(1.05);
+}
+
+.conheca:hover {
+  transform: scale(1.15) rotate(-3deg);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.passando::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
+
+.fotos:hover {
+  transform: scale(1.05);
+}
+
+.descubra:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.descubra:hover {
+  background: linear-gradient(135deg, #8B3A62 0%, #D946A6 100%);
+  box-shadow: 0px 10px 25px rgba(114, 47, 83, 0.6);
+  transform: translateY(-3px) scale(1.08);
+}
+
+.oleos:hover, .dicas:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+.dicasTopicos:hover {
+  transform: translateX(8px);
+}
+
+.dicasTopicos:hover .sub0 {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.hidratante:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.logo:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(94, 51, 44, 0.4);
+}
+
+.homemGarfo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.shampoos:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
 }
