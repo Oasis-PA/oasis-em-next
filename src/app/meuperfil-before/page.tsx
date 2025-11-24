@@ -20,7 +20,7 @@ const MeuAvatarPage: React.FC = () => {
           <div className={styles.sec2Texto}>
             <h1>CRIE SEU PERFIL</h1>
             <p>Sua identidade, suas regras. Comece a montar agora!</p>
-            <Link href="/crie-agora" className={styles.sec2Link}>CRIE AGORA</Link>
+            <Link href="/meu-perfil/questionario/meu-perfil" className={styles.sec2Link}>CRIE AGORA</Link>
           </div>
           <div className={styles.sec2Imagem}>
             <img src="/images/meuperfil-before/scorza.png" alt="Avatar" />
