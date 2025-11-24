@@ -85,7 +85,7 @@ export default function MeuPerfilAfter() {
         <div className={styles.mainDiv}>
           <h1>Seu perfil está pronto, {nome}!</h1>
           <p>aqui está o que preparamos para você.</p>
-          <button className={styles.mainButton}>EXPLORE</button>
+          <Link href='/' className={styles.mainButton}>EXPLORE</Link>
         </div>
       </main>
 

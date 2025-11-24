@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 // Importando o CSS Module
 import styles from "@/styles/perguntas.module.css";
+import Link from "next/link";
+
 
 const quizData = [
     {
@@ -280,10 +282,12 @@ const PerguntaPage = () => {
             <main className={styles.mainContainer}>
                 <section className={styles.esquerda}>
                     <div className={styles.content}>
-                        <button className={styles.seta} onClick={() => setCurrentQuestion(1)}>
-                            <img src="/images/perguntas/setinha.png" alt="Voltar" />
-                            <p>Página Inicial</p>
-                        </button>
+                        <Link href='/'>
+                            <button className={styles.seta} onClick={() => setCurrentQuestion(1)}>
+                                <img src="/images/perguntas/setinha.png" alt="Voltar" />
+                                <p>Página Inicial</p>
+                            </button>
+                        </Link>
 
                         <div className={styles.perguntaHeader}>
                             <div className={styles.perguntaTitulo}>

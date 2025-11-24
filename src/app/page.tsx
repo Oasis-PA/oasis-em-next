@@ -19,7 +19,7 @@ const slidesData = [
     h2: "Descubra seu melhor visual",
     h1: "REINVENTE SEU ESTILO",
     backgroundImage: "/images/tela-principal/banner2.png",
-    link: "/haircare"
+    link: "/tendencias"
   },
   {
     h2: "O melhor de uma pele renovada",
