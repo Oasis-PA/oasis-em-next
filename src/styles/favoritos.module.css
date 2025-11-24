@@ -406,7 +406,7 @@
     transform: translateY(-1px) scale(1.02);
 }
 
-/* ---- SEÇÃO SALVOS / RECENTES (MODIFICADO) ---- */
+/* ---- SEÇÃO SALVOS / RECENTES ---- */
 .savedSectionWrapper {
     display: flex;
     flex-direction: column;
@@ -424,52 +424,56 @@
     text-align: center;
 }
 
-/* Container do Scroll Horizontal */
 .savedCardsContainer {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start; /* Itens começam da esquerda */
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
     margin-top: 55px;
     width: 100%;
-    max-width: 1600px; /* Limite opcional para telas muito grandes */
-    padding: 1rem 1rem 3rem 1rem; /* Padding inferior maior para scrollbar não colar */
-    
-    /* HABILITA O SCROLL HORIZONTAL */
-    overflow-x: auto; 
-    flex-wrap: nowrap; /* Impede que quebre a linha */
-    scroll-behavior: smooth;
-    
-    /* Opcional: Efeito de snap para parar no item certinho ao rolar */
-    scroll-snap-type: x mandatory; 
+    overflow-x: hidden; 
+    padding: 3rem;
+    transition: all 0.3s ease;
 }
 
-/* Custom Scrollbar */
-.savedCardsContainer::-webkit-scrollbar {
-    height: 8px;
+/* Classe para quando a lista está expandida */
+.expandedContainer {
+    flex-wrap: wrap; 
+    overflow-x: visible;
+    height: auto;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.savedCardsContainer::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
+.expandedContainer .savedCard {
+    margin-bottom: 2rem;
 }
 
-.savedCardsContainer::-webkit-scrollbar-thumb {
-    background: #722F53;
-    border-radius: 4px;
+/* Estilo dos botões de seta */
+.scrollBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    z-index: 10;
+    flex-shrink: 0; 
 }
 
-.savedCardsContainer::-webkit-scrollbar-thumb:hover {
-    background: #5f0b38;
+.scrollBtn:hover:not(:disabled) {
+    transform: scale(1.2);
 }
 
+/* Estilo padrão (Desktop) dos cards */
 .savedCard {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    /* ESSENCIAL: impede que o card encolha, forçando o scroll */
-    flex-shrink: 0; 
+    width: 250px; 
+    flex-shrink: 0;
     height: auto;
     min-height: 490px;
     border: 3px solid #939191;
@@ -480,9 +484,6 @@
     animation: fadeIn 0.5s ease;
     gap: 1rem;
     background-color: #fff;
-    
-    /* Para o scroll snap funcionar */
-    scroll-snap-align: start; 
 }
 
 @keyframes fadeIn {
@@ -739,6 +740,7 @@
     /* =========================================================== */
     /* === BROWNCARDS EM 768px: 1 COLUNA, LAYOUT HORIZONTAL === */
     /* =========================================================== */
+    /* Aqui definimos 1 coluna empilhada */
     .brownCardsSection {
         display: flex;
         flex-direction: column; 
@@ -747,45 +749,50 @@
         padding: 0 1.5rem;
     }
 
+    /* O card vira Horizontal (Row) para não ficar gigante verticalmente */
     .brownCard { 
         display: flex;
-        flex-direction: row; 
+        flex-direction: row; /* Imagem à esquerda, texto à direita */
         max-width: 400px;
         height: auto;
         min-height: auto;
         padding: 1.5rem;
         margin: 0;
-        align-items: center; 
+        align-items: center; /* Centraliza verticalmente */
     }
     
+    /* Imagem controlada */
     .brownCardImage { 
-        width: 30%; 
+        width: 30%; /* Ocupa 30% da largura */
         max-width: 180px;
         height: auto;
         object-fit: contain;
-        margin-right: 1.5rem; 
+        margin-right: 1.5rem; /* Espaço entre imagem e texto */
         padding: 0;
     }
 
+    /* Conteúdo alinhado à ESQUERDA */
     .brownCardContent { 
         width: 70%;
         padding: 0;
         display: flex;
         flex-direction: column;
-        align-items: flex-start; 
+        align-items: flex-start; /* Alinha itens à esquerda */
         text-align: left;
     }
     
     .brownCardIcon { 
-        align-self: flex-end; 
+        align-self: flex-end; /* Ícone continua na direita superior */
         margin-bottom: 0.5rem;
-        margin-top: -1rem; 
+        margin-top: -1rem; /* Ajuste para subir */
     }
     
+    /* Força texto à esquerda */
     .brownCardContent > h1, 
     .brownCardContent > p, 
     .brownCardButton { 
         align-self: flex-start; 
+        
     }
 
     /* === RESTO DO LAYOUT === */
@@ -799,26 +806,24 @@
         padding: 0 0.5rem;
     }
 
-    /* Salvos Recentemente (Mantém Scroll no Tablet) */
-    .savedCardsContainer {
-        /* Não mude para Grid aqui se quiser scroll! */
-        /* Mantemos o padrão Flex + Overflow do desktop */
-        width: 100%;
-        padding: 0 1rem 2rem 1rem;
+    /* Salvos Recentemente em 2 Colunas */
+    .scrollBtn { display: none; }
+    .savedCardsContainer, .expandedContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 1rem;
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
+        width: 100%;
+        padding: 0 1rem;
+        overflow-x: visible;
+        justify-content: center;
     }
-    
     .savedCard {
-        width: 220px; /* Levemente menor no tablet */
+        width: 100%;
+        max-width: none;
+        height: 100%;
         min-height: 480px;
         margin: 0;
-        flex-shrink: 0;
     }
-    
-    .scrollBtn { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -835,7 +840,7 @@
     .mainContainer { justify-content: center; }
 }
 
-/* --- MOBILE PEQUENO (500px) --- */
+/* --- MOBILE PEQUENO (500px) - MANTÉM HORIZONTAL MAS MENOR --- */
 @media (max-width: 500px) {
     .brownCardsSection {
         display: flex;
@@ -905,26 +910,25 @@
         margin-top: 0;
     }
 
-    /* Salvos Recentemente (Mantém Scroll no Mobile) */
-    .savedCardsContainer {
-        /* Garantir que continue com scroll e não vire grid */
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
+    .savedCardsContainer, .expandedContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.8rem;
-        padding: 0 1rem 2rem 1rem;
+        overflow-x: visible;
+        width: 100%;
+        padding: 0 1rem;
+        flex-wrap: wrap; 
+        margin-bottom: 30px;
     }
 
     .scrollBtn { display: none; }
 
     .savedCard {
-        width: 200px;
+        width: 100%;
         min-height: 360px; 
         height: auto;
         margin-bottom: 0;
-        flex-shrink: 0; /* Crucial */
+        flex-shrink: 1;
     }
 
     .prodImage {
@@ -936,6 +940,7 @@
     .savedCard > h1 {
         font-size: 0.85rem;
         padding: 0.5rem;
+        word-wrap: break-word;
     }
 
     .savedCard > p {
