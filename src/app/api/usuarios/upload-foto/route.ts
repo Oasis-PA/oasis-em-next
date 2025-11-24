@@ -1,22 +1,23 @@
+// Caminho: src/app/api/usuarios/upload-foto/route.ts
+
 import { NextRequest, NextResponse } from "next/server";
-import { SignJWT, jwtVerify } from "jose";
+import { jwtVerify } from "jose";
 import { prisma } from "@/lib/prisma";
 import { supabaseAdmin } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
   try {
-    // 1. Extrai e valida o JWT token
-    const authHeader = req.headers.get("authorization");
+    // 1. Extrai o token do cookie (não do header Authorization)
+    const token = req.cookies.get("auth-token")?.value;
     
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    if (!token) {
       return NextResponse.json(
-        { error: "Token não fornecido" },
+        { error: "Não autorizado: Token não encontrado" },
         { status: 401 }
       );
     }
 
-    const token = authHeader.substring(7); // Remove "Bearer "
-    
+    // 2. Valida o token
     let decoded: any;
     try {
       const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
@@ -29,16 +30,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const userId = decoded.id_usuario || decoded.userId || decoded.id;
+    const userId = decoded.id || decoded.id_usuario || decoded.userId;
     
     if (!userId) {
       return NextResponse.json(
-        { error: "Token inválido" },
+        { error: "Token inválido: ID não encontrado" },
         { status: 401 }
       );
     }
 
-    // 2. Extrai o arquivo
+    // 3. Extrai o arquivo
     const formData = await req.formData();
     const file = formData.get("foto") as File;
 
@@ -49,7 +50,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 3. Validações
+    // 4. Validações
     if (!file.type.startsWith("image/")) {
       return NextResponse.json(
         { error: "Arquivo deve ser uma imagem" },
@@ -64,13 +65,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 4. Busca foto antiga para deletar
+    // 5. Busca foto antiga para deletar
     const usuario = await prisma.usuario.findUnique({
       where: { id_usuario: parseInt(userId) },
       select: { url_foto: true }
     });
 
-    // 5. Deleta foto antiga do Supabase Storage
+    // 6. Deleta foto antiga do Supabase Storage
     if (usuario?.url_foto) {
       try {
         const urlObj = new URL(usuario.url_foto);
@@ -82,10 +83,11 @@ export async function POST(req: NextRequest) {
           await supabaseAdmin.storage.from("perfil-fotos").remove([filePath]);
         }
       } catch (err) {
+        console.log("Erro ao deletar foto antiga:", err);
       }
     }
 
-    // 6. Prepara novo arquivo
+    // 7. Prepara novo arquivo
     const timestamp = Date.now();
     const extension = file.name.split(".").pop() || "jpg";
     const fileName = `perfil_${timestamp}.${extension}`;
@@ -94,7 +96,7 @@ export async function POST(req: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // 7. Upload para Supabase Storage
+    // 8. Upload para Supabase Storage
     const { error: uploadError } = await supabaseAdmin.storage
       .from("perfil-fotos")
       .upload(filePath, buffer, {
@@ -104,26 +106,27 @@ export async function POST(req: NextRequest) {
       });
 
     if (uploadError) {
+      console.error("Erro no upload:", uploadError);
       return NextResponse.json(
-        { error: "Erro ao fazer upload da imagem" },
+        { error: "Erro ao fazer upload da imagem: " + uploadError.message },
         { status: 500 }
       );
     }
 
-    // 8. Gera URL pública
+    // 9. Gera URL pública
     const { data: urlData } = supabaseAdmin.storage
       .from("perfil-fotos")
       .getPublicUrl(filePath);
 
     const url_foto = urlData.publicUrl;
 
-    // 9. Atualiza no banco de dados
+    // 10. Atualiza no banco de dados
     await prisma.usuario.update({
       where: { id_usuario: parseInt(userId) },
       data: { url_foto }
     });
 
-    // 10. Retorna sucesso
+    // 11. Retorna sucesso
     return NextResponse.json(
       { 
         message: "Foto atualizada com sucesso",
@@ -133,8 +136,9 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
+    console.error("Erro no upload:", error);
     return NextResponse.json(
-      { error: "Erro ao processar upload" },
+      { error: "Erro ao processar upload: " + (error instanceof Error ? error.message : "desconhecido") },
       { status: 500 }
     );
   }

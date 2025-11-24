@@ -582,7 +582,7 @@ figcaption {
 
 
 /* ============================================
-   FOOTER - Isolado para /perfil e /gerenciamento
+   FOOTER - BOTÕES CENTRALIZADOS
    ============================================ */
 .page-perfil-wrapper footer,
 .page-gerenciamento-wrapper footer {
@@ -596,10 +596,10 @@ figcaption {
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center; /* CENTRALIZADO */
     gap: 20px;
     padding: 0 40px;
-    z-index: 1100; /* Aumentado para ficar acima de elementos flutuantes */
+    z-index: 1100;
     transition: left 0.3s ease;
 }
 
