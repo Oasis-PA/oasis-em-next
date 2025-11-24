@@ -219,7 +219,7 @@ export default function Tinturas() {
             </Link>
 
             {/* O Botão fica no meio na versão Desktop */}
-            <Link href="/artigos-geral" className={`${styles.gridItem} ${styles.buttonWrapper}`}>
+            <Link href="/artigo" className={`${styles.gridItem} ${styles.buttonWrapper}`}>
                 <button className={styles.botaoS4}>VER MAIS</button>
             </Link>
 
