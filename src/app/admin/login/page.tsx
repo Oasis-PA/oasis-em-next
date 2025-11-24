@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
   if (isAuthenticated) {
     return (
       <div className="login-container">
-        <div className="login-box" style={{ maxWidth: '600px' }}>
+        <div className="login-box" style={{ maxWidth: '700px' }}>
           <div className="login-header">
             <h1>✅ Login realizado com sucesso!</h1>
             <p>Escolha para onde deseja ir</p>
@@ -74,7 +74,23 @@ export default function AdminLoginPage() {
               <p>Gerenciar catálogo de cortes</p>
             </button>
 
-          
+            <button
+              onClick={() => handleNavigate('/admin/cadastrar-produto')}
+              className="nav-card"
+            >
+              <div className="nav-icon">🛍️</div>
+              <h3>Cadastrar Produto</h3>
+              <p>Adicionar novos produtos</p>
+            </button>
+
+            <button
+              onClick={() => handleNavigate('/admin/cadastrar-tag')}
+              className="nav-card"
+            >
+              <div className="nav-icon">🏷️</div>
+              <h3>Cadastrar Tag</h3>
+              <p>Criar e gerenciar tags</p>
+            </button>
           </div>
         </div>
       </div>
