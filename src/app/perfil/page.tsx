@@ -53,6 +53,14 @@ export default function EditarPerfilPage({ onSave, onReset }: LayoutProps) {
       .finally(() => setLoading(false));
   }, []);
 
+  // Auto-hide mensagem após 5 segundos
+  useEffect(() => {
+    if (mensagem) {
+      const timer = setTimeout(() => setMensagem(""), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [mensagem]);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
