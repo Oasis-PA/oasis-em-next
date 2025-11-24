@@ -29,19 +29,19 @@ const AlimentacaoPage: React.FC = () => {
           <h2>UMA BOA ALIMENTAÇÃO:</h2>
           <div className={styles.cx}>
             <div className={styles.cx1}>
-              <img src="/images/Alimentacao/svg-cx1.png" alt="Halteres" />
+              <img src="https://i.imgur.com/u0FNbmc.png" alt="Halteres" />
               <p>Fortalece <br /> os fios</p>
             </div>
             <div className={styles.cx2}>
-              <img src="/images/Alimentacao/svg-cx2.png" alt="Seta Crescente" />
+              <img src="https://i.imgur.com/FeakYsT.png" alt="Seta Crescente" />
               <p>Aumenta o brilho natural</p>
             </div>
             <div className={styles.cx3}>
-              <img src="/images/Alimentacao/svg-cx3.png" alt="DNA" />
+              <img src="https://i.imgur.com/uRAGBx3.png" alt="DNA" />
               <p>Estimula o crescimento</p>
             </div>
             <div className={styles.cx4}>
-              <img src="/images/Alimentacao/svg-cx4.png" alt="Coracao Partido" />
+              <img src="https://i.imgur.com/Cwf9sSN.png" alt="Coracao Partido" />
               <p>Reduz queda e quebra</p>
             </div>
           </div>
