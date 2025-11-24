@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
       usuario: usuarioSemSenha
     });
 
-    // CORREÇÃO AQUI: Mudar o nome do cookie para 'auth-token'
+    
     res.cookies.set("auth-token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

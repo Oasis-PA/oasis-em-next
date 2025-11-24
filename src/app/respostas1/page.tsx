@@ -2,8 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-// Importação correta do CSS Module
 import styles from "@/styles/respostas.module.css";
+
+// 1. Adicionando a Interface do Usuário (igual ao Header)
+interface User {
+  nome: string;
+  url_foto?: string;
+}
 
 const nomesEventos = {
   hidratacao: 'Hidratação',
@@ -16,6 +21,7 @@ const nomesMeses = [
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ];
 
+// ... (Mantenha as funções gerarCronogramaSemanalEspacado, getNumeroSemanasDoMes, etc. como estão) ...
 function gerarCronogramaSemanalEspacado() {
   const opcoes3 = [
     [0, 3, 6],
@@ -88,7 +94,6 @@ function gerarCalendario(mes: number, ano: number) {
         const tratamento = getTratamentoPorData(dia, mes, ano);
         let bolinha = null;
         if (tratamento) {
-          // Mapeia a classe dinâmica baseada na chave do objeto estilos
           bolinha = <span className={`${styles.dot} ${styles[tratamento]}`} title={nomesEventos[tratamento as keyof typeof nomesEventos]}></span>;
         }
         colunas.push(
@@ -131,6 +136,9 @@ const Respostas: React.FC = () => {
   const [anoAtual, setAnoAtual] = useState(2025);
   const [semanaAtual, setSemanaAtual] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  
+  // 2. Estado para o Usuário
+  const [user, setUser] = useState<User | null>(null);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -139,6 +147,26 @@ const Respostas: React.FC = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  // 3. useEffect para buscar a foto (Igual ao Header)
+  useEffect(() => {
+    async function fetchUserProfile() {
+      try {
+        const response = await fetch('/api/usuarios/perfil');
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar perfil:", error);
+        setUser(null);
+      }
+    }
+
+    fetchUserProfile();
+  }, []);
 
   useEffect(() => {
     setSemanaAtual(0);
@@ -155,6 +183,7 @@ const Respostas: React.FC = () => {
     };
   }, [menuOpen]);
 
+  // ... (Mantenha as funções handleSemanaAnterior, handleMesProximo, etc. como estão) ...
   function handleSemanaAnterior() {
     if (semanaAtual === 0) {
       let novoMes = mesAtual - 1;
@@ -252,7 +281,16 @@ const Respostas: React.FC = () => {
           <Link href="/">
             <img className={styles.logo} src="/images/logo-reduzida.png" alt="Logo" />
           </Link>
-          <img className={styles.userAvatar} src="/images/resposta/user.png" alt="User" />
+          
+          {/* 4. Atualização da imagem do usuário */}
+          <Link href="/perfil"> {/* Opcional: Link para o perfil ao clicar na foto */}
+            <img 
+                className={styles.userAvatar} 
+                src={user?.url_foto ? user.url_foto : "/images/resposta/user.png"} 
+                alt="User Profile" 
+            />
+          </Link>
+          
         </div>
         <div className={styles.navButtons}>
           <Link href="/guia">
@@ -271,6 +309,8 @@ const Respostas: React.FC = () => {
         <div></div>
       </section>
 
+      {/* ... Restante do código (Menu Mobile, Main Layout, etc) permanece idêntico ... */}
+      
       {/* Menu Mobile */}
       <div className={`${styles.menuOverlay} ${menuOpen ? styles.active : ''}`} onClick={closeMenu}></div>
       <div className={`${styles.menuMobile} ${menuOpen ? styles.active : ''}`}>
@@ -285,18 +325,14 @@ const Respostas: React.FC = () => {
         </Link>
       </div>
 
-      {/* Main Layout */}
       <section className={styles.mainLayout}>
         <div className={styles.titles}>
           <h1>Cabelo Saudável</h1>
           <p>15/60 pontos</p>
         </div>
         <div className={styles.contentGrid}>
-          {/* Coluna Esquerda */}
           <section className={styles.leftColumn}>
-            {/* Info Card */}
             <div className={styles.infoCard}>
-              {/* Uso da infoImage1 para cabelo saudável */}
               <div className={`${styles.infoImage} ${styles.infoImage1}`}></div>
               <div className={styles.cardContent}>
                 <p>Cabelo com brilho natural, pouco frizz, boa resistência, sem ou com pouca química, couro cabeludo saudável e rotina de lavagem equilibrada.</p>
@@ -326,7 +362,6 @@ const Respostas: React.FC = () => {
               </div>
             </div>
 
-            {/* Stats */}
             <section className={styles.statsWrapper}>
               <div className={styles.miniCalendar}>
                 <h1>Semanal</h1>
@@ -360,23 +395,19 @@ const Respostas: React.FC = () => {
               </div>
             </section>
 
-            {/* Calendário Grande */}
             <div className={styles.calendarSection}>
               <div className={styles.calendarNav}>
                 <button className={styles.calendarArrow} onClick={handleMesAnterior} aria-label="Mês anterior">&#8592;</button>
                 <h2 className={styles.calendarTitle}>{nomesMeses[mesAtual]} {anoAtual}</h2>
                 <button className={styles.calendarArrow} onClick={handleMesProximo} aria-label="Próximo mês">&#8594;</button>
               </div>
-              {/* Função chamada diretamente, sem o wrapper ID desnecessário */}
               <div>{gerarCalendario(mesAtual, anoAtual)}</div>
             </div>
           </section>
 
-          {/* Coluna Direita */}
           <section className={styles.rightColumn}>
             <h1>Informativo</h1>
             
-            {/* Cronograma Semanal */}
             <div className={styles.scheduleCard}>
               <div className={styles.scheduleHeader}>
                 <button onClick={handleSemanaAnterior}>←</button>
@@ -391,7 +422,6 @@ const Respostas: React.FC = () => {
               </div>
             </div>
 
-            {/* Dicas e Alimentação */}
             <section className={styles.tipsContainer}>
               <div className={styles.tipCard}>
                 <h2>Dicas</h2>
@@ -436,7 +466,6 @@ const Respostas: React.FC = () => {
               </div>
             </section>
 
-            {/* Artigos */}
             <section className={styles.articlesContainer}>
               <Link href='artigo/como-escolher-o-corte-ideal-para-o-formato-do-rosto' className={`${styles.articleCard} ${styles.articleCard1}`}>
                 <div className={styles.articleContent}>

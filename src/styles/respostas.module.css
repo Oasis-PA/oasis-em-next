@@ -58,12 +58,17 @@
   height: 3.5rem;
   transition: width 0.3s, height 0.3s, transform 0.3s ease;
   cursor: pointer;
+  
+  /* Adições para a foto de perfil dinâmica ficar correta */
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .userAvatar:hover {
   width: 4rem;
   height: 4rem;
   transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Opcional: uma sombrinha leve no hover */
 }
 
 /* --- Menu Mobile --- */
