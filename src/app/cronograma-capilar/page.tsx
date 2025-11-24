@@ -198,7 +198,7 @@ const CronogramaCapilar: React.FC = () => {
                             <div className={styles.hidratante}>
                               <img className={styles.hidratanteImg} src="/images/Cronograma-capilar/hidratante.png" alt="Hidratante Salon Line" />
                               <div className={styles.salonLine}>
-                                <p className={styles.sub3}>Hidratante Salon Line</p> <img className={styles.favorito} src="/images/Cronograma-capilar/Favorito.png" alt="" />
+                                <p className={styles.sub3}>Hidratante Salon Line</p> 
                               </div>
                               <p>O hidratante capilar repõe a água dos fios. Deixa o cabelo macio e com brilho.</p>
                               <button className={styles.descubra}>Conheça</button>
