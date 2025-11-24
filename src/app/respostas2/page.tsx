@@ -452,26 +452,40 @@ const Respostas: React.FC = () => {
             </section>
 
             <h2>Produtos recomendados</h2>
-            <section className={styles.productsContainer}>
-              <div className={styles.productCard}>
-                <h1>Hidratação</h1>
-                <div className={`${styles.productImage} ${styles.productImg1}`}></div>
-                <p>Máscara 2 em 1 MITZIE, tratamento intenso para cabelos ressecados e sem brilho-</p>
-                <button>Conheça</button>
-              </div>
-              <div className={styles.productCard}>
-                <h1>Nutrição</h1>
-                <div className={`${styles.productImage} ${styles.productImg2}`}></div>
-                <p>Óleo de Argan, hidratação perfeita, nutrição profunda para cabelos secos e danificados.</p>
-                <button>Conheça</button>
-              </div>
-              <div className={styles.productCard}>
-                <h1>Reconstrução</h1>
-                <div className={`${styles.productImage} ${styles.productImg3}`}></div>
-                <p>Máscara de Reconstrução, força e proteção para cabelos fragilizados e quebradiços.</p>
-                <button>Conheça</button>
-              </div>
-            </section>
+                       <section className={styles.productsContainer}>
+                         {/* PRODUTO 1 */}
+                         <div className={styles.productCard}>
+                           <h1>Shampoo Afro Vegan 300ml</h1>
+                           <div className={`${styles.productImage} ${styles.productImg1}`}></div>
+                           <p>Limpeza suave que não compromete a forma dos cachos. Nutre, hidrata, sela as cutículas, confere maciez e brilho, e estimula o crescimento saudável.</p>
+                           {/* ID de exemplo: 999. Substitua pelo ID real */}
+                           <Link href="/produtos/1619">
+                             <button>Conheça</button>
+                           </Link>
+                         </div>
+           
+                         {/* PRODUTO 2 */}
+                         <div className={styles.productCard}>
+                           <h1>Shampoo Higienizando a JUBA 500ml</h1>
+                           <div className={`${styles.productImage} ${styles.productImg2}`}></div>
+                           <p>Limpa, faz espuma e não embola os fios. Desenvolvido para respeitar as curvaturas, hidrata e nutre desde a primeira aplicação, com espuma cremosa.</p>
+                           {/* ID de exemplo: 999. Substitua pelo ID real */}
+                           <Link href="/produtos/1620">
+                             <button>Conheça</button>
+                           </Link>
+                         </div>
+           
+                         {/* PRODUTO 3 */}
+                         <div className={styles.productCard}>
+                           <h1>Shampoo Umectante Cachos 400ml</h1>
+                           <div className={`${styles.productImage} ${styles.productImg3}`}></div>
+                           <p>Limpa suavemente sem ressecar. Proporciona nutrição intensa, definição duradoura, controle do frizz e brilho. cabelos cacheados a crespos ou em transição.</p>
+                           {/* ID de exemplo: 999. Substitua pelo ID real */}
+                           <Link href="/produtos/1615">
+                             <button>Conheça</button>
+                           </Link>
+                         </div>
+                       </section>
 
         {/* Artigos */}
             <section className={styles.articlesContainer}>
