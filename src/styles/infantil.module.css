@@ -1,5 +1,4 @@
-/* ⚠️ ISOLAMENTO DE ESTILOS */
-/* Convertido de .page-infantil-wrapper * */
+/* ⚠️ ISOLAMENTO DE ESTILOS E BASE */
 .pageWrapper * {
   margin: 0;
   padding: 0;
@@ -8,7 +7,7 @@
 }
 
 .pageWrapper {
-  overflow-x: hidden;
+  overflow-x: hidden; /* Crítico para evitar rolagem lateral no mobile */
   width: 100%;
 }
 
@@ -19,31 +18,36 @@
   align-items: center;
 }
 
-/* --- BANNER PRINCIPAL (Antigo #d1) --- */
+/* --- BANNER PRINCIPAL --- */
 .bannerPrincipal {
-  /* Ajuste de caminho: referência direta à pasta public */
   background-image: url('/images/infantil/banner.png');
   width: 100vw;
+  /* Altura responsiva baseada na largura para desktop */
   height: 50vw;
+  min-height: 500px; /* Garante altura mínima em telas wide curtas */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   display: flex; 
   flex-direction: column;
   padding-left: clamp(1rem, 7vw, 8rem);
-  /* Centralização para compensar width 100vw dentro de container */
+  
+  /* Hack de full-bleed width dentro de container */
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
+  position: relative;
+  left: 0;
+  right: 0;
 }
 
 .bannerPrincipal > h1 {
   color: #FFF;
   font-family: "The Next Font", sans-serif;
-  font-size: clamp(2.5rem, 2rem + 3.5vw, 6.5rem);
+  font-size: clamp(2.2rem, 5vw, 6.5rem); /* Ajustado para mobile */
   font-weight: 400;
   width: 100%;
-  max-width: 70%;
-  margin-top: clamp(1rem, 5vw, 6.98rem);
+  max-width: 80%; /* Aumentado levemente para caber melhor em mobile */
+  margin-top: clamp(2rem, 8vw, 6.98rem);
   line-height: 1.1;
 }
 
@@ -55,26 +59,28 @@
   color: #FFF;
   text-align: justify;
   font-family: "Louis George Cafe", sans-serif;
-  font-size: clamp(1.6rem, 1.3rem + 1vw, 5.5rem);
+  font-size: clamp(1.1rem, 2vw, 1.8rem); /* Leve redução base para mobile */
   font-weight: 400;
   line-height: 1.5;
   width: 100%;
-  max-width: 57%;
-  margin-top: 1rem;
+  max-width: 600px; /* Max-width em px é mais seguro para leitura */
+  margin-top: 1.5rem;
+  padding-right: 1rem;
 }
 
-/* --- SEÇÃO DE ARTIGOS (Antigo #s1) --- */
+/* --- SEÇÃO DE ARTIGOS --- */
 .sectionArtigos {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: clamp(4rem, 8vw, 12rem);
+  margin-top: clamp(3rem, 8vw, 12rem);
 }
 
 .sectionArtigos > h1 {
   font-family: "PLAYFUL RUNWAY", sans-serif;
-  font-size: clamp(2rem, 1.5rem + 3.5vw, 6.25rem);
+  font-size: clamp(2.5rem, 5vw, 6.25rem);
   padding-left: clamp(1rem, 7vw, 8rem);
+  line-height: 1.1;
 }
 
 .sectionArtigos > p {
@@ -83,17 +89,18 @@
   font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
   max-width: min(95%, 50.81rem);
   padding-left: clamp(1rem, 7vw, 8rem);
+  margin-top: 1rem;
 }
 
 .artigosContainer {
   display: flex;
   flex-direction: column;
   gap: 3rem; 
-  margin-top: 4rem;
+  margin-top: 3rem;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
-/* Linhas de artigos (Antigo #d2 e .d2) */
 .artigosRow {
   display: flex;
   flex-direction: row;
@@ -101,10 +108,10 @@
   width: 100%;
   max-width: 1400px;
   justify-content: center;
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
-/* Cards de Artigos (Base para todos) */
+/* Cards de Artigos */
 .cardArtigo {
   background-size: cover;
   background-position: center;
@@ -112,9 +119,11 @@
   flex-direction: column;
   border-radius: 1.5rem;
   flex: 1;
-  min-height: 300px; 
+  min-height: 350px; 
   transition: all 0.4s ease;
-  padding: 2rem; 
+  padding: 2.5rem; 
+  position: relative;
+  overflow: hidden;
 }
 
 .cardArtigo:hover {
@@ -122,7 +131,7 @@
   box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-/* Modificadores específicos para Backgrounds */
+/* Backgrounds Artigos */
 .artigo1 { background-image: url('/images/infantil/artigo1.png'); }
 .artigo2 { background-image: url('/images/infantil/artigo2.png'); }
 .artigo3 { background-image: url('/images/infantil/artigo3.png'); }
@@ -130,31 +139,29 @@
 .artigo5 { background-image: url('/images/infantil/artigo5.png'); }
 .artigo6 { background-image: url('/images/infantil/artigo6.png'); }
 
-/* Títulos e Textos dos Artigos */
+/* Tipografia Artigos */
 .titleBlack, .titleWhite {
   font-family: "The Next Font", sans-serif;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.5rem, 2vw, 1.8rem);
+  margin-bottom: 0.8rem;
+  line-height: 1.1;
 }
 
 .titleWhite { color: #FFF; }
-
 .textBlack, .textWhite {
   font-family: "Louis George Cafe", sans-serif;
   font-size: 1rem;
   line-height: 1.4;
 }
-
 .textWhite { color: #FFF; }
 
-
-/* --- SEÇÃO DE PRODUTOS (Antigo #s2) --- */
+/* --- SEÇÃO DE PRODUTOS --- */
 .sectionProdutos {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1280px;
-  margin: 8rem auto 4rem auto;
+  max-width: 1400px;
+  margin: 6rem auto 4rem auto;
   padding: 0 clamp(1rem, 5vw, 4rem);
 }
 
@@ -163,20 +170,15 @@
   align-items: center;
   width: 100%;
   margin-bottom: 3rem;
+  gap: 2rem;
 }
 
-/* Seletores descendentes para h1 dentro das seções */
 .sectionProdutos h1, 
 .sectionDicas h1 {
   font-family: "PLAYFUL RUNWAY", sans-serif;
-  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-size: clamp(2.2rem, 4vw, 4.5rem);
   white-space: nowrap;
-  margin-right: 2rem;
-}
-
-.sectionDicas h1 { 
-  margin-left: 2rem; 
-  margin-right: 0; 
+  flex-shrink: 0;
 }
 
 .dividingLine {
@@ -184,6 +186,7 @@
   height: 3px;
   background-color: black;
   flex-grow: 1;
+  display: block;
 }
 
 /* GRID DE PRODUTOS */
@@ -195,14 +198,15 @@
   width: 100%;
 }
 
-/* CARD DE PRODUTO INDIVIDUAL (Antigo .prod1) */
+/* CARD DE PRODUTO */
 .produtoCard {
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  /* Min-height reduzido para evitar cards muito longos em mobile */
+  min-height: 480px; 
   border: 2px solid #5F0B38;
   background: #FFF;
   padding: 1.5rem;
@@ -216,30 +220,32 @@
 
 .imgContainer {
   width: 100%;
-  height: 250px; 
+  height: 220px; 
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .infoProduto {
   display: flex;
   flex-direction: column;
   flex-grow: 1; 
+  gap: 0.5rem;
 }
 
 .produtoCard h5 {
   font-family: "Louis George Cafe", sans-serif;
   font-size: 0.9rem;
   color: #666;
-  margin-bottom: 0.5rem;
   font-weight: 600;
+  margin: 0;
 }
 
 .produtoCard h4 {
   font-family: "The Next Font", sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(1.1rem, 1.2vw, 1.3rem);
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -249,35 +255,84 @@
   margin-top: auto; 
 }
 
+/* --- Botão Veja Mais (Design Novo + Cores Originais) --- */
+
 .btnVejaMais {
-  width: 100%;
-  margin-top: 1.5rem;
-  background-color: #420E45;
-  color: white;
+  /* Layout e Dimensões */
+  width: 100%;           
+  height: 3.5rem;        
+  margin-top: 1.5rem;    
+  
+  /* Estilo Visual: Cor Original #420E45 + Arredondamento Novo */
+  background: #420E45;   
+  border-radius: 2.25rem; 
   border: none;
-  padding: 12px 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
+  
+  /* Tipografia */
+  color: #FFF;
   font-family: "The Next Font", sans-serif;
+  font-size: 1.25rem;   
+  font-weight: 400;
   text-transform: uppercase;
-  transition: all 0.3s;
+  text-decoration: none;
+
+  /* Comportamento e Animação */
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;      
+  transition: all 0.4s ease;
 }
 
+/* Efeito Ripple (Brilho interno) */
+.btnVejaMais::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2); 
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+/* Estado Hover: Gradiente derivado da cor original */
 .btnVejaMais:hover {
-  background: #6d1b5b;
+  /* Gradiente: Sai do seu roxo base (#420E45) para um tom levemente mais claro/vibrante */
+  background: linear-gradient(135deg, #420E45 0%, #751D68 100%);
+  
+  /* Sombra ajustada para o tom roxo escuro */
+  box-shadow: 0px 10px 25px rgba(66, 14, 69, 0.6); 
+  transform: translateY(-3px) scale(1.02); 
 }
 
-/* BANNERS ILUSTRATIVOS (Leão, Zebra, Girafa) */
+.btnVejaMais:hover::before {
+  width: 350px; 
+  height: 350px;
+}
+
+/* Estado Active (Clique) */
+.btnVejaMais:active {
+  background: #2b092e; /* Versão mais escura do #420E45 para sensação de clique */
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0px 5px 15px rgba(66, 14, 69, 0.4);
+}
+
+/* BANNERS INTERNOS (Leão, Zebra, Girafa) */
 .bannerGrid {
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  min-height: 480px; /* Mesma altura base do card */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  padding: 2rem;
+  padding: 2.5rem;
+  align-items: flex-start; /* Alinhar topo */
 }
 
 .bannerLeao { background-image: url('/images/infantil/produtos1.png'); }
@@ -288,17 +343,17 @@
   color: #FFF !important;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   font-family: "The Next Font", sans-serif;
-  font-size: 2.2rem;
+  font-size: clamp(2rem, 3vw, 2.5rem);
   line-height: 1.1;
   margin: 0 !important; 
 }
 
-/* --- SEÇÃO DE DICAS (Antigo #s3) --- */
+/* --- SEÇÃO DE DICAS --- */
 .sectionDicas {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 4rem auto 8rem auto;
   padding: 0 clamp(1rem, 5vw, 4rem);
 }
@@ -306,62 +361,69 @@
 .dicasGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
   width: 100%;
   margin-top: 2rem;
 }
 
 .dicaCard {
   border-radius: 20px;
-  padding: 2.5rem;
+  padding: 3rem 2.5rem;
   min-height: 380px;
   display: flex;
   flex-direction: column;
   position: relative;
   background-repeat: no-repeat;
-  background-position: bottom left;
-  background-size: 90%; 
   transition: transform 0.3s ease;
+  overflow: hidden;
 }
 
 .dicaCard:hover { transform: translateY(-5px); }
 
 .dicaCard h2 {
   font-family: "The Next Font", sans-serif;
-  font-size: 1.8rem;
+  font-size: clamp(1.6rem, 2vw, 2rem);
   text-transform: uppercase;
   line-height: 1.1;
   margin-bottom: 1rem;
-  max-width: 90%;
+  position: relative;
+  z-index: 2;
 }
 
 .dicaCard p {
   font-family: "Louis George Cafe", sans-serif;
   font-size: 1rem;
   line-height: 1.4;
-  max-width: 60%; 
+  position: relative;
+  z-index: 2;
 }
 
-/* Modificadores de Dicas (Cores e Backgrounds) */
+/* Cores e Backgrounds Dicas */
 .dica1 { 
   background-color: #F7E5C0; 
-  background-image: url('/images/infantil/dica1.png'); 
+  background-image: url('/images/infantil/dica1.png');
+  background-position: bottom -20px left -20px;
+  background-size: 45%;
 }
-.dica1 h2, .dica1 p { color: #EFA61B; }
+.dica1 h2, .dica1 p { color: #EFA61B; max-width: 60%; align-self: flex-end; text-align: right;}
 
 .dica2 { 
   background-color: #F9D490; 
   background-image: url('/images/infantil/dica2.png'); 
+  background-position: bottom right;
+  background-size: 45%;
 }
-.dica2 h2, .dica2 p { color: #8B572A; }
+.dica2 h2, .dica2 p { color: #8B572A; max-width: 65%; }
 
 .dica3 { 
   background-color: #F396C7; 
   background-image: url('/images/infantil/dica3.png'); 
   background-position: bottom left; 
+  background-size: 40%;
 }
 .dica3 h2, .dica3 p { 
   color: #570A27; 
+  max-width: 65%;
   text-align: right; 
   align-self: flex-end; 
 } 
@@ -369,70 +431,185 @@
 .dica4 { 
   background-color: #E79EEB; 
   background-image: url('/images/infantil/dica4.png'); 
+  background-position: bottom right;
+  background-size: 45%;
 }
-.dica4 h2, .dica4 p { color: #420E45; }
+.dica4 h2, .dica4 p { color: #420E45; max-width: 65%; }
 
 /* Loading e Erros */
 .loadingState, .errorState, .noProductsState {
   text-align: center;
   padding: 3rem;
   font-family: "Louis George Cafe", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  width: 100%;
 }
 
-/* --- RESPONSIVIDADE --- */
 
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE AVANÇADA)
+   ========================================================================== */
+
+/* --- TABLETS E NOTEBOOKS PEQUENOS (max 1024px) --- */
 @media (max-width: 1024px) {
+  /* Produtos viram 2 colunas */
   .produtosGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
+  /* Artigos empilham (stack) */
   .artigosRow {
     flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .cardArtigo {
+    min-height: 300px;
+    width: 100%;
+  }
+
+  /* Dicas: Ajuste de tamanho de imagem para não sobrepor texto em tablets estreitos */
+  .dica1, .dica2, .dica3, .dica4 {
+    background-size: 35%;
   }
 }
 
+/* --- MOBILE E TABLETS PEQUENOS (max 768px) --- */
 @media (max-width: 768px) {
-  .bannerPrincipal { height: 80vw; }
   
+  /* Banner Principal: Ajuste para altura dinâmica e fontes legíveis */
+  .bannerPrincipal { 
+    height: auto;
+    min-height: 60vh; /* Usa viewport height para garantir área visível */
+    padding: 4rem 1.5rem;
+    margin-left: 0; /* Remove hack de margem negativa */
+    margin-right: 0;
+    width: 100%;
+    background-position: 70% center; /* Ajusta foco da imagem */
+  }
+
+  .bannerPrincipal > h1 {
+    max-width: 100%;
+    font-size: 3rem;
+    margin-top: 0;
+  }
+
+  .bannerPrincipal > p {
+    max-width: 100%;
+    font-size: 1.1rem;
+    padding-right: 0;
+  }
+
+  /* Títulos de Seção Centralizados */
   .sectionArtigos > h1, 
   .sectionProdutos h1, 
   .sectionDicas h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     padding-left: 0;
     margin-right: 0;
-    white-space: normal;
+    margin-left: 0;
+    white-space: normal; /* Permite quebra de linha */
     text-align: center;
+    width: 100%;
   }
 
+  .sectionArtigos > p {
+    padding-left: 0;
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+  /* Header com linha: Esconde a linha para limpar o visual */
   .headerLineWrapper {
-    justify-content: center;
+    flex-direction: column;
     margin-bottom: 2rem;
+    gap: 1rem;
   }
   
-  .dividingLine { display: none; }
+  .dividingLine { 
+    display: none; 
+  }
 
+  /* Grid de Produtos: 1 Coluna (Stack) */
   .produtosGrid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+  
+  /* Ajuste de altura do card para mobile */
+  .produtoCard {
+    min-height: auto;
+    padding: 1.2rem;
+  }
 
-  /* Dicas Mobile */
+  /* Banners internos (Leão/Zebra) quadrados no mobile */
+  .bannerGrid {
+    min-height: 300px;
+    aspect-ratio: 1/1; 
+  }
+
+  /* Dicas: 1 Coluna */
   .dicasGrid {
     grid-template-columns: 1fr; 
+    gap: 1.5rem;
   }
 
   .dicaCard {
-    min-height: 320px;
+    min-height: auto; /* Altura flexível baseada no conteúdo */
     padding: 2rem;
-    background-size: 220px; 
+    background-size: 120px; /* Tamanho fixo menor para ícones */
   }
-  .dicaCard p {
-    max-width: 70%;
+
+  /* Reajuste específico de layout para Dicas no Mobile */
+  /* Força o texto para cima e imagem para baixo para evitar sobreposição */
+  .dica1 { 
+    background-position: bottom -10px right -10px; /* Move imagem para direita */
+    justify-content: flex-start;
+  }
+  .dica1 h2, .dica1 p { 
+    text-align: left; 
+    align-self: flex-start; 
+    max-width: 100%; /* Texto ocupa largura total */
+    margin-bottom: 80px; /* Espaço para a imagem embaixo */
+  }
+
+  .dica2 { 
+    background-position: bottom -10px right -10px;
+  }
+  .dica2 h2, .dica2 p { max-width: 100%; margin-bottom: 80px; }
+
+  .dica3 { 
+    background-position: bottom -10px right -10px; /* Inverte lado da imagem para padrão */
+  }
+  .dica3 h2, .dica3 p { 
+    text-align: left; 
+    align-self: flex-start; 
+    max-width: 100%; 
+    margin-bottom: 80px; 
+  }
+
+  .dica4 { 
+    background-position: bottom -10px right -10px;
+  }
+  .dica4 h2, .dica4 p { max-width: 100%; margin-bottom: 80px; }
+}
+
+/* --- MOBILE PEQUENO (max 480px) --- */
+@media (max-width: 480px) {
+  .bannerPrincipal > h1 { font-size: 2.5rem; }
+  
+  .sectionArtigos, .sectionProdutos, .sectionDicas {
+    padding: 0 1rem; /* Margens laterais seguras */
+    margin-top: 3rem;
+  }
+
+  .produtoCard {
+    border-width: 1px; /* Borda mais fina para elegância em tela pequena */
   }
   
-  .bannerGrid, .produtoCard {
-    min-height: auto;
+  .btnVejaMais {
+    padding: 10px 0;
+    font-size: 0.85rem;
   }
-  .bannerGrid { aspect-ratio: 1/1; }
 }
