@@ -31,8 +31,6 @@
 .mainDiv {
     display: flex;
     flex-direction: column;
-    margin-left: clamp(3rem, 5.5vw, 5.5rem);
-    margin-top: clamp(4rem, 10vw, 10rem);
 }
 
 .mainDiv h1 {
@@ -43,6 +41,8 @@
     line-height: normal;
     max-width: 52rem;
     font-weight: 400;
+    margin-top: 10rem;
+    margin-left: 6rem;
 }
 
 .mainDiv p {
@@ -51,6 +51,7 @@
     font-size: clamp(1.35rem, 1.8vw, 1.8rem);
     margin-top: clamp(0.875rem, 1vw, 1rem);
     font-weight: 400;
+    margin-left: 6rem;
 }
 
 .mainButton {
@@ -69,6 +70,7 @@
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
+    margin-left: 6rem;
 }
 
 .mainButton::before {
