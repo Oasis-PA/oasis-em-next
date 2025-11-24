@@ -97,7 +97,7 @@ export default function tendencias() {
                     <button>Cremes e óleos</button>
                     <button>Produtos</button>
                   </div>
-                  <p className={styles.tit3}>Ácido hialurônico</p>
+                  <p className={styles.tit3}>Ácido hialuronico</p>
                 </div>
               </div>
             </Link>
@@ -214,14 +214,14 @@ export default function tendencias() {
                   imageClass="img-2"
                   title="Melhores tipos de finalização"
                   tags={["Cabelo", "Cremes e óleos", "Produtos"]}
-                  link="/artigo/creme-comprar"
+                  link="/artigo/melhores-tipos-de-finalizacao"
                   titId="tit7"
                 />
                 <TrendCard
                   imageClass="img-3"
-                  title="skincare - 4 produtos"
+                  title="Transição capilar"
                   tags={["Cabelo", "Cremes e óleos"]}
-                  link="/artigo/skincare-4"
+                  link="/artigo/transicao-capilar"
                   titId="tit7"
                 />
               </div>
@@ -229,24 +229,24 @@ export default function tendencias() {
               <div className={styles.sec2}>
                 <TrendCard
                   imageClass="empe"
-                  title="Os dilemas do século XXI: Qual creme comprar?"
-                  tags={["Cabelo", "Cremes e óleos", "Produtos"]}
-                  link="/artigo/creme-comprar-2"
+                  title="Shampoos em barra"
+                  tags={["Shampoo", "Cuidado", "Produtos"]}
+                  link="/artigo/shampoos-em-barra"
                   titId="tit7"
                 />
                 <div className={styles.deitada}>
                   <TrendCard
                     imageClass="img-4"
-                    title="Os dilemas do século XXI: Qual creme comprar?"
+                    title="Hidratação caseira para cabelos crespos"
                     tags={["Cabelo", "Cremes e óleos", "Produtos"]}
-                    link="/artigo/creme-comprar-3"
+                    link="/artigo/hidratacao-caseira-crespos"
                     titId="tit7"
                   />
                   <TrendCard
                     imageClass="img-5"
-                    title="Os dilemas do século XXI: Qual creme comprar?"
+                    title="Como desembaraçar sem dor?"
                     tags={["Cabelo", "Cremes e óleos", "Produtos"]}
-                    link="/artigo/creme-comprar-4"
+                    link="/artigo/como-desembaracar-sem-dor"
                     titId="tit7"
                   />
                 </div>
@@ -257,9 +257,9 @@ export default function tendencias() {
               <div className={styles.diriTopo}>
                 <TrendCard
                   imageClass="img-6"
-                  title="Os dilemas do século XXI: Qual creme comprar?"
-                  tags={["Cabelo", "Cremes e óleos", "Produtos"]}
-                  link="/artigo/creme-comprar-5"
+                  title="10 tons fantásticos para sair do básico"
+                  tags={["Cabelo", "Tinturas", "Produtos"]}
+                  link="/artigo/10-tons-fantasticos"
                   titId="tit7"
                 />
               </div>
@@ -267,16 +267,16 @@ export default function tendencias() {
               <div className={styles.diriBaixo}>
                 <TrendCard
                   imageClass="img-7"
-                  title="Grillz em 2025"
-                  tags={["Cabelo", "Cremes e óleos"]}
-                  link="/artigo/grillz-2025"
+                  title="Suplementos para cabelo"
+                  tags={["Cabelo", "Suplemento"]}
+                  link="/artigo/suplementos-para-cabelo"
                   titId="tit7"
                 />
                 <TrendCard
                   imageClass="img-8"
                   title="como fazer waves"
-                  tags={["Cabelo"]}
-                  link="/artigo/waves"
+                  tags={["Cabelo", "Estilo"]}
+                  link="/artigo/como-fazer-waves"
                   titId="tit8"
                 />
               </div>
