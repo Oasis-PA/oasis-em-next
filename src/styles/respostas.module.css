@@ -459,7 +459,7 @@
   color: #000;
   text-align: center;
   font-family: "PLAYFUL RUNWAY", cursive;
-  font-size: clamp(1.8rem, 5vw, 2.8125rem);
+  font-size: clamp(1.3rem, 2vw, 1rem);
   font-weight: 400;
   line-height: 126%;
   width: 100%;
@@ -655,9 +655,9 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
-.productImg1 { background-image: url('/images/resposta/prod-1.png'); }
-.productImg2 { background-image: url('/images/resposta/prod-2.png'); }
-.productImg3 { background-image: url('/images/resposta/prod-3.png'); }
+.productImg1 { background-image: url('https://epocacosmeticos.vteximg.com.br/arquivos/ids/523650-800-800/inoar-afro-vegan-shampoo---2-.jpg?v=638055119635130000'); }
+.productImg2 { background-image: url('https://tse2.mm.bing.net/th/id/OIP.9cMjit6fHEkLaIH0FqFBpwHaJ4?rs=1&pid=ImgDetMain&o=7&rm=3'); }
+.productImg3 { background-image: url('https://down-br.img.susercontent.com/file/br-11134207-7r98o-m83px7vqa0ohe3'); }
 .productImg4 { background-image: url('/images/resposta/prod-4.png'); }
 
 .productImage {

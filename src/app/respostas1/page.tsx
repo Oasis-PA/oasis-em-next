@@ -446,23 +446,37 @@ const Respostas: React.FC = () => {
 
             <h2>Produtos recomendados</h2>
             <section className={styles.productsContainer}>
+              {/* PRODUTO 1 */}
               <div className={styles.productCard}>
-                <h1>Hidratação</h1>
+                <h1>Shampoo Afro Vegan 300ml</h1>
                 <div className={`${styles.productImage} ${styles.productImg1}`}></div>
-                <p>Be Younger Repair Hair Mask - hidratação profunda com ácido hialurônico e pantenol para manter a saúde.</p>
-                <button>Conheça</button>
+                <p>Limpeza suave que não compromete a forma dos cachos. Nutre, hidrata, sela as cutículas, confere maciez e brilho, e estimula o crescimento saudável.</p>
+                {/* ID de exemplo: 999. Substitua pelo ID real */}
+                <Link href="/produtos/1619">
+                  <button>Conheça</button>
+                </Link>
               </div>
+
+              {/* PRODUTO 2 */}
               <div className={styles.productCard}>
-                <h1>Nutrição</h1>
+                <h1>Shampoo Higienizando a JUBA 500ml</h1>
                 <div className={`${styles.productImage} ${styles.productImg2}`}></div>
-                <p>Braé Fiber Mask - nutrição com óleo de linhaça e manteigas para brilho e maciez natural.</p>
-                <button>Conheça</button>
+                <p>Limpa, faz espuma e não embola os fios. Desenvolvido para respeitar as curvaturas, hidrata e nutre desde a primeira aplicação, com espuma cremosa.</p>
+                {/* ID de exemplo: 999. Substitua pelo ID real */}
+                <Link href="/produtos/1620">
+                  <button>Conheça</button>
+                </Link>
               </div>
+
+              {/* PRODUTO 3 */}
               <div className={styles.productCard}>
-                <h1>Leave-in</h1>
+                <h1>Shampoo Umectante Cachos 400ml</h1>
                 <div className={`${styles.productImage} ${styles.productImg3}`}></div>
-                <p>Elseve Cicatri Renov Leave-In - proteção térmica e finalização para manter cabelos saudáveis.</p>
-                <button>Conheça</button>
+                <p>Limpa suavemente sem ressecar. Proporciona nutrição intensa, definição duradoura, controle do frizz e brilho. cabelos cacheados a crespos ou em transição.</p>
+                {/* ID de exemplo: 999. Substitua pelo ID real */}
+                <Link href="/produtos/1615">
+                  <button>Conheça</button>
+                </Link>
               </div>
             </section>
 
