@@ -31,22 +31,22 @@ const slidesData = [
 
 const cortesData = {
   feminino: [
-    { title: 'CORTE PIXIE', image: '/images/tela-principal/img-corte (1).png', link: '/corte-modelo' },
-    { title: 'WOLFCUT', image: '/images/tela-principal/img-corte (2).png', link: '/corte-modelo' },
-    { title: 'FRANJA', image: '/images/tela-principal/img-corte (3).png', link: '/corte-modelo' },
-    { title: 'CAMADAS', image: '/images/tela-principal/img-corte (4).png', link: '/corte-modelo' },
+    { title: 'CORTE PIXIE', image: '/images/tela-principal/img-corte (1).png', link: '/corte/pixie-cut' },
+    { title: 'WOLFCUT', image: '/images/tela-principal/img-corte (2).png', link: '/corte/wolfcut' },
+    { title: 'FRANJA', image: '/images/tela-principal/img-corte (3).png', link: '/corte/franja' },
+    { title: 'CAMADAS', image: '/images/tela-principal/img-corte (4).png', link: '/corte/camadas' },
   ],
   masculino: [
-    { title: 'AMERICANO', image: '/images/tela-principal/img-corte (8).png', link: '/corte-modelo' },
-    { title: 'LOW FADE', image: '/images/tela-principal/img-corte (7).png', link: '/corte-modelo' },
-    { title: 'MULLET', image: '/images/tela-principal/img-corte (6).png', link: '/corte-modelo' },
-    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (5).png', link: '/corte-modelo' },
+    { title: 'AMERICANO', image: '/images/tela-principal/img-corte (8).png', link: '/corte/americano' },
+    { title: 'LOW FADE', image: '/images/tela-principal/img-corte (7).png', link: '/corte/low-fade' },
+    { title: 'MULLET', image: '/images/tela-principal/img-corte (6).png', link: '/corte/mullet' },
+    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (5).png', link: '/corte/social' },
   ],
   mais50: [
-    { title: 'BORBOLETA', image: '/images/tela-principal/img-corte (12).png', link: '/corte-modelo' },
-    { title: 'CURTO', image: '/images/tela-principal/img-corte (11).png', link: '/corte-modelo' },
-    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (10).png', link: '/corte-modelo' },
-    { title: 'BOB ANGULAR', image: '/images/tela-principal/img-corte (9).png', link: '/corte-modelo' },
+    { title: 'BORBOLETA', image: '/images/tela-principal/img-corte (12).png', link: '/corte/butterfly' },
+    { title: 'CURTO', image: '/images/tela-principal/img-corte (11).png', link: '/corte/curto' },
+    { title: 'SOCIAL', image: '/images/tela-principal/img-corte (10).png', link: '/corte/social' },
+    { title: 'BOB ANGULAR', image: '/images/tela-principal/img-corte (9).png', link: '/corte/bob-angular' },
   ]
 };
 
@@ -263,10 +263,10 @@ export default function OasisHomepage() {
       </section>
 
       <section className={styles.s2}>
-        <Link href='/haircare'>
+        <Link href='/parcerias-empresas'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-haircare.png" alt=""/>
-            <h1>HAIR CARE</h1>
+            <h1>PARCERIAS</h1>
           </div>
         </Link>
 

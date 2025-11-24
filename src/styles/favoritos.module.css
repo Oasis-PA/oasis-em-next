@@ -433,7 +433,7 @@
     margin-top: 55px;
     width: 100%;
     overflow-x: hidden; 
-    padding: 1rem;
+    padding: 3rem;
     transition: all 0.3s ease;
 }
 
@@ -549,6 +549,7 @@
     width: 90%;
     height: auto;
     object-fit: cover;
+    margin-top: 3rem;
 }
 
 /* ---- SEÇÃO MAIS PRODUTOS ---- */
@@ -917,6 +918,7 @@
         width: 100%;
         padding: 0 1rem;
         flex-wrap: wrap; 
+        margin-bottom: 30px;
     }
 
     .scrollBtn { display: none; }

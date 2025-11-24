@@ -438,7 +438,7 @@ const Respostas: React.FC = () => {
 
             {/* Artigos */}
             <section className={styles.articlesContainer}>
-              <Link href='/' className={`${styles.articleCard} ${styles.articleCard1}`}>
+              <Link href='artigo/como-escolher-o-corte-ideal-para-o-formato-do-rosto' className={`${styles.articleCard} ${styles.articleCard1}`}>
                 <div className={styles.articleContent}>
                   <div className={styles.articleTextWrapper}>
                     <div className={styles.articleButtons}>
@@ -450,14 +450,14 @@ const Respostas: React.FC = () => {
                 </div>
                 <img className={styles.articleArrow} src="/images/resposta/Vector.png" alt="" />
               </Link>
-              <Link href='/' className={`${styles.articleCard} ${styles.articleCard2}`}>
+              <Link href='/artigo/shampoos-em-barra' className={`${styles.articleCard} ${styles.articleCard2}`}>
                 <div className={styles.articleContent}>
                   <div className={styles.articleTextWrapper}>
                     <div className={styles.articleButtons}>
                       <button>Moda</button>
                       <button>Marcas</button>
                     </div>
-                    <h1>Os 10 melhores óleos essenciais</h1>
+                    <h1>Shampoos em barra: veja os 5 mais populares</h1>
                   </div>
                 </div>
                 <img className={styles.articleArrow} src="/images/resposta/Vector.png" alt="" />
