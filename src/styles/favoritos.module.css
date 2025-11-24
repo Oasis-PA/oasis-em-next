@@ -309,7 +309,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 0.7rem;
     flex-wrap: wrap;
     transition: all 0.3s ease;
 }
