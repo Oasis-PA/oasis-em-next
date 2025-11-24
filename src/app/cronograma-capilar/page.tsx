@@ -1,9 +1,7 @@
-// Garante que o componente seja executado apenas no navegador (cliente),
-// pois o script manipula o DOM (document), que não existe no servidor.
 "use client";
 
 import React from 'react';
-import Script from 'next/script'; // Componente otimizado do Next.js para carregar scripts
+import Script from 'next/script';
 import { Header, Footer } from "@/components";
 import styles from '@/styles/cronograma-capilar.module.css';
 import Link from "next/link";
@@ -59,10 +57,10 @@ const CronogramaCapilar: React.FC = () => {
       <p className={styles.veja}>Veja seu cronograma</p>
       <p className={styles.aqui} >Aqui no Oasis nós temos o sistema que mais se adapta <br />a você e sua rotina.</p>
 
-      <div className={styles.monte}>
+      <Link href="/perguntas" className={styles.monte}>
           <img src="/images/Cronograma-capilar/monte.png" alt="" />
           <img className={styles.conheca} src="/images/Cronograma-capilar/conheça.png" alt="Conheça" />
-      </div>
+      </Link>
 
       <div className={styles.pratica}>
         <p className={styles.praticidade}>Onde a praticidade encontra o<br />
@@ -72,37 +70,45 @@ const CronogramaCapilar: React.FC = () => {
 
       <p className={styles.se}>Se você não quer responder perguntas, tudo bem! Aqui nós temos cronogramas prontos para todos os tipos de cabelo.</p>
 
-      <section className={styles.passando}>
-        <div className={styles.fotos}>
-          <img className={styles.img2} src="/images/Cronograma-capilar/Brilho força e maciez.png" alt="Brilho, força e maciez" />
-            <a href=""><img className={styles.butao} src="/images/Cronograma-capilar/conheca.png" alt="Conheça" /></a>
-            <p className={styles.textoFoto} >BRILHO, FORÇA E MACIEZ</p>
-        </div>
-        <div className={styles.fotos}>
-          <img className={styles.img2} src="/images/Cronograma-capilar/Cronograma facil e rapido.png" alt="Cronograma fácil e rápido" />
-          <a href=""><img className={styles.butao} src="/images/Cronograma-capilar/conheca.png" alt="Conheça" /></a>
-          <p className={styles.textoFoto} >CRONOGRAMA <br />FÁCIL E RÁPIDO</p>
-        </div>
-        <div className={styles.fotos}>
-          <img className={styles.img2} src="/images/Cronograma-capilar/SOS cabelos danificados.png" alt="SOS cabelos danificados" />
-          <a href=""><img className={styles.butao} src="/images/Cronograma-capilar/conheca.png" alt="Conheça" /></a>
-          <p className={styles.textoFoto} >SOS CABELOS <br />DANIFICADOS</p>
-        </div>
-        <div className={styles.fotos}>
-          <img className={styles.img2} src="/images/Cronograma-capilar/recupere seus fios ja.png" alt="Recupere seus fios já" />
-          <a href=""><img className={styles.butao} src="/images/Cronograma-capilar/conheca.png" alt="Conheça" /></a>
-          <p className={styles.textoFoto} >RECUPERE SEUS FIOS JÁ</p>
-        </div>
-        <div className={styles.fotos}>
-          <img className={styles.img2} src="/images/Cronograma-capilar/cuidado em poucos passos.png" alt="Cuidado em poucos passos" />
-          <a href=""><img className={styles.butao} src="/images/Cronograma-capilar/conheca.png" alt="Conheça" /></a>
-          <p className={styles.textoFoto} >CUIDADO EM POUCOS PASSOS</p>
-        </div>
-        <div className={styles.fotos}>
-          <img className={styles.img2} src="/images/Cronograma-capilar/agenda dos seus fios.png" alt="Agenda dos seus fios" />
-          <a href=""><img className={styles.butao} src="/images/Cronograma-capilar/conheca.png" alt="Conheça" /></a>
-          <p className={styles.textoFoto} >AGENDA DOS SEUS FIOS</p>
-        </div>
+     <section className={styles.passando}>
+        
+        <Link href="artigo/acidificacao-no-cabelo" className={styles.fotos}>
+          <div className={`${styles.cardImagem} ${styles.bgBrilho}`}>
+           <p className={styles.textoFoto}>ACIDIFICAÇÃO CAPILAR</p>
+          </div>
+        </Link>
+
+        
+        <Link href="artigo/como-desembaracar-sem-dor" className={styles.fotos}>
+          <div className={`${styles.cardImagem} ${styles.bgCronograma}`}>
+            <p className={styles.textoFoto}>COMO <br />DESEMBARAÇAR</p>
+          </div>
+        </Link>
+        
+        <Link href="artigo/qual-creme-comprar" className={styles.fotos}>
+          <div className={`${styles.cardImagem} ${styles.bgSOS}`}>
+            <p className={styles.textoFoto}>QUAL CREME<br />COMPRAR</p>
+          </div>
+        </Link>
+        
+        <Link href="artigo/cuidados-noturnos" className={styles.fotos}>
+          <div className={`${styles.cardImagem} ${styles.bgRecupere}`}>
+            <p className={styles.textoFoto}>CUIDADOS NOTURNOS</p>
+          </div>
+        </Link>
+        
+        <Link href="artigo/suplementos-para-cabelo-funcionam-mesmo" className={styles.fotos}>
+          <div className={`${styles.cardImagem} ${styles.bgCuidado}`}>
+            <p className={styles.textoFoto}>SUPLEMENTOS CAPILARES</p>
+          </div>
+        </Link>
+        
+        <Link href="artigo/melhores-tipos-de-finalizacao" className={styles.fotos}>
+          <div className={`${styles.cardImagem} ${styles.bgAgenda}`}>
+            <p className={styles.textoFoto}>MELHORES FINALIZAÇÕES</p>
+          </div>
+        </Link>
+
       </section>
 
       <div className={styles.apostas}>
@@ -141,17 +147,7 @@ const CronogramaCapilar: React.FC = () => {
       <section className={styles.noCronograma}>
         <div className={styles.esquerda}>
 
-                <div className={styles.progresso}>
-                  <div className={styles.prog}>
-                    <p className={styles.progressoCronograma}>Progresso no Cronograma</p>
-                    <div className={styles.semanalSeta}>
-                      <p className={styles.semanal}>Semanal</p> <img className={styles.setinha} src="/images/Cronograma-capilar/Setinha.png" alt="Seta" />
-                    </div>
-                  </div>
-                  <p className={styles.percentagem}>54%</p>
-                  <div className={styles.barraDeProgresso}>
-                  </div>
-                </div>
+                
 
                 <div className={styles.oleosEDicas}>
                         <Link href='artigo/oleos-essenciais-para-cabelo'>
