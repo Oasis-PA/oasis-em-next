@@ -196,12 +196,17 @@ const CronogramaCapilar: React.FC = () => {
         <div className={styles.direita}>
                   <div className={styles.hidratanteELogo}>
                             <div className={styles.hidratante}>
-                              <img className={styles.hidratanteImg} src="/images/Cronograma-capilar/hidratante.png" alt="Hidratante Salon Line" />
+                              <img className={styles.hidratanteImg} src="https://http2.mlstatic.com/D_NQ_NP_762859-MLB97553229112_112025-O-mascara-loreal-curl-expression-expert-250ml-hidrataco.webp" alt="Hidratante Salon Line" />
                               <div className={styles.salonLine}>
-                                <p className={styles.sub3}>Hidratante Salon Line</p> 
+                                <p className={styles.sub3}>Máscara Curl Expression 250ml</p> 
                               </div>
-                              <p>O hidratante capilar repõe a água dos fios. Deixa o cabelo macio e com brilho.</p>
-                              <button className={styles.descubra}>Conheça</button>
+                              <p>Hidrata intensamente, desembaraça, controla o frizz e dá um toque sedoso. Desembaraça e hidrata profundamente cachos e crespos.</p>
+                              {/* IMPORTANTE: Substitua '999' pelo ID correto 
+                                  da Máscara Curl Expression no seu banco de dados 
+                              */}
+                              <Link href="/produtos/1623">
+                                <button className={styles.descubra}>Conheça</button>
+                              </Link>
                             </div>
                             <div className={styles.logo}>
                               <img className={styles.homemGarfo} src="/images/Cronograma-capilar/homem-garfo.png" alt="Homem com pente garfo" />

@@ -95,7 +95,7 @@ const AlimentacaoPage: React.FC = () => {
         <section className={styles.partedebaixo}>
           <div className={styles.secao1}>
             <article className={styles.card}>
-              <Link href='artigo/suplementos-para-cabelo-funcionam-mesmo'>
+              <Link href='artigo/suplementos-para-cabelo'>
                 <div className={styles.conteudo}>
                   <img className={styles.ftcard} src="https://i.imgur.com/MwmAfhN.png" alt="Imagem suplemento cabelo" />
                   <h1>Suplementos para cabelo: funcionam mesmo?</h1>
