@@ -41,11 +41,6 @@ const Favoritos: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // LÓGICA DE CARROSSEL + EXPANSÃO
-  const [currentRecentIndex, setCurrentRecentIndex] = useState(0);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const itemsPerPage = 5;
-
   useEffect(() => {
     carregarFavoritos();
   }, []);
@@ -77,21 +72,6 @@ const Favoritos: React.FC = () => {
       setIsLoading(false);
     }
   };
-
-  // Funções de navegação
-  const handlePrevRecent = () => {
-    setCurrentRecentIndex((prev) => Math.max(0, prev - 1));
-  };
-
-  const handleNextRecent = () => {
-    setCurrentRecentIndex((prev) => Math.min(produtosFavoritos.length - itemsPerPage, prev + 1));
-  };
-
-  const visibleRecentProducts = isExpanded 
-    ? produtosFavoritos 
-    : (produtosFavoritos.length > 0 
-        ? produtosFavoritos.slice(currentRecentIndex, currentRecentIndex + itemsPerPage)
-        : []);
 
   const renderArticlesGrid = () => {
     return favoritos.map((favorito) => (
@@ -275,29 +255,13 @@ const Favoritos: React.FC = () => {
           )}
         </section>
 
-        {/* Seção Salvos Recentemente */}
+        {/* Seção Salvos Recentemente - COM SCROLL */}
         <section className={styles.savedSectionWrapper}>
           <h1 className={styles.savedTitle}>Salvos Recentemente</h1>
           
-          <div className={`${styles.savedCardsContainer} ${isExpanded ? styles.expandedContainer : ''}`}>
-            
-            {!isExpanded && (
-              <button 
-                className={styles.scrollBtn} 
-                onClick={handlePrevRecent}
-                disabled={currentRecentIndex === 0}
-                style={{ 
-                  opacity: currentRecentIndex === 0 ? 0.3 : 1,
-                  cursor: currentRecentIndex === 0 ? 'not-allowed' : 'pointer'
-                }}
-                aria-label="Anterior"
-              >
-                <img src="/images/favoritos/seta-esquerda.svg" alt="seta esquerda" width="16px" height="30px" />
-              </button>
-            )}
-            
+          <div className={styles.savedCardsContainer}>
             {produtosFavoritos.length > 0 ? (
-              visibleRecentProducts.map((favProd, index) => (
+              produtosFavoritos.map((favProd, index) => (
                 <div 
                   key={`recent-${favProd.produto?.id_produto || index}`} 
                   className={styles.savedCard}
@@ -327,32 +291,7 @@ const Favoritos: React.FC = () => {
                  <p>Seus produtos recentes aparecerão aqui.</p>
               </div>
             )}
-
-            {!isExpanded && (
-              <button 
-                className={styles.scrollBtn} 
-                onClick={handleNextRecent}
-                disabled={currentRecentIndex >= produtosFavoritos.length - itemsPerPage}
-                style={{ 
-                  opacity: currentRecentIndex >= produtosFavoritos.length - itemsPerPage ? 0.3 : 1,
-                  cursor: currentRecentIndex >= produtosFavoritos.length - itemsPerPage ? 'not-allowed' : 'pointer'
-                }}
-                aria-label="Próximo"
-              >
-                <img src="/images/favoritos/seta-direita.svg" alt="seta direita" width="16px" height="30px" />
-              </button>
-            )}
           </div>
-          
-          {!isExpanded && produtosFavoritos.length > itemsPerPage && (
-            <p 
-                className={styles.seeMoreLink} 
-                onClick={() => setIsExpanded(true)}
-                style={{ cursor: 'pointer' }}
-            >
-                Veja lista completa
-            </p>
-          )}
           
           <img className={styles.goldenImage} src="/images/favoritos/imagem-dourada.png" alt="imagem-dourada" />
         </section>
