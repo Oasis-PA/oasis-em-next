@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import styles from "@/styles/skincare.module.css";
 
+// ✅ ATUALIZADO: Interface com campos adicionais
 interface Produto {
   id_produto: number;
   nome: string;
@@ -14,25 +15,51 @@ interface Produto {
   url_imagem: string | null;
   tag_principal: string;
   id_tag: number | null;
+  motivos?: string[];  // ✅ NOVO
+  score?: number;      // ✅ NOVO
 }
 
 export default function Skincare() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [loadingProdutos, setLoadingProdutos] = useState(true);
+  const [userId, setUserId] = useState<number | null>(null); // ✅ NOVO
 
-  // Buscar produtos do banco
+  // ✅ NOVO: Detectar usuário logado
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      setUserId(parseInt(storedUserId));
+    }
+  }, []);
+
+  // ✅ ATUALIZADO: Buscar recomendações inteligentes
   useEffect(() => {
     const fetchProdutos = async () => {
       try {
-        const response = await fetch('/api/produtos?limit=9');
+        let response;
+        
+        // Se usuário estiver logado, use recomendações inteligentes
+        if (userId) {
+          response = await fetch(`/api/recomendacoes-inteligentes?id_usuario=${userId}&limit=9`);
+        } else {
+          // Senão, use produtos normais
+          response = await fetch('/api/produtos?limit=9');
+        }
+        
         const data = await response.json();
         
-        if (data.produtos) {
+        // ✅ ADAPTADO: Aceita ambos os formatos
+        if (data.recomendacoes) {
+          // Formato de recomendações inteligentes
+          setProdutos(data.recomendacoes);
+        } else if (data.produtos) {
+          // Formato normal de produtos
           setProdutos(data.produtos);
         } else {
           setProdutos([]);
         }
       } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
         setProdutos([]);
       } finally {
         setLoadingProdutos(false);
@@ -40,7 +67,7 @@ export default function Skincare() {
     };
 
     fetchProdutos();
-  }, []);
+  }, [userId]); // ✅ Recarrega quando userId mudar
 
   // Dividir produtos em 3 grupos de 3
   const primeiroGrupo = produtos.slice(0, 3);
@@ -133,9 +160,14 @@ export default function Skincare() {
         </div>
       </section>
 
+      {/* ✅ SEÇÃO S4 ATUALIZADA COM RECOMENDAÇÕES */}
       <section className={styles.s4}>
         <div className={styles.linhatexto1}>
-            <h1>Produtos recomendados</h1>
+            <h1>
+              {userId 
+                ? 'Produtos recomendados para você'
+                : 'Produtos recomendados'}
+            </h1>
             <div className={styles.linha}></div>
         </div>
 
@@ -146,6 +178,13 @@ export default function Skincare() {
         ) : produtos.length === 0 ? (
           <div style={{ padding: '4rem', textAlign: 'center' }}>
             <p>Nenhum produto encontrado.</p>
+            {userId && (
+              <p style={{ marginTop: '1rem' }}>
+                <Link href="/cronograma-capilar" style={{ color: '#FFD700', textDecoration: 'underline' }}>
+                  Complete seu questionário
+                </Link> para receber recomendações personalizadas!
+              </p>
+            )}
           </div>
         ) : (
           <>
@@ -157,8 +196,32 @@ export default function Skincare() {
                     src={produto.url_imagem || "/images/infantil/produto.png"}
                     alt={produto.nome}
                   />
-                  <h5>{produto.tag_principal || 'Produto de beleza'}</h5>
+                  
+                  {/* ✅ NOVO: Mostrar motivo se existir */}
+                  <h5>
+                    {produto.motivos && produto.motivos.length > 0 
+                      ? produto.motivos[0]
+                      : (produto.tag_principal || 'Produto de beleza')}
+                  </h5>
+                  
                   <h4>{produto.nome}</h4>
+
+                  {/* ✅ NOVO: Badge de compatibilidade */}
+                  {produto.score && produto.score > 50 && (
+                    <div style={{
+                      background: '#FFD700',
+                      color: '#000',
+                      padding: '3px 8px',
+                      borderRadius: '8px',
+                      fontSize: '10px',
+                      fontWeight: 'bold',
+                      margin: '5px 0',
+                      display: 'inline-block'
+                    }}>
+                      {Math.round((produto.score / 100) * 100)}% compatível
+                    </div>
+                  )}
+
                   <button>
                     <Link href={`/produtos/${produto.id_produto}`}>
                       Veja mais
@@ -166,7 +229,8 @@ export default function Skincare() {
                   </button>
                 </div>
               ))}
-                              <div className={`${styles.imagemProduto} ${styles.prod1Bg}`}>                <h1>mais amados</h1>
+              <div className={`${styles.imagemProduto} ${styles.prod1Bg}`}>
+                <h1>mais amados</h1>
               </div>
             </div>
 
@@ -181,10 +245,28 @@ export default function Skincare() {
                     src={produto.url_imagem || "/images/infantil/produto.png"}
                     alt={produto.nome}
                   />
-                  <h5>{produto.tag_principal || 'Produto de beleza'}</h5>
+                  <h5>
+                    {produto.motivos && produto.motivos.length > 0 
+                      ? produto.motivos[0]
+                      : (produto.tag_principal || 'Produto de beleza')}
+                  </h5>
                   <h4>{produto.nome}</h4>
+                  {produto.score && produto.score > 50 && (
+                    <div style={{
+                      background: '#FFD700',
+                      color: '#000',
+                      padding: '3px 8px',
+                      borderRadius: '8px',
+                      fontSize: '10px',
+                      fontWeight: 'bold',
+                      margin: '5px 0',
+                      display: 'inline-block'
+                    }}>
+                      {Math.round((produto.score / 100) * 100)}% compatível
+                    </div>
+                  )}
                   <button>
-                    <Link href={produto.url_loja || `/produto/${produto.id_produto}`}>
+                    <Link href={`/produtos/${produto.id_produto}`}>
                       Veja mais
                     </Link>
                   </button>
@@ -200,10 +282,28 @@ export default function Skincare() {
                     src={produto.url_imagem || "/images/infantil/produto.png"}
                     alt={produto.nome}
                   />
-                  <h5>{produto.tag_principal || 'Produto de beleza'}</h5>
+                  <h5>
+                    {produto.motivos && produto.motivos.length > 0 
+                      ? produto.motivos[0]
+                      : (produto.tag_principal || 'Produto de beleza')}
+                  </h5>
                   <h4>{produto.nome}</h4>
+                  {produto.score && produto.score > 50 && (
+                    <div style={{
+                      background: '#FFD700',
+                      color: '#000',
+                      padding: '3px 8px',
+                      borderRadius: '8px',
+                      fontSize: '10px',
+                      fontWeight: 'bold',
+                      margin: '5px 0',
+                      display: 'inline-block'
+                    }}>
+                      {Math.round((produto.score / 100) * 100)}% compatível
+                    </div>
+                  )}
                   <button>
-                    <Link href={produto.url_loja || `/produto/${produto.id_produto}`}>
+                    <Link href={`/produtos/${produto.id_produto}`}>
                       Veja mais
                     </Link>
                   </button>
