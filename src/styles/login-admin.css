@@ -136,8 +136,9 @@
 
 /* Navegação após login */
 .admin-navigation {
-  display: flex;
-  gap: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
@@ -149,7 +150,11 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  width: 120%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
   font-family: 'Louis George Cafe', sans-serif;
 }
 
@@ -161,42 +166,82 @@
 }
 
 .nav-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .nav-card h3 {
   margin: 0 0 0.5rem 0;
   color: #333;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
 .nav-card p {
   margin: 0;
   color: #666;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1.4;
 }
 
-/* Responsivo */
-@media (min-width: 768px) {
+/* Responsivo para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
   .admin-navigation {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+  
+  .nav-card {
+    min-height: 200px;
+  }
+  
+  .nav-icon {
+    font-size: 2.75rem;
+  }
+  
+  .nav-card h3 {
+    font-size: 1.35rem;
+  }
+  
+  .nav-card p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsivo para desktop grande */
+@media (min-width: 1025px) {
+  .admin-navigation {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
   
   .nav-card {
     min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  }
+  
+  .nav-icon {
+    font-size: 3rem;
+  }
+  
+  .nav-card h3 {
+    font-size: 1.5rem;
+  }
+  
+  .nav-card p {
+    font-size: 0.95rem;
   }
 }
 
+/* Responsivo para mobile */
 @media (max-width: 767px) {
+  .admin-navigation {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
   .nav-card {
-    padding: 1.25rem;
+    padding: 1.5rem;
+    min-height: 160px;
   }
   
   .nav-icon {
@@ -204,10 +249,35 @@
   }
   
   .nav-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   
   .nav-card p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .admin-navigation {
+    gap: 1rem;
+  }
+  
+  .nav-card {
+    padding: 1.25rem;
+    min-height: 140px;
+  }
+  
+  .nav-icon {
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .nav-card p {
+    font-size: 0.8rem;
   }
 }

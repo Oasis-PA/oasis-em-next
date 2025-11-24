@@ -211,7 +211,6 @@
     gap: 0.5rem;
     padding: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    cursor: pointer;
 }
 
 .cx1:hover, .cx2:hover, .cx3:hover, .cx4:hover {
@@ -299,7 +298,6 @@
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
-    cursor: pointer;
 }
 
 .ovo:hover, .espinafre:hover, .cenoura:hover, .abacate:hover, .salmao:hover, .morango:hover {
@@ -439,7 +437,6 @@
     margin-bottom: 1rem;
     max-width: 95%;
     transition: transform 0.3s ease, box-shadow 0.3s ease, padding-left 0.3s ease;
-    cursor: pointer;
 }
 
 .esquerdeh > li:hover {
@@ -629,24 +626,70 @@
 }
 
 .conteudo button {
-    width: 150px;
-    height: 40px;
-    border: none; 
-    border-radius: 20px;
-    background: #722F53;
-    color: #FFF;
-    text-align: center;
-    font-family: "The Next Font", sans-serif;
-    font-size: 1rem;
-    font-weight: 300;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  /* Dimensões Originais */
+  width: 150px;
+  height: 40px;
+  
+  /* Visual Base (#722F53) + Arredondamento */
+  background: #722F53;
+  border-radius: 20px; /* Metade da altura para ficar pílula perfeita */
+  border: none;
+  
+  /* Tipografia */
+  color: #FFF;
+  font-family: "The Next Font", sans-serif;
+  font-size: 1rem;
+  font-weight: 300; /* Mantido o peso leve original */
+  text-align: center;
+
+  /* Motor de Animação (Igual ao Veja Mais) */
+  cursor: pointer;
+  display: inline-flex; /* Garante alinhamento perfeito do texto */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Essencial para o brilho interno */
+  transition: all 0.4s ease;
+  
+  /* Sombra Inicial suave */
+  box-shadow: 0 4px 10px rgba(114, 47, 83, 0.2);
 }
 
+/* Efeito Ripple (Círculo de brilho) */
+.conteudo button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+/* Estado Hover */
 .conteudo button:hover {
-    background: #5E332C;
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(114, 47, 83, 0.4);
+  /* Gradiente sutil baseado no #722F53 para dar profundidade */
+  background: linear-gradient(135deg, #722F53 0%, #9E4273 100%);
+  
+  /* Elevação e Escala */
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(114, 47, 83, 0.5);
+}
+
+.conteudo button:hover::before {
+  width: 200px; /* Grande o suficiente para cobrir o botão */
+  height: 200px;
+}
+
+/* Estado Active (Clique) */
+.conteudo button:active {
+  /* Aqui usamos o #5E332C que era seu hover antigo, para dar sensação de "apertar" */
+  background: #5E332C; 
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 2px 5px rgba(114, 47, 83, 0.3);
 }
 
 .conteudo h1 {

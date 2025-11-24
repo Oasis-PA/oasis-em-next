@@ -249,9 +249,9 @@ export default async function ArtigosPage() {
           <section className={styles.cronogramaCapilar}>
             <img className={styles.cronogramaCapilarImg} src="/images/artigo-geral/img cronograma capilar.png" alt="Mulher com cabelo cacheado" />
             <h5 className={styles.cronogramaCapilarH5}>Você já fez o seu cronograma capilar?</h5>
-            <button className={styles.cronogramaCapilarButton}>
+            <Link href='/cronograma-capilar' className={styles.cronogramaCapilarButton}>
               <p className={styles.cronogramaCapilarButtonP}>CRONOGRAMA</p>
-            </button>
+            </Link>
           </section>
 
           {/* SEÇÃO 3 */}
