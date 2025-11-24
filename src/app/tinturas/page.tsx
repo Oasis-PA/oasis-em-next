@@ -120,7 +120,7 @@ export default function Tinturas() {
           </Link>
 
           {/* Card Direita: Card Branco "Sugestão" */}
-          <div className={styles.artigo2}>
+          <Link href='/cronograma-capilar' className={styles.artigo2}>
             <div className={styles.cardHeaderRow}>
                 <Image
                   src="/images/tinturas/oasis-logo.png"
@@ -156,7 +156,7 @@ export default function Tinturas() {
               Descubra como equilibrar tintura e tratamento no seu cronograma
               capilar. Devolva brilho, força e vida aos cabelos coloridos!
             </p>
-          </div>
+          </Link>
         </section>
 
         {/* --- SEÇÃO S3 (BANNERS HORIZONTAIS) --- */}
@@ -219,7 +219,7 @@ export default function Tinturas() {
             </Link>
 
             {/* O Botão fica no meio na versão Desktop */}
-            <Link href="/artigos-geral" className={`${styles.gridItem} ${styles.buttonWrapper}`}>
+            <Link href="/artigo" className={`${styles.gridItem} ${styles.buttonWrapper}`}>
                 <button className={styles.botaoS4}>VER MAIS</button>
             </Link>
 

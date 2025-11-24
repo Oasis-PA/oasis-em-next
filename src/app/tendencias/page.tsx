@@ -86,7 +86,6 @@ export default function tendencias() {
               <p>
                 O essencial <br /> para o seu estilo
               </p>
-              <button>Ver todos</button>
             </div>
 
             <Link href='/artigo/acido-hialuronico' className={styles.bannerTercLink}>
