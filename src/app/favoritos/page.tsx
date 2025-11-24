@@ -299,42 +299,55 @@ const Favoritos: React.FC = () => {
         <section className={styles.moreProductsSection}>
           <h1 className={styles.moreProductsTitle}>MAIS PRODUTOS</h1>
           <div className={styles.moreProductsContainer}>
+            
+            {/* PRODUTO 1 */}
             <div className={styles.moreProductsCard}>
-              <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
-              <div className={styles.cardActionArea}>
+              <img className={styles.productImage} src="https://tse4.mm.bing.net/th/id/OIP.e-zfCkTRb5TU78F1b0UTKwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" />
+              <h1>Condicionador Afro Vegan 300ml</h1>
+              <p>Fórmula vegana que nutre, hidrata, repõe nutrientes e sela as cutículas. Deixa os cabelos maleáveis, macios, com brilho e estimula o crescimento.</p>
+              {/* SUBSTITUA 999 PELO ID CORRETO DO PRODUTO */}
+              <Link href="/produtos/1629" className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
-              </div>
+              </Link>
             </div>
+
+            {/* PRODUTO 2 */}
             <div className={styles.moreProductsCard}>
-              <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
-              <div className={styles.cardActionArea}>
+              <img className={styles.productImage} src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m328j1arf7k5a3" alt="" />
+              <h1>Condicionador Hidro-Nutritivo Condicionando a Juba 500ml</h1>
+              <p>Condicionador hidro-nutritivo que promove alta emoliência. Proporciona desembaraço, maciez, brilho, hidrata e nutre a fibra capilar em uma única aplicação.</p>
+              {/* SUBSTITUA 999 PELO ID CORRETO DO PRODUTO */}
+              <Link href="/produtos/1630" className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
-              </div>
+              </Link>
             </div>
+
+            {/* PRODUTO 3 */}
             <div className={styles.moreProductsCard}>
-              <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
-              <div className={styles.cardActionArea}>
+              <img className={styles.productImage} src="https://down-br.img.susercontent.com/file/a2d673bf1ac87284ab4382c6941af5a9" alt="" />
+              <h1>Condicionador Color Curls Magic Help 315ml</h1>
+              <p>Formulado para cabelos cacheados coloridos ou descoloridos. Hidrata, desembaraça, fortalece os fios, protege a cor e tem ação antiemborrachamento.</p>
+              {/* SUBSTITUA 999 PELO ID CORRETO DO PRODUTO */}
+              <Link href="/produtos/1631" className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
-              </div>
+              </Link>
             </div>
+
+            {/* PRODUTO 4 */}
             <div className={styles.moreProductsCard}>
-              <img className={styles.productImage} src="/images/favoritos/imagem-produto.png" alt="" />
-              <h1>PRODUTO TAL</h1>
-              <p>Esse é o produto tal, que faz tal coisa e tem tal função.</p>
-              <div className={styles.cardActionArea}>
+              <img className={styles.productImage} src="https://tse4.mm.bing.net/th/id/OIP.bQx1Wc9Y8fK_VKylsq0CUQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" />
+              <h1>Condicionador Cachos Definidos 400ml</h1>
+              <p>Desembaraça, hidrata profundamente e fortalece os fios. Ajuda a reestruturar o cabelo para cachos definidos, resistentes à umidade e com volume controlado.</p>
+              {/* SUBSTITUA 999 PELO ID CORRETO DO PRODUTO */}
+              <Link href="/produtos/1626" className={styles.cardActionArea}>
                 <h2>Vá para compra</h2>
                 <img src="/images/favoritos/seta.svg" alt="" />
-              </div>
+              </Link>
             </div>
+
           </div>
         </section>
 
