@@ -2,6 +2,7 @@
 
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { jwtVerify } from "jose";
 
 
 // Tipagem para o payload decodificado do token
