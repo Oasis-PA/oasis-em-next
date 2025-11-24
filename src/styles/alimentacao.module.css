@@ -488,10 +488,18 @@
 .ol8 { width: 29.2vw; }
 
 @media (max-width: 900px) {
-    .ol1, .ol2, .ol3, .ol4, .ol5, .ol6, .ol7, .ol8 {
-        width: 100%;
-        min-width: 0;
-    }
+   
+    .ol1{ width: 95%; }
+    .ol2{ width: 90%; }
+    .ol3{ width: 85%; }
+    .ol4{ width: 80%; }
+    .ol5{ width: 75%; }
+    .ol6{ width: 70%; }
+    .ol7{ width: 65%; }
+    .ol8{ width: 60%; }
+
+
+
     .ol1{ max-width: 100%; }
     .ol2{ max-width: 95%; }
     .ol3{ max-width: 90%; }
