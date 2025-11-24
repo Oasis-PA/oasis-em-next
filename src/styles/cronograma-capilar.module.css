@@ -246,7 +246,6 @@
   background-color: rgb(247, 243, 243);
   box-shadow: 50px 50px 50px rgba(117, 25, 139, 0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
 }
 
 .imagem {
