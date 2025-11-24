@@ -127,12 +127,13 @@ const Favoritos: React.FC = () => {
                 <p>Carregando seus favoritos...</p>
               </div>
             ) : error ? (
-              <div className="error-favoritos">
-                <p>{error}</p>
-                <Link href="/login">
-                  <button className="btn-login-fav">Fazer Login</button>
-                </Link>
-              </div>
+              <div className={styles.errorFavoritos}>
+  <p>{error}</p>
+  <Link href="/login">
+    <button className={styles.btnLoginFav}>Fazer Login</button>
+  </Link>
+</div>
+
             ) : (
               <>
                 {favoritos.length === 0 ? (
