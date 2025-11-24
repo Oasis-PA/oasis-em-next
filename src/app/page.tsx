@@ -263,10 +263,10 @@ export default function OasisHomepage() {
       </section>
 
       <section className={styles.s2}>
-        <Link href='/haircare'>
+        <Link href='/parcerias-empresas'>
           <div className={styles.s2links}>
             <img src="/images/tela-principal/img-haircare.png" alt=""/>
-            <h1>HAIR CARE</h1>
+            <h1>PARCERIAS</h1>
           </div>
         </Link>
 
