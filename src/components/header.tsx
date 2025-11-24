@@ -70,7 +70,7 @@ export default function Header({ backgroundImage, backgroundColor = 'white', cla
         <button className={styles.close_menu_btn} onClick={() => setMobileMenuOpen(false)} aria-label="Fechar menu">
           &times;
         </button>
-        <Link href="/cortes-geral" onClick={handleLinkClick}>Cortes</Link>
+        <Link href="/corte" onClick={handleLinkClick}>Cortes</Link>
         <Link href="/artigo" onClick={handleLinkClick}>Artigos</Link>
         <Link href="/tinturas" onClick={handleLinkClick}>Tinturas</Link>
         <Link href="/skincare" onClick={handleLinkClick}>Skincare</Link>
