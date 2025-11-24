@@ -222,11 +222,11 @@ export default function Skincare() {
                     </div>
                   )}
 
-                  <button>
-                    <Link href={`/produtos/${produto.id_produto}`}>
-                      Veja mais
-                    </Link>
-                  </button>
+                  <Link href={`/produtos/${produto.id_produto}`}>
+  <button>
+    Veja mais
+  </button>
+</Link>
                 </div>
               ))}
               <div className={`${styles.imagemProduto} ${styles.prod1Bg}`}>
@@ -265,11 +265,11 @@ export default function Skincare() {
                       {Math.round((produto.score / 100) * 100)}% compatível
                     </div>
                   )}
-                  <button>
-                    <Link href={`/produtos/${produto.id_produto}`}>
-                      Veja mais
-                    </Link>
-                  </button>
+                  <Link href={`/produtos/${produto.id_produto}`}>
+  <button>
+    Veja mais
+  </button>
+</Link>
                 </div>
               ))}
             </div>
@@ -302,11 +302,11 @@ export default function Skincare() {
                       {Math.round((produto.score / 100) * 100)}% compatível
                     </div>
                   )}
-                  <button>
-                    <Link href={`/produtos/${produto.id_produto}`}>
-                      Veja mais
-                    </Link>
-                  </button>
+                  <Link href={`/produtos/${produto.id_produto}`}>
+  <button>
+    Veja mais
+  </button>
+</Link>
                 </div>
               ))}
               <div className={`${styles.imagemProduto} ${styles.prod3Bg}`}>
