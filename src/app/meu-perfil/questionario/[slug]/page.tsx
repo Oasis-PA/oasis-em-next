@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "@/styles/perguntas.module.css";
+import styles from "@/styles/perguntas.module.css";
 
 interface Opcao {
   id_opcao?: number;
@@ -208,12 +208,12 @@ export default function QuestionarioDinamico({ params }: Props) {
   const isLast = currentIndex === perguntas.length - 1;
 
   return (
-    <div className="page-perguntas-wrapper">
-      <main>
-        <section className="esquerda">
-          <div className="content">
+    <div className={styles.pagePerguntasWrapper}>
+      <main className={styles.mainContainer}>
+        <section className={styles.esquerda}>
+          <div className={styles.content}>
             <button
-              className="seta"
+              className={styles.seta}
               onClick={() => {
                 if (window.confirm("Deseja voltar ao início? Seu progresso será mantido.")) {
                   setCurrentIndex(0);
@@ -224,42 +224,42 @@ export default function QuestionarioDinamico({ params }: Props) {
               <p>Página Inicial</p>
             </button>
 
-            <div className="pergunta-header">
-              <div className="pergunta-titulo">
+            <div className={styles.perguntaHeader}>
+              <div className={styles.perguntaTitulo}>
                 <h1>
                   Pergunta {currentIndex + 1}/{perguntas.length}
                 </h1>
-                <div className="pergunta-subtitulo">
+                <div className={styles.perguntaSubtitulo}>
                   <h2>{current?.pergunta}</h2>
                   <h3>{current?.subtitulo}</h3>
                 </div>
               </div>
             </div>
 
-            <div style={{ marginTop: "auto" }}>
-              <p style={{ color: "#AAA", fontSize: "0.9rem" }}>
+            <div className={styles.questionarioInfo}>
+              <p className={styles.questionarioTitulo}>
                 {questionario.titulo}
               </p>
               {questionario.descricao && (
-                <p style={{ color: "#888", fontSize: "0.8rem", marginTop: "0.5rem" }}>
+                <p className={styles.questionarioDescricao}>
                   {questionario.descricao}
                 </p>
               )}
             </div>
 
-            <img id="logo" src="/images/logobranca.png" alt="Logo" />
+            <img className={styles.logo} src="/images/logobranca.png" alt="Logo" />
           </div>
         </section>
 
-        <section className="direita">
-          <div className="conteudo">
+        <section className={styles.direita}>
+          <div className={styles.conteudo}>
             {current?.imagem_url ? (
               <img src={current.imagem_url} alt={current.pergunta} />
             ) : (
               <img src="/images/perguntas/Img principal.png" alt="Ilustração" />
             )}
 
-            <div className="respostas">
+            <div className={styles.respostas}>
               {(current?.OpcaoResposta ?? [])
                 .slice()
                 .sort((a, b) => (a.ordem ?? 0) - (b.ordem ?? 0))
@@ -270,7 +270,7 @@ export default function QuestionarioDinamico({ params }: Props) {
                   return (
                     <label
                       key={opt.id_opcao ?? idx}
-                      className={selectedOption === valorOpcao ? "selected" : ""}
+                      className={`${styles.optionLabel} ${selectedOption === valorOpcao ? styles.selected : ''}`}
                     >
                       <input
                         type="radio"
@@ -278,41 +278,33 @@ export default function QuestionarioDinamico({ params }: Props) {
                         value={valorOpcao}
                         checked={selectedOption === valorOpcao}
                         onChange={handleOptionChange}
+                        className={styles.radioInput}
                       />
-                      <span>{opt.texto}</span>
+                      <span className={styles.optionText}>{opt.texto}</span>
                     </label>
                   );
                 })}
             </div>
 
-            <div className="botoes">
+            <div className={styles.botoes}>
               {!isFirst && (
-                <button onClick={handlePrev} id="number_one">
+                <button onClick={handlePrev} className={styles.btnAnterior}>
                   Anterior
                 </button>
               )}
               {!isLast ? (
                 <button
                   onClick={handleNext}
-                  id="number_two"
+                  className={styles.btnProximo}
                   disabled={!selectedOption}
-                  style={{
-                    opacity: !selectedOption ? 0.5 : 1,
-                    cursor: !selectedOption ? "not-allowed" : "pointer"
-                  }}
                 >
                   Próximo
                 </button>
               ) : (
                 <button
                   onClick={handleSubmitQuiz}
-                  id="number_two"
-                  className="finalizar-quiz-btn"
+                  className={styles.btnProximo}
                   disabled={isSubmitting || !selectedOption}
-                  style={{
-                    opacity: isSubmitting || !selectedOption ? 0.5 : 1,
-                    cursor: isSubmitting || !selectedOption ? "not-allowed" : "pointer"
-                  }}
                 >
                   {isSubmitting ? "Salvando..." : "Finalizar Quiz"}
                 </button>
@@ -320,28 +312,16 @@ export default function QuestionarioDinamico({ params }: Props) {
             </div>
 
             {/* Barra de progresso */}
-            <div style={{
-              width: "100%",
-              height: "4px",
-              background: "#e5e7eb",
-              borderRadius: "2px",
-              marginTop: "2rem",
-              overflow: "hidden"
-            }}>
-              <div style={{
-                width: `${((currentIndex + 1) / perguntas.length) * 100}%`,
-                height: "100%",
-                background: "#F2A518",
-                transition: "width 0.3s ease"
-              }} />
+            <div className={styles.progressBar}>
+              <div 
+                className={styles.progressFill}
+                style={{
+                  width: `${((currentIndex + 1) / perguntas.length) * 100}%`
+                }} 
+              />
             </div>
             
-            <p style={{
-              textAlign: "center",
-              color: "#666",
-              fontSize: "0.9rem",
-              marginTop: "0.5rem"
-            }}>
+            <p className={styles.progressText}>
               {Object.keys(answers).length} de {perguntas.length} perguntas respondidas
             </p>
           </div>
