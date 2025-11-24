@@ -43,8 +43,8 @@ const Favoritos: React.FC = () => {
 
   // LÓGICA DE CARROSSEL + EXPANSÃO
   const [currentRecentIndex, setCurrentRecentIndex] = useState(0);
-  const [isExpanded, setIsExpanded] = useState(false); // NOVO: Controla se mostra tudo em grade
-  const itemsPerPage = 5; // Mantido 5 como pediu
+  const [isExpanded, setIsExpanded] = useState(false);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     carregarFavoritos();
@@ -78,7 +78,7 @@ const Favoritos: React.FC = () => {
     }
   };
 
-  // Funções de navegação (Só funcionam se NÃO estiver expandido)
+  // Funções de navegação
   const handlePrevRecent = () => {
     setCurrentRecentIndex((prev) => Math.max(0, prev - 1));
   };
@@ -87,7 +87,6 @@ const Favoritos: React.FC = () => {
     setCurrentRecentIndex((prev) => Math.min(produtosFavoritos.length - itemsPerPage, prev + 1));
   };
 
-  // LÓGICA: Se expandido = mostra tudo. Se não = mostra fatia de 5.
   const visibleRecentProducts = isExpanded 
     ? produtosFavoritos 
     : (produtosFavoritos.length > 0 
@@ -236,13 +235,21 @@ const Favoritos: React.FC = () => {
           {produtosFavoritos.length > 0 ? (
             produtosFavoritos.slice(0, 3).map((favProd, index) => (
               <div key={`brown-${favProd.produto?.id_produto || index}`} className={styles.brownCard}>
-                <img 
-                  className={styles.brownCardImage} 
-                  src={favProd.produto?.url_imagem || "/images/favoritos/imagem-produto-salvo.png"} 
-                  alt={favProd.produto?.nome || "Produto"} 
-                />
+                <div style={{ position: 'relative' }}>
+                  <img 
+                    className={styles.brownCardImage} 
+                    src={favProd.produto?.url_imagem || "/images/favoritos/imagem-produto-salvo.png"} 
+                    alt={favProd.produto?.nome || "Produto"} 
+                  />
+                  <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
+                    <FavoriteButton
+                      produtoId={favProd.produto?.id_produto}
+                      initialIsFavorited={true}
+                      size="medium"
+                    />
+                  </div>
+                </div>
                 <div className={styles.brownCardContent}>
-                  <img className={styles.brownCardIcon} src="/images/favoritos/fav.svg" alt="Favorito" />
                   <h1>{favProd.produto?.nome}</h1>
                   <p>{favProd.produto?.qualidades || "Sem qualidades disponíveis."}</p>
                   {favProd.produto?.id_produto && (
@@ -268,14 +275,12 @@ const Favoritos: React.FC = () => {
           )}
         </section>
 
-        {/* Seção Salvos Recentemente - LÓGICA DE CARROSSEL QUE VIRA GRADE */}
+        {/* Seção Salvos Recentemente */}
         <section className={styles.savedSectionWrapper}>
           <h1 className={styles.savedTitle}>Salvos Recentemente</h1>
           
-          {/* Adiciona classe 'expandedContainer' se isExpanded for true */}
           <div className={`${styles.savedCardsContainer} ${isExpanded ? styles.expandedContainer : ''}`}>
             
-            {/* Seta Esquerda: Esconde se estiver expandido */}
             {!isExpanded && (
               <button 
                 className={styles.scrollBtn} 
@@ -292,13 +297,19 @@ const Favoritos: React.FC = () => {
             )}
             
             {produtosFavoritos.length > 0 ? (
-              // Mostra lista filtrada OU completa dependendo do estado
               visibleRecentProducts.map((favProd, index) => (
                 <div 
                   key={`recent-${favProd.produto?.id_produto || index}`} 
                   className={styles.savedCard}
+                  style={{ position: 'relative' }}
                 >
-                  <img className={styles.favIcon} src="/images/favoritos/fav2.svg" alt="Favorito" />
+                  <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
+                    <FavoriteButton
+                      produtoId={favProd.produto?.id_produto}
+                      initialIsFavorited={true}
+                      size="small"
+                    />
+                  </div>
                   <img 
                     className={styles.prodImage} 
                     src={favProd.produto?.url_imagem || "/images/favoritos/imagem-produto.png"} 
@@ -317,7 +328,6 @@ const Favoritos: React.FC = () => {
               </div>
             )}
 
-            {/* Seta Direita: Esconde se estiver expandido */}
             {!isExpanded && (
               <button 
                 className={styles.scrollBtn} 
@@ -334,7 +344,6 @@ const Favoritos: React.FC = () => {
             )}
           </div>
           
-          {/* Link 'Veja lista completa' - Expande e desaparece */}
           {!isExpanded && produtosFavoritos.length > itemsPerPage && (
             <p 
                 className={styles.seeMoreLink} 
