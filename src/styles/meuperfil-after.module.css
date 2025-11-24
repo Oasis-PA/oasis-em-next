@@ -418,7 +418,6 @@
   min-height: 40.8vw;
   flex-direction: row;
   background-color: #F2A518;
-  margin-top: clamp(3rem, 8vw, 8rem);
   padding: 4rem 2rem; /* Adicionado padding vertical */
   box-sizing: border-box;
 }
