@@ -63,7 +63,7 @@ export default function Guia() {
               </div>
             </Link>
 
-            <Link href='/artigos' className={styles.guiaLink}>
+            <Link href='/artigo' className={styles.guiaLink}>
               <div className={styles.guiaLinkDiv}>
                 <h1 className={styles.guiaLinkH1}>Artigos</h1>
                 <img src="images/guia/seta-lado.svg" alt="seta" className={styles.guiaLinkImg} />
@@ -100,7 +100,7 @@ export default function Guia() {
             </div>
           </Link>
 
-          <Link href='/cortes-geral' className={styles.s2Link}>
+          <Link href='/corte' className={styles.s2Link}>
             <div className={styles.pag}>
               <img src="images/guia/pag2-cortes.png" alt="" className={styles.pagImg} />
               <div className={styles.pag2}>
